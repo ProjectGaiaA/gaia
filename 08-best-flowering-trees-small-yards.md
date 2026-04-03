@@ -66,7 +66,6 @@ Pricing ranges from $30-$80 depending on species and size. Downy serviceberry (*
 
 **What to know before buying:** Serviceberry grows in full sun to partial shade and tolerates a range of soils including clay. Hardy in zones 4-8. If you want one tree that does the absolute most for a small yard — beauty, food, wildlife support, four-season interest — serviceberry deserves serious consideration.
 
-→ [Compare Serviceberry prices](/plants/serviceberry)
 
 ## Crape Myrtle (*Lagerstroemia*)
 

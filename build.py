@@ -244,6 +244,13 @@ def parse_article_md(filepath):
     md = markdown.Markdown(extensions=["extra", "toc"])
     html = md.convert(text)
 
+    # Fix internal links: add .html extension to /plants/ and /category/ links
+    html = re.sub(
+        r'href="(/(?:plants|category|guides)/[^"]+?)(?<!\.html)"',
+        r'href="\1.html"',
+        html
+    )
+
     # Build TOC from H2 headings
     toc = []
     for match in re.finditer(r"^##\s+(.+?)(?:\s*\(.*?\))?\s*$", text, re.MULTILINE):

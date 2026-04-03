@@ -93,7 +93,6 @@ Pricing runs $25-$50. Bobo has gained significant mainstream popularity over the
 
 Zones 3-8. Blooms on new wood like all panicle hydrangeas. Full sun to light shade.
 
-→ [Compare Bobo Hydrangea prices across nurseries](/plants/bobo-hydrangea)
 
 ## Incrediball Hydrangea (*Hydrangea arborescens* 'Incrediball')
 

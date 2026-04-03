@@ -83,7 +83,6 @@ Pricing ranges from $18-$45.
 
 **What to know before buying:** The trade-off for those jumbo berries is slightly lower total yield. Chandler produces fewer berries per bush than Bluecrop, but each berry is significantly larger. If you're growing for maximum volume (freezing, preserving), Bluecrop's higher total yield per bush makes more sense. If you're growing primarily for fresh eating and want berries that impress, Chandler is the pick. Zones 4-7. Needs a pollination partner.
 
-→ [Compare Chandler Blueberry prices](/plants/chandler-blueberry)
 
 ## Patriot Blueberry
 

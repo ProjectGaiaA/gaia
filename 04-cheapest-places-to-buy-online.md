@@ -127,4 +127,4 @@ No retailer pays us to rank higher or to recommend them. We earn a commission wh
 
 The prices you see are the actual prices the nurseries are charging at the time of our most recent check. Prices change — sometimes daily during peak season — so if you see something you want at a good price, don't assume it'll still be there next week.
 
-→ [Browse our full plant catalog and start comparing prices](/category/all-plants)
+→ [Browse our plant catalog](/category/hydrangeas)
