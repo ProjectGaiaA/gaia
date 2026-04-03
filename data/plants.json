@@ -1,0 +1,7449 @@
+[
+  {
+    "id": "limelight-hydrangea",
+    "common_name": "Limelight Hydrangea",
+    "botanical_name": "Hydrangea paniculata 'Limelight'",
+    "aliases": [
+      "Limelight"
+    ],
+    "category": "hydrangeas",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "6-8 ft tall x 6-8 ft wide",
+    "bloom_time": "Mid-summer to fall",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$18-$60",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted hydrangeas establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "nikko-blue-hydrangea",
+    "common_name": "Nikko Blue Hydrangea",
+    "botanical_name": "Hydrangea macrophylla 'Nikko Blue'",
+    "aliases": [
+      "Nikko Blue"
+    ],
+    "category": "hydrangeas",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade",
+    "mature_size": "4-6 ft tall x 4-6 ft wide",
+    "bloom_time": "Late spring to summer",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$20-$45",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted hydrangeas establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "endless-summer-hydrangea",
+    "common_name": "Endless Summer Hydrangea",
+    "botanical_name": "Hydrangea macrophylla 'Endless Summer'",
+    "aliases": [
+      "Endless Summer Original",
+      "The Original"
+    ],
+    "category": "hydrangeas",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade to full sun",
+    "mature_size": "3-5 ft tall x 3-5 ft wide",
+    "bloom_time": "Late spring to fall (reblooming)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$25-$55",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted hydrangeas establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "bloomstruck-hydrangea",
+    "common_name": "BloomStruck Hydrangea",
+    "botanical_name": "Hydrangea macrophylla 'PIIHM-II' (BloomStruck)",
+    "aliases": [
+      "Endless Summer BloomStruck",
+      "BloomStruck"
+    ],
+    "category": "hydrangeas",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade to full sun",
+    "mature_size": "3-4 ft tall x 4-5 ft wide",
+    "bloom_time": "Late spring to fall (reblooming)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$25-$55",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted hydrangeas establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "summer-crush-hydrangea",
+    "common_name": "Summer Crush Hydrangea",
+    "botanical_name": "Hydrangea macrophylla 'Bailmacfive' (Summer Crush)",
+    "aliases": [
+      "Endless Summer Summer Crush"
+    ],
+    "category": "hydrangeas",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade to full sun",
+    "mature_size": "18-36 in tall x 18-36 in wide",
+    "bloom_time": "Late spring to fall (reblooming)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$25-$55",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted hydrangeas establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "little-lime-hydrangea",
+    "common_name": "Little Lime Hydrangea",
+    "botanical_name": "Hydrangea paniculata 'Jane' (Little Lime)",
+    "aliases": [
+      "Little Lime"
+    ],
+    "category": "hydrangeas",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "3-5 ft tall x 3-5 ft wide",
+    "bloom_time": "Mid-summer to fall",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$20-$50",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted hydrangeas establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "incrediball-hydrangea",
+    "common_name": "Incrediball Hydrangea",
+    "botanical_name": "Hydrangea arborescens 'Abetwo' (Incrediball)",
+    "aliases": [
+      "Incrediball",
+      "Strong Annabelle"
+    ],
+    "category": "hydrangeas",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade to full sun",
+    "mature_size": "4-5 ft tall x 4-5 ft wide",
+    "bloom_time": "Mid-summer to fall",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$25-$50",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted hydrangeas establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "pinky-winky-hydrangea",
+    "common_name": "Pinky Winky Hydrangea",
+    "botanical_name": "Hydrangea paniculata 'DVPPinky' (Pinky Winky)",
+    "aliases": [
+      "Pinky Winky"
+    ],
+    "category": "hydrangeas",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "6-8 ft tall x 6-8 ft wide",
+    "bloom_time": "Mid-summer to fall",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$25-$55",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted hydrangeas establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "fire-light-hydrangea",
+    "common_name": "Fire Light Hydrangea",
+    "botanical_name": "Hydrangea paniculata 'SMHPFL' (Fire Light)",
+    "aliases": [
+      "Fire Light"
+    ],
+    "category": "hydrangeas",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "6-8 ft tall x 6-8 ft wide",
+    "bloom_time": "Mid-summer to fall",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$30-$55",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted hydrangeas establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "honeycrisp-apple-tree",
+    "common_name": "Honeycrisp Apple Tree",
+    "botanical_name": "Malus domestica 'Honeycrisp'",
+    "aliases": [
+      "Honeycrisp Apple",
+      "Honeycrisp"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "sun": "Full sun",
+    "mature_size": "12-15 ft tall x 12-15 ft wide",
+    "bloom_time": "Spring",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$30-$70",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May",
+        "fall": null
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "meyer-lemon-tree",
+    "common_name": "Dwarf Meyer Lemon Tree",
+    "botanical_name": "Citrus x meyeri 'Improved Dwarf'",
+    "aliases": [
+      "Meyer Lemon",
+      "Improved Meyer Lemon",
+      "Dwarf Meyer Lemon"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      9,
+      10,
+      11
+    ],
+    "sun": "Full sun",
+    "mature_size": "5-10 ft tall x 4-8 ft wide",
+    "bloom_time": "Year-round (indoors and out)",
+    "type": "Evergreen tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$30-$80",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "elberta-peach-tree",
+    "common_name": "Elberta Peach Tree",
+    "botanical_name": "Prunus persica 'Elberta'",
+    "aliases": [
+      "Elberta Peach",
+      "Elberta"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "15-25 ft tall x 15-20 ft wide",
+    "bloom_time": "Early spring",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$25-$60",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      },
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "bartlett-pear-tree",
+    "common_name": "Bartlett Pear Tree",
+    "botanical_name": "Pyrus communis 'Bartlett'",
+    "aliases": [
+      "Bartlett Pear",
+      "Williams Pear"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Full sun",
+    "mature_size": "15-20 ft tall x 12-15 ft wide",
+    "bloom_time": "Early spring",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$30-$65",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      },
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "fuji-apple-tree",
+    "common_name": "Fuji Apple Tree",
+    "botanical_name": "Malus domestica 'Fuji'",
+    "aliases": [
+      "Fuji Apple",
+      "Fuji"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "12-15 ft tall x 12-15 ft wide",
+    "bloom_time": "Spring",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$30-$65",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      },
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "bing-cherry-tree",
+    "common_name": "Bing Cherry Tree",
+    "botanical_name": "Prunus avium 'Bing'",
+    "aliases": [
+      "Bing Cherry",
+      "Bing"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Full sun",
+    "mature_size": "15-25 ft tall x 15-20 ft wide",
+    "bloom_time": "Early spring",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$35-$80",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      },
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "stella-cherry-tree",
+    "common_name": "Stella Cherry Tree",
+    "botanical_name": "Prunus avium 'Stella'",
+    "aliases": [
+      "Stella Cherry",
+      "Stella"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Full sun",
+    "mature_size": "15-25 ft tall x 15-20 ft wide",
+    "bloom_time": "Early spring",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$35-$75",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      },
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "emerald-green-arborvitae",
+    "common_name": "Emerald Green Arborvitae",
+    "botanical_name": "Thuja occidentalis 'Smaragd'",
+    "aliases": [
+      "Smaragd Arborvitae",
+      "Emerald Green Thuja"
+    ],
+    "category": "privacy-trees",
+    "zones": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "12-15 ft tall x 3-4 ft wide",
+    "bloom_time": "Non-flowering (evergreen conifer)",
+    "type": "Evergreen tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$20-$60",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Aug-Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "April",
+      "note": "Evergreen privacy trees are in highest demand during spring. Fall prices drop 10-20% as nurseries reduce inventory.",
+      "tip": "Fall is actually ideal for planting evergreens. Buy in October for best price AND best planting conditions."
+    }
+  },
+  {
+    "id": "green-giant-arborvitae",
+    "common_name": "Green Giant Arborvitae",
+    "botanical_name": "Thuja standishii x plicata 'Green Giant'",
+    "aliases": [
+      "Green Giant Thuja",
+      "Green Giant"
+    ],
+    "category": "privacy-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "40-60 ft tall x 12-20 ft wide",
+    "bloom_time": "Non-flowering (evergreen conifer)",
+    "type": "Evergreen tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$15-$55",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "April",
+      "note": "Evergreen privacy trees are in highest demand during spring. Fall prices drop 10-20% as nurseries reduce inventory.",
+      "tip": "Fall is actually ideal for planting evergreens. Buy in October for best price AND best planting conditions."
+    }
+  },
+  {
+    "id": "leyland-cypress",
+    "common_name": "Leyland Cypress",
+    "botanical_name": "x Cuprocyparis leylandii",
+    "aliases": [
+      "Leylandii",
+      "Leyland Cypress Tree"
+    ],
+    "category": "privacy-trees",
+    "zones": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "sun": "Full sun",
+    "mature_size": "40-60 ft tall x 15-25 ft wide",
+    "bloom_time": "Non-flowering (evergreen conifer)",
+    "type": "Evergreen tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$25-$60",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "April",
+      "note": "Evergreen privacy trees are in highest demand during spring. Fall prices drop 10-20% as nurseries reduce inventory.",
+      "tip": "Fall is actually ideal for planting evergreens. Buy in October for best price AND best planting conditions."
+    }
+  },
+  {
+    "id": "skip-laurel",
+    "common_name": "Skip Laurel",
+    "botanical_name": "Prunus laurocerasus 'Schipkaensis'",
+    "aliases": [
+      "Schip Laurel",
+      "Schipka Cherry Laurel"
+    ],
+    "category": "privacy-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to full shade",
+    "mature_size": "10-15 ft tall x 5-7 ft wide",
+    "bloom_time": "Spring (white flower spikes)",
+    "type": "Broadleaf evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$25-$50",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "April",
+      "note": "Evergreen privacy trees are in highest demand during spring. Fall prices drop 10-20% as nurseries reduce inventory.",
+      "tip": "Fall is actually ideal for planting evergreens. Buy in October for best price AND best planting conditions."
+    }
+  },
+  {
+    "id": "nellie-stevens-holly",
+    "common_name": "Nellie Stevens Holly",
+    "botanical_name": "Ilex x 'Nellie R. Stevens'",
+    "aliases": [
+      "Nellie R. Stevens Holly"
+    ],
+    "category": "privacy-trees",
+    "zones": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "15-25 ft tall x 8-12 ft wide",
+    "bloom_time": "Spring (inconspicuous); red berries in winter",
+    "type": "Broadleaf evergreen tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$30-$65",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "April",
+      "note": "Evergreen privacy trees are in highest demand during spring. Fall prices drop 10-20% as nurseries reduce inventory.",
+      "tip": "Fall is actually ideal for planting evergreens. Buy in October for best price AND best planting conditions."
+    }
+  },
+  {
+    "id": "bloodgood-japanese-maple",
+    "common_name": "Bloodgood Japanese Maple",
+    "botanical_name": "Acer palmatum 'Bloodgood'",
+    "aliases": [
+      "Bloodgood Maple",
+      "Bloodgood"
+    ],
+    "category": "japanese-maples",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Part shade (morning sun, afternoon shade)",
+    "mature_size": "15-20 ft tall x 15-20 ft wide",
+    "bloom_time": "Spring (inconspicuous); foliage interest",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$40-$120",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Spring demand drives prices up 20-30%. Fall is ideal for buying. Bare-root options in late winter offer the deepest discounts.",
+      "tip": "Fall planting gives roots 4-5 months to establish before summer stress. Best value is bare-root in February."
+    }
+  },
+  {
+    "id": "coral-bark-japanese-maple",
+    "common_name": "Coral Bark Japanese Maple",
+    "botanical_name": "Acer palmatum 'Sango-kaku'",
+    "aliases": [
+      "Sango Kaku Maple",
+      "Coral Bark Maple"
+    ],
+    "category": "japanese-maples",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Part shade (morning sun, afternoon shade)",
+    "mature_size": "15-25 ft tall x 15-20 ft wide",
+    "bloom_time": "Spring (inconspicuous); bark and foliage interest",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$45-$130",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Spring demand drives prices up 20-30%. Fall is ideal for buying. Bare-root options in late winter offer the deepest discounts.",
+      "tip": "Fall planting gives roots 4-5 months to establish before summer stress. Best value is bare-root in February."
+    }
+  },
+  {
+    "id": "crimson-queen-japanese-maple",
+    "common_name": "Crimson Queen Japanese Maple",
+    "botanical_name": "Acer palmatum var. dissectum 'Crimson Queen'",
+    "aliases": [
+      "Crimson Queen Laceleaf Maple",
+      "Crimson Queen"
+    ],
+    "category": "japanese-maples",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Part shade",
+    "mature_size": "8-10 ft tall x 10-12 ft wide",
+    "bloom_time": "Spring (inconspicuous); foliage interest",
+    "type": "Deciduous tree (weeping)",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$50-$150",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Spring demand drives prices up 20-30%. Fall is ideal for buying. Bare-root options in late winter offer the deepest discounts.",
+      "tip": "Fall planting gives roots 4-5 months to establish before summer stress. Best value is bare-root in February."
+    }
+  },
+  {
+    "id": "emperor-japanese-maple",
+    "common_name": "Emperor I Japanese Maple",
+    "botanical_name": "Acer palmatum 'Emperor I'",
+    "aliases": [
+      "Emperor Maple",
+      "Emperor I",
+      "Emperor One"
+    ],
+    "category": "japanese-maples",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Part shade to full sun",
+    "mature_size": "15-20 ft tall x 15-20 ft wide",
+    "bloom_time": "Spring (inconspicuous); foliage interest",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$45-$100",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Spring demand drives prices up 20-30%. Fall is ideal for buying. Bare-root options in late winter offer the deepest discounts.",
+      "tip": "Fall planting gives roots 4-5 months to establish before summer stress. Best value is bare-root in February."
+    }
+  },
+  {
+    "id": "tamukeyama-japanese-maple",
+    "common_name": "Tamukeyama Japanese Maple",
+    "botanical_name": "Acer palmatum var. dissectum 'Tamukeyama'",
+    "aliases": [
+      "Tamukeyama Laceleaf Maple",
+      "Tamukeyama"
+    ],
+    "category": "japanese-maples",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Part shade",
+    "mature_size": "6-8 ft tall x 8-12 ft wide",
+    "bloom_time": "Spring (inconspicuous); foliage interest",
+    "type": "Deciduous tree (weeping)",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$50-$140",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Spring demand drives prices up 20-30%. Fall is ideal for buying. Bare-root options in late winter offer the deepest discounts.",
+      "tip": "Fall planting gives roots 4-5 months to establish before summer stress. Best value is bare-root in February."
+    }
+  },
+  {
+    "id": "double-knock-out-rose",
+    "common_name": "Double Knock Out Rose",
+    "botanical_name": "Rosa 'Radtko' (Double Knock Out)",
+    "aliases": [
+      "Red Double Knock Out",
+      "Double Knock Out"
+    ],
+    "category": "roses",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "3-4 ft tall x 3-4 ft wide",
+    "bloom_time": "Spring through first frost (continuous)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$20-$45",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Bare-root roses (January-March) are cheapest but limited selection. Potted roses peak in spring. End-of-season clearance offers 20-40% off.",
+      "tip": "For Knock Out roses, fall planting works well in zones 6-9. Bare-root in late winter is cheapest."
+    }
+  },
+  {
+    "id": "pink-knock-out-rose",
+    "common_name": "Pink Double Knock Out Rose",
+    "botanical_name": "Rosa 'Radtkopink' (Pink Double Knock Out)",
+    "aliases": [
+      "Pink Knock Out",
+      "Pink Double Knock Out"
+    ],
+    "category": "roses",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "3-4 ft tall x 3-4 ft wide",
+    "bloom_time": "Spring through first frost (continuous)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$20-$45",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Bare-root roses (January-March) are cheapest but limited selection. Potted roses peak in spring. End-of-season clearance offers 20-40% off.",
+      "tip": "For Knock Out roses, fall planting works well in zones 6-9. Bare-root in late winter is cheapest."
+    }
+  },
+  {
+    "id": "sunny-knock-out-rose",
+    "common_name": "Sunny Knock Out Rose",
+    "botanical_name": "Rosa 'Radsunny' (Sunny Knock Out)",
+    "aliases": [
+      "Yellow Knock Out",
+      "Sunny Knock Out"
+    ],
+    "category": "roses",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "3-4 ft tall x 3-4 ft wide",
+    "bloom_time": "Spring through first frost (continuous)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$22-$45",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Bare-root roses (January-March) are cheapest but limited selection. Potted roses peak in spring. End-of-season clearance offers 20-40% off.",
+      "tip": "For Knock Out roses, fall planting works well in zones 6-9. Bare-root in late winter is cheapest."
+    }
+  },
+  {
+    "id": "white-knock-out-rose",
+    "common_name": "White Knock Out Rose",
+    "botanical_name": "Rosa 'Radwhite' (White Knock Out)",
+    "aliases": [
+      "White Knock Out"
+    ],
+    "category": "roses",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "3-4 ft tall x 3-4 ft wide",
+    "bloom_time": "Spring through first frost (continuous)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$22-$45",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Bare-root roses (January-March) are cheapest but limited selection. Potted roses peak in spring. End-of-season clearance offers 20-40% off.",
+      "tip": "For Knock Out roses, fall planting works well in zones 6-9. Bare-root in late winter is cheapest."
+    }
+  },
+  {
+    "id": "coral-knock-out-rose",
+    "common_name": "Coral Knock Out Rose",
+    "botanical_name": "Rosa 'Radral' (Coral Knock Out)",
+    "aliases": [
+      "Coral Knock Out"
+    ],
+    "category": "roses",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "3-4 ft tall x 3-4 ft wide",
+    "bloom_time": "Spring through first frost (continuous)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$25-$45",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Bare-root roses (January-March) are cheapest but limited selection. Potted roses peak in spring. End-of-season clearance offers 20-40% off.",
+      "tip": "For Knock Out roses, fall planting works well in zones 6-9. Bare-root in late winter is cheapest."
+    }
+  },
+  {
+    "id": "duke-blueberry",
+    "common_name": "Duke Blueberry",
+    "botanical_name": "Vaccinium corymbosum 'Duke'",
+    "aliases": [
+      "Duke"
+    ],
+    "category": "blueberries",
+    "zones": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "sun": "Full sun",
+    "mature_size": "4-6 ft tall x 3-4 ft wide",
+    "bloom_time": "Spring; early-season fruit",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$15-$40",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        3
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Spring is peak demand. Most nurseries stock blueberries February-May only. Fall clearance saves 15-25%.",
+      "tip": "Buy 2-3 varieties for cross-pollination. Spring planting gives the best first-year fruit production."
+    }
+  },
+  {
+    "id": "bluecrop-blueberry",
+    "common_name": "Bluecrop Blueberry",
+    "botanical_name": "Vaccinium corymbosum 'Bluecrop'",
+    "aliases": [
+      "Bluecrop"
+    ],
+    "category": "blueberries",
+    "zones": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "sun": "Full sun",
+    "mature_size": "4-6 ft tall x 3-5 ft wide",
+    "bloom_time": "Spring; mid-season fruit",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$15-$40",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        3
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Spring is peak demand. Most nurseries stock blueberries February-May only. Fall clearance saves 15-25%.",
+      "tip": "Buy 2-3 varieties for cross-pollination. Spring planting gives the best first-year fruit production."
+    }
+  },
+  {
+    "id": "patriot-blueberry",
+    "common_name": "Patriot Blueberry",
+    "botanical_name": "Vaccinium corymbosum 'Patriot'",
+    "aliases": [
+      "Patriot"
+    ],
+    "category": "blueberries",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "sun": "Full sun",
+    "mature_size": "4-6 ft tall x 3-5 ft wide",
+    "bloom_time": "Spring; early to mid-season fruit",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$15-$40",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May",
+        "fall": null
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        3
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Spring is peak demand. Most nurseries stock blueberries February-May only. Fall clearance saves 15-25%.",
+      "tip": "Buy 2-3 varieties for cross-pollination. Spring planting gives the best first-year fruit production."
+    }
+  },
+  {
+    "id": "pink-lemonade-blueberry",
+    "common_name": "Pink Lemonade Blueberry",
+    "botanical_name": "Vaccinium 'Pink Lemonade'",
+    "aliases": [
+      "Pink Lemonade"
+    ],
+    "category": "blueberries",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "4-5 ft tall x 3-4 ft wide",
+    "bloom_time": "Spring; mid-season fruit (pink berries)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$20-$45",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        3
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Spring is peak demand. Most nurseries stock blueberries February-May only. Fall clearance saves 15-25%.",
+      "tip": "Buy 2-3 varieties for cross-pollination. Spring planting gives the best first-year fruit production."
+    }
+  },
+  {
+    "id": "sunshine-blue-blueberry",
+    "common_name": "Sunshine Blue Blueberry",
+    "botanical_name": "Vaccinium corymbosum 'Sunshine Blue'",
+    "aliases": [
+      "Sunshine Blue"
+    ],
+    "category": "blueberries",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "sun": "Full sun",
+    "mature_size": "3-4 ft tall x 3-4 ft wide",
+    "bloom_time": "Spring; mid-season fruit (self-pollinating)",
+    "type": "Semi-evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$18-$40",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2,
+        3
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Spring is peak demand. Most nurseries stock blueberries February-May only. Fall clearance saves 15-25%.",
+      "tip": "Buy 2-3 varieties for cross-pollination. Spring planting gives the best first-year fruit production."
+    }
+  },
+  {
+    "id": "dogwood-tree",
+    "common_name": "Flowering Dogwood",
+    "botanical_name": "Cornus florida",
+    "aliases": [
+      "Native Dogwood",
+      "White Dogwood",
+      "Pink Dogwood"
+    ],
+    "category": "flowering-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade to full sun",
+    "mature_size": "15-25 ft tall x 15-25 ft wide",
+    "bloom_time": "Early to mid-spring (April)",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$35-$100",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Flowering trees sell out fast in spring. Fall planting is underrated and often 15-20% cheaper.",
+      "tip": "If a specific cultivar matters, buy in March before sellout. If price matters more, wait for fall."
+    }
+  },
+  {
+    "id": "kousa-dogwood",
+    "common_name": "Kousa Dogwood",
+    "botanical_name": "Cornus kousa",
+    "aliases": [
+      "Japanese Dogwood",
+      "Chinese Dogwood",
+      "Korean Dogwood"
+    ],
+    "category": "flowering-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Part shade to full sun",
+    "mature_size": "15-25 ft tall x 15-25 ft wide",
+    "bloom_time": "Late spring to early summer (June)",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$40-$110",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Flowering trees sell out fast in spring. Fall planting is underrated and often 15-20% cheaper.",
+      "tip": "If a specific cultivar matters, buy in March before sellout. If price matters more, wait for fall."
+    }
+  },
+  {
+    "id": "eastern-redbud",
+    "common_name": "Eastern Redbud",
+    "botanical_name": "Cercis canadensis",
+    "aliases": [
+      "Redbud",
+      "Judas Tree"
+    ],
+    "category": "flowering-trees",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "20-30 ft tall x 25-35 ft wide",
+    "bloom_time": "Early spring (March-April)",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$30-$80",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Flowering trees sell out fast in spring. Fall planting is underrated and often 15-20% cheaper.",
+      "tip": "If a specific cultivar matters, buy in March before sellout. If price matters more, wait for fall."
+    }
+  },
+  {
+    "id": "forest-pansy-redbud",
+    "common_name": "Forest Pansy Redbud",
+    "botanical_name": "Cercis canadensis 'Forest Pansy'",
+    "aliases": [
+      "Forest Pansy",
+      "Purple-Leaf Redbud"
+    ],
+    "category": "flowering-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "20-30 ft tall x 25-30 ft wide",
+    "bloom_time": "Early spring (March-April)",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$40-$95",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Flowering trees sell out fast in spring. Fall planting is underrated and often 15-20% cheaper.",
+      "tip": "If a specific cultivar matters, buy in March before sellout. If price matters more, wait for fall."
+    }
+  },
+  {
+    "id": "crape-myrtle",
+    "common_name": "Crape Myrtle",
+    "botanical_name": "Lagerstroemia indica",
+    "aliases": [
+      "Crepe Myrtle",
+      "Crapemyrtle"
+    ],
+    "category": "flowering-trees",
+    "zones": [
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "15-25 ft tall x 10-15 ft wide",
+    "bloom_time": "Summer (July-September)",
+    "type": "Deciduous tree/shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$25-$80",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Flowering trees sell out fast in spring. Fall planting is underrated and often 15-20% cheaper.",
+      "tip": "If a specific cultivar matters, buy in March before sellout. If price matters more, wait for fall."
+    }
+  },
+  {
+    "id": "saucer-magnolia",
+    "common_name": "Saucer Magnolia",
+    "botanical_name": "Magnolia x soulangeana",
+    "aliases": [
+      "Japanese Magnolia",
+      "Tulip Magnolia"
+    ],
+    "category": "flowering-trees",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "20-25 ft tall x 20-25 ft wide",
+    "bloom_time": "Early spring (March-April)",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$40-$100",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Flowering trees sell out fast in spring. Fall planting is underrated and often 15-20% cheaper.",
+      "tip": "If a specific cultivar matters, buy in March before sellout. If price matters more, wait for fall."
+    }
+  },
+  {
+    "id": "yoshino-cherry",
+    "common_name": "Yoshino Cherry",
+    "botanical_name": "Prunus x yedoensis",
+    "aliases": [
+      "Yoshino Cherry Tree",
+      "Japanese Flowering Cherry"
+    ],
+    "category": "flowering-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Full sun",
+    "mature_size": "25-35 ft tall x 25-35 ft wide",
+    "bloom_time": "Early spring (April)",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$40-$100",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Flowering trees sell out fast in spring. Fall planting is underrated and often 15-20% cheaper.",
+      "tip": "If a specific cultivar matters, buy in March before sellout. If price matters more, wait for fall."
+    }
+  },
+  {
+    "id": "encore-azalea",
+    "common_name": "Encore Azalea",
+    "botanical_name": "Rhododendron (Encore series)",
+    "aliases": [
+      "Encore Reblooming Azalea"
+    ],
+    "category": "azaleas-rhododendrons",
+    "zones": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "sun": "Part shade (morning sun, afternoon shade)",
+    "mature_size": "3-5 ft tall x 3-5 ft wide",
+    "bloom_time": "Spring, summer, and fall (reblooming)",
+    "type": "Evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$20-$50",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Peak demand during spring bloom season drives prices up. Fall is best for both price and planting.",
+      "tip": "Encore Azaleas sell out early in spring. Buy in fall for best selection AND best price."
+    }
+  },
+  {
+    "id": "pjm-rhododendron",
+    "common_name": "P.J.M. Rhododendron",
+    "botanical_name": "Rhododendron 'P.J.M.'",
+    "aliases": [
+      "PJM Rhododendron",
+      "P.J.M. Elite"
+    ],
+    "category": "azaleas-rhododendrons",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Part shade to full sun",
+    "mature_size": "3-6 ft tall x 3-6 ft wide",
+    "bloom_time": "Early spring (April)",
+    "type": "Evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$25-$55",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Peak demand during spring bloom season drives prices up. Fall is best for both price and planting.",
+      "tip": "Encore Azaleas sell out early in spring. Buy in fall for best selection AND best price."
+    }
+  },
+  {
+    "id": "delaware-valley-white-azalea",
+    "common_name": "Delaware Valley White Azalea",
+    "botanical_name": "Rhododendron 'Delaware Valley White'",
+    "aliases": [
+      "Delaware Valley White"
+    ],
+    "category": "azaleas-rhododendrons",
+    "zones": [
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Part shade",
+    "mature_size": "3-4 ft tall x 3-4 ft wide",
+    "bloom_time": "Mid-spring (April-May)",
+    "type": "Evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$18-$40",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Peak demand during spring bloom season drives prices up. Fall is best for both price and planting.",
+      "tip": "Encore Azaleas sell out early in spring. Buy in fall for best selection AND best price."
+    }
+  },
+  {
+    "id": "nova-zembla-rhododendron",
+    "common_name": "Nova Zembla Rhododendron",
+    "botanical_name": "Rhododendron 'Nova Zembla'",
+    "aliases": [
+      "Nova Zembla"
+    ],
+    "category": "azaleas-rhododendrons",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Part shade",
+    "mature_size": "5-8 ft tall x 5-7 ft wide",
+    "bloom_time": "Late spring (May-June)",
+    "type": "Evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$30-$60",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Peak demand during spring bloom season drives prices up. Fall is best for both price and planting.",
+      "tip": "Encore Azaleas sell out early in spring. Buy in fall for best selection AND best price."
+    }
+  },
+  {
+    "id": "gibraltar-azalea",
+    "common_name": "Gibraltar Azalea",
+    "botanical_name": "Rhododendron 'Gibraltar'",
+    "aliases": [
+      "Gibraltar",
+      "Exbury Gibraltar"
+    ],
+    "category": "azaleas-rhododendrons",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Part shade",
+    "mature_size": "4-6 ft tall x 4-6 ft wide",
+    "bloom_time": "Mid-spring (April-May)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$25-$50",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Peak demand during spring bloom season drives prices up. Fall is best for both price and planting.",
+      "tip": "Encore Azaleas sell out early in spring. Buy in fall for best selection AND best price."
+    }
+  },
+  {
+    "id": "stella-de-oro-daylily",
+    "common_name": "Stella de Oro Daylily",
+    "botanical_name": "Hemerocallis 'Stella de Oro'",
+    "aliases": [
+      "Stella de Oro",
+      "Stella Daylily"
+    ],
+    "category": "perennials",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "12-18 in tall x 12-18 in wide",
+    "bloom_time": "Late spring to fall (reblooming)",
+    "type": "Herbaceous perennial",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$3-$15",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted perennials establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "hosta-sum-and-substance",
+    "common_name": "Hosta 'Sum and Substance'",
+    "botanical_name": "Hosta 'Sum and Substance'",
+    "aliases": [
+      "Sum and Substance Hosta",
+      "Giant Hosta"
+    ],
+    "category": "perennials",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade to full shade",
+    "mature_size": "30-36 in tall x 60-72 in wide",
+    "bloom_time": "Mid to late summer",
+    "type": "Herbaceous perennial",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$8-$40",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted perennials establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "echinacea-powwow-wild-berry",
+    "common_name": "Echinacea PowWow Wild Berry",
+    "botanical_name": "Echinacea purpurea 'PowWow Wild Berry'",
+    "aliases": [
+      "PowWow Wild Berry",
+      "PowWow Coneflower"
+    ],
+    "category": "perennials",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Full sun",
+    "mature_size": "18-24 in tall x 12-18 in wide",
+    "bloom_time": "Mid-summer to fall",
+    "type": "Herbaceous perennial",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$5-$15",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted perennials establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "lavender-phenomenal",
+    "common_name": "Lavender Phenomenal",
+    "botanical_name": "Lavandula x intermedia 'Phenomenal'",
+    "aliases": [
+      "Phenomenal Lavender"
+    ],
+    "category": "perennials",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "24-30 in tall x 24-30 in wide",
+    "bloom_time": "Mid to late summer",
+    "type": "Herbaceous perennial",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$8-$25",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted perennials establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "black-eyed-susan-goldsturm",
+    "common_name": "Black-Eyed Susan Goldsturm",
+    "botanical_name": "Rudbeckia fulgida var. sullivantii 'Goldsturm'",
+    "aliases": [
+      "Goldsturm Rudbeckia",
+      "Goldsturm Black-Eyed Susan"
+    ],
+    "category": "perennials",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "24-30 in tall x 18-24 in wide",
+    "bloom_time": "Mid-summer to fall",
+    "type": "Herbaceous perennial",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$4-$14",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted perennials establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "peony-sarah-bernhardt",
+    "common_name": "Peony Sarah Bernhardt",
+    "botanical_name": "Paeonia lactiflora 'Sarah Bernhardt'",
+    "aliases": [
+      "Sarah Bernhardt Peony"
+    ],
+    "category": "perennials",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Full sun",
+    "mature_size": "30-36 in tall x 30-36 in wide",
+    "bloom_time": "Late spring to early summer",
+    "type": "Herbaceous perennial",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$12-$35",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted perennials establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "clematis-jackmanii",
+    "common_name": "Clematis Jackmanii",
+    "botanical_name": "Clematis 'Jackmanii'",
+    "aliases": [
+      "Jackmanii Clematis",
+      "Jackman's Clematis"
+    ],
+    "category": "perennials",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "10-12 ft tall (vine)",
+    "bloom_time": "Early to mid-summer",
+    "type": "Deciduous vine",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$10-$30",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted perennials establish stronger root systems over winter and bloom the following spring."
+    }
+  },
+  {
+    "id": "green-mountain-boxwood",
+    "common_name": "Green Mountain Boxwood",
+    "botanical_name": "Buxus x 'Green Mountain'",
+    "aliases": [
+      "Green Mountain"
+    ],
+    "category": "privacy-trees",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "4-5 ft tall x 3 ft wide",
+    "bloom_time": "Non-flowering (evergreen shrub)",
+    "type": "Evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$15-$50",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "April",
+      "note": "Evergreen privacy trees are in highest demand during spring. Fall prices drop 10-20% as nurseries reduce inventory.",
+      "tip": "Fall is actually ideal for planting evergreens. Buy in October for best price AND best planting conditions."
+    }
+  },
+  {
+    "id": "wax-leaf-privet",
+    "common_name": "Wax Leaf Privet",
+    "botanical_name": "Ligustrum japonicum",
+    "aliases": [
+      "Japanese Privet",
+      "Wax Leaf Ligustrum"
+    ],
+    "category": "privacy-trees",
+    "zones": [
+      7,
+      8,
+      9,
+      10
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "8-12 ft tall x 6-8 ft wide",
+    "bloom_time": "Late spring to early summer",
+    "type": "Evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$8-$35",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      },
+      "10": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "April",
+      "note": "Evergreen privacy trees are in highest demand during spring. Fall prices drop 10-20% as nurseries reduce inventory.",
+      "tip": "Fall is actually ideal for planting evergreens. Buy in October for best price AND best planting conditions."
+    }
+  },
+  {
+    "id": "chicago-hardy-fig",
+    "common_name": "Chicago Hardy Fig",
+    "botanical_name": "Ficus carica 'Chicago Hardy'",
+    "aliases": [
+      "Chicago Hardy",
+      "Hardy Fig"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "sun": "Full sun",
+    "mature_size": "10-15 ft tall x 8-12 ft wide",
+    "bloom_time": "Spring (fruit ripens late summer)",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$20-$65",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      },
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      },
+      "10": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "arbequina-olive",
+    "common_name": "Arbequina Olive Tree",
+    "botanical_name": "Olea europaea 'Arbequina'",
+    "aliases": [
+      "Arbequina Olive",
+      "Arbequina"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "sun": "Full sun",
+    "mature_size": "15-20 ft tall x 12-15 ft wide",
+    "bloom_time": "Spring (fruit ripens fall)",
+    "type": "Evergreen tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$25-$70",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      },
+      "10": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      },
+      "11": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "hass-avocado",
+    "common_name": "Hass Avocado Tree",
+    "botanical_name": "Persea americana 'Hass'",
+    "aliases": [
+      "Hass Avocado",
+      "Hass"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      9,
+      10,
+      11
+    ],
+    "sun": "Full sun",
+    "mature_size": "15-30 ft tall x 15-20 ft wide",
+    "bloom_time": "Late winter to spring (fruit ripens spring to fall)",
+    "type": "Evergreen tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$30-$90",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      },
+      "10": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      },
+      "11": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "zz-plant",
+    "common_name": "ZZ Plant",
+    "botanical_name": "Zamioculcas zamiifolia",
+    "aliases": [
+      "Zanzibar Gem",
+      "Zee Zee Plant"
+    ],
+    "category": "houseplants",
+    "zones": [
+      10,
+      11,
+      12
+    ],
+    "sun": "Low light to bright indirect",
+    "mature_size": "2-3 ft tall x 2-3 ft wide",
+    "bloom_time": "Rarely flowers indoors",
+    "type": "Tropical evergreen perennial",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$15-$45",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "10": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "11": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "12": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "best_buy": "Year-round",
+      "worst_buy": "None",
+      "note": "Houseplant prices are relatively stable year-round. Occasional sales at big-box retailers during spring garden season.",
+      "tip": "Shop big-box stores for common sizes. Specialty nurseries charge more but offer larger, more established specimens."
+    }
+  },
+  {
+    "id": "golden-pothos",
+    "common_name": "Golden Pothos",
+    "botanical_name": "Epipremnum aureum",
+    "aliases": [
+      "Devil's Ivy",
+      "Pothos",
+      "Money Plant"
+    ],
+    "category": "houseplants",
+    "zones": [
+      10,
+      11,
+      12
+    ],
+    "sun": "Low to bright indirect",
+    "mature_size": "6-10 ft trailing vine",
+    "bloom_time": "Rarely flowers indoors",
+    "type": "Tropical evergreen vine",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$10-$30",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "10": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "11": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "12": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "best_buy": "Year-round",
+      "worst_buy": "None",
+      "note": "Houseplant prices are relatively stable year-round. Occasional sales at big-box retailers during spring garden season.",
+      "tip": "Shop big-box stores for common sizes. Specialty nurseries charge more but offer larger, more established specimens."
+    }
+  },
+  {
+    "id": "money-tree",
+    "common_name": "Money Tree",
+    "botanical_name": "Pachira aquatica",
+    "aliases": [
+      "Guiana Chestnut",
+      "Malabar Chestnut"
+    ],
+    "category": "houseplants",
+    "zones": [
+      10,
+      11,
+      12
+    ],
+    "sun": "Bright indirect",
+    "mature_size": "3-6 ft tall indoors",
+    "bloom_time": "Rarely flowers indoors",
+    "type": "Tropical evergreen tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$18-$50",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "10": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "11": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "12": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "best_buy": "Year-round",
+      "worst_buy": "None",
+      "note": "Houseplant prices are relatively stable year-round. Occasional sales at big-box retailers during spring garden season.",
+      "tip": "Shop big-box stores for common sizes. Specialty nurseries charge more but offer larger, more established specimens."
+    }
+  },
+  {
+    "id": "peace-lily",
+    "common_name": "Peace Lily",
+    "botanical_name": "Spathiphyllum wallisii",
+    "aliases": [
+      "Spathiphyllum",
+      "Spath"
+    ],
+    "category": "houseplants",
+    "zones": [
+      10,
+      11,
+      12
+    ],
+    "sun": "Low to bright indirect",
+    "mature_size": "1-4 ft tall x 1-4 ft wide",
+    "bloom_time": "Spring to summer (intermittent indoors)",
+    "type": "Tropical evergreen perennial",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$15-$45",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "10": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "11": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "12": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "best_buy": "Year-round",
+      "worst_buy": "None",
+      "note": "Houseplant prices are relatively stable year-round. Occasional sales at big-box retailers during spring garden season.",
+      "tip": "Shop big-box stores for common sizes. Specialty nurseries charge more but offer larger, more established specimens."
+    }
+  },
+  {
+    "id": "white-bird-of-paradise",
+    "common_name": "White Bird of Paradise",
+    "botanical_name": "Strelitzia nicolai",
+    "aliases": [
+      "Giant Bird of Paradise",
+      "Strelitzia nicolai"
+    ],
+    "category": "houseplants",
+    "zones": [
+      10,
+      11,
+      12
+    ],
+    "sun": "Bright indirect",
+    "mature_size": "5-8 ft tall indoors",
+    "bloom_time": "Rarely flowers indoors",
+    "type": "Tropical evergreen perennial",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$35-$100",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "10": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "11": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "12": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "best_buy": "Year-round",
+      "worst_buy": "None",
+      "note": "Houseplant prices are relatively stable year-round. Occasional sales at big-box retailers during spring garden season.",
+      "tip": "Shop big-box stores for common sizes. Specialty nurseries charge more but offer larger, more established specimens."
+    }
+  },
+  {
+    "id": "rubber-plant-burgundy",
+    "common_name": "Rubber Plant Burgundy",
+    "botanical_name": "Ficus elastica 'Burgundy'",
+    "aliases": [
+      "Burgundy Rubber Tree",
+      "Rubber Fig"
+    ],
+    "category": "houseplants",
+    "zones": [
+      10,
+      11,
+      12
+    ],
+    "sun": "Bright indirect",
+    "mature_size": "4-8 ft tall indoors",
+    "bloom_time": "Rarely flowers indoors",
+    "type": "Tropical evergreen tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$15-$55",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "10": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "11": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "12": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "best_buy": "Year-round",
+      "worst_buy": "None",
+      "note": "Houseplant prices are relatively stable year-round. Occasional sales at big-box retailers during spring garden season.",
+      "tip": "Shop big-box stores for common sizes. Specialty nurseries charge more but offer larger, more established specimens."
+    }
+  },
+  {
+    "id": "fiddle-leaf-fig",
+    "common_name": "Fiddle Leaf Fig",
+    "botanical_name": "Ficus lyrata",
+    "aliases": [
+      "FLF",
+      "Fiddle Leaf"
+    ],
+    "category": "houseplants",
+    "zones": [
+      10,
+      11,
+      12
+    ],
+    "sun": "Bright indirect",
+    "mature_size": "6-10 ft tall indoors",
+    "bloom_time": "Rarely flowers indoors",
+    "type": "Tropical evergreen tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$20-$100",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "10": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "11": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      },
+      "12": {
+        "spring": "Year-round",
+        "fall": "Year-round"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "best_buy": "Year-round",
+      "worst_buy": "None",
+      "note": "Houseplant prices are relatively stable year-round. Occasional sales at big-box retailers during spring garden season.",
+      "tip": "Shop big-box stores for common sizes. Specialty nurseries charge more but offer larger, more established specimens."
+    }
+  },
+  {
+    "id": "karl-foerster-grass",
+    "common_name": "Karl Foerster Feather Reed Grass",
+    "botanical_name": "Calamagrostis x acutiflora 'Karl Foerster'",
+    "aliases": [
+      "Karl Foerster Grass",
+      "Feather Reed Grass"
+    ],
+    "category": "grasses",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "3-5 ft tall x 2 ft wide",
+    "bloom_time": "Early to mid-summer",
+    "type": "Ornamental grass",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$8-$25",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted grasses establish stronger root systems over winter and fill out faster the following spring."
+    }
+  },
+  {
+    "id": "miscanthus-morning-light",
+    "common_name": "Miscanthus Morning Light",
+    "botanical_name": "Miscanthus sinensis 'Morning Light'",
+    "aliases": [
+      "Morning Light Maiden Grass",
+      "Morning Light Miscanthus"
+    ],
+    "category": "grasses",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "4-6 ft tall x 3-4 ft wide",
+    "bloom_time": "Late summer to fall",
+    "type": "Ornamental grass",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$10-$30",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted grasses establish stronger root systems over winter and fill out faster the following spring."
+    }
+  },
+  {
+    "id": "creeping-phlox",
+    "common_name": "Creeping Phlox",
+    "botanical_name": "Phlox subulata",
+    "aliases": [
+      "Moss Phlox",
+      "Mountain Phlox"
+    ],
+    "category": "groundcovers",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "4-6 in tall x 18-24 in wide",
+    "bloom_time": "Early to mid-spring",
+    "type": "Herbaceous perennial groundcover",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$5-$15",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted groundcovers establish stronger root systems over winter and spread faster the following spring."
+    }
+  },
+  {
+    "id": "vinca-minor",
+    "common_name": "Vinca Minor",
+    "botanical_name": "Vinca minor",
+    "aliases": [
+      "Periwinkle",
+      "Lesser Periwinkle",
+      "Creeping Myrtle"
+    ],
+    "category": "groundcovers",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade to full shade",
+    "mature_size": "4-6 in tall, spreading indefinitely",
+    "bloom_time": "Mid to late spring",
+    "type": "Evergreen groundcover",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$2-$8",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
+      "tip": "Buy in fall, plant in fall. Fall-planted groundcovers establish stronger root systems over winter and spread faster the following spring."
+    }
+  },
+  {
+    "id": "butterfly-bush-miss-molly",
+    "common_name": "Butterfly Bush Miss Molly",
+    "botanical_name": "Buddleia 'Miss Molly'",
+    "aliases": [
+      "Miss Molly Butterfly Bush",
+      "Miss Molly Buddleia"
+    ],
+    "category": "flowering-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "4-5 ft tall x 4-5 ft wide",
+    "bloom_time": "Mid-summer to fall",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$15-$40",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Flowering trees sell out fast in spring. Fall planting is underrated and often 15-20% cheaper.",
+      "tip": "If a specific cultivar matters, buy in March before sellout. If price matters more, wait for fall."
+    }
+  },
+  {
+    "id": "forsythia-lynwood-gold",
+    "common_name": "Forsythia Lynwood Gold",
+    "botanical_name": "Forsythia x intermedia 'Lynwood Gold'",
+    "aliases": [
+      "Lynwood Gold Forsythia",
+      "Lynwood Gold"
+    ],
+    "category": "flowering-trees",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "6-10 ft tall x 6-10 ft wide",
+    "bloom_time": "Early spring (before leaves)",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$10-$35",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Flowering trees sell out fast in spring. Fall planting is underrated and often 15-20% cheaper.",
+      "tip": "If a specific cultivar matters, buy in March before sellout. If price matters more, wait for fall."
+    }
+  },
+  {
+    "id": "miss-kim-lilac",
+    "common_name": "Miss Kim Lilac",
+    "botanical_name": "Syringa patula 'Miss Kim'",
+    "aliases": [
+      "Miss Kim",
+      "Dwarf Korean Lilac"
+    ],
+    "category": "flowering-trees",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Full sun",
+    "mature_size": "4-7 ft tall x 5-7 ft wide",
+    "bloom_time": "Late spring",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "$15-$45",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May-Jun",
+        "fall": "Sep"
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Sep-Oct"
+      },
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        5,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March-April",
+      "note": "Flowering trees sell out fast in spring. Fall planting is underrated and often 15-20% cheaper.",
+      "tip": "If a specific cultivar matters, buy in March before sellout. If price matters more, wait for fall."
+    }
+  },
+  {
+    "id": "tulip-poplar",
+    "common_name": "Tulip Poplar",
+    "botanical_name": "Liriodendron tulipifera",
+    "aliases": [
+      "Tulip Tree",
+      "Yellow Poplar",
+      "Tuliptree"
+    ],
+    "category": "shade-trees",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "60-90 ft tall x 30-50 ft wide",
+    "bloom_time": "Late spring",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$15-$60",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      },
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "weeping-willow",
+    "common_name": "Weeping Willow",
+    "botanical_name": "Salix babylonica",
+    "aliases": [
+      "Babylon Willow",
+      "Willow"
+    ],
+    "category": "shade-trees",
+    "zones": [
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "30-40 ft tall x 30-40 ft wide",
+    "bloom_time": "Early spring",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$20-$70",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      },
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  },
+  {
+    "id": "autumn-blaze-maple",
+    "common_name": "Autumn Blaze Maple",
+    "botanical_name": "Acer x freemanii 'Autumn Blaze'",
+    "aliases": [
+      "Autumn Blaze",
+      "Jeffersred Maple"
+    ],
+    "category": "shade-trees",
+    "zones": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "sun": "Full sun",
+    "mature_size": "40-55 ft tall x 30-40 ft wide",
+    "bloom_time": "Early spring (inconspicuous)",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root"
+      ]
+    },
+    "price_range": "$30-$150",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "3": {
+        "spring": "May",
+        "fall": null
+      },
+      "4": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      },
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Bare-root fruit trees (January-March) are 30-50% cheaper than potted, but selection sells out fast. Fall clearance on potted trees offers good value.",
+      "tip": "Order bare-root trees in January for best selection. If buying potted, wait for fall clearance."
+    }
+  }
+]

@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}Compare Plant Prices Across 10+ Online Nurseries{% endblock %}
+{% block description %}Find the best deals on trees, shrubs, and perennials. We compare prices across Nature Hills, Fast Growing Trees, Stark Bros, and more — updated daily.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "PlantPriceTracker",
+    "url": "https://www.plantpricetracker.com",
+    "description": "Compare plant prices across 10+ online nurseries. Find the best deals on trees, shrubs, and perennials.",
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.plantpricetracker.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+    }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <h1>Compare Plant Prices Across Online Nurseries</h1>
+    <p class="hero-sub">We track prices on trees, shrubs, and perennials at {{ retailer_count }}+ retailers so you don't overpay. Updated daily.</p>
+
+    {% if hero_example %}
+    <div class="hero-proof">
+        <p class="proof-label">Example: {{ hero_example.name }}</p>
+        <div class="proof-range">
+            <span class="proof-low">${{ '%.2f'|format(hero_example.low) }}</span>
+            <span class="proof-arrow">&harr;</span>
+            <span class="proof-high">${{ '%.2f'|format(hero_example.high) }}</span>
+        </div>
+        <p class="proof-savings">Save up to {{ hero_example.savings_pct }}% by comparing across {{ hero_example.retailer_count }} nurseries</p>
+        <a href="/plants/{{ hero_example.id }}.html" class="hero-cta">See Full Comparison</a>
+    </div>
+    {% endif %}
+</section>
+
+<!-- Category Cards -->
+<section class="categories">
+    <h2>Browse by Category</h2>
+    <div class="category-grid">
+        {% for cat in categories %}
+        <a href="/category/{{ cat.id }}.html" class="category-card">
+            <h3>{{ cat.name }}</h3>
+            <p class="cat-count">{{ cat.plant_count }} plants tracked</p>
+            <p class="cat-range">{{ cat.price_range }}</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Recent Price Drops -->
+{% if price_drops %}
+<section class="price-drops">
+    <h2>Recent Price Drops</h2>
+    <div class="drops-grid">
+        {% for drop in price_drops[:6] %}
+        <a href="/plants/{{ drop.plant_id }}.html" class="drop-card">
+            <span class="drop-name">{{ drop.plant_name }}</span>
+            <span class="drop-retailer">at {{ drop.retailer_name }}</span>
+            <span class="drop-amount">
+                <span class="drop-old">${{ '%.2f'|format(drop.old_price) }}</span>
+                <span class="drop-arrow">&rarr;</span>
+                <span class="drop-new">${{ '%.2f'|format(drop.new_price) }}</span>
+            </span>
+            <span class="drop-pct">&darr;{{ drop.drop_pct }}%</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+
+<!-- Buying Guides -->
+<section class="guides-preview">
+    <h2>Buying Guides</h2>
+    <div class="guides-grid">
+        {% for guide in guides[:6] %}
+        <a href="/guides/{{ guide.slug }}.html" class="guide-card">
+            <h3>{{ guide.title }}</h3>
+            <p>{{ guide.excerpt }}</p>
+        </a>
+        {% endfor %}
+    </div>
+    <a href="/guides/" class="see-all">View all guides &rarr;</a>
+</section>
+
+<!-- How It Works -->
+<section class="how-it-works">
+    <h2>How It Works</h2>
+    <div class="steps">
+        <div class="step">
+            <span class="step-num">1</span>
+            <h3>We Check Prices Daily</h3>
+            <p>Our scrapers check {{ retailer_count }}+ online nurseries every day and record prices for {{ plant_count }}+ plants.</p>
+        </div>
+        <div class="step">
+            <span class="step-num">2</span>
+            <h3>You Compare Side-by-Side</h3>
+            <p>See exactly what each nursery charges for the same plant in the same pot size. No guessing.</p>
+        </div>
+        <div class="step">
+            <span class="step-num">3</span>
+            <h3>Buy From Whoever's Cheapest</h3>
+            <p>We show all retailers honestly, including ones that don't pay us. Your best deal is our only goal.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Retailers We Track -->
+<section class="retailers-section">
+    <h2>Nurseries We Track</h2>
+    <div class="retailer-logos">
+        {% for retailer in tracked_retailers %}
+        <span class="retailer-badge">{{ retailer.name }}</span>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

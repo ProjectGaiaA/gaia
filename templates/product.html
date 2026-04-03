@@ -1,0 +1,328 @@
+{% extends "base.html" %}
+
+{% block title %}{{ plant.common_name }} Price Comparison{% endblock %}
+{% block description %}Compare {{ plant.common_name }} prices across {{ prices|length }} online nurseries. Find the best deal on {{ plant.botanical_name }}. Prices updated daily.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "{{ plant.common_name }}",
+    "description": "{{ plant.botanical_name }} - {{ plant.type }}. Grows in zones {{ plant.zones|join(', ') }}.",
+    {% if plant.image %}"image": "/assets/images/{{ plant.image }}",{% endif %}
+    "offers": {
+        "@type": "AggregateOffer",
+        "priceCurrency": "USD",
+        {% if lowest_price %}"lowPrice": "{{ '%.2f'|format(lowest_price) }}",{% endif %}
+        {% if highest_price %}"highPrice": "{{ '%.2f'|format(highest_price) }}",{% endif %}
+        "offerCount": "{{ offer_count }}",
+        "availability": "https://schema.org/{% if any_in_stock %}InStock{% else %}OutOfStock{% endif %}"
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "/"},
+        {"@type": "ListItem", "position": 2, "name": "{{ plant.category|replace('-', ' ')|title }}", "item": "/category/{{ plant.category }}.html"},
+        {"@type": "ListItem", "position": 3, "name": "{{ plant.common_name }}"}
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo;
+    <a href="/category/{{ plant.category }}.html">{{ plant.category|replace('-', ' ')|title }}</a> &rsaquo;
+    <span>{{ plant.common_name }}</span>
+</nav>
+
+<article class="product-page">
+    <header class="product-header">
+        <h1>{{ plant.common_name }} &mdash; Price Comparison</h1>
+        <p class="product-botanical">{{ plant.botanical_name }}</p>
+        {% if lowest_price and highest_price and lowest_price != highest_price %}
+        <p class="product-savings">
+            Prices range from <strong>${{ '%.2f'|format(lowest_price) }}</strong> to <strong>${{ '%.2f'|format(highest_price) }}</strong> &mdash;
+            save up to <strong>{{ savings_pct }}%</strong> by comparing.
+        </p>
+        {% endif %}
+    </header>
+
+    <div class="product-layout">
+        <div class="product-main">
+            <!-- Quick Facts Card -->
+            <div class="plant-facts">
+                <h2>Quick Facts</h2>
+                <dl class="facts-grid">
+                    <dt>Hardiness Zones</dt>
+                    <dd>{{ plant.zones|join(', ') }}</dd>
+                    <dt>Sun</dt>
+                    <dd>{{ plant.sun }}</dd>
+                    <dt>Mature Size</dt>
+                    <dd>{{ plant.mature_size }}</dd>
+                    {% if plant.bloom_time %}
+                    <dt>Bloom Time</dt>
+                    <dd>{{ plant.bloom_time }}</dd>
+                    {% endif %}
+                    <dt>Type</dt>
+                    <dd>{{ plant.type }}</dd>
+                </dl>
+            </div>
+
+            <!-- Price Comparison Table -->
+            <div class="price-comparison">
+                <h2>Current Prices</h2>
+                {% if prices %}
+                <p class="price-updated">Prices last checked: {{ last_updated }}</p>
+                <div class="table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Retailer</th>
+                                {% for tier in active_size_tiers %}
+                                <th>{{ tier|replace('gal', ' Gal')|replace('quart', 'Quart')|replace('bareroot', 'Bare Root')|title }}</th>
+                                {% endfor %}
+                                <th>In Stock</th>
+                                <th>Shipping</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for retailer_id, retailer_prices in prices.items() %}
+                            <tr{% if retailer_prices.in_stock == false %} class="sold-out-row"{% endif %}>
+                                <td class="retailer-name">
+                                    {{ retailer_prices.retailer_name }}
+                                    {% if not retailer_prices.has_affiliate %}<span class="no-affiliate" title="We don't earn a commission from this retailer">*</span>{% endif %}
+                                </td>
+                                {% for tier in active_size_tiers %}
+                                <td class="price-cell">
+                                    {% if retailer_prices.sizes[tier] %}
+                                        {% if retailer_prices.sizes[tier].is_best %}
+                                        <span class="best-price">${{ '%.2f'|format(retailer_prices.sizes[tier].price) }}</span>
+                                        {% else %}
+                                        ${{ '%.2f'|format(retailer_prices.sizes[tier].price) }}
+                                        {% endif %}
+                                        {% if retailer_prices.sizes[tier].was_price %}
+                                        <span class="was-price">${{ '%.2f'|format(retailer_prices.sizes[tier].was_price) }}</span>
+                                        {% endif %}
+                                    {% else %}
+                                        <span class="no-data">&mdash;</span>
+                                    {% endif %}
+                                </td>
+                                {% endfor %}
+                                <td class="stock-cell">
+                                    {% if retailer_prices.in_stock %}
+                                    <span class="in-stock">In Stock</span>
+                                    {% if retailer_prices.ships_season %}
+                                    <span class="ships-season">(Ships {{ retailer_prices.ships_season }})</span>
+                                    {% endif %}
+                                    {% elif retailer_prices.in_stock is none %}
+                                    <span class="stock-unknown">Check Site</span>
+                                    {% else %}
+                                    <span class="out-of-stock">Sold Out</span>
+                                    {% endif %}
+                                </td>
+                                <td class="shipping-cell">
+                                    {% if retailer_prices.shipping %}
+                                    <span class="shipping-info{% if retailer_prices.shipping.free_all %} free-ship{% endif %}">
+                                        {% if retailer_prices.shipping.free_all %}
+                                            Free
+                                        {% elif retailer_prices.shipping.free_threshold %}
+                                            Free over ${{ retailer_prices.shipping.free_threshold }}
+                                        {% elif retailer_prices.shipping.flat_rate %}
+                                            ${{ '%.2f'|format(retailer_prices.shipping.flat_rate) }} flat
+                                        {% else %}
+                                            Varies
+                                        {% endif %}
+                                    </span>
+                                    {% else %}
+                                    <span class="shipping-info">Check site</span>
+                                    {% endif %}
+                                </td>
+                                <td class="action-cell">
+                                    <a href="{{ retailer_prices.buy_url }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="buy-btn">
+                                        Buy at {{ retailer_prices.retailer_name.split(' ')[0] }}
+                                    </a>
+                                    {% if retailer_prices.has_affiliate %}
+                                    <span class="affiliate-label">affiliate link</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% if has_non_affiliate %}
+                <p class="table-footnote">* We don't earn a commission from retailers marked with an asterisk. They're included because showing all options is more useful to you than only showing the ones that pay us.</p>
+                {% endif %}
+                {% else %}
+                <div class="no-prices">
+                    <p>Price data is being collected for this plant. Check back soon.</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- When to Buy & Plant (email-gated) -->
+            {% if plant.price_seasonality %}
+            <div class="seasonal-guide" id="seasonal-guide">
+                <h2>When to Buy &amp; Plant {{ plant.common_name }}</h2>
+
+                {% if plant.price_seasonality.monthly_index %}
+                <div class="price-calendar">
+                    <h3>Price Seasonality</h3>
+                    <div class="month-bars">
+                        {% set months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] %}
+                        {% for i in range(12) %}
+                        {% set level = plant.price_seasonality.monthly_index[i] %}
+                        <div class="month-bar" data-level="{{ level }}">
+                            <div class="bar-fill" style="height: {{ level * 20 }}%"></div>
+                            <span class="month-label">{{ months[i] }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    <div class="calendar-legend">
+                        <span class="legend-cheap">&#9679; Cheapest months</span>
+                        <span class="legend-mid">&#9679; Average</span>
+                        <span class="legend-expensive">&#9679; Most expensive</span>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="buy-timing">
+                    <div class="timing-best">
+                        <strong>Best time to buy:</strong> {{ plant.price_seasonality.best_buy }}
+                    </div>
+                    <div class="timing-worst">
+                        <strong>Most expensive:</strong> {{ plant.price_seasonality.worst_buy }}
+                    </div>
+                </div>
+
+                {% if plant.price_seasonality.note %}
+                <p class="seasonal-note">{{ plant.price_seasonality.note }}</p>
+                {% endif %}
+
+                {% if plant.price_seasonality.tip %}
+                <p class="seasonal-tip"><strong>Pro tip:</strong> {{ plant.price_seasonality.tip }}</p>
+                {% endif %}
+
+                {% if plant.planting_seasons %}
+                <div class="planting-zones">
+                    <h3>Planting Season by Zone</h3>
+                    <table class="zone-table">
+                        <thead>
+                            <tr>
+                                <th>Zone</th>
+                                <th>Spring Planting</th>
+                                <th>Fall Planting</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for zone, seasons in plant.planting_seasons.items() %}
+                            <tr>
+                                <td class="zone-num">Zone {{ zone }}</td>
+                                <td>{{ seasons.spring or 'Not recommended' }}</td>
+                                <td>{{ seasons.fall or 'Not recommended' }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            <!-- Price History Chart (shown when historical data exists) -->
+            {% if price_history %}
+            <div class="price-history">
+                <h2>Price History</h2>
+                <canvas id="priceChart" width="800" height="300"></canvas>
+            </div>
+            {% endif %}
+
+            <!-- Care Guide -->
+            {% if plant.care_guide %}
+            <div class="care-guide">
+                <h2>How to Grow {{ plant.common_name }}</h2>
+                {{ plant.care_guide }}
+            </div>
+            {% endif %}
+        </div>
+
+        <aside class="product-sidebar">
+            <!-- Similar Plants -->
+            {% if similar_plants %}
+            <div class="similar-plants">
+                <h3>Similar Plants</h3>
+                <ul>
+                    {% for similar in similar_plants %}
+                    <li>
+                        <a href="/plants/{{ similar.id }}.html">
+                            <span class="similar-name">{{ similar.common_name }}</span>
+                            {% if similar.lowest_price %}
+                            <span class="similar-price">from ${{ '%.2f'|format(similar.lowest_price) }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- Season Alert -->
+            {% if not any_in_stock %}
+            <div class="season-alert">
+                <h3>Out of Season</h3>
+                <p>{{ plant.common_name }} is typically available {{ plant.season_text|default('March through June') }}. Prices shown are from the most recent availability.</p>
+            </div>
+            {% endif %}
+        </aside>
+    </div>
+</article>
+{% endblock %}
+
+{% block scripts %}
+{% if price_history %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script>
+    const priceData = {{ price_history_json|safe }};
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: priceData.dates,
+            datasets: priceData.retailers.map((r, i) => ({
+                label: r.name,
+                data: r.prices,
+                borderColor: ['#2E7D32', '#1565C0', '#E65100', '#6A1B9A', '#C62828', '#00695C'][i % 6],
+                tension: 0.3,
+                pointRadius: 2,
+                borderWidth: 2,
+                fill: false
+            }))
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom' },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { callback: (v) => '$' + v.toFixed(0) },
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+</script>
+{% endif %}
+{% endblock %}

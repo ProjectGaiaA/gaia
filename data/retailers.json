@@ -1,0 +1,331 @@
+[
+  {
+    "id": "spring-hill",
+    "name": "Spring Hill Nurseries",
+    "url": "https://springhillnursery.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "sovrn",
+      "commission": "15%",
+      "cookie_days": 30,
+      "link_template": "",
+      "notes": "Highest commission. Part of Gardens Alive family."
+    },
+    "shipping": {"free_threshold": 125, "flat_rate": null, "free_all": false, "notes": "Ships at optimal planting time for your zone"},
+    "active": true,
+    "priority": 1
+  },
+  {
+    "id": "brecks",
+    "name": "Breck's",
+    "url": "https://www.brecks.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "flexoffers",
+      "commission": "$15 flat per order",
+      "cookie_days": 14,
+      "link_template": "",
+      "notes": "Flat rate great for high-AOV bulb orders. Gardens Alive family."
+    },
+    "shipping": {"free_threshold": 75, "flat_rate": null, "free_all": false, "notes": "Tiered: $10.95-$20.95 below threshold"},
+    "active": true,
+    "priority": 2
+  },
+  {
+    "id": "nature-hills",
+    "name": "Nature Hills Nursery",
+    "url": "https://naturehills.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "shareasale",
+      "commission": "10%",
+      "cookie_days": 30,
+      "link_template": "https://www.shareasale.com/r.cfm?u=YOURID&m=MERCHANTID&urllink={product_url}&afftrack={subid}",
+      "notes": "1% for coupon sites. Also has Creator Program (free plants + commission)."
+    },
+    "shipping": {"free_threshold": 139, "flat_rate": null, "free_all": false, "notes": "Uses Plant Sentry — some plants blocked by state"},
+    "active": true,
+    "priority": 3
+  },
+  {
+    "id": "stark-bros",
+    "name": "Stark Bros",
+    "url": "https://www.starkbros.com",
+    "scraper_type": "custom",
+    "affiliate": {
+      "network": "impact",
+      "commission": "10%",
+      "cookie_days": 30,
+      "link_template": "",
+      "notes": "Fruit tree specialist since 1816. Strong brand."
+    },
+    "shipping": {"free_threshold": 99, "flat_rate": null, "free_all": false, "notes": "From $9.95 below threshold"},
+    "active": true,
+    "priority": 4
+  },
+  {
+    "id": "plant-addicts",
+    "name": "Plant Addicts",
+    "url": "https://www.plantaddicts.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "awin",
+      "commission": "10%",
+      "cookie_days": 30,
+      "link_template": "",
+      "notes": "Excludes soil/fertilizer/hard goods. Plants and planters only."
+    },
+    "shipping": {"free_threshold": 129, "flat_rate": null, "free_all": false, "notes": "Free shipping on select plants regardless of order total"},
+    "active": true,
+    "priority": 5
+  },
+  {
+    "id": "bloomscape",
+    "name": "Bloomscape",
+    "url": "https://www.bloomscape.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "flexoffers",
+      "commission": "5-10%",
+      "cookie_days": 10,
+      "link_template": "",
+      "notes": "Houseplant specialist. Short cookie."
+    },
+    "shipping": {"free_threshold": 150, "flat_rate": null, "free_all": false, "notes": "$7-10 flat below threshold. Contiguous 48 states only."},
+    "active": true,
+    "priority": 6
+  },
+  {
+    "id": "wayside-gardens",
+    "name": "Wayside Gardens",
+    "url": "https://www.waysidegardens.com",
+    "scraper_type": "custom",
+    "affiliate": {
+      "network": "awin",
+      "commission": "8-10%",
+      "cookie_days": 30,
+      "link_template": "",
+      "notes": "Transactions with non-approved codes rejected."
+    },
+    "shipping": {"free_threshold": 99, "flat_rate": null, "free_all": false, "notes": "Ships at optimal planting time"},
+    "active": true,
+    "priority": 7
+  },
+  {
+    "id": "gardeners-supply",
+    "name": "Gardener's Supply Company",
+    "url": "https://www.gardeners.com",
+    "scraper_type": "custom",
+    "affiliate": {
+      "network": "rakuten",
+      "commission": "8%",
+      "cookie_days": 30,
+      "link_template": "",
+      "notes": "Tools, supplies, raised beds. Good for cross-sell content."
+    },
+    "active": true,
+    "priority": 8
+  },
+  {
+    "id": "planting-tree",
+    "name": "PlantingTree",
+    "url": "https://www.plantingtree.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "shareasale",
+      "commission": "7%",
+      "cookie_days": 30,
+      "link_template": "",
+      "notes": "Performance bonuses and promo codes available."
+    },
+    "shipping": {"free_threshold": 119, "flat_rate": null, "free_all": false, "notes": "Ships within 24 hours via FedEx"},
+    "active": true,
+    "priority": 9
+  },
+  {
+    "id": "fast-growing-trees",
+    "name": "Fast Growing Trees",
+    "url": "https://www.fast-growing-trees.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "impact",
+      "commission": "6%",
+      "cookie_days": 30,
+      "link_template": "",
+      "notes": "Managed by Acceleration Partners. Confirmed scrapable."
+    },
+    "shipping": {"free_threshold": 99, "flat_rate": null, "free_all": false, "notes": "No AK/HI. Contiguous 48 states + DC."},
+    "active": true,
+    "priority": 10
+  },
+  {
+    "id": "domyown",
+    "name": "DoMyOwn.com",
+    "url": "https://www.domyown.com",
+    "scraper_type": "custom",
+    "affiliate": {
+      "network": "shareasale",
+      "commission": "6%",
+      "cookie_days": 90,
+      "link_template": "",
+      "notes": "LONGEST cookie (90 days). 5K+ products. Pest control, fertilizer, lawn care. $100 avg order."
+    },
+    "active": false,
+    "priority": 11
+  },
+  {
+    "id": "burpee",
+    "name": "Burpee",
+    "url": "https://www.burpee.com",
+    "scraper_type": "custom",
+    "affiliate": {
+      "network": "flexoffers",
+      "commission": "4-5%",
+      "cookie_days": 30,
+      "link_template": "",
+      "notes": "Huge catalog. Seeds and plants. Blocks simple HTTP scraping (403)."
+    },
+    "shipping": {"free_threshold": 50, "flat_rate": 3.95, "free_all": false, "notes": "$3.95 flat for seeds. Free over $50 (promo, not always active)."},
+    "active": false,
+    "priority": 12
+  },
+  {
+    "id": "white-flower-farm",
+    "name": "White Flower Farm",
+    "url": "https://www.whiteflowerfarm.com",
+    "scraper_type": "custom",
+    "affiliate": {
+      "network": "direct",
+      "commission": "5%",
+      "cookie_days": null,
+      "link_template": "",
+      "notes": "Paid monthly by check. $50 minimum payout."
+    },
+    "shipping": {"free_threshold": 100, "flat_rate": null, "free_all": false, "notes": "Express delivery +$20"},
+    "active": false,
+    "priority": 13
+  },
+  {
+    "id": "brighter-blooms",
+    "name": "Brighter Blooms",
+    "url": "https://www.brighterblooms.com",
+    "scraper_type": "shopify",
+    "affiliate": null,
+    "trust_builder": true,
+    "active": true,
+    "priority": 14,
+    "shipping": {"free_threshold": 129, "flat_rate": null, "free_all": false, "notes": "No AK, AZ, HI"},
+    "notes": "No affiliate program. Include for honest price comparison."
+  },
+  {
+    "id": "proven-winners-direct",
+    "name": "Proven Winners Direct",
+    "url": "https://provenwinnersdirect.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "bixgrow",
+      "commission": "unknown",
+      "cookie_days": null,
+      "link_template": "",
+      "notes": "More referral than traditional affiliate. Limited program."
+    },
+    "trust_builder": true,
+    "shipping": {"free_threshold": 175, "flat_rate": null, "free_all": false, "notes": "Tender plants ship 2-Day Air; hardy plants ship Ground"},
+    "active": true,
+    "priority": 15
+  },
+  {
+    "id": "great-garden-plants",
+    "name": "Great Garden Plants",
+    "url": "https://www.greatgardenplants.com",
+    "scraper_type": "shopify",
+    "affiliate": null,
+    "trust_builder": true,
+    "active": false,
+    "priority": 16,
+    "shipping": {"free_threshold": 125, "flat_rate": null, "free_all": false, "notes": "Tiered: $4.99-$16.99. Also ships to Canada."},
+    "notes": "No affiliate. Include for comparison completeness."
+  },
+  {
+    "id": "holland-bulb-farms",
+    "name": "Holland Bulb Farms",
+    "url": "https://www.hollandbulbfarms.com",
+    "scraper_type": "shopify",
+    "affiliate": null,
+    "trust_builder": true,
+    "active": false,
+    "priority": 17,
+    "notes": "No affiliate. Bulb specialist. BOGO deals. Include for trust."
+  },
+  {
+    "id": "heirloom-roses",
+    "name": "Heirloom Roses",
+    "url": "https://www.heirloomroses.com",
+    "scraper_type": "shopify",
+    "affiliate": null,
+    "trust_builder": true,
+    "active": false,
+    "priority": 18,
+    "notes": "No affiliate. Rose specialist. Own-root roses."
+  },
+  {
+    "id": "my-perfect-plants",
+    "name": "My Perfect Plants",
+    "url": "https://myperfectplants.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "unknown",
+      "commission": "unknown",
+      "cookie_days": null,
+      "link_template": "",
+      "notes": "Has affiliate page but rate undisclosed. Apply to confirm."
+    },
+    "active": false,
+    "priority": 19
+  },
+  {
+    "id": "grow-organic",
+    "name": "Grow Organic (Peaceful Valley)",
+    "url": "https://www.groworganic.com",
+    "scraper_type": "custom",
+    "affiliate": {
+      "network": "direct",
+      "commission": "15%",
+      "cookie_days": null,
+      "link_template": "",
+      "notes": "Organic supplies. Same as Peaceful Valley Farm Supply."
+    },
+    "active": false,
+    "priority": 20
+  },
+  {
+    "id": "hoss-tools",
+    "name": "Hoss Tools",
+    "url": "https://hosstools.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "shareasale",
+      "commission": "10%",
+      "cookie_days": 30,
+      "link_template": "",
+      "notes": "Garden tools + seeds. Good for cross-sell."
+    },
+    "active": false,
+    "priority": 21
+  },
+  {
+    "id": "bootstrap-farmer",
+    "name": "Bootstrap Farmer",
+    "url": "https://www.bootstrapfarmer.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "awin",
+      "commission": "10%",
+      "cookie_days": 30,
+      "link_template": "",
+      "notes": "Seed starting, grow supplies. $120 avg order."
+    },
+    "active": false,
+    "priority": 22
+  }
+]

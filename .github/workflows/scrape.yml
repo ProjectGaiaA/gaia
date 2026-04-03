@@ -1,0 +1,94 @@
+name: Daily Scrape
+
+on:
+  schedule:
+    # 7:00 AM ET (11:00 UTC) and 5:30 PM ET (21:30 UTC)
+    - cron: '0 11 * * *'
+    - cron: '30 21 * * *'
+  workflow_dispatch:  # Manual trigger from GitHub UI
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests jinja2 markdown
+
+      - name: Scrape all retailers
+        run: |
+          for retailer in nature-hills planting-tree spring-hill fast-growing-trees proven-winners-direct great-garden-plants stark-bros; do
+            echo "--- Scraping $retailer ---"
+            python -m scrapers.runner --retailer $retailer || true
+            echo ""
+          done
+
+      - name: Strip unresolved variants
+        run: |
+          python -c "
+          import glob, json
+          stripped = 0
+          for f in glob.glob('data/prices/*.jsonl'):
+              lines = []
+              mod = False
+              with open(f, encoding='utf-8') as fh:
+                  for line in fh:
+                      if not line.strip(): continue
+                      e = json.loads(line)
+                      sizes = e.get('sizes', {})
+                      clean = {k:v for k,v in sizes.items() if not k.startswith('variant-')}
+                      if len(clean) < len(sizes):
+                          stripped += len(sizes) - len(clean)
+                          e['sizes'] = clean
+                          mod = True
+                      lines.append(json.dumps(e, ensure_ascii=False))
+              if mod:
+                  with open(f, 'w', encoding='utf-8') as fh:
+                      fh.write('\n'.join(lines) + '\n')
+          print(f'Stripped {stripped} bad tiers')
+          "
+
+      - name: Verify prices (10 random spot checks)
+        run: python -m scrapers.verify --count 10
+
+      - name: Build site
+        run: python build.py
+
+      - name: Verify internal links
+        run: |
+          python -c "
+          import os, re
+          broken = 0
+          for root, dirs, files in os.walk('site'):
+              for f in files:
+                  if not f.endswith('.html'): continue
+                  path = os.path.join(root, f)
+                  with open(path, encoding='utf-8') as fh:
+                      content = fh.read()
+                  for link in re.findall(r'href=\"(/[^\"#]+)\"', content):
+                      if link.startswith('/assets/'): continue
+                      link_path = os.path.join('site', link.lstrip('/'))
+                      if not os.path.exists(link_path):
+                          print(f'BROKEN: {path} -> {link}')
+                          broken += 1
+          if broken > 0:
+              print(f'{broken} broken internal links!')
+              exit(1)
+          print('All internal links OK')
+          "
+
+      - name: Commit updated price data
+        run: |
+          git config user.name "PlantPriceTracker Bot"
+          git config user.email "bot@plantpricetracker.com"
+          git add data/prices/ data/last_manifest.json site/
+          git diff --staged --quiet || git commit -m "Daily price update $(date +%Y-%m-%d_%H:%M)"
+          git push

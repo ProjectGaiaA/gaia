@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Plant Price Tracker{% endblock %} | PlantPriceTracker</title>
+    <meta name="description" content="{% block description %}Compare plant prices across 10+ online nurseries. Find the best deals on trees, shrubs, and perennials.{% endblock %}">
+    {% block schema %}{% endblock %}
+    <link rel="stylesheet" href="/assets/css/style.css">
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="/" class="site-logo">
+                <span class="logo-icon">&#x1F331;</span>
+                <span class="logo-text">PlantPriceTracker</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/category/hydrangeas.html">Hydrangeas</a></li>
+                <li><a href="/category/japanese-maples.html">Japanese Maples</a></li>
+                <li><a href="/category/fruit-trees.html">Fruit Trees</a></li>
+                <li><a href="/category/roses.html">Roses</a></li>
+                <li><a href="/guides/">Guides</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-disclosure">
+                <p><strong>Affiliate Disclosure:</strong> We earn commissions from purchases made through links on this site. This does not affect our rankings or recommendations. We compare prices from all major nurseries, including those without affiliate programs, to ensure you see the best deal available. <a href="/disclosure.html">Full disclosure</a>.</p>
+            </div>
+            <div class="footer-links">
+                <a href="/disclosure.html">Disclosure</a>
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/guides/">Buying Guides</a>
+            </div>
+            <p class="footer-copyright">&copy; {{ current_year }} PlantPriceTracker. Prices updated daily. Not affiliated with any nursery.</p>
+        </div>
+    </footer>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,574 @@
+/* ============================================
+   PlantPriceTracker — Core Styles
+   Clean, mobile-first, fast-loading
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --green-dark: #1B5E20;
+    --green-mid: #2E7D32;
+    --green-light: #4CAF50;
+    --green-pale: #E8F5E9;
+    --blue-link: #1565C0;
+    --orange-accent: #E65100;
+    --gray-900: #212121;
+    --gray-700: #616161;
+    --gray-500: #9E9E9E;
+    --gray-300: #E0E0E0;
+    --gray-100: #F5F5F5;
+    --white: #FFFFFF;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "SF Mono", "Fira Code", monospace;
+    --max-width: 1100px;
+    --radius: 6px;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--gray-900); background: var(--white); line-height: 1.6; }
+a { color: var(--blue-link); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; }
+h1, h2, h3 { line-height: 1.3; }
+h1 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+h2 { font-size: 1.35rem; margin: 1.5rem 0 0.75rem; color: var(--green-dark); }
+h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
+
+/* --- Layout --- */
+.nav-container, .main-content, .footer-content {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* --- Header / Nav --- */
+.site-header {
+    background: var(--white);
+    border-bottom: 2px solid var(--green-mid);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+}
+.site-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--green-dark);
+    text-decoration: none;
+}
+.logo-icon { font-size: 1.3rem; }
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 1.25rem;
+}
+.nav-links a {
+    color: var(--gray-700);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.nav-links a:hover { color: var(--green-dark); text-decoration: none; }
+
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+}
+
+/* --- Breadcrumb --- */
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--gray-500);
+    padding: 0.75rem 0;
+}
+.breadcrumb a { color: var(--gray-700); }
+
+/* --- Hero (Homepage) --- */
+.hero {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: var(--green-pale);
+    border-radius: var(--radius);
+    margin: 1rem 0;
+}
+.hero h1 { font-size: 2rem; color: var(--green-dark); }
+.hero-sub { color: var(--gray-700); font-size: 1.1rem; margin: 0.5rem 0 1.5rem; }
+.hero-proof {
+    background: var(--white);
+    display: inline-block;
+    padding: 1.25rem 2rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-300);
+}
+.proof-label { font-weight: 600; margin-bottom: 0.25rem; }
+.proof-range { font-size: 1.5rem; margin: 0.5rem 0; }
+.proof-low { color: var(--green-mid); font-weight: 700; }
+.proof-high { color: var(--gray-500); }
+.proof-arrow { color: var(--gray-300); margin: 0 0.5rem; }
+.proof-savings { font-size: 0.9rem; color: var(--gray-700); }
+.hero-cta {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1.25rem;
+    background: var(--green-mid);
+    color: var(--white);
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-decoration: none;
+}
+.hero-cta:hover { background: var(--green-dark); text-decoration: none; }
+
+/* --- Category Grid (Homepage + Category Page) --- */
+.categories, .guides-preview, .price-drops, .how-it-works, .retailers-section {
+    margin: 2rem 0;
+}
+.category-grid, .guides-grid, .drops-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+.category-card, .guide-card, .drop-card {
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    text-decoration: none;
+    color: var(--gray-900);
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.category-card:hover, .guide-card:hover, .drop-card:hover {
+    border-color: var(--green-mid);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-decoration: none;
+}
+.category-card h3 { color: var(--green-dark); margin: 0 0 0.25rem; }
+.cat-count { font-size: 0.85rem; color: var(--gray-500); }
+.cat-range { font-weight: 600; color: var(--green-mid); margin-top: 0.25rem; }
+
+/* --- Price Drop Cards --- */
+.drop-card { display: flex; flex-direction: column; gap: 0.25rem; }
+.drop-name { font-weight: 600; }
+.drop-retailer { font-size: 0.85rem; color: var(--gray-500); }
+.drop-amount { font-size: 0.95rem; }
+.drop-old { text-decoration: line-through; color: var(--gray-500); }
+.drop-new { color: var(--green-mid); font-weight: 600; }
+.drop-pct { color: var(--green-light); font-weight: 700; font-size: 1.1rem; }
+
+/* --- Guide Cards --- */
+.guide-card h3 { font-size: 1rem; color: var(--green-dark); margin: 0 0 0.35rem; }
+.guide-card p { font-size: 0.85rem; color: var(--gray-700); }
+.see-all { display: inline-block; margin-top: 0.75rem; font-weight: 600; }
+
+/* --- How It Works --- */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+.step { text-align: center; }
+.step-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    background: var(--green-mid);
+    color: var(--white);
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+.step h3 { font-size: 1rem; }
+.step p { font-size: 0.85rem; color: var(--gray-700); }
+
+/* --- Retailer Badges --- */
+.retailer-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+.retailer-badge {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    padding: 0.35rem 0.75rem;
+    font-size: 0.8rem;
+    color: var(--gray-700);
+}
+
+/* --- Product Page --- */
+.product-page { margin-bottom: 2rem; }
+.product-header { margin-bottom: 1.5rem; }
+.product-botanical { color: var(--gray-500); font-style: italic; }
+.product-savings { color: var(--green-mid); font-size: 1.05rem; margin-top: 0.25rem; }
+
+.product-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 2rem;
+}
+@media (max-width: 768px) {
+    .product-layout { grid-template-columns: 1fr; }
+}
+
+/* Plant Facts Card */
+.plant-facts {
+    background: var(--green-pale);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+.plant-facts h2 { margin-top: 0; font-size: 1.1rem; }
+.facts-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem 1rem;
+    font-size: 0.9rem;
+}
+.facts-grid dt { font-weight: 600; color: var(--gray-700); }
+.facts-grid dd { color: var(--gray-900); }
+
+/* --- Comparison Table --- */
+.price-comparison { margin-bottom: 1.5rem; }
+.price-updated { font-size: 0.8rem; color: var(--gray-500); margin-bottom: 0.5rem; }
+.table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    border: 2px solid var(--gray-300);
+}
+.comparison-table th {
+    text-align: center;
+    padding: 0.7rem 0.75rem;
+    background: var(--green-dark);
+    color: var(--white);
+    border: 1px solid var(--green-dark);
+    font-weight: 600;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+.comparison-table th:first-child { text-align: left; }
+.comparison-table td {
+    padding: 0.7rem 0.75rem;
+    border: 1px solid var(--gray-300);
+    vertical-align: middle;
+    text-align: center;
+}
+.comparison-table td:first-child { text-align: left; }
+.comparison-table tbody tr:nth-child(even) { background: var(--gray-100); }
+.comparison-table tbody tr:nth-child(odd) { background: var(--white); }
+.comparison-table tr:hover { background: #F1F8E9; }
+/* Don't highlight the whole row — just the winning cell */
+.retailer-name { font-weight: 600; white-space: nowrap; }
+.no-affiliate { color: var(--gray-500); font-size: 0.75rem; margin-left: 2px; }
+.price-cell { text-align: right; white-space: nowrap; }
+.best-price {
+    color: var(--green-dark);
+    font-weight: 700;
+    background: var(--green-pale);
+    padding: 2px 6px;
+    border-radius: 3px;
+    border: 1px solid var(--green-light);
+}
+.was-price { text-decoration: line-through; color: var(--gray-500); font-size: 0.8rem; margin-left: 0.25rem; }
+.no-data { color: var(--gray-300); }
+.in-stock { color: var(--green-mid); font-weight: 500; font-size: 0.85rem; }
+.ships-season { display: block; font-size: 0.75rem; color: var(--gray-500); font-style: italic; }
+.out-of-stock { color: var(--orange-accent); font-size: 0.85rem; }
+.stock-unknown { color: var(--gray-500); font-size: 0.85rem; }
+
+/* Grey out prices for sold-out retailers */
+tr.sold-out-row .price-cell { color: var(--gray-300); }
+tr.sold-out-row .price-cell .best-price { background: none; border: none; color: var(--gray-300); }
+tr.sold-out-row .price-cell .was-price { color: var(--gray-300); }
+tr.sold-out-row .retailer-name { color: var(--gray-500); }
+tr.sold-out-row .buy-btn { background: var(--gray-500); }
+
+/* Shipping column */
+.shipping-cell { white-space: nowrap; font-size: 0.8rem; }
+.shipping-info { color: var(--gray-700); }
+.shipping-info.free-ship { color: var(--green-mid); font-weight: 600; }
+
+.buy-btn {
+    display: inline-block;
+    padding: 0.3rem 0.75rem;
+    background: var(--green-mid);
+    color: var(--white);
+    border-radius: var(--radius);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.buy-btn:hover { background: var(--green-dark); text-decoration: none; }
+.affiliate-label { display: block; font-size: 0.65rem; color: var(--gray-500); margin-top: 2px; text-align: center; }
+.table-footnote { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.5rem; font-style: italic; }
+
+/* --- Seasonal Guide --- */
+.seasonal-guide {
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.seasonal-guide h2 { margin-top: 0; }
+
+/* Price Calendar Bar Chart */
+.price-calendar { margin-bottom: 1.25rem; }
+.price-calendar h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.month-bars {
+    display: flex;
+    gap: 4px;
+    height: 80px;
+    align-items: flex-end;
+}
+.month-bar {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    position: relative;
+}
+.bar-fill {
+    width: 100%;
+    border-radius: 3px 3px 0 0;
+    min-height: 4px;
+    transition: height 0.3s;
+}
+.month-bar[data-level="1"] .bar-fill { background: var(--green-mid); }
+.month-bar[data-level="2"] .bar-fill { background: #81C784; }
+.month-bar[data-level="3"] .bar-fill { background: #FFD54F; }
+.month-bar[data-level="4"] .bar-fill { background: #FFB74D; }
+.month-bar[data-level="5"] .bar-fill { background: #E57373; }
+.month-label {
+    font-size: 0.65rem;
+    color: var(--gray-500);
+    margin-top: 4px;
+    font-weight: 500;
+}
+.calendar-legend {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    color: var(--gray-500);
+    margin-top: 0.25rem;
+}
+.legend-cheap { color: var(--green-mid); }
+.legend-mid { color: #FFD54F; }
+.legend-expensive { color: #E57373; }
+
+/* Buy Timing */
+.buy-timing {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+.timing-best {
+    background: var(--green-pale);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    border-left: 3px solid var(--green-mid);
+}
+.timing-worst {
+    background: #FFF3E0;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    border-left: 3px solid #FFB74D;
+}
+.seasonal-note {
+    font-size: 0.9rem;
+    color: var(--gray-700);
+    margin-bottom: 0.5rem;
+}
+.seasonal-tip {
+    font-size: 0.9rem;
+    color: var(--green-dark);
+    background: var(--green-pale);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius);
+    margin-bottom: 0.75rem;
+}
+
+/* Planting Zone Table */
+.planting-zones { margin-top: 1rem; }
+.planting-zones h3 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+.zone-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+.zone-table th {
+    text-align: left;
+    padding: 0.4rem 0.6rem;
+    background: var(--gray-100);
+    border-bottom: 2px solid var(--gray-300);
+    font-weight: 600;
+    color: var(--gray-700);
+}
+.zone-table td {
+    padding: 0.4rem 0.6rem;
+    border-bottom: 1px solid var(--gray-300);
+}
+.zone-num { font-weight: 600; }
+
+/* --- Price History Chart --- */
+.price-history { margin-bottom: 1.5rem; }
+.price-history canvas { width: 100% !important; height: auto !important; }
+
+/* --- Care Guide --- */
+.care-guide { line-height: 1.7; }
+.care-guide p { margin-bottom: 0.75rem; }
+
+/* --- Sidebar --- */
+.product-sidebar, .guide-sidebar { font-size: 0.9rem; }
+.similar-plants, .season-alert, .guide-toc, .guide-related, .guide-more {
+    background: var(--gray-100);
+    border-radius: var(--radius);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.similar-plants h3, .season-alert h3, .guide-toc h3, .guide-related h3, .guide-more h3 {
+    margin-top: 0;
+    font-size: 0.95rem;
+}
+.similar-plants ul, .guide-toc ul, .guide-related ul, .guide-more ul {
+    list-style: none;
+    padding: 0;
+}
+.similar-plants li, .guide-toc li, .guide-related li, .guide-more li {
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--gray-300);
+}
+.similar-plants li:last-child, .guide-toc li:last-child, .guide-related li:last-child, .guide-more li:last-child {
+    border-bottom: none;
+}
+.similar-name { font-weight: 500; }
+.similar-price, .related-price { float: right; color: var(--green-mid); font-weight: 600; font-size: 0.85rem; }
+.season-alert { background: #FFF3E0; border: 1px solid #FFB74D; }
+.season-alert h3 { color: var(--orange-accent); }
+
+/* --- Guide Article --- */
+.guide-page { margin-bottom: 2rem; }
+.guide-header { margin-bottom: 1.5rem; }
+.guide-meta { font-size: 0.85rem; color: var(--gray-500); font-style: italic; }
+.guide-layout {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 2rem;
+}
+@media (max-width: 768px) {
+    .guide-layout { grid-template-columns: 1fr; }
+}
+.guide-content { line-height: 1.75; }
+.guide-content h2 { border-bottom: 1px solid var(--gray-300); padding-bottom: 0.25rem; }
+.guide-content p { margin-bottom: 0.75rem; }
+.guide-content a { font-weight: 500; }
+
+/* --- Category Page --- */
+.category-page { margin-bottom: 2rem; }
+.category-header { margin-bottom: 1rem; }
+.category-header p { color: var(--gray-700); }
+.category-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.category-filters label { font-size: 0.9rem; font-weight: 500; }
+.category-filters select {
+    padding: 0.3rem 0.5rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+}
+
+/* Plant Card Grid */
+.plant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+.plant-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    padding: 1rem;
+    text-decoration: none;
+    color: var(--gray-900);
+    transition: border-color 0.15s, box-shadow 0.15s;
+}
+.plant-card:hover {
+    border-color: var(--green-mid);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    text-decoration: none;
+}
+.card-name { color: var(--green-dark); font-size: 1rem; margin: 0; }
+.card-botanical { font-size: 0.8rem; color: var(--gray-500); font-style: italic; margin-top: 0.15rem; }
+.card-price { margin: 0.75rem 0 0.5rem; }
+.card-from { font-size: 0.8rem; color: var(--gray-500); }
+.card-amount { font-size: 1.25rem; font-weight: 700; color: var(--green-mid); }
+.card-savings {
+    display: inline-block;
+    background: var(--green-pale);
+    color: var(--green-dark);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.15rem 0.4rem;
+    border-radius: 3px;
+    margin-left: 0.35rem;
+}
+.card-meta { font-size: 0.8rem; color: var(--gray-500); display: flex; gap: 1rem; }
+.card-cta { font-size: 0.85rem; color: var(--green-mid); font-weight: 600; margin-top: 0.5rem; }
+
+/* --- No Prices Placeholder --- */
+.no-prices {
+    background: var(--gray-100);
+    border-radius: var(--radius);
+    padding: 2rem;
+    text-align: center;
+    color: var(--gray-500);
+}
+
+/* --- Footer --- */
+.site-footer {
+    background: var(--gray-100);
+    border-top: 1px solid var(--gray-300);
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+}
+.footer-disclosure {
+    font-size: 0.8rem;
+    color: var(--gray-700);
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1rem;
+}
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+}
+.footer-copyright { font-size: 0.75rem; color: var(--gray-500); }

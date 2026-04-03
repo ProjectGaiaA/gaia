@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block description %}{{ meta_description }}{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{ title }}",
+    "datePublished": "{{ date_published }}",
+    "dateModified": "{{ date_modified }}",
+    "author": {
+        "@type": "Organization",
+        "name": "PlantPriceTracker"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "PlantPriceTracker"
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "/guides/"},
+        {"@type": "ListItem", "position": 3, "name": "{{ title }}"}
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo;
+    <a href="/guides/">Guides</a> &rsaquo;
+    <span>{{ title }}</span>
+</nav>
+
+<article class="guide-page">
+    <header class="guide-header">
+        <h1>{{ title }}</h1>
+        <p class="guide-meta">Last updated: {{ date_modified }} | Prices compared across {{ retailer_count }}+ online nurseries</p>
+    </header>
+
+    <div class="guide-layout">
+        <div class="guide-content">
+            {{ content|safe }}
+        </div>
+
+        <aside class="guide-sidebar">
+            {% if toc %}
+            <div class="guide-toc">
+                <h3>In This Guide</h3>
+                <ul>
+                    {% for item in toc %}
+                    <li><a href="#{{ item.id }}">{{ item.text }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if related_plants %}
+            <div class="guide-related">
+                <h3>Compare Prices</h3>
+                <ul>
+                    {% for plant in related_plants %}
+                    <li>
+                        <a href="/plants/{{ plant.id }}.html">
+                            {{ plant.common_name }}
+                            {% if plant.lowest_price %}
+                            <span class="related-price">from ${{ '%.2f'|format(plant.lowest_price) }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            {% if related_guides %}
+            <div class="guide-more">
+                <h3>More Guides</h3>
+                <ul>
+                    {% for guide in related_guides %}
+                    <li><a href="/guides/{{ guide.slug }}.html">{{ guide.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </aside>
+    </div>
+</article>
+{% endblock %}

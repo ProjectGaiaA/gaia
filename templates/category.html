@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}{{ category_name }} for Sale Online — Price Comparison{% endblock %}
+{% block description %}Compare {{ category_name|lower }} prices across {{ retailer_count }}+ online nurseries. Find the best deals updated daily.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "{{ category_name }} — Price Comparison",
+    "description": "Compare {{ category_name|lower }} prices across online nurseries.",
+    "numberOfItems": {{ plants|length }}
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "/"},
+        {"@type": "ListItem", "position": 2, "name": "{{ category_name }}"}
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo;
+    <span>{{ category_name }}</span>
+</nav>
+
+<section class="category-page">
+    <header class="category-header">
+        <h1>{{ category_name }} &mdash; Price Comparison</h1>
+        <p>Comparing prices across {{ retailer_count }}+ nurseries for {{ plants|length }} varieties. Updated daily.</p>
+    </header>
+
+    <!-- Filters -->
+    <div class="category-filters" id="filters">
+        <label>
+            Zone:
+            <select id="zone-filter">
+                <option value="">All Zones</option>
+                {% for z in range(3, 10) %}
+                <option value="{{ z }}">Zone {{ z }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label>
+            Sort:
+            <select id="sort-filter">
+                <option value="name">Name (A-Z)</option>
+                <option value="price-low">Lowest Price</option>
+                <option value="price-high">Highest Price</option>
+                <option value="savings">Biggest Savings</option>
+            </select>
+        </label>
+    </div>
+
+    <!-- Plant Grid -->
+    <div class="plant-grid" id="plant-grid">
+        {% for plant in plants %}
+        <a href="/plants/{{ plant.id }}.html" class="plant-card" data-zones="{{ plant.zones|join(',') }}" data-low="{{ plant.lowest_price or 999 }}" data-savings="{{ plant.savings_pct or 0 }}">
+            <div class="card-top">
+                <h3 class="card-name">{{ plant.common_name }}</h3>
+                <p class="card-botanical">{{ plant.botanical_name }}</p>
+            </div>
+            <div class="card-price">
+                {% if plant.lowest_price %}
+                <span class="card-from">from</span>
+                <span class="card-amount">${{ '%.2f'|format(plant.lowest_price) }}</span>
+                {% if plant.savings_pct and plant.savings_pct > 5 %}
+                <span class="card-savings">Save up to {{ plant.savings_pct }}%</span>
+                {% endif %}
+                {% else %}
+                <span class="card-from">Prices coming soon</span>
+                {% endif %}
+            </div>
+            <div class="card-meta">
+                <span>Zones {{ plant.zones[0] }}-{{ plant.zones[-1] }}</span>
+                <span>{{ plant.sun }}</span>
+            </div>
+            <span class="card-cta">Compare {{ plant.retailer_count }} retailers &rarr;</span>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function() {
+    const grid = document.getElementById('plant-grid');
+    const cards = Array.from(grid.querySelectorAll('.plant-card'));
+    const zoneFilter = document.getElementById('zone-filter');
+    const sortFilter = document.getElementById('sort-filter');
+
+    // Restore zone from localStorage
+    const savedZone = localStorage.getItem('ppt_zone');
+    if (savedZone) zoneFilter.value = savedZone;
+
+    function applyFilters() {
+        const zone = zoneFilter.value;
+        const sort = sortFilter.value;
+
+        // Save zone preference
+        if (zone) localStorage.setItem('ppt_zone', zone);
+
+        // Filter
+        cards.forEach(card => {
+            if (!zone) { card.style.display = ''; return; }
+            const zones = card.dataset.zones.split(',');
+            card.style.display = zones.includes(zone) ? '' : 'none';
+        });
+
+        // Sort visible cards
+        const visible = cards.filter(c => c.style.display !== 'none');
+        visible.sort((a, b) => {
+            switch(sort) {
+                case 'price-low': return parseFloat(a.dataset.low) - parseFloat(b.dataset.low);
+                case 'price-high': return parseFloat(b.dataset.low) - parseFloat(a.dataset.low);
+                case 'savings': return parseFloat(b.dataset.savings) - parseFloat(a.dataset.savings);
+                default: return a.querySelector('.card-name').textContent.localeCompare(b.querySelector('.card-name').textContent);
+            }
+        });
+        visible.forEach(card => grid.appendChild(card));
+    }
+
+    zoneFilter.addEventListener('change', applyFilters);
+    sortFilter.addEventListener('change', applyFilters);
+    applyFilters();
+})();
+</script>
+{% endblock %}
