@@ -14,12 +14,17 @@ import argparse
 import json
 import logging
 import os
+import random
+import re
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
 # Add parent dir to path for imports
 sys.path.insert(0, str(Path(__file__).parent.parent))
+
+import requests
 
 from scrapers.shopify import ShopifyScraper, get_handles_for_retailer
 from scrapers.starkbros import StarkBrosScraper, STARK_BROS_PRODUCTS
@@ -38,6 +43,30 @@ BASE_DIR = Path(__file__).parent.parent
 DATA_DIR = BASE_DIR / "data"
 PRICES_DIR = DATA_DIR / "prices"
 MANIFEST_PATH = DATA_DIR / "last_manifest.json"
+PROMOS_PATH = DATA_DIR / "promos.json"
+
+# Patterns that indicate a discount banner or promo code on a retail page.
+# Checked against the full page HTML (case-insensitive).
+_PROMO_CODE_PATTERNS = [
+    # Explicit code callouts: "Use code SAVE10", "Promo code: SPRING20"
+    re.compile(r'(?:use\s+(?:code|coupon|promo)\s*[:\-]?\s*)([A-Z0-9]{4,20})', re.IGNORECASE),
+    # Discount percentages linked to a code: "Get 10% off with BLOOM10"
+    re.compile(r'(?:get|save|extra)\s+\d+%\s+off\s+with\s+(?:code\s+)?([A-Z0-9]{4,20})', re.IGNORECASE),
+    # Inline "code XXXX" shorthand
+    re.compile(r'\bcode\s+([A-Z][A-Z0-9]{3,19})\b'),
+]
+
+# Patterns that signal a discount/sale banner (no explicit code needed).
+_SALE_BANNER_PATTERNS = [
+    re.compile(r'free\s+shipping\s+(?:on\s+orders?\s+over|when\s+you\s+spend)\s*\$?([\d,]+)', re.IGNORECASE),
+    re.compile(r'(\d{1,2})\s*%\s*off\s+(?:your\s+(?:first|next|entire)\s+order|all\s+orders?|site-?wide)', re.IGNORECASE),
+    re.compile(r'(?:save|extra)\s+\$(\d+)\s+(?:on\s+(?:your\s+(?:first|next)|orders?\s+over\s+\$[\d,]+))', re.IGNORECASE),
+    re.compile(r'(?:buy\s+\d+\s*[,/]\s*get\s+\d+\s+free)', re.IGNORECASE),
+    re.compile(r'flash\s+sale', re.IGNORECASE),
+    re.compile(r'limited[\s-]time\s+offer', re.IGNORECASE),
+]
+
+_PROMO_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
 
 
 def load_json(path):
@@ -82,6 +111,174 @@ def check_price_anomaly(plant_id: str, retailer_id: str, new_prices: dict, prev_
                     f"${old_price:.2f} -> ${new_price:.2f} ({change_pct:.0f}% change)"
                 )
     return warnings
+
+
+def _fetch_page_html(url: str, timeout: int = 15) -> str | None:
+    """Fetch a URL and return the raw HTML text. Returns None on failure."""
+    try:
+        resp = requests.get(
+            url,
+            timeout=timeout,
+            headers={
+                "User-Agent": _PROMO_UA,
+                "Accept": "text/html",
+                "Accept-Language": "en-US,en;q=0.9",
+                "DNT": "1",
+            }
+        )
+        if resp.status_code == 200:
+            return resp.text
+    except requests.RequestException:
+        pass
+    return None
+
+
+def _extract_promos_from_html(html: str) -> dict:
+    """Scan HTML for promo codes and discount banners.
+
+    Returns a dict with:
+      - codes: list of found promo code strings (uppercase, deduplicated)
+      - banners: list of human-readable discount banner strings found
+    """
+    codes = []
+    banners = []
+
+    # Work on a compact text version (collapse whitespace, strip tags)
+    text = re.sub(r'<[^>]+>', ' ', html)
+    text = re.sub(r'\s+', ' ', text)
+
+    # Extract explicit promo codes
+    seen_codes = set()
+    for pattern in _PROMO_CODE_PATTERNS:
+        for m in pattern.finditer(text):
+            code = m.group(1).upper()
+            # Skip obvious false positives: all-digit, very short, looks like SKU
+            if len(code) < 4 or code.isdigit():
+                continue
+            if code not in seen_codes:
+                seen_codes.add(code)
+                codes.append(code)
+
+    # Extract sale/discount banners
+    seen_banners = set()
+    for pattern in _SALE_BANNER_PATTERNS:
+        for m in pattern.finditer(text):
+            banner = m.group(0).strip()
+            banner_key = banner.lower()
+            if banner_key not in seen_banners:
+                seen_banners.add(banner_key)
+                banners.append(banner)
+
+    return {"codes": codes, "banners": banners}
+
+
+def scrape_promos(retailers: list[dict], dry_run: bool = False) -> dict:
+    """Check retailer homepages and a sample product page for promo codes/banners.
+
+    Writes results to data/promos.json with a timestamp per retailer.
+    Returns a summary dict of what was found.
+
+    We fetch:
+      1. The retailer homepage (always has sitewide banners/popups in HTML)
+      2. One sample product page (some codes appear only in cart or PDP)
+
+    Politeness: 4-8 second delay between requests, max 2 pages per retailer.
+    """
+    logger.info("\nScraping promo codes / discount banners...")
+
+    # Load existing promos to merge (preserve history)
+    existing = {}
+    if PROMOS_PATH.exists():
+        try:
+            with open(PROMOS_PATH, "r", encoding="utf-8") as f:
+                existing = json.load(f)
+        except (json.JSONDecodeError, IOError):
+            pass
+
+    results = {}
+    timestamp = datetime.now(timezone.utc).isoformat()
+
+    # Sample product URLs per retailer — pick the most-visited plant
+    _SAMPLE_PRODUCT_PATHS = {
+        "spring-hill":          "/products/limelight-hydrangea",
+        "nature-hills":         "/products/hydrangea-lime-light",
+        "planting-tree":        "/products/limelight-hydrangea",
+        "fast-growing-trees":   "/products/limelight-hydrangea-shrub",
+        "brighter-blooms":      "/products/limelight-hydrangea",
+        "great-garden-plants":  "/products/limelight-panicle-hydrangea",
+        "proven-winners-direct": "/products/limelight-panicle-hydrangea",
+        "stark-bros":           "/products/garden-plants/roses/double-knock-out-rose",
+        "bloomscape":           "/products/money-tree",
+    }
+
+    shopify_retailers = [r for r in retailers if r.get("active") and r.get("scraper_type") == "shopify"]
+    custom_retailers  = [r for r in retailers if r.get("active") and r.get("scraper_type") != "shopify"
+                         and r["id"] in _SAMPLE_PRODUCT_PATHS]
+    target_retailers  = shopify_retailers + custom_retailers
+
+    for retailer in target_retailers:
+        rid = retailer["id"]
+        base_url = retailer["url"].rstrip("/")
+        found_codes: list[str] = []
+        found_banners: list[str] = []
+
+        if dry_run:
+            logger.info(f"  [dry-run] {rid}: would fetch {base_url} + sample PDP")
+            results[rid] = {"retailer_id": rid, "dry_run": True}
+            continue
+
+        logger.info(f"  {rid}: checking homepage...")
+        html = _fetch_page_html(base_url)
+        if html:
+            extracted = _extract_promos_from_html(html)
+            found_codes.extend(extracted["codes"])
+            found_banners.extend(extracted["banners"])
+
+        time.sleep(random.uniform(4, 8))
+
+        # Sample product page
+        sample_path = _SAMPLE_PRODUCT_PATHS.get(rid)
+        if sample_path:
+            logger.info(f"  {rid}: checking sample PDP...")
+            pdp_html = _fetch_page_html(f"{base_url}{sample_path}")
+            if pdp_html:
+                extracted = _extract_promos_from_html(pdp_html)
+                for c in extracted["codes"]:
+                    if c not in found_codes:
+                        found_codes.append(c)
+                for b in extracted["banners"]:
+                    if b not in found_banners:
+                        found_banners.append(b)
+            time.sleep(random.uniform(4, 8))
+
+        # Deduplicate and build result
+        entry = {
+            "retailer_id": rid,
+            "retailer_name": retailer["name"],
+            "timestamp": timestamp,
+            "codes": found_codes,
+            "banners": found_banners,
+        }
+        results[rid] = entry
+
+        if found_codes:
+            logger.info(f"    Codes found: {', '.join(found_codes)}")
+        if found_banners:
+            logger.info(f"    Banners: {len(found_banners)} found")
+        if not found_codes and not found_banners:
+            logger.info(f"    No active promos detected")
+
+    # Merge with existing promos (keep history per retailer)
+    for rid, entry in results.items():
+        if not entry.get("dry_run"):
+            existing[rid] = entry
+
+    if not dry_run:
+        with open(PROMOS_PATH, "w", encoding="utf-8") as f:
+            json.dump(existing, f, indent=2, ensure_ascii=False)
+        logger.info(f"  Promos saved to {PROMOS_PATH}")
+
+    return results
 
 
 def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, dry_run: bool = False) -> dict:
@@ -243,7 +440,7 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
     }
 
 
-def run(retailer_filter: str = None, dry_run: bool = False):
+def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = False):
     """Main scraper orchestrator."""
     logger.info("=" * 60)
     logger.info("PlantPriceTracker — Scraper Run")
@@ -326,6 +523,12 @@ def run(retailer_filter: str = None, dry_run: bool = False):
 
     logger.info(f"\nTotal prices collected: {total_prices}")
 
+    # Promo code scraping — runs after price scraping, only on full runs
+    if not retailer_filter and not skip_promos:
+        scrape_promos(retailers, dry_run=dry_run)
+    elif retailer_filter:
+        logger.info("\nPromo scraping skipped (single-retailer run)")
+
     # Exit with error if any retailer had <80% success rate
     for entry in manifest_entries:
         if entry.get("status") == "completed":
@@ -342,6 +545,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run plant price scrapers")
     parser.add_argument("--retailer", type=str, help="Scrape a specific retailer only")
     parser.add_argument("--dry-run", action="store_true", help="Show what would be scraped without scraping")
+    parser.add_argument("--skip-promos", action="store_true", help="Skip promo code scraping this run")
     args = parser.parse_args()
 
-    run(retailer_filter=args.retailer, dry_run=args.dry_run)
+    run(retailer_filter=args.retailer, dry_run=args.dry_run, skip_promos=args.skip_promos)

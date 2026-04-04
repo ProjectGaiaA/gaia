@@ -150,4 +150,65 @@ The investment pays off. But it takes patience, proper soil, and bird netting. G
 
 - **Don't over-buy soil amendments.** Peat moss and pine bark fines from your local garden center are all you need. Specialty "blueberry soil" products are branded versions of the same thing at 2-3x the price.
 
+---
+
+## Soil Amendment Guide: Getting the pH Right Before You Plant
+
+Soil preparation is the single most important step in blueberry growing, and it's one that most people either skip or do after the fact when problems emerge. Do it before planting and you set the stage for years of reliable production. Do it after, and you're fighting an uphill battle.
+
+**Step 1: Test your current pH.** A basic pH test kit (not a digital meter — the paper strip kits are more accurate for this use) costs $8-$12 at any garden center. Get a reading before buying a single plant.
+
+**Step 2: Calculate how much sulfur you need.** Elemental sulfur is the standard amendment for lowering pH in garden soil. The amount needed depends on your starting pH, your target pH (aim for 5.0), and your soil type:
+
+| Starting pH | Target 5.0 (per 100 sq ft) |
+|------------|--------------------------|
+| 6.0 | 1-2 lbs elemental sulfur |
+| 6.5 | 2-3 lbs elemental sulfur |
+| 7.0 | 3-4 lbs elemental sulfur |
+| 7.5+ | 5-6 lbs elemental sulfur |
+
+Clay soils need 50% more than these estimates. Sandy soils need 25% less. These are starting points — retest in 2-3 months and adjust.
+
+**Step 3: Work sulfur in thoroughly, then wait.** Mix sulfur into the top 8 inches of soil. Sulfur acidification is microbial — soil bacteria convert the sulfur to sulfuric acid over 2-3 months. It doesn't happen overnight, and it doesn't work well in dry or cold soil (microbial activity slows). If you're planting in spring, amend in fall. If you're planting in fall, amend in early summer.
+
+**Step 4: Build the planting medium.** Even after pH correction, heavy clay soils benefit from a 50/50 blend of native soil + acidic planting mix in the planting hole. Mix 1 part peat moss, 1 part pine bark fines, and 2 parts native soil. This improves drainage around the root zone, where waterlogging is the second most common cause of blueberry failure after pH.
+
+**Step 5: Mulch heavily.** Apply 3-4 inches of pine bark mulch or pine straw over the planting area. As the mulch decomposes, it slowly acidifies the soil surface. It also insulates roots, retains moisture, and suppresses weeds — every one of which is important for blueberries. Reapply annually.
+
+---
+
+## Harvesting, Storage, and What to Do With the Glut
+
+**When to pick:** Blueberries don't ripen all at once. Individual berries within a cluster ripen over 2-3 weeks, and the same bush will have unripe, ripening, and fully ripe berries simultaneously. The berry is ready when it's fully blue all the way to the stem end (no red or green shoulders), comes off easily with a light touch, and tastes sweet without tartness. If you have to pull it, wait another day. If it rolls easily off the stem, it's peak ripe.
+
+**Harvesting frequency:** Check the bushes every 2-3 days at peak season. Berries that are left on the bush too long get soft, fall off, and attract fruit flies, wasps, and the birds you've been keeping away with netting.
+
+**Fresh storage:** Blueberries are among the easiest fruits to store. Do NOT wash before storing — moisture accelerates mold. Put them dry into a container (not sealed airtight) in the refrigerator. Fresh blueberries keep 10-14 days refrigerated without any quality loss. Wash only immediately before eating.
+
+**Freezing (the practical solution for a full harvest):** Spread berries in a single layer on a sheet pan and freeze for 2-4 hours. Once individually frozen, transfer to zip bags or containers. This prevents them from freezing into a solid mass. Frozen blueberries keep 8-12 months with minimal quality loss. They work perfectly in smoothies, muffins, and pancakes. The skin softens when thawed, so frozen berries are better for cooking than fresh.
+
+**What three mature bushes produce:** At full production, three well-sited blueberry bushes (one each early, mid, late season) yield roughly 15-25 pounds of berries over 8-10 weeks. That's more than most families eat fresh. Budget for a chest freezer bag by year 5.
+
+---
+
+## Frequently Asked Questions
+
+**How long do blueberry bushes live?**
+A well-sited blueberry bush with proper soil conditions can produce for 40-50+ years. The Lakemont Farm in Michigan has commercial plantings from the 1930s still in production. The key variables are soil pH maintenance (the surrounding soil will push pH up over decades without ongoing acidification) and avoiding physical damage. Unlike fruit trees, which can decline from disease or structural failure, blueberries are shrubs that regenerate from the base — as long as the soil conditions stay right, the plants just keep producing.
+
+**Can I grow blueberries in a pot on my deck?**
+Yes, and Sunshine Blue is the best variety for it (see above — it's compact and self-pollinating). Use a container at least 18-24 inches in diameter; bigger is better because larger soil volumes hold moisture more evenly and don't freeze as solid in winter. Fill with peat-based acidic mix amended with pine bark fines. The critical difference from ground planting: containers dry out much faster, especially in summer heat, so consistent watering becomes essential. A container blueberry in a hot summer may need watering every 1-2 days. Also, in zones 5-6, move the container to an unheated garage or shed during the coldest months — container roots are exposed to air temperatures rather than insulated by soil mass, and they can freeze solid in extended cold snaps.
+
+**Do I really need two or more different varieties?**
+For most highbush varieties (Duke, Bluecrop, Chandler, Patriot, Pink Lemonade): yes, strongly recommended. Each variety produces dramatically heavier crops when cross-pollinated with a different cultivar that blooms at an overlapping time. You can grow a single variety and get some fruit, but the yield will be 20-40% of what two cross-pollinating varieties produce together. The exception is Sunshine Blue, which is genuinely self-pollinating and produces well solo — though even it yields more with a cross-pollinator.
+
+**What's eating my blueberries before I can pick them?**
+Almost certainly birds. Birds are the most consistent predator of home blueberry crops, and without netting, they will take virtually every ripe berry. Cherry fruit fly larvae (small white maggots inside the berry) are the second most common problem — if you're finding damaged berries with internal larvae, this is the culprit. Cherry fruit fly traps (red sphere traps baited with ammonium acetate) are highly effective early detection tools. Spotted Wing Drosophila (SWD) is an invasive vinegar fly that can damage soft-skinned ripe and near-ripe blueberries — it arrived in North America around 2008 and is now widespread. Fine mesh netting (not standard bird netting, which has 1/2-inch openings) is the only reliable physical barrier against SWD.
+
+**When should I fertilize?**
+Fertilize once in early spring, just as new growth is beginning — typically when you see the first buds swelling. Use an acidic slow-release fertilizer formulated for blueberries, azaleas, or acid-loving plants. Apply per package directions; don't over-apply. A second light application 6-8 weeks after the first is optional for well-established plants that are producing heavily. Never fertilize after mid-July — late fertilization stimulates new growth that won't harden before winter. Avoid high-phosphorus general fertilizers; they don't provide the acidity or micronutrient balance that blueberries need.
+
+**My blueberry has lots of leaves but no berries — what's wrong?**
+Several possibilities, roughly in order of likelihood: (1) The plant is too young — berries don't come in earnest until year 3-4. (2) There's no pollinator variety — if you have only one variety, cross-pollination is limited. (3) pH is off — plants in wrong-pH soil put energy into fighting nutrient deficiencies rather than fruiting. (4) The plant was pruned at the wrong time or too heavily. (5) Too much shade — blueberries need 6+ hours of direct sun to fruit well. Test the pH first; it's the most common culprit.
+
 → [Browse all blueberry bush price comparisons](/category/blueberries)

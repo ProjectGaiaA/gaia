@@ -51,6 +51,7 @@
                 <li><a href="/category/fruit-trees.html">Fruit Trees</a></li>
                 <li><a href="/category/roses.html">Roses</a></li>
                 <li><a href="/guides/">Guides</a></li>
+                <li><a href="/my-list.html">&#x2661; My List<span class="wishlist-nav-count"></span></a></li>
             </ul>
         </nav>
     </header>
@@ -73,6 +74,16 @@
             save up to <strong>74%</strong> by comparing.
         </p>
         
+        <button class="wishlist-btn"
+            data-plant-id="gibraltar-azalea"
+            data-plant-name="Gibraltar Azalea"
+            data-plant-botanical="Rhododendron 'Gibraltar'"
+            data-plant-category="azaleas-rhododendrons"
+            data-plant-price-range="$25-$50"
+            data-plant-zones="4,5,6,7,8"
+            aria-pressed="false">
+            <span class="wl-heart">&#x2661;</span> Save to My List
+        </button>
     </header>
 
     <div class="product-layout">
@@ -200,161 +211,228 @@
 
             <!-- When to Buy & Plant (email-gated) -->
             
-            <div class="seasonal-guide" id="seasonal-guide">
-                <h2>When to Buy &amp; Plant Gibraltar Azalea</h2>
-
-                
-                <div class="price-calendar">
-                    <h3>Price Seasonality</h3>
-                    <div class="month-bars">
-                        
-                        
-                        
-                        <div class="month-bar" data-level="2">
-                            <div class="bar-fill" style="height: 40%"></div>
-                            <span class="month-label">Jan</span>
+            <div class="seasonal-section">
+                <div class="seasonal-gate" id="seasonal-gate">
+                    <div class="seasonal-gate-preview" aria-hidden="true">
+                        <h2>When to Buy &amp; Plant Gibraltar Azalea</h2>
+                        <div class="gate-preview-bars">
+                            
+                            <div class="preview-bar preview-bar-0"></div>
+                            
+                            <div class="preview-bar preview-bar-1"></div>
+                            
+                            <div class="preview-bar preview-bar-2"></div>
+                            
+                            <div class="preview-bar preview-bar-3"></div>
+                            
+                            <div class="preview-bar preview-bar-4"></div>
+                            
+                            <div class="preview-bar preview-bar-5"></div>
+                            
+                            <div class="preview-bar preview-bar-6"></div>
+                            
+                            <div class="preview-bar preview-bar-7"></div>
+                            
+                            <div class="preview-bar preview-bar-8"></div>
+                            
+                            <div class="preview-bar preview-bar-9"></div>
+                            
+                            <div class="preview-bar preview-bar-10"></div>
+                            
+                            <div class="preview-bar preview-bar-11"></div>
+                            
                         </div>
-                        
-                        
-                        <div class="month-bar" data-level="3">
-                            <div class="bar-fill" style="height: 60%"></div>
-                            <span class="month-label">Feb</span>
-                        </div>
-                        
-                        
-                        <div class="month-bar" data-level="5">
-                            <div class="bar-fill" style="height: 100%"></div>
-                            <span class="month-label">Mar</span>
-                        </div>
-                        
-                        
-                        <div class="month-bar" data-level="5">
-                            <div class="bar-fill" style="height: 100%"></div>
-                            <span class="month-label">Apr</span>
-                        </div>
-                        
-                        
-                        <div class="month-bar" data-level="4">
-                            <div class="bar-fill" style="height: 80%"></div>
-                            <span class="month-label">May</span>
-                        </div>
-                        
-                        
-                        <div class="month-bar" data-level="3">
-                            <div class="bar-fill" style="height: 60%"></div>
-                            <span class="month-label">Jun</span>
-                        </div>
-                        
-                        
-                        <div class="month-bar" data-level="2">
-                            <div class="bar-fill" style="height: 40%"></div>
-                            <span class="month-label">Jul</span>
-                        </div>
-                        
-                        
-                        <div class="month-bar" data-level="2">
-                            <div class="bar-fill" style="height: 40%"></div>
-                            <span class="month-label">Aug</span>
-                        </div>
-                        
-                        
-                        <div class="month-bar" data-level="1">
-                            <div class="bar-fill" style="height: 20%"></div>
-                            <span class="month-label">Sep</span>
-                        </div>
-                        
-                        
-                        <div class="month-bar" data-level="1">
-                            <div class="bar-fill" style="height: 20%"></div>
-                            <span class="month-label">Oct</span>
-                        </div>
-                        
-                        
-                        <div class="month-bar" data-level="2">
-                            <div class="bar-fill" style="height: 40%"></div>
-                            <span class="month-label">Nov</span>
-                        </div>
-                        
-                        
-                        <div class="month-bar" data-level="2">
-                            <div class="bar-fill" style="height: 40%"></div>
-                            <span class="month-label">Dec</span>
-                        </div>
-                        
                     </div>
-                    <div class="calendar-legend">
-                        <span class="legend-cheap">&#9679; Cheapest months</span>
-                        <span class="legend-mid">&#9679; Average</span>
-                        <span class="legend-expensive">&#9679; Most expensive</span>
+                    <div class="gate-overlay">
+                        <div class="gate-box">
+                            <p class="gate-label">Free buying intelligence</p>
+                            <h3 class="gate-title">Best time to buy Gibraltar Azalea — and when to avoid</h3>
+                            <p class="gate-desc">Month-by-month price calendar, best and worst buying windows, and zone-specific planting dates.</p>
+                            <form id="gate-form" onsubmit="return pptUnlock(event)">
+                                <input type="email" id="gate-email" placeholder="Your email address" required autocomplete="email">
+                                <button type="submit">Show me the buying calendar</button>
+                            </form>
+                            <p class="gate-fine">No spam. Price drop alerts and seasonal deal guides only.</p>
+                        </div>
                     </div>
                 </div>
-                
+                <div class="seasonal-guide" id="seasonal-guide">
+                    <h2>When to Buy &amp; Plant Gibraltar Azalea</h2>
 
-                <div class="buy-timing">
-                    <div class="timing-best">
-                        <strong>Best time to buy:</strong> September-October
+                    
+                    <div class="price-calendar">
+                        <h3>Price Seasonality</h3>
+                        <div class="month-bars">
+                            
+                            
+                            
+                            <div class="month-bar" data-level="2">
+                                <div class="bar-fill" style="height: 40%"></div>
+                                <span class="month-label">Jan</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="3">
+                                <div class="bar-fill" style="height: 60%"></div>
+                                <span class="month-label">Feb</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="5">
+                                <div class="bar-fill" style="height: 100%"></div>
+                                <span class="month-label">Mar</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="5">
+                                <div class="bar-fill" style="height: 100%"></div>
+                                <span class="month-label">Apr</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="4">
+                                <div class="bar-fill" style="height: 80%"></div>
+                                <span class="month-label">May</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="3">
+                                <div class="bar-fill" style="height: 60%"></div>
+                                <span class="month-label">Jun</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="2">
+                                <div class="bar-fill" style="height: 40%"></div>
+                                <span class="month-label">Jul</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="2">
+                                <div class="bar-fill" style="height: 40%"></div>
+                                <span class="month-label">Aug</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="1">
+                                <div class="bar-fill" style="height: 20%"></div>
+                                <span class="month-label">Sep</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="1">
+                                <div class="bar-fill" style="height: 20%"></div>
+                                <span class="month-label">Oct</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="2">
+                                <div class="bar-fill" style="height: 40%"></div>
+                                <span class="month-label">Nov</span>
+                            </div>
+                            
+                            
+                            <div class="month-bar" data-level="2">
+                                <div class="bar-fill" style="height: 40%"></div>
+                                <span class="month-label">Dec</span>
+                            </div>
+                            
+                        </div>
+                        <div class="calendar-legend">
+                            <span class="legend-cheap">&#9679; Cheapest months</span>
+                            <span class="legend-mid">&#9679; Average</span>
+                            <span class="legend-expensive">&#9679; Most expensive</span>
+                        </div>
                     </div>
-                    <div class="timing-worst">
-                        <strong>Most expensive:</strong> March-April
+                    
+
+                    <div class="buy-timing">
+                        <div class="timing-best">
+                            <strong>Best time to buy:</strong> September-October
+                        </div>
+                        <div class="timing-worst">
+                            <strong>Most expensive:</strong> March-April
+                        </div>
                     </div>
+
+                    
+                    <p class="seasonal-note">Peak demand during spring bloom season drives prices up. Fall is best for both price and planting.</p>
+                    
+
+                    
+                    <p class="seasonal-tip"><strong>Pro tip:</strong> Encore Azaleas sell out early in spring. Buy in fall for best selection AND best price.</p>
+                    
+
+                    
+                    <div class="planting-zones">
+                        <h3>Planting Season by Zone</h3>
+                        <table class="zone-table">
+                            <thead>
+                                <tr>
+                                    <th>Zone</th>
+                                    <th>Spring Planting</th>
+                                    <th>Fall Planting</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                <tr>
+                                    <td class="zone-num">Zone 4</td>
+                                    <td>Apr-May</td>
+                                    <td>Sep-Oct</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="zone-num">Zone 5</td>
+                                    <td>Apr-May</td>
+                                    <td>Sep-Oct</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="zone-num">Zone 6</td>
+                                    <td>Mar-May</td>
+                                    <td>Sep-Nov</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="zone-num">Zone 7</td>
+                                    <td>Mar-Apr</td>
+                                    <td>Oct-Nov</td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="zone-num">Zone 8</td>
+                                    <td>Feb-Apr</td>
+                                    <td>Oct-Dec</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                    
                 </div>
-
-                
-                <p class="seasonal-note">Peak demand during spring bloom season drives prices up. Fall is best for both price and planting.</p>
-                
-
-                
-                <p class="seasonal-tip"><strong>Pro tip:</strong> Encore Azaleas sell out early in spring. Buy in fall for best selection AND best price.</p>
-                
-
-                
-                <div class="planting-zones">
-                    <h3>Planting Season by Zone</h3>
-                    <table class="zone-table">
-                        <thead>
-                            <tr>
-                                <th>Zone</th>
-                                <th>Spring Planting</th>
-                                <th>Fall Planting</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                            <tr>
-                                <td class="zone-num">Zone 4</td>
-                                <td>Apr-May</td>
-                                <td>Sep-Oct</td>
-                            </tr>
-                            
-                            <tr>
-                                <td class="zone-num">Zone 5</td>
-                                <td>Apr-May</td>
-                                <td>Sep-Oct</td>
-                            </tr>
-                            
-                            <tr>
-                                <td class="zone-num">Zone 6</td>
-                                <td>Mar-May</td>
-                                <td>Sep-Nov</td>
-                            </tr>
-                            
-                            <tr>
-                                <td class="zone-num">Zone 7</td>
-                                <td>Mar-Apr</td>
-                                <td>Oct-Nov</td>
-                            </tr>
-                            
-                            <tr>
-                                <td class="zone-num">Zone 8</td>
-                                <td>Feb-Apr</td>
-                                <td>Oct-Dec</td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                </div>
-                
             </div>
+            <script>
+            (function() {
+                if (localStorage.getItem('ppt_signup')) {
+                    document.getElementById('seasonal-gate').style.display = 'none';
+                } else {
+                    document.getElementById('seasonal-guide').style.display = 'none';
+                }
+            })();
+            function pptUnlock(e) {
+                e.preventDefault();
+                var email = document.getElementById('gate-email').value.trim();
+                if (!email) return false;
+                localStorage.setItem('ppt_signup', '1');
+                localStorage.setItem('ppt_email', email);
+                document.getElementById('seasonal-gate').style.display = 'none';
+                var guide = document.getElementById('seasonal-guide');
+                guide.style.display = '';
+                guide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                return false;
+            }
+            </script>
             
 
             <!-- Price History Chart (shown when historical data exists) -->
@@ -435,6 +513,7 @@
         </div>
     </footer>
 
+    <script src="/assets/js/wishlist.js"></script>
     
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>

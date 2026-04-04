@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}Best Time to Buy &amp; Plant — Timing Heat Map{% endblock %}
+{% block description %}See exactly when to buy and plant trees, shrubs, and perennials. Price seasonality overlaid with zone-specific planting windows — find the months where price is low AND conditions are right.{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo;
+    <a href="/guides/">Guides</a> &rsaquo;
+    <span>Buy &amp; Plant Timing Heat Map</span>
+</nav>
+
+<div class="heatmap-page">
+    <h1>Buy &amp; Plant Timing Heat Map</h1>
+    <p class="hm-subtitle">
+        Background color = price level (green = cheap, red = expensive). A dot (&#9679;) means good planting window for your zone.
+        A star (&#9733;) = best opportunity: low price <em>and</em> ideal planting time.
+    </p>
+
+    <!-- Zone selector -->
+    <div class="hm-controls">
+        <span class="hm-zone-label">Your hardiness zone:</span>
+        <div class="hm-zone-btns" id="hm-zone-btns">
+            {% for z in zones %}
+            <button class="hm-zone-btn{% if z == default_zone %} active{% endif %}"
+                    data-zone="{{ z }}" onclick="hmSetZone({{ z }})">Zone {{ z }}</button>
+            {% endfor %}
+        </div>
+        <span style="font-size:0.8rem; color:var(--gray-500);">
+            <a href="https://planthardiness.ars.usda.gov/" target="_blank" rel="noopener">Find your zone &rarr;</a>
+        </span>
+    </div>
+
+    <!-- Legend -->
+    <div class="hm-legend">
+        <div class="hm-legend-item">
+            <span class="hm-legend-swatch" style="background:#C8E6C9;"></span> Cheapest month
+        </div>
+        <div class="hm-legend-item">
+            <span class="hm-legend-swatch" style="background:#DCEDC8;"></span> Below average price
+        </div>
+        <div class="hm-legend-item">
+            <span class="hm-legend-swatch" style="background:#FFF9C4;"></span> Average price
+        </div>
+        <div class="hm-legend-item">
+            <span class="hm-legend-swatch" style="background:#FFE0B2;"></span> Above average price
+        </div>
+        <div class="hm-legend-item">
+            <span class="hm-legend-swatch" style="background:#FFCDD2;"></span> Most expensive
+        </div>
+        <div class="hm-legend-item">
+            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#1B5E20;"></span> Good planting window
+        </div>
+        <div class="hm-legend-item" style="font-weight:600; color:#2E7D32;">
+            &#9733; Best opportunity
+        </div>
+    </div>
+
+    <!-- Heat map table -->
+    <div class="hm-table-wrapper">
+        <table class="hm-table" id="hm-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    {% for month in month_names %}
+                    <th>{{ month }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for cat in categories %}
+                <tr>
+                    <td><a href="/category/{{ cat.id }}.html">{{ cat.name }}</a></td>
+                    {% for m in range(12) %}
+                    {% set price_level = cat.monthly_price_index[m] %}
+                    {% set plantable_zones = cat.planting_by_zone %}
+                    <td>
+                        <div class="hm-cell hm-p{{ price_level }}"
+                             data-cat="{{ cat.id }}"
+                             data-month="{{ m }}"
+                             data-price="{{ price_level }}"
+                             data-zones="{{ cat.planting_zones_json }}">
+                            {% if price_level <= 2 %}
+                            <span class="hm-price-label">Low</span>
+                            {% elif price_level == 3 %}
+                            <span class="hm-price-label">Avg</span>
+                            {% else %}
+                            <span class="hm-price-label">High</span>
+                            {% endif %}
+                        </div>
+                    </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Category insights -->
+    <h2>Category Summary</h2>
+    <div class="hm-insights">
+        {% for cat in categories %}
+        <div class="hm-insight-card">
+            <h4><a href="/category/{{ cat.id }}.html">{{ cat.name }}</a></h4>
+            <p class="hm-best-window">&#x2713; Best buy: {{ cat.best_buy }}</p>
+            <p class="hm-worst-window">&#x26A0; Most expensive: {{ cat.worst_buy }}</p>
+            {% if cat.tip %}
+            <p style="font-size:0.8rem; color:var(--gray-700); margin:0.4rem 0 0;">{{ cat.tip }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <p style="margin-top:1.5rem; font-size:0.82rem; color:var(--gray-500);">
+        Price seasonality based on industry planting calendars and nursery sale patterns.
+        Planting windows from USDA hardiness zone guidelines.
+        Actual prices tracked daily across {{ retailer_count }}+ nurseries &mdash;
+        <a href="/">compare current prices &rarr;</a>
+    </p>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Heat map zone switching
+var HM_DATA = {{ hm_data_json }};
+var currentZone = {{ default_zone }};
+
+function hmSetZone(zone) {
+    currentZone = zone;
+
+    // Update active button
+    document.querySelectorAll('.hm-zone-btn').forEach(function (btn) {
+        btn.classList.toggle('active', parseInt(btn.getAttribute('data-zone')) === zone);
+    });
+
+    // Update each cell: add/remove planting dot and best-opportunity highlight
+    document.querySelectorAll('.hm-cell').forEach(function (cell) {
+        var catId = cell.getAttribute('data-cat');
+        var month = parseInt(cell.getAttribute('data-month'));
+        var priceLevel = parseInt(cell.getAttribute('data-price'));
+
+        var catData = HM_DATA[catId];
+        if (!catData) return;
+
+        var zoneKey = String(zone);
+        var plantable = catData.planting_by_zone[zoneKey]
+            ? catData.planting_by_zone[zoneKey][month]
+            : false;
+
+        // Remove existing dot
+        var existingDot = cell.querySelector('.hm-plant-dot');
+        if (existingDot) existingDot.remove();
+
+        if (plantable) {
+            var dot = document.createElement('span');
+            dot.className = 'hm-plant-dot';
+            dot.title = 'Good planting window in Zone ' + zone;
+            cell.appendChild(dot);
+        }
+
+        // Best opportunity: cheap (level 1 or 2) AND plantable
+        cell.classList.toggle('hm-best', priceLevel <= 2 && plantable);
+    });
+}
+
+// Initialize with default zone on load
+document.addEventListener('DOMContentLoaded', function () {
+    hmSetZone(currentZone);
+});
+</script>
+{% endblock %}

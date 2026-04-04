@@ -853,15 +853,16 @@ HANDLE_MAPS = {
     },
     "brighter-blooms": {
         # JSON endpoint disabled — uses HTML fallback
+        # Handles verified 2026-04-03 against brighterblooms.com/collections/roses + /products/
         "limelight-hydrangea": "limelight-hydrangea",
         "endless-summer-hydrangea": "endless-summer-hydrangea",
-        "knock-out-rose": "knockout-rose",
-        "double-knock-out-rose": "double-knockout-rose",
+        "knock-out-rose": "red-knockout-rose-trees",        # tree form; shrub form unconfirmed
+        "double-knock-out-rose": "double-red-knockout-rose",  # was: double-knockout-rose (404)
         "bloodgood-japanese-maple": "bloodgood-japanese-maple",
         "emerald-green-arborvitae": "emerald-green-arborvitae",
         "leyland-cypress": "leyland-cypress-tree",
         "green-giant-arborvitae": "thuja-green-giant",
-        "honeycrisp-apple-tree": "honeycrisp-apple-tree",
+        "honeycrisp-apple-tree": "honeycrisp-apple",         # was: honeycrisp-apple-tree (404)
     },
 }
 

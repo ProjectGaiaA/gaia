@@ -316,6 +316,134 @@ tr.sold-out-row .buy-btn { background: var(--gray-500); }
 .affiliate-label { display: block; font-size: 0.65rem; color: var(--gray-500); margin-top: 2px; text-align: center; }
 .table-footnote { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.5rem; font-style: italic; }
 
+/* --- Email Signup Gate --- */
+.seasonal-section { position: relative; margin-bottom: 1.5rem; }
+
+.seasonal-gate {
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    min-height: 220px;
+}
+
+.seasonal-gate-preview {
+    padding: 1.5rem 1.5rem 1rem;
+    filter: blur(5px);
+    pointer-events: none;
+    user-select: none;
+}
+
+.seasonal-gate-preview h2 { margin-top: 0; }
+
+.gate-preview-bars {
+    display: flex;
+    gap: 4px;
+    height: 60px;
+    align-items: flex-end;
+    margin-top: 0.75rem;
+}
+
+.preview-bar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    background: var(--gray-300);
+    min-height: 4px;
+}
+/* Simulate a realistic price curve (high spring, low fall) */
+.preview-bar-0, .preview-bar-1 { height: 40%; }
+.preview-bar-2, .preview-bar-3, .preview-bar-4 { height: 90%; background: #E57373; opacity: 0.5; }
+.preview-bar-5, .preview-bar-6 { height: 60%; background: #FFB74D; opacity: 0.5; }
+.preview-bar-7 { height: 45%; }
+.preview-bar-8, .preview-bar-9 { height: 20%; background: var(--green-mid); opacity: 0.5; }
+.preview-bar-10, .preview-bar-11 { height: 35%; }
+
+.gate-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.97) 35%);
+    padding: 1rem;
+}
+
+.gate-box {
+    background: var(--white);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.gate-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--green-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 0.4rem;
+}
+
+.gate-title {
+    font-size: 1rem;
+    color: var(--gray-900);
+    margin: 0 0 0.4rem;
+    line-height: 1.35;
+}
+
+.gate-desc {
+    font-size: 0.85rem;
+    color: var(--gray-700);
+    margin-bottom: 0.85rem;
+}
+
+#gate-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+#gate-form input[type="email"] {
+    padding: 0.55rem 0.75rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+    width: 100%;
+    font-family: var(--font-body);
+}
+
+#gate-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--green-mid);
+    box-shadow: 0 0 0 2px rgba(46,125,50,0.15);
+}
+
+#gate-form button {
+    padding: 0.6rem 1rem;
+    background: var(--green-mid);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    font-family: var(--font-body);
+}
+
+#gate-form button:hover { background: var(--green-dark); }
+
+.gate-fine {
+    font-size: 0.72rem;
+    color: var(--gray-500);
+    margin-top: 0.4rem;
+    margin-bottom: 0;
+}
+
 /* --- Seasonal Guide --- */
 .seasonal-guide {
     background: var(--white);
@@ -539,6 +667,331 @@ tr.sold-out-row .buy-btn { background: var(--gray-500); }
 }
 .card-meta { font-size: 0.8rem; color: var(--gray-500); display: flex; gap: 1rem; }
 .card-cta { font-size: 0.85rem; color: var(--green-mid); font-weight: 600; margin-top: 0.5rem; }
+
+/* ============================================
+   My Plant List (Wishlist)
+   ============================================ */
+
+/* Nav count badge */
+.wishlist-nav-count { color: var(--green-mid); font-weight: 700; }
+
+/* Save button on product pages */
+.wishlist-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.35rem 0.85rem;
+    background: var(--white);
+    color: var(--gray-700);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: var(--font-body);
+    transition: border-color 0.15s, background 0.15s, color 0.15s;
+    margin-top: 0.5rem;
+}
+.wishlist-btn:hover {
+    border-color: var(--green-mid);
+    color: var(--green-dark);
+}
+.wishlist-btn.saved {
+    background: var(--green-pale);
+    border-color: var(--green-light);
+    color: var(--green-dark);
+}
+.wl-heart { font-size: 1rem; line-height: 1; }
+
+/* Wishlist page */
+.wishlist-page { margin-bottom: 2rem; }
+.wishlist-page h1 { margin-bottom: 0.25rem; }
+.wishlist-page .wl-subtitle { color: var(--gray-500); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+.wl-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.wl-card {
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    background: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+.wl-card-body { padding: 1rem; flex: 1; }
+.wl-card-name {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--green-dark);
+    text-decoration: none;
+    margin-bottom: 0.2rem;
+}
+.wl-card-name:hover { text-decoration: underline; }
+.wl-card-botanical { font-size: 0.8rem; color: var(--gray-500); font-style: italic; margin: 0 0 0.5rem; }
+.wl-card-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.4rem; }
+.wl-badge {
+    font-size: 0.72rem;
+    background: var(--green-pale);
+    color: var(--green-dark);
+    padding: 0.15rem 0.45rem;
+    border-radius: 3px;
+    font-weight: 500;
+}
+.wl-zones { font-size: 0.75rem; color: var(--gray-500); }
+.wl-card-price { font-weight: 700; color: var(--green-mid); font-size: 0.95rem; margin: 0; }
+
+.wl-card-footer {
+    border-top: 1px solid var(--gray-300);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--gray-100);
+}
+.wl-saved-date { font-size: 0.75rem; color: var(--gray-500); }
+.wl-remove-btn {
+    background: none;
+    border: none;
+    color: var(--gray-500);
+    font-size: 0.78rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+    transition: background 0.1s, color 0.1s;
+}
+.wl-remove-btn:hover { background: #FFEBEE; color: #C62828; }
+
+.wl-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+.wl-clear-btn {
+    background: none;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    color: var(--gray-500);
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    font-family: var(--font-body);
+}
+.wl-clear-btn:hover { border-color: #C62828; color: #C62828; }
+
+.wl-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--gray-700);
+}
+.wl-empty-icon { font-size: 3rem; margin-bottom: 0.5rem; }
+.wl-empty h3 { color: var(--gray-900); margin-bottom: 0.5rem; }
+.wl-empty p { color: var(--gray-500); margin-bottom: 1.25rem; font-size: 0.95rem; }
+
+/* Alert opt-in banner on wishlist page */
+.wl-alert-banner {
+    background: var(--green-pale);
+    border: 1px solid var(--green-light);
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.wl-alert-banner p { margin: 0; font-size: 0.9rem; color: var(--green-dark); }
+.wl-alert-banner strong { display: block; font-size: 1rem; margin-bottom: 0.15rem; }
+.wl-alert-form { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.wl-alert-form input[type="email"] {
+    padding: 0.45rem 0.7rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-family: var(--font-body);
+    min-width: 200px;
+}
+.wl-alert-form input[type="email"]:focus {
+    outline: none;
+    border-color: var(--green-mid);
+}
+.wl-alert-form button {
+    padding: 0.45rem 0.9rem;
+    background: var(--green-mid);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-body);
+    white-space: nowrap;
+}
+.wl-alert-form button:hover { background: var(--green-dark); }
+
+/* ============================================
+   Buy & Plant Timing Heat Map
+   ============================================ */
+
+.heatmap-page { margin-bottom: 2rem; }
+.heatmap-page h1 { margin-bottom: 0.25rem; }
+.heatmap-page .hm-subtitle { color: var(--gray-500); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+.hm-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+.hm-zone-label { font-weight: 600; font-size: 0.9rem; color: var(--gray-700); }
+.hm-zone-btns { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+.hm-zone-btn {
+    padding: 0.3rem 0.65rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    background: var(--white);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--gray-700);
+    font-family: var(--font-body);
+    transition: border-color 0.1s, background 0.1s;
+}
+.hm-zone-btn:hover { border-color: var(--green-mid); color: var(--green-dark); }
+.hm-zone-btn.active {
+    background: var(--green-mid);
+    border-color: var(--green-mid);
+    color: var(--white);
+}
+
+.hm-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 1.5rem; }
+
+.hm-table {
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    min-width: 640px;
+    width: 100%;
+}
+.hm-table th {
+    padding: 0.45rem 0.5rem;
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--gray-700);
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+}
+.hm-table th:first-child { text-align: left; min-width: 150px; }
+.hm-table td {
+    border: 1px solid var(--gray-300);
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+}
+.hm-table td:first-child {
+    padding: 0.45rem 0.6rem;
+    font-weight: 600;
+    text-align: left;
+    background: var(--gray-100);
+    white-space: nowrap;
+}
+.hm-table td:first-child a { color: var(--green-dark); }
+.hm-table td:first-child a:hover { text-decoration: underline; }
+
+.hm-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 44px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    gap: 2px;
+    cursor: default;
+    position: relative;
+}
+/* Price level backgrounds */
+.hm-p1 { background: #C8E6C9; color: #1B5E20; }   /* cheapest */
+.hm-p2 { background: #DCEDC8; color: #33691E; }
+.hm-p3 { background: #FFF9C4; color: #827717; }   /* average */
+.hm-p4 { background: #FFE0B2; color: #E65100; }
+.hm-p5 { background: #FFCDD2; color: #B71C1C; }   /* most expensive */
+
+/* Planting window indicator dot */
+.hm-plant-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green-dark);
+    flex-shrink: 0;
+}
+.hm-cell .hm-price-label { font-size: 0.65rem; opacity: 0.85; }
+
+/* Highlight: cheap AND plantable = best opportunity */
+.hm-best {
+    outline: 2px solid #2E7D32;
+    outline-offset: -2px;
+    z-index: 1;
+}
+.hm-best::after {
+    content: '★';
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    font-size: 0.55rem;
+    color: #2E7D32;
+}
+
+/* Legend */
+.hm-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    color: var(--gray-700);
+    margin-bottom: 1rem;
+}
+.hm-legend-item { display: flex; align-items: center; gap: 0.4rem; }
+.hm-legend-swatch {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+/* Category explanation cards */
+.hm-insights {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.hm-insight-card {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    padding: 1rem;
+    font-size: 0.85rem;
+}
+.hm-insight-card h4 { margin: 0 0 0.3rem; font-size: 0.9rem; color: var(--green-dark); }
+.hm-best-window { color: var(--green-mid); font-weight: 600; }
+.hm-worst-window { color: var(--orange-accent); }
 
 /* --- No Prices Placeholder --- */
 .no-prices {

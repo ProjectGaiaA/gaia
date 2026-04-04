@@ -51,6 +51,16 @@
             save up to <strong>{{ savings_pct }}%</strong> by comparing.
         </p>
         {% endif %}
+        <button class="wishlist-btn"
+            data-plant-id="{{ plant.id }}"
+            data-plant-name="{{ plant.common_name }}"
+            data-plant-botanical="{{ plant.botanical_name }}"
+            data-plant-category="{{ plant.category }}"
+            data-plant-price-range="{{ plant.price_range|default('') }}"
+            data-plant-zones="{{ plant.zones|join(',') }}"
+            aria-pressed="false">
+            <span class="wl-heart">&#x2661;</span> Save to My List
+        </button>
     </header>
 
     <div class="product-layout">
@@ -169,71 +179,116 @@
 
             <!-- When to Buy & Plant (email-gated) -->
             {% if plant.price_seasonality %}
-            <div class="seasonal-guide" id="seasonal-guide">
-                <h2>When to Buy &amp; Plant {{ plant.common_name }}</h2>
-
-                {% if plant.price_seasonality.monthly_index %}
-                <div class="price-calendar">
-                    <h3>Price Seasonality</h3>
-                    <div class="month-bars">
-                        {% set months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] %}
-                        {% for i in range(12) %}
-                        {% set level = plant.price_seasonality.monthly_index[i] %}
-                        <div class="month-bar" data-level="{{ level }}">
-                            <div class="bar-fill" style="height: {{ level * 20 }}%"></div>
-                            <span class="month-label">{{ months[i] }}</span>
-                        </div>
-                        {% endfor %}
-                    </div>
-                    <div class="calendar-legend">
-                        <span class="legend-cheap">&#9679; Cheapest months</span>
-                        <span class="legend-mid">&#9679; Average</span>
-                        <span class="legend-expensive">&#9679; Most expensive</span>
-                    </div>
-                </div>
-                {% endif %}
-
-                <div class="buy-timing">
-                    <div class="timing-best">
-                        <strong>Best time to buy:</strong> {{ plant.price_seasonality.best_buy }}
-                    </div>
-                    <div class="timing-worst">
-                        <strong>Most expensive:</strong> {{ plant.price_seasonality.worst_buy }}
-                    </div>
-                </div>
-
-                {% if plant.price_seasonality.note %}
-                <p class="seasonal-note">{{ plant.price_seasonality.note }}</p>
-                {% endif %}
-
-                {% if plant.price_seasonality.tip %}
-                <p class="seasonal-tip"><strong>Pro tip:</strong> {{ plant.price_seasonality.tip }}</p>
-                {% endif %}
-
-                {% if plant.planting_seasons %}
-                <div class="planting-zones">
-                    <h3>Planting Season by Zone</h3>
-                    <table class="zone-table">
-                        <thead>
-                            <tr>
-                                <th>Zone</th>
-                                <th>Spring Planting</th>
-                                <th>Fall Planting</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for zone, seasons in plant.planting_seasons.items() %}
-                            <tr>
-                                <td class="zone-num">Zone {{ zone }}</td>
-                                <td>{{ seasons.spring or 'Not recommended' }}</td>
-                                <td>{{ seasons.fall or 'Not recommended' }}</td>
-                            </tr>
+            <div class="seasonal-section">
+                <div class="seasonal-gate" id="seasonal-gate">
+                    <div class="seasonal-gate-preview" aria-hidden="true">
+                        <h2>When to Buy &amp; Plant {{ plant.common_name }}</h2>
+                        <div class="gate-preview-bars">
+                            {% for i in range(12) %}
+                            <div class="preview-bar preview-bar-{{ i }}"></div>
                             {% endfor %}
-                        </tbody>
-                    </table>
+                        </div>
+                    </div>
+                    <div class="gate-overlay">
+                        <div class="gate-box">
+                            <p class="gate-label">Free buying intelligence</p>
+                            <h3 class="gate-title">Best time to buy {{ plant.common_name }} — and when to avoid</h3>
+                            <p class="gate-desc">Month-by-month price calendar, best and worst buying windows, and zone-specific planting dates.</p>
+                            <form id="gate-form" onsubmit="return pptUnlock(event)">
+                                <input type="email" id="gate-email" placeholder="Your email address" required autocomplete="email">
+                                <button type="submit">Show me the buying calendar</button>
+                            </form>
+                            <p class="gate-fine">No spam. Price drop alerts and seasonal deal guides only.</p>
+                        </div>
+                    </div>
                 </div>
-                {% endif %}
+                <div class="seasonal-guide" id="seasonal-guide">
+                    <h2>When to Buy &amp; Plant {{ plant.common_name }}</h2>
+
+                    {% if plant.price_seasonality.monthly_index %}
+                    <div class="price-calendar">
+                        <h3>Price Seasonality</h3>
+                        <div class="month-bars">
+                            {% set months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'] %}
+                            {% for i in range(12) %}
+                            {% set level = plant.price_seasonality.monthly_index[i] %}
+                            <div class="month-bar" data-level="{{ level }}">
+                                <div class="bar-fill" style="height: {{ level * 20 }}%"></div>
+                                <span class="month-label">{{ months[i] }}</span>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="calendar-legend">
+                            <span class="legend-cheap">&#9679; Cheapest months</span>
+                            <span class="legend-mid">&#9679; Average</span>
+                            <span class="legend-expensive">&#9679; Most expensive</span>
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    <div class="buy-timing">
+                        <div class="timing-best">
+                            <strong>Best time to buy:</strong> {{ plant.price_seasonality.best_buy }}
+                        </div>
+                        <div class="timing-worst">
+                            <strong>Most expensive:</strong> {{ plant.price_seasonality.worst_buy }}
+                        </div>
+                    </div>
+
+                    {% if plant.price_seasonality.note %}
+                    <p class="seasonal-note">{{ plant.price_seasonality.note }}</p>
+                    {% endif %}
+
+                    {% if plant.price_seasonality.tip %}
+                    <p class="seasonal-tip"><strong>Pro tip:</strong> {{ plant.price_seasonality.tip }}</p>
+                    {% endif %}
+
+                    {% if plant.planting_seasons %}
+                    <div class="planting-zones">
+                        <h3>Planting Season by Zone</h3>
+                        <table class="zone-table">
+                            <thead>
+                                <tr>
+                                    <th>Zone</th>
+                                    <th>Spring Planting</th>
+                                    <th>Fall Planting</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for zone, seasons in plant.planting_seasons.items() %}
+                                <tr>
+                                    <td class="zone-num">Zone {{ zone }}</td>
+                                    <td>{{ seasons.spring or 'Not recommended' }}</td>
+                                    <td>{{ seasons.fall or 'Not recommended' }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
+            <script>
+            (function() {
+                if (localStorage.getItem('ppt_signup')) {
+                    document.getElementById('seasonal-gate').style.display = 'none';
+                } else {
+                    document.getElementById('seasonal-guide').style.display = 'none';
+                }
+            })();
+            function pptUnlock(e) {
+                e.preventDefault();
+                var email = document.getElementById('gate-email').value.trim();
+                if (!email) return false;
+                localStorage.setItem('ppt_signup', '1');
+                localStorage.setItem('ppt_email', email);
+                document.getElementById('seasonal-gate').style.display = 'none';
+                var guide = document.getElementById('seasonal-guide');
+                guide.style.display = '';
+                guide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                return false;
+            }
+            </script>
             {% endif %}
 
             <!-- Price History Chart (shown when historical data exists) -->

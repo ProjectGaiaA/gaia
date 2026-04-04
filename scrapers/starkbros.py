@@ -126,17 +126,22 @@ class StarkBrosScraper:
             except (json.JSONDecodeError, KeyError, IndexError) as e:
                 logger.warning(f"Failed to parse dataLayer for {url}: {e}")
 
-        # Fallback: try JSON-LD for at least aggregate pricing
+        # Fallback: try JSON-LD for at least aggregate pricing.
+        # Stark Bros uses @type "Product" for product pages; some older pages use "ItemPage".
         if not sizes:
-            ld_match = re.search(
-                r'<script type="application/ld\+json">\s*(\{.*?"@type"\s*:\s*"ItemPage".*?\})\s*</script>',
-                text, re.DOTALL
-            )
-            if ld_match:
+            for ld_type, ld_pattern in [
+                ("ItemPage", r'<script type="application/ld\+json">\s*(\{.*?"@type"\s*:\s*"ItemPage".*?\})\s*</script>'),
+                ("Product",  r'<script type="application/ld\+json">\s*(\{.*?"@type"\s*:\s*"Product".*?\})\s*</script>'),
+            ]:
+                ld_match = re.search(ld_pattern, text, re.DOTALL)
+                if not ld_match:
+                    continue
                 try:
                     ld_data = json.loads(ld_match.group(1))
-                    product_entity = ld_data.get("mainEntity", {})
-                    offers = product_entity.get("offers", {})
+                    if ld_type == "ItemPage":
+                        offers = ld_data.get("mainEntity", {}).get("offers", {})
+                    else:
+                        offers = ld_data.get("offers", {})
                     low_price = offers.get("lowPrice")
                     if low_price:
                         sizes["default"] = {
@@ -146,6 +151,7 @@ class StarkBrosScraper:
                             "raw_size": "Best available",
                         }
                         any_available = "InStock" in offers.get("availability", "")
+                        break
                 except (json.JSONDecodeError, KeyError):
                     pass
 
@@ -234,8 +240,9 @@ STARK_BROS_PRODUCTS = {
     "bing-cherry-tree": {"slug": "bing-cherry", "category": "fruit-trees/cherry-trees"},
     "elberta-peach-tree": {"slug": "elberta-peach", "category": "fruit-trees/peach-trees"},
     "bartlett-pear-tree": {"slug": "bartlett-pear", "category": "fruit-trees/pear-trees"},
-    "double-knock-out-rose": {"slug": "double-red-knock-out-rose", "category": "roses/knock-out-roses"},
-    "knock-out-rose": {"slug": "knock-out-rose", "category": "roses/knock-out-roses"},
+    # Stark Bros moved roses to garden-plants/ category (2026-04-03)
+    "double-knock-out-rose": {"slug": "double-knock-out-rose", "category": "garden-plants/roses"},
+    # "knock-out-rose" discontinued by Stark Bros — removed
     "duke-blueberry": {"slug": "duke-blueberry", "category": "berry-plants/blueberry-plants"},
     "patriot-blueberry": {"slug": "patriot-blueberry", "category": "berry-plants/blueberry-plants"},
     "pink-lemonade-blueberry": {"slug": "pink-lemonade-blueberry", "category": "berry-plants/blueberry-plants"},

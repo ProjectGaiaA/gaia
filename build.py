@@ -33,6 +33,118 @@ ARTICLES_DIR = BASE_DIR  # Article .md files are in project root
 PRICES_DIR = os.path.join(DATA_DIR, "prices")
 
 
+# ---------------------------------------------------------------------------
+# Size tier normalization
+# ---------------------------------------------------------------------------
+# Different retailers label the same physical size differently.
+# This map normalizes raw_size strings (and scraper tier keys) to canonical
+# display labels so comparison tables group correctly.
+#
+# Key   = canonical tier ID (what the scraper already emits, or should emit)
+# Value = human-readable label shown in the comparison table
+#
+SIZE_TIER_LABELS = {
+    # Container / gallon sizes
+    "quart":   "Quart",
+    "1gal":    "1 Gallon",
+    "2gal":    "2 Gallon",
+    "3gal":    "3 Gallon",
+    "5gal":    "5 Gallon",
+    "7gal":    "7 Gallon",
+    "10gal":   "10 Gallon",
+    "15gal":   "15 Gallon",
+    # Bare-root / dormant
+    "bareroot":          "Bare Root",
+    "jumbo-bareroot":    "Jumbo Bare Root",
+    "premium-bareroot":  "Premium Bare Root",
+    # Height tiers (trees)
+    "1-2ft":  "1-2 ft",
+    "2-3ft":  "2-3 ft",
+    "3-4ft":  "3-4 ft",
+    "4-5ft":  "4-5 ft",
+    "5-6ft":  "5-6 ft",
+    "6-7ft":  "6-7 ft",
+    "7-8ft":  "7-8 ft",
+    "8-9ft":  "8-9 ft",
+    # Stark Bros rootstock tiers
+    "dwarf":             "Dwarf",
+    "semi-dwarf":        "Semi-Dwarf",
+    "supreme":           "Supreme",
+    "ultra-supreme":     "Ultra Supreme",
+    "standard":          "Standard",
+    "dwarf-bareroot":    "Dwarf (Bare Root)",
+    "semi-dwarf-bareroot": "Semi-Dwarf (Bare Root)",
+    "supreme-bareroot":  "Supreme (Bare Root)",
+    "dwarf-potted":      "Dwarf (Potted)",
+    "semi-dwarf-potted": "Semi-Dwarf (Potted)",
+    "potted":            "Potted",
+    # EZ Start variants
+    "dwarf-ez-start":      "Dwarf EZ Start",
+    "semi-dwarf-ez-start": "Semi-Dwarf EZ Start",
+    "supreme-ez-start":    "Supreme EZ Start",
+    # Bulb / specialty
+    "bulb":    "Bulb",
+    "default": "Best Available",
+    # Inch pot
+    "4inch":   "4\"",
+}
+
+# Aliases: raw variant strings → canonical tier IDs.
+# Used when a retailer's scraper emits a non-canonical tier key
+# (e.g. "1-gallon-pot", "#1-container") that slipped through _normalize_size.
+_SIZE_ALIASES = {
+    # Common misspellings / alternative phrasings that may appear as tier keys
+    "1-gallon": "1gal",
+    "1-gallon-pot": "1gal",
+    "1gal-pot": "1gal",
+    "1-gal": "1gal",
+    "1gallon": "1gal",
+    "#1": "1gal",
+    "#1-container": "1gal",
+    "1-container": "1gal",
+    "2-gallon": "2gal",
+    "2-gallon-pot": "2gal",
+    "2-gal": "2gal",
+    "2gallon": "2gal",
+    "#2": "2gal",
+    "#2-container": "2gal",
+    "3-gallon": "3gal",
+    "3-gallon-pot": "3gal",
+    "3-gal": "3gal",
+    "3gallon": "3gal",
+    "#3": "3gal",
+    "#3-container": "3gal",
+    "5-gallon": "5gal",
+    "5-gallon-pot": "5gal",
+    "5-gal": "5gal",
+    "5gallon": "5gal",
+    "#5": "5gal",
+    "#5-container": "5gal",
+    "qt": "quart",
+    "quart-container": "quart",
+    "bare-root": "bareroot",
+    "bare root": "bareroot",
+    "dormant": "bareroot",
+}
+
+
+def normalize_size_tier(tier: str) -> str:
+    """Normalize a size tier key to its canonical form.
+
+    Handles aliases that slip through the scraper's _normalize_size() —
+    e.g. "#1-container", "2-gallon-pot", "bare-root".
+    Returns the canonical tier ID (e.g. "1gal", "bareroot").
+    """
+    t = tier.strip().lower()
+    return _SIZE_ALIASES.get(t, tier)
+
+
+def get_size_label(tier: str) -> str:
+    """Return the human-readable label for a canonical size tier."""
+    canonical = normalize_size_tier(tier)
+    return SIZE_TIER_LABELS.get(canonical, canonical.replace("-", " ").title())
+
+
 def load_json(path):
     """Load a JSON file, return empty list/dict on failure."""
     try:
@@ -98,19 +210,32 @@ def build_price_table(plant, latest_prices, retailers_by_id):
             has_non_affiliate = True
 
         sizes = {}
-        for tier, price_info in price_data.get("sizes", {}).items():
+        for raw_tier, price_info in price_data.get("sizes", {}).items():
+            # Normalize the tier key so variants like "#1-container" → "1gal"
+            tier = normalize_size_tier(raw_tier)
             if isinstance(price_info, dict):
                 price = price_info.get("price")
                 if price is not None and price > 0:
+                    # If two raw tiers normalize to the same canonical tier, keep cheaper
+                    if tier in sizes and sizes[tier]["price"] <= price:
+                        continue
                     sizes[tier] = {
                         "price": price,
                         "was_price": price_info.get("was_price"),
                         "is_best": False,
+                        "label": get_size_label(tier),
                     }
                     all_prices_flat.append(price)
                     active_tiers.add(tier)
             elif isinstance(price_info, (int, float)) and price_info > 0:
-                sizes[tier] = {"price": price_info, "was_price": None, "is_best": False}
+                if tier in sizes and sizes[tier]["price"] <= price_info:
+                    continue
+                sizes[tier] = {
+                    "price": price_info,
+                    "was_price": None,
+                    "is_best": False,
+                    "label": get_size_label(tier),
+                }
                 all_prices_flat.append(price_info)
                 active_tiers.add(tier)
 
@@ -140,8 +265,20 @@ def build_price_table(plant, latest_prices, retailers_by_id):
         }
 
     # Mark best price per tier
-    tier_order = ["quart", "1gal", "2gal", "3gal", "5gal", "bareroot", "bulb"]
-    active_tiers_sorted = [t for t in tier_order if t in active_tiers]
+    # Full canonical order — tiers not in this list sort to the end alphabetically
+    tier_order = [
+        "quart", "1gal", "2gal", "3gal", "5gal", "7gal", "10gal", "15gal",
+        "bareroot", "jumbo-bareroot", "premium-bareroot",
+        "1-2ft", "2-3ft", "3-4ft", "4-5ft", "5-6ft", "6-7ft", "7-8ft", "8-9ft",
+        "dwarf", "dwarf-bareroot", "dwarf-ez-start", "dwarf-potted",
+        "semi-dwarf", "semi-dwarf-bareroot", "semi-dwarf-ez-start", "semi-dwarf-potted",
+        "supreme", "supreme-bareroot", "supreme-ez-start",
+        "ultra-supreme", "standard", "potted",
+        "bulb", "4inch", "default",
+    ]
+    known = set(tier_order)
+    leftover = sorted(t for t in active_tiers if t not in known)
+    active_tiers_sorted = [t for t in tier_order if t in active_tiers] + leftover
 
     for tier in active_tiers_sorted:
         best_price = float("inf")
@@ -157,6 +294,21 @@ def build_price_table(plant, latest_prices, retailers_by_id):
         if best_retailer:
             prices[best_retailer]["sizes"][tier]["is_best"] = True
             prices[best_retailer]["has_best_price"] = True
+
+    # Sort retailers: in-stock cheapest first, no-price next, sold-out last
+    def _retailer_sort_key(item):
+        rid, rdata = item
+        if rdata["in_stock"] is False:
+            return (2, float("inf"))
+        tier_prices = [
+            s["price"] for s in rdata["sizes"].values()
+            if isinstance(s, dict) and s.get("price")
+        ]
+        if not tier_prices:
+            return (1, float("inf"))
+        return (0, min(tier_prices))
+
+    prices = dict(sorted(prices.items(), key=_retailer_sort_key))
 
     lowest = min(all_prices_flat) if all_prices_flat else None
     highest = max(all_prices_flat) if all_prices_flat else None
@@ -211,6 +363,112 @@ def build_price_history_json(price_entries):
             for rid in retailers
         ],
     })
+
+
+# ---------------------------------------------------------------------------
+# Heat map helpers
+# ---------------------------------------------------------------------------
+_MONTH_ABBR = {
+    'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
+    'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12,
+}
+
+def parse_month_range(s):
+    """Parse 'May-Jun', 'Sep', 'Mar-May' → list of month numbers (1-12)."""
+    if not s:
+        return []
+    parts = re.split(r'[-\u2013]', s.strip())
+    parsed = [_MONTH_ABBR.get(p.strip().lower()[:3]) for p in parts]
+    parsed = [m for m in parsed if m]
+    if len(parsed) == 1:
+        return parsed
+    if len(parsed) >= 2:
+        start, end = parsed[0], parsed[1]
+        if start <= end:
+            return list(range(start, end + 1))
+        # Wraps year-end (e.g. Nov-Jan)
+        return list(range(start, 13)) + list(range(1, end + 1))
+    return []
+
+
+def build_heatmap_data(plants):
+    """
+    Aggregate per-category price seasonality and zone planting windows.
+    Returns (categories_list, hm_data_dict) for template + JS.
+    """
+    from collections import defaultdict
+
+    cat_plants = defaultdict(list)
+    for p in plants:
+        if p.get('price_seasonality') or p.get('planting_seasons'):
+            cat_plants[p.get('category', 'uncategorized')].append(p)
+
+    all_zones = list(range(3, 10))  # 3–9
+    month_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+                   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+    categories = []
+    hm_data = {}  # keyed by cat id, used for JS zone-switching
+
+    for cat_id, cat_plant_list in sorted(cat_plants.items()):
+        # --- Average monthly price index across plants that have it ---
+        index_lists = [
+            p['price_seasonality']['monthly_index']
+            for p in cat_plant_list
+            if p.get('price_seasonality', {}).get('monthly_index')
+            and len(p['price_seasonality']['monthly_index']) == 12
+        ]
+        if index_lists:
+            avg_index = [
+                round(sum(index_lists[r][m] for r in range(len(index_lists))) / len(index_lists))
+                for m in range(12)
+            ]
+            # Clamp to 1–5
+            avg_index = [max(1, min(5, v)) for v in avg_index]
+        else:
+            avg_index = [3] * 12  # default: all average
+
+        # best_buy / worst_buy / tip from most representative plant
+        best_buy = worst_buy = tip = ''
+        for p in cat_plant_list:
+            seas = p.get('price_seasonality', {})
+            if seas.get('best_buy'):
+                best_buy = seas['best_buy']
+                worst_buy = seas.get('worst_buy', '')
+                tip = seas.get('tip', '')
+                break
+
+        # --- Union planting windows per zone ---
+        planting_by_zone = {}
+        for z in all_zones:
+            zk = str(z)
+            plantable = [False] * 12
+            for p in cat_plant_list:
+                seasons = p.get('planting_seasons', {})
+                if zk not in seasons:
+                    continue
+                z_seasons = seasons[zk]
+                for season_type in ('spring', 'fall', 'summer'):
+                    months = parse_month_range(z_seasons.get(season_type, ''))
+                    for m in months:
+                        if 1 <= m <= 12:
+                            plantable[m - 1] = True
+            planting_by_zone[zk] = plantable
+
+        cat_entry = {
+            'id': cat_id,
+            'name': cat_id.replace('-', ' ').title(),
+            'monthly_price_index': avg_index,
+            'best_buy': best_buy or 'Fall',
+            'worst_buy': worst_buy or 'Spring',
+            'tip': tip,
+            'planting_by_zone': planting_by_zone,
+            'planting_zones_json': json.dumps(planting_by_zone),
+        }
+        categories.append(cat_entry)
+        hm_data[cat_id] = {'planting_by_zone': planting_by_zone}
+
+    return categories, hm_data, all_zones, month_names
 
 
 def find_similar_plants(plant, all_plants, n=5):
@@ -488,10 +746,38 @@ def build_site(build_guides=True, build_products=True):
     print("  Written to site/index.html")
 
     # -----------------------------------------------------------------------
+    # Build wishlist page (My Plant List)
+    # -----------------------------------------------------------------------
+    print("\nBuilding wishlist page...")
+    wishlist_tpl = env.get_template("wishlist.html")
+    html = wishlist_tpl.render()
+    with open(os.path.join(SITE_DIR, "my-list.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+    print("  Written to site/my-list.html")
+
+    # -----------------------------------------------------------------------
+    # Build heat map page
+    # -----------------------------------------------------------------------
+    print("\nBuilding heat map page...")
+    hm_categories, hm_data, hm_zones, hm_month_names = build_heatmap_data(plants)
+    heatmap_tpl = env.get_template("heat_map.html")
+    html = heatmap_tpl.render(
+        categories=hm_categories,
+        hm_data_json=json.dumps(hm_data),
+        zones=hm_zones,
+        default_zone=6,
+        month_names=hm_month_names,
+        retailer_count=len([r for r in retailers if r.get("active")]),
+    )
+    with open(os.path.join(SITE_DIR, "heat-map.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+    print("  Written to site/heat-map.html")
+
+    # -----------------------------------------------------------------------
     # Build sitemap.xml
     # -----------------------------------------------------------------------
     print("\nBuilding sitemap.xml...")
-    sitemap_urls = ["/"]
+    sitemap_urls = ["/", "/my-list.html", "/heat-map.html"]
     for plant in plants:
         sitemap_urls.append(f"/plants/{plant['id']}.html")
     for cat_id in categories_map:
@@ -514,13 +800,15 @@ def build_site(build_guides=True, build_products=True):
     # -----------------------------------------------------------------------
     # Summary
     # -----------------------------------------------------------------------
-    total_pages = len(plants) + len(categories_map) + len(article_files) + 1
+    total_pages = len(plants) + len(categories_map) + len(article_files) + 3
     print(f"\n{'=' * 60}")
     print(f"Build complete: {total_pages} pages generated")
     print(f"  {len(plants)} product pages")
     print(f"  {len(categories_map)} category pages")
     print(f"  {len(article_files)} guide pages")
     print(f"  1 homepage")
+    print(f"  1 wishlist page (my-list.html)")
+    print(f"  1 heat map page (heat-map.html)")
     print(f"  1 sitemap.xml")
     print(f"Output: {SITE_DIR}")
     print(f"{'=' * 60}")

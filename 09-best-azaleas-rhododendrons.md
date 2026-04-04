@@ -134,4 +134,56 @@ If you see damage, horticultural oil or insecticidal soap applied to the undersi
 
 - **Buy in fall.** Azaleas and rhododendrons establish well when planted in early fall. September plantings often get 15-25% discounts as nurseries clear end-of-season inventory.
 
+---
+
+## Pruning: When, Why, and How Much
+
+Timing is everything with azalea and rhododendron pruning, and getting it wrong costs you a year of flowers. Both plants set their flower buds for next year during summer — on the new growth that develops after the current season's flowers finish. Prune after bud set and you're cutting off next year's blooms.
+
+**The rule:** Prune immediately after flowering — within 2-4 weeks of bloom. That's late April or May for most spring-blooming azaleas. You have a window of roughly 6-8 weeks between when the flowers fade and when the plant sets next year's buds. Prune in that window and you get a full year of regrowth before the following spring. Prune in August, September, or fall and you've cut off everything that would have bloomed.
+
+**For Encore Azaleas**, the timing is more nuanced because they bloom in multiple flushes. Light shaping can be done after the spring flush (May-June). Avoid heavy pruning entirely because any major cuts will interrupt either the summer or fall bloom cycle.
+
+**How much to prune:** Less than you think. Azaleas and rhododendrons are not shrubs that need aggressive annual cutting. The goal is shaping, not reduction. Remove dead wood, crossing branches, and stems that are disrupting the plant's natural form. Never remove more than 1/3 of the plant in a single season. Hard pruning (cutting back to stubs) produces a temporary mess of weak, upright shoots and no flowers for 1-2 years — use it only on severely overgrown plants that need a complete reset.
+
+**Deadheading rhododendrons:** After a rhododendron blooms, the spent flower trusses can be snapped off by hand — just pinch them cleanly at the base, taking care not to damage the new growth buds that are already forming at the same spot. This deadheading redirects energy from seed production into new vegetative growth, producing a more floriferous plant the following year. It's not strictly necessary, but on small plants it makes a visible difference.
+
+---
+
+## Troubleshooting: Why Your Azaleas Look Bad
+
+**Yellow leaves with green veins (interveinal chlorosis):** Classic iron deficiency caused by high soil pH. The plant can't absorb iron from alkaline soil. Test your pH immediately. Short-term: chelated iron spray gives the foliage a quick boost. Long-term: lower the pH with elemental sulfur and add acidic mulch (pine bark, pine straw).
+
+**Yellow leaves falling off in spring:** This is normal. Azaleas are technically evergreen, but they do drop their oldest leaves (usually 2-3 year old inner foliage) in spring as new growth pushes out. A little yellowing and leaf drop at the center of the plant in April or May is not a sign of disease or stress — it's the plant's natural renewal cycle. If the yellowing is on the outer, newer growth, that's a different problem (likely pH or pest related).
+
+**No flowers despite healthy foliage:** Most likely cause is pruning at the wrong time. If someone pruned the plant in late summer or fall, next year's buds were removed. Second cause: a late frost that killed the buds after they'd started to swell. Check whether the plant was pruned at the wrong time, and in future years protect buds in spring frost events with a temporary frost cloth.
+
+**Powdery white coating on leaves:** Powdery mildew, a fungal disease that appears in humid conditions with poor air circulation. It's cosmetic and rarely fatal, but it looks terrible. Improve air circulation by selectively thinning the canopy, avoid overhead watering in the evening, and treat with a fungicide labeled for powdery mildew if the infection is heavy.
+
+**Stippled, bleached, silvery foliage:** Azalea lacebug (described above in the pest section). Look on the leaf undersides for the insects and dark tar-like droppings.
+
+**Brown leaf edges in winter (rhododendrons):** Wind desiccation. Cold, dry wind pulls moisture from the evergreen leaves faster than frozen roots can replace it. The damage appears on the edges and tips first. Prevention: plant in a location with wind protection, or wrap with burlap in the first winter or two while the root system establishes. Anti-desiccant sprays (Wilt-Pruf, Cloud Cover) applied in late November also help.
+
+---
+
+## Frequently Asked Questions
+
+**How fast do azaleas grow?**
+Most evergreen azaleas grow 4-6 inches per year under good conditions. Deciduous azaleas are slightly faster — 8-12 inches per year in fertile soil. Don't expect instant impact. A 1-gallon azalea planted this spring will be meaningfully larger by fall but won't reach mature size for 3-5 years. If you want a full look now, buy 3-gallon specimens and accept the higher cost.
+
+**Can azaleas grow in full sun?**
+Most evergreen azaleas prefer partial shade — morning sun with afternoon shade is the textbook recommendation. In zones 7-9, afternoon shade is almost mandatory to prevent leaf scorch and stress. In zones 5-6 where summer temperatures are cooler, azaleas handle more sun, but they still prefer dappled light. Deciduous azaleas (like Gibraltar and native species) are somewhat more sun-tolerant than evergreen types. P.J.M. Rhododendron is the most sun-tolerant species on this list, handling full sun in cold climates without issue.
+
+**What's the difference between Encore Azaleas and regular azaleas?**
+Regular azaleas bloom once in spring — typically a 2-3 week display in April or May. Encore Azaleas bloom three times: spring, summer, and fall. The spring display is similar in intensity to traditional azaleas. The summer and fall rebloom is lighter but real and consistent. The trade-off is price — Encore Azaleas cost $5-$15 more per plant than comparable non-reblooming varieties, and they require the same acidic soil and partial shade that all azaleas need.
+
+**Do I need to fertilize azaleas?**
+Azaleas are light feeders. One application of an acidic slow-release fertilizer (formulated for azaleas, rhododendrons, and hollies) in early spring is typically sufficient. Don't over-fertilize — excess nitrogen produces lush foliage at the expense of flowers. Never fertilize after mid-July; late fertilization stimulates new growth that won't harden off before winter. And skip the general-purpose balanced fertilizers — the high phosphorus and non-acidic formulas can raise soil pH over time, working against you.
+
+**Can rhododendrons survive zone 5 winters?**
+Some can. P.J.M. Rhododendron is the cold-hardy standout — reliably zone 4. Nova Zembla is rated to zone 4-5. The standard-issue catawba hybrids that appear in many nurseries (Roseum Elegans, Cunningham's White) are zone 5-6. Most large-leafed tropical-looking rhododendrons that you see in Pacific Northwest and British Columbia gardens are zone 7-8 only and won't survive a zone 5 winter. When buying for cold climates, confirm the zone rating for the specific cultivar, not just the species.
+
+**How far apart should I plant azaleas?**
+Space them based on mature width, not current size. Most compact azaleas (Delaware Valley White, most Encore varieties) mature at 3-5 feet wide. Plant them 3-4 feet apart for eventual coverage, or 4-5 feet apart if you want definition between individual plants. Resist the urge to pack them in for immediate impact — overcrowded azaleas have poor air circulation, higher disease pressure, and compete for moisture and nutrients. The bed will look sparse for 2-3 years and then fill in perfectly.
+
 → [Browse all azalea and rhododendron price comparisons](/category/azaleas-rhododendrons)

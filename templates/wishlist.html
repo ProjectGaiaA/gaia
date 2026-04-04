@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}My Plant List{% endblock %}
+{% block description %}Your saved plants on PlantPriceTracker. Track prices, get planting reminders, and find the best time to buy.{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo;
+    <span>My Plant List</span>
+</nav>
+
+<div class="wishlist-page">
+    <h1>&#x2661; My Plant List</h1>
+    <p class="wl-subtitle"><span id="wishlist-count">0</span> plants saved &mdash; click any plant to compare prices, or save more while browsing.</p>
+
+    <!-- Price drop alert opt-in -->
+    <div class="wl-alert-banner" id="wl-alert-banner">
+        <div>
+            <strong>Get price drop alerts for your saved plants</strong>
+            We'll email you when a plant on your list drops in price or hits its best buying window.
+        </div>
+        <form class="wl-alert-form" id="wl-alert-form" onsubmit="return wlAlertSignup(event)">
+            <input type="email" id="wl-alert-email" placeholder="Your email address" autocomplete="email" required>
+            <button type="submit">Notify Me</button>
+        </form>
+    </div>
+
+    <div class="wl-toolbar">
+        <p style="font-size:0.85rem; color:var(--gray-500); margin:0;">
+            Prices update daily. <a href="/heat-map.html">View buy &amp; plant timing &rarr;</a>
+        </p>
+        <button class="wl-clear-btn" id="wl-clear-all">Clear All</button>
+    </div>
+
+    <!-- Wishlist cards rendered by wishlist.js -->
+    <div id="wishlist-container"></div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Hide alert banner if already signed up
+(function () {
+    if (localStorage.getItem('ppt_signup')) {
+        var banner = document.getElementById('wl-alert-banner');
+        if (banner) banner.style.display = 'none';
+    }
+})();
+
+function wlAlertSignup(e) {
+    e.preventDefault();
+    var email = document.getElementById('wl-alert-email').value.trim();
+    if (!email) return false;
+    // Reuse existing email gate storage key for consistency
+    localStorage.setItem('ppt_signup', '1');
+    localStorage.setItem('ppt_email', email);
+    var banner = document.getElementById('wl-alert-banner');
+    if (banner) {
+        banner.innerHTML = '<p style="margin:0; color:var(--green-dark); font-weight:600;">&#x2713; You\'re signed up for price drop alerts.</p>';
+    }
+    return false;
+}
+</script>
+{% endblock %}
