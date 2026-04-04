@@ -296,6 +296,59 @@ tr.sold-out-row .price-cell .was-price { color: var(--gray-300); }
 tr.sold-out-row .retailer-name { color: var(--gray-500); }
 tr.sold-out-row .buy-btn { background: var(--gray-500); }
 
+/* Mobile card layout for comparison table — stacks each retailer as a card */
+@media (max-width: 600px) {
+    .table-wrapper { overflow-x: unset; }
+    .comparison-table,
+    .comparison-table thead,
+    .comparison-table tbody,
+    .comparison-table th,
+    .comparison-table td,
+    .comparison-table tr { display: block; }
+    .comparison-table thead { display: none; }
+    .comparison-table tr {
+        border: 1px solid var(--gray-300);
+        border-radius: var(--radius);
+        margin-bottom: 0.75rem;
+        padding: 0.25rem 0.5rem 0.5rem;
+        background: var(--white) !important;
+    }
+    .comparison-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        border: none;
+        border-bottom: 1px solid var(--gray-100);
+        padding: 0.4rem 0.25rem;
+    }
+    .comparison-table td:last-child { border-bottom: none; }
+    .comparison-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        text-align: left;
+        color: var(--gray-700);
+        flex-shrink: 0;
+        margin-right: 0.75rem;
+        font-size: 0.8rem;
+    }
+    .comparison-table td.retailer-name {
+        font-size: 1rem;
+        padding: 0.5rem 0.25rem 0.6rem;
+        border-bottom: 2px solid var(--gray-200);
+        justify-content: flex-start;
+    }
+    .comparison-table td.retailer-name::before { display: none; }
+    .comparison-table td[data-label=""]::before { display: none; }
+    .comparison-table .action-cell {
+        padding-top: 0.5rem;
+        justify-content: flex-end;
+    }
+    .comparison-table .action-cell::before { display: none; }
+    .buy-btn { width: 100%; text-align: center; padding: 0.5rem; }
+    tr.sold-out-row { opacity: 0.65; }
+}
+
 /* Shipping column */
 .shipping-cell { white-space: nowrap; font-size: 0.8rem; }
 .shipping-info { color: var(--gray-700); }

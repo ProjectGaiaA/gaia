@@ -50,7 +50,7 @@
                 <li><a href="/category/japanese-maples.html">Japanese Maples</a></li>
                 <li><a href="/category/fruit-trees.html">Fruit Trees</a></li>
                 <li><a href="/category/roses.html">Roses</a></li>
-                <li><a href="/guides/">Guides</a></li>
+                <li><a href="/guides/index.html">Guides</a></li>
                 <li><a href="/my-list.html">&#x2661; My List<span class="wishlist-nav-count"></span></a></li>
                 <li><a href="/improve.html">Improve</a></li>
             </ul>
@@ -138,7 +138,7 @@
                                     
                                 </td>
                                 
-                                <td class="price-cell">
+                                <td class="price-cell" data-label="1 Gal">
                                     
                                         
                                         <span class="best-price">$18.95</span>
@@ -147,7 +147,7 @@
                                     
                                 </td>
                                 
-                                <td class="price-cell">
+                                <td class="price-cell" data-label="3 Gal">
                                     
                                         
                                         $55.95
@@ -156,7 +156,7 @@
                                     
                                 </td>
                                 
-                                <td class="price-cell">
+                                <td class="price-cell" data-label="7 Gal">
                                     
                                         
                                         <span class="best-price">$249.95</span>
@@ -165,12 +165,12 @@
                                     
                                 </td>
                                 
-                                <td class="stock-cell">
+                                <td class="stock-cell" data-label="Stock">
                                     
                                     <span class="stock-unknown">Check Site</span>
                                     
                                 </td>
-                                <td class="shipping-cell">
+                                <td class="shipping-cell" data-label="Shipping">
                                     
                                     <span class="shipping-info">
                                         
@@ -179,7 +179,7 @@
                                     </span>
                                     
                                 </td>
-                                <td class="action-cell">
+                                <td class="action-cell" data-label="">
                                     <a href="https://www.plantingtree.com/products/delaware-valley-white-azalea?variant=41921630020" target="_blank" rel="noopener sponsored" class="buy-btn">
                                         Buy at PlantingTree
                                     </a>
@@ -196,7 +196,7 @@
                                     
                                 </td>
                                 
-                                <td class="price-cell">
+                                <td class="price-cell" data-label="1 Gal">
                                     
                                         
                                         $32.95
@@ -207,7 +207,7 @@
                                     
                                 </td>
                                 
-                                <td class="price-cell">
+                                <td class="price-cell" data-label="3 Gal">
                                     
                                         
                                         <span class="best-price">$42.95</span>
@@ -218,19 +218,19 @@
                                     
                                 </td>
                                 
-                                <td class="price-cell">
+                                <td class="price-cell" data-label="7 Gal">
                                     
                                         <span class="no-data">&mdash;</span>
                                     
                                 </td>
                                 
-                                <td class="stock-cell">
+                                <td class="stock-cell" data-label="Stock">
                                     
                                     <span class="in-stock">In Stock</span>
                                     
                                     
                                 </td>
-                                <td class="shipping-cell">
+                                <td class="shipping-cell" data-label="Shipping">
                                     
                                     <span class="shipping-info">
                                         
@@ -239,9 +239,9 @@
                                     </span>
                                     
                                 </td>
-                                <td class="action-cell">
+                                <td class="action-cell" data-label="">
                                     <a href="https://www.fast-growing-trees.com/products/delaware-valley-white-azalea" target="_blank" rel="noopener sponsored" class="buy-btn">
-                                        Buy at Fast
+                                        Buy at Fast Growing Trees
                                     </a>
                                     
                                     <span class="affiliate-label">affiliate link</span>
@@ -500,12 +500,16 @@
                         <a href="/plants/encore-azalea.html">
                             <span class="similar-name">Encore Azalea</span>
                             
+                            <span class="similar-price">from $32.95</span>
+                            
                         </a>
                     </li>
                     
                     <li>
                         <a href="/plants/pjm-rhododendron.html">
                             <span class="similar-name">P.J.M. Rhododendron</span>
+                            
+                            <span class="similar-price">from $109.81</span>
                             
                         </a>
                     </li>
@@ -544,7 +548,7 @@
             <div class="footer-links">
                 <a href="/disclosure.html">Disclosure</a>
                 <a href="/privacy.html">Privacy Policy</a>
-                <a href="/guides/">Buying Guides</a>
+                <a href="/guides/index.html">Buying Guides</a>
                 <a href="/improve.html">Improve This Site</a>
             </div>
             <p class="footer-copyright">&copy; 2026 PlantPriceTracker. Prices updated daily. Not affiliated with any nursery.</p>
@@ -553,6 +557,21 @@
 
     <script src="/assets/js/wishlist.js"></script>
     
+<script>
+// Mobile table: copy header text into data-label on each cell for CSS card layout
+(function() {
+    document.querySelectorAll('.comparison-table').forEach(function(table) {
+        var headers = Array.from(table.querySelectorAll('thead th')).map(function(th) {
+            return th.textContent.trim();
+        });
+        table.querySelectorAll('tbody tr').forEach(function(row) {
+            Array.from(row.cells).forEach(function(cell, i) {
+                if (!cell.dataset.label && headers[i]) cell.dataset.label = headers[i];
+            });
+        });
+    });
+})();
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>

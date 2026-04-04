@@ -110,7 +110,7 @@
                                     {% if not retailer_prices.has_affiliate %}<span class="no-affiliate" title="We don't earn a commission from this retailer">*</span>{% endif %}
                                 </td>
                                 {% for tier in active_size_tiers %}
-                                <td class="price-cell">
+                                <td class="price-cell" data-label="{{ tier|replace('gal',' Gal')|replace('quart','Quart')|replace('bareroot','Bare Root')|title }}">
                                     {% if retailer_prices.sizes[tier] %}
                                         {% if retailer_prices.sizes[tier].is_best %}
                                         <span class="best-price">${{ '%.2f'|format(retailer_prices.sizes[tier].price) }}</span>
@@ -125,7 +125,7 @@
                                     {% endif %}
                                 </td>
                                 {% endfor %}
-                                <td class="stock-cell">
+                                <td class="stock-cell" data-label="Stock">
                                     {% if retailer_prices.in_stock %}
                                     <span class="in-stock">In Stock</span>
                                     {% if retailer_prices.ships_season %}
@@ -137,7 +137,7 @@
                                     <span class="out-of-stock">Sold Out</span>
                                     {% endif %}
                                 </td>
-                                <td class="shipping-cell">
+                                <td class="shipping-cell" data-label="Shipping">
                                     {% if retailer_prices.shipping %}
                                     <span class="shipping-info{% if retailer_prices.shipping.free_all %} free-ship{% endif %}">
                                         {% if retailer_prices.shipping.free_all %}
@@ -154,9 +154,9 @@
                                     <span class="shipping-info">Check site</span>
                                     {% endif %}
                                 </td>
-                                <td class="action-cell">
+                                <td class="action-cell" data-label="">
                                     <a href="{{ retailer_prices.buy_url }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="buy-btn">
-                                        Buy at {{ retailer_prices.retailer_name.split(' ')[0] }}
+                                        Buy at {{ retailer_prices.retailer_name }}
                                     </a>
                                     {% if retailer_prices.has_affiliate %}
                                     <span class="affiliate-label">affiliate link</span>
@@ -351,6 +351,21 @@
 {% endblock %}
 
 {% block scripts %}
+<script>
+// Mobile table: copy header text into data-label on each cell for CSS card layout
+(function() {
+    document.querySelectorAll('.comparison-table').forEach(function(table) {
+        var headers = Array.from(table.querySelectorAll('thead th')).map(function(th) {
+            return th.textContent.trim();
+        });
+        table.querySelectorAll('tbody tr').forEach(function(row) {
+            Array.from(row.cells).forEach(function(cell, i) {
+                if (!cell.dataset.label && headers[i]) cell.dataset.label = headers[i];
+            });
+        });
+    });
+})();
+</script>
 {% if price_history %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>

@@ -34,11 +34,5 @@
       ]
     }
   ],
-  "redirects": [
-    {
-      "source": "/guides",
-      "destination": "/guides/",
-      "permanent": false
-    }
-  ]
+  "redirects": []
 }

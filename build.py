@@ -529,6 +529,9 @@ def parse_article_md(filepath):
     md = markdown.Markdown(extensions=["extra", "toc"])
     html = md.convert(text)
 
+    # Strip the first <h1> — guide.html renders the title as its own H1 to avoid duplicate H1s
+    html = re.sub(r'^<h1[^>]*>.*?</h1>\s*', '', html, count=1, flags=re.DOTALL)
+
     # Fix internal links: add .html extension to /plants/ and /category/ links
     html = re.sub(
         r'href="(/(?:plants|category|guides)/[^"]+?)(?<!\.html)"',
@@ -697,6 +700,12 @@ def build_site(build_guides=True, build_products=True):
             price_history_json = build_price_history_json(price_entries)
             similar = find_similar_plants(plant, plants)
 
+            # Enrich plant dict with live price summary so category pages can show prices
+            plant["lowest_price"] = price_table["lowest_price"]
+            plant["highest_price"] = price_table["highest_price"]
+            plant["savings_pct"] = price_table["savings_pct"]
+            plant["retailer_count"] = price_table["offer_count"]
+
             html = product_tpl.render(
                 plant=plant,
                 last_updated=date.today().strftime("%B %d, %Y"),
@@ -798,26 +807,24 @@ def build_site(build_guides=True, build_products=True):
             "price_range": f"${min(p.get('price_range', '$0').split('-')[0].replace('$','') or '0' for p in cat_plants)}-${max(p.get('price_range', '$0').split('-')[-1].replace('$','') or '0' for p in cat_plants)}" if cat_plants else "",
         })
 
-    # Hero example (use first plant with price data)
+    # Hero example — pick the plant with the biggest real price spread from live data
     hero_example = None
+    best_savings = 0
     for plant in plants:
-        pr = plant.get("price_range", "")
-        if "-" in pr:
-            parts = pr.replace("$", "").split("-")
-            try:
-                low, high = float(parts[0]), float(parts[1])
-                if low < high:
-                    hero_example = {
-                        "id": plant["id"],
-                        "name": plant["common_name"],
-                        "low": low,
-                        "high": high,
-                        "savings_pct": round((1 - low / high) * 100),
-                        "retailer_count": 4,
-                    }
-                    break
-            except (ValueError, IndexError):
-                pass
+        low = plant.get("lowest_price")
+        high = plant.get("highest_price")
+        if low and high and high > low:
+            pct = round((1 - low / high) * 100)
+            if pct > best_savings:
+                best_savings = pct
+                hero_example = {
+                    "id": plant["id"],
+                    "name": plant["common_name"],
+                    "low": low,
+                    "high": high,
+                    "savings_pct": pct,
+                    "retailer_count": plant.get("retailer_count", 4),
+                }
 
     # Guides list for homepage
     article_files = sorted(glob.glob(os.path.join(ARTICLES_DIR, "[0-9][0-9]-*.md")))
@@ -895,10 +902,23 @@ def build_site(build_guides=True, build_products=True):
     print("  Written to site/improve.html")
 
     # -----------------------------------------------------------------------
+    # Generate robots.txt
+    # -----------------------------------------------------------------------
+    robots_txt = (
+        "User-agent: *\n"
+        "Allow: /\n"
+        "\n"
+        "Sitemap: https://www.plantpricetracker.com/sitemap.xml\n"
+    )
+    with open(os.path.join(SITE_DIR, "robots.txt"), "w", encoding="utf-8") as f:
+        f.write(robots_txt)
+    print("\nWritten site/robots.txt")
+
+    # -----------------------------------------------------------------------
     # Build sitemap.xml
     # -----------------------------------------------------------------------
     print("\nBuilding sitemap.xml...")
-    sitemap_urls = ["/", "/my-list.html", "/heat-map.html", "/improve.html"]
+    sitemap_urls = ["/", "/my-list.html", "/heat-map.html", "/improve.html", "/guides/index.html"]
     for plant in plants:
         sitemap_urls.append(f"/plants/{plant['id']}.html")
     for cat_id in categories_map:
