@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
-{% block title %}{{ plant.common_name }} Price Comparison{% endblock %}
-{% block description %}Compare {{ plant.common_name }} prices across {{ prices|length }} online nurseries. Find the best deal on {{ plant.botanical_name }}. Prices updated daily.{% endblock %}
+{% block title %}{{ plant.common_name }} Prices — Compare {{ offer_count }}+ Nurseries (2026){% endblock %}
+{% block description %}{% if lowest_price and highest_price %}{{ plant.common_name }} prices from ${{ '%.0f'|format(lowest_price) }}–${{ '%.0f'|format(highest_price) }} across {{ offer_count }}+ online nurseries. {% endif %}Find the best deal on {{ plant.botanical_name }}. Prices updated daily.{% endblock %}
 
 {% block schema %}
 <script type="application/ld+json">

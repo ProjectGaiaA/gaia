@@ -32,6 +32,96 @@ SITE_DIR = os.path.join(BASE_DIR, "site")
 ARTICLES_DIR = BASE_DIR  # Article .md files are in project root
 PRICES_DIR = os.path.join(DATA_DIR, "prices")
 
+BASE_URL = "https://www.plantpricetracker.com"
+
+# ---------------------------------------------------------------------------
+# Guide SEO overrides — custom meta descriptions and FAQs per guide
+# ---------------------------------------------------------------------------
+GUIDE_META_DESCRIPTIONS = {
+    "best-hydrangeas-to-buy-online": "Compare hydrangea prices across 10+ online nurseries. Incrediball, Limelight, Annabelle — find the best deal with prices updated daily.",
+    "best-fruit-trees-to-buy-online": "Compare fruit tree prices online. Apple, peach, cherry, and pear trees from top nurseries — updated daily. Save 20–40% vs local garden centers.",
+    "best-privacy-trees": "Find the cheapest privacy trees online. Compare Thuja Green Giant, Leyland Cypress, and arborvitae prices across 10+ nurseries — updated daily.",
+    "cheapest-places-to-buy-online": "The cheapest places to buy plants online in 2026. We compared 10+ nurseries so you don't have to — see who wins by plant type.",
+    "best-japanese-maple-varieties": "Compare Japanese maple prices online. Bloodgood, Crimson Queen, Emperor I — find the best deal across 10+ nurseries with daily price updates.",
+    "best-knock-out-roses": "Compare Knock Out rose prices across 10+ online nurseries. Double, Rainbow, and Petite varieties — find the lowest price with daily updates.",
+    "best-blueberry-bushes": "Compare blueberry bush prices online. Bluecrop, Duke, Sunshine Blue — find the best deal across 10+ nurseries. Prices updated daily.",
+    "best-flowering-trees-small-yards": "Compare small flowering tree prices online. Dogwood, Redbud, Cherry — find the lowest price across 10+ nurseries. Updated daily.",
+    "best-azaleas-rhododendrons": "Compare azalea and rhododendron prices online. Find the best deals across 10+ nurseries with daily price updates.",
+    "best-time-to-buy-plants-online": "When is the cheapest time to buy plants online? See price seasonality data for trees, shrubs, and perennials — and exactly when to buy.",
+}
+
+GUIDE_FAQS = {
+    "best-hydrangeas-to-buy-online": [
+        {"q": "What are the best hydrangeas to buy online?", "a": "Incrediball, Limelight, Annabelle, and Endless Summer are consistently the best value — widely available from online nurseries at 20–40% below local garden center prices."},
+        {"q": "When is the best time to buy hydrangeas online?", "a": "Late spring (May–June) for immediate planting, or fall (September–October) when nurseries discount to clear stock before winter."},
+        {"q": "What size hydrangea should I order?", "a": "A 1-gallon plant establishes quickly and costs the least per plant. 3-gallon gives faster results if you need coverage sooner."},
+        {"q": "How much do hydrangeas cost online vs local stores?", "a": "Online prices range from $18–$65 depending on size. Local garden centers typically charge $35–$80 for the same varieties."},
+        {"q": "Do online nurseries ship healthy hydrangeas?", "a": "Yes — top-rated nurseries ship dormant or bare-root stock that establishes well. Look for guarantees on arrival condition."},
+    ],
+    "best-fruit-trees-to-buy-online": [
+        {"q": "What fruit trees can you buy online and ship to your home?", "a": "Apples, pears, plums, cherries, peaches, and citrus are all available. Bare-root trees ship best in late winter when dormant."},
+        {"q": "Are online fruit trees as healthy as local nursery trees?", "a": "Yes — online nurseries often offer more variety and younger certified stock. Look for USDA certified disease-free designations."},
+        {"q": "How much does a fruit tree cost online?", "a": "Bare-root trees start around $25–$40. Container trees range from $45–$120 depending on variety and size."},
+        {"q": "Do I need two fruit trees for pollination?", "a": "Most apples, pears, and sweet cherries require a second compatible variety for pollination. Peaches, sour cherries, and figs are typically self-fertile."},
+        {"q": "When should I plant a bare-root fruit tree?", "a": "Plant as soon as the ground is workable in early spring, before new growth begins. Fall planting works in zones 6+."},
+    ],
+    "best-privacy-trees": [
+        {"q": "What is the fastest growing privacy tree you can buy online?", "a": "Thuja Green Giant and Leyland Cypress are the fastest — growing 3–5 feet per year under good conditions."},
+        {"q": "How many privacy trees do I need per foot of fence line?", "a": "Space Thuja Green Giant 5–6 feet apart; Leyland Cypress 6–8 feet apart for a dense hedge at maturity."},
+        {"q": "What are the cheapest privacy trees to buy online?", "a": "Arborvitae and Leyland Cypress in 1-gallon sizes start around $15–$25 online — significantly cheaper than 3-gallon local nursery stock."},
+        {"q": "Do privacy trees need full sun?", "a": "Most fast-growing options (Thuja, Leyland Cypress) prefer full sun. Emerald Green Arborvitae and Nellie Stevens Holly tolerate partial shade."},
+        {"q": "When is the best time to plant privacy trees?", "a": "Fall is ideal — soil is warm, air is cool, and trees establish root systems before summer heat stress."},
+    ],
+    "cheapest-places-to-buy-online": [
+        {"q": "Where is the cheapest place to buy plants online?", "a": "Nature Hills, Fast Growing Trees, and Walmart Garden often have the lowest prices, but comparing across nurseries for your specific plant always finds the best deal."},
+        {"q": "Are cheap online plants worth it?", "a": "Yes, if you buy during sales and choose appropriate sizes. A 1-gallon plant at $15 from a reputable nursery performs the same as a $45 3-gallon from a local store."},
+        {"q": "When do online nurseries have the biggest plant sales?", "a": "End of summer (August–September) and late spring (late May–June) are when nurseries discount heavily to move inventory before the off-season."},
+        {"q": "Do online nurseries charge a lot for shipping?", "a": "Shipping typically runs $15–$30 per order regardless of plant count. Ordering 3+ plants makes the shipping cost much more efficient."},
+        {"q": "Is it safe to buy plants from Amazon or Walmart online?", "a": "Third-party sellers vary widely in quality. For best results, buy directly from the nursery's own website or use a dedicated plant comparison tool."},
+    ],
+    "best-japanese-maple-varieties": [
+        {"q": "What is the best Japanese maple to buy online?", "a": "Bloodgood, Emperor I, and Crimson Queen are the most available and competitively priced online — compare across nurseries for the best deal."},
+        {"q": "How much does a Japanese maple cost online?", "a": "Small 1-gallon plants start around $20–$35. Named varieties in 3-gallon containers typically run $45–$95 online vs $75–$150 at local nurseries."},
+        {"q": "Are Japanese maples slow-growing?", "a": "Most grow 1–2 feet per year. Upright varieties like Bloodgood grow faster than weeping laceleaf varieties."},
+        {"q": "What hardiness zones can Japanese maples grow in?", "a": "Most Japanese maples grow in zones 5–8. Some tolerate zone 4 with protection; laceleaf weeping types prefer zone 6+."},
+        {"q": "When is the best time to buy a Japanese maple online?", "a": "Fall — prices drop at the end of the season and cooler weather helps newly planted trees establish before winter."},
+    ],
+    "best-knock-out-roses": [
+        {"q": "What makes Knock Out roses different from other roses?", "a": "They're disease-resistant, repeat-blooming from spring through frost, and don't need deadheading — the easiest rose to grow for most gardeners."},
+        {"q": "How much do Knock Out roses cost online?", "a": "Prices range from $18–$55 depending on size and retailer. Comparing across nurseries typically saves $15–$25 per plant."},
+        {"q": "How far apart should I plant Knock Out roses?", "a": "Space them 3–4 feet apart for a dense hedge. A single plant can spread 3–4 feet wide at maturity."},
+        {"q": "What is the best Knock Out rose variety?", "a": "Double Knock Out has the fullest blooms. Rainbow Knock Out offers the most color variety. Petite Knock Out stays compact at about 18 inches tall."},
+        {"q": "Can Knock Out roses grow in pots?", "a": "Yes — a 5-gallon or larger container works well. Use well-draining potting mix and water regularly during hot weather."},
+    ],
+    "best-blueberry-bushes": [
+        {"q": "What blueberry varieties are best for home gardens?", "a": "Bluecrop and Duke are the most popular northern highbush varieties. Sunshine Blue and Misty perform best in warmer zones (7–10)."},
+        {"q": "Do blueberries need acidic soil?", "a": "Yes — blueberries require soil pH of 4.5–5.5. Test your soil before planting and amend with sulfur if needed."},
+        {"q": "Do I need two blueberry plants?", "a": "Blueberries produce much larger yields with cross-pollination. Plant at least two different compatible varieties for best fruit production."},
+        {"q": "How much do blueberry bushes cost online?", "a": "1-gallon plants start around $12–$18. 3-gallon established bushes range from $25–$45. Ordering 3–5 at once usually qualifies for free shipping."},
+        {"q": "How long until blueberry bushes produce fruit?", "a": "Most produce some fruit in year 2–3 after planting, with full production by year 4–5."},
+    ],
+    "best-flowering-trees-small-yards": [
+        {"q": "What is the best small flowering tree for a backyard?", "a": "Dogwood, Redbud, and Serviceberry are top picks — all under 25 feet, with multi-season interest and available from online nurseries at competitive prices."},
+        {"q": "How much do flowering trees cost online?", "a": "Prices range from $35–$120 for most varieties. Comparing nurseries can save $30–$60 per tree compared to local garden centers."},
+        {"q": "Do flowering trees need full sun?", "a": "Most (Redbud, Serviceberry, Cherry) prefer full sun. Dogwood is one of the few flowering trees that blooms well in partial shade."},
+        {"q": "When do flowering trees bloom?", "a": "Redbud blooms earliest (late March–April), followed by Dogwood and Cherry (April–May), then Crape Myrtle in summer."},
+        {"q": "What is the fastest growing small flowering tree?", "a": "Crape Myrtle grows 3–5 feet per year in warm climates. Most ornamental cherries and dogwoods grow 1–2 feet per year."},
+    ],
+    "best-azaleas-rhododendrons": [
+        {"q": "What is the difference between azaleas and rhododendrons?", "a": "Azaleas are smaller with smaller leaves and more flower colors. Rhododendrons are larger with bigger, waxy leaves and showy flower clusters. Botanically, all azaleas are rhododendrons."},
+        {"q": "How much do azaleas cost online?", "a": "Small 1-quart plants start around $10–$15. 1-gallon established plants run $18–$35. Larger 3-gallon shrubs range $35–$65 online."},
+        {"q": "Do azaleas and rhododendrons prefer sun or shade?", "a": "Both prefer dappled shade or morning sun with afternoon shade in zones 6+. In cooler climates (zones 4–5) they tolerate more sun."},
+        {"q": "What soil pH do azaleas need?", "a": "Acidic soil between pH 4.5–6.0, similar to blueberries. Amend with sulfur if your soil is neutral or alkaline."},
+        {"q": "When is the best time to plant azaleas?", "a": "Fall or early spring. Avoid planting in summer heat — azaleas establish poorly in dry, hot conditions."},
+    ],
+    "best-time-to-buy-plants-online": [
+        {"q": "When is the cheapest time to buy plants online?", "a": "Late summer (August–September) and late spring (late May–June) are when online nurseries discount most heavily to clear inventory before the off-season."},
+        {"q": "Is it safe to buy plants online in summer?", "a": "Yes, but plant immediately upon arrival, water well, and provide temporary shade for sun-sensitive species during their first week."},
+        {"q": "Do online plant prices change seasonally?", "a": "Yes, significantly. The same Limelight Hydrangea that costs $65 in April can drop to $35 in September as nurseries clear stock."},
+        {"q": "Is spring the best time to plant trees and shrubs?", "a": "Spring and fall are both excellent. Fall planting is often better because cooler temperatures reduce transplant stress and trees establish roots before summer."},
+        {"q": "What month should I order plants to be safe?", "a": "Order in early to mid-spring (2 weeks after your last frost date), or in September for fall planting in most zones."},
+    ],
+}
 
 # ---------------------------------------------------------------------------
 # Size tier normalization
@@ -680,6 +770,7 @@ def build_site(build_guides=True, build_products=True):
         autoescape=False,
     )
     env.globals["current_year"] = datetime.now().year
+    env.filters["tojson"] = lambda obj: json.dumps(obj, ensure_ascii=False)
 
     # Ensure output directories
     ensure_dir(os.path.join(SITE_DIR, "plants"))
@@ -712,6 +803,7 @@ def build_site(build_guides=True, build_products=True):
                 similar_plants=similar,
                 price_history=bool(price_history_json),
                 price_history_json=price_history_json or "{}",
+                canonical_url=f"{BASE_URL}/plants/{plant['id']}.html",
                 **price_table,
             )
 
@@ -738,16 +830,30 @@ def build_site(build_guides=True, build_products=True):
             related_plants = find_related_plants_for_guide(article["slug"], plants)
             related_guides = [g for g in all_guides if g["slug"] != article["slug"]]
 
+            slug = article["slug"]
+            guide_faqs = GUIDE_FAQS.get(slug, [])
+            faq_mainentity = json.dumps([
+                {
+                    "@type": "Question",
+                    "name": faq["q"],
+                    "acceptedAnswer": {"@type": "Answer", "text": faq["a"]},
+                }
+                for faq in guide_faqs
+            ], ensure_ascii=False) if guide_faqs else None
+
             html = guide_tpl.render(
                 title=article["title"],
                 content=article["content"],
                 toc=article["toc"],
-                meta_description=article["meta_description"],
+                meta_description=GUIDE_META_DESCRIPTIONS.get(slug, article["meta_description"]),
                 date_published="2026-04-02",
                 date_modified=date.today().isoformat(),
                 retailer_count=len([r for r in retailers if r.get("active")]),
                 related_plants=related_plants,
                 related_guides=related_guides[:5],
+                canonical_url=f"{BASE_URL}/guides/{slug}.html",
+                faq_mainentity=faq_mainentity,
+                guide_faqs=guide_faqs,
             )
 
             out_path = os.path.join(SITE_DIR, "guides", f"{article['slug']}.html")
@@ -780,6 +886,7 @@ def build_site(build_guides=True, build_products=True):
                 category_name=cat_name,
                 plants=cat_plants,
                 retailer_count=len([r for r in retailers if r.get("active")]),
+                canonical_url=f"{BASE_URL}/category/{cat_id}.html",
             )
 
             out_path = os.path.join(SITE_DIR, "category", f"{cat_id}.html")
@@ -844,6 +951,7 @@ def build_site(build_guides=True, build_products=True):
         retailer_count=len(tracked),
         plant_count=len(plants),
         tracked_retailers=tracked,
+        canonical_url=f"{BASE_URL}/",
     )
 
     with open(os.path.join(SITE_DIR, "index.html"), "w", encoding="utf-8") as f:
@@ -855,7 +963,7 @@ def build_site(build_guides=True, build_products=True):
     # -----------------------------------------------------------------------
     print("\nBuilding wishlist page...")
     wishlist_tpl = env.get_template("wishlist.html")
-    html = wishlist_tpl.render()
+    html = wishlist_tpl.render(canonical_url=f"{BASE_URL}/my-list.html")
     with open(os.path.join(SITE_DIR, "my-list.html"), "w", encoding="utf-8") as f:
         f.write(html)
     print("  Written to site/my-list.html")
@@ -873,6 +981,7 @@ def build_site(build_guides=True, build_products=True):
         default_zone=6,
         month_names=hm_month_names,
         retailer_count=len([r for r in retailers if r.get("active")]),
+        canonical_url=f"{BASE_URL}/heat-map.html",
     )
     with open(os.path.join(SITE_DIR, "heat-map.html"), "w", encoding="utf-8") as f:
         f.write(html)
@@ -896,6 +1005,7 @@ def build_site(build_guides=True, build_products=True):
         # Formspree endpoint — replace YOUR_FORM_ID with the actual Formspree form ID
         # Free tier: 50 submissions/month, no backend needed
         formspree_endpoint="https://formspree.io/f/YOUR_FORM_ID",
+        canonical_url=f"{BASE_URL}/improve.html",
     )
     with open(os.path.join(SITE_DIR, "improve.html"), "w", encoding="utf-8") as f:
         f.write(html)
