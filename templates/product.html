@@ -93,24 +93,21 @@
                     <table class="comparison-table">
                         <thead>
                             <tr>
-                                <th>Retailer</th>
-                                {% for tier in active_size_tiers %}
-                                <th>{{ tier|replace('gal', ' Gal')|replace('quart', 'Quart')|replace('bareroot', 'Bare Root')|title }}</th>
+                                <th>Size</th>
+                                {% for retailer_id, retailer_prices in prices.items() %}
+                                <th{% if retailer_prices.in_stock == false %} class="sold-out-col"{% endif %}>
+                                    {{ retailer_prices.retailer_name }}
+                                    {% if not retailer_prices.has_affiliate %}<span class="no-affiliate" title="We don't earn a commission from this retailer">*</span>{% endif %}
+                                </th>
                                 {% endfor %}
-                                <th>In Stock</th>
-                                <th>Shipping</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for retailer_id, retailer_prices in prices.items() %}
-                            <tr{% if retailer_prices.in_stock == false %} class="sold-out-row"{% endif %}>
-                                <td class="retailer-name">
-                                    {{ retailer_prices.retailer_name }}
-                                    {% if not retailer_prices.has_affiliate %}<span class="no-affiliate" title="We don't earn a commission from this retailer">*</span>{% endif %}
-                                </td>
-                                {% for tier in active_size_tiers %}
-                                <td class="price-cell" data-label="{{ tier|replace('gal',' Gal')|replace('quart','Quart')|replace('bareroot','Bare Root')|title }}">
+                            {% for tier in active_size_tiers %}
+                            <tr>
+                                <td class="size-label">{{ tier|replace('gal', ' Gal')|replace('quart', 'Quart')|replace('bareroot', 'Bare Root')|title }}</td>
+                                {% for retailer_id, retailer_prices in prices.items() %}
+                                <td class="price-cell{% if retailer_prices.in_stock == false %} sold-out-price{% endif %}">
                                     {% if retailer_prices.sizes[tier] %}
                                         {% if retailer_prices.sizes[tier].is_best %}
                                         <span class="best-price">${{ '%.2f'|format(retailer_prices.sizes[tier].price) }}</span>
@@ -125,19 +122,29 @@
                                     {% endif %}
                                 </td>
                                 {% endfor %}
-                                <td class="stock-cell" data-label="Stock">
+                            </tr>
+                            {% endfor %}
+                            <tr class="meta-row">
+                                <td class="row-label">In Stock</td>
+                                {% for retailer_id, retailer_prices in prices.items() %}
+                                <td class="stock-cell">
                                     {% if retailer_prices.in_stock %}
-                                    <span class="in-stock">In Stock</span>
+                                    <span class="in-stock">Yes</span>
                                     {% if retailer_prices.ships_season %}
                                     <span class="ships-season">(Ships {{ retailer_prices.ships_season }})</span>
                                     {% endif %}
                                     {% elif retailer_prices.in_stock is none %}
-                                    <span class="stock-unknown">Check Site</span>
+                                    <span class="stock-unknown">Check</span>
                                     {% else %}
                                     <span class="out-of-stock">Sold Out</span>
                                     {% endif %}
                                 </td>
-                                <td class="shipping-cell" data-label="Shipping">
+                                {% endfor %}
+                            </tr>
+                            <tr class="meta-row">
+                                <td class="row-label">Shipping</td>
+                                {% for retailer_id, retailer_prices in prices.items() %}
+                                <td class="shipping-cell">
                                     {% if retailer_prices.shipping %}
                                     <span class="shipping-info{% if retailer_prices.shipping.free_all %} free-ship{% endif %}">
                                         {% if retailer_prices.shipping.free_all %}
@@ -154,9 +161,14 @@
                                     <span class="shipping-info">Check site</span>
                                     {% endif %}
                                 </td>
+                                {% endfor %}
+                            </tr>
+                            <tr class="meta-row buy-row">
+                                <td class="row-label"></td>
+                                {% for retailer_id, retailer_prices in prices.items() %}
                                 <td class="action-cell" data-label="">
                                     <a href="{{ retailer_prices.buy_url }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="buy-btn">
-                                        Buy at {{ retailer_prices.retailer_name }}
+                                        Buy
                                     </a>
                                     {% if retailer_prices.has_affiliate %}
                                     <span class="affiliate-label">affiliate link</span>
@@ -172,8 +184,8 @@
                                     </div>
                                     {% endif %}
                                 </td>
+                                {% endfor %}
                             </tr>
-                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

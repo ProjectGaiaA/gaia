@@ -289,14 +289,16 @@ h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
 .out-of-stock { color: var(--orange-accent); font-size: 0.85rem; }
 .stock-unknown { color: var(--gray-500); font-size: 0.85rem; }
 
-/* Grey out prices for sold-out retailers */
-tr.sold-out-row .price-cell { color: var(--gray-300); }
-tr.sold-out-row .price-cell .best-price { background: none; border: none; color: var(--gray-300); }
-tr.sold-out-row .price-cell .was-price { color: var(--gray-300); }
-tr.sold-out-row .retailer-name { color: var(--gray-500); }
-tr.sold-out-row .buy-btn { background: var(--gray-500); }
+/* Grey out prices for sold-out retailer columns */
+th.sold-out-col { color: var(--gray-500); }
+.price-cell.sold-out-price { color: var(--gray-300); }
+.price-cell.sold-out-price .best-price { background: none; border: none; color: var(--gray-300); }
+.price-cell.sold-out-price .was-price { color: var(--gray-300); }
+.size-label { font-weight: 600; white-space: nowrap; }
+.row-label { font-weight: 600; white-space: nowrap; color: var(--gray-500); font-size: 0.9rem; }
+tr.meta-row { background: var(--gray-100) !important; }
 
-/* Mobile card layout for comparison table — stacks each retailer as a card */
+/* Mobile card layout for comparison table — stacks each size tier as a card */
 @media (max-width: 600px) {
     .table-wrapper { overflow-x: unset; }
     .comparison-table,
@@ -332,13 +334,20 @@ tr.sold-out-row .buy-btn { background: var(--gray-500); }
         margin-right: 0.75rem;
         font-size: 0.8rem;
     }
-    .comparison-table td.retailer-name {
+    .comparison-table td.size-label {
         font-size: 1rem;
         padding: 0.5rem 0.25rem 0.6rem;
         border-bottom: 2px solid var(--gray-200);
         justify-content: flex-start;
     }
-    .comparison-table td.retailer-name::before { display: none; }
+    .comparison-table td.size-label::before { display: none; }
+    .comparison-table td.row-label {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.25rem 0.6rem;
+        border-bottom: 2px solid var(--gray-200);
+        justify-content: flex-start;
+    }
+    .comparison-table td.row-label::before { display: none; }
     .comparison-table td[data-label=""]::before { display: none; }
     .comparison-table .action-cell {
         padding-top: 0.5rem;
@@ -346,7 +355,6 @@ tr.sold-out-row .buy-btn { background: var(--gray-500); }
     }
     .comparison-table .action-cell::before { display: none; }
     .buy-btn { width: 100%; text-align: center; padding: 0.5rem; }
-    tr.sold-out-row { opacity: 0.65; }
 }
 
 /* Shipping column */
