@@ -1,0 +1,86 @@
+[
+  {
+    "id": "fb-001",
+    "category": "missing-plants",
+    "title": "Add Fuyu Persimmon trees",
+    "body": "Would love to see Fuyu persimmons tracked. Several nurseries carry them and prices vary a lot.",
+    "submitted_at": "2026-03-18T14:22:00+00:00",
+    "status": "planned",
+    "upvotes": 14,
+    "response": {
+      "author": "PlantPriceTracker",
+      "body": "Great call — persimmons are underserved in online nursery comparison tools. We've added Fuyu and Hachiya to the roadmap. We see them at Fast Growing Trees, Nature Hills, and Planting Tree. Expect them in the tracker within a few weeks.",
+      "responded_at": "2026-03-19T09:05:00+00:00"
+    }
+  },
+  {
+    "id": "fb-002",
+    "category": "site-feature",
+    "title": "Zone filter on the heat map page",
+    "body": "The heat map is great but I have to scroll through all zones. Can you add a 'my zone' setting that persists so the page defaults to my zone?",
+    "submitted_at": "2026-03-21T10:08:00+00:00",
+    "status": "done",
+    "upvotes": 22,
+    "response": {
+      "author": "PlantPriceTracker",
+      "body": "Done! The heat map now remembers your zone in localStorage and defaults to it on return visits. Look for the zone selector at the top — it sticks between sessions. Thanks for the push on this one.",
+      "responded_at": "2026-03-23T16:30:00+00:00"
+    }
+  },
+  {
+    "id": "fb-003",
+    "category": "price-data",
+    "title": "Brighter Blooms prices seem out of date",
+    "body": "I checked Brighter Blooms for the Limelight Hydrangea and the price on the site ($34.99) didn't match what you showed ($41.99). Is there a delay?",
+    "submitted_at": "2026-03-28T08:44:00+00:00",
+    "status": "responded",
+    "upvotes": 6,
+    "response": {
+      "author": "PlantPriceTracker",
+      "body": "Thanks for flagging this. Brighter Blooms disables their standard product API so we use HTML scraping, which is slightly more fragile. We've reviewed the extractor and found it was reading a stale cached page. Fixed — prices now refresh every 12 hours. If you ever see a mismatch, submitting it here is the fastest way to get it corrected.",
+      "responded_at": "2026-03-28T19:15:00+00:00"
+    }
+  },
+  {
+    "id": "fb-004",
+    "category": "missing-plants",
+    "title": "Drift roses — why aren't they tracked?",
+    "body": "Drift roses are hugely popular and sold everywhere. I see them at almost every nursery I visit online. Seems like a big gap.",
+    "submitted_at": "2026-03-30T12:33:00+00:00",
+    "status": "planned",
+    "upvotes": 18,
+    "response": {
+      "author": "PlantPriceTracker",
+      "body": "You're right — Drift roses are a major omission. They're in the Knock Out family (Meilland, now sold at most mass nurseries) and we already track 5 KO varieties, so adding Drift is straightforward. Adding Coral Drift, Peach Drift, and Red Drift to the next plant expansion. Thanks for the nudge.",
+      "responded_at": "2026-03-31T10:00:00+00:00"
+    }
+  },
+  {
+    "id": "fb-005",
+    "category": "bug",
+    "title": "Mobile price table is hard to read — columns get cut off",
+    "body": "On my phone (iPhone 14) the price comparison table on the product pages cuts off. The retailer name shows but the price column is hidden. Need to scroll sideways.",
+    "submitted_at": "2026-04-01T17:55:00+00:00",
+    "status": "in-progress",
+    "upvotes": 31,
+    "response": {
+      "author": "PlantPriceTracker",
+      "body": "Confirmed on iOS Safari. The table needs a horizontal scroll wrapper on small screens — currently it overflows without a scrollbar hint, so users don't know to swipe. We're reworking the mobile layout to show a card-per-retailer view instead of a table on screens under 600px. In progress now, should be live this week.",
+      "responded_at": "2026-04-02T11:20:00+00:00"
+    }
+  },
+  {
+    "id": "fb-006",
+    "category": "site-feature",
+    "title": "Price alert / notify me when price drops",
+    "body": "I want to buy a Bloodgood Japanese Maple but the prices are all $80+ right now. Can you send an email when it drops below $50?",
+    "submitted_at": "2026-04-03T09:12:00+00:00",
+    "status": "reviewing",
+    "upvotes": 47,
+    "response": {
+      "author": "PlantPriceTracker",
+      "body": "This is the #1 requested feature and we want to do it right. We're evaluating a lightweight email alert system — you'd enter your email + a plant + a target price, and we email you when it's hit. No account required. The question is storage: we need a simple backend for this one. We're scoping it now. Add your email to the 'My Plant List' page in the meantime — we'll use that list to send the alert to early testers.",
+      "responded_at": "2026-04-03T21:00:00+00:00"
+    }
+  }
+]

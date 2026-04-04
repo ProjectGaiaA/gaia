@@ -477,29 +477,32 @@ class ShopifyScraper:
 
         # Step 2: Container/gallon patterns (most universal — check first)
         gallon_patterns = [
-            # Explicit gallon
-            (r'\b1[\s-]?gal(?:lon)?\b', '1gal'),
+            # Explicit gallon — gal / gallon / gallons (all plural forms)
+            (r'\b1[\s-]?gal(?:lon)?s?\b', '1gal'),
             (r'one\s+gallon', '1gal'),
             (r'#1\s*container', '1gal'),
-            (r'\b2[\s-]?gal(?:lon)?\b', '2gal'),
+            (r'trade\s+gallon', '1gal'),
+            (r'\b2[\s-]?gal(?:lon)?s?\b', '2gal'),
             (r'#2\s*container', '2gal'),
-            (r'\b3[\s-]?gal(?:lon)?\b', '3gal'),
+            (r'\b3[\s-]?gal(?:lon)?s?\b', '3gal'),
             (r'3\s*gallon\s*pot', '3gal'),
             (r'#3\s*container', '3gal'),
-            (r'\b5[\s-]?gal(?:lon)?\b', '5gal'),
+            (r'\b5[\s-]?gal(?:lon)?s?\b', '5gal'),
             (r'#5\s*container', '5gal'),
-            (r'\b7[\s-]?gal(?:lon)?\b', '7gal'),
+            (r'\b7[\s-]?gal(?:lon)?s?\b', '7gal'),
             (r'#7\s*container', '7gal'),
-            (r'\b10[\s-]?gal(?:lon)?\b', '10gal'),
-            (r'\b15[\s-]?gal(?:lon)?\b', '15gal'),
+            (r'\b10[\s-]?gal(?:lon)?s?\b', '10gal'),
+            (r'\b15[\s-]?gal(?:lon)?s?\b', '15gal'),
             # Quart
             (r'\bquart\b', 'quart'),
             (r'\bqt\b', 'quart'),
             (r'one\s+quart', 'quart'),
             (r'4\.5[\s-]?(?:in|")', 'quart'),
-            # Small pot
+            # Small pots
+            (r'\b3[\s-]?(?:inch|in|")\s*pot', '3inch'),
             (r'\b4[\s-]?inch', '4inch'),
             (r'\b4[\s-]?"', '4inch'),
+            (r'\b6[\s-]?inch\s*pot', '6inch'),
         ]
 
         for pattern, tier in gallon_patterns:
@@ -559,6 +562,101 @@ class ShopifyScraper:
 
         # Step 9: Unrecognized — return cleaned version
         return re.sub(r'[^a-z0-9]+', '-', title_lower).strip('-')
+
+    def scrape_promo_codes(self) -> list[dict]:
+        """Check the retailer's homepage for promo codes or discount banners.
+
+        Hits the homepage once per run (not per product) and scans for:
+        - Shopify announcement bars (class-based)
+        - Text patterns: "use code X", "promo code X", "save X% with X"
+        - Discount code patterns: standalone uppercase alphanumeric codes
+
+        Returns list of dicts like:
+            [{"code": "SAVE20", "description": "Save 20% sitewide", "source": "announcement-bar"}]
+        """
+        try:
+            resp = self.session.get(self.base_url, timeout=20, headers={
+                "User-Agent": random.choice(USER_AGENTS),
+                "Accept": "text/html",
+            })
+            resp.raise_for_status()
+        except requests.RequestException as e:
+            logger.warning(f"Promo check failed for {self.retailer_id}: {e}")
+            return []
+
+        text = resp.text
+        promos = []
+        seen_codes = set()
+
+        # Extract announcement bar / header banner text
+        # Shopify uses various class names for the top announcement bar
+        bar_patterns = [
+            r'class="[^"]*announcement[^"]*"[^>]*>(.*?)</[a-z]+>',
+            r'class="[^"]*header-banner[^"]*"[^>]*>(.*?)</[a-z]+>',
+            r'class="[^"]*promo-bar[^"]*"[^>]*>(.*?)</[a-z]+>',
+            r'class="[^"]*top-bar[^"]*"[^>]*>(.*?)</[a-z]+>',
+            r'class="[^"]*site-wide[^"]*"[^>]*>(.*?)</[a-z]+>',
+            r'class="[^"]*marquee[^"]*"[^>]*>(.*?)</[a-z]+>',
+        ]
+        bar_texts = []
+        for pattern in bar_patterns:
+            for m in re.finditer(pattern, text, re.IGNORECASE | re.DOTALL):
+                # Strip HTML tags
+                raw = re.sub(r'<[^>]+>', ' ', m.group(1))
+                raw = re.sub(r'\s+', ' ', raw).strip()
+                if raw and len(raw) < 300:
+                    bar_texts.append(raw)
+
+        # Also pull text from <header> and first ~5000 chars (banner usually at top)
+        header_match = re.search(r'<header[^>]*>(.*?)</header>', text, re.DOTALL | re.IGNORECASE)
+        if header_match:
+            raw = re.sub(r'<[^>]+>', ' ', header_match.group(1))
+            bar_texts.append(re.sub(r'\s+', ' ', raw).strip()[:500])
+        bar_texts.append(re.sub(r'<[^>]+>', ' ', text[:5000]))
+
+        search_text = ' '.join(bar_texts)
+
+        # Pattern 1: "use code XXXX" / "enter code XXXX" / "promo code: XXXX"
+        explicit_patterns = [
+            r'(?:use|enter|apply)\s+(?:code\s+)?([A-Z][A-Z0-9]{2,19})\b',
+            r'promo(?:\s+code)?[:\s]+([A-Z][A-Z0-9]{2,19})\b',
+            r'coupon(?:\s+code)?[:\s]+([A-Z][A-Z0-9]{2,19})\b',
+            r'discount(?:\s+code)?[:\s]+([A-Z][A-Z0-9]{2,19})\b',
+            r'code[:\s]+([A-Z][A-Z0-9]{2,19})\b',
+        ]
+        for pat in explicit_patterns:
+            for m in re.finditer(pat, search_text, re.IGNORECASE):
+                code = m.group(1).upper()
+                if code in seen_codes or len(code) < 3:
+                    continue
+                # Exclude common false positives
+                if code in {'HTTP', 'HTML', 'FREE', 'SHIP', 'SALE', 'BEST', 'MORE', 'SHOP', 'VIEW'}:
+                    continue
+                # Extract surrounding context as description (up to 100 chars)
+                start = max(0, m.start() - 20)
+                end = min(len(search_text), m.end() + 60)
+                description = re.sub(r'\s+', ' ', search_text[start:end]).strip()
+                promos.append({"code": code, "description": description, "source": "text-pattern"})
+                seen_codes.add(code)
+
+        # Pattern 2: Savings percentage mentions (e.g. "20% off", "save $10")
+        # These aren't codes but are worth capturing as discount info
+        savings_match = re.search(
+            r'(?:save|get)\s+(?:up\s+to\s+)?(\d+%|\$\d+)\s+(?:off|on)',
+            search_text, re.IGNORECASE
+        )
+        if savings_match and not promos:
+            start = max(0, savings_match.start() - 10)
+            end = min(len(search_text), savings_match.end() + 80)
+            description = re.sub(r'\s+', ' ', search_text[start:end]).strip()
+            promos.append({"code": None, "description": description[:200], "source": "savings-banner"})
+
+        if promos:
+            logger.info(f"  {self.retailer_id}: found {len(promos)} promo(s)")
+        else:
+            logger.debug(f"  {self.retailer_id}: no promos detected")
+
+        return promos
 
     def discover_products(self, collection: str = None, limit: int = 250) -> list[str]:
         """Discover product handles from a collection or full catalog.
@@ -853,16 +951,16 @@ HANDLE_MAPS = {
     },
     "brighter-blooms": {
         # JSON endpoint disabled — uses HTML fallback
-        # Handles verified 2026-04-03 against brighterblooms.com/collections/roses + /products/
+        # Handles verified 2026-04-03 against brighterblooms.com/products.json (976 products)
+        # NOTE: BB sells KO roses only as tree standards, not shrubs — knock-out-rose removed
         "limelight-hydrangea": "limelight-hydrangea",
         "endless-summer-hydrangea": "endless-summer-hydrangea",
-        "knock-out-rose": "red-knockout-rose-trees",        # tree form; shrub form unconfirmed
-        "double-knock-out-rose": "double-red-knockout-rose",  # was: double-knockout-rose (404)
+        "double-knock-out-rose": "double-red-knockout-rose",      # was: double-knockout-rose (404)
         "bloodgood-japanese-maple": "bloodgood-japanese-maple",
-        "emerald-green-arborvitae": "emerald-green-arborvitae",
+        "emerald-green-arborvitae": "emerald-green-thuja",        # was: emerald-green-arborvitae (404)
         "leyland-cypress": "leyland-cypress-tree",
         "green-giant-arborvitae": "thuja-green-giant",
-        "honeycrisp-apple-tree": "honeycrisp-apple",         # was: honeycrisp-apple-tree (404)
+        "honeycrisp-apple-tree": "honeycrisp-apple",              # was: honeycrisp-apple-tree (404)
     },
 }
 

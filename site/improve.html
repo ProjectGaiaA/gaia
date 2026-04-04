@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improve PlantPriceTracker — Tell Us What's Missing | PlantPriceTracker</title>
+    <meta name="description" content="Help us build a better plant price comparison tool. Tell us what plants we're missing, what's broken, or what features you want. We respond to every submission publicly.">
+    
+    <link rel="stylesheet" href="/assets/css/style.css">
+    
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="/" class="site-logo">
+                <span class="logo-icon">&#x1F331;</span>
+                <span class="logo-text">PlantPriceTracker</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/category/hydrangeas.html">Hydrangeas</a></li>
+                <li><a href="/category/japanese-maples.html">Japanese Maples</a></li>
+                <li><a href="/category/fruit-trees.html">Fruit Trees</a></li>
+                <li><a href="/category/roses.html">Roses</a></li>
+                <li><a href="/guides/">Guides</a></li>
+                <li><a href="/my-list.html">&#x2661; My List<span class="wishlist-nav-count"></span></a></li>
+                <li><a href="/improve.html">Improve</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        
+<div class="improve-page">
+
+    <!-- Header -->
+    <header class="improve-hero">
+        <h1>Help Us Build a Better Tracker</h1>
+        <p class="improve-hero-sub">Tell us what plants we're missing, what doesn't work, or what you want next. We read every submission and respond publicly — so the whole community benefits from the conversation.</p>
+        <div class="improve-stats">
+            <span class="improve-stat"><strong>6</strong> submissions</span>
+            <span class="improve-stat-divider">&middot;</span>
+            <span class="improve-stat"><strong>6</strong> responded to</span>
+            <span class="improve-stat-divider">&middot;</span>
+            <span class="improve-stat"><strong>1</strong> shipped</span>
+        </div>
+    </header>
+
+    <!-- Two-column layout: form left, feed right -->
+    <div class="improve-layout">
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Submission Form                                                     -->
+        <!-- ------------------------------------------------------------------ -->
+        <aside class="improve-form-col">
+            <div class="improve-form-card">
+                <h2>Submit Feedback</h2>
+                <p class="form-intro">Not a support ticket — this goes into a public board that anyone can see. Be specific and we'll respond fast.</p>
+
+                <form id="improve-form"
+                      action="https://formspree.io/f/YOUR_FORM_ID"
+                      method="POST"
+                      novalidate>
+
+                    <!-- Honeypot anti-spam (hidden from real users) -->
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                    <!-- Redirect after submit -->
+                    <input type="hidden" name="_next" value="/improve.html?submitted=1">
+                    <input type="hidden" name="_subject" value="PlantPriceTracker feedback">
+
+                    <div class="form-field">
+                        <label for="fb-category">Category <span class="required">*</span></label>
+                        <select id="fb-category" name="category" required>
+                            <option value="">Select one…</option>
+                            <option value="missing-plants">Missing Plants / Varieties</option>
+                            <option value="price-data">Price Data Issue</option>
+                            <option value="site-feature">Feature Request</option>
+                            <option value="bug">Something's Broken</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="fb-title">One-line summary <span class="required">*</span></label>
+                        <input type="text" id="fb-title" name="title"
+                               placeholder="e.g. Add Drift roses, or Price mismatch on Limelight"
+                               maxlength="120" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="fb-body">Details <span class="required">*</span></label>
+                        <textarea id="fb-body" name="body" rows="4"
+                                  placeholder="The more specific you are, the faster we can act on it."
+                                  maxlength="1000" required></textarea>
+                        <span class="char-count" id="body-count">0 / 1000</span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="fb-email">Your email <span class="optional">(optional — only used to notify you when we respond)</span></label>
+                        <input type="email" id="fb-email" name="email"
+                               placeholder="you@example.com">
+                    </div>
+
+                    <button type="submit" class="form-submit" id="submit-btn">
+                        Submit Feedback
+                    </button>
+                    <p class="form-note">Responses are posted publicly on this page, typically within 48 hours.</p>
+
+                </form>
+
+                <!-- Thank-you state (shown after redirect with ?submitted=1) -->
+                <div id="form-thanks" class="form-thanks" style="display:none">
+                    <span class="thanks-icon">&#x2705;</span>
+                    <h3>Got it — thanks!</h3>
+                    <p>We'll respond publicly on this page. Check back in a day or two.</p>
+                </div>
+            </div>
+
+            <!-- Category legend -->
+            <div class="category-legend">
+                <h3>What counts as what?</h3>
+                <ul class="legend-list">
+                    <li><span class="badge badge-missing-plants">Missing Plants</span> A plant or variety we don't track yet</li>
+                    <li><span class="badge badge-price-data">Price Data</span> A price we show is wrong or stale</li>
+                    <li><span class="badge badge-site-feature">Feature Request</span> Something new you want the site to do</li>
+                    <li><span class="badge badge-bug">Bug</span> Something is broken or displaying incorrectly</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Public Feed                                                         -->
+        <!-- ------------------------------------------------------------------ -->
+        <section class="improve-feed-col">
+
+            <!-- Filter tabs -->
+            <div class="feed-filters" role="tablist">
+                <button class="feed-filter active" data-filter="all" role="tab" aria-selected="true">All (6)</button>
+                <button class="feed-filter" data-filter="open" role="tab" aria-selected="false">Open</button>
+                <button class="feed-filter" data-filter="planned" role="tab" aria-selected="false">Planned</button>
+                <button class="feed-filter" data-filter="in-progress" role="tab" aria-selected="false">In Progress</button>
+                <button class="feed-filter" data-filter="done" role="tab" aria-selected="false">Done ✓</button>
+            </div>
+
+            <!-- Sort row -->
+            <div class="feed-sort-row">
+                <label for="feed-sort" class="feed-sort-label">Sort:</label>
+                <select id="feed-sort" class="feed-sort-select">
+                    <option value="upvotes">Most upvoted</option>
+                    <option value="newest">Newest first</option>
+                    <option value="responded">Responded first</option>
+                </select>
+            </div>
+
+            <!-- Submissions feed -->
+            <div class="feedback-feed" id="feedback-feed">
+                
+                <article class="feedback-card" id="fb-001"
+                         data-status="planned"
+                         data-upvotes="14"
+                         data-submitted="2026-03-18T14:22:00+00:00">
+
+                    <div class="feedback-card-header">
+                        <div class="feedback-meta-row">
+                            <span class="badge badge-missing-plants">Missing Plants</span>
+                            <span class="status-badge status-planned">Planned</span>
+                        </div>
+                        <div class="feedback-upvote">
+                            <button class="upvote-btn"
+                                    data-id="fb-001"
+                                    aria-label="Upvote this suggestion"
+                                    title="Upvote">
+                                <span class="upvote-arrow">&#x25B2;</span>
+                                <span class="upvote-count" id="count-fb-001">14</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="feedback-title">Add Fuyu Persimmon trees</h3>
+                    <p class="feedback-body">Would love to see Fuyu persimmons tracked. Several nurseries carry them and prices vary a lot.</p>
+                    <p class="feedback-date">Submitted March 18, 2026</p>
+
+                    
+                    <div class="feedback-response">
+                        <div class="response-header">
+                            <span class="response-author-badge">&#x1F331; PlantPriceTracker</span>
+                            <span class="response-date">March 19, 2026</span>
+                        </div>
+                        <p class="response-body">Great call — persimmons are underserved in online nursery comparison tools. We've added Fuyu and Hachiya to the roadmap. We see them at Fast Growing Trees, Nature Hills, and Planting Tree. Expect them in the tracker within a few weeks.</p>
+                    </div>
+                    
+
+                </article>
+                
+                <article class="feedback-card" id="fb-002"
+                         data-status="done"
+                         data-upvotes="22"
+                         data-submitted="2026-03-21T10:08:00+00:00">
+
+                    <div class="feedback-card-header">
+                        <div class="feedback-meta-row">
+                            <span class="badge badge-site-feature">Feature Request</span>
+                            <span class="status-badge status-done">Done ✓</span>
+                        </div>
+                        <div class="feedback-upvote">
+                            <button class="upvote-btn"
+                                    data-id="fb-002"
+                                    aria-label="Upvote this suggestion"
+                                    title="Upvote">
+                                <span class="upvote-arrow">&#x25B2;</span>
+                                <span class="upvote-count" id="count-fb-002">22</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="feedback-title">Zone filter on the heat map page</h3>
+                    <p class="feedback-body">The heat map is great but I have to scroll through all zones. Can you add a 'my zone' setting that persists so the page defaults to my zone?</p>
+                    <p class="feedback-date">Submitted March 21, 2026</p>
+
+                    
+                    <div class="feedback-response">
+                        <div class="response-header">
+                            <span class="response-author-badge">&#x1F331; PlantPriceTracker</span>
+                            <span class="response-date">March 23, 2026</span>
+                        </div>
+                        <p class="response-body">Done! The heat map now remembers your zone in localStorage and defaults to it on return visits. Look for the zone selector at the top — it sticks between sessions. Thanks for the push on this one.</p>
+                    </div>
+                    
+
+                </article>
+                
+                <article class="feedback-card" id="fb-003"
+                         data-status="responded"
+                         data-upvotes="6"
+                         data-submitted="2026-03-28T08:44:00+00:00">
+
+                    <div class="feedback-card-header">
+                        <div class="feedback-meta-row">
+                            <span class="badge badge-price-data">Price Data</span>
+                            <span class="status-badge status-responded">Responded</span>
+                        </div>
+                        <div class="feedback-upvote">
+                            <button class="upvote-btn"
+                                    data-id="fb-003"
+                                    aria-label="Upvote this suggestion"
+                                    title="Upvote">
+                                <span class="upvote-arrow">&#x25B2;</span>
+                                <span class="upvote-count" id="count-fb-003">6</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="feedback-title">Brighter Blooms prices seem out of date</h3>
+                    <p class="feedback-body">I checked Brighter Blooms for the Limelight Hydrangea and the price on the site ($34.99) didn't match what you showed ($41.99). Is there a delay?</p>
+                    <p class="feedback-date">Submitted March 28, 2026</p>
+
+                    
+                    <div class="feedback-response">
+                        <div class="response-header">
+                            <span class="response-author-badge">&#x1F331; PlantPriceTracker</span>
+                            <span class="response-date">March 28, 2026</span>
+                        </div>
+                        <p class="response-body">Thanks for flagging this. Brighter Blooms disables their standard product API so we use HTML scraping, which is slightly more fragile. We've reviewed the extractor and found it was reading a stale cached page. Fixed — prices now refresh every 12 hours. If you ever see a mismatch, submitting it here is the fastest way to get it corrected.</p>
+                    </div>
+                    
+
+                </article>
+                
+                <article class="feedback-card" id="fb-004"
+                         data-status="planned"
+                         data-upvotes="18"
+                         data-submitted="2026-03-30T12:33:00+00:00">
+
+                    <div class="feedback-card-header">
+                        <div class="feedback-meta-row">
+                            <span class="badge badge-missing-plants">Missing Plants</span>
+                            <span class="status-badge status-planned">Planned</span>
+                        </div>
+                        <div class="feedback-upvote">
+                            <button class="upvote-btn"
+                                    data-id="fb-004"
+                                    aria-label="Upvote this suggestion"
+                                    title="Upvote">
+                                <span class="upvote-arrow">&#x25B2;</span>
+                                <span class="upvote-count" id="count-fb-004">18</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="feedback-title">Drift roses — why aren't they tracked?</h3>
+                    <p class="feedback-body">Drift roses are hugely popular and sold everywhere. I see them at almost every nursery I visit online. Seems like a big gap.</p>
+                    <p class="feedback-date">Submitted March 30, 2026</p>
+
+                    
+                    <div class="feedback-response">
+                        <div class="response-header">
+                            <span class="response-author-badge">&#x1F331; PlantPriceTracker</span>
+                            <span class="response-date">March 31, 2026</span>
+                        </div>
+                        <p class="response-body">You're right — Drift roses are a major omission. They're in the Knock Out family (Meilland, now sold at most mass nurseries) and we already track 5 KO varieties, so adding Drift is straightforward. Adding Coral Drift, Peach Drift, and Red Drift to the next plant expansion. Thanks for the nudge.</p>
+                    </div>
+                    
+
+                </article>
+                
+                <article class="feedback-card" id="fb-005"
+                         data-status="in-progress"
+                         data-upvotes="31"
+                         data-submitted="2026-04-01T17:55:00+00:00">
+
+                    <div class="feedback-card-header">
+                        <div class="feedback-meta-row">
+                            <span class="badge badge-bug">Bug</span>
+                            <span class="status-badge status-in-progress">In Progress</span>
+                        </div>
+                        <div class="feedback-upvote">
+                            <button class="upvote-btn"
+                                    data-id="fb-005"
+                                    aria-label="Upvote this suggestion"
+                                    title="Upvote">
+                                <span class="upvote-arrow">&#x25B2;</span>
+                                <span class="upvote-count" id="count-fb-005">31</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="feedback-title">Mobile price table is hard to read — columns get cut off</h3>
+                    <p class="feedback-body">On my phone (iPhone 14) the price comparison table on the product pages cuts off. The retailer name shows but the price column is hidden. Need to scroll sideways.</p>
+                    <p class="feedback-date">Submitted April 01, 2026</p>
+
+                    
+                    <div class="feedback-response">
+                        <div class="response-header">
+                            <span class="response-author-badge">&#x1F331; PlantPriceTracker</span>
+                            <span class="response-date">April 02, 2026</span>
+                        </div>
+                        <p class="response-body">Confirmed on iOS Safari. The table needs a horizontal scroll wrapper on small screens — currently it overflows without a scrollbar hint, so users don't know to swipe. We're reworking the mobile layout to show a card-per-retailer view instead of a table on screens under 600px. In progress now, should be live this week.</p>
+                    </div>
+                    
+
+                </article>
+                
+                <article class="feedback-card" id="fb-006"
+                         data-status="reviewing"
+                         data-upvotes="47"
+                         data-submitted="2026-04-03T09:12:00+00:00">
+
+                    <div class="feedback-card-header">
+                        <div class="feedback-meta-row">
+                            <span class="badge badge-site-feature">Feature Request</span>
+                            <span class="status-badge status-reviewing">Under Review</span>
+                        </div>
+                        <div class="feedback-upvote">
+                            <button class="upvote-btn"
+                                    data-id="fb-006"
+                                    aria-label="Upvote this suggestion"
+                                    title="Upvote">
+                                <span class="upvote-arrow">&#x25B2;</span>
+                                <span class="upvote-count" id="count-fb-006">47</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="feedback-title">Price alert / notify me when price drops</h3>
+                    <p class="feedback-body">I want to buy a Bloodgood Japanese Maple but the prices are all $80+ right now. Can you send an email when it drops below $50?</p>
+                    <p class="feedback-date">Submitted April 03, 2026</p>
+
+                    
+                    <div class="feedback-response">
+                        <div class="response-header">
+                            <span class="response-author-badge">&#x1F331; PlantPriceTracker</span>
+                            <span class="response-date">April 03, 2026</span>
+                        </div>
+                        <p class="response-body">This is the #1 requested feature and we want to do it right. We're evaluating a lightweight email alert system — you'd enter your email + a plant + a target price, and we email you when it's hit. No account required. The question is storage: we need a simple backend for this one. We're scoping it now. Add your email to the 'My Plant List' page in the meantime — we'll use that list to send the alert to early testers.</p>
+                    </div>
+                    
+
+                </article>
+                
+            </div>
+
+            
+
+        </section>
+    </div>
+</div>
+
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-disclosure">
+                <p><strong>Affiliate Disclosure:</strong> We earn commissions from purchases made through links on this site. This does not affect our rankings or recommendations. We compare prices from all major nurseries, including those without affiliate programs, to ensure you see the best deal available. <a href="/disclosure.html">Full disclosure</a>.</p>
+            </div>
+            <div class="footer-links">
+                <a href="/disclosure.html">Disclosure</a>
+                <a href="/privacy.html">Privacy Policy</a>
+                <a href="/guides/">Buying Guides</a>
+                <a href="/improve.html">Improve This Site</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 PlantPriceTracker. Prices updated daily. Not affiliated with any nursery.</p>
+        </div>
+    </footer>
+
+    <script src="/assets/js/wishlist.js"></script>
+    
+<script src="/assets/js/improve.js"></script>
+
+</body>
+</html>

@@ -86,7 +86,15 @@ SIZE_TIER_LABELS = {
     "bulb":    "Bulb",
     "default": "Best Available",
     # Inch pot
-    "4inch":   "4\"",
+    "3inch":   "3\" Pot",
+    "4inch":   "4\" Pot",
+    "6inch":   "6\" Pot",
+    # Field-grown inch sizes (Spring Hill FIELD variants)
+    "12-18in": "12-18\"",
+    "18-24in": "18-24\"",
+    "24-36in": "24-36\"",
+    "36-48in": "36-48\"",
+    "48-54in": "48-54\"",
 }
 
 # Aliases: raw variant strings → canonical tier IDs.
@@ -125,6 +133,14 @@ _SIZE_ALIASES = {
     "bare-root": "bareroot",
     "bare root": "bareroot",
     "dormant": "bareroot",
+    # Typos and alternate spellings observed in scraped data
+    "1-galllon": "1gal",        # triple-l typo
+    "2-gallons": "2gal",        # plural form
+    "3-gallons": "3gal",
+    "5-gallons": "5gal",
+    "3-pot": "3inch",           # Spring Hill "3\" POT" variant
+    "6-inch-pot": "6inch",
+    "trade-gallon": "1gal",
 }
 
 
@@ -182,7 +198,7 @@ def get_latest_prices(price_entries, retailers_by_id):
     return latest
 
 
-def build_price_table(plant, latest_prices, retailers_by_id):
+def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=None):
     """Build structured price data for the comparison table template."""
     prices = {}
     all_prices_flat = []
@@ -253,6 +269,15 @@ def build_price_table(plant, latest_prices, retailers_by_id):
                 ships_season = season_match.group(1).title()
                 break
 
+        # Attach promo data if available for this retailer
+        promo_info = None
+        if promos_by_retailer:
+            raw_promo = promos_by_retailer.get(retailer_id, {})
+            codes = raw_promo.get("codes", [])
+            banners = raw_promo.get("banners", [])
+            if codes or banners:
+                promo_info = {"codes": codes, "banners": banners}
+
         prices[retailer_id] = {
             "retailer_name": retailer["name"],
             "sizes": sizes,
@@ -262,6 +287,7 @@ def build_price_table(plant, latest_prices, retailers_by_id):
             "buy_url": price_data.get("url", retailer.get("url", "#")),
             "shipping": retailer.get("shipping"),
             "ships_season": ships_season,
+            "promo": promo_info,
         }
 
     # Mark best price per tier
@@ -274,7 +300,8 @@ def build_price_table(plant, latest_prices, retailers_by_id):
         "semi-dwarf", "semi-dwarf-bareroot", "semi-dwarf-ez-start", "semi-dwarf-potted",
         "supreme", "supreme-bareroot", "supreme-ez-start",
         "ultra-supreme", "standard", "potted",
-        "bulb", "4inch", "default",
+        "bulb", "3inch", "4inch", "6inch", "default",
+        "12-18in", "18-24in", "24-36in", "36-48in", "48-54in",
     ]
     known = set(tier_order)
     leftover = sorted(t for t in active_tiers if t not in known)
@@ -553,6 +580,67 @@ def find_related_plants_for_guide(guide_slug, all_plants):
     return [p for p in all_plants if p.get("category") == category][:10]
 
 
+_CATEGORY_LABELS = {
+    "missing-plants":  "Missing Plants",
+    "price-data":      "Price Data",
+    "site-feature":    "Feature Request",
+    "bug":             "Bug",
+    "other":           "Other",
+}
+
+_STATUS_LABELS = {
+    "reviewing":   "Under Review",
+    "planned":     "Planned",
+    "in-progress": "In Progress",
+    "responded":   "Responded",
+    "done":        "Done ✓",
+}
+
+
+def load_feedback():
+    """Load and enrich feedback items from data/feedback.json."""
+    path = os.path.join(DATA_DIR, "feedback.json")
+    raw = load_json(path)
+    if not isinstance(raw, list):
+        return []
+
+    items = []
+    for entry in raw:
+        submitted_raw = entry.get("submitted_at", "")
+        try:
+            submitted_dt = datetime.fromisoformat(submitted_raw.replace("Z", "+00:00"))
+            submitted_date = submitted_dt.strftime("%B %d, %Y")
+        except (ValueError, TypeError):
+            submitted_date = ""
+
+        response = entry.get("response")
+        response_date = ""
+        if response:
+            responded_raw = response.get("responded_at", "")
+            try:
+                rd = datetime.fromisoformat(responded_raw.replace("Z", "+00:00"))
+                response_date = rd.strftime("%B %d, %Y")
+            except (ValueError, TypeError):
+                response_date = ""
+
+        items.append({
+            "id":             entry.get("id", ""),
+            "category":       entry.get("category", "other"),
+            "category_label": _CATEGORY_LABELS.get(entry.get("category", ""), "Other"),
+            "title":          entry.get("title", ""),
+            "body":           entry.get("body", ""),
+            "submitted_at":   submitted_raw,
+            "submitted_date": submitted_date,
+            "status":         entry.get("status", "reviewing"),
+            "status_label":   _STATUS_LABELS.get(entry.get("status", "reviewing"), "Under Review"),
+            "upvotes":        entry.get("upvotes", 0),
+            "response":       response,
+            "response_date":  response_date,
+        })
+
+    return items
+
+
 def ensure_dir(path):
     """Create directory if it doesn't exist."""
     os.makedirs(path, exist_ok=True)
@@ -570,8 +658,18 @@ def build_site(build_guides=True, build_products=True):
     retailers = load_json(os.path.join(DATA_DIR, "retailers.json"))
     retailers_by_id = {r["id"]: r for r in retailers}
 
+    # Load promo codes (written by runner.py scrape_promos — may not exist yet)
+    promos_path = os.path.join(DATA_DIR, "promos.json")
+    promos_by_retailer = load_json(promos_path) if os.path.exists(promos_path) else {}
+
     print(f"  {len(plants)} plants")
     print(f"  {len(retailers)} retailers")
+    if promos_by_retailer:
+        active_promo_count = sum(
+            1 for v in promos_by_retailer.values()
+            if isinstance(v, dict) and (v.get("codes") or v.get("banners"))
+        )
+        print(f"  {active_promo_count} retailers with active promos")
 
     # Set up Jinja2
     env = jinja2.Environment(
@@ -595,7 +693,7 @@ def build_site(build_guides=True, build_products=True):
         for plant in plants:
             price_entries = load_prices(plant["id"])
             latest_prices = get_latest_prices(price_entries, retailers_by_id)
-            price_table = build_price_table(plant, latest_prices, retailers_by_id)
+            price_table = build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer)
             price_history_json = build_price_history_json(price_entries)
             similar = find_similar_plants(plant, plants)
 
@@ -774,10 +872,33 @@ def build_site(build_guides=True, build_products=True):
     print("  Written to site/heat-map.html")
 
     # -----------------------------------------------------------------------
+    # Build Improve page (community feedback board)
+    # -----------------------------------------------------------------------
+    print("\nBuilding improve page...")
+    feedback_items = load_feedback()
+    total_submissions = len(feedback_items)
+    responded_count = sum(1 for f in feedback_items if f.get("response"))
+    done_count = sum(1 for f in feedback_items if f.get("status") == "done")
+
+    improve_tpl = env.get_template("improve.html")
+    html = improve_tpl.render(
+        feedback_items=feedback_items,
+        total_submissions=total_submissions,
+        responded_count=responded_count,
+        done_count=done_count,
+        # Formspree endpoint — replace YOUR_FORM_ID with the actual Formspree form ID
+        # Free tier: 50 submissions/month, no backend needed
+        formspree_endpoint="https://formspree.io/f/YOUR_FORM_ID",
+    )
+    with open(os.path.join(SITE_DIR, "improve.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+    print("  Written to site/improve.html")
+
+    # -----------------------------------------------------------------------
     # Build sitemap.xml
     # -----------------------------------------------------------------------
     print("\nBuilding sitemap.xml...")
-    sitemap_urls = ["/", "/my-list.html", "/heat-map.html"]
+    sitemap_urls = ["/", "/my-list.html", "/heat-map.html", "/improve.html"]
     for plant in plants:
         sitemap_urls.append(f"/plants/{plant['id']}.html")
     for cat_id in categories_map:
@@ -800,7 +921,7 @@ def build_site(build_guides=True, build_products=True):
     # -----------------------------------------------------------------------
     # Summary
     # -----------------------------------------------------------------------
-    total_pages = len(plants) + len(categories_map) + len(article_files) + 3
+    total_pages = len(plants) + len(categories_map) + len(article_files) + 4
     print(f"\n{'=' * 60}")
     print(f"Build complete: {total_pages} pages generated")
     print(f"  {len(plants)} product pages")
@@ -809,6 +930,7 @@ def build_site(build_guides=True, build_products=True):
     print(f"  1 homepage")
     print(f"  1 wishlist page (my-list.html)")
     print(f"  1 heat map page (heat-map.html)")
+    print(f"  1 improve page (improve.html) — {total_submissions} submissions, {responded_count} responded")
     print(f"  1 sitemap.xml")
     print(f"Output: {SITE_DIR}")
     print(f"{'=' * 60}")

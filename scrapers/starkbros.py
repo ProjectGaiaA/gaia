@@ -169,6 +169,49 @@ class StarkBrosScraper:
             "timestamp": datetime.now(timezone.utc).isoformat(),
         }
 
+    def scrape_promo_codes(self) -> list[dict]:
+        """Check Stark Bros homepage for promo codes or discount banners.
+
+        Returns list of dicts like:
+            [{"code": "SAVE20", "description": "...", "source": "text-pattern"}]
+        """
+        try:
+            resp = self.session.get(self.BASE_URL, timeout=20)
+            resp.raise_for_status()
+        except requests.RequestException as e:
+            logger.warning(f"Promo check failed for stark-bros: {e}")
+            return []
+
+        text = resp.text
+        promos = []
+        seen_codes = set()
+
+        # Strip HTML and focus on top-of-page text (banner/announcement area)
+        page_top = re.sub(r'<[^>]+>', ' ', text[:8000])
+        page_top = re.sub(r'\s+', ' ', page_top)
+
+        explicit_patterns = [
+            r'(?:use|enter|apply)\s+(?:code\s+)?([A-Z][A-Z0-9]{2,19})\b',
+            r'promo(?:\s+code)?[:\s]+([A-Z][A-Z0-9]{2,19})\b',
+            r'coupon(?:\s+code)?[:\s]+([A-Z][A-Z0-9]{2,19})\b',
+            r'code[:\s]+([A-Z][A-Z0-9]{2,19})\b',
+        ]
+        EXCLUDED = {'HTTP', 'HTML', 'FREE', 'SHIP', 'SALE', 'BEST', 'MORE', 'SHOP', 'VIEW'}
+        for pat in explicit_patterns:
+            for m in re.finditer(pat, page_top, re.IGNORECASE):
+                code = m.group(1).upper()
+                if code in seen_codes or len(code) < 3 or code in EXCLUDED:
+                    continue
+                start = max(0, m.start() - 20)
+                end = min(len(page_top), m.end() + 60)
+                description = page_top[start:end].strip()
+                promos.append({"code": code, "description": description, "source": "text-pattern"})
+                seen_codes.add(code)
+
+        if promos:
+            logger.info(f"  stark-bros: found {len(promos)} promo(s)")
+        return promos
+
     def scrape_products(self, product_list: list[dict]) -> list[dict]:
         """Scrape multiple products.
 
@@ -224,8 +267,10 @@ class StarkBrosScraper:
         elif "standard" in desc_lower:
             base = "standard"
         else:
-            # Use the description as-is for non-tree products
-            return re.sub(r'[^a-z0-9]+', '-', desc_lower).strip('-')
+            # No recognizable size info — return default rather than the
+            # full product name (which would create a bogus tier key like
+            # "patriot-blueberry" instead of something meaningful)
+            return 'default'
 
         if is_ez_start:
             return f"{base}-ez-start"

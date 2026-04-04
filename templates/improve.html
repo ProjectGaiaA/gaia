@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block title %}Improve PlantPriceTracker — Tell Us What's Missing{% endblock %}
+{% block description %}Help us build a better plant price comparison tool. Tell us what plants we're missing, what's broken, or what features you want. We respond to every submission publicly.{% endblock %}
+
+{% block content %}
+<div class="improve-page">
+
+    <!-- Header -->
+    <header class="improve-hero">
+        <h1>Help Us Build a Better Tracker</h1>
+        <p class="improve-hero-sub">Tell us what plants we're missing, what doesn't work, or what you want next. We read every submission and respond publicly — so the whole community benefits from the conversation.</p>
+        <div class="improve-stats">
+            <span class="improve-stat"><strong>{{ total_submissions }}</strong> submissions</span>
+            <span class="improve-stat-divider">&middot;</span>
+            <span class="improve-stat"><strong>{{ responded_count }}</strong> responded to</span>
+            <span class="improve-stat-divider">&middot;</span>
+            <span class="improve-stat"><strong>{{ done_count }}</strong> shipped</span>
+        </div>
+    </header>
+
+    <!-- Two-column layout: form left, feed right -->
+    <div class="improve-layout">
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Submission Form                                                     -->
+        <!-- ------------------------------------------------------------------ -->
+        <aside class="improve-form-col">
+            <div class="improve-form-card">
+                <h2>Submit Feedback</h2>
+                <p class="form-intro">Not a support ticket — this goes into a public board that anyone can see. Be specific and we'll respond fast.</p>
+
+                <form id="improve-form"
+                      action="{{ formspree_endpoint }}"
+                      method="POST"
+                      novalidate>
+
+                    <!-- Honeypot anti-spam (hidden from real users) -->
+                    <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+                    <!-- Redirect after submit -->
+                    <input type="hidden" name="_next" value="/improve.html?submitted=1">
+                    <input type="hidden" name="_subject" value="PlantPriceTracker feedback">
+
+                    <div class="form-field">
+                        <label for="fb-category">Category <span class="required">*</span></label>
+                        <select id="fb-category" name="category" required>
+                            <option value="">Select one…</option>
+                            <option value="missing-plants">Missing Plants / Varieties</option>
+                            <option value="price-data">Price Data Issue</option>
+                            <option value="site-feature">Feature Request</option>
+                            <option value="bug">Something's Broken</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="fb-title">One-line summary <span class="required">*</span></label>
+                        <input type="text" id="fb-title" name="title"
+                               placeholder="e.g. Add Drift roses, or Price mismatch on Limelight"
+                               maxlength="120" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="fb-body">Details <span class="required">*</span></label>
+                        <textarea id="fb-body" name="body" rows="4"
+                                  placeholder="The more specific you are, the faster we can act on it."
+                                  maxlength="1000" required></textarea>
+                        <span class="char-count" id="body-count">0 / 1000</span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="fb-email">Your email <span class="optional">(optional — only used to notify you when we respond)</span></label>
+                        <input type="email" id="fb-email" name="email"
+                               placeholder="you@example.com">
+                    </div>
+
+                    <button type="submit" class="form-submit" id="submit-btn">
+                        Submit Feedback
+                    </button>
+                    <p class="form-note">Responses are posted publicly on this page, typically within 48 hours.</p>
+
+                </form>
+
+                <!-- Thank-you state (shown after redirect with ?submitted=1) -->
+                <div id="form-thanks" class="form-thanks" style="display:none">
+                    <span class="thanks-icon">&#x2705;</span>
+                    <h3>Got it — thanks!</h3>
+                    <p>We'll respond publicly on this page. Check back in a day or two.</p>
+                </div>
+            </div>
+
+            <!-- Category legend -->
+            <div class="category-legend">
+                <h3>What counts as what?</h3>
+                <ul class="legend-list">
+                    <li><span class="badge badge-missing-plants">Missing Plants</span> A plant or variety we don't track yet</li>
+                    <li><span class="badge badge-price-data">Price Data</span> A price we show is wrong or stale</li>
+                    <li><span class="badge badge-site-feature">Feature Request</span> Something new you want the site to do</li>
+                    <li><span class="badge badge-bug">Bug</span> Something is broken or displaying incorrectly</li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- ------------------------------------------------------------------ -->
+        <!-- Public Feed                                                         -->
+        <!-- ------------------------------------------------------------------ -->
+        <section class="improve-feed-col">
+
+            <!-- Filter tabs -->
+            <div class="feed-filters" role="tablist">
+                <button class="feed-filter active" data-filter="all" role="tab" aria-selected="true">All ({{ total_submissions }})</button>
+                <button class="feed-filter" data-filter="open" role="tab" aria-selected="false">Open</button>
+                <button class="feed-filter" data-filter="planned" role="tab" aria-selected="false">Planned</button>
+                <button class="feed-filter" data-filter="in-progress" role="tab" aria-selected="false">In Progress</button>
+                <button class="feed-filter" data-filter="done" role="tab" aria-selected="false">Done ✓</button>
+            </div>
+
+            <!-- Sort row -->
+            <div class="feed-sort-row">
+                <label for="feed-sort" class="feed-sort-label">Sort:</label>
+                <select id="feed-sort" class="feed-sort-select">
+                    <option value="upvotes">Most upvoted</option>
+                    <option value="newest">Newest first</option>
+                    <option value="responded">Responded first</option>
+                </select>
+            </div>
+
+            <!-- Submissions feed -->
+            <div class="feedback-feed" id="feedback-feed">
+                {% for item in feedback_items %}
+                <article class="feedback-card" id="{{ item.id }}"
+                         data-status="{{ item.status }}"
+                         data-upvotes="{{ item.upvotes }}"
+                         data-submitted="{{ item.submitted_at }}">
+
+                    <div class="feedback-card-header">
+                        <div class="feedback-meta-row">
+                            <span class="badge badge-{{ item.category }}">{{ item.category_label }}</span>
+                            <span class="status-badge status-{{ item.status }}">{{ item.status_label }}</span>
+                        </div>
+                        <div class="feedback-upvote">
+                            <button class="upvote-btn"
+                                    data-id="{{ item.id }}"
+                                    aria-label="Upvote this suggestion"
+                                    title="Upvote">
+                                <span class="upvote-arrow">&#x25B2;</span>
+                                <span class="upvote-count" id="count-{{ item.id }}">{{ item.upvotes }}</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <h3 class="feedback-title">{{ item.title }}</h3>
+                    <p class="feedback-body">{{ item.body }}</p>
+                    <p class="feedback-date">Submitted {{ item.submitted_date }}</p>
+
+                    {% if item.response %}
+                    <div class="feedback-response">
+                        <div class="response-header">
+                            <span class="response-author-badge">&#x1F331; {{ item.response.author }}</span>
+                            <span class="response-date">{{ item.response_date }}</span>
+                        </div>
+                        <p class="response-body">{{ item.response.body }}</p>
+                    </div>
+                    {% else %}
+                    <div class="feedback-pending-response">
+                        <span class="pending-dot"></span> Awaiting response
+                    </div>
+                    {% endif %}
+
+                </article>
+                {% endfor %}
+            </div>
+
+            {% if not feedback_items %}
+            <div class="feed-empty">
+                <p>No submissions yet — be the first to tell us what to improve.</p>
+            </div>
+            {% endif %}
+
+        </section>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="/assets/js/improve.js"></script>
+{% endblock %}

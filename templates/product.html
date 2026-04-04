@@ -161,6 +161,16 @@
                                     {% if retailer_prices.has_affiliate %}
                                     <span class="affiliate-label">affiliate link</span>
                                     {% endif %}
+                                    {% if retailer_prices.promo %}
+                                    <div class="promo-info">
+                                        {% for code in retailer_prices.promo.codes %}
+                                        <span class="promo-code" title="Promo code — enter at checkout">🏷 {{ code }}</span>
+                                        {% endfor %}
+                                        {% for banner in retailer_prices.promo.banners %}
+                                        <span class="promo-banner">{{ banner }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
                                 </td>
                             </tr>
                             {% endfor %}

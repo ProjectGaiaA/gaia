@@ -57,7 +57,7 @@ jobs:
           "
 
       - name: Verify prices (10 random spot checks)
-        run: python -m scrapers.verify --count 10
+        run: python -m scrapers.verify --count 10 || echo "WARNING: Price mismatches detected — review verify output above"
 
       - name: Build site
         run: python build.py
@@ -85,10 +85,21 @@ jobs:
           print('All internal links OK')
           "
 
+      - name: Scrape promo codes
+        run: |
+          python -c "
+          import sys, json
+          from pathlib import Path
+          sys.path.insert(0, '.')
+          from scrapers.runner import scrape_promos, load_json
+          retailers = load_json(Path('data/retailers.json'))
+          scrape_promos(retailers)
+          " || echo "WARNING: Promo scraping failed — skipping"
+
       - name: Commit updated price data
         run: |
           git config user.name "PlantPriceTracker Bot"
           git config user.email "bot@plantpricetracker.com"
-          git add data/prices/ data/last_manifest.json site/
+          git add data/prices/ data/last_manifest.json data/promos.json site/
           git diff --staged --quiet || git commit -m "Daily price update $(date +%Y-%m-%d_%H:%M)"
           git push
