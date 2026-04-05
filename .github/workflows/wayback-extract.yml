@@ -1,0 +1,55 @@
+name: Wayback Historical Price Backfill
+
+# Manual trigger only — this is a one-time historical backfill, not a schedule.
+# Run from: GitHub → Actions → "Wayback Historical Price Backfill" → Run workflow
+on:
+  workflow_dispatch:
+    inputs:
+      nursery:
+        description: "Limit to one nursery (fast-growing-trees, nature-hills, stark-bros) — leave blank for all three"
+        required: false
+        default: ""
+      plant:
+        description: "Limit to one plant ID (e.g. limelight-hydrangea) — leave blank for all 77"
+        required: false
+        default: ""
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    # The full 77-plant × 3-nursery run with 3-5s delays per snapshot can take
+    # several hours. GitHub's max job timeout is 6h — if the run is too large,
+    # split by nursery using the nursery input.
+    timeout-minutes: 360
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests jinja2 markdown
+
+      - name: Run Wayback backfill
+        run: |
+          ARGS=""
+          if [ -n "${{ github.event.inputs.nursery }}" ]; then
+            ARGS="$ARGS --nursery ${{ github.event.inputs.nursery }}"
+          fi
+          if [ -n "${{ github.event.inputs.plant }}" ]; then
+            ARGS="$ARGS --plant ${{ github.event.inputs.plant }}"
+          fi
+          echo "Running: python -m scrapers.wayback_prices $ARGS"
+          python -m scrapers.wayback_prices $ARGS
+
+      - name: Commit backfill results
+        run: |
+          git config user.name "PlantPriceTracker Bot"
+          git config user.email "bot@plantpricetracker.com"
+          git add data/wayback_prices.json data/wayback_progress.json
+          git diff --staged --quiet && echo "No new data to commit" || \
+            git commit -m "Wayback backfill: historical prices $(date +%Y-%m-%d)"
+          git push
