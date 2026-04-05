@@ -330,6 +330,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                         "was_price": price_info.get("was_price"),
                         "is_best": False,
                         "label": get_size_label(tier),
+                        "variant_id": price_info.get("variant_id"),
                     }
                     all_prices_flat.append(price)
                     active_tiers.add(tier)
@@ -368,13 +369,25 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             if codes or banners:
                 promo_info = {"codes": codes, "banners": banners}
 
+        # Find cheapest variant_id for the default "Buy at" button
+        default_variant = None
+        if sizes:
+            cheapest_size = min(
+                (s for s in sizes.values() if s.get("price")),
+                key=lambda s: s["price"],
+                default=None,
+            )
+            if cheapest_size:
+                default_variant = cheapest_size.get("variant_id")
+
         prices[retailer_id] = {
             "retailer_name": retailer["name"],
             "sizes": sizes,
             "in_stock": in_stock,
             "has_affiliate": has_affiliate,
             "has_best_price": False,
-            "buy_url": price_data.get("url", retailer.get("url", "#")),
+            "buy_url": price_data.get("url", retailer.get("url", "#")).split("?variant=")[0],
+            "default_variant_id": default_variant,
             "shipping": retailer.get("shipping"),
             "ships_season": ships_season,
             "promo": promo_info,

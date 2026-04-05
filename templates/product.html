@@ -112,7 +112,11 @@
                                 {% for tier in active_size_tiers %}
                                 <td class="price-cell" data-label="{{ tier|replace('gal',' Gal')|replace('quart','Quart')|replace('bareroot','Bare Root')|title }}">
                                     {% if retailer_prices.sizes[tier] %}
+                                    {% if retailer_prices.sizes[tier].variant_id %}
+                                    <a href="{{ retailer_prices.buy_url }}?variant={{ retailer_prices.sizes[tier].variant_id }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="price-link">
+                                    {% else %}
                                     <a href="{{ retailer_prices.buy_url }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="price-link">
+                                    {% endif %}
                                         {% if retailer_prices.sizes[tier].is_best %}
                                         <span class="best-price">${{ '%.2f'|format(retailer_prices.sizes[tier].price) }}</span>
                                         {% else %}
@@ -157,7 +161,7 @@
                                     {% endif %}
                                 </td>
                                 <td class="action-cell" data-label="">
-                                    <a href="{{ retailer_prices.buy_url }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="buy-btn">
+                                    <a href="{{ retailer_prices.buy_url }}{% if retailer_prices.default_variant_id %}?variant={{ retailer_prices.default_variant_id }}{% endif %}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="buy-btn">
                                         Buy at {{ retailer_prices.retailer_name }}
                                     </a>
                                     {% if retailer_prices.has_affiliate %}
