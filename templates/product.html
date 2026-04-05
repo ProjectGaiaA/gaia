@@ -84,12 +84,81 @@
                 </dl>
             </div>
 
-            <!-- Price Comparison Table -->
+            <!-- Price Comparison -->
             <div class="price-comparison">
                 <h2>Current Prices</h2>
                 {% if prices %}
                 <p class="price-updated">Prices last checked: {{ last_updated }}</p>
-                <div class="table-wrapper">
+
+                <!-- Mobile Layout: Best Price + Retailer Cards (hidden on desktop) -->
+                <div class="mobile-prices">
+                    {% if best_deal %}
+                    <div class="best-deal-card">
+                        <div class="best-deal-label">Best Price</div>
+                        <div class="best-deal-price">${{ '%.2f'|format(best_deal.price) }}</div>
+                        <div class="best-deal-detail">at {{ best_deal.retailer_name }} ({{ best_deal.size|replace('gal', ' Gal')|replace('quart', 'Quart')|replace('bareroot', 'Bare Root')|title }})</div>
+                        <a href="{{ best_deal.url }}" target="_blank" rel="noopener{% if best_deal.has_affiliate %} sponsored{% endif %}" class="best-deal-btn">Buy Now</a>
+                    </div>
+                    {% endif %}
+                    {% if runner_up_deals %}
+                    <div class="runner-up-deals">
+                        {% for deal in runner_up_deals %}
+                        <a href="{{ deal.url }}" target="_blank" rel="noopener{% if deal.has_affiliate %} sponsored{% endif %}" class="runner-up-card">
+                            <span class="runner-up-price">${{ '%.2f'|format(deal.price) }}</span>
+                            <span class="runner-up-detail">{{ deal.retailer_name }} &middot; {{ deal.size|replace('gal', ' Gal')|replace('quart', 'Quart')|replace('bareroot', 'Bare Root')|title }}</span>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    {% for retailer_id, retailer_prices in prices.items() %}
+                    <div class="retailer-card{% if retailer_prices.in_stock == false %} retailer-card--soldout{% endif %}">
+                        <div class="retailer-card-header">
+                            <span class="retailer-card-name">{{ retailer_prices.retailer_name }}</span>
+                            {% if retailer_prices.in_stock %}
+                            <span class="in-stock">In Stock</span>
+                            {% elif retailer_prices.in_stock is none %}
+                            <span class="stock-unknown">Check Site</span>
+                            {% else %}
+                            <span class="out-of-stock">Sold Out</span>
+                            {% endif %}
+                        </div>
+                        <div class="retailer-card-sizes">
+                            {% for tier in active_size_tiers %}
+                            {% if retailer_prices.sizes[tier] %}
+                            <a href="{{ retailer_prices.buy_url }}{% if retailer_prices.sizes[tier].variant_id %}?variant={{ retailer_prices.sizes[tier].variant_id }}{% endif %}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="size-row">
+                                <span class="size-label">{{ tier|replace('gal', ' Gal')|replace('quart', 'Quart')|replace('bareroot', 'Bare Root')|title }}</span>
+                                <span class="size-price{% if retailer_prices.sizes[tier].is_best %} best-price{% endif %}">
+                                    ${{ '%.2f'|format(retailer_prices.sizes[tier].price) }}
+                                    {% if retailer_prices.sizes[tier].was_price %}
+                                    <span class="was-price">${{ '%.2f'|format(retailer_prices.sizes[tier].was_price) }}</span>
+                                    {% endif %}
+                                </span>
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="retailer-card-footer">
+                            {% if retailer_prices.shipping %}
+                            <span class="retailer-card-shipping{% if retailer_prices.shipping.free_all %} free-ship{% endif %}">
+                                {% if retailer_prices.shipping.free_all %}Free shipping
+                                {% elif retailer_prices.shipping.free_threshold %}Free over ${{ retailer_prices.shipping.free_threshold }}
+                                {% elif retailer_prices.shipping.flat_rate %}${{ '%.2f'|format(retailer_prices.shipping.flat_rate) }} flat shipping
+                                {% else %}Shipping varies{% endif %}
+                            </span>
+                            {% endif %}
+                            {% if retailer_prices.promo %}
+                            {% for code in retailer_prices.promo.codes %}
+                            <span class="promo-code">Code: {{ code }}</span>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Desktop Layout: Comparison Table (hidden on mobile) -->
+                <div class="table-wrapper desktop-prices">
                     <table class="comparison-table">
                         <thead>
                             <tr>

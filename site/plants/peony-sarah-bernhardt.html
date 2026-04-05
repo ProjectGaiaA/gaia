@@ -106,12 +106,60 @@
                 </dl>
             </div>
 
-            <!-- Price Comparison Table -->
+            <!-- Price Comparison -->
             <div class="price-comparison">
                 <h2>Current Prices</h2>
                 
-                <p class="price-updated">Prices last checked: April 04, 2026</p>
-                <div class="table-wrapper">
+                <p class="price-updated">Prices last checked: April 05, 2026</p>
+
+                <!-- Mobile Layout: Best Price + Retailer Cards (hidden on desktop) -->
+                <div class="mobile-prices">
+                    
+                    <div class="best-deal-card">
+                        <div class="best-deal-label">Best Price</div>
+                        <div class="best-deal-price">$74.56</div>
+                        <div class="best-deal-detail">at Nature Hills Nursery (2 Gal)</div>
+                        <a href="https://naturehills.com/products/sarah-bernhardt-peony?variant=60737398899058" target="_blank" rel="noopener sponsored" class="best-deal-btn">Buy Now</a>
+                    </div>
+                    
+                    
+
+                    
+                    <div class="retailer-card">
+                        <div class="retailer-card-header">
+                            <span class="retailer-card-name">Nature Hills Nursery</span>
+                            
+                            <span class="stock-unknown">Check Site</span>
+                            
+                        </div>
+                        <div class="retailer-card-sizes">
+                            
+                            
+                            <a href="https://naturehills.com/products/sarah-bernhardt-peony?variant=60737398899058" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">2 Gal</span>
+                                <span class="size-price best-price">
+                                    $74.56
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                        </div>
+                        <div class="retailer-card-footer">
+                            
+                            <span class="retailer-card-shipping">
+                                Free over $139
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Desktop Layout: Comparison Table (hidden on mobile) -->
+                <div class="table-wrapper desktop-prices">
                     <table class="comparison-table">
                         <thead>
                             <tr>
@@ -411,6 +459,11 @@
 
             <!-- Price History Chart (shown when historical data exists) -->
             
+            <div class="price-history">
+                <h2>Price History</h2>
+                <canvas id="priceChart" width="800" height="300"></canvas>
+            </div>
+            
 
             <!-- Care Guide -->
             
@@ -514,6 +567,44 @@
         });
     });
 })();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script>
+    const priceData = {"dates": ["2026-04-03", "2026-04-05"], "retailers": [{"name": "Nature Hills", "prices": [74.56, 74.56]}]};
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: priceData.dates,
+            datasets: priceData.retailers.map((r, i) => ({
+                label: r.name,
+                data: r.prices,
+                borderColor: ['#2E7D32', '#1565C0', '#E65100', '#6A1B9A', '#C62828', '#00695C'][i % 6],
+                tension: 0.3,
+                pointRadius: 2,
+                borderWidth: 2,
+                fill: false
+            }))
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom' },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { callback: (v) => '$' + v.toFixed(0) },
+                    beginAtZero: false
+                }
+            }
+        }
+    });
 </script>
 
 

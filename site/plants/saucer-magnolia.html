@@ -111,12 +111,79 @@
                 </dl>
             </div>
 
-            <!-- Price Comparison Table -->
+            <!-- Price Comparison -->
             <div class="price-comparison">
                 <h2>Current Prices</h2>
                 
-                <p class="price-updated">Prices last checked: April 04, 2026</p>
-                <div class="table-wrapper">
+                <p class="price-updated">Prices last checked: April 05, 2026</p>
+
+                <!-- Mobile Layout: Best Price + Retailer Cards (hidden on desktop) -->
+                <div class="mobile-prices">
+                    
+                    <div class="best-deal-card">
+                        <div class="best-deal-label">Best Price</div>
+                        <div class="best-deal-price">$55.65</div>
+                        <div class="best-deal-detail">at Nature Hills Nursery (1 Gal)</div>
+                        <a href="https://naturehills.com/products/alexandrina-saucer-magnolia-tree?variant=60725332115826" target="_blank" rel="noopener sponsored" class="best-deal-btn">Buy Now</a>
+                    </div>
+                    
+                    
+                    <div class="runner-up-deals">
+                        
+                        <a href="https://naturehills.com/products/alexandrina-saucer-magnolia-tree?variant=60737309376882" target="_blank" rel="noopener sponsored" class="runner-up-card">
+                            <span class="runner-up-price">$129.82</span>
+                            <span class="runner-up-detail">Nature Hills Nursery &middot; 3 Gal</span>
+                        </a>
+                        
+                    </div>
+                    
+
+                    
+                    <div class="retailer-card">
+                        <div class="retailer-card-header">
+                            <span class="retailer-card-name">Nature Hills Nursery</span>
+                            
+                            <span class="stock-unknown">Check Site</span>
+                            
+                        </div>
+                        <div class="retailer-card-sizes">
+                            
+                            
+                            <a href="https://naturehills.com/products/alexandrina-saucer-magnolia-tree?variant=60725332115826" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">1 Gal</span>
+                                <span class="size-price best-price">
+                                    $55.65
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                            
+                            <a href="https://naturehills.com/products/alexandrina-saucer-magnolia-tree?variant=60737309376882" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">3 Gal</span>
+                                <span class="size-price best-price">
+                                    $129.82
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                        </div>
+                        <div class="retailer-card-footer">
+                            
+                            <span class="retailer-card-shipping">
+                                Free over $139
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Desktop Layout: Comparison Table (hidden on mobile) -->
+                <div class="table-wrapper desktop-prices">
                     <table class="comparison-table">
                         <thead>
                             <tr>
@@ -446,6 +513,8 @@
                     <li>
                         <a href="/plants/dogwood-tree.html">
                             <span class="similar-name">Flowering Dogwood</span>
+                            
+                            <span class="similar-price">from $86.95</span>
                             
                         </a>
                     </li>

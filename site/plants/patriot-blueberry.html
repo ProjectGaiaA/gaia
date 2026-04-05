@@ -111,12 +111,146 @@
                 </dl>
             </div>
 
-            <!-- Price Comparison Table -->
+            <!-- Price Comparison -->
             <div class="price-comparison">
                 <h2>Current Prices</h2>
                 
-                <p class="price-updated">Prices last checked: April 04, 2026</p>
-                <div class="table-wrapper">
+                <p class="price-updated">Prices last checked: April 05, 2026</p>
+
+                <!-- Mobile Layout: Best Price + Retailer Cards (hidden on desktop) -->
+                <div class="mobile-prices">
+                    
+                    <div class="best-deal-card">
+                        <div class="best-deal-label">Best Price</div>
+                        <div class="best-deal-price">$27.99</div>
+                        <div class="best-deal-detail">at Stark Bros (Default)</div>
+                        <a href="https://www.starkbros.com/products/berry-plants/blueberry-plants/patriot-blueberry" target="_blank" rel="noopener sponsored" class="best-deal-btn">Buy Now</a>
+                    </div>
+                    
+                    
+                    <div class="runner-up-deals">
+                        
+                        <a href="https://springhillnursery.com/products/patriot-blueberry?variant=47138443854120" target="_blank" rel="noopener sponsored" class="runner-up-card">
+                            <span class="runner-up-price">$29.99</span>
+                            <span class="runner-up-detail">Spring Hill Nurseries &middot; Default</span>
+                        </a>
+                        
+                        <a href="https://naturehills.com/products/blueberry-patriot?variant=60737396506994" target="_blank" rel="noopener sponsored" class="runner-up-card">
+                            <span class="runner-up-price">$40.63</span>
+                            <span class="runner-up-detail">Nature Hills Nursery &middot; 1 Gal</span>
+                        </a>
+                        
+                    </div>
+                    
+
+                    
+                    <div class="retailer-card">
+                        <div class="retailer-card-header">
+                            <span class="retailer-card-name">Stark Bros</span>
+                            
+                            <span class="in-stock">In Stock</span>
+                            
+                        </div>
+                        <div class="retailer-card-sizes">
+                            
+                            
+                            
+                            
+                            <a href="https://www.starkbros.com/products/berry-plants/blueberry-plants/patriot-blueberry" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">Default</span>
+                                <span class="size-price best-price">
+                                    $27.99
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                        </div>
+                        <div class="retailer-card-footer">
+                            
+                            <span class="retailer-card-shipping">
+                                Free over $99
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="retailer-card">
+                        <div class="retailer-card-header">
+                            <span class="retailer-card-name">Spring Hill Nurseries</span>
+                            
+                            <span class="stock-unknown">Check Site</span>
+                            
+                        </div>
+                        <div class="retailer-card-sizes">
+                            
+                            
+                            
+                            
+                            <a href="https://springhillnursery.com/products/patriot-blueberry?variant=47138443854120" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">Default</span>
+                                <span class="size-price">
+                                    $29.99
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                        </div>
+                        <div class="retailer-card-footer">
+                            
+                            <span class="retailer-card-shipping">
+                                Free over $125
+                                
+                            </span>
+                            
+                            
+                            
+                            <span class="promo-code">Code: ONLY</span>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="retailer-card">
+                        <div class="retailer-card-header">
+                            <span class="retailer-card-name">Nature Hills Nursery</span>
+                            
+                            <span class="stock-unknown">Check Site</span>
+                            
+                        </div>
+                        <div class="retailer-card-sizes">
+                            
+                            
+                            <a href="https://naturehills.com/products/blueberry-patriot?variant=60737396506994" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">1 Gal</span>
+                                <span class="size-price best-price">
+                                    $40.63
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                            
+                            
+                        </div>
+                        <div class="retailer-card-footer">
+                            
+                            <span class="retailer-card-shipping">
+                                Free over $139
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Desktop Layout: Comparison Table (hidden on mobile) -->
+                <div class="table-wrapper desktop-prices">
                     <table class="comparison-table">
                         <thead>
                             <tr>
@@ -125,8 +259,6 @@
                                 <th>1 Gal</th>
                                 
                                 <th>Default</th>
-                                
-                                <th>Patriot-Blueberry</th>
                                 
                                 <th>In Stock</th>
                                 <th>Shipping</th>
@@ -148,12 +280,6 @@
                                 </td>
                                 
                                 <td class="price-cell" data-label="Default">
-                                    
-                                        <span class="no-data">&mdash;</span>
-                                    
-                                </td>
-                                
-                                <td class="price-cell" data-label="Patriot-Blueberry">
                                     
                                     
                                     <a href="https://www.starkbros.com/products/berry-plants/blueberry-plants/patriot-blueberry" target="_blank" rel="noopener sponsored" class="price-link">
@@ -210,16 +336,10 @@
                                     <a href="https://springhillnursery.com/products/patriot-blueberry?variant=47138443854120" target="_blank" rel="noopener sponsored" class="price-link">
                                     
                                         
-                                        <span class="best-price">$29.99</span>
+                                        $29.99
                                         
                                         
                                     </a>
-                                    
-                                </td>
-                                
-                                <td class="price-cell" data-label="Patriot-Blueberry">
-                                    
-                                        <span class="no-data">&mdash;</span>
                                     
                                 </td>
                                 
@@ -245,6 +365,15 @@
                                     <span class="affiliate-label">affiliate link</span>
                                     
                                     
+                                    <div class="promo-info">
+                                        
+                                        <span class="promo-code" title="Promo code — enter at checkout">🏷 ONLY</span>
+                                        
+                                        
+                                        <span class="promo-banner">Flash Sale</span>
+                                        
+                                    </div>
+                                    
                                 </td>
                             </tr>
                             
@@ -268,12 +397,6 @@
                                 </td>
                                 
                                 <td class="price-cell" data-label="Default">
-                                    
-                                        <span class="no-data">&mdash;</span>
-                                    
-                                </td>
-                                
-                                <td class="price-cell" data-label="Patriot-Blueberry">
                                     
                                         <span class="no-data">&mdash;</span>
                                     
@@ -635,7 +758,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
-    const priceData = {"dates": ["2026-04-03"], "retailers": [{"name": "Nature Hills", "prices": [40.63]}, {"name": "Spring Hill", "prices": [29.99]}, {"name": "Stark Bros", "prices": [27.99]}]};
+    const priceData = {"dates": ["2026-04-03", "2026-04-05"], "retailers": [{"name": "Nature Hills", "prices": [40.63, 40.63]}, {"name": "Spring Hill", "prices": [29.99, 29.99]}, {"name": "Stark Bros", "prices": [27.99, 27.99]}]};
     const ctx = document.getElementById('priceChart').getContext('2d');
     new Chart(ctx, {
         type: 'line',

@@ -111,12 +111,169 @@
                 </dl>
             </div>
 
-            <!-- Price Comparison Table -->
+            <!-- Price Comparison -->
             <div class="price-comparison">
                 <h2>Current Prices</h2>
                 
-                <p class="price-updated">Prices last checked: April 04, 2026</p>
-                <div class="table-wrapper">
+                <p class="price-updated">Prices last checked: April 05, 2026</p>
+
+                <!-- Mobile Layout: Best Price + Retailer Cards (hidden on desktop) -->
+                <div class="mobile-prices">
+                    
+                    <div class="best-deal-card">
+                        <div class="best-deal-label">Best Price</div>
+                        <div class="best-deal-price">$35.95</div>
+                        <div class="best-deal-detail">at PlantingTree (1-2ft)</div>
+                        <a href="https://www.plantingtree.com/products/tulip-poplar?variant=40686665957423" target="_blank" rel="noopener sponsored" class="best-deal-btn">Buy Now</a>
+                    </div>
+                    
+                    
+                    <div class="runner-up-deals">
+                        
+                        <a href="https://www.plantingtree.com/products/tulip-poplar?variant=39958973284399" target="_blank" rel="noopener sponsored" class="runner-up-card">
+                            <span class="runner-up-price">$88.95</span>
+                            <span class="runner-up-detail">PlantingTree &middot; 2-3ft</span>
+                        </a>
+                        
+                        <a href="https://www.plantingtree.com/products/tulip-poplar?variant=6961225105455" target="_blank" rel="noopener sponsored" class="runner-up-card">
+                            <span class="runner-up-price">$92.95</span>
+                            <span class="runner-up-detail">PlantingTree &middot; 3-4ft</span>
+                        </a>
+                        
+                    </div>
+                    
+
+                    
+                    <div class="retailer-card">
+                        <div class="retailer-card-header">
+                            <span class="retailer-card-name">PlantingTree</span>
+                            
+                            <span class="stock-unknown">Check Site</span>
+                            
+                        </div>
+                        <div class="retailer-card-sizes">
+                            
+                            
+                            
+                            
+                            <a href="https://www.plantingtree.com/products/tulip-poplar?variant=40686665957423" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">1-2ft</span>
+                                <span class="size-price best-price">
+                                    $35.95
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                            
+                            <a href="https://www.plantingtree.com/products/tulip-poplar?variant=39958973284399" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">2-3ft</span>
+                                <span class="size-price best-price">
+                                    $88.95
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                            
+                            <a href="https://www.plantingtree.com/products/tulip-poplar?variant=6961225105455" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">3-4ft</span>
+                                <span class="size-price best-price">
+                                    $92.95
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                            
+                            <a href="https://www.plantingtree.com/products/tulip-poplar?variant=9420570394671" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">4-5ft</span>
+                                <span class="size-price best-price">
+                                    $124.95
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                            
+                            <a href="https://www.plantingtree.com/products/tulip-poplar?variant=9420570427439" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">5-6ft</span>
+                                <span class="size-price best-price">
+                                    $134.95
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                            
+                            <a href="https://www.plantingtree.com/products/tulip-poplar?variant=39973293490223" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">6-7ft</span>
+                                <span class="size-price best-price">
+                                    $154.95
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                        </div>
+                        <div class="retailer-card-footer">
+                            
+                            <span class="retailer-card-shipping">
+                                Free over $119
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="retailer-card">
+                        <div class="retailer-card-header">
+                            <span class="retailer-card-name">Nature Hills Nursery</span>
+                            
+                            <span class="stock-unknown">Check Site</span>
+                            
+                        </div>
+                        <div class="retailer-card-sizes">
+                            
+                            
+                            <a href="https://naturehills.com/products/tulip-poplar?variant=60737162871154" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">3 Gal</span>
+                                <span class="size-price best-price">
+                                    $97.90
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                        <div class="retailer-card-footer">
+                            
+                            <span class="retailer-card-shipping">
+                                Free over $139
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Desktop Layout: Comparison Table (hidden on mobile) -->
+                <div class="table-wrapper desktop-prices">
                     <table class="comparison-table">
                         <thead>
                             <tr>
@@ -662,7 +819,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
-    const priceData = {"dates": ["2026-04-03"], "retailers": [{"name": "Nature Hills", "prices": [97.9]}, {"name": "Planting Tree", "prices": [35.95]}]};
+    const priceData = {"dates": ["2026-04-03", "2026-04-05"], "retailers": [{"name": "Nature Hills", "prices": [97.9, 97.9]}, {"name": "Planting Tree", "prices": [35.95, 35.95]}]};
     const ctx = document.getElementById('priceChart').getContext('2d');
     new Chart(ctx, {
         type: 'line',

@@ -111,12 +111,117 @@
                 </dl>
             </div>
 
-            <!-- Price Comparison Table -->
+            <!-- Price Comparison -->
             <div class="price-comparison">
                 <h2>Current Prices</h2>
                 
-                <p class="price-updated">Prices last checked: April 04, 2026</p>
-                <div class="table-wrapper">
+                <p class="price-updated">Prices last checked: April 05, 2026</p>
+
+                <!-- Mobile Layout: Best Price + Retailer Cards (hidden on desktop) -->
+                <div class="mobile-prices">
+                    
+                    <div class="best-deal-card">
+                        <div class="best-deal-label">Best Price</div>
+                        <div class="best-deal-price">$16.99</div>
+                        <div class="best-deal-detail">at Nature Hills Nursery (Quart)</div>
+                        <a href="https://naturehills.com/products/phlox-emerald-pink?variant=61480064582002" target="_blank" rel="noopener sponsored" class="best-deal-btn">Buy Now</a>
+                    </div>
+                    
+                    
+                    <div class="runner-up-deals">
+                        
+                        <a href="https://www.plantingtree.com/products/red-creeping-phlox?variant=32798590271535" target="_blank" rel="noopener sponsored" class="runner-up-card">
+                            <span class="runner-up-price">$26.95</span>
+                            <span class="runner-up-detail">PlantingTree &middot; 1 Gal</span>
+                        </a>
+                        
+                        <a href="https://naturehills.com/products/phlox-emerald-pink?variant=60737557266802" target="_blank" rel="noopener sponsored" class="runner-up-card">
+                            <span class="runner-up-price">$31.83</span>
+                            <span class="runner-up-detail">Nature Hills Nursery &middot; 1 Gal</span>
+                        </a>
+                        
+                    </div>
+                    
+
+                    
+                    <div class="retailer-card">
+                        <div class="retailer-card-header">
+                            <span class="retailer-card-name">Nature Hills Nursery</span>
+                            
+                            <span class="stock-unknown">Check Site</span>
+                            
+                        </div>
+                        <div class="retailer-card-sizes">
+                            
+                            
+                            <a href="https://naturehills.com/products/phlox-emerald-pink?variant=61480064582002" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">Quart</span>
+                                <span class="size-price best-price">
+                                    $16.99
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                            
+                            <a href="https://naturehills.com/products/phlox-emerald-pink?variant=60737557266802" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">1 Gal</span>
+                                <span class="size-price">
+                                    $31.83
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                        </div>
+                        <div class="retailer-card-footer">
+                            
+                            <span class="retailer-card-shipping">
+                                Free over $139
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="retailer-card">
+                        <div class="retailer-card-header">
+                            <span class="retailer-card-name">PlantingTree</span>
+                            
+                            <span class="stock-unknown">Check Site</span>
+                            
+                        </div>
+                        <div class="retailer-card-sizes">
+                            
+                            
+                            
+                            
+                            <a href="https://www.plantingtree.com/products/red-creeping-phlox?variant=32798590271535" target="_blank" rel="noopener sponsored" class="size-row">
+                                <span class="size-label">1 Gal</span>
+                                <span class="size-price best-price">
+                                    $26.95
+                                    
+                                </span>
+                            </a>
+                            
+                            
+                        </div>
+                        <div class="retailer-card-footer">
+                            
+                            <span class="retailer-card-shipping">
+                                Free over $119
+                                
+                            </span>
+                            
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Desktop Layout: Comparison Table (hidden on mobile) -->
+                <div class="table-wrapper desktop-prices">
                     <table class="comparison-table">
                         <thead>
                             <tr>
@@ -563,7 +668,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
-    const priceData = {"dates": ["2026-04-03"], "retailers": [{"name": "Nature Hills", "prices": [16.99]}, {"name": "Planting Tree", "prices": [26.95]}]};
+    const priceData = {"dates": ["2026-04-03", "2026-04-05"], "retailers": [{"name": "Nature Hills", "prices": [16.99, 16.99]}, {"name": "Planting Tree", "prices": [26.95, 26.95]}]};
     const ctx = document.getElementById('priceChart').getContext('2d');
     new Chart(ctx, {
         type: 'line',

@@ -444,6 +444,29 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
     highest = max(all_prices_flat) if all_prices_flat else None
     savings_pct = round((1 - lowest / highest) * 100) if lowest and highest and highest > 0 else 0
 
+    # Build mobile best-deal cards: cheapest prices across all retailers/tiers
+    all_deals = []
+    for rid, rdata in prices.items():
+        if rdata["in_stock"] is False:
+            continue
+        buy_url_base = rdata["buy_url"]
+        for tier, sdata in rdata["sizes"].items():
+            if not isinstance(sdata, dict) or not sdata.get("price"):
+                continue
+            variant_url = buy_url_base
+            if sdata.get("variant_id"):
+                variant_url = f"{buy_url_base}?variant={sdata['variant_id']}"
+            all_deals.append({
+                "price": sdata["price"],
+                "retailer_name": rdata["retailer_name"],
+                "size": tier,
+                "url": variant_url,
+                "has_affiliate": rdata["has_affiliate"],
+            })
+    all_deals.sort(key=lambda d: d["price"])
+    best_deal = all_deals[0] if all_deals else None
+    runner_up_deals = all_deals[1:3] if len(all_deals) > 1 else []
+
     return {
         "prices": prices,
         "active_size_tiers": active_tiers_sorted,
@@ -453,6 +476,8 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         "offer_count": len(prices),
         "any_in_stock": any_in_stock,
         "has_non_affiliate": has_non_affiliate,
+        "best_deal": best_deal,
+        "runner_up_deals": runner_up_deals,
     }
 
 

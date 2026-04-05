@@ -298,57 +298,121 @@ tr.sold-out-row .price-cell .was-price { color: var(--gray-300); }
 tr.sold-out-row .retailer-name { color: var(--gray-500); }
 tr.sold-out-row .buy-btn { background: var(--gray-500); }
 
-/* Mobile card layout for comparison table — stacks each retailer as a card */
+/* --- Mobile Price Layout: Best Deal + Retailer Cards --- */
+/* Hidden on desktop, shown on mobile */
+.mobile-prices { display: none; }
+
+.best-deal-card {
+    background: var(--green-pale);
+    border: 2px solid var(--green-light);
+    border-radius: var(--radius);
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 0.75rem;
+}
+.best-deal-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--green-mid);
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+.best-deal-price {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--green-dark);
+    line-height: 1.1;
+}
+.best-deal-detail {
+    font-size: 0.85rem;
+    color: var(--gray-700);
+    margin: 0.25rem 0 0.75rem;
+}
+.best-deal-btn {
+    display: inline-block;
+    padding: 0.6rem 2rem;
+    background: var(--green-mid);
+    color: var(--white);
+    border-radius: var(--radius);
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+}
+.best-deal-btn:hover { background: var(--green-dark); text-decoration: none; }
+
+.runner-up-deals {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+.runner-up-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5rem;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    background: var(--white);
+}
+.runner-up-card:hover { border-color: var(--green-light); text-decoration: none; }
+.runner-up-price { font-weight: 700; font-size: 1.1rem; color: var(--gray-900); }
+.runner-up-detail { font-size: 0.7rem; color: var(--gray-500); text-align: center; margin-top: 2px; }
+
+.retailer-card {
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius);
+    margin-bottom: 0.75rem;
+    background: var(--white);
+    overflow: hidden;
+}
+.retailer-card--soldout { opacity: 0.6; }
+.retailer-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 0.75rem;
+    background: var(--gray-100);
+    border-bottom: 1px solid var(--gray-300);
+}
+.retailer-card-name { font-weight: 700; font-size: 0.95rem; }
+.retailer-card-sizes { padding: 0; }
+.size-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--gray-100);
+    text-decoration: none;
+    color: inherit;
+}
+.size-row:last-child { border-bottom: none; }
+.size-row:hover { background: #F1F8E9; }
+.size-row:active { background: var(--green-pale); }
+.size-label { font-size: 0.85rem; color: var(--gray-700); }
+.size-price { font-weight: 600; font-size: 0.95rem; }
+.retailer-card-footer {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    padding: 0.4rem 0.75rem 0.5rem;
+    border-top: 1px solid var(--gray-100);
+    font-size: 0.75rem;
+}
+.retailer-card-shipping { color: var(--gray-500); }
+.retailer-card-shipping.free-ship { color: var(--green-mid); font-weight: 600; }
+.retailer-card-footer .promo-code {
+    color: var(--orange-accent);
+    font-weight: 600;
+}
+
 @media (max-width: 600px) {
-    .table-wrapper { overflow-x: unset; }
-    .comparison-table,
-    .comparison-table thead,
-    .comparison-table tbody,
-    .comparison-table th,
-    .comparison-table td,
-    .comparison-table tr { display: block; }
-    .comparison-table thead { display: none; }
-    .comparison-table tr {
-        border: 1px solid var(--gray-300);
-        border-radius: var(--radius);
-        margin-bottom: 0.75rem;
-        padding: 0.25rem 0.5rem 0.5rem;
-        background: var(--white) !important;
-    }
-    .comparison-table td {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: right;
-        border: none;
-        border-bottom: 1px solid var(--gray-100);
-        padding: 0.4rem 0.25rem;
-    }
-    .comparison-table td:last-child { border-bottom: none; }
-    .comparison-table td::before {
-        content: attr(data-label);
-        font-weight: 600;
-        text-align: left;
-        color: var(--gray-700);
-        flex-shrink: 0;
-        margin-right: 0.75rem;
-        font-size: 0.8rem;
-    }
-    .comparison-table td.retailer-name {
-        font-size: 1rem;
-        padding: 0.5rem 0.25rem 0.6rem;
-        border-bottom: 2px solid var(--gray-200);
-        justify-content: flex-start;
-    }
-    .comparison-table td.retailer-name::before { display: none; }
-    .comparison-table td[data-label=""]::before { display: none; }
-    .comparison-table .action-cell {
-        padding-top: 0.5rem;
-        justify-content: flex-end;
-    }
-    .comparison-table .action-cell::before { display: none; }
+    .mobile-prices { display: block; }
+    .desktop-prices { display: none; }
     .buy-btn { width: 100%; text-align: center; padding: 0.5rem; }
-    tr.sold-out-row { opacity: 0.65; }
 }
 
 /* Shipping column */
