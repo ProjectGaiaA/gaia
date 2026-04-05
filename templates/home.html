@@ -28,13 +28,13 @@
 
     {% if hero_example %}
     <div class="hero-proof">
-        <p class="proof-label">Example: {{ hero_example.name }}</p>
+        <p class="proof-label">Example: {{ hero_example.name }}{% if hero_example.size_label %} ({{ hero_example.size_label }}){% endif %}</p>
         <div class="proof-range">
             <span class="proof-low">${{ '%.2f'|format(hero_example.low) }}</span>
             <span class="proof-arrow">&harr;</span>
             <span class="proof-high">${{ '%.2f'|format(hero_example.high) }}</span>
         </div>
-        <p class="proof-savings">Save up to {{ hero_example.savings_pct }}% by comparing across {{ hero_example.retailer_count }} nurseries</p>
+        <p class="proof-savings">Save up to {{ hero_example.savings_pct }}% comparing the same size across {{ hero_example.retailer_count }} nurseries</p>
         <a href="/plants/{{ hero_example.id }}.html" class="hero-cta">See Full Comparison</a>
     </div>
     {% endif %}

@@ -242,7 +242,11 @@ def normalize_size_tier(tier: str) -> str:
     Returns the canonical tier ID (e.g. "1gal", "bareroot").
     """
     t = tier.strip().lower()
-    return _SIZE_ALIASES.get(t, tier)
+    canonical = _SIZE_ALIASES.get(t, tier)
+    # Catch raw variant IDs that slipped through the scraper
+    if re.match(r'^(?:variant-)?\d{7,}$', canonical):
+        return 'default'
+    return canonical
 
 
 def get_size_label(tier: str) -> str:
@@ -425,6 +429,27 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             prices[best_retailer]["sizes"][tier]["is_best"] = True
             prices[best_retailer]["has_best_price"] = True
 
+    # Price inversion detection: flag larger sizes that cost LESS than smaller sizes
+    # from the same nursery (likely clearance / sale).
+    tier_rank = {t: i for i, t in enumerate(tier_order)}
+    for rid, rdata in prices.items():
+        retailer_sizes = rdata["sizes"]
+        # Collect (rank, price, tier) for tiers this retailer has
+        ranked = []
+        for tier, sdata in retailer_sizes.items():
+            if isinstance(sdata, dict) and sdata.get("price"):
+                rank = tier_rank.get(tier, 999)
+                ranked.append((rank, sdata["price"], tier))
+        ranked.sort()  # sort by canonical size order
+        # If a larger tier (higher rank) is cheaper than any smaller tier, flag it
+        for i in range(1, len(ranked)):
+            bigger_rank, bigger_price, bigger_tier = ranked[i]
+            for j in range(i):
+                smaller_rank, smaller_price, smaller_tier = ranked[j]
+                if bigger_price < smaller_price:
+                    retailer_sizes[bigger_tier]["sale_flag"] = True
+                    break
+
     # Sort retailers: in-stock cheapest first, no-price next, sold-out last
     def _retailer_sort_key(item):
         rid, rdata = item
@@ -444,24 +469,85 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
     highest = max(all_prices_flat) if all_prices_flat else None
     savings_pct = round((1 - lowest / highest) * 100) if lowest and highest and highest > 0 else 0
 
-    # Build mobile best-deal cards: cheapest prices across all retailers/tiers
-    all_deals = []
+    # Same-tier savings: compare prices ONLY within the same size tier across nurseries.
+    # Pick the tier that appears at the most nurseries, then compare cheapest vs most
+    # expensive for THAT tier.  This avoids misleading cross-tier comparisons
+    # (e.g. $9.99 bare root vs $393.93 large container).
+    same_tier_savings = 0
+    same_tier_info = None
+    tier_prices_map = {}  # tier → list of (price, retailer_name)
     for rid, rdata in prices.items():
         if rdata["in_stock"] is False:
             continue
-        buy_url_base = rdata["buy_url"]
         for tier, sdata in rdata["sizes"].items():
+            if isinstance(sdata, dict) and sdata.get("price"):
+                tier_prices_map.setdefault(tier, []).append(
+                    (sdata["price"], rdata["retailer_name"])
+                )
+    # Find the tier with the most nurseries, break ties by savings %
+    best_tier_key = None
+    for tier, price_list in tier_prices_map.items():
+        if len(price_list) < 2:
+            continue
+        lo = min(p for p, _ in price_list)
+        hi = max(p for p, _ in price_list)
+        pct = round((1 - lo / hi) * 100) if hi > lo else 0
+        nursery_count = len(price_list)
+        if best_tier_key is None or (nursery_count, pct) > (best_tier_key[0], best_tier_key[1]):
+            best_tier_key = (nursery_count, pct, tier, lo, hi)
+    if best_tier_key:
+        same_tier_savings = best_tier_key[1]
+        same_tier_info = {
+            "tier": best_tier_key[2],
+            "tier_label": get_size_label(best_tier_key[2]),
+            "low": best_tier_key[3],
+            "high": best_tier_key[4],
+            "nursery_count": best_tier_key[0],
+        }
+
+    # Build mobile best-deal cards: cheapest price per size tier (one row per tier)
+    mobile_tiers = []
+    all_deals = []
+    for tier in active_tiers_sorted:
+        best_price = None
+        best_entry = None
+        for rid, rdata in prices.items():
+            if rdata["in_stock"] is False:
+                continue
+            sdata = rdata["sizes"].get(tier)
             if not isinstance(sdata, dict) or not sdata.get("price"):
                 continue
+            buy_url_base = rdata["buy_url"]
             variant_url = buy_url_base
             if sdata.get("variant_id"):
                 variant_url = f"{buy_url_base}?variant={sdata['variant_id']}"
-            all_deals.append({
+            entry = {
                 "price": sdata["price"],
                 "retailer_name": rdata["retailer_name"],
                 "size": tier,
                 "url": variant_url,
                 "has_affiliate": rdata["has_affiliate"],
+                "shipping": rdata.get("shipping"),
+                "sale_flag": sdata.get("sale_flag", False),
+            }
+            all_deals.append(entry)
+            if best_price is None or sdata["price"] < best_price:
+                best_price = sdata["price"]
+                best_entry = entry
+        if best_entry:
+            # Skip tiers whose label looks like a raw variant ID
+            label = get_size_label(tier)
+            if re.search(r'\d{7,}', label):
+                continue
+            mobile_tiers.append({
+                "tier": tier,
+                "label": label,
+                "price": best_entry["price"],
+                "retailer_name": best_entry["retailer_name"],
+                "url": best_entry["url"],
+                "has_affiliate": best_entry["has_affiliate"],
+                "shipping": best_entry.get("shipping"),
+                "sale_flag": best_entry.get("sale_flag", False),
             })
     all_deals.sort(key=lambda d: d["price"])
     best_deal = all_deals[0] if all_deals else None
@@ -473,11 +559,14 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         "lowest_price": lowest,
         "highest_price": highest,
         "savings_pct": savings_pct,
+        "same_tier_savings": same_tier_savings,
+        "same_tier_info": same_tier_info,
         "offer_count": len(prices),
         "any_in_stock": any_in_stock,
         "has_non_affiliate": has_non_affiliate,
         "best_deal": best_deal,
         "runner_up_deals": runner_up_deals,
+        "mobile_tiers": mobile_tiers,
     }
 
 
@@ -833,6 +922,7 @@ def build_site(build_guides=True, build_products=True):
             plant["lowest_price"] = price_table["lowest_price"]
             plant["highest_price"] = price_table["highest_price"]
             plant["savings_pct"] = price_table["savings_pct"]
+            plant["same_tier_info"] = price_table.get("same_tier_info")
             plant["retailer_count"] = price_table["offer_count"]
 
             html = product_tpl.render(
@@ -952,22 +1042,24 @@ def build_site(build_guides=True, build_products=True):
             "price_range": f"${min(p.get('price_range', '$0').split('-')[0].replace('$','') or '0' for p in cat_plants)}-${max(p.get('price_range', '$0').split('-')[-1].replace('$','') or '0' for p in cat_plants)}" if cat_plants else "",
         })
 
-    # Hero example — pick the plant with the biggest real price spread from live data
+    # Hero example — pick the plant with the biggest SAME-TIER price spread.
+    # This compares the same size (e.g. 1 Gallon vs 1 Gallon) across nurseries
+    # to avoid misleading cross-tier comparisons (bare root vs large container).
     hero_example = None
     best_savings = 0
     for plant in plants:
-        low = plant.get("lowest_price")
-        high = plant.get("highest_price")
-        if low and high and high > low:
-            pct = round((1 - low / high) * 100)
+        sti = plant.get("same_tier_info")
+        if sti and sti.get("low") and sti.get("high") and sti["high"] > sti["low"]:
+            pct = round((1 - sti["low"] / sti["high"]) * 100)
             if pct > best_savings:
                 best_savings = pct
                 hero_example = {
                     "id": plant["id"],
                     "name": plant["common_name"],
-                    "low": low,
-                    "high": high,
+                    "low": sti["low"],
+                    "high": sti["high"],
                     "savings_pct": pct,
+                    "size_label": sti.get("tier_label", ""),
                     "retailer_count": plant.get("retailer_count", 4),
                 }
 

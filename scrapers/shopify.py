@@ -234,19 +234,61 @@ class ShopifyScraper:
 
         text = resp.text
 
-        # Extract variant ID → size name mapping from inline JS
-        # Pattern: "gid://shopify/ProductVariant/XXXXX","1 Gallon"
+        # Extract variant ID → size name mapping from inline JS.
+        # Multiple patterns because Shopify stores vary structure across themes.
         variant_names = {}
+        _size_keywords = [
+            'quart', 'gal', 'gallon', 'ft', 'foot', 'feet', 'pack',
+            'bare', 'bulb', 'root', 'inch', 'qt', 'container',
+        ]
+
+        def _is_size_name(name):
+            nl = name.lower()
+            return (
+                any(kw in nl for kw in _size_keywords)
+                or re.match(r'^\d+-\d+\s*(ft|feet|foot)', nl)
+            )
+
+        # Pattern 1: "gid://shopify/ProductVariant/XXXXX","1 Gallon"
         for match in re.finditer(
             r'ProductVariant/(\d+)\"?,\"([^\"]+?)\"', text
         ):
             vid, name = match.group(1), match.group(2)
-            # Filter out non-size strings (SKUs, descriptions, etc)
-            if any(kw in name.lower() for kw in [
-                'quart', 'gal', 'gallon', 'ft', 'foot', 'feet', 'pack',
-                'bare', 'bulb', 'root', 'inch', 'qt', 'container'
-            ]) or re.match(r'^\d+-\d+\s*(ft|feet|foot)', name.lower()):
+            if _is_size_name(name):
                 variant_names[vid] = name
+
+        # Pattern 2: FGT / newer Shopify themes use selectedOptions or optionValues
+        # e.g. "id":"gid://shopify/ProductVariant/XXXXX",...,"selectedOptions":[{"name":"Size","value":"1 Gallon"}]
+        if not variant_names:
+            for match in re.finditer(
+                r'ProductVariant/(\d+)\".*?\"selectedOptions\"\s*:\s*\[([^\]]+)\]',
+                text, re.DOTALL
+            ):
+                vid = match.group(1)
+                opts_block = match.group(2)
+                val_match = re.search(r'"value"\s*:\s*"([^"]+)"', opts_block)
+                if val_match and _is_size_name(val_match.group(1)):
+                    variant_names[vid] = val_match.group(1)
+
+        # Pattern 3: "option1":"1 Gallon" near variant ID
+        if not variant_names:
+            for match in re.finditer(
+                r'"id"\s*:\s*(\d{10,})\b[^}]*?"option1"\s*:\s*"([^"]+)"',
+                text
+            ):
+                vid, name = match.group(1), match.group(2)
+                if _is_size_name(name):
+                    variant_names[vid] = name
+
+        # Pattern 4: Shopify product JSON "variants":[{"id":XXXX,"title":"1 Gallon",...}]
+        if not variant_names:
+            for match in re.finditer(
+                r'"id"\s*:\s*(\d{10,})\s*,\s*"title"\s*:\s*"([^"]+)"',
+                text
+            ):
+                vid, name = match.group(1), match.group(2)
+                if name.lower() != 'default title' and _is_size_name(name):
+                    variant_names[vid] = name
 
         # Extract offer data: SKU → price + availability
         offers = re.findall(
@@ -548,12 +590,19 @@ class ShopifyScraper:
         if re.search(r'\bbulbs?\b', title_lower):
             return 'bulb'
 
-        # Step 8: "Default Title" or empty — return generic
+        # Step 8: "Default Title", empty, or raw variant IDs — return generic
         if not title_lower or title_lower == 'default title':
+            return 'default'
+        # Catch raw Shopify variant IDs that slipped through (e.g. "variant-44912345678")
+        if re.match(r'^variant-\d{7,}$', title_lower):
             return 'default'
 
         # Step 9: Unrecognized — return cleaned version
-        return re.sub(r'[^a-z0-9]+', '-', title_lower).strip('-')
+        cleaned = re.sub(r'[^a-z0-9]+', '-', title_lower).strip('-')
+        # If the cleaned result is just a long number, it's a variant ID — treat as default
+        if re.match(r'^\d{7,}$', cleaned):
+            return 'default'
+        return cleaned
 
     def scrape_promo_codes(self) -> list[dict]:
         """Check the retailer's homepage for promo codes or discount banners.
