@@ -35,6 +35,10 @@ import requests
 # ---------------------------------------------------------------------------
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
+from scrapers.polite import (
+    USER_AGENTS, random_ua, polite_headers, polite_delay,
+    log_request, is_allowed_by_robots, make_polite_session,
+)
 from scrapers.shopify import ShopifyScraper, HANDLE_MAPS
 from scrapers.starkbros import STARK_BROS_PRODUCTS
 
@@ -82,32 +86,19 @@ NURSERY_CONFIGS = {
 
 # ---------------------------------------------------------------------------
 # Rate limiting — Wayback Machine is polite-but-firmist about 429s
+# Minimum 5s between requests, up to 15s for safety
 # ---------------------------------------------------------------------------
-MIN_DELAY = 3.0
-MAX_DELAY = 5.0
-
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15",
-]
+MIN_DELAY = 5.0
+MAX_DELAY = 15.0
 
 
 def _polite_delay():
-    """Random 3-5 second delay between Wayback requests."""
-    delay = random.uniform(MIN_DELAY, MAX_DELAY)
-    time.sleep(delay)
+    """Random 5-15 second delay between Wayback requests."""
+    polite_delay(MIN_DELAY, MAX_DELAY)
 
 
 def _make_session() -> requests.Session:
-    s = requests.Session()
-    s.headers.update({
-        "User-Agent": random.choice(USER_AGENTS),
-        "Accept": "text/html,application/xhtml+xml,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9",
-        "DNT": "1",
-    })
-    return s
+    return make_polite_session()
 
 
 # ---------------------------------------------------------------------------
@@ -173,6 +164,7 @@ def query_cdx(session: requests.Session, product_url: str) -> list[dict]:
     for attempt in range(3):
         try:
             resp = session.get(cdx_url, timeout=30)
+            log_request(cdx_url, status_code=resp.status_code)
             if resp.status_code == 429:
                 wait = int(resp.headers.get("Retry-After", 60))
                 logger.warning(f"CDX rate limited — waiting {wait}s")
@@ -202,6 +194,7 @@ def fetch_archived_page(session: requests.Session, timestamp: str, original_url:
     for attempt in range(3):
         try:
             resp = session.get(archive_url, timeout=30)
+            log_request(archive_url, status_code=resp.status_code)
             if resp.status_code == 429:
                 wait = int(resp.headers.get("Retry-After", 60))
                 logger.warning(f"Wayback rate limited — waiting {wait}s")
@@ -223,6 +216,7 @@ def fetch_archived_json(session: requests.Session, timestamp: str, json_url: str
     archive_url = f"https://web.archive.org/web/{timestamp}/{json_url}"
     try:
         resp = session.get(archive_url, timeout=30)
+        log_request(archive_url, status_code=resp.status_code)
         if resp.status_code == 429:
             wait = int(resp.headers.get("Retry-After", 60))
             logger.warning(f"Wayback JSON rate limited — waiting {wait}s")

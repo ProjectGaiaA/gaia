@@ -1,12 +1,12 @@
 {
-  "timestamp": "2026-04-03T20:56:16.099320+00:00",
+  "timestamp": "2026-04-05T13:35:54.415856+00:00",
   "retailers": [
     {
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 6,
-      "products_error": 2,
+      "products_found": 7,
+      "products_error": 1,
       "prices_collected": 11,
       "anomalies": [],
       "price_records": {
@@ -15,8 +15,7 @@
           "semi-dwarf": 26.99
         },
         "bing-cherry-tree:stark-bros": {
-          "semi-dwarf": 41.99,
-          "ultra-supreme": 229.99
+          "semi-dwarf": 41.99
         },
         "elberta-peach-tree:stark-bros": {
           "semi-dwarf": 55.99
@@ -27,11 +26,14 @@
           "supreme-ez-start": 75.99,
           "standard": 26.99
         },
+        "double-knock-out-rose:stark-bros": {
+          "default": 15.99
+        },
         "patriot-blueberry:stark-bros": {
-          "patriot-blueberry": 27.99
+          "default": 27.99
         },
         "pink-lemonade-blueberry:stark-bros": {
-          "pink-lemonade-blueberry": 25.99
+          "default": 25.99
         }
       }
     }
@@ -45,8 +47,7 @@
       "semi-dwarf": 26.99
     },
     "bing-cherry-tree:stark-bros": {
-      "semi-dwarf": 41.99,
-      "ultra-supreme": 229.99
+      "semi-dwarf": 41.99
     },
     "elberta-peach-tree:stark-bros": {
       "semi-dwarf": 55.99
@@ -57,11 +58,14 @@
       "supreme-ez-start": 75.99,
       "standard": 26.99
     },
+    "double-knock-out-rose:stark-bros": {
+      "default": 15.99
+    },
     "patriot-blueberry:stark-bros": {
-      "patriot-blueberry": 27.99
+      "default": 27.99
     },
     "pink-lemonade-blueberry:stark-bros": {
-      "pink-lemonade-blueberry": 25.99
+      "default": 25.99
     }
   }
 }

@@ -26,6 +26,10 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import requests
 
+from scrapers.polite import (
+    USER_AGENTS, random_ua, polite_headers, polite_delay,
+    log_request, is_allowed_by_robots, make_polite_session,
+)
 from scrapers.shopify import ShopifyScraper, get_handles_for_retailer
 from scrapers.starkbros import StarkBrosScraper, STARK_BROS_PRODUCTS
 
@@ -66,7 +70,7 @@ _SALE_BANNER_PATTERNS = [
     re.compile(r'limited[\s-]time\s+offer', re.IGNORECASE),
 ]
 
-_PROMO_UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
+_PROMO_SESSION = None  # Lazy-initialized polite session for promo scraping
 
 
 def load_json(path):
@@ -113,19 +117,25 @@ def check_price_anomaly(plant_id: str, retailer_id: str, new_prices: dict, prev_
     return warnings
 
 
+def _get_promo_session() -> requests.Session:
+    """Get or create a polite session for promo scraping."""
+    global _PROMO_SESSION
+    if _PROMO_SESSION is None:
+        _PROMO_SESSION = make_polite_session()
+    return _PROMO_SESSION
+
+
 def _fetch_page_html(url: str, timeout: int = 15) -> str | None:
-    """Fetch a URL and return the raw HTML text. Returns None on failure."""
+    """Fetch a URL and return the raw HTML text. Returns None on failure.
+
+    Checks robots.txt before fetching. Logs every request.
+    """
+    if not is_allowed_by_robots(url):
+        return None
+    session = _get_promo_session()
     try:
-        resp = requests.get(
-            url,
-            timeout=timeout,
-            headers={
-                "User-Agent": _PROMO_UA,
-                "Accept": "text/html",
-                "Accept-Language": "en-US,en;q=0.9",
-                "DNT": "1",
-            }
-        )
+        resp = session.get(url, timeout=timeout)
+        log_request(url, status_code=resp.status_code)
         if resp.status_code == 200:
             return resp.text
     except requests.RequestException:
@@ -234,7 +244,7 @@ def scrape_promos(retailers: list[dict], dry_run: bool = False) -> dict:
             found_codes.extend(extracted["codes"])
             found_banners.extend(extracted["banners"])
 
-        time.sleep(random.uniform(4, 8))
+        polite_delay(5, 15)
 
         # Sample product page
         sample_path = _SAMPLE_PRODUCT_PATHS.get(rid)
@@ -249,7 +259,7 @@ def scrape_promos(retailers: list[dict], dry_run: bool = False) -> dict:
                 for b in extracted["banners"]:
                     if b not in found_banners:
                         found_banners.append(b)
-            time.sleep(random.uniform(4, 8))
+            polite_delay(5, 15)
 
         # Deduplicate and build result
         entry = {

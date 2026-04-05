@@ -20,13 +20,12 @@ from datetime import datetime, timezone
 
 import requests
 
-logger = logging.getLogger(__name__)
+from scrapers.polite import (
+    USER_AGENTS, random_ua, polite_headers, polite_delay,
+    log_request, is_allowed_by_robots, make_polite_session,
+)
 
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15",
-]
+logger = logging.getLogger(__name__)
 
 
 class StarkBrosScraper:
@@ -34,21 +33,15 @@ class StarkBrosScraper:
 
     BASE_URL = "https://www.starkbros.com"
     RETAILER_ID = "stark-bros"
-    # Respect robots.txt Crawl-delay: 5
+    # Respect robots.txt Crawl-delay: 5, but we use 6-15s to be extra polite
     MIN_DELAY = 6
-    MAX_DELAY = 10
+    MAX_DELAY = 15
 
     def __init__(self):
-        self.session = requests.Session()
-        self.session.headers.update({
-            "User-Agent": random.choice(USER_AGENTS),
-            "Accept": "text/html,application/xhtml+xml",
-            "Accept-Language": "en-US,en;q=0.9",
-            "DNT": "1",
-        })
+        self.session = make_polite_session()
 
     def _delay(self):
-        time.sleep(random.uniform(self.MIN_DELAY, self.MAX_DELAY))
+        return polite_delay(self.MIN_DELAY, self.MAX_DELAY)
 
     def scrape_product(self, slug: str, category_path: str) -> dict | None:
         """Scrape a single Stark Bros product.
@@ -62,8 +55,11 @@ class StarkBrosScraper:
         """
         url = f"{self.BASE_URL}/products/{category_path}/{slug}"
 
+        if not is_allowed_by_robots(url):
+            return None
         try:
             resp = self.session.get(url, timeout=20)
+            log_request(url, status_code=resp.status_code)
             if resp.status_code == 404:
                 logger.info(f"Product not found: {url}")
                 return None
@@ -175,8 +171,11 @@ class StarkBrosScraper:
         Returns list of dicts like:
             [{"code": "SAVE20", "description": "...", "source": "text-pattern"}]
         """
+        if not is_allowed_by_robots(self.BASE_URL):
+            return []
         try:
             resp = self.session.get(self.BASE_URL, timeout=20)
+            log_request(self.BASE_URL, status_code=resp.status_code)
             resp.raise_for_status()
         except requests.RequestException as e:
             logger.warning(f"Promo check failed for stark-bros: {e}")

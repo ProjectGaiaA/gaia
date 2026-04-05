@@ -10,7 +10,7 @@ on:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
 
     steps:
       - uses: actions/checkout@v4
@@ -23,15 +23,79 @@ jobs:
       - name: Install dependencies
         run: pip install requests jinja2 markdown
 
-      - name: Scrape all retailers
+      # Random start delay (0-90 minutes) so scraping doesn't start at the
+      # exact same time every day. Makes traffic pattern less bot-like.
+      - name: Random start delay
         run: |
-          for retailer in nature-hills planting-tree spring-hill fast-growing-trees proven-winners-direct great-garden-plants stark-bros; do
-            echo "--- Scraping $retailer ---"
-            python -m scrapers.runner --retailer $retailer || true
-            echo ""
+          DELAY=$((RANDOM % 5400))
+          echo "Sleeping ${DELAY} seconds ($(( DELAY / 60 )) minutes) before starting..."
+          sleep $DELAY
+
+      # --- Each nursery runs as its own step with continue-on-error ---
+      - name: Scrape nature-hills
+        continue-on-error: true
+        id: nature_hills
+        run: python -m scrapers.runner --retailer nature-hills --skip-promos
+
+      - name: Scrape planting-tree
+        continue-on-error: true
+        id: planting_tree
+        run: python -m scrapers.runner --retailer planting-tree --skip-promos
+
+      - name: Scrape spring-hill
+        continue-on-error: true
+        id: spring_hill
+        run: python -m scrapers.runner --retailer spring-hill --skip-promos
+
+      - name: Scrape fast-growing-trees
+        continue-on-error: true
+        id: fast_growing_trees
+        run: python -m scrapers.runner --retailer fast-growing-trees --skip-promos
+
+      - name: Scrape proven-winners-direct
+        continue-on-error: true
+        id: proven_winners
+        run: python -m scrapers.runner --retailer proven-winners-direct --skip-promos
+
+      - name: Scrape great-garden-plants
+        continue-on-error: true
+        id: great_garden_plants
+        run: python -m scrapers.runner --retailer great-garden-plants --skip-promos
+
+      - name: Scrape stark-bros
+        continue-on-error: true
+        id: stark_bros
+        run: python -m scrapers.runner --retailer stark-bros --skip-promos
+
+      # --- Collect results, build, and commit regardless of individual failures ---
+      - name: Report nursery health
+        if: always()
+        run: |
+          echo "=== Nursery Scrape Health Report ==="
+          echo "nature-hills:          ${{ steps.nature_hills.outcome }}"
+          echo "planting-tree:         ${{ steps.planting_tree.outcome }}"
+          echo "spring-hill:           ${{ steps.spring_hill.outcome }}"
+          echo "fast-growing-trees:    ${{ steps.fast_growing_trees.outcome }}"
+          echo "proven-winners-direct: ${{ steps.proven_winners.outcome }}"
+          echo "great-garden-plants:   ${{ steps.great_garden_plants.outcome }}"
+          echo "stark-bros:            ${{ steps.stark_bros.outcome }}"
+
+          # Flag degraded nurseries (failures) but don't block deployment
+          FAILED=0
+          for step_outcome in "${{ steps.nature_hills.outcome }}" "${{ steps.planting_tree.outcome }}" "${{ steps.spring_hill.outcome }}" "${{ steps.fast_growing_trees.outcome }}" "${{ steps.proven_winners.outcome }}" "${{ steps.great_garden_plants.outcome }}" "${{ steps.stark_bros.outcome }}"; do
+            if [ "$step_outcome" = "failure" ]; then
+              FAILED=$((FAILED + 1))
+            fi
           done
 
+          if [ $FAILED -gt 0 ]; then
+            echo "WARNING: $FAILED nursery scraper(s) failed — flagged as degraded"
+          else
+            echo "All nurseries scraped successfully"
+          fi
+
       - name: Strip unresolved variants
+        if: always()
         run: |
           python -c "
           import glob, json
@@ -57,12 +121,15 @@ jobs:
           "
 
       - name: Verify prices (10 random spot checks)
+        if: always()
         run: python -m scrapers.verify --count 10 || echo "WARNING: Price mismatches detected — review verify output above"
 
       - name: Build site
+        if: always()
         run: python build.py
 
       - name: Verify internal links
+        if: always()
         run: |
           python -c "
           import os, re
@@ -86,6 +153,7 @@ jobs:
           "
 
       - name: Scrape promo codes
+        if: always()
         run: |
           python -c "
           import sys, json
@@ -97,6 +165,7 @@ jobs:
           " || echo "WARNING: Promo scraping failed — skipping"
 
       - name: Commit updated price data
+        if: always()
         run: |
           git config user.name "PlantPriceTracker Bot"
           git config user.email "bot@plantpricetracker.com"

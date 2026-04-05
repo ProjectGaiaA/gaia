@@ -25,24 +25,21 @@ from datetime import datetime, timezone
 
 import requests
 
-logger = logging.getLogger(__name__)
+from scrapers.polite import (
+    USER_AGENTS, random_ua, polite_headers, polite_delay,
+    log_request, is_allowed_by_robots, make_polite_session,
+)
 
-# Rotate user agents to avoid fingerprinting
-USER_AGENTS = [
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:128.0) Gecko/20100101 Firefox/128.0",
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.6 Safari/605.1.15",
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0",
-]
+logger = logging.getLogger(__name__)
 
 
 class ShopifyScraper:
     """Scrape product data from Shopify-based nursery stores."""
 
-    def __init__(self, retailer_id: str, base_url: str, delay_range: tuple = (5, 12)):
+    def __init__(self, retailer_id: str, base_url: str, delay_range: tuple = (5, 15)):
         """Initialize scraper with conservative defaults.
 
-        delay_range is 5-12 seconds between requests by default.
+        delay_range is 5-15 seconds between requests by default.
         This is intentionally slow to be respectful — we're scraping
         once daily, not building a real-time feed. Being polite to
         retailer servers is both ethical and keeps us from getting blocked.
@@ -50,31 +47,26 @@ class ShopifyScraper:
         self.retailer_id = retailer_id
         self.base_url = base_url.rstrip("/")
         self.delay_range = delay_range
-        self.session = requests.Session()
-        # Rotate user agent per session, not per request
-        self.session.headers.update({
-            "User-Agent": random.choice(USER_AGENTS),
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "Accept-Language": "en-US,en;q=0.9",
-            "Accept-Encoding": "gzip, deflate",
-            "Connection": "keep-alive",
-            "DNT": "1",
-        })
+        self.session = make_polite_session()
 
     def _delay(self):
-        """Random delay between requests. Intentionally slow to be polite."""
-        delay = random.uniform(*self.delay_range)
-        time.sleep(delay)
+        """Random 5-15s delay between requests. Intentionally slow to be polite."""
+        delay = polite_delay(self.delay_range[0], self.delay_range[1])
+        return delay
 
     def _get_json(self, url: str) -> dict | None:
-        """Fetch JSON from URL with error handling."""
+        """Fetch JSON from URL with error handling and robots.txt compliance."""
+        if not is_allowed_by_robots(url):
+            return None
         try:
             resp = self.session.get(url, timeout=20)
+            log_request(url, status_code=resp.status_code)
             if resp.status_code == 429:
                 retry_after = int(resp.headers.get("Retry-After", 30))
                 logger.warning(f"Rate limited by {self.retailer_id}, waiting {retry_after}s")
                 time.sleep(retry_after)
                 resp = self.session.get(url, timeout=20)
+                log_request(url, status_code=resp.status_code)
             if resp.status_code == 404:
                 logger.info(f"Product not found: {url}")
                 return None
@@ -228,11 +220,11 @@ class ShopifyScraper:
         2. Shopify variant ID → size name mappings in inline JS
         """
         url = f"{self.base_url}/products/{handle}"
+        if not is_allowed_by_robots(url):
+            return None
         try:
-            resp = self.session.get(url, timeout=20, headers={
-                "User-Agent": random.choice(USER_AGENTS),
-                "Accept": "text/html",
-            })
+            resp = self.session.get(url, timeout=20)
+            log_request(url, status_code=resp.status_code)
             if resp.status_code == 404:
                 return None
             resp.raise_for_status()
@@ -761,13 +753,13 @@ HANDLE_MAPS = {
         # PWD only carries Proven Winners branded plants — no roses, maples, fruit trees
     },
     "nature-hills": {
-        # All handles verified via JSON endpoint 2026-04-03
+        # Handles verified/updated 2026-04-05 — 15 products discontinued, 4 handles updated
         # Hydrangeas
         "limelight-hydrangea": "hydrangea-lime-light",
         "endless-summer-hydrangea": "the-original-endless-summer-hydrangea",
-        "nikko-blue-hydrangea": "nikko-blue-hydrangea",
+        # nikko-blue-hydrangea: discontinued by Nature Hills (2026-04)
         "little-lime-hydrangea": "little-lime-hydrangea",
-        "incrediball-hydrangea": "incrediball-hydrangea",
+        "incrediball-hydrangea": "hydrangea-incrediball",
         "fire-light-hydrangea": "fire-light-hydrangea",
         "bloomstruck-hydrangea": "endless-summer-bloomstruck-hydrangea",
         "pinky-winky-hydrangea": "pinky-winky-hydrangea",
@@ -775,23 +767,23 @@ HANDLE_MAPS = {
         # Japanese Maples
         "bloodgood-japanese-maple": "bloodgood-japanese-maple",
         "coral-bark-japanese-maple": "coral-bark-japanese-maple",
-        "crimson-queen-japanese-maple": "crimson-queen-japanese-maple",
+        # crimson-queen-japanese-maple: discontinued by Nature Hills (2026-04)
         "emperor-japanese-maple": "japanese-maple-emperor-one",
         "tamukeyama-japanese-maple": "tamukeyama-japanese-maple-tree",
         # Fruit Trees
         "honeycrisp-apple-tree": "honeycrisp-apple-tree",
         "fuji-apple-tree": "fuji-apple-tree",
-        "bing-cherry-tree": "cherry-tree-bing",
-        "stella-cherry-tree": "stella-cherry-tree",
-        "elberta-peach-tree": "early-elberta-peach-tree",
+        # bing-cherry-tree: discontinued by Nature Hills (2026-04)
+        # stella-cherry-tree: discontinued by Nature Hills (2026-04)
+        # elberta-peach-tree: discontinued by Nature Hills (2026-04)
         # Privacy Trees
         "emerald-green-arborvitae": "arborvitae-emerald",
         "green-giant-arborvitae": "arborvitae-green-giant",
-        "leyland-cypress": "leyland-cypress",
-        "nellie-stevens-holly": "holly-nellie-stevens",
-        "skip-laurel": "skip-laurel",
+        # leyland-cypress: discontinued by Nature Hills (2026-04)
+        # nellie-stevens-holly: discontinued by Nature Hills (2026-04)
+        # skip-laurel: discontinued by Nature Hills (2026-04)
         # Roses
-        "double-knock-out-rose": "double-knock-out-rose",
+        "double-knock-out-rose": "red-double-knock-out-rose",
         "knock-out-rose": "the-original-knock-out-rose",
         "white-knock-out-rose": "white-knock-out-rose",
         "pink-knock-out-rose": "rose-pink-knock-out-shrub",
@@ -802,14 +794,14 @@ HANDLE_MAPS = {
         "bluecrop-blueberry": "blueberry-bluecrop",
         "patriot-blueberry": "blueberry-patriot",
         "pink-lemonade-blueberry": "blueberry-pink-lemonade",
-        "sunshine-blue-blueberry": "blueberry-sunshine-blue",
+        # sunshine-blue-blueberry: discontinued by Nature Hills (2026-04)
         # Flowering Trees
         "eastern-redbud": "eastern-redbud",
         "forest-pansy-redbud": "forest-pansy-redbud",
-        "yoshino-cherry": "yoshino-weeping-cherry-tree",
-        "saucer-magnolia": "alexandrina-saucer-magnolia-tree",
+        "yoshino-cherry": "yoshino-flowering-cherry",
+        # saucer-magnolia: discontinued by Nature Hills (2026-04)
         # Azaleas & Rhododendrons
-        "pjm-rhododendron": "rhododendron-p-j-m",
+        "pjm-rhododendron": "elite-pmj-rhododendron",
         "nova-zembla-rhododendron": "rhododendron-nova-zembla",
         "gibraltar-azalea": "gibraltar-azalea",
         # New plants (verified 2026-04-03)
@@ -820,13 +812,13 @@ HANDLE_MAPS = {
         "peony-sarah-bernhardt": "sarah-bernhardt-peony",
         "clematis-jackmanii": "clematis-jackmanii",
         "green-mountain-boxwood": "green-mountain-boxwood",
-        "wax-leaf-privet": "wax-leaf-privet",
+        # wax-leaf-privet: discontinued by Nature Hills (2026-04)
         "chicago-hardy-fig": "fig-tree-chicago-hardy",
         "arbequina-olive": "arbequina-olive-tree",
-        "hass-avocado": "hass-avocado-trees",
-        "zz-plant": "zz-plant",
-        "money-tree": "money-tree",
-        "fiddle-leaf-fig": "fiddle-leaf-fig",
+        # hass-avocado: not carried by Nature Hills (2026-04)
+        # zz-plant: not carried by Nature Hills (2026-04)
+        # money-tree: not carried by Nature Hills (2026-04)
+        # fiddle-leaf-fig: not carried by Nature Hills (2026-04)
         "karl-foerster-grass": "grass-feather-reed",
         "creeping-phlox": "phlox-emerald-pink",
         "butterfly-bush-miss-molly": "butterfly-bush-miss-molly",
