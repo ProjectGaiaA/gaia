@@ -513,26 +513,13 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             prices[best_retailer]["sizes"][tier]["is_best"] = True
             prices[best_retailer]["has_best_price"] = True
 
-    # Price inversion detection: flag larger sizes that cost LESS than smaller sizes
-    # from the same nursery (likely clearance / sale).
-    tier_rank = {t: i for i, t in enumerate(tier_order)}
+    # Sale flag: only set when the retailer provides a was_price (strikethrough).
+    # Price inversions (1 Gal cheaper than Quart) are NOT sales — some retailers
+    # just price smaller propagation formats higher.
     for rid, rdata in prices.items():
-        retailer_sizes = rdata["sizes"]
-        # Collect (rank, price, tier) for tiers this retailer has
-        ranked = []
-        for tier, sdata in retailer_sizes.items():
-            if isinstance(sdata, dict) and sdata.get("price"):
-                rank = tier_rank.get(tier, 999)
-                ranked.append((rank, sdata["price"], tier))
-        ranked.sort()  # sort by canonical size order
-        # If a larger tier (higher rank) is cheaper than any smaller tier, flag it
-        for i in range(1, len(ranked)):
-            bigger_rank, bigger_price, bigger_tier = ranked[i]
-            for j in range(i):
-                smaller_rank, smaller_price, smaller_tier = ranked[j]
-                if bigger_price < smaller_price:
-                    retailer_sizes[bigger_tier]["sale_flag"] = True
-                    break
+        for tier, sdata in rdata["sizes"].items():
+            if isinstance(sdata, dict) and sdata.get("was_price"):
+                sdata["sale_flag"] = True
 
     # Sort retailers: cheapest first, no-price next, sold-out next, unavailable last
     def _retailer_sort_key(item):
