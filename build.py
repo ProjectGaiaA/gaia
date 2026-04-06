@@ -665,7 +665,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
     }
 
 
-def build_price_history_json(price_entries):
+def build_price_history_json(price_entries, active_retailer_ids=None):
     """Build Chart.js-compatible price history data."""
     if len(price_entries) < 2:
         return None
@@ -674,8 +674,10 @@ def build_price_history_json(price_entries):
     by_date = defaultdict(dict)
     retailer_names = {}
     for entry in price_entries:
-        ts = entry.get("timestamp", "")[:10]
         rid = entry.get("retailer_id", "")
+        if active_retailer_ids is not None and rid not in active_retailer_ids:
+            continue
+        ts = entry.get("timestamp", "")[:10]
         rname = entry.get("retailer_name", rid)
         retailer_names[rid] = rname
         # Use the lowest price across all size tiers for the chart
@@ -973,7 +975,7 @@ def build_site(build_guides=True, build_products=True):
     all_plants = load_json(os.path.join(DATA_DIR, "plants.json"))
     plants = [p for p in all_plants if p.get("active", True)]
     retailers = load_json(os.path.join(DATA_DIR, "retailers.json"))
-    retailers_by_id = {r["id"]: r for r in retailers}
+    retailers_by_id = {r["id"]: r for r in retailers if r.get("active", True)}
 
     # Load promo codes (written by runner.py scrape_promos — may not exist yet)
     promos_path = os.path.join(DATA_DIR, "promos.json")
@@ -1013,7 +1015,7 @@ def build_site(build_guides=True, build_products=True):
             price_entries = load_prices(plant["id"])
             latest_prices = get_latest_prices(price_entries, retailers_by_id)
             price_table = build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer, price_entries)
-            price_history_json = build_price_history_json(price_entries)
+            price_history_json = build_price_history_json(price_entries, set(retailers_by_id.keys()))
             similar = find_similar_plants(plant, plants)
 
             # Enrich plant dict with live price summary so category pages can show prices
