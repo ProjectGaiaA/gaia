@@ -95,45 +95,38 @@
                 <p class="table-disclosure">Some links below are affiliate links — we may earn a commission at no cost to you. <a href="/disclosure.html">See our disclosure.</a></p>
                 <p class="price-updated">Prices last checked: {{ last_updated }}</p>
 
-                <!-- Mobile Layout: Clean size-tier table (hidden on desktop) -->
-                <div class="mobile-prices">
-                    {% if mobile_tiers %}
-                    <table class="mobile-price-table">
-                        <thead>
-                            <tr>
-                                <th>Size</th>
-                                <th>Best Price</th>
-                                <th>Shipping</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for mt in mobile_tiers %}
-                            <tr>
-                                <td class="mt-size">{{ mt.label }}{% if mt.sale_flag %} <span class="sale-badge">Sale</span>{% endif %}</td>
-                                <td class="mt-price">
-                                    <a href="{{ mt.url }}" target="_blank" rel="noopener{% if mt.has_affiliate %} nofollow sponsored{% endif %}" class="mt-price-link">
-                                        ${{ '%.2f'|format(mt.price) }}
-                                    </a>
-                                    <span class="mt-nursery">at {{ mt.retailer_name }}</span>
-                                </td>
-                                <td class="mt-shipping">
-                                    {% if mt.shipping %}
-                                        {% if mt.shipping.free_all %}Free
-                                        {% elif mt.shipping.free_threshold %}Free over ${{ mt.shipping.free_threshold }}
-                                        {% elif mt.shipping.flat_rate %}${{ '%.2f'|format(mt.shipping.flat_rate) }}
-                                        {% else %}Varies{% endif %}
-                                    {% else %}Varies{% endif %}
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                    {% else %}
-                    <p class="no-prices">No current prices available for mobile view.</p>
-                    {% endif %}
-                </div>
+                <!-- Best Prices Summary: cheapest option per size -->
+                {% if mobile_tiers %}
+                <table class="best-prices-table">
+                    <thead>
+                        <tr>
+                            <th>Size</th>
+                            <th>Best Price</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for mt in mobile_tiers %}
+                        <tr>
+                            <td class="bp-size">{{ mt.label }}{% if mt.sale_flag %} <span class="sale-badge">Sale</span>{% endif %}</td>
+                            <td class="bp-price">
+                                <a href="{{ mt.url }}" target="_blank" rel="noopener{% if mt.has_affiliate %} nofollow sponsored{% endif %}" class="bp-price-link">
+                                    ${{ '%.2f'|format(mt.price) }}
+                                </a>
+                                <span class="bp-nursery">at {{ mt.retailer_name }}</span>
+                            </td>
+                            <td class="bp-action">
+                                <a href="{{ mt.url }}" target="_blank" rel="noopener{% if mt.has_affiliate %} nofollow sponsored{% endif %}" class="bp-buy-btn">Buy</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
 
-                <!-- Desktop Layout: Comparison Table (hidden on mobile) -->
+                <!-- Full Comparison Table -->
+                <details class="full-comparison-toggle">
+                    <summary>Compare all {{ offer_count }} nurseries</summary>
                 <div class="table-wrapper desktop-prices">
                     <table class="comparison-table">
                         <thead>
@@ -249,6 +242,7 @@
                 {% if has_non_affiliate %}
                 <p class="table-footnote">* We don't earn a commission from retailers marked with an asterisk. They're included because showing all options is more useful to you than only showing the ones that pay us.</p>
                 {% endif %}
+                </details>
                 {% else %}
                 <div class="no-prices">
                     <p>Price data is being collected for this plant. Check back soon.</p>

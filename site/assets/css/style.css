@@ -310,7 +310,7 @@ tr.unavailable-row .price-cell { color: var(--gray-400); }
 
 /* --- Mobile Price Layout: Best Deal + Retailer Cards --- */
 /* Hidden on desktop, shown on mobile */
-.mobile-prices { display: none; }
+.mobile-prices { display: none; } /* Replaced by best-prices-table above */
 
 /* Mobile price table (clean size-tier rows) */
 .mobile-price-table {
@@ -365,6 +365,66 @@ tr.unavailable-row .price-cell { color: var(--gray-400); }
     .desktop-prices { display: none; }
     .buy-btn { width: 100%; text-align: center; padding: 0.5rem; }
 }
+
+/* Best Prices Summary Table */
+.best-prices-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+}
+.best-prices-table thead th {
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--gray-500);
+    border-bottom: 2px solid var(--green-mid);
+}
+.best-prices-table tbody td {
+    padding: 0.7rem 0.75rem;
+    border-bottom: 1px solid var(--gray-100);
+    vertical-align: middle;
+}
+.best-prices-table tbody tr:hover { background: var(--green-pale); }
+.bp-size { font-weight: 600; white-space: nowrap; }
+.bp-price-link {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--green-dark);
+    text-decoration: none;
+}
+.bp-price-link:hover { text-decoration: underline; }
+.bp-nursery {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    margin-left: 0.5rem;
+}
+.bp-buy-btn {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    background: var(--green-mid);
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+.bp-buy-btn:hover { background: var(--green-dark); color: var(--white); text-decoration: none; }
+
+/* Full comparison toggle */
+.full-comparison-toggle { margin-top: 0.5rem; }
+.full-comparison-toggle summary {
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--green-mid);
+    padding: 0.5rem 0;
+    list-style: none;
+}
+.full-comparison-toggle summary::before { content: "\25B6\00a0"; font-size: 0.7rem; }
+.full-comparison-toggle[open] summary::before { content: "\25BC\00a0"; }
+.full-comparison-toggle summary:hover { color: var(--green-dark); }
 
 /* Shipping column */
 .shipping-cell { white-space: nowrap; font-size: 0.8rem; }
