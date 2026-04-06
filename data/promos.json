@@ -1,0 +1,99 @@
+{
+  "spring-hill": {
+    "retailer_id": "spring-hill",
+    "retailer_name": "Spring Hill Nurseries",
+    "timestamp": "2026-04-05T01:41:30.279555+00:00",
+    "codes": [
+      "ONLY"
+    ],
+    "banners": [
+      "Flash Sale"
+    ]
+  },
+  "brecks": {
+    "retailer_id": "brecks",
+    "retailer_name": "Breck's",
+    "timestamp": "2026-04-05T01:41:30.279555+00:00",
+    "codes": [
+      "ONLY"
+    ],
+    "banners": [
+      "Buy 1, Get 1 Free"
+    ]
+  },
+  "nature-hills": {
+    "retailer_id": "nature-hills",
+    "retailer_name": "Nature Hills Nursery",
+    "timestamp": "2026-04-05T01:41:30.279555+00:00",
+    "codes": [],
+    "banners": []
+  },
+  "plant-addicts": {
+    "retailer_id": "plant-addicts",
+    "retailer_name": "Plant Addicts",
+    "timestamp": "2026-04-05T01:41:30.279555+00:00",
+    "codes": [],
+    "banners": []
+  },
+  "bloomscape": {
+    "retailer_id": "bloomscape",
+    "retailer_name": "Bloomscape",
+    "timestamp": "2026-04-05T01:41:30.279555+00:00",
+    "codes": [],
+    "banners": [
+      "10% off your first order"
+    ]
+  },
+  "planting-tree": {
+    "retailer_id": "planting-tree",
+    "retailer_name": "PlantingTree",
+    "timestamp": "2026-04-05T01:41:30.279555+00:00",
+    "codes": [],
+    "banners": []
+  },
+  "fast-growing-trees": {
+    "retailer_id": "fast-growing-trees",
+    "retailer_name": "Fast Growing Trees",
+    "timestamp": "2026-04-05T01:41:30.279555+00:00",
+    "codes": [
+      "CODE",
+      "SPRING20"
+    ],
+    "banners": [
+      "free shipping on orders over $99",
+      "Free shipping on orders over $99"
+    ]
+  },
+  "brighter-blooms": {
+    "retailer_id": "brighter-blooms",
+    "retailer_name": "Brighter Blooms",
+    "timestamp": "2026-04-05T01:41:30.279555+00:00",
+    "codes": [],
+    "banners": [
+      "free shipping on orders over $129",
+      "Free shipping on orders over $129",
+      "15% OFF all orders",
+      "Flash Sale"
+    ]
+  },
+  "proven-winners-direct": {
+    "retailer_id": "proven-winners-direct",
+    "retailer_name": "Proven Winners Direct",
+    "timestamp": "2026-04-05T01:41:30.279555+00:00",
+    "codes": [
+      "COMBO15",
+      "BUNDLE15"
+    ],
+    "banners": [
+      "free shipping on orders over $175",
+      "FLASH SALE"
+    ]
+  },
+  "stark-bros": {
+    "retailer_id": "stark-bros",
+    "retailer_name": "Stark Bros",
+    "timestamp": "2026-04-05T01:41:30.279555+00:00",
+    "codes": [],
+    "banners": []
+  }
+}

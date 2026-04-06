@@ -13,15 +13,13 @@ Usage:
 
 import json
 import logging
-import random
 import re
-import time
 from datetime import datetime, timezone
 
 import requests
 
 from scrapers.polite import (
-    USER_AGENTS, random_ua, polite_headers, polite_delay,
+    polite_delay,
     log_request, is_allowed_by_robots, make_polite_session,
 )
 
@@ -94,8 +92,6 @@ class StarkBrosScraper:
                     for product in family.get("availableProducts", []):
                         desc = product.get("productDescription", "")
                         price = product.get("price", 0)
-                        sku = product.get("productSku", "")
-
                         if price <= 0:
                             continue
 
@@ -281,7 +277,7 @@ class StarkBrosScraper:
 # Product catalog mapping: plant_id → {slug, category}
 STARK_BROS_PRODUCTS = {
     "honeycrisp-apple-tree": {"slug": "honeycrisp-apple", "category": "fruit-trees/apple-trees"},
-    "bing-cherry-tree": {"slug": "bing-cherry", "category": "fruit-trees/cherry-trees"},
+    "bing-cherry-tree": {"slug": "bing-sweet-cherry", "category": "fruit-trees/cherry-trees"},
     "elberta-peach-tree": {"slug": "elberta-peach", "category": "fruit-trees/peach-trees"},
     "bartlett-pear-tree": {"slug": "bartlett-pear", "category": "fruit-trees/pear-trees"},
     # Stark Bros moved roses to garden-plants/ category (2026-04-03)

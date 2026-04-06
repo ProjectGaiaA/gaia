@@ -4934,7 +4934,8 @@
       "worst_buy": "April-May",
       "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
       "tip": "Buy in fall, plant in fall. Fall-planted perennials establish stronger root systems over winter and bloom the following spring."
-    }
+    },
+    "active": false
   },
   {
     "id": "lavender-phenomenal",
@@ -5990,7 +5991,8 @@
       "worst_buy": "None",
       "note": "Houseplant prices are relatively stable year-round. Occasional sales at big-box retailers during spring garden season.",
       "tip": "Shop big-box stores for common sizes. Specialty nurseries charge more but offer larger, more established specimens."
-    }
+    },
+    "active": false
   },
   {
     "id": "money-tree",
@@ -6248,7 +6250,8 @@
       "worst_buy": "None",
       "note": "Houseplant prices are relatively stable year-round. Occasional sales at big-box retailers during spring garden season.",
       "tip": "Shop big-box stores for common sizes. Specialty nurseries charge more but offer larger, more established specimens."
-    }
+    },
+    "active": false
   },
   {
     "id": "rubber-plant-burgundy",
@@ -6334,7 +6337,8 @@
       "worst_buy": "None",
       "note": "Houseplant prices are relatively stable year-round. Occasional sales at big-box retailers during spring garden season.",
       "tip": "Shop big-box stores for common sizes. Specialty nurseries charge more but offer larger, more established specimens."
-    }
+    },
+    "active": false
   },
   {
     "id": "fiddle-leaf-fig",
@@ -6830,7 +6834,8 @@
       "worst_buy": "April-May",
       "note": "Prices peak in spring when demand is highest. Fall clearance offers 15-30% savings. Many nurseries run end-of-season sales after Labor Day.",
       "tip": "Buy in fall, plant in fall. Fall-planted groundcovers establish stronger root systems over winter and spread faster the following spring."
-    }
+    },
+    "active": false
   },
   {
     "id": "butterfly-bush-miss-molly",

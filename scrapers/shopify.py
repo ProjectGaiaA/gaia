@@ -26,7 +26,7 @@ from datetime import datetime, timezone
 import requests
 
 from scrapers.polite import (
-    USER_AGENTS, random_ua, polite_headers, polite_delay,
+    USER_AGENTS, polite_delay,
     log_request, is_allowed_by_robots, make_polite_session,
 )
 
@@ -270,6 +270,19 @@ class ShopifyScraper:
                 if val_match and _is_size_name(val_match.group(1)):
                     variant_names[vid] = val_match.group(1)
 
+        # Pattern 2b: Newer Shopify Hydrogen / 2024+ themes use "optionValues"
+        # e.g. "id":"gid://shopify/ProductVariant/XXXXX",...,"optionValues":[{"name":"1 Gallon"}]
+        if not variant_names:
+            for match in re.finditer(
+                r'ProductVariant/(\d+)\"(?:(?!ProductVariant/).)*?\"optionValues\"\s*:\s*\[([^\]]*)\]',
+                text, re.DOTALL
+            ):
+                vid = match.group(1)
+                opts_block = match.group(2)
+                val_match = re.search(r'"name"\s*:\s*"([^"]+)"', opts_block)
+                if val_match and _is_size_name(val_match.group(1)):
+                    variant_names[vid] = val_match.group(1)
+
         # Pattern 3: "option1":"1 Gallon" near variant ID
         if not variant_names:
             for match in re.finditer(
@@ -290,13 +303,49 @@ class ShopifyScraper:
                 if name.lower() != 'default title' and _is_size_name(name):
                     variant_names[vid] = name
 
+        # Pattern 5: Embedded product JSON blob — many Shopify themes include a
+        # full product object in a <script> tag or JS variable. Extract variant
+        # data from it: {"variants":[{"id":XXXX,"option1":"1 Gallon",...}]}
+        if not variant_names:
+            # Look for a JSON blob containing "variants" array
+            json_blobs = re.findall(
+                r'"variants"\s*:\s*\[(\{[^\]]{20,})\]',
+                text, re.DOTALL
+            )
+            for blob in json_blobs[:3]:  # Limit to first 3 matches for performance
+                # Parse individual variant objects from the array
+                for vm in re.finditer(
+                    r'"id"\s*:\s*(\d{10,})\b[^}]*?"option1"\s*:\s*"([^"]*)"',
+                    blob
+                ):
+                    vid, name = vm.group(1), vm.group(2)
+                    if name.lower() not in ('default title', '') and _is_size_name(name):
+                        variant_names[vid] = name
+                if variant_names:
+                    break  # Found what we need
+
+        # Pattern 6: FGT-style variant buttons with data attributes
+        # e.g. data-variant-id="XXXX" ... >1 Gallon</button>
+        if not variant_names:
+            for match in re.finditer(
+                r'data-variant-id=["\'](\d{10,})["\'][^>]*>([^<]{2,40})<',
+                text
+            ):
+                vid, name = match.group(1), match.group(2).strip()
+                if _is_size_name(name):
+                    variant_names[vid] = name
+
         # Extract offer data: SKU → price + availability
-        offers = re.findall(
-            r'\{\"@type\":\"Offer\",\"sku\":\"(\d+)(?:-\w+)?\".*?'
+        # Exclude pack variants (e.g., SKU "12345-4PACK") — these are multi-plant
+        # bundles with inflated prices that don't represent single-plant pricing.
+        all_offers = re.findall(
+            r'\{\"@type\":\"Offer\",\"sku\":\"(\d+(?:-\w+)?)\".*?'
             r'\"price\":\"([\d.]+)\".*?'
             r'\"availability\":\"([^\"]+)\"',
             text
         )
+        offers = [(sku, p, a) for sku, p, a in all_offers
+                  if 'pack' not in sku.lower()]
 
         # Also try to find strikethrough prices per SKU
         was_prices = {}
@@ -315,7 +364,7 @@ class ShopifyScraper:
             text
         )
         # Filter out packs, singles, and quantity options — keep only size names
-        aria_offers = [(n, s, l) for n, s, l in aria_offers
+        aria_offers = [(n, s, lp) for n, s, lp in aria_offers
                        if 'pack' not in n.lower()
                        and 'single' not in n.lower()
                        and not re.match(r'^\d+-(?:pack|pk)', n.lower())]

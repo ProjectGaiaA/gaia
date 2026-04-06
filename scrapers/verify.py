@@ -140,7 +140,6 @@ def main():
     parser.add_argument("--plant", type=str, help="Verify a specific plant ID")
     args = parser.parse_args()
 
-    plants = json.loads((DATA_DIR / "plants.json").read_text(encoding="utf-8"))
     retailers = json.loads((DATA_DIR / "retailers.json").read_text(encoding="utf-8"))
     active_retailers = [r for r in retailers if r.get("active")]
 
@@ -187,7 +186,7 @@ def main():
             logger.info(f"  SKIP  {plant_id} — {result.get('message', '')}")
 
     logger.info(f"\n{'='*50}")
-    logger.info(f"VERIFICATION SUMMARY")
+    logger.info("VERIFICATION SUMMARY")
     logger.info(f"{'='*50}")
     logger.info(f"  Checked: {len(plant_ids)}")
     logger.info(f"  Passed:  {passed}")
@@ -198,7 +197,7 @@ def main():
         logger.warning(f"\n{failed} price mismatches detected — data may be stale!")
         sys.exit(1)
     else:
-        logger.info(f"\nAll verified prices match. Data is accurate.")
+        logger.info("\nAll verified prices match. Data is accurate.")
 
 
 if __name__ == "__main__":

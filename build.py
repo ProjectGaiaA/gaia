@@ -15,7 +15,6 @@ import glob
 import json
 import os
 import re
-import sys
 from collections import defaultdict
 from datetime import datetime, date
 
@@ -38,15 +37,15 @@ BASE_URL = "https://www.plantpricetracker.com"
 # Guide SEO overrides — custom meta descriptions and FAQs per guide
 # ---------------------------------------------------------------------------
 GUIDE_META_DESCRIPTIONS = {
-    "best-hydrangeas-to-buy-online": "Compare hydrangea prices across 10+ online nurseries. Incrediball, Limelight, Annabelle — find the best deal with prices updated daily.",
-    "best-fruit-trees-to-buy-online": "Compare fruit tree prices online. Apple, peach, cherry, and pear trees from top nurseries — updated daily. Save 20–40% vs local garden centers.",
-    "best-privacy-trees": "Find the cheapest privacy trees online. Compare Thuja Green Giant, Leyland Cypress, and arborvitae prices across 10+ nurseries — updated daily.",
+    "best-hydrangeas-to-buy-online": "Compare hydrangea prices across 10+ online nurseries. Incrediball, Limelight, Annabelle — find the best deal with prices checked daily.",
+    "best-fruit-trees-to-buy-online": "Compare fruit tree prices online. Apple, peach, cherry, and pear trees from top nurseries — checked daily. Save 20–40% vs local garden centers.",
+    "best-privacy-trees": "Find the cheapest privacy trees online. Compare Thuja Green Giant, Leyland Cypress, and arborvitae prices across 10+ nurseries — checked daily.",
     "cheapest-places-to-buy-online": "The cheapest places to buy plants online in 2026. We compared 10+ nurseries so you don't have to — see who wins by plant type.",
-    "best-japanese-maple-varieties": "Compare Japanese maple prices online. Bloodgood, Crimson Queen, Emperor I — find the best deal across 10+ nurseries with daily price updates.",
-    "best-knock-out-roses": "Compare Knock Out rose prices across 10+ online nurseries. Double, Rainbow, and Petite varieties — find the lowest price with daily updates.",
-    "best-blueberry-bushes": "Compare blueberry bush prices online. Bluecrop, Duke, Sunshine Blue — find the best deal across 10+ nurseries. Prices updated daily.",
-    "best-flowering-trees-small-yards": "Compare small flowering tree prices online. Dogwood, Redbud, Cherry — find the lowest price across 10+ nurseries. Updated daily.",
-    "best-azaleas-rhododendrons": "Compare azalea and rhododendron prices online. Find the best deals across 10+ nurseries with daily price updates.",
+    "best-japanese-maple-varieties": "Compare Japanese maple prices online. Bloodgood, Crimson Queen, Emperor I — find the best deal across 10+ nurseries with prices checked daily.",
+    "best-knock-out-roses": "Compare Knock Out rose prices across 10+ online nurseries. Double, Rainbow, and Petite varieties — find the lowest price, checked daily.",
+    "best-blueberry-bushes": "Compare blueberry bush prices online. Bluecrop, Duke, Sunshine Blue — find the best deal across 10+ nurseries. Prices checked daily.",
+    "best-flowering-trees-small-yards": "Compare small flowering tree prices online. Dogwood, Redbud, Cherry — find the lowest price across 10+ nurseries. Checked daily.",
+    "best-azaleas-rhododendrons": "Compare azalea and rhododendron prices online. Find the best deals across 10+ nurseries with prices checked daily.",
     "best-time-to-buy-plants-online": "When is the cheapest time to buy plants online? See price seasonality data for trees, shrubs, and perennials — and exactly when to buy.",
     "why-same-plant-costs-20-or-60": "Plant pricing explained: container size, shipping, quality, branding, and seasonal timing all affect what you pay. Learn how to compare and avoid overpaying.",
 }
@@ -300,7 +299,67 @@ def get_latest_prices(price_entries, retailers_by_id):
     return latest
 
 
-def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=None):
+def count_consecutive_run_misses(price_entries):
+    """
+    Cluster scrape entries into runs (>12h gap = new run) and return how many
+    consecutive most-recent runs each retailer has been absent from.
+    Returns dict: retailer_id -> int miss count.
+    """
+    if not price_entries:
+        return {}
+
+    ts_pairs = []
+    for entry in price_entries:
+        ts_str = entry.get("timestamp", "")
+        rid = entry.get("retailer_id", "")
+        if ts_str and rid:
+            try:
+                ts = datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
+                if ts.tzinfo is None:
+                    continue  # Skip naive timestamps — can't compare with aware
+                ts_pairs.append((ts, rid))
+            except (ValueError, TypeError):
+                pass
+
+    if not ts_pairs:
+        return {}
+
+    ts_pairs.sort(key=lambda x: x[0])
+
+    # Cluster: new run if >12h gap from previous entry
+    runs = []
+    current_retailers = set()
+    last_ts = None
+    for ts, rid in ts_pairs:
+        if last_ts is None or (ts - last_ts).total_seconds() > 12 * 3600:
+            if current_retailers:
+                runs.append(frozenset(current_retailers))
+            current_retailers = set()
+        current_retailers.add(rid)
+        last_ts = ts
+    if current_retailers:
+        runs.append(frozenset(current_retailers))
+
+    if not runs:
+        return {}
+
+    all_retailers = set()
+    for run in runs:
+        all_retailers |= run
+
+    misses = {}
+    for rid in all_retailers:
+        count = 0
+        for run in reversed(runs):
+            if rid in run:
+                break
+            count += 1
+        misses[rid] = count
+
+    return misses
+
+
+def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=None, price_entries=None):
     """Build structured price data for the comparison table template."""
     prices = {}
     all_prices_flat = []
@@ -308,12 +367,17 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
     has_non_affiliate = False
     any_in_stock = False
 
+    # Compute consecutive missed runs per retailer when full history is available
+    run_misses = count_consecutive_run_misses(price_entries) if price_entries else {}
+
     for retailer_id, price_data in latest_prices.items():
         retailer = retailers_by_id.get(retailer_id)
         if not retailer:
             continue
 
-        # Check staleness: >30 days = exclude entirely, 3-30 days = show as unavailable
+        # Check staleness:
+        #   >30 days since last seen → exclude row entirely
+        #   ≥3 consecutive missed scrape runs → show as "Currently Unavailable"
         timestamp = price_data.get("timestamp", "")
         unavailable = False
         last_checked_str = None
@@ -322,9 +386,10 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                 scrape_date = datetime.fromisoformat(timestamp.replace("Z", "+00:00")).date()
                 days_old = (date.today() - scrape_date).days
                 if days_old > 30:
-                    continue  # Remove row entirely after 30 days
-                if days_old > 3:
-                    unavailable = True  # Show as "Currently Unavailable" for 3-30 days
+                    continue  # Remove row entirely after 30 days missing
+                missed_runs = run_misses.get(retailer_id, 0)
+                if missed_runs >= 3:
+                    unavailable = True  # Missing from 3+ consecutive scrape runs
                 last_checked_str = scrape_date.strftime("%b %d").lstrip("0")
             except (ValueError, TypeError):
                 pass
@@ -426,6 +491,26 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         "bulb", "3inch", "4inch", "6inch", "default",
         "12-18in", "18-24in", "24-36in", "36-48in", "48-54in",
     ]
+    # Merge "default" tier into the most common real tier for this product.
+    # Many retailers (Spring Hill, Stark Bros) sell single-option products with
+    # Shopify's "Default Title" — no size info exists. Rather than showing a
+    # confusing "Default" column or hiding the price entirely, slot it into the
+    # tier that most other retailers use for this plant.
+    if "default" in active_tiers and len(active_tiers) > 1:
+        # Find the most common non-default tier
+        tier_counts = {}
+        for rid, rdata in prices.items():
+            for t in rdata["sizes"]:
+                if t != "default":
+                    tier_counts[t] = tier_counts.get(t, 0) + 1
+        if tier_counts:
+            target_tier = max(tier_counts, key=tier_counts.get)
+            for rid, rdata in prices.items():
+                if "default" in rdata["sizes"] and target_tier not in rdata["sizes"]:
+                    rdata["sizes"][target_tier] = rdata["sizes"].pop("default")
+                elif "default" in rdata["sizes"]:
+                    del rdata["sizes"]["default"]
+    active_tiers.discard("default")
     known = set(tier_order)
     leftover = sorted(t for t in active_tiers if t not in known)
     active_tiers_sorted = [t for t in tier_order if t in active_tiers] + leftover
@@ -502,14 +587,23 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                     (sdata["price"], rdata["retailer_name"])
                 )
     # Find the tier with the most nurseries, break ties by savings %
+    # Filter outliers: if the highest price is 3x+ the second highest, drop it
+    # (likely bad scraped data, e.g. FGT variant ID mis-parse)
     best_tier_key = None
     for tier, price_list in tier_prices_map.items():
         if len(price_list) < 2:
             continue
-        lo = min(p for p, _ in price_list)
-        hi = max(p for p, _ in price_list)
+        sorted_prices = sorted(price_list, key=lambda x: x[0])
+        # Remove outlier: if top price is 3x+ the second-highest, exclude it
+        if len(sorted_prices) >= 3:
+            second_hi = sorted_prices[-2][0]
+            top_hi = sorted_prices[-1][0]
+            if second_hi > 0 and top_hi / second_hi >= 3.0:
+                sorted_prices = sorted_prices[:-1]
+        lo = sorted_prices[0][0]
+        hi = sorted_prices[-1][0]
         pct = round((1 - lo / hi) * 100) if hi > lo else 0
-        nursery_count = len(price_list)
+        nursery_count = len(sorted_prices)
         if best_tier_key is None or (nursery_count, pct) > (best_tier_key[0], best_tier_key[1]):
             best_tier_key = (nursery_count, pct, tier, lo, hi)
     if best_tier_key:
@@ -892,7 +986,8 @@ def build_site(build_guides=True, build_products=True):
 
     # Load data
     print("\nLoading data...")
-    plants = load_json(os.path.join(DATA_DIR, "plants.json"))
+    all_plants = load_json(os.path.join(DATA_DIR, "plants.json"))
+    plants = [p for p in all_plants if p.get("active", True)]
     retailers = load_json(os.path.join(DATA_DIR, "retailers.json"))
     retailers_by_id = {r["id"]: r for r in retailers}
 
@@ -900,7 +995,8 @@ def build_site(build_guides=True, build_products=True):
     promos_path = os.path.join(DATA_DIR, "promos.json")
     promos_by_retailer = load_json(promos_path) if os.path.exists(promos_path) else {}
 
-    print(f"  {len(plants)} plants")
+    inactive = len(all_plants) - len(plants)
+    print(f"  {len(plants)} plants" + (f" ({inactive} inactive, skipped)" if inactive else ""))
     print(f"  {len(retailers)} retailers")
     if promos_by_retailer:
         active_promo_count = sum(
@@ -932,7 +1028,7 @@ def build_site(build_guides=True, build_products=True):
         for plant in plants:
             price_entries = load_prices(plant["id"])
             latest_prices = get_latest_prices(price_entries, retailers_by_id)
-            price_table = build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer)
+            price_table = build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer, price_entries)
             price_history_json = build_price_history_json(price_entries)
             similar = find_similar_plants(plant, plants)
 
@@ -957,7 +1053,7 @@ def build_site(build_guides=True, build_products=True):
             with open(out_path, "w", encoding="utf-8") as f:
                 f.write(html)
 
-        print(f"  Written to site/plants/")
+        print("  Written to site/plants/")
 
     # -----------------------------------------------------------------------
     # Build guide pages from article markdown files
@@ -1006,11 +1102,11 @@ def build_site(build_guides=True, build_products=True):
             with open(out_path, "w", encoding="utf-8") as f:
                 f.write(html)
 
-        print(f"  Written to site/guides/")
+        print("  Written to site/guides/")
 
         # Guides index page
         index_html = env.get_template("base.html")
-        guides_index = index_html.render(content="")  # TODO: proper index template
+        index_html.render(content="")  # TODO: proper index template
         # For now, skip guide index — will add later
 
     # -----------------------------------------------------------------------
@@ -1039,7 +1135,7 @@ def build_site(build_guides=True, build_products=True):
             with open(out_path, "w", encoding="utf-8") as f:
                 f.write(html)
 
-        print(f"  Written to site/category/")
+        print("  Written to site/category/")
 
     # -----------------------------------------------------------------------
     # Build homepage
@@ -1176,7 +1272,8 @@ def build_site(build_guides=True, build_products=True):
     # Build sitemap.xml
     # -----------------------------------------------------------------------
     print("\nBuilding sitemap.xml...")
-    sitemap_urls = ["/", "/my-list.html", "/heat-map.html", "/improve.html", "/guides/index.html"]
+    sitemap_urls = ["/", "/my-list.html", "/heat-map.html", "/improve.html", "/guides/index.html",
+                    "/disclosure.html", "/privacy.html"]
     for plant in plants:
         sitemap_urls.append(f"/plants/{plant['id']}.html")
     for cat_id in categories_map:
@@ -1205,11 +1302,11 @@ def build_site(build_guides=True, build_products=True):
     print(f"  {len(plants)} product pages")
     print(f"  {len(categories_map)} category pages")
     print(f"  {len(article_files)} guide pages")
-    print(f"  1 homepage")
-    print(f"  1 wishlist page (my-list.html)")
-    print(f"  1 heat map page (heat-map.html)")
+    print("  1 homepage")
+    print("  1 wishlist page (my-list.html)")
+    print("  1 heat map page (heat-map.html)")
     print(f"  1 improve page (improve.html) — {total_submissions} submissions, {responded_count} responded")
-    print(f"  1 sitemap.xml")
+    print("  1 sitemap.xml")
     print(f"Output: {SITE_DIR}")
     print(f"{'=' * 60}")
 

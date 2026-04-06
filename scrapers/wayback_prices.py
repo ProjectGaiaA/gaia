@@ -21,11 +21,9 @@ Usage:
 import argparse
 import json
 import logging
-import random
 import re
 import sys
 import time
-from datetime import datetime, timezone
 from pathlib import Path
 
 import requests
@@ -36,8 +34,8 @@ import requests
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from scrapers.polite import (
-    USER_AGENTS, random_ua, polite_headers, polite_delay,
-    log_request, is_allowed_by_robots, make_polite_session,
+    polite_delay,
+    log_request, make_polite_session,
 )
 from scrapers.shopify import ShopifyScraper, HANDLE_MAPS
 from scrapers.starkbros import STARK_BROS_PRODUCTS
@@ -284,7 +282,6 @@ def extract_shopify_prices(
 
 def _parse_shopify_html_text(parser: ShopifyScraper, text: str, handle: str, base_url: str) -> dict | None:
     """Parse prices from already-fetched Shopify HTML (mirrors _scrape_product_html logic)."""
-    url = f"{base_url}/products/{handle}"
     sizes = {}
     any_available = False
 
@@ -293,7 +290,7 @@ def _parse_shopify_html_text(parser: ShopifyScraper, text: str, handle: str, bas
         r'aria-label=\"([^\"]*?)\s*-\s*Sale price:\s*([\d.]+)\s*-\s*List price:\s*\$?([\d.]+)',
         text
     )
-    aria_offers = [(n, s, l) for n, s, l in aria_offers
+    aria_offers = [(n, s, lp) for n, s, lp in aria_offers
                    if 'pack' not in n.lower()
                    and 'single' not in n.lower()
                    and not re.match(r'^\d+-(?:pack|pk)', n.lower())]
@@ -504,7 +501,7 @@ def process_plant_nursery(
     _polite_delay()
 
     if not snapshots:
-        logger.info(f"    No archived snapshots found")
+        logger.info("    No archived snapshots found")
         return
 
     logger.info(f"    Found {len(snapshots)} monthly snapshots")
@@ -603,7 +600,6 @@ def run(nursery_filter: str | None = None, plant_filter: str | None = None):
 def run_test():
     """Quick CDX probe: Limelight Hydrangea at fast-growing-trees.com."""
     session = _make_session()
-    plant_id = "limelight-hydrangea"
     nursery_id = "fast-growing-trees"
     handle = HANDLE_MAPS["fast-growing-trees"]["limelight-hydrangea"]
     product_url = f"https://www.fast-growing-trees.com/products/{handle}"

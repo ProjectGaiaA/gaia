@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}{{ plant.common_name }} Prices — Compare {{ offer_count }}+ Nurseries (2026){% endblock %}
-{% block description %}{% if lowest_price and highest_price %}{{ plant.common_name }} prices from ${{ '%.0f'|format(lowest_price) }}–${{ '%.0f'|format(highest_price) }} across {{ offer_count }}+ online nurseries. {% endif %}Find the best deal on {{ plant.botanical_name }}. Prices updated daily.{% endblock %}
+{% block description %}{% if lowest_price and highest_price %}{{ plant.common_name }} prices from ${{ '%.0f'|format(lowest_price) }}–${{ '%.0f'|format(highest_price) }} across {{ offer_count }}+ online nurseries. {% endif %}Find the best deal on {{ plant.botanical_name }}. Prices checked daily.{% endblock %}
 
 {% block schema %}
 <script type="application/ld+json">
@@ -45,10 +45,14 @@
     <header class="product-header">
         <h1>{{ plant.common_name }} &mdash; Price Comparison</h1>
         <p class="product-botanical">{{ plant.botanical_name }}</p>
-        {% if lowest_price and highest_price and lowest_price != highest_price %}
+        {% if same_tier_info and same_tier_info.low and same_tier_info.high and same_tier_info.high > same_tier_info.low %}
         <p class="product-savings">
-            Prices range from <strong>${{ '%.2f'|format(lowest_price) }}</strong> to <strong>${{ '%.2f'|format(highest_price) }}</strong> &mdash;
-            save up to <strong>{{ savings_pct }}%</strong> by comparing.
+            {{ same_tier_info.tier_label }}: <strong>${{ '%.2f'|format(same_tier_info.low) }}</strong> to <strong>${{ '%.2f'|format(same_tier_info.high) }}</strong> across {{ same_tier_info.nursery_count }} nurseries &mdash;
+            save up to <strong>{{ same_tier_savings }}%</strong> by comparing.
+        </p>
+        {% elif lowest_price and highest_price and lowest_price != highest_price %}
+        <p class="product-savings">
+            Prices from <strong>${{ '%.2f'|format(lowest_price) }}</strong> to <strong>${{ '%.2f'|format(highest_price) }}</strong> across {{ offer_count }} nurseries.
         </p>
         {% endif %}
         <button class="wishlist-btn"
@@ -88,6 +92,7 @@
             <div class="price-comparison">
                 <h2>Current Prices</h2>
                 {% if prices %}
+                <p class="table-disclosure">Some links below are affiliate links — we may earn a commission at no cost to you. <a href="/disclosure.html">See our disclosure.</a></p>
                 <p class="price-updated">Prices last checked: {{ last_updated }}</p>
 
                 <!-- Mobile Layout: Clean size-tier table (hidden on desktop) -->
@@ -106,7 +111,7 @@
                             <tr>
                                 <td class="mt-size">{{ mt.label }}{% if mt.sale_flag %} <span class="sale-badge">Sale</span>{% endif %}</td>
                                 <td class="mt-price">
-                                    <a href="{{ mt.url }}" target="_blank" rel="noopener{% if mt.has_affiliate %} sponsored{% endif %}" class="mt-price-link">
+                                    <a href="{{ mt.url }}" target="_blank" rel="noopener{% if mt.has_affiliate %} nofollow sponsored{% endif %}" class="mt-price-link">
                                         ${{ '%.2f'|format(mt.price) }}
                                     </a>
                                     <span class="mt-nursery">at {{ mt.retailer_name }}</span>
@@ -123,13 +128,8 @@
                             {% endfor %}
                         </tbody>
                     </table>
-                    {% elif best_deal %}
-                    <div class="best-deal-card">
-                        <div class="best-deal-label">Best Price</div>
-                        <div class="best-deal-price">${{ '%.2f'|format(best_deal.price) }}</div>
-                        <div class="best-deal-detail">at {{ best_deal.retailer_name }}</div>
-                        <a href="{{ best_deal.url }}" target="_blank" rel="noopener{% if best_deal.has_affiliate %} sponsored{% endif %}" class="best-deal-btn">Buy Now</a>
-                    </div>
+                    {% else %}
+                    <p class="no-prices">No current prices available for mobile view.</p>
                     {% endif %}
                 </div>
 
@@ -144,12 +144,13 @@
                                 {% endfor %}
                                 <th>In Stock</th>
                                 <th>Shipping</th>
+                                <th>Last Checked</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for retailer_id, retailer_prices in prices.items() %}
-                            <tr{% if retailer_prices.in_stock == false %} class="sold-out-row"{% endif %}>
+                            <tr{% if retailer_prices.unavailable %} class="unavailable-row"{% elif retailer_prices.in_stock == false %} class="sold-out-row"{% endif %}>
                                 <td class="retailer-name">
                                     {{ retailer_prices.retailer_name }}
                                     {% if not retailer_prices.has_affiliate %}<span class="no-affiliate" title="We don't earn a commission from this retailer">*</span>{% endif %}
@@ -158,9 +159,9 @@
                                 <td class="price-cell" data-label="{{ tier|replace('gal',' Gal')|replace('quart','Quart')|replace('bareroot','Bare Root')|title }}">
                                     {% if retailer_prices.sizes[tier] %}
                                     {% if retailer_prices.sizes[tier].variant_id %}
-                                    <a href="{{ retailer_prices.buy_url }}?variant={{ retailer_prices.sizes[tier].variant_id }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="price-link">
+                                    <a href="{{ retailer_prices.buy_url }}?variant={{ retailer_prices.sizes[tier].variant_id }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} nofollow sponsored{% endif %}" class="price-link">
                                     {% else %}
-                                    <a href="{{ retailer_prices.buy_url }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="price-link">
+                                    <a href="{{ retailer_prices.buy_url }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} nofollow sponsored{% endif %}" class="price-link">
                                     {% endif %}
                                         {% if retailer_prices.sizes[tier].is_best %}
                                         <span class="best-price">${{ '%.2f'|format(retailer_prices.sizes[tier].price) }}</span>
@@ -180,7 +181,9 @@
                                 </td>
                                 {% endfor %}
                                 <td class="stock-cell" data-label="Stock">
-                                    {% if retailer_prices.in_stock %}
+                                    {% if retailer_prices.unavailable %}
+                                    <span class="currently-unavailable">Currently Unavailable</span>
+                                    {% elif retailer_prices.in_stock %}
                                     <span class="in-stock">In Stock</span>
                                     {% if retailer_prices.ships_season %}
                                     <span class="ships-season">(Ships {{ retailer_prices.ships_season }})</span>
@@ -208,8 +211,16 @@
                                     <span class="shipping-info">Check site</span>
                                     {% endif %}
                                 </td>
+                                <td class="last-checked-cell" data-label="Last Checked">
+                                    {% if retailer_prices.last_checked %}
+                                    <span class="last-checked-date">{{ retailer_prices.last_checked }}</span>
+                                    {% else %}
+                                    <span class="no-data">&mdash;</span>
+                                    {% endif %}
+                                </td>
                                 <td class="action-cell" data-label="">
-                                    <a href="{{ retailer_prices.buy_url }}{% if retailer_prices.default_variant_id %}?variant={{ retailer_prices.default_variant_id }}{% endif %}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} sponsored{% endif %}" class="buy-btn">
+                                    {% if not retailer_prices.unavailable %}
+                                    <a href="{{ retailer_prices.buy_url }}{% if retailer_prices.default_variant_id %}?variant={{ retailer_prices.default_variant_id }}{% endif %}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} nofollow sponsored{% endif %}" class="buy-btn">
                                         Buy at {{ retailer_prices.retailer_name }}
                                     </a>
                                     {% if retailer_prices.has_affiliate %}
@@ -225,12 +236,16 @@
                                         {% endfor %}
                                     </div>
                                     {% endif %}
+                                    {% else %}
+                                    <span class="check-site-link"><a href="{{ retailer_prices.buy_url }}" target="_blank" rel="noopener">Check site</a></span>
+                                    {% endif %}
                                 </td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
+                <p class="price-accuracy-disclaimer">Prices are checked daily and may not reflect real-time changes. Always verify the final price at the retailer's site before purchasing.</p>
                 {% if has_non_affiliate %}
                 <p class="table-footnote">* We don't earn a commission from retailers marked with an asterisk. They're included because showing all options is more useful to you than only showing the ones that pay us.</p>
                 {% endif %}
@@ -241,31 +256,9 @@
                 {% endif %}
             </div>
 
-            <!-- When to Buy & Plant (email-gated) -->
+            <!-- When to Buy & Plant -->
             {% if plant.price_seasonality %}
             <div class="seasonal-section">
-                <div class="seasonal-gate" id="seasonal-gate">
-                    <div class="seasonal-gate-preview" aria-hidden="true">
-                        <h2>When to Buy &amp; Plant {{ plant.common_name }}</h2>
-                        <div class="gate-preview-bars">
-                            {% for i in range(12) %}
-                            <div class="preview-bar preview-bar-{{ i }}"></div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    <div class="gate-overlay">
-                        <div class="gate-box">
-                            <p class="gate-label">Free buying intelligence</p>
-                            <h3 class="gate-title">Best time to buy {{ plant.common_name }} — and when to avoid</h3>
-                            <p class="gate-desc">Month-by-month price calendar, best and worst buying windows, and zone-specific planting dates.</p>
-                            <form id="gate-form" onsubmit="return pptUnlock(event)">
-                                <input type="email" id="gate-email" placeholder="Your email address" required autocomplete="email">
-                                <button type="submit">Show me the buying calendar</button>
-                            </form>
-                            <p class="gate-fine">No spam. Price drop alerts and seasonal deal guides only.</p>
-                        </div>
-                    </div>
-                </div>
                 <div class="seasonal-guide" id="seasonal-guide">
                     <h2>When to Buy &amp; Plant {{ plant.common_name }}</h2>
 
@@ -332,27 +325,6 @@
                     {% endif %}
                 </div>
             </div>
-            <script>
-            (function() {
-                if (localStorage.getItem('ppt_signup')) {
-                    document.getElementById('seasonal-gate').style.display = 'none';
-                } else {
-                    document.getElementById('seasonal-guide').style.display = 'none';
-                }
-            })();
-            function pptUnlock(e) {
-                e.preventDefault();
-                var email = document.getElementById('gate-email').value.trim();
-                if (!email) return false;
-                localStorage.setItem('ppt_signup', '1');
-                localStorage.setItem('ppt_email', email);
-                document.getElementById('seasonal-gate').style.display = 'none';
-                var guide = document.getElementById('seasonal-guide');
-                guide.style.display = '';
-                guide.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                return false;
-            }
-            </script>
             {% endif %}
 
             <!-- Price History Chart (shown when historical data exists) -->

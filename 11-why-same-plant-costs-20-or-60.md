@@ -72,6 +72,6 @@ But not all price variation is justified. Some retailers simply charge more beca
 
 The fix is simple: compare before you buy.
 
-*We track prices on 77+ plant varieties across 12+ online nurseries, updated daily.*
+*We track prices on 77+ plant varieties across 12+ online nurseries, checked daily.*
 
 → [Start comparing plant prices](/category/hydrangeas)

@@ -7,6 +7,7 @@
     <meta name="description" content="{% block description %}Compare plant prices across 10+ online nurseries. Find the best deals on trees, shrubs, and perennials.{% endblock %}">
     <meta name="google-site-verification" content="zspl3BMFu9hZPGIGwtUO8UsS6myATjOnhRJw-eWH81A" />
     {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}" />{% endif %}
+    {% if canonical_url %}<meta property="og:url" content="{{ canonical_url }}" />{% endif %}
     {% block schema %}{% endblock %}
     <link rel="stylesheet" href="/assets/css/style.css">
     {% block head_extra %}{% endblock %}
@@ -46,7 +47,7 @@
                 <a href="/guides/index.html">Buying Guides</a>
                 <a href="/improve.html">Improve This Site</a>
             </div>
-            <p class="footer-copyright">&copy; {{ current_year }} PlantPriceTracker. Prices updated daily. Not affiliated with any nursery.</p>
+            <p class="footer-copyright">&copy; {{ current_year }} PlantPriceTracker. Prices checked daily. Not affiliated with any nursery.</p>
         </div>
     </footer>
 

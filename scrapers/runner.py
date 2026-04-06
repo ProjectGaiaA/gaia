@@ -13,11 +13,8 @@ Usage:
 import argparse
 import json
 import logging
-import os
-import random
 import re
 import sys
-import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -27,7 +24,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 import requests
 
 from scrapers.polite import (
-    USER_AGENTS, random_ua, polite_headers, polite_delay,
+    polite_delay,
     log_request, is_allowed_by_robots, make_polite_session,
 )
 from scrapers.shopify import ShopifyScraper, get_handles_for_retailer
@@ -276,7 +273,7 @@ def scrape_promos(retailers: list[dict], dry_run: bool = False) -> dict:
         if found_banners:
             logger.info(f"    Banners: {len(found_banners)} found")
         if not found_codes and not found_banners:
-            logger.info(f"    No active promos detected")
+            logger.info("    No active promos detected")
 
     # Merge with existing promos (keep history per retailer)
     for rid, entry in results.items():
@@ -539,14 +536,40 @@ def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = 
     elif retailer_filter:
         logger.info("\nPromo scraping skipped (single-retailer run)")
 
-    # Exit with error if any retailer had <80% success rate
+    # Check per-retailer health — degraded retailers are flagged, not fatal
+    degraded_retailers = []
     for entry in manifest_entries:
         if entry.get("status") == "completed":
             found = entry.get("products_found", 0)
             expected = entry.get("products_expected", 1)
-            if found / expected < 0.8:
-                logger.error("PIPELINE FAILURE: One or more retailers below 80% threshold")
-                sys.exit(1)
+            hit_rate = found / expected if expected else 1.0
+            if hit_rate < 0.8:
+                entry["health"] = "degraded"
+                degraded_retailers.append(entry["retailer_id"])
+                logger.warning(
+                    f"  DEGRADED: {entry['retailer_id']} at {hit_rate:.0%} hit rate "
+                    f"— flagged for manual handle review"
+                )
+            else:
+                entry["health"] = "healthy"
+
+    # Add pipeline-level health status to manifest
+    manifest["degraded_retailers"] = degraded_retailers
+    manifest["pipeline_status"] = "degraded" if degraded_retailers else "healthy"
+
+    if not dry_run and degraded_retailers:
+        # Re-save manifest with health fields
+        with open(MANIFEST_PATH, "w", encoding="utf-8") as f:
+            json.dump(manifest, f, indent=2, ensure_ascii=False)
+
+    if degraded_retailers:
+        logger.warning(
+            f"\nPIPELINE DEGRADED: {len(degraded_retailers)} retailer(s) below 80% threshold: "
+            f"{', '.join(degraded_retailers)}"
+        )
+        logger.warning("Degraded retailers need manual handle review — pipeline continues.")
+    else:
+        logger.info("\nAll retailers healthy.")
 
     return manifest
 
