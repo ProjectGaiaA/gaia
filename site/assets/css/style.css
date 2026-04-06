@@ -273,7 +273,7 @@ h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
 /* Don't highlight the whole row — just the winning cell */
 .retailer-name { font-weight: 600; white-space: nowrap; }
 .no-affiliate { color: var(--gray-500); font-size: 0.75rem; margin-left: 2px; }
-.affiliate-tag { display: block; font-size: 0.6rem; color: var(--gray-500); font-style: italic; }
+.affiliate-tag { display: block; font-size: 0.55rem; color: var(--gray-500); font-style: italic; margin-top: 1px; letter-spacing: 0.02em; }
 .price-cell { text-align: right; white-space: nowrap; }
 .price-link { text-decoration: none; color: inherit; display: inline-block; }
 .price-link:hover { text-decoration: underline; }
