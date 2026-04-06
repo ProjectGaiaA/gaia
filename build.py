@@ -624,6 +624,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                 "has_affiliate": rdata["has_affiliate"],
                 "shipping": rdata.get("shipping"),
                 "sale_flag": sdata.get("sale_flag", False),
+                "promo": rdata.get("promo"),
             }
             all_deals.append(entry)
             if best_price is None or sdata["price"] < best_price:
@@ -643,6 +644,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                 "has_affiliate": best_entry["has_affiliate"],
                 "shipping": best_entry.get("shipping"),
                 "sale_flag": best_entry.get("sale_flag", False),
+                "promo": best_entry.get("promo"),
             })
     all_deals.sort(key=lambda d: d["price"])
     best_deal = all_deals[0] if all_deals else None
