@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dwarf Meyer Lemon Tree Prices — Compare 1+ Nurseries (2026) | PlantPriceTracker</title>
-    <meta name="description" content="Dwarf Meyer Lemon Tree prices from $66–$91 across 1+ online nurseries. Find the best deal on Citrus x meyeri 'Improved Dwarf'. Prices checked daily.">
+    <meta name="description" content="Dwarf Meyer Lemon Tree prices from $66–$125 across 1+ online nurseries. Find the best deal on Citrus x meyeri 'Improved Dwarf'. Prices checked daily.">
     <meta name="google-site-verification" content="zspl3BMFu9hZPGIGwtUO8UsS6myATjOnhRJw-eWH81A" />
     <link rel="canonical" href="https://www.plantpricetracker.com/plants/meyer-lemon-tree.html" />
     <meta property="og:url" content="https://www.plantpricetracker.com/plants/meyer-lemon-tree.html" />
@@ -20,7 +20,7 @@
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
         "lowPrice": "65.95",
-        "highPrice": "90.95",
+        "highPrice": "124.95",
         "offerCount": "1",
         "availability": "https://schema.org/InStock"
     }
@@ -75,7 +75,7 @@
         <p class="product-botanical">Citrus x meyeri 'Improved Dwarf'</p>
         
         <p class="product-savings">
-            Prices from <strong>$65.95</strong> to <strong>$90.95</strong> across 1 nurseries.
+            Prices from <strong>$65.95</strong> to <strong>$124.95</strong> across 1 nurseries.
         </p>
         
         <button class="wishlist-btn"
@@ -178,6 +178,30 @@
                             </td>
                         </tr>
                         
+                        <tr>
+                            <td class="bp-size">3-4 ft</td>
+                            <td class="bp-price">
+                                <a href="https://www.fast-growing-trees.com/products/meyer-lemon-tree" target="_blank" rel="noopener nofollow sponsored" class="bp-price-link">
+                                    $124.95
+                                </a>
+                                <span class="bp-nursery">at Fast Growing Trees</span>
+                            </td>
+                            <td class="bp-specials">
+                                
+                                    
+                                    <span class="promo-code">CODE</span>
+                                    
+                                    <span class="promo-code">SPRING20</span>
+                                    
+                                    
+                                    <span class="promo-banner">free shipping on orders over $99</span>
+                                    
+                                    <span class="promo-banner">Free shipping on orders over $99</span>
+                                    
+                                
+                            </td>
+                        </tr>
+                        
                     </tbody>
                 </table>
                 
@@ -192,6 +216,8 @@
                                 <th>1-2ft</th>
                                 
                                 <th>2-3ft</th>
+                                
+                                <th>3-4ft</th>
                                 
                                 <th>In Stock</th>
                                 <th>Shipping</th>
@@ -239,6 +265,22 @@
                                     
                                 </td>
                                 
+                                <td class="price-cell" data-label="3-4ft">
+                                    
+                                    
+                                    <a href="https://www.fast-growing-trees.com/products/meyer-lemon-tree" target="_blank" rel="noopener nofollow sponsored" class="price-link">
+                                    
+                                        
+                                        <span class="best-price">$124.95</span>
+                                        
+                                        
+                                        <span class="was-price">$199.95</span>
+                                        
+                                        
+                                    </a>
+                                    
+                                </td>
+                                
                                 <td class="stock-cell" data-label="Stock">
                                     
                                     <span class="in-stock">In Stock</span>
@@ -256,7 +298,7 @@
                                 </td>
                                 <td class="last-checked-cell" data-label="Last Checked">
                                     
-                                    <span class="last-checked-date">Apr 05</span>
+                                    <span class="last-checked-date">Apr 06</span>
                                     
                                 </td>
                                 <td class="specials-cell" data-label="Specials">
@@ -422,11 +464,6 @@
 
             <!-- Price History Chart (shown when historical data exists) -->
             
-            <div class="price-history">
-                <h2>Price History</h2>
-                <canvas id="priceChart" width="800" height="300"></canvas>
-            </div>
-            
 
             <!-- Care Guide -->
             
@@ -519,44 +556,6 @@
         });
     });
 })();
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
-<script>
-    const priceData = {"dates": ["2026-04-03", "2026-04-05"], "retailers": [{"name": "Fast Growing Trees", "prices": [65.95, 65.95]}]};
-    const ctx = document.getElementById('priceChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'line',
-        data: {
-            labels: priceData.dates,
-            datasets: priceData.retailers.map((r, i) => ({
-                label: r.name,
-                data: r.prices,
-                borderColor: ['#2E7D32', '#1565C0', '#E65100', '#6A1B9A', '#C62828', '#00695C'][i % 6],
-                tension: 0.3,
-                pointRadius: 2,
-                borderWidth: 2,
-                fill: false
-            }))
-        },
-        options: {
-            responsive: true,
-            plugins: {
-                legend: { position: 'bottom' },
-                tooltip: {
-                    callbacks: {
-                        label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`
-                    }
-                }
-            },
-            scales: {
-                y: {
-                    ticks: { callback: (v) => '$' + v.toFixed(0) },
-                    beginAtZero: false
-                }
-            }
-        }
-    });
 </script>
 
 

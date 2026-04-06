@@ -424,8 +424,20 @@ class ShopifyScraper:
             if size_buttons and non_pack_offers:
                 sizes = {}
                 any_available = False
-                # Match by position: smallest size = cheapest price
-                for i, (sku, price_str, avail) in enumerate(non_pack_offers):
+                # When offer count > button count, hidden out-of-stock variants
+                # cause position mismatch. Filter to InStock offers first.
+                matching_offers = non_pack_offers
+                if len(non_pack_offers) > len(size_buttons):
+                    in_stock_offers = [(s, p, a) for s, p, a in non_pack_offers if "InStock" in a]
+                    if len(in_stock_offers) == len(size_buttons):
+                        matching_offers = in_stock_offers
+                    elif len(in_stock_offers) > len(size_buttons):
+                        # Still too many — take the last N (largest/most expensive)
+                        matching_offers = in_stock_offers[-len(size_buttons):]
+                    else:
+                        # Fewer in-stock than buttons — take last N from all offers
+                        matching_offers = non_pack_offers[-len(size_buttons):]
+                for i, (sku, price_str, avail) in enumerate(matching_offers):
                     size_name = size_buttons[i] if i < len(size_buttons) else f"Size {i+1}"
                     tier = self._normalize_size(size_name)
                     in_stock = "InStock" in avail
@@ -476,8 +488,14 @@ class ShopifyScraper:
 
             # Map by price order: sort offers by price ascending, match to buttons in order
             # Buttons are always displayed smallest→largest, and cheapest→most expensive
+            # IMPORTANT: when offer count > button count, hidden out-of-stock variants
+            # cause position mismatch. Filter to InStock offers when counts don't match.
             non_pack_offers = [(s, p, a) for s, p, a in offers if "PACK" not in s.upper()]
             sorted_offers = sorted(non_pack_offers, key=lambda x: float(x[1]))
+            if size_buttons and len(sorted_offers) > len(size_buttons):
+                in_stock_sorted = [o for o in sorted_offers if "InStock" in o[2]]
+                if len(in_stock_sorted) >= len(size_buttons):
+                    sorted_offers = in_stock_sorted
             if size_buttons and len(sorted_offers) > 0:
                 for i, (sku_raw, _, _) in enumerate(sorted_offers):
                     sku = sku_raw.split("-")[0]

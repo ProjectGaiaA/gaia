@@ -638,7 +638,7 @@
                                 </td>
                                 <td class="last-checked-cell" data-label="Last Checked">
                                     
-                                    <span class="last-checked-date">Apr 05</span>
+                                    <span class="last-checked-date">Apr 06</span>
                                     
                                 </td>
                                 <td class="specials-cell" data-label="Specials">
@@ -1033,7 +1033,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
-    const priceData = {"dates": ["2026-04-03", "2026-04-05"], "retailers": [{"name": "Fast Growing Trees", "prices": [30.95, 30.95]}, {"name": "Nature Hills", "prices": [26.99, 26.99]}, {"name": "Planting Tree", "prices": [32.95, 32.95]}, {"name": "Proven Winners Direct", "prices": [18.89, 18.89]}, {"name": "Spring Hill", "prices": [18.74, 18.74]}]};
+    const priceData = {"dates": ["2026-04-03", "2026-04-05", "2026-04-06"], "retailers": [{"name": "fast-growing-trees", "prices": [null, null, 30.95]}, {"name": "Nature Hills", "prices": [26.99, 26.99, null]}, {"name": "Planting Tree", "prices": [32.95, 32.95, null]}, {"name": "Proven Winners Direct", "prices": [18.89, 18.89, null]}, {"name": "Spring Hill", "prices": [18.74, 18.74, null]}]};
     const ctx = document.getElementById('priceChart').getContext('2d');
     new Chart(ctx, {
         type: 'line',

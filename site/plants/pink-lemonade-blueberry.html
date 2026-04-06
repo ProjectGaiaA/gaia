@@ -723,7 +723,7 @@
                                 </td>
                                 <td class="last-checked-cell" data-label="Last Checked">
                                     
-                                    <span class="last-checked-date">Apr 05</span>
+                                    <span class="last-checked-date">Apr 06</span>
                                     
                                 </td>
                                 <td class="specials-cell" data-label="Specials">
@@ -1133,7 +1133,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
-    const priceData = {"dates": ["2026-04-03", "2026-04-05"], "retailers": [{"name": "Fast Growing Trees", "prices": [30.95, 30.95]}, {"name": "Nature Hills", "prices": [30.64, 30.64]}, {"name": "Planting Tree", "prices": [36.95, 36.95]}, {"name": "Spring Hill", "prices": [9.99, 9.99]}, {"name": "Stark Bros", "prices": [25.99, 25.99]}]};
+    const priceData = {"dates": ["2026-04-03", "2026-04-05", "2026-04-06"], "retailers": [{"name": "fast-growing-trees", "prices": [null, null, 30.95]}, {"name": "Nature Hills", "prices": [30.64, 30.64, null]}, {"name": "Planting Tree", "prices": [36.95, 36.95, null]}, {"name": "Spring Hill", "prices": [9.99, 9.99, null]}, {"name": "Stark Bros", "prices": [25.99, 25.99, null]}]};
     const ctx = document.getElementById('priceChart').getContext('2d');
     new Chart(ctx, {
         type: 'line',
