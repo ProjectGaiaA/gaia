@@ -153,6 +153,7 @@
                             <tr{% if retailer_prices.unavailable %} class="unavailable-row"{% elif retailer_prices.in_stock == false %} class="sold-out-row"{% endif %}>
                                 <td class="retailer-name">
                                     {{ retailer_prices.retailer_name }}
+                                    {% if retailer_prices.has_affiliate %}<span class="affiliate-tag" title="We may earn a commission from this retailer">affiliate</span>{% endif %}
                                     {% if not retailer_prices.has_affiliate %}<span class="no-affiliate" title="We don't earn a commission from this retailer">*</span>{% endif %}
                                 </td>
                                 {% for tier in active_size_tiers %}
