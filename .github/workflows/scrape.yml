@@ -120,6 +120,66 @@ jobs:
           print(f'Stripped {stripped} bad tiers')
           "
 
+      - name: Remove broken retailer links
+        if: always()
+        run: |
+          python -c "
+          import glob, json, requests, time
+
+          session = requests.Session()
+          session.headers.update({'User-Agent': 'Mozilla/5.0 (compatible; PlantPriceTracker/1.0)'})
+
+          # Collect unique URLs to check (one per retailer per plant)
+          url_map = {}  # (plant_file, retailer_id) -> url
+          for f in glob.glob('data/prices/*.jsonl'):
+              with open(f, encoding='utf-8') as fh:
+                  for line in fh:
+                      if not line.strip(): continue
+                      e = json.loads(line)
+                      rid = e.get('retailer_id', '')
+                      url = e.get('url', '')
+                      if url and rid:
+                          url_map[(f, rid)] = url.split('?')[0]
+
+          # Dedupe URLs to minimize requests
+          unique_urls = set(url_map.values())
+          print(f'Checking {len(unique_urls)} unique retailer URLs...')
+
+          broken = set()
+          for url in unique_urls:
+              try:
+                  resp = session.head(url, timeout=10, allow_redirects=False)
+                  if resp.status_code == 404:
+                      broken.add(url)
+                      print(f'  BROKEN: {url}')
+                  time.sleep(0.5)
+              except:
+                  pass  # Network error = skip, don't remove
+
+          if not broken:
+              print('All retailer URLs OK')
+          else:
+              print(f'{len(broken)} broken URLs — removing stale entries')
+              removed = 0
+              for f in glob.glob('data/prices/*.jsonl'):
+                  lines = []
+                  mod = False
+                  with open(f, encoding='utf-8') as fh:
+                      for line in fh:
+                          if not line.strip(): continue
+                          e = json.loads(line)
+                          url = e.get('url', '').split('?')[0]
+                          if url in broken:
+                              removed += 1
+                              mod = True
+                              continue
+                          lines.append(json.dumps(e, ensure_ascii=False))
+                  if mod:
+                      with open(f, 'w', encoding='utf-8') as fh:
+                          fh.write('\n'.join(lines) + '\n')
+              print(f'Removed {removed} entries with broken URLs')
+          "
+
       - name: Verify prices (10 random spot checks)
         if: always()
         run: python -m scrapers.verify --count 10 || echo "WARNING: Price mismatches detected — review verify output above"
