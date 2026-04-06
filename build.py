@@ -430,8 +430,8 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                 active_tiers.add(tier)
 
         in_stock = price_data.get("in_stock", None)
-        if in_stock:
-            any_in_stock = True
+        if in_stock or in_stock is None:
+            any_in_stock = True  # Unknown stock (None) = assume available
 
         # Detect "Ships in Spring/Fall" from variant raw_size text
         ships_season = None
