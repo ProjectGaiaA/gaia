@@ -11,7 +11,12 @@
       "link_template": "",
       "notes": "Highest commission. Part of Gardens Alive family."
     },
-    "shipping": {"free_threshold": 125, "flat_rate": null, "free_all": false, "notes": "Ships at optimal planting time for your zone"},
+    "shipping": {
+      "free_threshold": 125,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Ships at optimal planting time for your zone"
+    },
     "active": true,
     "priority": 1
   },
@@ -27,7 +32,12 @@
       "link_template": "",
       "notes": "Flat rate great for high-AOV bulb orders. Gardens Alive family."
     },
-    "shipping": {"free_threshold": 75, "flat_rate": null, "free_all": false, "notes": "Tiered: $10.95-$20.95 below threshold"},
+    "shipping": {
+      "free_threshold": 75,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Tiered: $10.95-$20.95 below threshold"
+    },
     "active": true,
     "priority": 2
   },
@@ -43,7 +53,12 @@
       "link_template": "https://www.shareasale.com/r.cfm?u=YOURID&m=MERCHANTID&urllink={product_url}&afftrack={subid}",
       "notes": "1% for coupon sites. Also has Creator Program (free plants + commission)."
     },
-    "shipping": {"free_threshold": 139, "flat_rate": null, "free_all": false, "notes": "Uses Plant Sentry — some plants blocked by state"},
+    "shipping": {
+      "free_threshold": 139,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Uses Plant Sentry — some plants blocked by state"
+    },
     "active": true,
     "priority": 3
   },
@@ -59,7 +74,12 @@
       "link_template": "",
       "notes": "Fruit tree specialist since 1816. Strong brand."
     },
-    "shipping": {"free_threshold": 99, "flat_rate": null, "free_all": false, "notes": "From $9.95 below threshold"},
+    "shipping": {
+      "free_threshold": 99,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "From $9.95 below threshold"
+    },
     "active": true,
     "priority": 4
   },
@@ -75,7 +95,12 @@
       "link_template": "",
       "notes": "Excludes soil/fertilizer/hard goods. Plants and planters only."
     },
-    "shipping": {"free_threshold": 129, "flat_rate": null, "free_all": false, "notes": "Free shipping on select plants regardless of order total"},
+    "shipping": {
+      "free_threshold": 129,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Free shipping on select plants regardless of order total"
+    },
     "active": true,
     "priority": 5
   },
@@ -91,7 +116,12 @@
       "link_template": "",
       "notes": "Houseplant specialist. Short cookie."
     },
-    "shipping": {"free_threshold": 150, "flat_rate": null, "free_all": false, "notes": "$7-10 flat below threshold. Contiguous 48 states only."},
+    "shipping": {
+      "free_threshold": 150,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "$7-10 flat below threshold. Contiguous 48 states only."
+    },
     "active": true,
     "priority": 6
   },
@@ -107,7 +137,12 @@
       "link_template": "",
       "notes": "Transactions with non-approved codes rejected."
     },
-    "shipping": {"free_threshold": 99, "flat_rate": null, "free_all": false, "notes": "Ships at optimal planting time"},
+    "shipping": {
+      "free_threshold": 99,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Ships at optimal planting time"
+    },
     "active": true,
     "priority": 7
   },
@@ -138,7 +173,12 @@
       "link_template": "",
       "notes": "Performance bonuses and promo codes available."
     },
-    "shipping": {"free_threshold": 119, "flat_rate": null, "free_all": false, "notes": "Ships within 24 hours via FedEx"},
+    "shipping": {
+      "free_threshold": 119,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Ships within 24 hours via FedEx"
+    },
     "active": true,
     "priority": 9
   },
@@ -154,7 +194,12 @@
       "link_template": "",
       "notes": "Managed by Acceleration Partners. Confirmed scrapable."
     },
-    "shipping": {"free_threshold": 99, "flat_rate": null, "free_all": false, "notes": "No AK/HI. Contiguous 48 states + DC."},
+    "shipping": {
+      "free_threshold": 99,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "No AK/HI. Contiguous 48 states + DC."
+    },
     "active": true,
     "priority": 10
   },
@@ -185,7 +230,12 @@
       "link_template": "",
       "notes": "Huge catalog. Seeds and plants. Blocks simple HTTP scraping (403)."
     },
-    "shipping": {"free_threshold": 50, "flat_rate": 3.95, "free_all": false, "notes": "$3.95 flat for seeds. Free over $50 (promo, not always active)."},
+    "shipping": {
+      "free_threshold": 50,
+      "flat_rate": 3.95,
+      "free_all": false,
+      "notes": "$3.95 flat for seeds. Free over $50 (promo, not always active)."
+    },
     "active": false,
     "priority": 12
   },
@@ -201,7 +251,12 @@
       "link_template": "",
       "notes": "Paid monthly by check. $50 minimum payout."
     },
-    "shipping": {"free_threshold": 100, "flat_rate": null, "free_all": false, "notes": "Express delivery +$20"},
+    "shipping": {
+      "free_threshold": 100,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Express delivery +$20"
+    },
     "active": false,
     "priority": 13
   },
@@ -212,9 +267,14 @@
     "scraper_type": "shopify",
     "affiliate": null,
     "trust_builder": true,
-    "active": true,
+    "active": false,
     "priority": 14,
-    "shipping": {"free_threshold": 129, "flat_rate": null, "free_all": false, "notes": "No AK, AZ, HI"},
+    "shipping": {
+      "free_threshold": 129,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "No AK, AZ, HI"
+    },
     "notes": "No affiliate program. Include for honest price comparison."
   },
   {
@@ -230,7 +290,12 @@
       "notes": "More referral than traditional affiliate. Limited program."
     },
     "trust_builder": true,
-    "shipping": {"free_threshold": 175, "flat_rate": null, "free_all": false, "notes": "Tender plants ship 2-Day Air; hardy plants ship Ground"},
+    "shipping": {
+      "free_threshold": 175,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Tender plants ship 2-Day Air; hardy plants ship Ground"
+    },
     "active": true,
     "priority": 15
   },
@@ -243,7 +308,12 @@
     "trust_builder": true,
     "active": false,
     "priority": 16,
-    "shipping": {"free_threshold": 125, "flat_rate": null, "free_all": false, "notes": "Tiered: $4.99-$16.99. Also ships to Canada."},
+    "shipping": {
+      "free_threshold": 125,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Tiered: $4.99-$16.99. Also ships to Canada."
+    },
     "notes": "No affiliate. Include for comparison completeness."
   },
   {
