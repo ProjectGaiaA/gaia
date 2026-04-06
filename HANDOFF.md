@@ -10,14 +10,15 @@ The site is deployed and functional at **plantpricetracker.com** (Vercel + Cloud
 
 ### Data
 - **77 plants** across 13 categories (hydrangeas, japanese-maples, fruit-trees, roses, blueberries, privacy-trees, flowering-trees, azaleas-rhododendrons, perennials, houseplants, grasses, groundcovers, shade-trees)
-- **1,200 prices** across 8 retailers
+- **1,200 prices** across 8 retailers (verified 2026-04-06)
 - **9 plants at 5+ retailers**, 35 at 3+, 5 at zero coverage
 - 5 plants with zero price data: echinacea-powwow-wild-berry, golden-pothos, white-bird-of-paradise, rubber-plant-burgundy, vinca-minor
 - Top retailers by price count: PlantingTree (488), Nature Hills (310), Fast Growing Trees (216), Spring Hill (102), Stark Bros (33), Brighter Blooms (27), Proven Winners Direct (16), Great Garden Plants (8)
+- Handle maps: Nature Hills 49, PlantingTree 54, FGT 38, Spring Hill 25, Stark Bros 8, Brighter Blooms 8, GGP 7, PWD 5
 
 ### Site
 - **109 HTML pages** (77 product, 13 category, 10 guide, 1 homepage, heat map, wishlist, improve, disclosure, privacy, guides index, sitemap, Google verification)
-- 10 in-depth buying guide articles (V3 versions, 13K-25K bytes each)
+- 11 in-depth buying guide articles (V3 versions, 7K-25K bytes each, including article 11: "Why the Same Plant Costs $20 or $60")
 - Seasonal pricing chart + zone planting calendar on every product page
 - Shipping data per retailer in comparison tables
 - Wishlist ("My Plant List") with localStorage persistence
@@ -79,7 +80,7 @@ The site is deployed and functional at **plantpricetracker.com** (Vercel + Cloud
 - [ ] **Plant photos** — every product page needs a photo. Source from Wikimedia Commons (CC licensed). No retailer images (copyright).
 - [ ] **About page** — who we are, mission, why we built this. Brandon wants 25% of profits to land conservation.
 - [ ] **Search bar** — Pagefind (client-side search). Critical for 77+ plants.
-- [ ] **Fix 2 pages missing viewport meta** — sunny-knock-out-rose.html, sunshine-blue-blueberry.html
+- [ ] **Viewport meta** — only google verification HTML lacks it (expected). All product/guide/category pages have viewport. Verified clean.
 - [ ] **Add 3 missing plants to database** — chandler-blueberry, serviceberry, bobo-hydrangea (referenced in articles)
 - [ ] **5-expert UI critique** — run after photos are added. Perspectives: e-commerce UX, SEO, mobile, accessibility, consumer trust.
 
