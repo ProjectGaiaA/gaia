@@ -624,8 +624,9 @@ tr.unavailable-row .price-cell { color: var(--gray-400); }
 }
 .calendar-legend {
     display: flex;
-    justify-content: space-between;
+    gap: 1rem;
     font-size: 0.7rem;
+    margin-top: 0.4rem;
     color: var(--gray-500);
     margin-top: 0.25rem;
 }
