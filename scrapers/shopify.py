@@ -193,13 +193,13 @@ class ShopifyScraper:
             if cheapest.get("variant_id"):
                 product_url = f"{self.base_url}/products/{handle}?variant={cheapest['variant_id']}"
 
-        # If NO variant had an explicit available field, the product stock is unknown
-        # Don't default to False (Sold Out) — use None (Check Site)
+        # If NO variant had an explicit available field but prices exist,
+        # assume in stock — a retailer listing prices means it's for sale.
         has_any_explicit_availability = any(
             v.get("available") is not None for v in sizes.values()
         )
-        if not has_any_explicit_availability:
-            any_available = None  # Unknown — show "Check Site"
+        if not has_any_explicit_availability and sizes:
+            any_available = True  # Has prices = assume available
 
         return {
             "retailer_id": self.retailer_id,
