@@ -48,6 +48,7 @@ GUIDE_META_DESCRIPTIONS = {
     "best-flowering-trees-small-yards": "Compare small flowering tree prices online. Dogwood, Redbud, Cherry — find the lowest price across 10+ nurseries. Updated daily.",
     "best-azaleas-rhododendrons": "Compare azalea and rhododendron prices online. Find the best deals across 10+ nurseries with daily price updates.",
     "best-time-to-buy-plants-online": "When is the cheapest time to buy plants online? See price seasonality data for trees, shrubs, and perennials — and exactly when to buy.",
+    "why-same-plant-costs-20-or-60": "Plant pricing explained: container size, shipping, quality, branding, and seasonal timing all affect what you pay. Learn how to compare and avoid overpaying.",
 }
 
 GUIDE_FAQS = {
@@ -120,6 +121,13 @@ GUIDE_FAQS = {
         {"q": "Do online plant prices change seasonally?", "a": "Yes, significantly. The same Limelight Hydrangea that costs $65 in April can drop to $35 in September as nurseries clear stock."},
         {"q": "Is spring the best time to plant trees and shrubs?", "a": "Spring and fall are both excellent. Fall planting is often better because cooler temperatures reduce transplant stress and trees establish roots before summer."},
         {"q": "What month should I order plants to be safe?", "a": "Order in early to mid-spring (2 weeks after your last frost date), or in September for fall planting in most zones."},
+    ],
+    "why-same-plant-costs-20-or-60": [
+        {"q": "Why do plant prices vary so much between nurseries?", "a": "Container size, wholesale cost, retail markup, shipping policy, plant quality, seasonal timing, and brand licensing all contribute. A 2-4x price difference on the same plant is common."},
+        {"q": "Is it cheaper to buy plants at Home Depot or a local nursery?", "a": "Big-box stores are typically cheaper on sticker price, averaging 27-39% below average in some surveys. But consumer surveys consistently show lower plant quality ratings at big-box stores."},
+        {"q": "What is a fair markup on plants?", "a": "Industry trade publications report retail markups typically range from 2x to 2.8x wholesale cost."},
+        {"q": "Does buying a bigger pot size save money in the long run?", "a": "For fast-growing shrubs, usually not. A quart-size plant can close the gap with a one-gallon within one or two growing seasons."},
+        {"q": "When are plants cheapest?", "a": "Fall, when nurseries discount remaining inventory to clear stock before winter. Late summer sales (August-September) offer the biggest discounts."},
     ],
 }
 
@@ -305,13 +313,19 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         if not retailer:
             continue
 
-        # Check staleness (>3 days old = suppress)
+        # Check staleness: >30 days = exclude entirely, 3-30 days = show as unavailable
         timestamp = price_data.get("timestamp", "")
+        unavailable = False
+        last_checked_str = None
         if timestamp:
             try:
                 scrape_date = datetime.fromisoformat(timestamp.replace("Z", "+00:00")).date()
-                if (date.today() - scrape_date).days > 3:
-                    continue  # Suppress stale data
+                days_old = (date.today() - scrape_date).days
+                if days_old > 30:
+                    continue  # Remove row entirely after 30 days
+                if days_old > 3:
+                    unavailable = True  # Show as "Currently Unavailable" for 3-30 days
+                last_checked_str = scrape_date.strftime("%b %d").lstrip("0")
             except (ValueError, TypeError):
                 pass
 
@@ -395,6 +409,8 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             "shipping": retailer.get("shipping"),
             "ships_season": ships_season,
             "promo": promo_info,
+            "unavailable": unavailable,
+            "last_checked": last_checked_str,
         }
 
     # Mark best price per tier
@@ -418,9 +434,8 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         best_price = float("inf")
         best_retailer = None
         for rid, rdata in prices.items():
-            # Only consider in-stock or unknown-stock retailers for best price
-            # Sold out (in_stock == False) should NOT win best price
-            if rdata["in_stock"] is False:
+            # Only consider in-stock or unknown-stock, available retailers for best price
+            if rdata["in_stock"] is False or rdata.get("unavailable"):
                 continue
             if tier in rdata["sizes"] and rdata["sizes"][tier]["price"] < best_price:
                 best_price = rdata["sizes"][tier]["price"]
@@ -450,9 +465,11 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                     retailer_sizes[bigger_tier]["sale_flag"] = True
                     break
 
-    # Sort retailers: in-stock cheapest first, no-price next, sold-out last
+    # Sort retailers: cheapest first, no-price next, sold-out next, unavailable last
     def _retailer_sort_key(item):
         rid, rdata = item
+        if rdata.get("unavailable"):
+            return (3, float("inf"))
         if rdata["in_stock"] is False:
             return (2, float("inf"))
         tier_prices = [
@@ -793,6 +810,7 @@ def find_related_plants_for_guide(guide_slug, all_plants):
         "best-flowering-trees-small-yards": "flowering-trees",
         "best-azaleas-rhododendrons": "azaleas-rhododendrons",
         "best-time-to-buy-plants-online": None,  # All categories
+        "why-same-plant-costs-20-or-60": None,  # All categories — pricing is cross-category
     }
     category = slug_to_category.get(guide_slug)
     if category is None:
