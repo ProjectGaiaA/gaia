@@ -193,13 +193,17 @@ class ShopifyScraper:
             if cheapest.get("variant_id"):
                 product_url = f"{self.base_url}/products/{handle}?variant={cheapest['variant_id']}"
 
-        # If NO variant had an explicit available field but prices exist,
-        # assume in stock — a retailer listing prices means it's for sale.
+        # If NO variant had an explicit available field, stock is unknown.
+        # Exception: Nature Hills never provides stock in JSON but confirms
+        # "In Stock" on their HTML pages — assume available for them.
         has_any_explicit_availability = any(
             v.get("available") is not None for v in sizes.values()
         )
-        if not has_any_explicit_availability and sizes:
-            any_available = True  # Has prices = assume available
+        if not has_any_explicit_availability:
+            if self.retailer_id == "nature-hills" and sizes:
+                any_available = True  # Nature Hills: has prices = in stock
+            else:
+                any_available = None  # Unknown for other retailers
 
         return {
             "retailer_id": self.retailer_id,
