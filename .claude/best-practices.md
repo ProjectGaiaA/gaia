@@ -1,0 +1,39 @@
+# Best Practices Implemented
+
+Updated: 2026-04-07
+
+## SEO Foundation
+
+- **Canonical tags** -- self-referencing on 108/109 pages. Prevents duplicate content penalties.
+- **www redirect** -- 301 non-www to www. Single canonical domain for link equity.
+- **robots.txt** -- allows all crawlers, points to sitemap.
+- **XML sitemap** -- all pages listed, auto-regenerated on build.
+- **Google Search Console** -- verified via HTML meta tag.
+- **No noindex tags** -- audited, all pages indexable.
+
+## Scraping Ethics
+
+- **robots.txt compliance** -- checked before every request, disallowed URLs skipped.
+- **Polite delays** -- 5-15 sec random delay between requests. Never hammers a site.
+- **Random start offset** -- 0-90 min jitter on CI runs. No fixed-time traffic spikes.
+- **Real browser UAs** -- 10 rotating user-agent strings. Honest traffic pattern.
+- **Retailer opt-out respected** -- Brighter Blooms blocks via robots.txt, scraper honors it.
+
+## Site Quality
+
+- **FTC disclosure** -- affiliate links use rel="nofollow sponsored". Disclosure page linked site-wide.
+- **Broken link checker** -- runs in CI pipeline, removes stale retailer URLs automatically.
+- **Price verification** -- 10 random spot checks per scrape run against live sites.
+- **Outlier filter** -- prices 3x+ above second-highest in tier are dropped from savings calc.
+- **Staleness cutoff** -- prices older than 30 days auto-removed. No stale data shown to users.
+- **Mobile responsive** -- card layout at 600px breakpoint.
+- **Privacy page** -- no cookies, no tracking, extends base template.
+- **Contact form** -- Formspree (no backend), 50 submissions/month free tier.
+
+## CI/CD & Testing
+
+- **210 automated tests** -- 138 build + 71 scraper + 1 discover.
+- **2x daily scrape** -- GitHub Actions cron at 7AM + 5:30PM ET.
+- **Auto-deploy** -- Vercel deploys on push to main.
+- **Graceful degradation** -- individual scraper failures don't block build/deploy.
+- **Internal link checker** -- verifies all hrefs resolve after build.

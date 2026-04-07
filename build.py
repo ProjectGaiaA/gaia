@@ -359,6 +359,72 @@ def count_consecutive_run_misses(price_entries):
     return misses
 
 
+MAX_TITLE_LEN = 60
+
+
+def _truncate_name(name, max_len):
+    """Truncate name to max_len chars at a word boundary."""
+    if len(name) <= max_len:
+        return name
+    truncated = name[:max_len].rsplit(" ", 1)[0]
+    if len(truncated) < max_len // 2:
+        truncated = name[:max_len]
+    return truncated
+
+
+def build_product_title(plant_name, offer_count):
+    """Build SEO title: Compare {name} Prices — {N} Nursery/Nurseries (2026)."""
+    nursery_word = "Nursery" if offer_count == 1 else "Nurseries"
+    suffix = f" Prices \u2014 {offer_count} {nursery_word} (2026)"
+    with_compare = f"Compare {plant_name}{suffix}"
+    if len(with_compare) <= MAX_TITLE_LEN:
+        return with_compare
+    # Drop "Compare" to keep full plant name
+    without_compare = f"{plant_name}{suffix}"
+    if len(without_compare) <= MAX_TITLE_LEN:
+        return without_compare
+    # Truncate plant name (only for 30+ char names)
+    name_budget = MAX_TITLE_LEN - len(suffix)
+    name = _truncate_name(plant_name, name_budget)
+    return f"{name}{suffix}"
+
+
+def build_category_title(category_name):
+    """Build SEO title: Best {cat} to Buy Online — Prices (2026)."""
+    suffix = " to Buy Online \u2014 Prices (2026)"
+    prefix = "Best "
+    name_budget = MAX_TITLE_LEN - len(prefix) - len(suffix)
+    name = _truncate_name(category_name, name_budget)
+    return f"{prefix}{name}{suffix}"
+
+
+def build_guide_title(title):
+    """Build SEO title: {title} | PlantPriceTracker, truncating if needed."""
+    with_brand = f"{title} | PlantPriceTracker"
+    if len(with_brand) <= MAX_TITLE_LEN:
+        return with_brand
+    if len(title) <= MAX_TITLE_LEN:
+        return title
+    # Truncate at ": " subtitle boundary if possible
+    if ": " in title:
+        main = title.split(": ")[0]
+        if len(main) <= MAX_TITLE_LEN:
+            return main
+    # Remove trailing parenthetical if present
+    paren_idx = title.rfind(" (")
+    if paren_idx > 0:
+        without_paren = title[:paren_idx]
+        if len(without_paren) <= MAX_TITLE_LEN:
+            return without_paren
+    truncated = _truncate_name(title, MAX_TITLE_LEN)
+    # Strip trailing prepositions/articles left by word-boundary truncation
+    stop = {"at", "and", "or", "the", "a", "of", "to", "in", "for", "on", "is"}
+    words = truncated.split()
+    while words and words[-1].lower() in stop:
+        words.pop()
+    return " ".join(words) if words else truncated
+
+
 def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=None, price_entries=None):
     """Build structured price data for the comparison table template."""
     prices = {}
@@ -522,6 +588,10 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                 sdata["sale_flag"] = True
 
     # Sort retailers: cheapest first, no-price next, sold-out next, unavailable last
+    # Only consider prices in visible tiers (active_tiers_sorted) — retailers whose
+    # only prices are in the hidden "default" tier should sort as no-visible-price.
+    visible_tiers = set(active_tiers_sorted)
+
     def _retailer_sort_key(item):
         rid, rdata = item
         if rdata.get("unavailable"):
@@ -529,8 +599,8 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         if rdata["in_stock"] is False:
             return (2, float("inf"))
         tier_prices = [
-            s["price"] for s in rdata["sizes"].values()
-            if isinstance(s, dict) and s.get("price")
+            s["price"] for tier, s in rdata["sizes"].items()
+            if tier in visible_tiers and isinstance(s, dict) and s.get("price")
         ]
         if not tier_prices:
             return (1, float("inf"))
@@ -1014,8 +1084,11 @@ def build_site(build_guides=True, build_products=True):
             plant["same_tier_info"] = price_table.get("same_tier_info")
             plant["retailer_count"] = price_table["offer_count"]
 
+            page_title = build_product_title(plant["common_name"], price_table["offer_count"])
+
             html = product_tpl.render(
                 plant=plant,
+                page_title=page_title,
                 last_updated=date.today().strftime("%B %d, %Y"),
                 similar_plants=similar,
                 price_history=bool(price_history_json),
@@ -1058,8 +1131,11 @@ def build_site(build_guides=True, build_products=True):
                 for faq in guide_faqs
             ], ensure_ascii=False) if guide_faqs else None
 
+            page_title = build_guide_title(article["title"])
+
             html = guide_tpl.render(
                 title=article["title"],
+                page_title=page_title,
                 content=article["content"],
                 toc=article["toc"],
                 meta_description=GUIDE_META_DESCRIPTIONS.get(slug, article["meta_description"]),
@@ -1105,7 +1181,7 @@ def build_site(build_guides=True, build_products=True):
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant Buying Guides | PlantPriceTracker</title>
+    <title>Plant Buying Guides (2026) | PlantPriceTracker</title>
     <meta name="description" content="Expert buying guides for trees, shrubs, and perennials. Compare prices and find the best deals.">
     <link rel="canonical" href="{BASE_URL}/guides/index.html" />
     <meta property="og:url" content="{BASE_URL}/guides/index.html" />
@@ -1169,8 +1245,11 @@ def build_site(build_guides=True, build_products=True):
         for cat_id, cat_plants in categories.items():
             cat_name = cat_id.replace("-", " ").title()
 
+            page_title = build_category_title(cat_name)
+
             html = cat_tpl.render(
                 category_name=cat_name,
+                page_title=page_title,
                 plants=cat_plants,
                 retailer_count=len([r for r in retailers if r.get("active")]),
                 canonical_url=f"{BASE_URL}/category/{cat_id}.html",
@@ -1232,7 +1311,10 @@ def build_site(build_guides=True, build_products=True):
     # Tracked retailers for homepage
     tracked = [r for r in retailers if r.get("active")]
 
+    home_title = f"Compare Plant Prices \u2014 {len(tracked)} Nurseries (2026)"
+
     html = home_tpl.render(
+        page_title=home_title,
         categories=cat_summary,
         hero_example=hero_example,
         price_drops=[],  # Empty until we have historical data
@@ -1291,14 +1373,33 @@ def build_site(build_guides=True, build_products=True):
         total_submissions=total_submissions,
         responded_count=responded_count,
         done_count=done_count,
-        # Formspree endpoint — replace YOUR_FORM_ID with the actual Formspree form ID
-        # Free tier: 50 submissions/month, no backend needed
-        formspree_endpoint="https://formspree.io/f/YOUR_FORM_ID",
+        formspree_endpoint="https://formspree.io/f/mqegnnqe",
         canonical_url=f"{BASE_URL}/improve.html",
     )
     with open(os.path.join(SITE_DIR, "improve.html"), "w", encoding="utf-8") as f:
         f.write(html)
     print("  Written to site/improve.html")
+
+    # -----------------------------------------------------------------------
+    # Build disclosure + privacy pages
+    # -----------------------------------------------------------------------
+    print("\nBuilding disclosure page...")
+    disclosure_tpl = env.get_template("disclosure.html")
+    html = disclosure_tpl.render(
+        canonical_url=f"{BASE_URL}/disclosure.html",
+    )
+    with open(os.path.join(SITE_DIR, "disclosure.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+    print("  Written to site/disclosure.html")
+
+    print("Building privacy page...")
+    privacy_tpl = env.get_template("privacy.html")
+    html = privacy_tpl.render(
+        canonical_url=f"{BASE_URL}/privacy.html",
+    )
+    with open(os.path.join(SITE_DIR, "privacy.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+    print("  Written to site/privacy.html")
 
     # -----------------------------------------------------------------------
     # Generate robots.txt
@@ -1341,7 +1442,7 @@ def build_site(build_guides=True, build_products=True):
     # -----------------------------------------------------------------------
     # Summary
     # -----------------------------------------------------------------------
-    total_pages = len(plants) + len(categories_map) + len(article_files) + 4
+    total_pages = len(plants) + len(categories_map) + len(article_files) + 6
     print(f"\n{'=' * 60}")
     print(f"Build complete: {total_pages} pages generated")
     print(f"  {len(plants)} product pages")
@@ -1351,6 +1452,8 @@ def build_site(build_guides=True, build_products=True):
     print("  1 wishlist page (my-list.html)")
     print("  1 heat map page (heat-map.html)")
     print(f"  1 improve page (improve.html) — {total_submissions} submissions, {responded_count} responded")
+    print("  1 disclosure page (disclosure.html)")
+    print("  1 privacy page (privacy.html)")
     print("  1 sitemap.xml")
     print(f"Output: {SITE_DIR}")
     print(f"{'=' * 60}")

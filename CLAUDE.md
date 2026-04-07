@@ -59,6 +59,10 @@ cd site && python -m http.server 8151
 - `.github/workflows/scrape.yml` — 2x/day scrape + build + deploy
 - `.github/workflows/deploy.yml` — Vercel deploy on push to main
 
+## Best Practices
+
+Maintained in `.claude/best-practices.md`. When you add or change anything related to SEO, scraping ethics, site quality, or CI/CD, update that file to keep the log current.
+
 ## Key Decisions
 - Inactive plants (`"active": false` in plants.json) are excluded from product pages, sitemap, and category pages but kept in the data file for re-activation
 - FGT blocks JSON endpoints — HTML fallback with aria-labels is the primary path
