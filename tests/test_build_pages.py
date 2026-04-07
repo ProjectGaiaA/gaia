@@ -401,6 +401,69 @@ class TestInactiveExclusion:
 # ---------------------------------------------------------------------------
 
 
+class TestAboutPage:
+    """Verify about page is generated with expected content."""
+
+    def test_about_page_exists(self, built_site):
+        path = built_site / "about.html"
+        assert path.exists()
+
+    def test_about_has_title(self, built_site):
+        soup = _read_html(built_site, "about.html")
+        title = soup.find("title")
+        assert title and "About" in title.string
+
+    def test_about_has_canonical(self, built_site):
+        soup = _read_html(built_site, "about.html")
+        link = soup.find("link", rel="canonical")
+        assert link and link["href"].endswith("/about.html")
+
+    def test_about_has_content_sections(self, built_site):
+        """About page has the key E-E-A-T content sections."""
+        soup = _read_html(built_site, "about.html")
+        text = soup.get_text()
+        for heading in [
+            "Who Runs PlantPriceTracker",
+            "How We Track Plant Prices",
+            "Editorial Standards",
+            "Frequently Asked Questions",
+            "Get in Touch",
+        ]:
+            assert heading in text, f"Missing section: {heading}"
+
+    def test_about_has_faq_schema(self, built_site):
+        """About page includes FAQPage structured data."""
+        soup = _read_html(built_site, "about.html")
+        scripts = soup.find_all("script", type="application/ld+json")
+        faq_found = any("FAQPage" in s.string for s in scripts if s.string)
+        assert faq_found, "FAQPage schema missing from about page"
+
+    def test_about_has_aboutpage_schema(self, built_site):
+        """About page includes AboutPage structured data."""
+        soup = _read_html(built_site, "about.html")
+        scripts = soup.find_all("script", type="application/ld+json")
+        about_found = any("AboutPage" in s.string for s in scripts if s.string)
+        assert about_found, "AboutPage schema missing from about page"
+
+    def test_about_in_sitemap(self, built_site):
+        text = _read_text(built_site, "sitemap.xml")
+        assert "/about.html" in text, "About page missing from sitemap"
+
+    def test_about_in_nav(self, built_site):
+        """About link appears in the site nav on the homepage."""
+        soup = _read_html(built_site, "index.html")
+        nav = soup.find("nav")
+        links = [a.get("href", "") for a in nav.find_all("a")] if nav else []
+        assert "/about.html" in links, "About link missing from nav"
+
+    def test_about_in_footer(self, built_site):
+        """About link appears in the footer."""
+        soup = _read_html(built_site, "index.html")
+        footer = soup.find("footer")
+        links = [a.get("href", "") for a in footer.find_all("a")] if footer else []
+        assert "/about.html" in links, "About link missing from footer"
+
+
 class TestMiscPages:
     """Verify robots.txt and wishlist page are generated."""
 

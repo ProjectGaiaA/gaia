@@ -1,0 +1,173 @@
+{% extends "base.html" %}
+
+{% block title %}About PlantPriceTracker — Who Runs It, How It Works{% endblock %}
+{% block description %}PlantPriceTracker is an independent plant price comparison site tracking 12+ online nurseries daily. Built by Brandon Hall, a 31-year gardener in Bucks County, PA.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About PlantPriceTracker",
+    "url": "{{ canonical_url }}",
+    "lastReviewed": "2026-04-01",
+    "mainEntity": {
+        "@type": "Organization",
+        "name": "PlantPriceTracker",
+        "url": "https://www.plantpricetracker.com",
+        "founder": {
+            "@type": "Person",
+            "name": "Brandon Hall",
+            "jobTitle": "Founder",
+            "sameAs": "https://www.linkedin.com/in/brandon-hall-175172113",
+            "knowsAbout": ["gardening", "plant pricing", "horticulture", "price comparison"]
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "ProjectGaiaA@proton.me",
+            "contactType": "customer support"
+        }
+    }
+}
+</script>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Is PlantPriceTracker legit?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes. PlantPriceTracker is owned and operated by Brandon Hall, a 31-year gardener based in Bucks County, Pennsylvania. The site tracks live pricing on landscape plants across 12+ online nurseries with daily updates. We're independent, not affiliated with any nursery, and we publish prices from retailers that don't pay us alongside ones that do."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Who owns PlantPriceTracker?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "PlantPriceTracker is independently owned and operated by Brandon Hall. There is no parent company, no investor group, no corporate ownership. It's a one-person project built to solve a real problem."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How does PlantPriceTracker make money?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We earn affiliate commissions when readers click through to a retailer and make a purchase. This doesn't affect which retailers we display or how prices are ranked — we show every price we find, including from nurseries that don't have affiliate programs."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "How often are plant prices updated?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Daily. Our automated tools check current prices at every tracked retailer once per day and update the displayed prices accordingly. The last checked date appears on every plant comparison page."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Which online nurseries does PlantPriceTracker track?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We currently track 12+ online nurseries including Fast Growing Trees, Nature Hills, Spring Hill Nurseries, Proven Winners Direct, PlantingTree, Brighter Blooms, Stark Bros, Wayside Gardens, and others. We're actively expanding to additional specialty and regional nurseries."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Can I trust the price comparisons?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Our incentive is to send you to the cheapest option, because that's what makes you trust the site and come back. We display retailers that don't pay us alongside ones that do. The system only works if it works for the reader first."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "Are the prices on PlantPriceTracker always accurate?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "We aim for accuracy and check daily, but plant pricing is dynamic. A retailer can change their price between our last check and your visit. The last checked date on every plant page tells you when we last verified. If you spot a price that's clearly wrong, email us and we'll re-check immediately."
+            }
+        }
+    ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+        <h1>About PlantPriceTracker</h1>
+        <p><em>Last updated: April 2026</em></p>
+
+        <h2>Why I Built a Plant Price Comparison Site</h2>
+        <p>I started PlantPriceTracker because I got tired of guessing.</p>
+        <p>Every garden center had different prices. Every online nursery had different prices. There was almost no visibility into what a fair price actually looked like, when the best time to buy was, or whether the plant in front of me was a deal or a markup. For a single plant, I'd shrug and pay whatever the local nursery charged. But after I moved to a new property and started planting at scale, guessing wasn't an option anymore. I needed data.</p>
+        <p>That data didn't exist. So I built it.</p>
+        <p>PlantPriceTracker tracks live pricing on <a href="/category/hydrangeas.html">hydrangeas</a>, <a href="/category/japanese-maples.html">Japanese maples</a>, <a href="/category/fruit-trees.html">fruit trees</a>, <a href="/category/roses.html">roses</a>, <a href="/category/privacy-trees.html">privacy trees</a>, and other landscape plants across 12+ online nurseries, updated daily. The goal is simple: when you want to buy a plant, you should be able to see in 30 seconds who has the best price for the size you want.</p>
+
+        <h2>Who Runs PlantPriceTracker</h2>
+        <p>I'm Brandon Hall. I'm a forensic scheduling consultant by profession — I analyze construction project delays for a living, which means I spend most of my workdays in spreadsheets, schedules, and data. Gardening and woodworking are my hobbies on the other side of the workday.</p>
+        <p>I've been gardening for 31 years, since I was a kid. Today I tend a 12-acre property in Bucks County, Pennsylvania — a mix of preserved woodland, open garden beds, streams, a fish pond, and a meditation garden. Over the past year alone I've planted around 1,000 plants. Lately I've been deep into bulbs and evergreens, propagating my hostas, and as anyone who reads this site can probably guess, I have a serious thing for <a href="/guides/best-hydrangeas-to-buy-online.html">hydrangeas</a>.</p>
+        <p>I built PlantPriceTracker because I had a problem and I wanted it solved. I figured if I had this problem, plenty of other gardeners did too.</p>
+
+        <h2>How We Track Plant Prices Across 12+ Nurseries</h2>
+        <p>We monitor prices at 12+ online nurseries every day and record what we find for {{ plant_count }}+ plant varieties. When you visit a plant page on this site, you see the current price at every retailer that carries it, the cheapest option highlighted, and the container size for each listing — because a price without a pot size is meaningless.</p>
+        <p>We started with the biggest names in the online plant space: Fast Growing Trees, Nature Hills, Spring Hill Nurseries, Proven Winners Direct, PlantingTree, Brighter Blooms, Stark Bros, Wayside Gardens, and others. We're actively expanding into smaller specialty nurseries and local garden centers.</p>
+        <p>We track every reputable seller we can find — including ones whose business models don't include affiliate networks. In our experience, affiliate-friendly retailers are happy to be tracked because the incentives align: better visibility for them, better information for shoppers.</p>
+        <p>If you want to see how much price variation actually exists across nurseries, our guide on <a href="/guides/why-same-plant-costs-20-or-60.html">why the same plant costs $20 at one nursery and $60 at another</a> walks through the math with real examples.</p>
+
+        <h2>How We Make Money (And Why You Can Trust Our Recommendations)</h2>
+        <p>PlantPriceTracker earns affiliate commissions when readers click through to a retailer and make a purchase. That's how the site sustains itself.</p>
+        <p>Here's the part that matters: <strong>we show every price we can find, including from retailers that don't pay us a dime.</strong> If the cheapest option on a Limelight Hydrangea is from a nursery without an affiliate program, we display that price prominently and link to it. We have to. The whole site only works if you trust the comparison, and the moment we start steering people toward higher commissions instead of lower prices, we've broken the only thing that makes this site worth visiting.</p>
+        <p>Our incentive is genuinely aligned with yours: we want you to find the best deal, because that's what builds trust, brings you back, and grows the audience. Sending you to a more expensive option to earn a slightly bigger commission is short-term thinking. We're building this for the long term.</p>
+        <p>You can read our full <a href="/disclosure.html">affiliate disclosure here</a>. If you want to see our methodology in action, browse our <a href="/guides/index.html">buying guides</a> — every recommendation links out to current prices at multiple retailers, including ones that don't pay us.</p>
+
+        <h2>Editorial Standards and Corrections</h2>
+        <p>We try to be accurate. We're not always going to be. When we get something wrong — a price is stale, a link is broken, a container size is mislabeled, a plant description is off — we want to know about it.</p>
+        <p>If you spot an error, email us at <a href="mailto:ProjectGaiaA@proton.me">ProjectGaiaA@proton.me</a> and we'll fix it within 24 hours of seeing the message. If you're a nursery owner and we have incorrect information about your store, same deal. We'd rather be corrected than wrong.</p>
+        <p>When we make claims based on data, we cite it. When we make claims based on personal experience, we say so. When we don't know something, we say that too.</p>
+        <p>For zone-specific advice, we follow the <a href="https://planthardiness.ars.usda.gov/" rel="nofollow">USDA Plant Hardiness Zone Map</a> and note when our recommendations are zone-dependent.</p>
+
+        <h2>What's Next for PlantPriceTracker</h2>
+        <ul>
+            <li><strong>Local nursery pricing</strong> — Starting with Bucks County, Pennsylvania, expanding from there.</li>
+            <li><strong>Bulb price comparison</strong> — Fall bulb season is a wide-open category. Nobody is doing real price comparison on tulips, daffodils, alliums, and crocus across suppliers. We're going to.</li>
+            <li><strong>Seed comparison</strong> — Same idea, applied to seed packets.</li>
+            <li><strong>More nurseries</strong> — Both expanding national coverage and adding regional specialists.</li>
+            <li><strong>Regional expansion</strong> — Specifically targeting metro areas where there's real gardening demand and a healthy mix of independent nurseries worth tracking.</li>
+            <li><strong>Better data and a cleaner UI</strong> — Constant background work.</li>
+        </ul>
+        <p>If you've made it this far into the About page, you're exactly the kind of person whose feedback we want. If there's a category we should be tracking, a nursery we should be adding, a feature you wish existed, or a question this site should be answering — tell us.</p>
+
+        <h2>Frequently Asked Questions</h2>
+
+        <h3>Is PlantPriceTracker legit?</h3>
+        <p>Yes. PlantPriceTracker is owned and operated by Brandon Hall, a 31-year gardener based in Bucks County, Pennsylvania. The site tracks live pricing on landscape plants across 12+ online nurseries with daily updates. We're independent, not affiliated with any nursery, and we publish prices from retailers that don't pay us alongside ones that do.</p>
+
+        <h3>Who owns PlantPriceTracker?</h3>
+        <p>PlantPriceTracker is independently owned and operated by Brandon Hall. There is no parent company, no investor group, no corporate ownership. It's a one-person project built to solve a real problem.</p>
+
+        <h3>How does PlantPriceTracker make money?</h3>
+        <p>We earn affiliate commissions when readers click through to a retailer and make a purchase. This doesn't affect which retailers we display or how prices are ranked — we show every price we find, including from nurseries that don't have affiliate programs. Full details are in our <a href="/disclosure.html">affiliate disclosure</a>.</p>
+
+        <h3>How often are plant prices updated?</h3>
+        <p>Daily. Our automated tools check current prices at every tracked retailer once per day and update the displayed prices accordingly. The "last checked" date appears on every plant comparison page.</p>
+
+        <h3>Which online nurseries does PlantPriceTracker track?</h3>
+        <p>We currently track 12+ online nurseries including Fast Growing Trees, Nature Hills, Spring Hill Nurseries, Proven Winners Direct, PlantingTree, Brighter Blooms, Stark Bros, Wayside Gardens, and others. We're actively expanding to additional specialty and regional nurseries.</p>
+
+        <h3>Can I trust the price comparisons?</h3>
+        <p>Our incentive is to send you to the cheapest option, because that's what makes you trust the site and come back. If we steered people toward higher commissions instead of better deals, we'd lose the audience we're trying to build. That's why we display retailers that don't pay us alongside ones that do. The system only works if it works for the reader first.</p>
+
+        <h3>Are the prices on PlantPriceTracker always accurate?</h3>
+        <p>We aim for accuracy and check daily, but plant pricing is dynamic. A retailer can change their price between our last check and your visit. The "last checked" date on every plant page tells you when we last verified. If you spot a price that's clearly wrong, email us and we'll re-check immediately.</p>
+
+        <h2>Get in Touch</h2>
+        <p><strong>Email:</strong> <a href="mailto:ProjectGaiaA@proton.me">ProjectGaiaA@proton.me</a></p>
+        <p><strong>Founder LinkedIn:</strong> <a href="https://www.linkedin.com/in/brandon-hall-175172113" rel="nofollow">Brandon Hall</a></p>
+        <p>We read everything. We don't always reply quickly, but we read it.</p>
+
+        <hr>
+        <p><em>PlantPriceTracker is independently owned and operated. We are not affiliated with any nursery, plant breeder, or retailer. Prices are tracked daily and reflect the most recent successful check — they may have changed by the time you visit a retailer's site.</em></p>
+{% endblock %}

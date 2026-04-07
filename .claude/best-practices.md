@@ -14,6 +14,8 @@ Updated: 2026-04-07
 - **Product schema (JSON-LD)** -- Product + AggregateOffer on 72 plant pages. Enables Google rich snippets (price range, availability). Validated in Rich Results Test.
 - **Breadcrumb schema** -- BreadcrumbList on all product pages with fully qualified URLs. Zero warnings in Rich Results Test.
 - **Sort by best value** -- price comparison tables sorted cheapest first. Sold-out retailers at bottom.
+- **Internal linking** -- every product page links to its category, related guide, and 5 similar plants. Every category links to its guide. Guides mapped via centralized constant.
+- **Similar Plants sort** -- zone overlap first, then cheapest price. Users see most relevant plants first.
 
 ## Scraping Ethics
 

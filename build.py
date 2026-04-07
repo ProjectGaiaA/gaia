@@ -1469,6 +1469,16 @@ def build_site(build_guides=True, build_products=True):
         f.write(html)
     print("  Written to site/privacy.html")
 
+    print("Building about page...")
+    about_tpl = env.get_template("about.html")
+    html = about_tpl.render(
+        canonical_url=f"{BASE_URL}/about.html",
+        plant_count=len(plants),
+    )
+    with open(os.path.join(SITE_DIR, "about.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+    print("  Written to site/about.html")
+
     # -----------------------------------------------------------------------
     # Generate robots.txt
     # -----------------------------------------------------------------------
@@ -1487,7 +1497,7 @@ def build_site(build_guides=True, build_products=True):
     # -----------------------------------------------------------------------
     print("\nBuilding sitemap.xml...")
     sitemap_urls = ["/", "/my-list.html", "/heat-map.html", "/improve.html", "/guides/index.html",
-                    "/disclosure.html", "/privacy.html"]
+                    "/disclosure.html", "/privacy.html", "/about.html"]
     for plant in plants:
         sitemap_urls.append(f"/plants/{plant['id']}.html")
     for cat_id in categories_map:
@@ -1509,7 +1519,7 @@ def build_site(build_guides=True, build_products=True):
     # -----------------------------------------------------------------------
     # Summary
     # -----------------------------------------------------------------------
-    total_pages = len(plants) + len(categories_map) + len(article_files) + 6
+    total_pages = len(plants) + len(categories_map) + len(article_files) + 7
     print(f"\n{'=' * 60}")
     print(f"Build complete: {total_pages} pages generated")
     print(f"  {len(plants)} product pages")
@@ -1521,6 +1531,7 @@ def build_site(build_guides=True, build_products=True):
     print(f"  1 improve page (improve.html) — {total_submissions} submissions, {responded_count} responded")
     print("  1 disclosure page (disclosure.html)")
     print("  1 privacy page (privacy.html)")
+    print("  1 about page (about.html)")
     print("  1 sitemap.xml")
     print(f"Output: {SITE_DIR}")
     print(f"{'=' * 60}")
