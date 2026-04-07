@@ -10,7 +10,7 @@
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "{{ plant.common_name }}",
-    "description": "{{ plant.common_name }} ({{ plant.botanical_name }}) — {{ plant.type|lower }}{% if plant.mature_size %}, {{ plant.mature_size }}{% endif %}. {{ plant.sun }}{% if plant.zones %}, zones {{ plant.zones|first }}–{{ plant.zones|last }}{% endif %}{% if plant.bloom_time %}. Blooms {{ plant.bloom_time|lower }}{% endif %}.",
+    "description": "{{ plant.common_name }} ({{ plant.botanical_name }}) — {{ plant.type|lower }}{% if plant.mature_size %}, {{ plant.mature_size }}{% endif %}. {% if plant.sun %}{{ plant.sun }}{% endif %}{% if plant.zones %}, zones {{ plant.zones|first }}–{{ plant.zones|last }}{% endif %}{% if plant.bloom_time %}. Blooms {{ plant.bloom_time|lower }}{% endif %}.",
     {% if plant.image %}"image": "{{ base_url }}/assets/images/{{ plant.image }}",{% endif %}
     "offers": {
         "@type": "AggregateOffer",

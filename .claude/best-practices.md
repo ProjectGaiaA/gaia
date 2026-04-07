@@ -10,6 +10,10 @@ Updated: 2026-04-07
 - **XML sitemap** -- all pages listed, auto-regenerated on build.
 - **Google Search Console** -- verified via HTML meta tag.
 - **No noindex tags** -- audited, all pages indexable.
+- **Title tag optimization** -- unique, keyword-rich titles under 60 chars on all 103 pages. Includes year for freshness.
+- **Product schema (JSON-LD)** -- Product + AggregateOffer on 72 plant pages. Enables Google rich snippets (price range, availability). Validated in Rich Results Test.
+- **Breadcrumb schema** -- BreadcrumbList on all product pages with fully qualified URLs. Zero warnings in Rich Results Test.
+- **Sort by best value** -- price comparison tables sorted cheapest first. Sold-out retailers at bottom.
 
 ## Scraping Ethics
 

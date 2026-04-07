@@ -1104,6 +1104,14 @@ def build_site(build_guides=True, build_products=True):
 
         print("  Written to site/plants/")
 
+        # Remove stale pages from deactivated plants
+        active_ids = {p["id"] for p in plants}
+        plants_dir = os.path.join(SITE_DIR, "plants")
+        for fname in os.listdir(plants_dir):
+            if fname.endswith(".html") and fname[:-5] not in active_ids:
+                os.remove(os.path.join(plants_dir, fname))
+                print(f"  Removed stale page: {fname}")
+
     # -----------------------------------------------------------------------
     # Build guide pages from article markdown files
     # -----------------------------------------------------------------------

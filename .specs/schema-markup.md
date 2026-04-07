@@ -10,8 +10,8 @@ and nothing else from the planning sessions.
 
 - [x] Phase 1: Scope grilled
 - [x] Phase 2: Technical approach grilled
-- [ ] Phase 3: Tasks executed
-- [ ] Final verification passed
+- [x] Phase 3: Tasks executed
+- [x] Final verification passed
 
 ---
 
@@ -128,13 +128,13 @@ risk/complexity vs marginal benefit.
 
 ## Acceptance Criteria (Whole Feature)
 
-- [ ] All 72 product pages have valid Product JSON-LD when prices exist
-- [ ] Product description is product-focused, auto-generated from plant fields
-- [ ] Image URLs in schema are fully qualified (https://...)
-- [ ] Price values are JSON numbers, not strings
-- [ ] Zero-price plants have no Product schema block (BreadcrumbList still present)
-- [ ] Build passes with no errors
-- [ ] JSON-LD on at least 3 sample pages parses as valid JSON
+- [x] All 72 product pages have valid Product JSON-LD when prices exist
+- [x] Product description is product-focused, auto-generated from plant fields
+- [x] Image URLs in schema are fully qualified (https://...) — template wired correctly; no plants have images yet so field is correctly omitted
+- [x] Price values are JSON numbers, not strings
+- [x] Zero-price plants have no Product schema block (BreadcrumbList still present)
+- [x] Build passes with no errors
+- [x] JSON-LD on at least 3 sample pages parses as valid JSON — all 150 blocks across 77 pages parse clean
 
 ## Manual Verification Steps
 
