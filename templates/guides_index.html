@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Plant Buying Guides (2026) | PlantPriceTracker{% endblock %}
+{% block description %}Expert buying guides for trees, shrubs, and perennials. Compare prices and find the best deals.{% endblock %}
+
+{% block content %}
+        <h1>Plant Buying Guides</h1>
+        <p>Expert guides to help you find the best plants at the best prices.</p>
+        <div class="guides-grid" style="margin-top: 1.5rem;">
+        {% for guide in guides %}
+            <a href="/guides/{{ guide.slug }}.html" class="guide-card">
+                <h3>{{ guide.title }}</h3>
+                <p>{{ guide.snippet }}</p>
+            </a>
+        {% endfor %}
+        </div>
+{% endblock %}

@@ -18,6 +18,7 @@ import re
 from collections import defaultdict
 from datetime import datetime, date
 
+from bs4 import BeautifulSoup
 import jinja2
 import markdown
 
@@ -1224,76 +1225,16 @@ def build_site(build_guides=True, build_products=True):
 
         print("  Written to site/guides/")
 
-        # Guides index page — render from base.html so nav/footer stay consistent
-        guides_index_content = '<h1>Plant Buying Guides</h1>\n'
-        guides_index_content += '<p>Expert guides to help you find the best plants at the best prices.</p>\n'
-        guides_index_content += '<div class="guides-grid" style="margin-top: 1.5rem;">\n'
+        # Guides index page — Jinja2 template extending base.html
+        guides_data = []
         for article in all_guides:
-            snippet = article["content"][:200].replace("<", "").replace(">", "").replace("&", "&amp;")
-            guides_index_content += (
-                f'<a href="/guides/{article["slug"]}.html" class="guide-card">\n'
-                f'<h3>{article["title"]}</h3>\n'
-                f'<p>{snippet}</p>\n'
-                f'</a>\n'
-            )
-        guides_index_content += '</div>\n'
-        base_tpl = env.get_template("base.html")
-        guides_index_html = base_tpl.render(
-            content=guides_index_content,
+            snippet = BeautifulSoup(article["content"], "html.parser").get_text()[:200]
+            guides_data.append({"title": article["title"], "slug": article["slug"], "snippet": snippet})
+        guides_index_tpl = env.get_template("guides_index.html")
+        guides_index_html = guides_index_tpl.render(
+            guides=guides_data,
             canonical_url=f"{BASE_URL}/guides/index.html",
         )
-        # Inject the content into the main block manually since base.html uses blocks
-        # Simpler: write a minimal template string
-        guides_index_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plant Buying Guides (2026) | PlantPriceTracker</title>
-    <meta name="description" content="Expert buying guides for trees, shrubs, and perennials. Compare prices and find the best deals.">
-    <link rel="canonical" href="{BASE_URL}/guides/index.html" />
-    <meta property="og:url" content="{BASE_URL}/guides/index.html" />
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-    <header class="site-header">
-        <nav class="nav-container">
-            <a href="/" class="site-logo">
-                <span class="logo-icon">&#x1F331;</span>
-                <span class="logo-text">PlantPriceTracker</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="/category/hydrangeas.html">Hydrangeas</a></li>
-                <li><a href="/category/japanese-maples.html">Japanese Maples</a></li>
-                <li><a href="/category/fruit-trees.html">Fruit Trees</a></li>
-                <li><a href="/category/roses.html">Roses</a></li>
-                <li><a href="/guides/index.html">Guides</a></li>
-                <li><a href="/heat-map.html">Heat Map</a></li>
-                <li><a href="/my-list.html">&#x2661; My List<span class="wishlist-nav-count"></span></a></li>
-                <li><a href="/improve.html">Improve</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main class="main-content">
-{guides_index_content}
-    </main>
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-disclosure">
-                <p><strong>Affiliate Disclosure:</strong> We earn commissions from purchases made through links on this site. This does not affect our rankings or recommendations. <a href="/disclosure.html">Full disclosure</a>.</p>
-            </div>
-            <div class="footer-links">
-                <a href="/disclosure.html">Disclosure</a>
-                <a href="/privacy.html">Privacy Policy</a>
-                <a href="/guides/index.html">Buying Guides</a>
-                <a href="/improve.html">Improve This Site</a>
-            </div>
-            <p class="footer-copyright">&copy; {datetime.now().year} PlantPriceTracker. Prices checked daily. Not affiliated with any nursery.</p>
-        </div>
-    </footer>
-    <script src="/assets/js/wishlist.js"></script>
-</body>
-</html>"""
         out_path = os.path.join(SITE_DIR, "guides", "index.html")
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(guides_index_html)

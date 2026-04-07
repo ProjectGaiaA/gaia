@@ -341,6 +341,44 @@ class TestGuidePage:
         links = [a.get("href", "") for a in soup.find_all("a")]
         assert any("test-guide" in href for href in links)
 
+    def test_guide_index_has_google_verification(self, built_site):
+        """Guides index must include google-site-verification meta tag from base.html."""
+        soup = _read_html(built_site, "guides", "index.html")
+        meta = soup.find("meta", attrs={"name": "google-site-verification"})
+        assert meta, "google-site-verification meta tag missing from guides index"
+
+    def test_guide_index_has_canonical(self, built_site):
+        """Guides index must have a canonical link tag."""
+        soup = _read_html(built_site, "guides", "index.html")
+        link = soup.find("link", rel="canonical")
+        assert link and link["href"].endswith("/guides/index.html")
+
+    def test_guide_index_has_og_url(self, built_site):
+        """Guides index must have og:url meta tag."""
+        soup = _read_html(built_site, "guides", "index.html")
+        meta = soup.find("meta", attrs={"property": "og:url"})
+        assert meta and meta["content"].endswith("/guides/index.html")
+
+    def test_guide_index_has_about_in_nav(self, built_site):
+        """Guides index nav must include About link (from base.html)."""
+        soup = _read_html(built_site, "guides", "index.html")
+        nav = soup.find("nav")
+        links = [a.get("href", "") for a in nav.find_all("a")] if nav else []
+        assert "/about.html" in links, "About link missing from guides index nav"
+
+    def test_guide_index_has_about_in_footer(self, built_site):
+        """Guides index footer must include About link (from base.html)."""
+        soup = _read_html(built_site, "guides", "index.html")
+        footer = soup.find("footer")
+        links = [a.get("href", "") for a in footer.find_all("a")] if footer else []
+        assert "/about.html" in links, "About link missing from guides index footer"
+
+    def test_guide_index_has_guide_title(self, built_site):
+        """Guides index must show the test guide's title."""
+        soup = _read_html(built_site, "guides", "index.html")
+        text = soup.get_text()
+        assert "Best Test Plants to Buy Online" in text
+
 
 # ---------------------------------------------------------------------------
 # Improve page tests
