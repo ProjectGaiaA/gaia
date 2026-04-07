@@ -150,7 +150,7 @@ class ShopifyScraper:
 
             # Skip multi-plant packs and bundles
             # Matches: "3 Plant(s)", "10 Plant(s)", "10-Pack", "4-Pack", "BOGO / 2 Plant(s)"
-            if re.search(r'(?:[2-9]|1\d)\s*(?:plant|pack)', variant_title, re.IGNORECASE):
+            if re.search(r'(?:[2-9]|1\d)[\s-]*(?:plant|pack)', variant_title, re.IGNORECASE):
                 continue
             if 'bogo' in variant_title.lower():
                 continue

@@ -1,3 +1,9 @@
 jinja2
 markdown
 requests
+
+# Dev dependencies
+pytest
+responses
+ruff
+beautifulsoup4

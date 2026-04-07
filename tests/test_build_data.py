@@ -76,6 +76,11 @@ class TestNormalizeSizeTier:
         """Unrecognized tier keys pass through unchanged."""
         assert build.normalize_size_tier("mystery-size") == "mystery-size"
 
+    def test_unknown_passthrough_lowered(self):
+        """Mixed-case unknown tiers must be lowered, not returned in original case."""
+        assert build.normalize_size_tier("Mystery-Size") == "mystery-size"
+        assert build.normalize_size_tier("JUMBO") == "jumbo"
+
     def test_exotic_tiers_passthrough(self):
         """Exotic tier keys (dwarf, jumbo, semi-dwarf variants) are canonical already."""
         assert build.normalize_size_tier("dwarf-bareroot") == "dwarf-bareroot"

@@ -21,7 +21,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install requests jinja2 markdown
+        run: pip install requests jinja2 markdown pytest responses
 
       # Random start delay (0-90 minutes) so scraping doesn't start at the
       # exact same time every day. Makes traffic pattern less bot-like.
@@ -93,6 +93,9 @@ jobs:
           else
             echo "All nurseries scraped successfully"
           fi
+
+      - name: Run tests
+        run: pytest
 
       - name: Strip unresolved variants
         if: always()
