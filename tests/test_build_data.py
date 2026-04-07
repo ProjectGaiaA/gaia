@@ -64,10 +64,9 @@ class TestNormalizeSizeTier:
         assert build.normalize_size_tier("QT") == "quart"
 
     def test_strips_whitespace_for_alias_lookup(self):
-        """Whitespace is stripped for alias lookup but not for fallback."""
+        """Whitespace is stripped for both alias lookup and canonical fallback."""
         assert build.normalize_size_tier("  qt  ") == "quart"
-        # BUG: fallback returns original untrimmed input — see _SIZE_ALIASES.get(t, tier)
-        assert build.normalize_size_tier("  1gal  ") == "  1gal  "
+        assert build.normalize_size_tier("  1gal  ") == "1gal"
 
     def test_variant_id_becomes_default(self):
         assert build.normalize_size_tier("variant-12345678") == "default"
@@ -78,9 +77,9 @@ class TestNormalizeSizeTier:
         assert build.normalize_size_tier("mystery-size") == "mystery-size"
 
     def test_unknown_passthrough_lowered(self):
-        # BUG: fallback returns original case, not lowered — see _SIZE_ALIASES.get(t, tier)
-        assert build.normalize_size_tier("Mystery-Size") == "Mystery-Size"
-        assert build.normalize_size_tier("JUMBO") == "JUMBO"
+        """Mixed-case unknown tiers are lowered by the normalize pass."""
+        assert build.normalize_size_tier("Mystery-Size") == "mystery-size"
+        assert build.normalize_size_tier("JUMBO") == "jumbo"
 
     def test_exotic_tiers_passthrough(self):
         """Exotic tier keys (dwarf, jumbo, semi-dwarf variants) are canonical already."""
