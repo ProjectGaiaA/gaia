@@ -1,0 +1,1 @@
+{"retailer_id": "test-nursery-a", "retailer_name": "Test Nursery A", "timestamp": "2026-02-15T10:00:00+00:00", "url": "https://test-nursery-a.example.com/test-stale-plant", "sizes": {"1gal": {"price": 24.99, "was_price": null, "available": true, "raw_size": "1 Gallon", "variant_id": 7001}}, "in_stock": true}

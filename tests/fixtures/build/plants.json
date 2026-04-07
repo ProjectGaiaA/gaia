@@ -1,0 +1,138 @@
+[
+  {
+    "id": "test-hydrangea",
+    "common_name": "Test Hydrangea",
+    "botanical_name": "Hydrangea testensis",
+    "aliases": ["Test Hydra"],
+    "category": "hydrangeas",
+    "zones": [5, 6, 7, 8],
+    "sun": "Full sun to part shade",
+    "mature_size": "4-6 ft tall x 4-6 ft wide",
+    "bloom_time": "Summer to fall",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "quart": ["1 quart", "qt"],
+      "1gal": ["1 gallon", "1 gal"],
+      "3gal": ["3 gallon", "3 gal"]
+    },
+    "price_range": "$15-$80",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {"spring": "May-Jun", "fall": "Sep"},
+      "6": {"spring": "Apr-Jun", "fall": "Sep-Oct"},
+      "7": {"spring": "Mar-May", "fall": "Oct-Nov"}
+    },
+    "price_seasonality": {
+      "monthly_index": [3, 3, 4, 5, 4, 3, 2, 1, 1, 2, 3, 3],
+      "best_buy": "August-September",
+      "worst_buy": "April",
+      "tip": "Buy in late summer for best deals."
+    },
+    "active": true
+  },
+  {
+    "id": "test-maple",
+    "common_name": "Test Japanese Maple",
+    "botanical_name": "Acer testicum",
+    "aliases": ["Test Maple"],
+    "category": "japanese-maples",
+    "zones": [5, 6, 7, 8],
+    "sun": "Part shade",
+    "mature_size": "15-25 ft tall",
+    "bloom_time": "Spring",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "3-4ft": ["3-4 ft", "3-4'"],
+      "5-6ft": ["5-6 ft", "5-6'"],
+      "1gal": ["1 gallon"],
+      "3gal": ["3 gallon"]
+    },
+    "price_range": "$30-$120",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {"spring": "Apr-May", "fall": "Sep-Oct"},
+      "6": {"spring": "Mar-May", "fall": "Oct-Nov"}
+    },
+    "price_seasonality": {
+      "monthly_index": [3, 3, 4, 5, 5, 4, 3, 2, 1, 2, 3, 3],
+      "best_buy": "September",
+      "worst_buy": "April-May",
+      "tip": "Fall sales offer best value for maples."
+    },
+    "active": true
+  },
+  {
+    "id": "test-apple",
+    "common_name": "Test Apple Tree",
+    "botanical_name": "Malus testensis",
+    "aliases": ["Test Apple"],
+    "category": "fruit-trees",
+    "zones": [4, 5, 6, 7, 8],
+    "sun": "Full sun",
+    "mature_size": "12-18 ft tall",
+    "bloom_time": "Spring",
+    "type": "Deciduous tree",
+    "size_tiers": {
+      "dwarf-bareroot": ["dwarf bare root"],
+      "semi-dwarf-bareroot": ["semi-dwarf bare root"],
+      "dwarf-potted": ["dwarf potted"],
+      "semi-dwarf-potted": ["semi-dwarf potted"],
+      "jumbo-bareroot": ["jumbo bare root"]
+    },
+    "price_range": "$25-$90",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "4": {"spring": "May"},
+      "5": {"spring": "Apr-May", "fall": "Oct"},
+      "6": {"spring": "Mar-Apr", "fall": "Oct-Nov"}
+    },
+    "price_seasonality": {
+      "monthly_index": [2, 2, 3, 4, 4, 3, 3, 2, 1, 1, 2, 2],
+      "best_buy": "September-October",
+      "worst_buy": "April",
+      "tip": "Bare-root trees ship best in late winter."
+    },
+    "active": true
+  },
+  {
+    "id": "test-stale-plant",
+    "common_name": "Test Stale Plant",
+    "botanical_name": "Staleus oldius",
+    "aliases": [],
+    "category": "hydrangeas",
+    "zones": [5, 6, 7],
+    "sun": "Full sun",
+    "mature_size": "3-5 ft",
+    "bloom_time": "Summer",
+    "type": "Deciduous shrub",
+    "size_tiers": {
+      "1gal": ["1 gallon"]
+    },
+    "price_range": "$20-$40",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {},
+    "active": true
+  },
+  {
+    "id": "test-inactive",
+    "common_name": "Test Inactive Plant",
+    "botanical_name": "Inactivus plantus",
+    "aliases": [],
+    "category": "hydrangeas",
+    "zones": [5, 6],
+    "sun": "Part shade",
+    "mature_size": "2-3 ft",
+    "bloom_time": "Spring",
+    "type": "Deciduous shrub",
+    "size_tiers": {},
+    "price_range": "",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {},
+    "active": false
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "test-nursery-a",
+    "name": "Test Nursery A",
+    "url": "https://test-nursery-a.example.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "test-network",
+      "commission": "10%",
+      "cookie_days": 30,
+      "link_template": ""
+    },
+    "shipping": {
+      "free_threshold": 75,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Free shipping over $75"
+    },
+    "active": true,
+    "priority": 1
+  },
+  {
+    "id": "test-nursery-b",
+    "name": "Test Nursery B",
+    "url": "https://test-nursery-b.example.com",
+    "scraper_type": "shopify",
+    "affiliate": {
+      "network": "test-network",
+      "commission": "8%",
+      "cookie_days": 14,
+      "link_template": ""
+    },
+    "shipping": {
+      "free_threshold": 100,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": "Free shipping over $100"
+    },
+    "active": true,
+    "priority": 2
+  }
+]

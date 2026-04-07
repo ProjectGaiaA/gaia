@@ -1,0 +1,16 @@
+[
+  {
+    "id": "test-fb-001",
+    "category": "missing-plants",
+    "title": "Add test plant variety",
+    "body": "Would love to see test plants tracked for synthetic testing purposes.",
+    "submitted_at": "2026-03-20T14:00:00+00:00",
+    "status": "planned",
+    "upvotes": 5,
+    "response": {
+      "author": "PlantPriceTracker",
+      "body": "Thanks for the suggestion! We are adding test plants soon.",
+      "responded_at": "2026-03-21T09:00:00+00:00"
+    }
+  }
+]
