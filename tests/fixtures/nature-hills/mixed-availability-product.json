@@ -1,0 +1,38 @@
+{
+  "product": {
+    "id": 7654321098767,
+    "title": "Bloodgood Japanese Maple",
+    "handle": "bloodgood-japanese-maple",
+    "vendor": "PlantingTree",
+    "product_type": "Trees",
+    "variants": [
+      {
+        "id": 43210987654340,
+        "title": "3 Gallon",
+        "price": "79.99",
+        "compare_at_price": null,
+        "sku": "PT-JM-BG-3G",
+        "available": true,
+        "option1": "3 Gallon"
+      },
+      {
+        "id": 43210987654341,
+        "title": "5 Gallon",
+        "price": "129.99",
+        "compare_at_price": null,
+        "sku": "PT-JM-BG-5G",
+        "available": false,
+        "option1": "5 Gallon"
+      },
+      {
+        "id": 43210987654342,
+        "title": "7 Gallon",
+        "price": "189.99",
+        "compare_at_price": null,
+        "sku": "PT-JM-BG-7G",
+        "available": true,
+        "option1": "7 Gallon"
+      }
+    ]
+  }
+}

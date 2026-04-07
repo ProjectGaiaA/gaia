@@ -1,0 +1,46 @@
+{
+  "product": {
+    "id": 7654321098765,
+    "title": "Limelight Hydrangea",
+    "handle": "hydrangea-lime-light",
+    "body_html": "<p>The Limelight Hydrangea is one of the most popular hydrangeas.</p>",
+    "vendor": "Nature Hills Nursery",
+    "product_type": "Shrubs",
+    "tags": ["hydrangea", "shrub", "deciduous"],
+    "variants": [
+      {
+        "id": 43210987654321,
+        "title": "#1 Container",
+        "price": "39.99",
+        "compare_at_price": "49.99",
+        "sku": "NH-HYD-LL-1",
+        "available": null,
+        "option1": "#1 Container"
+      },
+      {
+        "id": 43210987654322,
+        "title": "#3 Container 3-4 Feet",
+        "price": "69.99",
+        "compare_at_price": null,
+        "sku": "NH-HYD-LL-3",
+        "available": null,
+        "option1": "#3 Container 3-4 Feet"
+      },
+      {
+        "id": 43210987654323,
+        "title": "#5 Container",
+        "price": "99.99",
+        "compare_at_price": "119.99",
+        "sku": "NH-HYD-LL-5",
+        "available": null,
+        "option1": "#5 Container"
+      }
+    ],
+    "images": [
+      {
+        "id": 1234567890,
+        "src": "https://cdn.shopify.com/nature-hills/limelight-hydrangea.jpg"
+      }
+    ]
+  }
+}
