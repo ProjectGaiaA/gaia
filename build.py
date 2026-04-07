@@ -249,7 +249,7 @@ def normalize_size_tier(tier: str) -> str:
     Returns the canonical tier ID (e.g. "1gal", "bareroot").
     """
     t = tier.strip().lower()
-    canonical = _SIZE_ALIASES.get(t, t)
+    canonical = _SIZE_ALIASES.get(t, tier)
     # Catch raw variant IDs that slipped through the scraper
     if re.match(r'^(?:variant-)?\d{7,}$', canonical):
         return 'default'
