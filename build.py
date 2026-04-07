@@ -1094,6 +1094,7 @@ def build_site(build_guides=True, build_products=True):
                 price_history=bool(price_history_json),
                 price_history_json=price_history_json or "{}",
                 canonical_url=f"{BASE_URL}/plants/{plant['id']}.html",
+                base_url=BASE_URL,
                 **price_table,
             )
 

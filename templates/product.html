@@ -4,30 +4,32 @@
 {% block description %}{% if lowest_price and highest_price %}{{ plant.common_name }} prices from ${{ '%.0f'|format(lowest_price) }}–${{ '%.0f'|format(highest_price) }} across {{ offer_count }}+ online nurseries. {% endif %}Find the best deal on {{ plant.botanical_name }}. Prices checked daily.{% endblock %}
 
 {% block schema %}
+{% if lowest_price %}
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "{{ plant.common_name }}",
-    "description": "{{ plant.botanical_name }} - {{ plant.type }}. Grows in zones {{ plant.zones|join(', ') }}.",
-    {% if plant.image %}"image": "/assets/images/{{ plant.image }}",{% endif %}
+    "description": "{{ plant.common_name }} ({{ plant.botanical_name }}) — {{ plant.type|lower }}{% if plant.mature_size %}, {{ plant.mature_size }}{% endif %}. {{ plant.sun }}{% if plant.zones %}, zones {{ plant.zones|first }}–{{ plant.zones|last }}{% endif %}{% if plant.bloom_time %}. Blooms {{ plant.bloom_time|lower }}{% endif %}.",
+    {% if plant.image %}"image": "{{ base_url }}/assets/images/{{ plant.image }}",{% endif %}
     "offers": {
         "@type": "AggregateOffer",
         "priceCurrency": "USD",
-        {% if lowest_price %}"lowPrice": "{{ '%.2f'|format(lowest_price) }}",{% endif %}
-        {% if highest_price %}"highPrice": "{{ '%.2f'|format(highest_price) }}",{% endif %}
-        "offerCount": "{{ offer_count }}",
+        "lowPrice": {{ '%.2f'|format(lowest_price) }},
+        {% if highest_price %}"highPrice": {{ '%.2f'|format(highest_price) }},{% endif %}
+        "offerCount": {{ offer_count }},
         "availability": "https://schema.org/{% if any_in_stock %}InStock{% else %}OutOfStock{% endif %}"
     }
 }
 </script>
+{% endif %}
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "/"},
-        {"@type": "ListItem", "position": 2, "name": "{{ plant.category|replace('-', ' ')|title }}", "item": "/category/{{ plant.category }}.html"},
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ base_url }}/"},
+        {"@type": "ListItem", "position": 2, "name": "{{ plant.category|replace('-', ' ')|title }}", "item": "{{ base_url }}/category/{{ plant.category }}.html"},
         {"@type": "ListItem", "position": 3, "name": "{{ plant.common_name }}"}
     ]
 }
