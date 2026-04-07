@@ -872,8 +872,17 @@ def build_heatmap_data(plants):
 
 
 def find_similar_plants(plant, all_plants, n=5):
-    """Find similar plants in the same category."""
+    """Find similar plants in the same category, sorted by zone overlap (desc) then price (asc)."""
     same_cat = [p for p in all_plants if p["category"] == plant["category"] and p["id"] != plant["id"]]
+    plant_zones = set(plant.get("zones", []))
+
+    def sort_key(candidate):
+        overlap = len(plant_zones & set(candidate.get("zones", [])))
+        price = candidate.get("lowest_price")
+        # Sort: most zone overlap first (negate for descending), then cheapest first (None last)
+        return (-overlap, (0, price) if price is not None else (1, 0))
+
+    same_cat.sort(key=sort_key)
     return same_cat[:n]
 
 
@@ -936,25 +945,49 @@ def parse_article_md(filepath):
     }
 
 
+GUIDE_SLUG_TO_CATEGORY = {
+    "best-hydrangeas-to-buy-online": "hydrangeas",
+    "best-fruit-trees-to-buy-online": "fruit-trees",
+    "best-privacy-trees": "privacy-trees",
+    "best-japanese-maple-varieties": "japanese-maples",
+    "best-knock-out-roses": "roses",
+    "best-blueberry-bushes": "blueberries",
+    "best-flowering-trees-small-yards": "flowering-trees",
+    "best-azaleas-rhododendrons": "azaleas-rhododendrons",
+    "cheapest-places-to-buy-online": None,  # All categories
+    "best-time-to-buy-plants-online": None,  # All categories
+    "why-same-plant-costs-20-or-60": None,  # All categories — pricing is cross-category
+}
+
+FALLBACK_GUIDE_SLUG = "cheapest-places-to-buy-online"
+
+
 def find_related_plants_for_guide(guide_slug, all_plants):
     """Map guide articles to their related plant category."""
-    slug_to_category = {
-        "best-hydrangeas-to-buy-online": "hydrangeas",
-        "best-fruit-trees-to-buy-online": "fruit-trees",
-        "best-privacy-trees": "privacy-trees",
-        "cheapest-places-to-buy-online": None,  # All categories
-        "best-japanese-maple-varieties": "japanese-maples",
-        "best-knock-out-roses": "roses",
-        "best-blueberry-bushes": "blueberries",
-        "best-flowering-trees-small-yards": "flowering-trees",
-        "best-azaleas-rhododendrons": "azaleas-rhododendrons",
-        "best-time-to-buy-plants-online": None,  # All categories
-        "why-same-plant-costs-20-or-60": None,  # All categories — pricing is cross-category
-    }
-    category = slug_to_category.get(guide_slug)
+    category = GUIDE_SLUG_TO_CATEGORY.get(guide_slug)
     if category is None:
         return all_plants[:10]
     return [p for p in all_plants if p.get("category") == category][:10]
+
+
+def build_category_to_guide_map(all_guides):
+    """Build a mapping from category slug to guide info (slug + title).
+
+    Categories with a dedicated guide get that guide. The rest fall back
+    to FALLBACK_GUIDE_SLUG. Both mappings are driven by GUIDE_SLUG_TO_CATEGORY.
+    """
+    guide_by_slug = {g["slug"]: g for g in all_guides}
+    category_to_guide = {}
+    for guide_slug, cat in GUIDE_SLUG_TO_CATEGORY.items():
+        if cat is None:
+            continue
+        guide = guide_by_slug.get(guide_slug)
+        if guide:
+            category_to_guide[cat] = {"slug": guide["slug"], "title": guide["title"]}
+    fallback = guide_by_slug.get(FALLBACK_GUIDE_SLUG)
+    if fallback:
+        category_to_guide["_fallback"] = {"slug": fallback["slug"], "title": fallback["title"]}
+    return category_to_guide
 
 
 _CATEGORY_LABELS = {
@@ -1058,10 +1091,35 @@ def build_site(build_guides=True, build_products=True):
     env.globals["current_year"] = datetime.now().year
     env.filters["tojson"] = lambda obj: json.dumps(obj, ensure_ascii=False)
 
+    # Pre-enrich all plants with lowest_price so find_similar_plants() can sort by price
+    for plant in plants:
+        price_entries = load_prices(plant["id"])
+        latest_prices = get_latest_prices(price_entries, retailers_by_id)
+        all_prices_flat = []
+        for price_data in latest_prices.values():
+            for price_info in price_data.get("sizes", {}).values():
+                if isinstance(price_info, dict):
+                    p = price_info.get("price")
+                    if p is not None and p > 0:
+                        all_prices_flat.append(p)
+                elif isinstance(price_info, (int, float)) and price_info > 0:
+                    all_prices_flat.append(price_info)
+        plant["lowest_price"] = min(all_prices_flat) if all_prices_flat else None
+
     # Ensure output directories
     ensure_dir(os.path.join(SITE_DIR, "plants"))
     ensure_dir(os.path.join(SITE_DIR, "guides"))
     ensure_dir(os.path.join(SITE_DIR, "category"))
+
+    # -----------------------------------------------------------------------
+    # Parse guide articles early so metadata is available for all templates
+    # -----------------------------------------------------------------------
+    article_files = sorted(glob.glob(os.path.join(ARTICLES_DIR, "[0-9][0-9]-*.md")))
+    all_guides = [parse_article_md(fp) for fp in article_files]
+    category_to_guide = build_category_to_guide_map(all_guides)
+    if "_fallback" not in category_to_guide:
+        print(f"  Warning: fallback guide '{FALLBACK_GUIDE_SLUG}' not found — "
+              "some categories will have no guide link")
 
     # -----------------------------------------------------------------------
     # Build product pages
@@ -1086,6 +1144,11 @@ def build_site(build_guides=True, build_products=True):
 
             page_title = build_product_title(plant["common_name"], price_table["offer_count"])
 
+            # Guide link: dedicated guide for this plant's category, or fallback
+            cat_id = plant.get("category", "uncategorized")
+            guide_info = category_to_guide.get(cat_id, category_to_guide.get("_fallback"))
+            cat_name = cat_id.replace("-", " ").title()
+
             html = product_tpl.render(
                 plant=plant,
                 page_title=page_title,
@@ -1095,6 +1158,9 @@ def build_site(build_guides=True, build_products=True):
                 price_history_json=price_history_json or "{}",
                 canonical_url=f"{BASE_URL}/plants/{plant['id']}.html",
                 base_url=BASE_URL,
+                guide_link=guide_info,
+                category_name=cat_name,
+                category_slug=cat_id,
                 **price_table,
             )
 
@@ -1116,14 +1182,8 @@ def build_site(build_guides=True, build_products=True):
     # Build guide pages from article markdown files
     # -----------------------------------------------------------------------
     if build_guides:
-        article_files = sorted(glob.glob(os.path.join(ARTICLES_DIR, "[0-9][0-9]-*.md")))
-        print(f"\nBuilding {len(article_files)} guide pages...")
+        print(f"\nBuilding {len(all_guides)} guide pages...")
         guide_tpl = env.get_template("guide.html")
-
-        all_guides = []
-        for filepath in article_files:
-            article = parse_article_md(filepath)
-            all_guides.append(article)
 
         for article in all_guides:
             related_plants = find_related_plants_for_guide(article["slug"], plants)
@@ -1168,8 +1228,7 @@ def build_site(build_guides=True, build_products=True):
         guides_index_content = '<h1>Plant Buying Guides</h1>\n'
         guides_index_content += '<p>Expert guides to help you find the best plants at the best prices.</p>\n'
         guides_index_content += '<div class="guides-grid" style="margin-top: 1.5rem;">\n'
-        for fp in article_files:
-            article = parse_article_md(fp)
+        for article in all_guides:
             snippet = article["content"][:200].replace("<", "").replace(">", "").replace("&", "&amp;")
             guides_index_content += (
                 f'<a href="/guides/{article["slug"]}.html" class="guide-card">\n'
@@ -1256,12 +1315,16 @@ def build_site(build_guides=True, build_products=True):
 
             page_title = build_category_title(cat_name)
 
+            # Guide link: dedicated guide for this category, or fallback
+            guide_info = category_to_guide.get(cat_id, category_to_guide.get("_fallback"))
+
             html = cat_tpl.render(
                 category_name=cat_name,
                 page_title=page_title,
                 plants=cat_plants,
                 retailer_count=len([r for r in retailers if r.get("active")]),
                 canonical_url=f"{BASE_URL}/category/{cat_id}.html",
+                guide_link=guide_info,
             )
 
             out_path = os.path.join(SITE_DIR, "category", f"{cat_id}.html")
@@ -1311,11 +1374,7 @@ def build_site(build_guides=True, build_products=True):
                 }
 
     # Guides list for homepage
-    article_files = sorted(glob.glob(os.path.join(ARTICLES_DIR, "[0-9][0-9]-*.md")))
-    guides_for_home = []
-    for fp in article_files[:6]:
-        article = parse_article_md(fp)
-        guides_for_home.append(article)
+    guides_for_home = all_guides[:6]
 
     # Tracked retailers for homepage
     tracked = [r for r in retailers if r.get("active")]
@@ -1433,8 +1492,7 @@ def build_site(build_guides=True, build_products=True):
         sitemap_urls.append(f"/plants/{plant['id']}.html")
     for cat_id in categories_map:
         sitemap_urls.append(f"/category/{cat_id}.html")
-    for fp in article_files:
-        article = parse_article_md(fp)
+    for article in all_guides:
         sitemap_urls.append(f"/guides/{article['slug']}.html")
 
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'

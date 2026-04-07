@@ -333,9 +333,23 @@
                 {{ plant.care_guide }}
             </div>
             {% endif %}
+
+            <!-- Browse Category Link -->
+            {% if category_slug %}
+            <div class="browse-category-link">
+                <a href="/category/{{ category_slug }}.html">&larr; Browse all {{ category_name }}</a>
+            </div>
+            {% endif %}
         </div>
 
         <aside class="product-sidebar">
+            <!-- Guide Link -->
+            {% if guide_link %}
+            <div class="sidebar-guide-link">
+                <a href="/guides/{{ guide_link.slug }}.html">&#x1F4D6; Read: {{ guide_link.title }}</a>
+            </div>
+            {% endif %}
+
             <!-- Similar Plants -->
             {% if similar_plants %}
             <div class="similar-plants">

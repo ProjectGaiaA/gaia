@@ -37,6 +37,12 @@
         <p>Comparing prices across {{ retailer_count }}+ nurseries for {{ plants|length }} varieties. Updated daily.</p>
     </header>
 
+    {% if guide_link %}
+    <div class="category-guide-link">
+        <a href="/guides/{{ guide_link.slug }}.html">&#x1F4D6; Read: {{ guide_link.title }}</a>
+    </div>
+    {% endif %}
+
     <!-- Filters -->
     <div class="category-filters" id="filters">
         <label>
