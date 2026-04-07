@@ -33,6 +33,8 @@ Updated: 2026-04-07
 - **Mobile responsive** -- card layout at 600px breakpoint.
 - **Privacy page** -- no cookies, no tracking, extends base template.
 - **Contact form** -- Formspree (no backend), 50 submissions/month free tier.
+- **Stale page cleanup** -- build.py removes orphan HTML pages from deactivated plants. No dead pages in site output.
+- **Zero-price schema guard** -- plants with no prices omit Product schema entirely. No invalid structured data.
 
 ## CI/CD & Testing
 
