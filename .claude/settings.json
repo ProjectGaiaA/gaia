@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pytest *)",
+      "Bash(pytest)",
+      "Bash(ruff *)",
+      "Bash(ruff check *)",
+      "Bash(python -m pytest *)",
+      "Bash(python -m pytest)",
+      "Bash(python -X utf8 build.py*)",
+      "Bash(python -X utf8 -m *)",
+      "Bash(python build.py*)"
+    ],
+    "deny": []
+  }
+}
