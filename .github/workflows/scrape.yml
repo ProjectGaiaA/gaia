@@ -89,7 +89,7 @@ jobs:
           done
 
           if [ $FAILED -gt 0 ]; then
-            echo "WARNING: $FAILED nursery scraper(s) failed — flagged as degraded"
+            echo "WARNING: $FAILED nursery scraper(s) failed -- flagged as degraded"
           else
             echo "All nurseries scraped successfully"
           fi
@@ -162,7 +162,7 @@ jobs:
           if not broken:
               print('All retailer URLs OK')
           else:
-              print(f'{len(broken)} broken URLs — removing stale entries')
+              print(f'{len(broken)} broken URLs -- removing stale entries')
               removed = 0
               for f in glob.glob('data/prices/*.jsonl'):
                   lines = []
@@ -185,7 +185,8 @@ jobs:
 
       - name: Verify prices (10 random spot checks)
         if: always()
-        run: python -m scrapers.verify --count 10 || echo "WARNING: Price mismatches detected — review verify output above"
+        run: |
+          python -m scrapers.verify --count 10 || echo "WARNING: Price mismatches detected -- review verify output above"
 
       - name: Build site
         if: always()
@@ -225,7 +226,7 @@ jobs:
           from scrapers.runner import scrape_promos, load_json
           retailers = load_json(Path('data/retailers.json'))
           scrape_promos(retailers)
-          " || echo "WARNING: Promo scraping failed — skipping"
+          " || echo "WARNING: Promo scraping failed -- skipping"
 
       - name: Commit updated price data
         if: always()
