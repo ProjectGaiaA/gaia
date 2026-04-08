@@ -119,7 +119,7 @@
                 <h2>Current Prices</h2>
                 
                 <p class="table-disclosure">Some links below are affiliate links — we may earn a commission at no cost to you. <a href="/disclosure.html">See our disclosure.</a></p>
-                <p class="price-updated">Prices last checked: April 07, 2026</p>
+                <p class="price-updated">Prices last checked: April 08, 2026</p>
 
                 <!-- Best Prices Summary: mobile only (desktop uses full comparison table) -->
                 
@@ -304,7 +304,7 @@
                                 </td>
                                 <td class="last-checked-cell" data-label="Last Checked">
                                     
-                                    <span class="last-checked-date">Apr 06</span>
+                                    <span class="last-checked-date">Apr 08</span>
                                     
                                 </td>
                                 <td class="specials-cell" data-label="Specials">
@@ -470,6 +470,11 @@
 
             <!-- Price History Chart (shown when historical data exists) -->
             
+            <div class="price-history">
+                <h2>Price History</h2>
+                <canvas id="priceChart" width="800" height="300"></canvas>
+            </div>
+            
 
             <!-- Care Guide -->
             
@@ -585,6 +590,44 @@
         });
     });
 })();
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script>
+    const priceData = {"dates": ["2026-04-06", "2026-04-08"], "retailers": [{"name": "Fast Growing Trees", "prices": [65.95, 65.95]}]};
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: priceData.dates,
+            datasets: priceData.retailers.map((r, i) => ({
+                label: r.name,
+                data: r.prices,
+                borderColor: ['#2E7D32', '#1565C0', '#E65100', '#6A1B9A', '#C62828', '#00695C'][i % 6],
+                tension: 0.3,
+                pointRadius: 2,
+                borderWidth: 2,
+                fill: false
+            }))
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom' },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) => `${ctx.dataset.label}: $${ctx.parsed.y.toFixed(2)}`
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    ticks: { callback: (v) => '$' + v.toFixed(0) },
+                    beginAtZero: false
+                }
+            }
+        }
+    });
 </script>
 
 
