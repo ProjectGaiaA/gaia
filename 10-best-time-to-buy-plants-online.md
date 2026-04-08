@@ -137,5 +137,4 @@ The one thing that saves you money regardless of season: comparing prices across
 
 *We're building price history data on hundreds of plant varieties across multiple nurseries. As our dataset grows, we'll publish specific seasonal pricing data by plant category — exactly when prices start dropping, which retailers discount first, and which plants see the deepest fall markdowns. This guide will get more specific and more data-driven over time.*
 
-→ [Sign up for price drop alerts and seasonal deals](/alerts)
 → [Browse current plant prices](/category/hydrangeas)
