@@ -26,12 +26,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # Random start delay (0-15 minutes) so scraping doesn't start at the
-      # exact same time every day. Makes traffic pattern less bot-like.
+      # Random 0-120s delay so we don't hit at the exact cron second every day
       - name: Random start delay
         run: |
-          DELAY=$((RANDOM % 900))
-          echo "Sleeping ${DELAY} seconds ($(( DELAY / 60 )) minutes) before starting..."
+          DELAY=$((RANDOM % 120))
+          echo "Sleeping ${DELAY} seconds before starting..."
           sleep $DELAY
 
       # --- Each nursery runs as its own step with continue-on-error ---
