@@ -12,8 +12,8 @@ Phases 1 and 2 fill this in. Phase 3 reads it. Do not edit during execution.
 
 - [x] Phase 1: Scope grilled
 - [x] Phase 2: Technical approach grilled
-- [ ] Phase 3: Tasks executed
-- [ ] Final verification passed
+- [x] Phase 3: Tasks executed
+- [x] Final verification passed
 
 ---
 
@@ -404,20 +404,20 @@ sending if there are zero items to report.
 
 ## Acceptance Criteria (Whole Feature)
 
-- [ ] Handle maps live in `data/handle_maps.json`, not hardcoded in `shopify.py`.
-- [ ] A product 404 during scraping creates a `recovery.json` entry (not silent).
-- [ ] A product redirect during scraping captures the new handle as a candidate.
-- [ ] Recovery runs after scrape using leftover CI time and discovers candidates.
-- [ ] Same product is not re-crawled within 20 hours of last attempt.
-- [ ] Products with >= 7 failed attempts are marked unrecoverable.
-- [ ] Recovery does nothing when there are zero broken handles.
-- [ ] Opus reviews candidates using local data only (no HTTP requests).
-- [ ] Confirmed candidates are validated by the scraper before writing to handle maps.
-- [ ] A confirmed candidate that still 404s is NOT written to the handle map.
-- [ ] `discover_handles.py` uses polite sessions, robots.txt, and 10-20s delays.
-- [ ] Link checker step is removed from `scrape.yml`.
-- [ ] Weekly email fires only when there are unresolved/rejected items.
-- [ ] `pytest` passes. `ruff check` passes. `python -X utf8 build.py` succeeds.
+- [x] Handle maps live in `data/handle_maps.json`, not hardcoded in `shopify.py`.
+- [x] A product 404 during scraping creates a `recovery.json` entry (not silent).
+- [x] A product redirect during scraping captures the new handle as a candidate.
+- [x] Recovery runs after scrape using leftover CI time and discovers candidates.
+- [x] Same product is not re-crawled within 20 hours of last attempt.
+- [x] Products with >= 7 failed attempts are marked unrecoverable.
+- [x] Recovery does nothing when there are zero broken handles.
+- [x] Opus reviews candidates using local data only (no HTTP requests).
+- [x] Confirmed candidates are validated by the scraper before writing to handle maps.
+- [x] A confirmed candidate that still 404s is NOT written to the handle map.
+- [x] `discover_handles.py` uses polite sessions, robots.txt, and 10-20s delays.
+- [x] Link checker step is removed from `scrape.yml`.
+- [x] Weekly email fires only when there are unresolved/rejected items.
+- [x] `pytest` passes. `ruff check` passes. `python -X utf8 build.py` succeeds.
 
 ## Manual Verification Steps
 
