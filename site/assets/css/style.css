@@ -66,6 +66,7 @@ h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
     text-decoration: none;
 }
 .logo-icon { font-size: 1.3rem; }
+.logo-img { height: 40px; width: auto; }
 .nav-links {
     display: flex;
     list-style: none;
