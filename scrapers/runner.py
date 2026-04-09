@@ -15,6 +15,7 @@ import json
 import logging
 import re
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -27,8 +28,14 @@ from scrapers.polite import (
     polite_delay,
     log_request, is_allowed_by_robots, make_polite_session,
 )
-from scrapers.shopify import ShopifyScraper, get_handles_for_retailer
+from scrapers.shopify import ShopifyScraper, get_handles_for_retailer, save_handle_map_entry
 from scrapers.starkbros import StarkBrosScraper, STARK_BROS_PRODUCTS
+from scrapers.recovery import (
+    get_confirmed_candidates,
+    mark_applied,
+    mark_confirmation_failed,
+    run as recovery_run,
+)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -288,6 +295,67 @@ def scrape_promos(retailers: list[dict], dry_run: bool = False) -> dict:
     return results
 
 
+def validate_confirmed_candidates() -> None:
+    """Check recovery.json for confirmed candidates, validate by requesting
+    the new handle, and write to handle_maps.json if valid.
+
+    Called at scrape startup before the main scrape loop.
+    """
+    candidates = get_confirmed_candidates()
+    if not candidates:
+        return
+
+    logger.info(f"\nValidating {len(candidates)} confirmed recovery candidate(s)...")
+    session = make_polite_session()
+
+    for entry in candidates:
+        retailer_id = entry["retailer_id"]
+        plant_id = entry["plant_id"]
+        new_handle = entry.get("candidate_handle")
+        if not new_handle:
+            logger.warning(f"  {retailer_id}/{plant_id}: no candidate handle — skipping")
+            continue
+
+        # Find the retailer's base URL from retailers.json
+        retailers = load_json(DATA_DIR / "retailers.json")
+        retailer = next((r for r in retailers if r["id"] == retailer_id), None)
+        if not retailer:
+            logger.warning(f"  {retailer_id}: retailer not found — skipping")
+            continue
+
+        base_url = retailer["url"].rstrip("/")
+        test_url = f"{base_url}/products/{new_handle}.json"
+
+        try:
+            resp = session.get(test_url, timeout=20)
+            log_request(test_url, status_code=resp.status_code)
+        except requests.RequestException as e:
+            logger.warning(f"  {retailer_id}/{plant_id}: validation request failed: {e}")
+            continue
+
+        if resp.status_code == 200:
+            try:
+                data = resp.json()
+                if data and "product" in data:
+                    save_handle_map_entry(retailer_id, plant_id, new_handle)
+                    mark_applied(retailer_id, plant_id)
+                    logger.info(f"  {retailer_id}/{plant_id}: validated and applied -> {new_handle}")
+                else:
+                    mark_confirmation_failed(retailer_id, plant_id)
+                    logger.warning(f"  {retailer_id}/{plant_id}: 200 but no product data")
+            except (json.JSONDecodeError, ValueError):
+                mark_confirmation_failed(retailer_id, plant_id)
+                logger.warning(f"  {retailer_id}/{plant_id}: invalid JSON response")
+        else:
+            mark_confirmation_failed(retailer_id, plant_id)
+            logger.warning(
+                f"  {retailer_id}/{plant_id}: candidate handle still returns "
+                f"{resp.status_code} — flagged"
+            )
+
+        polite_delay(3, 6)
+
+
 def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, dry_run: bool = False) -> dict:
     """Scrape a single retailer for all mapped plants.
 
@@ -380,7 +448,7 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
     handles_list = list(handle_map.values())
     plant_ids_list = list(handle_map.keys())
 
-    results = scraper.scrape_products(handles_list)
+    results = scraper.scrape_products(handles_list, plant_ids=plant_ids_list)
 
     # Process results
     products_found = 0
@@ -447,8 +515,13 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
     }
 
 
+CI_TIMEOUT_SECONDS = 90 * 60  # 90-minute CI timeout
+POST_SCRAPE_BUFFER_SECONDS = 10 * 60  # 10 minutes for build/commit/deploy
+
+
 def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = False):
     """Main scraper orchestrator."""
+    run_start = time.monotonic()
     logger.info("=" * 60)
     logger.info("PlantPriceTracker — Scraper Run")
     logger.info(f"Time: {datetime.now(timezone.utc).isoformat()}")
@@ -469,6 +542,10 @@ def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = 
         active_retailers = [r for r in retailers if r.get("active", False)]
 
     logger.info(f"\n{len(plants)} plants, {len(active_retailers)} retailers to scrape\n")
+
+    # Validate any confirmed recovery candidates before scraping
+    if not dry_run:
+        validate_confirmed_candidates()
 
     # Load previous manifest for anomaly detection
     prev_manifest = load_previous_manifest()
@@ -535,6 +612,19 @@ def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = 
         scrape_promos(retailers, dry_run=dry_run)
     elif retailer_filter:
         logger.info("\nPromo scraping skipped (single-retailer run)")
+
+    # Recovery — time-budgeted discovery for broken handles
+    if not dry_run and not retailer_filter:
+        elapsed = time.monotonic() - run_start
+        recovery_budget = CI_TIMEOUT_SECONDS - elapsed - POST_SCRAPE_BUFFER_SECONDS
+        if recovery_budget > 0:
+            logger.info(f"\nRecovery: {recovery_budget:.0f}s budget remaining")
+            try:
+                recovery_run(time_budget_seconds=recovery_budget)
+            except Exception as e:
+                logger.error(f"Recovery failed (non-fatal): {e}")
+        else:
+            logger.info("\nRecovery: no time budget remaining — skipping")
 
     # Check per-retailer health — degraded retailers are flagged, not fatal
     degraded_retailers = []

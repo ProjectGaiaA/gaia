@@ -17,13 +17,18 @@ import json
 import logging
 import re
 import sys
-import time
 from pathlib import Path
 
-import requests
+import requests  # used for type annotation only
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
-from scrapers.shopify import HANDLE_MAPS
+from scrapers.polite import (
+    discovery_delay,
+    is_allowed_by_robots,
+    make_polite_session,
+    polite_delay,
+)
+from scrapers.shopify import load_handle_maps
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S")
 logger = logging.getLogger(__name__)
@@ -42,17 +47,32 @@ def load_retailers():
         return json.load(f)
 
 
-def fetch_all_products(base_url: str, max_pages: int = 20) -> list[dict]:
-    """Fetch all products from a Shopify store's bulk JSON endpoint."""
+def fetch_all_products(
+    base_url: str,
+    max_pages: int = 20,
+    session: requests.Session | None = None,
+) -> list[dict]:
+    """Fetch all products from a Shopify store's bulk JSON endpoint.
+
+    Uses polite scraping infrastructure: UA rotation, robots.txt checks,
+    and 10-20s delays between pages.  Pass *session* for testability;
+    when omitted a new polite session is created automatically.
+    """
+    if session is None:
+        session = make_polite_session()
+
     all_products = []
     page = 1
 
     while page <= max_pages:
         url = f"{base_url}/products.json?limit=250&page={page}"
+
+        if not is_allowed_by_robots(url):
+            logger.warning(f"  robots.txt disallows {url} — stopping catalog fetch")
+            break
+
         try:
-            resp = requests.get(url, headers={
-                "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-            }, timeout=20)
+            resp = session.get(url, timeout=20)
 
             if resp.status_code != 200:
                 logger.warning(f"  Page {page}: HTTP {resp.status_code}")
@@ -70,7 +90,7 @@ def fetch_all_products(base_url: str, max_pages: int = 20) -> list[dict]:
                 break  # Last page
 
             page += 1
-            time.sleep(3)  # Polite delay between pages
+            discovery_delay()  # 10-20s between catalog pages
 
         except Exception as e:
             logger.error(f"  Error fetching page {page}: {e}")
@@ -182,7 +202,7 @@ def discover_for_retailer(retailer: dict, plants: list[dict], dry_run: bool = Fa
     """Discover handles for one retailer."""
     rid = retailer["id"]
     base_url = retailer["url"]
-    existing = HANDLE_MAPS.get(rid, {})
+    existing = load_handle_maps().get(rid, {})
 
     unmapped = [p for p in plants if p["id"] not in existing]
     if not unmapped:
@@ -245,7 +265,7 @@ def main():
         if matches:
             all_matches[rid] = matches
 
-        time.sleep(5)  # Polite delay between retailers
+        polite_delay()  # 5-15s delay between retailers
 
     # Summary
     logger.info(f"\n{'='*50}")
@@ -257,7 +277,7 @@ def main():
 
     if total_new > 0 and not args.dry_run:
         # Output as a Python dict for manual review + copy-paste into shopify.py
-        logger.info("\nAdd these to HANDLE_MAPS in shopify.py:")
+        logger.info("\nAdd these to data/handle_maps.json:")
         for rid, matches in all_matches.items():
             logger.info(f'\n    "{rid}": {{')
             for m in sorted(matches, key=lambda x: -x["score"]):

@@ -134,6 +134,15 @@ def log_request(url: str, delay_used: float = None, status_code: int = None):
     logger.info("  ".join(parts))
 
 
+def discovery_delay() -> float:
+    """Sleep for a random 10-20s delay.
+
+    Used by catalog discovery which crawls pages the scraper wouldn't
+    normally touch — needs longer delays than normal scraping (5-15s).
+    """
+    return polite_delay(10.0, 20.0)
+
+
 def make_polite_session(ua: str = None) -> requests.Session:
     """Create a requests.Session with polite browser-like headers."""
     s = requests.Session()

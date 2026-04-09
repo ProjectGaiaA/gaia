@@ -37,7 +37,7 @@ from scrapers.polite import (
     polite_delay,
     log_request, make_polite_session,
 )
-from scrapers.shopify import ShopifyScraper, HANDLE_MAPS
+from scrapers.shopify import ShopifyScraper, load_handle_maps
 from scrapers.starkbros import STARK_BROS_PRODUCTS
 
 # ---------------------------------------------------------------------------
@@ -65,12 +65,12 @@ NURSERY_CONFIGS = {
     "fast-growing-trees": {
         "base_url": "https://www.fast-growing-trees.com",
         "scraper_type": "shopify",
-        "handle_map": HANDLE_MAPS.get("fast-growing-trees", {}),
+        "handle_map": load_handle_maps().get("fast-growing-trees", {}),
     },
     "nature-hills": {
         "base_url": "https://naturehills.com",
         "scraper_type": "shopify",
-        "handle_map": HANDLE_MAPS.get("nature-hills", {}),
+        "handle_map": load_handle_maps().get("nature-hills", {}),
     },
     "stark-bros": {
         "base_url": "https://www.starkbros.com",
@@ -601,7 +601,7 @@ def run_test():
     """Quick CDX probe: Limelight Hydrangea at fast-growing-trees.com."""
     session = _make_session()
     nursery_id = "fast-growing-trees"
-    handle = HANDLE_MAPS["fast-growing-trees"]["limelight-hydrangea"]
+    handle = load_handle_maps()["fast-growing-trees"]["limelight-hydrangea"]
     product_url = f"https://www.fast-growing-trees.com/products/{handle}"
 
     logger.info(f"TEST: CDX query for {product_url}")

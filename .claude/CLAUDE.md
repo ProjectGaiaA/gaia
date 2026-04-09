@@ -24,8 +24,10 @@ Your job:
    DO NOT mention files, languages, or libraries. If the user starts
    discussing how to build it, redirect: "We'll cover the how in
    Phase 2. Right now I just need to understand what we're building."
-4. Ask questions one or two at a time. The user is not a coder — ask
-   in plain English, not in technical terms.
+4. Ask questions ONE at a time. Wait for the answer before asking the
+   next. The user is not a coder — ask in plain English, not in
+   technical terms. When presenting options, give 2-4 choices with
+   plain-English tradeoffs — whatever number fits the decision.
 5. When you have enough to fill in Problem, Scope Decisions, and Out
    of Scope sections of the template, write `.specs/<short-name>.md`
    with those sections completed. Leave the rest as template placeholders.
@@ -40,10 +42,12 @@ and run Phase 2."
 
 Your job:
 1. Read the spec file completely.
-2. Grill the user on TECHNICAL APPROACH. The user is not a coder.
+2. Grill the user on TECHNICAL APPROACH. Ask ONE question at a time.
+   Wait for the answer before asking the next. The user is not a coder.
    This means:
-   - Give concrete options with plain-English tradeoffs, not open-ended
-     "how should we build this?" questions.
+   - Give concrete options (2-4, whatever fits the decision) with
+     plain-English tradeoffs, not open-ended "how should we build
+     this?" questions.
    - Bad: "What database should we use?"
    - Good: "Two options for storing this. Option A: a flat JSON file
      — simple, breaks if we get more than ~10k entries. Option B:
@@ -117,7 +121,9 @@ Your job:
   something outside the current task, write it down and surface it.
   Do not fix it.
 - **Always end Phase 3 tasks with a plain-English explanation.** The
-  user is not a coder. Verification passing is necessary but not
+  user is comfortable seeing code details but also needs a plain-English
+  summary. Lead with what it does in simple terms, then include
+  technical details. Verification passing is necessary but not
   sufficient — the user needs to understand what was built well enough
   to manually sanity-check it.
 - **Always write a handoff prompt before ending a session with follow-up

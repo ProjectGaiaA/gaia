@@ -1,0 +1,83 @@
+name: Weekly Recovery Email
+
+on:
+  schedule:
+    # Sunday 12:00 UTC (8:00 AM ET)
+    - cron: '0 12 * * 0'
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check for reportable entries
+        id: check
+        run: |
+          python -X utf8 -c "
+          import json, os, sys
+
+          path = 'data/recovery.json'
+          if not os.path.exists(path):
+              print('No recovery.json — nothing to report.')
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write('has_items=false\n')
+              sys.exit(0)
+
+          with open(path, encoding='utf-8') as f:
+              state = json.load(f)
+
+          entries = [
+              e for e in state.get('entries', {}).values()
+              if e.get('status') in ('unrecoverable', 'rejected')
+          ]
+
+          if not entries:
+              print('No unrecoverable or rejected entries — skipping email.')
+              with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+                  f.write('has_items=false\n')
+              sys.exit(0)
+
+          print(f'Found {len(entries)} reportable entries.')
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write('has_items=true\n')
+          "
+
+      - name: Compose email body
+        if: steps.check.outputs.has_items == 'true'
+        id: compose
+        run: |
+          python -X utf8 -c "
+          import sys, os
+          sys.path.insert(0, '.')
+          from scrapers.recovery import get_reportable_entries, format_recovery_email
+
+          entries = get_reportable_entries()
+          body = format_recovery_email(entries)
+
+          # Write body to a file for the email step
+          with open('email_body.txt', 'w', encoding='utf-8') as f:
+              f.write(body)
+
+          print(body)
+          "
+
+      - name: Send email
+        if: steps.check.outputs.has_items == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "PlantPriceTracker — Recovery items need attention"
+          to: brandon.william.hall@gmail.com
+          from: ${{ secrets.SMTP_FROM || 'PlantPriceTracker <noreply@plantpricetracker.com>' }}
+          body: file://email_body.txt
