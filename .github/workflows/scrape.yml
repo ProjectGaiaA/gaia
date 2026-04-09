@@ -183,4 +183,5 @@ jobs:
           git config user.email "bot@plantpricetracker.com"
           git add data/prices/ data/last_manifest.json data/promos.json site/
           git diff --staged --quiet || git commit -m "Daily price update $(date +%Y-%m-%d_%H:%M)"
+          git pull --rebase origin main
           git push
