@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-08T15:30:31.689393+00:00",
+  "timestamp": "2026-04-08T23:58:00.671136+00:00",
   "retailers": [
     {
       "retailer_id": "stark-bros",
@@ -7,20 +7,24 @@
       "products_expected": 8,
       "products_found": 7,
       "products_error": 1,
-      "prices_collected": 9,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
+          "dwarf": 32.99,
           "semi-dwarf": 26.99
         },
         "bing-cherry-tree:stark-bros": {
-          "semi-dwarf": 41.99
+          "semi-dwarf": 41.99,
+          "supreme": 69.99,
+          "standard": 38.99
         },
         "elberta-peach-tree:stark-bros": {
           "semi-dwarf": 55.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf": 32.99,
+          "semi-dwarf": 26.99,
           "supreme-ez-start": 75.99,
           "standard": 26.99
         },
@@ -36,21 +40,25 @@
       }
     }
   ],
-  "total_prices_collected": 9,
+  "total_prices_collected": 13,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
     "honeycrisp-apple-tree:stark-bros": {
+      "dwarf": 32.99,
       "semi-dwarf": 26.99
     },
     "bing-cherry-tree:stark-bros": {
-      "semi-dwarf": 41.99
+      "semi-dwarf": 41.99,
+      "supreme": 69.99,
+      "standard": 38.99
     },
     "elberta-peach-tree:stark-bros": {
       "semi-dwarf": 55.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf": 32.99,
+      "semi-dwarf": 26.99,
       "supreme-ez-start": 75.99,
       "standard": 26.99
     },
