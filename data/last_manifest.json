@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-10T15:22:34.167766+00:00",
+  "timestamp": "2026-04-10T23:53:54.775369+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -305,9 +305,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 70,
-      "products_found": 70,
-      "products_error": 0,
-      "prices_collected": 298,
+      "products_found": 69,
+      "products_error": 1,
+      "prices_collected": 297,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -611,9 +611,6 @@
           "1gal": 40.95,
           "2gal": 77.95,
           "3gal": 88.95
-        },
-        "creeping-phlox:planting-tree": {
-          "1gal": 26.95
         },
         "butterfly-bush-miss-molly:planting-tree": {
           "1gal": 47.95,
@@ -921,8 +918,11 @@
       "products_expected": 62,
       "products_found": 60,
       "products_error": 2,
-      "prices_collected": 124,
-      "anomalies": [],
+      "prices_collected": 125,
+      "anomalies": [
+        "ANOMALY: purple-fountain-grass at fast-growing-trees tier=default: $90.95 -> $37.95 (58% change)",
+        "ANOMALY: dwarf-alberta-spruce at fast-growing-trees tier=default: $98.95 -> $199.95 (102% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 32.95
@@ -1034,6 +1034,7 @@
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
           "4inch": 30.95,
+          "quart": 31.95,
           "1gal": 41.95,
           "2gal": 44.95,
           "3gal": 52.95
@@ -1097,13 +1098,7 @@
         },
         "pink-muhly-grass:fast-growing-trees": {
           "default": 49.95,
-          "1gal": 22.95,
           "3gal": 34.95
-        },
-        "purple-fountain-grass:fast-growing-trees": {
-          "default": 90.95,
-          "1gal": 24.95,
-          "3gal": 37.95
         },
         "hameln-dwarf-fountain-grass:fast-growing-trees": {
           "default": 79.95
@@ -1143,7 +1138,9 @@
           "5-6ft": 152.95
         },
         "red-sunset-maple:fast-growing-trees": {
-          "default": 209.95
+          "default": 138.95,
+          "5-6ft": 170.95,
+          "6-7ft": 209.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
           "default": 145.95
@@ -1155,18 +1152,13 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
+          "1gal": 36.95,
           "2gal": 51.95,
           "3gal": 74.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95,
           "3gal": 43.95
-        },
-        "dwarf-alberta-spruce:fast-growing-trees": {
-          "default": 98.95,
-          "1-2ft": 32.95,
-          "2-3ft": 48.95,
-          "3-4ft": 199.95
         }
       },
       "health": "healthy"
@@ -1250,7 +1242,7 @@
           "quart": 23.99
         },
         "emerald-green-arborvitae:great-garden-plants": {
-          "1gal": 28.99
+          "1gal": 26.99
         },
         "double-knock-out-rose:great-garden-plants": {
           "quart": 23.99
@@ -1277,8 +1269,8 @@
           "standard": 38.99
         },
         "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 75.99,
-          "semi-dwarf": 55.99
+          "semi-dwarf": 55.99,
+          "ultra-supreme": 199.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf": 32.99,
@@ -1294,15 +1286,18 @@
           "default": 27.99
         },
         "pink-lemonade-blueberry:stark-bros": {
-          "default": 25.99
+          "default": 18.99
         }
       },
       "health": "healthy"
     }
   ],
   "total_prices_collected": 682,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_anomalies": 2,
+  "anomalies": [
+    "ANOMALY: purple-fountain-grass at fast-growing-trees tier=default: $90.95 -> $37.95 (58% change)",
+    "ANOMALY: dwarf-alberta-spruce at fast-growing-trees tier=default: $98.95 -> $199.95 (102% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1894,9 +1889,6 @@
       "2gal": 77.95,
       "3gal": 88.95
     },
-    "creeping-phlox:planting-tree": {
-      "1gal": 26.95
-    },
     "butterfly-bush-miss-molly:planting-tree": {
       "1gal": 47.95,
       "2gal": 84.95,
@@ -2292,6 +2284,7 @@
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
       "4inch": 30.95,
+      "quart": 31.95,
       "1gal": 41.95,
       "2gal": 44.95,
       "3gal": 52.95
@@ -2355,13 +2348,7 @@
     },
     "pink-muhly-grass:fast-growing-trees": {
       "default": 49.95,
-      "1gal": 22.95,
       "3gal": 34.95
-    },
-    "purple-fountain-grass:fast-growing-trees": {
-      "default": 90.95,
-      "1gal": 24.95,
-      "3gal": 37.95
     },
     "hameln-dwarf-fountain-grass:fast-growing-trees": {
       "default": 79.95
@@ -2401,7 +2388,9 @@
       "5-6ft": 152.95
     },
     "red-sunset-maple:fast-growing-trees": {
-      "default": 209.95
+      "default": 138.95,
+      "5-6ft": 170.95,
+      "6-7ft": 209.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
       "default": 145.95
@@ -2413,18 +2402,13 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
+      "1gal": 36.95,
       "2gal": 51.95,
       "3gal": 74.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95,
       "3gal": 43.95
-    },
-    "dwarf-alberta-spruce:fast-growing-trees": {
-      "default": 98.95,
-      "1-2ft": 32.95,
-      "2-3ft": 48.95,
-      "3-4ft": 199.95
     },
     "limelight-hydrangea:proven-winners-direct": {
       "1gal": 35.99,
@@ -2484,7 +2468,7 @@
       "quart": 23.99
     },
     "emerald-green-arborvitae:great-garden-plants": {
-      "1gal": 28.99
+      "1gal": 26.99
     },
     "double-knock-out-rose:great-garden-plants": {
       "quart": 23.99
@@ -2499,8 +2483,8 @@
       "standard": 38.99
     },
     "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 75.99,
-      "semi-dwarf": 55.99
+      "semi-dwarf": 55.99,
+      "ultra-supreme": 199.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf": 32.99,
@@ -2516,7 +2500,7 @@
       "default": 27.99
     },
     "pink-lemonade-blueberry:stark-bros": {
-      "default": 25.99
+      "default": 18.99
     }
   },
   "degraded_retailers": [],
