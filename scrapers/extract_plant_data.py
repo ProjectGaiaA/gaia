@@ -546,7 +546,6 @@ def generate_plant_entry(
         llm_fn = _default_llm
 
     zones = reconciled["zones"]["value"]
-    plant_type = reconciled["type"]["value"]
 
     # Select size tier template based on category
     if category in TREE_CATEGORIES:
@@ -666,7 +665,7 @@ def main():
             pages.append(page)
             logger.info(f"  OK — parsed: {page['parsed']}")
         else:
-            logger.warning(f"  FAILED — skipping")
+            logger.warning("  FAILED — skipping")
 
     if not pages:
         logger.error("No product pages fetched successfully. Aborting.")

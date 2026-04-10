@@ -1,10 +1,7 @@
 """Tests for scrapers/extract_plant_data.py — botanical data extractor."""
 
 import json
-from pathlib import Path
-from unittest.mock import patch, MagicMock
 
-import pytest
 import responses
 
 from tests.conftest import FIXTURES_DIR

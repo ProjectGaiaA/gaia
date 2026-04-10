@@ -131,7 +131,7 @@ def fetch_sitemap_index(base_url, session):
     """Fetch and parse the sitemap index. Returns list of product sitemap URLs."""
     sitemap_url = f"{base_url}/sitemap.xml"
     if not is_allowed_by_robots(sitemap_url):
-        logger.warning(f"  robots.txt disallows sitemap — skipping")
+        logger.warning("  robots.txt disallows sitemap — skipping")
         return []
 
     try:
@@ -257,7 +257,7 @@ def discover_retailer(rid, base_url, session):
     # Fetch sitemap index
     product_sitemap_urls = fetch_sitemap_index(base_url, session)
     if not product_sitemap_urls:
-        logger.warning(f"  No product sitemaps found")
+        logger.warning("  No product sitemaps found")
         return {}
 
     logger.info(f"  Found {len(product_sitemap_urls)} product sitemap(s)")
@@ -285,7 +285,7 @@ def discover_retailer(rid, base_url, session):
             conf = "HIGH" if m["score"] >= 0.8 else "MED" if m["score"] >= 0.6 else "LOW"
             logger.info(f"    [{conf}] {cid} -> {m['handle']} (score={m['score']}, title={m['title'][:60]})")
     else:
-        logger.info(f"  No candidate matches found")
+        logger.info("  No candidate matches found")
 
     return matches
 
