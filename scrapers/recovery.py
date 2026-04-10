@@ -571,15 +571,16 @@ def run(
 def get_reportable_entries() -> list[dict]:
     """Return recovery entries that need operator attention.
 
-    Collects entries with status "unrecoverable" (7 failed attempts)
-    or "rejected" (Opus declined the candidate). These are surfaced
-    in the weekly email.
+    Collects entries with status "unrecoverable" (7 failed attempts),
+    "rejected" (Opus declined the candidate), or "confirmation_failed"
+    (Opus confirmed but handle still 404s at validation). These are
+    surfaced in the weekly email.
     """
     state = load_recovery()
     return [
         entry
         for entry in state["entries"].values()
-        if entry.get("status") in ("unrecoverable", "rejected")
+        if entry.get("status") in ("unrecoverable", "rejected", "confirmation_failed")
     ]
 
 
@@ -595,6 +596,7 @@ def format_recovery_email(entries: list[dict]) -> str:
 
     unrecoverable = [e for e in entries if e.get("status") == "unrecoverable"]
     rejected = [e for e in entries if e.get("status") == "rejected"]
+    confirmation_failed = [e for e in entries if e.get("status") == "confirmation_failed"]
 
     lines = [
         "PlantPriceTracker — Weekly Recovery Report",
@@ -627,6 +629,24 @@ def format_recovery_email(entries: list[dict]) -> str:
         lines.append("These candidates were rejected during review.")
         lines.append("")
         for e in rejected:
+            plant = e.get("plant_common_name") or e.get("plant_id") or "Unknown"
+            retailer = e.get("retailer_id", "Unknown")
+            old_handle = e.get("old_handle", "N/A")
+            candidate = e.get("candidate_handle", "N/A")
+            lines.append(f"  - {plant} @ {retailer}")
+            lines.append(f"    Old handle: {old_handle}")
+            lines.append(f"    Candidate: {candidate}")
+            reason = e.get("reason", "")
+            if reason:
+                lines.append(f"    Reason: {reason}")
+            lines.append("")
+
+    if confirmation_failed:
+        lines.append(f"CONFIRMATION FAILED ({len(confirmation_failed)})")
+        lines.append("-" * 40)
+        lines.append("Opus confirmed these candidates but they still 404 at validation.")
+        lines.append("")
+        for e in confirmation_failed:
             plant = e.get("plant_common_name") or e.get("plant_id") or "Unknown"
             retailer = e.get("retailer_id", "Unknown")
             old_handle = e.get("old_handle", "N/A")

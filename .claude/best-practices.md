@@ -24,6 +24,8 @@ Updated: 2026-04-07
 - **Random start offset** -- 0-90 min jitter on CI runs. No fixed-time traffic spikes.
 - **Real browser UAs** -- 10 rotating user-agent strings. Honest traffic pattern.
 - **Retailer opt-out respected** -- Brighter Blooms blocks via robots.txt, scraper honors it.
+- **Auto-heal broken URLs** -- 404s trigger automatic handle rediscovery via Shopify catalog search. 20h cooldown, 7-attempt limit, polite delays (10-20s). No dedicated link-checking pass.
+- **Link checker removed** -- eliminated aggressive HEAD request step that risked IP bans (~500 requests per run with bot UA).
 
 ## Site Quality
 

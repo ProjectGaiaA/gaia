@@ -14,8 +14,8 @@ from scrapers.recovery import (
 # ---------------------------------------------------------------------------
 
 
-def test_reportable_returns_unrecoverable_and_rejected(tmp_path):
-    """Only entries with status 'unrecoverable' or 'rejected' are returned."""
+def test_reportable_returns_actionable_statuses(tmp_path):
+    """Entries with unrecoverable, rejected, or confirmation_failed are reportable."""
     path = tmp_path / "recovery.json"
     state = {
         "entries": {
@@ -32,9 +32,9 @@ def test_reportable_returns_unrecoverable_and_rejected(tmp_path):
         save_recovery(state)
         entries = get_reportable_entries()
 
-    assert len(entries) == 2
+    assert len(entries) == 3
     statuses = {e["status"] for e in entries}
-    assert statuses == {"unrecoverable", "rejected"}
+    assert statuses == {"unrecoverable", "rejected", "confirmation_failed"}
 
 
 def test_reportable_returns_empty_when_no_issues(tmp_path):

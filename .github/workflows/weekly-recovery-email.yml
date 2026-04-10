@@ -36,7 +36,7 @@ jobs:
 
           entries = [
               e for e in state.get('entries', {}).values()
-              if e.get('status') in ('unrecoverable', 'rejected')
+              if e.get('status') in ('unrecoverable', 'rejected', 'confirmation_failed')
           ]
 
           if not entries:
