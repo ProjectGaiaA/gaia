@@ -38,8 +38,9 @@
       "free_all": false,
       "notes": "Tiered: $10.95-$20.95 below threshold"
     },
-    "active": true,
-    "priority": 2
+    "active": false,
+    "priority": 2,
+    "inactive_reason": "No plant handle mappings yet — not wired into scrape.yml"
   },
   {
     "id": "nature-hills",
@@ -101,8 +102,9 @@
       "free_all": false,
       "notes": "Free shipping on select plants regardless of order total"
     },
-    "active": true,
-    "priority": 5
+    "active": false,
+    "priority": 5,
+    "inactive_reason": "No plant handle mappings yet — not wired into scrape.yml"
   },
   {
     "id": "bloomscape",
@@ -122,8 +124,9 @@
       "free_all": false,
       "notes": "$7-10 flat below threshold. Contiguous 48 states only."
     },
-    "active": true,
-    "priority": 6
+    "active": false,
+    "priority": 6,
+    "inactive_reason": "No plant handle mappings yet — not wired into scrape.yml"
   },
   {
     "id": "wayside-gardens",
@@ -143,8 +146,9 @@
       "free_all": false,
       "notes": "Ships at optimal planting time"
     },
-    "active": true,
-    "priority": 7
+    "active": false,
+    "priority": 7,
+    "inactive_reason": "Custom scraper not implemented — not wired into scrape.yml"
   },
   {
     "id": "gardeners-supply",
@@ -158,8 +162,9 @@
       "link_template": "",
       "notes": "Tools, supplies, raised beds. Good for cross-sell content."
     },
-    "active": true,
-    "priority": 8
+    "active": false,
+    "priority": 8,
+    "inactive_reason": "Custom scraper not implemented — not wired into scrape.yml"
   },
   {
     "id": "planting-tree",
@@ -306,7 +311,7 @@
     "scraper_type": "shopify",
     "affiliate": null,
     "trust_builder": true,
-    "active": false,
+    "active": true,
     "priority": 16,
     "shipping": {
       "free_threshold": 125,

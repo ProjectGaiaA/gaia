@@ -141,3 +141,8 @@ Your job:
 - Scraper boundary rule: never hit live nursery sites in tests — mock all HTTP at the requests/urllib boundary
 - Data sensitivity: never paste plant price data, affiliate URLs, or retailer configs into web tools or external services
 - Static site output: `site/` directory is generated — never edit files in `site/` directly, always edit templates or build.py
+
+## Ops notes
+
+- Monitoring is ad-hoc (see root `CLAUDE.md` Health Check Protocol). **Always `git pull --ff-only` first** — the OneDrive copy lags CI and will report stale timestamps and a stale manifest otherwise.
+- When flipping a retailer to `active: false` in `data/retailers.json`, run `python -X utf8 -m scrapers.cleanup --retailer <id>` to purge its residual prices + promos, and add it to `PURGED_DEACTIVATED_RETAILERS` in `scrapers/cleanup.py`.

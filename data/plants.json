@@ -3957,6 +3957,7 @@
   },
   {
     "id": "saucer-magnolia",
+    "active": false,
     "common_name": "Saucer Magnolia",
     "botanical_name": "Magnolia x soulangeana",
     "aliases": [
@@ -5441,6 +5442,7 @@
   },
   {
     "id": "wax-leaf-privet",
+    "active": false,
     "common_name": "Wax Leaf Privet",
     "botanical_name": "Ligustrum japonicum",
     "aliases": [
@@ -5822,6 +5824,7 @@
   },
   {
     "id": "zz-plant",
+    "active": false,
     "common_name": "ZZ Plant",
     "botanical_name": "Zamioculcas zamiifolia",
     "aliases": [

@@ -101,6 +101,54 @@ def load_previous_manifest() -> dict:
     return {}
 
 
+def merge_manifest(prev_manifest: dict, new_entries: list[dict]) -> dict:
+    """Merge new per-retailer results into the previous manifest.
+
+    CI runs each retailer as its own `python -m scrapers.runner --retailer X`
+    step. Without merging, each invocation would overwrite the manifest with
+    only that one retailer's data — losing everyone else. This helper takes
+    the on-disk manifest and replaces (or adds) entries for the retailers in
+    new_entries, leaving untouched retailers alone.
+
+    Price records are keyed by ``f"{plant_id}:{retailer_id}"``. We purge
+    any keys matching a retailer we just scraped before overlaying the new
+    records, so stale prices for that retailer cannot linger.
+
+    The returned dict has fresh top-level totals, a timestamp set to "now",
+    and a merged ``retailers`` list. Callers still need to set
+    ``degraded_retailers`` / ``pipeline_status`` after they compute health.
+    """
+    new_retailer_ids = {e["retailer_id"] for e in new_entries}
+
+    # Start from previous retailer entries, drop any being replaced this run
+    merged_entries = [
+        e for e in prev_manifest.get("retailers", [])
+        if e.get("retailer_id") not in new_retailer_ids
+    ] + list(new_entries)
+
+    # Start from previous prices, drop any keys whose retailer is being
+    # replaced this run, then overlay this run's new records
+    merged_prices: dict = {}
+    for key, val in prev_manifest.get("prices", {}).items():
+        if ":" in key:
+            rid = key.rsplit(":", 1)[1]
+            if rid in new_retailer_ids:
+                continue
+        merged_prices[key] = val
+    for entry in new_entries:
+        for key, val in entry.get("price_records", {}).items():
+            merged_prices[key] = val
+
+    return {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "retailers": merged_entries,
+        "total_prices_collected": sum(e.get("prices_collected", 0) for e in merged_entries),
+        "total_anomalies": sum(len(e.get("anomalies", [])) for e in merged_entries),
+        "anomalies": [a for e in merged_entries for a in e.get("anomalies", [])],
+        "prices": merged_prices,
+    }
+
+
 def check_price_anomaly(plant_id: str, retailer_id: str, new_prices: dict, prev_manifest: dict) -> list[str]:
     """Check for suspicious price changes (>50% swing)."""
     warnings = []
@@ -550,47 +598,41 @@ def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = 
     # Load previous manifest for anomaly detection
     prev_manifest = load_previous_manifest()
 
-    # Scrape each retailer
-    manifest_entries = []
-    all_anomalies = []
-    total_prices = 0
+    # Scrape each retailer (this run's results)
+    this_run_entries = []
+    this_run_anomalies = []
 
     for retailer in active_retailers:
         entry = scrape_retailer(retailer, plant_ids, prev_manifest, dry_run)
-        manifest_entries.append(entry)
-        all_anomalies.extend(entry.get("anomalies", []))
-        total_prices += entry.get("prices_collected", 0)
+        this_run_entries.append(entry)
+        this_run_anomalies.extend(entry.get("anomalies", []))
 
-    # Save manifest
-    manifest = {
-        "timestamp": datetime.now(timezone.utc).isoformat(),
-        "retailers": manifest_entries,
-        "total_prices_collected": total_prices,
-        "total_anomalies": len(all_anomalies),
-        "anomalies": all_anomalies,
-        "prices": {},
-    }
-    # Merge price records from all retailers
-    for entry in manifest_entries:
-        for key, val in entry.get("price_records", {}).items():
-            manifest["prices"][key] = val
+    # Merge this run's results into the existing manifest.
+    # CI runs each retailer in its own `python -m scrapers.runner --retailer X`
+    # invocation, so we must preserve other retailers' entries from the previous
+    # manifest rather than overwriting them. On a full run (no --retailer), every
+    # active retailer is in this_run_entries and the merge effectively replaces
+    # everything anyway.
+    manifest = merge_manifest(prev_manifest, this_run_entries)
 
     if not dry_run:
         with open(MANIFEST_PATH, "w", encoding="utf-8") as f:
             json.dump(manifest, f, indent=2, ensure_ascii=False)
         logger.info(f"\nManifest saved to {MANIFEST_PATH}")
 
-    # Summary
+    # Summary — log only the retailers this invocation actually scraped
     logger.info(f"\n{'=' * 60}")
     logger.info("SCRAPE SUMMARY")
     logger.info(f"{'=' * 60}")
-    for entry in manifest_entries:
+    this_run_total_prices = 0
+    for entry in this_run_entries:
         status = entry.get("status", "unknown")
         rid = entry["retailer_id"]
         if status == "completed":
             found = entry.get("products_found", 0)
             expected = entry.get("products_expected", 0)
             prices = entry.get("prices_collected", 0)
+            this_run_total_prices += prices
             errors = entry.get("products_error", 0)
             pct = (found / expected * 100) if expected else 0
             flag = " !!!" if pct < 80 else ""
@@ -600,12 +642,13 @@ def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = 
         elif status == "dry_run":
             logger.info(f"  {rid}: DRY RUN — {entry.get('products_mapped', 0)} mapped")
 
-    if all_anomalies:
-        logger.warning(f"\n{len(all_anomalies)} PRICE ANOMALIES DETECTED:")
-        for a in all_anomalies:
+    if this_run_anomalies:
+        logger.warning(f"\n{len(this_run_anomalies)} PRICE ANOMALIES DETECTED:")
+        for a in this_run_anomalies:
             logger.warning(f"  {a}")
 
-    logger.info(f"\nTotal prices collected: {total_prices}")
+    logger.info(f"\nTotal prices collected (this run): {this_run_total_prices}")
+    logger.info(f"Total prices in manifest (all retailers): {manifest['total_prices_collected']}")
 
     # Promo code scraping — runs after price scraping, only on full runs
     if not retailer_filter and not skip_promos:
@@ -626,16 +669,18 @@ def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = 
         else:
             logger.info("\nRecovery: no time budget remaining — skipping")
 
-    # Check per-retailer health — degraded retailers are flagged, not fatal
-    degraded_retailers = []
-    for entry in manifest_entries:
+    # Check per-retailer health — degraded retailers are flagged, not fatal.
+    # Compute fresh health only for retailers we scraped this invocation;
+    # retailers already in the merged manifest from a previous run keep
+    # whatever health status they had. This matters for partial (CI) runs
+    # where only one retailer is scraped at a time.
+    for entry in this_run_entries:
         if entry.get("status") == "completed":
             found = entry.get("products_found", 0)
             expected = entry.get("products_expected", 1)
             hit_rate = found / expected if expected else 1.0
             if hit_rate < 0.8:
                 entry["health"] = "degraded"
-                degraded_retailers.append(entry["retailer_id"])
                 logger.warning(
                     f"  DEGRADED: {entry['retailer_id']} at {hit_rate:.0%} hit rate "
                     f"— flagged for manual handle review"
@@ -643,12 +688,19 @@ def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = 
             else:
                 entry["health"] = "healthy"
 
-    # Add pipeline-level health status to manifest
+    # Pipeline-level health status reflects ALL retailers in the merged manifest,
+    # not just the ones scraped this run.
+    degraded_retailers = [
+        e["retailer_id"] for e in manifest["retailers"]
+        if e.get("health") == "degraded"
+    ]
     manifest["degraded_retailers"] = degraded_retailers
     manifest["pipeline_status"] = "degraded" if degraded_retailers else "healthy"
 
-    if not dry_run and degraded_retailers:
-        # Re-save manifest with health fields
+    if not dry_run:
+        # Always re-save so pipeline_status/degraded_retailers reflect current state.
+        # The earlier save (before health computation) is kept as a safety net in
+        # case health computation crashes — we still want something on disk.
         with open(MANIFEST_PATH, "w", encoding="utf-8") as f:
             json.dump(manifest, f, indent=2, ensure_ascii=False)
 
