@@ -1,0 +1,32 @@
+{
+  "product": {
+    "id": 1001,
+    "title": "Pink Muhly Grass",
+    "handle": "pink-muhly-grass",
+    "body_html": "<p>Pink Muhly Grass (Muhlenbergia capillaris) is a stunning North American native ornamental grass prized for its spectacular pink plumes in fall.</p>\n<ul>\n<li><strong>Hardiness Zones:</strong> 6-11</li>\n<li><strong>Sun Exposure:</strong> Full Sun</li>\n<li><strong>Mature Height:</strong> 3-4 ft</li>\n<li><strong>Mature Width:</strong> 3-4 ft</li>\n<li><strong>Bloom Time:</strong> Late Summer to Fall</li>\n<li><strong>Plant Type:</strong> Ornamental Grass</li>\n</ul>",
+    "vendor": "Nature Hills Nursery",
+    "product_type": "Grasses",
+    "tags": ["grass", "ornamental", "native"],
+    "variants": [
+      {
+        "id": 2001,
+        "title": "#1 Container",
+        "price": "24.99",
+        "compare_at_price": null,
+        "sku": "NH-PMG-1",
+        "available": true,
+        "option1": "#1 Container"
+      },
+      {
+        "id": 2002,
+        "title": "#3 Container",
+        "price": "44.99",
+        "compare_at_price": null,
+        "sku": "NH-PMG-3",
+        "available": true,
+        "option1": "#3 Container"
+      }
+    ],
+    "images": []
+  }
+}

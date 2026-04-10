@@ -1,0 +1,23 @@
+{
+  "product": {
+    "id": 3001,
+    "title": "Pink Muhly Grass - Muhlenbergia capillaris",
+    "handle": "pink-muhly-grass-muhlenbergia",
+    "body_html": "<div class=\"product-description\">\n<p>The Pink Muhly Grass is one of the showiest ornamental grasses you can grow. In fall, this grass erupts with cotton-candy pink flower plumes.</p>\n<table>\n<tr><td>Zones</td><td>6, 7, 8, 9, 10, 11</td></tr>\n<tr><td>Sun</td><td>Full Sun</td></tr>\n<tr><td>Height</td><td>3-4 feet tall</td></tr>\n<tr><td>Width</td><td>3-4 feet wide</td></tr>\n<tr><td>Bloom Season</td><td>Fall</td></tr>\n<tr><td>Type</td><td>Ornamental Grass</td></tr>\n</table>\n</div>",
+    "vendor": "PlantingTree",
+    "product_type": "Ornamental Grasses",
+    "tags": ["grass", "muhly", "native"],
+    "variants": [
+      {
+        "id": 4001,
+        "title": "1 Gallon",
+        "price": "19.99",
+        "compare_at_price": null,
+        "sku": "PT-PMG-1G",
+        "available": true,
+        "option1": "1 Gallon"
+      }
+    ],
+    "images": []
+  }
+}

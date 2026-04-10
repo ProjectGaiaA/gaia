@@ -1,0 +1,469 @@
+{
+  "big-blue-liriope": {
+    "retailer_count": 3,
+    "reconciled": {
+      "zones": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "sun": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "mature_size": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "bloom_time": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "type": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      }
+    },
+    "current": {
+      "zones": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "sun": "Full sun to full shade",
+      "mature_size": "12-18 in tall x 12-18 in wide",
+      "bloom_time": "Late summer to early fall",
+      "type": "Evergreen perennial groundcover"
+    }
+  },
+  "ajuga-chocolate-chip": {
+    "retailer_count": 2,
+    "reconciled": {
+      "zones": {
+        "value": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "sun": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "mature_size": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "bloom_time": {
+        "value": "mats",
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "type": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      }
+    },
+    "current": {
+      "zones": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "sun": "Full sun to part shade",
+      "mature_size": "2-4 in tall x 6-12 in wide",
+      "bloom_time": "Late spring to early summer",
+      "type": "Evergreen perennial groundcover"
+    }
+  },
+  "creeping-thyme": {
+    "retailer_count": 2,
+    "reconciled": {
+      "zones": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "sun": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "mature_size": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "bloom_time": {
+        "value": "in early to midsummer",
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "type": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      }
+    },
+    "current": {
+      "zones": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "sun": "Full sun",
+      "mature_size": "1-3 in tall x 12-18 in wide",
+      "bloom_time": "Early to mid-summer",
+      "type": "Herbaceous perennial groundcover"
+    }
+  },
+  "sedum-angelina": {
+    "retailer_count": 2,
+    "reconciled": {
+      "zones": {
+        "value": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "sun": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "mature_size": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "bloom_time": {
+        "value": "s attract loads of",
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "type": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      }
+    },
+    "current": {
+      "zones": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "sun": "Full sun to part shade",
+      "mature_size": "3-6 in tall x 12-24 in wide",
+      "bloom_time": "Mid to late summer",
+      "type": "Herbaceous perennial groundcover"
+    }
+  },
+  "blue-rug-juniper": {
+    "retailer_count": 2,
+    "reconciled": {
+      "zones": {
+        "value": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "sun": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "mature_size": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "bloom_time": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "type": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      }
+    },
+    "current": {
+      "zones": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "sun": "Full sun",
+      "mature_size": "4-6 in tall x 6-8 ft wide",
+      "bloom_time": "Non-flowering",
+      "type": "Evergreen shrub groundcover"
+    }
+  },
+  "pink-muhly-grass": {
+    "retailer_count": 4,
+    "reconciled": {
+      "zones": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "sun": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "mature_size": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "bloom_time": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "type": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      }
+    },
+    "current": {
+      "zones": [
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "sun": "Full sun",
+      "mature_size": "3-4 ft tall x 3-4 ft wide",
+      "bloom_time": "Late summer to fall",
+      "type": "Ornamental grass"
+    }
+  },
+  "purple-fountain-grass": {
+    "retailer_count": 1,
+    "reconciled": {
+      "zones": {
+        "value": [
+          9,
+          10,
+          11
+        ],
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "sun": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "mature_size": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "bloom_time": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "type": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      }
+    },
+    "current": {
+      "zones": [
+        9,
+        10,
+        11
+      ],
+      "sun": "Full sun",
+      "mature_size": "3-5 ft tall x 2-4 ft wide",
+      "bloom_time": "Mid-summer to fall",
+      "type": "Ornamental grass"
+    }
+  },
+  "hameln-dwarf-fountain-grass": {
+    "retailer_count": 1,
+    "reconciled": {
+      "zones": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "sun": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "mature_size": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "bloom_time": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "type": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      }
+    },
+    "current": {
+      "zones": [
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "sun": "Full sun to part shade",
+      "mature_size": "2-3 ft tall x 2-3 ft wide",
+      "bloom_time": "Mid-summer to fall",
+      "type": "Ornamental grass"
+    }
+  },
+  "blue-fescue-elijah-blue": {
+    "retailer_count": 3,
+    "reconciled": {
+      "zones": {
+        "value": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "sun": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "mature_size": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "bloom_time": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "type": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      }
+    },
+    "current": {
+      "zones": [
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "sun": "Full sun",
+      "mature_size": "8-12 in tall x 8-12 in wide",
+      "bloom_time": "Early to mid-summer",
+      "type": "Semi-evergreen ornamental grass"
+    }
+  },
+  "pampas-grass": {
+    "retailer_count": 2,
+    "reconciled": {
+      "zones": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "sun": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "mature_size": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "bloom_time": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      },
+      "type": {
+        "value": null,
+        "source": "llm_fallback",
+        "flagged": true
+      }
+    },
+    "current": {
+      "zones": [
+        7,
+        8,
+        9,
+        10
+      ],
+      "sun": "Full sun",
+      "mature_size": "8-12 ft tall x 4-6 ft wide",
+      "bloom_time": "Late summer to fall",
+      "type": "Ornamental grass"
+    }
+  }
+}

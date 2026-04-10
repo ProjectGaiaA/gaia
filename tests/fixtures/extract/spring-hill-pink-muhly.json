@@ -1,0 +1,23 @@
+{
+  "product": {
+    "id": 7001,
+    "title": "Pink Muhly Grass",
+    "handle": "pink-muhly-ornamental-grass",
+    "body_html": "<p>Pink Muhly Grass brings stunning pink clouds of color to your landscape each fall. This native ornamental grass is extremely easy to grow.</p>\n<p>Hardiness Zone: 7-10</p>\n<p>Light Needs: Full sun to part shade</p>\n<p>Mature Height: 3 to 4 ft.</p>\n<p>Mature Width: 3 to 4 ft.</p>\n<p>Bloom Period: Late Summer, Fall</p>\n<p>Plant Type: Perennial Grass</p>",
+    "vendor": "Spring Hill Nurseries",
+    "product_type": "Ornamental Grasses",
+    "tags": ["grass", "native"],
+    "variants": [
+      {
+        "id": 8001,
+        "title": "Bare Root",
+        "price": "14.99",
+        "compare_at_price": null,
+        "sku": "SH-PMG-BR",
+        "available": true,
+        "option1": "Bare Root"
+      }
+    ],
+    "images": []
+  }
+}

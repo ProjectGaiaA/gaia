@@ -1,0 +1,23 @@
+{
+  "product": {
+    "id": 9001,
+    "title": "Blue Fescue Elijah Blue",
+    "handle": "blue-fescue-elijah-blue",
+    "body_html": "<p>Beautiful blue ornamental grass. Perfect for borders and rock gardens. Zones 4-8.</p>",
+    "vendor": "Test Retailer",
+    "product_type": "Grasses",
+    "tags": ["grass"],
+    "variants": [
+      {
+        "id": 9002,
+        "title": "1 Gallon",
+        "price": "12.99",
+        "compare_at_price": null,
+        "sku": "TEST-BF-1",
+        "available": true,
+        "option1": "1 Gallon"
+      }
+    ],
+    "images": []
+  }
+}

@@ -1,0 +1,1077 @@
+{
+  "timestamp": "2026-04-09T13:12:57.109510",
+  "retailers_checked": [
+    "nature-hills",
+    "spring-hill",
+    "planting-tree",
+    "fast-growing-trees",
+    "proven-winners-direct",
+    "brecks",
+    "plant-addicts",
+    "bloomscape"
+  ],
+  "candidates_total": 37,
+  "passing": 34,
+  "failing": 3,
+  "per_retailer": {
+    "nature-hills": {
+      "big-blue-liriope": {
+        "handle": "liriope-big-blue",
+        "title": "Big Blue Liriope",
+        "score": 1.0
+      },
+      "ajuga-chocolate-chip": {
+        "handle": "ajuga-chocolate-chip",
+        "title": "Chocolate Chip Ajuga",
+        "score": 1.0
+      },
+      "creeping-thyme": {
+        "handle": "elfin-creeping-thyme",
+        "title": "Elfin Creeping Thyme",
+        "score": 1.0
+      },
+      "sedum-angelina": {
+        "handle": "sedum-angelina",
+        "title": "Angelina Sedum",
+        "score": 1.0
+      },
+      "blue-rug-juniper": {
+        "handle": "juniper-blue-rug",
+        "title": "Blue Rug Juniper Bush",
+        "score": 1.0
+      },
+      "mondo-grass": {
+        "handle": "dwarf-mondo-grass",
+        "title": "Dwarf Mondo Grass",
+        "score": 1.0
+      },
+      "pink-muhly-grass": {
+        "handle": "pink-muhly-grass",
+        "title": "Pink Muhly Grass",
+        "score": 1.0
+      },
+      "purple-fountain-grass": {
+        "handle": "dwarf-purple-fountain-grass",
+        "title": "Dwarf Purple Fountain Grass",
+        "score": 1.0
+      },
+      "hameln-dwarf-fountain-grass": {
+        "handle": "grass-dwarf-fountain",
+        "title": "Dwarf Fountain Grass",
+        "score": 0.75
+      },
+      "blue-fescue-elijah-blue": {
+        "handle": "grass-elijah-blue-fescue",
+        "title": "Elijah Blue Fescue Grass",
+        "score": 1.0
+      },
+      "pampas-grass": {
+        "handle": "grass-northern-pampas",
+        "title": "Northern Pampas Grass",
+        "score": 1.0
+      },
+      "astilbe": {
+        "handle": "astilbe-montgomery",
+        "title": "Montgomery Astilbe",
+        "score": 1.0
+      },
+      "heuchera-coral-bells": {
+        "handle": "coral-bells-midnight-rose",
+        "title": "Midnight Rose Coral Bells",
+        "score": 0.667
+      },
+      "bleeding-heart": {
+        "handle": "fringed-bleeding-heart",
+        "title": "Fringed Bleeding Heart",
+        "score": 1.0
+      },
+      "purple-coneflower": {
+        "handle": "coneflower-magnus",
+        "title": "Magnus Purple Coneflower",
+        "score": 1.0
+      },
+      "happy-returns-daylily": {
+        "handle": "daylily-happy-returns",
+        "title": "Happy Returns Daylily",
+        "score": 1.0
+      },
+      "bee-balm": {
+        "handle": "beebalm-jacob-cline",
+        "title": "Jacob Cline Bee Balm",
+        "score": 1.0
+      },
+      "catmint-walkers-low": {
+        "handle": "catmint-walkers-low",
+        "title": "Walker's Low Catmint",
+        "score": 1.0
+      },
+      "russian-sage": {
+        "handle": "russian-sage",
+        "title": "Russian Sage",
+        "score": 1.0
+      },
+      "october-glory-maple": {
+        "handle": "red-maple-october-glory",
+        "title": "October Glory\u00ae Red Maple Tree",
+        "score": 1.0
+      },
+      "heritage-river-birch": {
+        "handle": "heritage-birch-tree",
+        "title": "Heritage\u00ae River Birch",
+        "score": 1.0
+      },
+      "red-sunset-maple": {
+        "handle": "red-maple-red-sunset",
+        "title": "Red Sunset\u00ae Maple Tree",
+        "score": 1.0
+      },
+      "sweetbay-magnolia": {
+        "handle": "moonglow-sweetbay-magnolia",
+        "title": "Moonglow\u00ae Sweetbay Magnolia",
+        "score": 1.0
+      },
+      "bald-cypress": {
+        "handle": "lindseys-skyward-baldcypress",
+        "title": "Lindsey's Skyward\u2122 Bald Cypress",
+        "score": 1.0
+      },
+      "rose-of-sharon": {
+        "handle": "rose-of-sharon-lucy",
+        "title": "Lucy Rose of Sharon",
+        "score": 1.0
+      },
+      "wine-and-roses-weigela": {
+        "handle": "weigela-wine-roses",
+        "title": "Wine & Roses\u00ae Weigela",
+        "score": 1.0
+      },
+      "gardenia-frost-proof": {
+        "handle": "frost-proof-gardenia",
+        "title": "Frost Proof Gardenia",
+        "score": 1.0
+      },
+      "dwarf-alberta-spruce": {
+        "handle": "dwarf-alberta-spruce",
+        "title": "Dwarf Alberta Spruce",
+        "score": 1.0
+      },
+      "autumn-royalty-encore-azalea": {
+        "handle": "autumn-royalty-encore-azalea",
+        "title": "Autumn Royalty\u00ae Encore\u00ae Azalea",
+        "score": 1.0
+      },
+      "autumn-twist-encore-azalea": {
+        "handle": "autumn-twist-encore-azalea",
+        "title": "Encore\u00ae Autumn Twist\u00ae Azalea",
+        "score": 1.0
+      },
+      "autumn-angel-encore-azalea": {
+        "handle": "autumn-twist-encore-azalea",
+        "title": "Encore\u00ae Autumn Twist\u00ae Azalea",
+        "score": 0.75
+      },
+      "nandina-heavenly-bamboo": {
+        "handle": "heavenly-bamboo-firepower",
+        "title": "Firepower Heavenly Bamboo",
+        "score": 0.667
+      },
+      "santa-rosa-plum": {
+        "handle": "plum-tree-santa-rosa",
+        "title": "Santa Rosa Plum Tree",
+        "score": 1.0
+      },
+      "echinacea-powwow-wild-berry": {
+        "handle": "pow-wow-wild-berry-coneflower",
+        "title": "PowWow\u00ae Wild Berry Coneflower",
+        "score": 0.75
+      }
+    },
+    "spring-hill": {
+      "big-blue-liriope": {
+        "handle": "liriope",
+        "title": "Liriope",
+        "score": 0.9
+      },
+      "blue-rug-juniper": {
+        "handle": "blue-star-juniper",
+        "title": "Blue Star Juniper",
+        "score": 0.667
+      },
+      "mondo-grass": {
+        "handle": "black-mondo-grass",
+        "title": "Black Mondo Grass",
+        "score": 1.0
+      },
+      "pink-muhly-grass": {
+        "handle": "pink-muhly-grass",
+        "title": "Pink Muhly Grass",
+        "score": 1.0
+      },
+      "purple-fountain-grass": {
+        "handle": "cherry-sparkler-fountain-grass",
+        "title": "Cherry Sparkler Fountain Grass",
+        "score": 0.667
+      },
+      "blue-fescue-elijah-blue": {
+        "handle": "elijah-blue-fescue",
+        "title": "Elijah Blue Fescue",
+        "score": 1.0
+      },
+      "pampas-grass": {
+        "handle": "pink-pampas-grass",
+        "title": "Pink Pampas Grass",
+        "score": 1.0
+      },
+      "astilbe": {
+        "handle": "astilbe-garden-mix",
+        "title": "Astilbe Garden Mix",
+        "score": 1.0
+      },
+      "heuchera-coral-bells": {
+        "handle": "electric-plum-heuchera",
+        "title": "Electric Plum Heuchera",
+        "score": 0.7
+      },
+      "bleeding-heart": {
+        "handle": "bleeding-heart-luxuriant",
+        "title": "Bleeding Heart Luxuriant",
+        "score": 1.0
+      },
+      "purple-coneflower": {
+        "handle": "coneflower-purple-magnus",
+        "title": "Coneflower Purple Magnus",
+        "score": 1.0
+      },
+      "happy-returns-daylily": {
+        "handle": "happy-returns-jumbo-daylily",
+        "title": "Happy Returns Jumbo Daylily",
+        "score": 1.0
+      },
+      "bee-balm": {
+        "handle": "bee-balm-mix",
+        "title": "Bee Balm Mix",
+        "score": 1.0
+      },
+      "russian-sage": {
+        "handle": "blue-jean-baby-russian-sage",
+        "title": "Blue Jean Baby Russian Sage",
+        "score": 1.0
+      },
+      "october-glory-maple": {
+        "handle": "october-glory-maple",
+        "title": "October Glory Maple",
+        "score": 1.0
+      },
+      "red-sunset-maple": {
+        "handle": "esk-sunset-japanese-maple",
+        "title": "Esk Sunset Japanese Maple Tree",
+        "score": 0.667
+      },
+      "rose-of-sharon": {
+        "handle": "bluebird-hardy-hibiscus",
+        "title": "Blue Bird Rose of Sharon",
+        "score": 1.0
+      },
+      "dwarf-alberta-spruce": {
+        "handle": "dwarf-alberta-spruce",
+        "title": "Dwarf Alberta Spruce",
+        "score": 1.0
+      },
+      "echinacea-powwow-wild-berry": {
+        "handle": "pow-wow-wild-berry-coneflower",
+        "title": "PowWow\u00ae Wild Berry Coneflower",
+        "score": 0.75
+      }
+    },
+    "planting-tree": {
+      "big-blue-liriope": {
+        "handle": "big-blue-liriope",
+        "title": "Big Blue Liriope",
+        "score": 1.0
+      },
+      "ajuga-chocolate-chip": {
+        "handle": "ajuga-chocolate-chip",
+        "title": "Ajuga Chocolate Chip",
+        "score": 1.0
+      },
+      "sedum-angelina": {
+        "handle": "sedum-angelina",
+        "title": "Sedum Angelina",
+        "score": 1.0
+      },
+      "blue-rug-juniper": {
+        "handle": "blue-rug-juniper",
+        "title": "Blue Rug Juniper",
+        "score": 1.0
+      },
+      "mondo-grass": {
+        "handle": "black-mondo-grass",
+        "title": "Black Mondo Grass",
+        "score": 1.0
+      },
+      "pink-muhly-grass": {
+        "handle": "pink-muhly-grass",
+        "title": "Pink Muhly Grass",
+        "score": 1.0
+      },
+      "purple-fountain-grass": {
+        "handle": "cassian-fountain-grass",
+        "title": "Cassian Fountain Grass",
+        "score": 0.667
+      },
+      "blue-fescue-elijah-blue": {
+        "handle": "blue-fescue-grass",
+        "title": "Blue Fescue Grass",
+        "score": 0.667
+      },
+      "pampas-grass": {
+        "handle": "pampas-grass",
+        "title": "Pampas Grass",
+        "score": 1.0
+      },
+      "heuchera-coral-bells": {
+        "handle": "heuchera-silver-scrolls",
+        "title": "Silver Scrolls Coral Bells Heuchera",
+        "score": 1.0
+      },
+      "catmint-walkers-low": {
+        "handle": "walkers-low-catmint",
+        "title": "Walkers Low Catmint",
+        "score": 1.0
+      },
+      "october-glory-maple": {
+        "handle": "october-glory-maple",
+        "title": "October Glory Maple",
+        "score": 1.0
+      },
+      "heritage-river-birch": {
+        "handle": "heritage-river-birch",
+        "title": "Heritage River Birch",
+        "score": 1.0
+      },
+      "red-sunset-maple": {
+        "handle": "red-sunset-maple-tree",
+        "title": "Red Sunset Maple",
+        "score": 1.0
+      },
+      "sweetbay-magnolia": {
+        "handle": "sweetbay-magnolia",
+        "title": "Sweetbay Magnolia",
+        "score": 1.0
+      },
+      "rose-of-sharon": {
+        "handle": "pink-chiffon-rose-of-sharon",
+        "title": "Pink Chiffon Rose of Sharon",
+        "score": 1.0
+      },
+      "wine-and-roses-weigela": {
+        "handle": "wine-roses-weigela",
+        "title": "Wine & Roses\u00ae Weigela",
+        "score": 1.0
+      },
+      "gardenia-frost-proof": {
+        "handle": "frost-proof-gardenia",
+        "title": "Frost Proof Gardenia",
+        "score": 1.0
+      },
+      "dwarf-alberta-spruce": {
+        "handle": "dwarf-alberta-spruce",
+        "title": "Dwarf Alberta Spruce",
+        "score": 1.0
+      },
+      "autumn-royalty-encore-azalea": {
+        "handle": "autumn-royalty-encore-azalea",
+        "title": "Autumn Royalty\u00ae Encore\u00ae Azalea",
+        "score": 1.0
+      },
+      "autumn-twist-encore-azalea": {
+        "handle": "autumn-coral-azalea",
+        "title": "Autumn Coral\u00ae Encore\u00ae Azalea",
+        "score": 0.75
+      },
+      "autumn-angel-encore-azalea": {
+        "handle": "autumn-angel-encore-azalea",
+        "title": "Autumn Angel\u00ae Encore\u00ae Azalea",
+        "score": 1.0
+      },
+      "nandina-heavenly-bamboo": {
+        "handle": "heavenly-bamboo-nandina",
+        "title": "Heavenly Bamboo Nandina",
+        "score": 1.0
+      },
+      "santa-rosa-plum": {
+        "handle": "santa-rosa-plum",
+        "title": "Santa Rosa Plum",
+        "score": 1.0
+      },
+      "dwarf-cavendish-banana": {
+        "handle": "dwarf-cavendish-banana-tree",
+        "title": "Dwarf Cavendish Banana Tree",
+        "score": 1.0
+      }
+    },
+    "fast-growing-trees": {
+      "big-blue-liriope": {
+        "handle": "big-blue-liriope-plant",
+        "title": "Big Blue Liriope Plant",
+        "score": 1.0
+      },
+      "ajuga-chocolate-chip": {
+        "handle": "chocolate-chip-ajuga-plant",
+        "title": "Chocolate Chip Ajuga Plant",
+        "score": 1.0
+      },
+      "sedum-angelina": {
+        "handle": "angelina-sedum-plant",
+        "title": "Angelina Sedum Plant",
+        "score": 1.0
+      },
+      "blue-rug-juniper": {
+        "handle": "blue-rug-juniper",
+        "title": "Blue Rug Juniper Groundcover",
+        "score": 1.0
+      },
+      "mondo-grass": {
+        "handle": "black-mondo-grass",
+        "title": "Black Mondo Grass",
+        "score": 1.0
+      },
+      "pink-muhly-grass": {
+        "handle": "pink-muhly-grass",
+        "title": "Pink Muhly Grass",
+        "score": 1.0
+      },
+      "purple-fountain-grass": {
+        "handle": "purple-fountain-grass",
+        "title": "Purple Fountain Grass",
+        "score": 1.0
+      },
+      "hameln-dwarf-fountain-grass": {
+        "handle": "dwarf-fountain-grass",
+        "title": "Dwarf Fountain Grass",
+        "score": 0.9
+      },
+      "blue-fescue-elijah-blue": {
+        "handle": "f",
+        "title": "Chandler Pummelo Tree",
+        "score": 0.9
+      },
+      "pampas-grass": {
+        "handle": "pampas-grass",
+        "title": "Pampas Grass",
+        "score": 1.0
+      },
+      "astilbe": {
+        "handle": "bridal-veil-astilbe-plant",
+        "title": "Bridal Veil\u00ae Astilbe Plant",
+        "score": 1.0
+      },
+      "heuchera-coral-bells": {
+        "handle": "obsidian-coral-bells-heuchera",
+        "title": "Obsidian Coral Bells (Heuchera)",
+        "score": 1.0
+      },
+      "purple-coneflower": {
+        "handle": "f",
+        "title": "Chandler Pummelo Tree",
+        "score": 0.9
+      },
+      "happy-returns-daylily": {
+        "handle": "happy-returns-daylily",
+        "title": "Happy Returns Daylily",
+        "score": 1.0
+      },
+      "catmint-walkers-low": {
+        "handle": "walkers-low-nepeta-catmint",
+        "title": "Walker's Low Nepeta Catmint Plant",
+        "score": 1.0
+      },
+      "russian-sage": {
+        "handle": "russian-sage",
+        "title": "Russian Sage",
+        "score": 1.0
+      },
+      "october-glory-maple": {
+        "handle": "octoberglory",
+        "title": "October Glory Red Maple Tree",
+        "score": 1.0
+      },
+      "heritage-river-birch": {
+        "handle": "heritage-river-birch",
+        "title": "Heritage\u00ae River Birch",
+        "score": 1.0
+      },
+      "red-sunset-maple": {
+        "handle": "red-sunset-maple-tree",
+        "title": "Red Sunset\u00ae Maple Tree",
+        "score": 1.0
+      },
+      "sweetbay-magnolia": {
+        "handle": "sweetbaymagnolia",
+        "title": "Sweetbay Magnolia Tree",
+        "score": 1.0
+      },
+      "rose-of-sharon": {
+        "handle": "lavender-rose-sharon-althea-tree",
+        "title": "Lavender Rose of Sharon Althea Tree",
+        "score": 1.0
+      },
+      "wine-and-roses-weigela": {
+        "handle": "wine-roses-weigela-shrub",
+        "title": "Proven Winners\u00ae Wine & Roses\u00ae Weigela Shrub",
+        "score": 1.0
+      },
+      "spirea-goldflame": {
+        "handle": "f",
+        "title": "Chandler Pummelo Tree",
+        "score": 0.9
+      },
+      "gardenia-frost-proof": {
+        "handle": "frost-proof-gardenia",
+        "title": "Frost Proof Gardenia Shrub",
+        "score": 1.0
+      },
+      "dwarf-alberta-spruce": {
+        "handle": "dwarf-alberta-spruce",
+        "title": "Dwarf Alberta Spruce",
+        "score": 1.0
+      },
+      "autumn-royalty-encore-azalea": {
+        "handle": "autumnroyaltyencoreazalea",
+        "title": "Autumn Royalty\u00ae Encore\u00ae Azalea",
+        "score": 1.0
+      },
+      "autumn-twist-encore-azalea": {
+        "handle": "autumn-twist-encore-azalea",
+        "title": "Autumn Twist\u00ae Encore\u00ae Azalea",
+        "score": 1.0
+      },
+      "autumn-angel-encore-azalea": {
+        "handle": "autumnangelencoreazalea",
+        "title": "Autumn Angel\u00ae Encore\u00ae Azalea",
+        "score": 1.0
+      },
+      "nandina-heavenly-bamboo": {
+        "handle": "heavenly-bamboo-nandina-shrub",
+        "title": "Heavenly Bamboo Nandina Shrub",
+        "score": 1.0
+      },
+      "santa-rosa-plum": {
+        "handle": "santarosaplum",
+        "title": "Santa Rosa Plum Tree",
+        "score": 1.0
+      },
+      "dwarf-cavendish-banana": {
+        "handle": "dwarf-cavendish-banana-tree",
+        "title": "Dwarf Cavendish Banana Tree",
+        "score": 1.0
+      },
+      "vinca-minor": {
+        "handle": "vinca-minor-periwinkle-plant",
+        "title": "Vinca Minor Periwinkle Vine",
+        "score": 1.0
+      },
+      "echinacea-powwow-wild-berry": {
+        "handle": "powwow-wild-berry-coneflower",
+        "title": "PowWow\u00ae Wild Berry Coneflower (Echinacea)",
+        "score": 1.0
+      }
+    },
+    "proven-winners-direct": {
+      "purple-fountain-grass": {
+        "handle": "graceful-grasses-fireworks-fountain-grass",
+        "title": "Graceful Grasses\u00ae 'Fireworks' Purple Fountain Grass (Pennisetum setaceum 'Rubrum')",
+        "score": 1.0
+      },
+      "astilbe": {
+        "handle": "dark-side-of-the-moon-astilbe",
+        "title": "'Dark Side of the Moon' Astilbe (Astilbe hybrid)",
+        "score": 1.0
+      },
+      "heuchera-coral-bells": {
+        "handle": "dolce-apple-twist-coral-bells",
+        "title": "Dolce\u00ae 'Apple Twist' Coral Bells (Heuchera)",
+        "score": 1.0
+      },
+      "bleeding-heart": {
+        "handle": "pink-diamonds-fern-leaved-bleeding-heart",
+        "title": "'Pink Diamonds' Fern-leaved Bleeding Heart (Dicentra hybrid)",
+        "score": 1.0
+      },
+      "bee-balm": {
+        "handle": "leading-lady-amethyst-bee-balm",
+        "title": "'Leading Lady Amethyst' Bee Balm (Monarda hybrid)",
+        "score": 1.0
+      },
+      "russian-sage": {
+        "handle": "sage-advice-russian-sage",
+        "title": "'Sage Advice' Russian Sage (Perovskia atriplicifolia)",
+        "score": 1.0
+      },
+      "rose-of-sharon": {
+        "handle": "azurri-blue-satin-rose-of-sharon",
+        "title": "Azurri Blue Satin\u00ae Rose of Sharon (Hibiscus syriacus)",
+        "score": 1.0
+      },
+      "wine-and-roses-weigela": {
+        "handle": "wine-and-roses-weigela",
+        "title": "Wine & Roses\u00ae Weigela (florida)",
+        "score": 1.0
+      }
+    },
+    "brecks": {
+      "big-blue-liriope": {
+        "handle": "big-blue-sea-holly",
+        "title": "Big Blue Sea Holly",
+        "score": 0.667
+      },
+      "creeping-thyme": {
+        "handle": "red-creeping-thyme",
+        "title": "Red Creeping Thyme",
+        "score": 1.0
+      },
+      "mondo-grass": {
+        "handle": "edge-of-night-mondo-grass",
+        "title": "Edge of Night Mondo Grass",
+        "score": 1.0
+      },
+      "pink-muhly-grass": {
+        "handle": "cotton-candy-grass",
+        "title": "Pink Muhly Grass (Cotton Candy Grass)",
+        "score": 1.0
+      },
+      "purple-fountain-grass": {
+        "handle": "rose-fountain-grass",
+        "title": "Fountain Karley Rose Grass",
+        "score": 0.667
+      },
+      "blue-fescue-elijah-blue": {
+        "handle": "elijah-blue-fescue",
+        "title": "Elijah Blue Fescue",
+        "score": 1.0
+      },
+      "astilbe": {
+        "handle": "astilbe-deutschland-white",
+        "title": "Astilbe Deutschland White",
+        "score": 1.0
+      },
+      "heuchera-coral-bells": {
+        "handle": "palace-purple-heuchera",
+        "title": "Palace Purple Heuchera (Coral Bells)",
+        "score": 1.0
+      },
+      "bleeding-heart": {
+        "handle": "bacchanal-bleeding-heart",
+        "title": "Bacchanal Bleeding Heart",
+        "score": 1.0
+      },
+      "purple-coneflower": {
+        "handle": "purple-coneflower-super-sak",
+        "title": "Purple Coneflower Super Sak\u00ae",
+        "score": 1.0
+      },
+      "happy-returns-daylily": {
+        "handle": "happy-returns-reblooming-daylily",
+        "title": "Happy Returns Reblooming Daylily",
+        "score": 1.0
+      },
+      "bee-balm": {
+        "handle": "balm-bee-mixture",
+        "title": "Bee Balm Mixture  Super Sak\u00ae",
+        "score": 1.0
+      },
+      "russian-sage": {
+        "handle": "lacey-blue-russian-sage",
+        "title": "Lacey Blue Russian Sage",
+        "score": 1.0
+      },
+      "dwarf-alberta-spruce": {
+        "handle": "dwarf-alberta-tree-spruce",
+        "title": "Dwarf Alberta Spruce Tree",
+        "score": 1.0
+      }
+    },
+    "plant-addicts": {},
+    "bloomscape": {}
+  },
+  "per_candidate": {
+    "big-blue-liriope": {
+      "name": "Big Blue Liriope",
+      "retailers_found": 5,
+      "handles": {
+        "nature-hills": "liriope-big-blue",
+        "spring-hill": "liriope",
+        "planting-tree": "big-blue-liriope",
+        "fast-growing-trees": "big-blue-liriope-plant",
+        "brecks": "big-blue-sea-holly"
+      }
+    },
+    "ajuga-chocolate-chip": {
+      "name": "Ajuga Chocolate Chip",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "ajuga-chocolate-chip",
+        "planting-tree": "ajuga-chocolate-chip",
+        "fast-growing-trees": "chocolate-chip-ajuga-plant"
+      }
+    },
+    "creeping-thyme": {
+      "name": "Creeping Thyme",
+      "retailers_found": 2,
+      "handles": {
+        "nature-hills": "elfin-creeping-thyme",
+        "brecks": "red-creeping-thyme"
+      }
+    },
+    "sedum-angelina": {
+      "name": "Sedum Angelina",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "sedum-angelina",
+        "planting-tree": "sedum-angelina",
+        "fast-growing-trees": "angelina-sedum-plant"
+      }
+    },
+    "blue-rug-juniper": {
+      "name": "Blue Rug Juniper",
+      "retailers_found": 4,
+      "handles": {
+        "nature-hills": "juniper-blue-rug",
+        "spring-hill": "blue-star-juniper",
+        "planting-tree": "blue-rug-juniper",
+        "fast-growing-trees": "blue-rug-juniper"
+      }
+    },
+    "mondo-grass": {
+      "name": "Mondo Grass",
+      "retailers_found": 5,
+      "handles": {
+        "nature-hills": "dwarf-mondo-grass",
+        "spring-hill": "black-mondo-grass",
+        "planting-tree": "black-mondo-grass",
+        "fast-growing-trees": "black-mondo-grass",
+        "brecks": "edge-of-night-mondo-grass"
+      }
+    },
+    "pink-muhly-grass": {
+      "name": "Pink Muhly Grass",
+      "retailers_found": 5,
+      "handles": {
+        "nature-hills": "pink-muhly-grass",
+        "spring-hill": "pink-muhly-grass",
+        "planting-tree": "pink-muhly-grass",
+        "fast-growing-trees": "pink-muhly-grass",
+        "brecks": "cotton-candy-grass"
+      }
+    },
+    "purple-fountain-grass": {
+      "name": "Purple Fountain Grass",
+      "retailers_found": 6,
+      "handles": {
+        "nature-hills": "dwarf-purple-fountain-grass",
+        "spring-hill": "cherry-sparkler-fountain-grass",
+        "planting-tree": "cassian-fountain-grass",
+        "fast-growing-trees": "purple-fountain-grass",
+        "proven-winners-direct": "graceful-grasses-fireworks-fountain-grass",
+        "brecks": "rose-fountain-grass"
+      }
+    },
+    "hameln-dwarf-fountain-grass": {
+      "name": "Hameln Dwarf Fountain Grass",
+      "retailers_found": 2,
+      "handles": {
+        "nature-hills": "grass-dwarf-fountain",
+        "fast-growing-trees": "dwarf-fountain-grass"
+      }
+    },
+    "blue-fescue-elijah-blue": {
+      "name": "Blue Fescue Elijah Blue",
+      "retailers_found": 5,
+      "handles": {
+        "nature-hills": "grass-elijah-blue-fescue",
+        "spring-hill": "elijah-blue-fescue",
+        "planting-tree": "blue-fescue-grass",
+        "fast-growing-trees": "f",
+        "brecks": "elijah-blue-fescue"
+      }
+    },
+    "pampas-grass": {
+      "name": "Pampas Grass",
+      "retailers_found": 4,
+      "handles": {
+        "nature-hills": "grass-northern-pampas",
+        "spring-hill": "pink-pampas-grass",
+        "planting-tree": "pampas-grass",
+        "fast-growing-trees": "pampas-grass"
+      }
+    },
+    "astilbe": {
+      "name": "Astilbe",
+      "retailers_found": 5,
+      "handles": {
+        "nature-hills": "astilbe-montgomery",
+        "spring-hill": "astilbe-garden-mix",
+        "fast-growing-trees": "bridal-veil-astilbe-plant",
+        "proven-winners-direct": "dark-side-of-the-moon-astilbe",
+        "brecks": "astilbe-deutschland-white"
+      }
+    },
+    "heuchera-coral-bells": {
+      "name": "Heuchera Coral Bells",
+      "retailers_found": 6,
+      "handles": {
+        "nature-hills": "coral-bells-midnight-rose",
+        "spring-hill": "electric-plum-heuchera",
+        "planting-tree": "heuchera-silver-scrolls",
+        "fast-growing-trees": "obsidian-coral-bells-heuchera",
+        "proven-winners-direct": "dolce-apple-twist-coral-bells",
+        "brecks": "palace-purple-heuchera"
+      }
+    },
+    "bleeding-heart": {
+      "name": "Bleeding Heart",
+      "retailers_found": 4,
+      "handles": {
+        "nature-hills": "fringed-bleeding-heart",
+        "spring-hill": "bleeding-heart-luxuriant",
+        "proven-winners-direct": "pink-diamonds-fern-leaved-bleeding-heart",
+        "brecks": "bacchanal-bleeding-heart"
+      }
+    },
+    "purple-coneflower": {
+      "name": "Purple Coneflower",
+      "retailers_found": 4,
+      "handles": {
+        "nature-hills": "coneflower-magnus",
+        "spring-hill": "coneflower-purple-magnus",
+        "fast-growing-trees": "f",
+        "brecks": "purple-coneflower-super-sak"
+      }
+    },
+    "happy-returns-daylily": {
+      "name": "Happy Returns Daylily",
+      "retailers_found": 4,
+      "handles": {
+        "nature-hills": "daylily-happy-returns",
+        "spring-hill": "happy-returns-jumbo-daylily",
+        "fast-growing-trees": "happy-returns-daylily",
+        "brecks": "happy-returns-reblooming-daylily"
+      }
+    },
+    "bee-balm": {
+      "name": "Bee Balm",
+      "retailers_found": 4,
+      "handles": {
+        "nature-hills": "beebalm-jacob-cline",
+        "spring-hill": "bee-balm-mix",
+        "proven-winners-direct": "leading-lady-amethyst-bee-balm",
+        "brecks": "balm-bee-mixture"
+      }
+    },
+    "catmint-walkers-low": {
+      "name": "Catmint Walkers Low",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "catmint-walkers-low",
+        "planting-tree": "walkers-low-catmint",
+        "fast-growing-trees": "walkers-low-nepeta-catmint"
+      }
+    },
+    "russian-sage": {
+      "name": "Russian Sage",
+      "retailers_found": 5,
+      "handles": {
+        "nature-hills": "russian-sage",
+        "spring-hill": "blue-jean-baby-russian-sage",
+        "fast-growing-trees": "russian-sage",
+        "proven-winners-direct": "sage-advice-russian-sage",
+        "brecks": "lacey-blue-russian-sage"
+      }
+    },
+    "october-glory-maple": {
+      "name": "October Glory Maple",
+      "retailers_found": 4,
+      "handles": {
+        "nature-hills": "red-maple-october-glory",
+        "spring-hill": "october-glory-maple",
+        "planting-tree": "october-glory-maple",
+        "fast-growing-trees": "octoberglory"
+      }
+    },
+    "heritage-river-birch": {
+      "name": "Heritage River Birch",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "heritage-birch-tree",
+        "planting-tree": "heritage-river-birch",
+        "fast-growing-trees": "heritage-river-birch"
+      }
+    },
+    "red-sunset-maple": {
+      "name": "Red Sunset Maple",
+      "retailers_found": 4,
+      "handles": {
+        "nature-hills": "red-maple-red-sunset",
+        "spring-hill": "esk-sunset-japanese-maple",
+        "planting-tree": "red-sunset-maple-tree",
+        "fast-growing-trees": "red-sunset-maple-tree"
+      }
+    },
+    "sweetbay-magnolia": {
+      "name": "Sweetbay Magnolia",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "moonglow-sweetbay-magnolia",
+        "planting-tree": "sweetbay-magnolia",
+        "fast-growing-trees": "sweetbaymagnolia"
+      }
+    },
+    "bald-cypress": {
+      "name": "Bald Cypress",
+      "retailers_found": 1,
+      "handles": {
+        "nature-hills": "lindseys-skyward-baldcypress"
+      }
+    },
+    "rose-of-sharon": {
+      "name": "Rose of Sharon",
+      "retailers_found": 5,
+      "handles": {
+        "nature-hills": "rose-of-sharon-lucy",
+        "spring-hill": "bluebird-hardy-hibiscus",
+        "planting-tree": "pink-chiffon-rose-of-sharon",
+        "fast-growing-trees": "lavender-rose-sharon-althea-tree",
+        "proven-winners-direct": "azurri-blue-satin-rose-of-sharon"
+      }
+    },
+    "wine-and-roses-weigela": {
+      "name": "Wine and Roses Weigela",
+      "retailers_found": 4,
+      "handles": {
+        "nature-hills": "weigela-wine-roses",
+        "planting-tree": "wine-roses-weigela",
+        "fast-growing-trees": "wine-roses-weigela-shrub",
+        "proven-winners-direct": "wine-and-roses-weigela"
+      }
+    },
+    "spirea-goldflame": {
+      "name": "Spirea Goldflame",
+      "retailers_found": 1,
+      "handles": {
+        "fast-growing-trees": "f"
+      }
+    },
+    "gardenia-frost-proof": {
+      "name": "Gardenia Frost Proof",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "frost-proof-gardenia",
+        "planting-tree": "frost-proof-gardenia",
+        "fast-growing-trees": "frost-proof-gardenia"
+      }
+    },
+    "dwarf-alberta-spruce": {
+      "name": "Dwarf Alberta Spruce",
+      "retailers_found": 5,
+      "handles": {
+        "nature-hills": "dwarf-alberta-spruce",
+        "spring-hill": "dwarf-alberta-spruce",
+        "planting-tree": "dwarf-alberta-spruce",
+        "fast-growing-trees": "dwarf-alberta-spruce",
+        "brecks": "dwarf-alberta-tree-spruce"
+      }
+    },
+    "autumn-royalty-encore-azalea": {
+      "name": "Autumn Royalty Encore Azalea",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "autumn-royalty-encore-azalea",
+        "planting-tree": "autumn-royalty-encore-azalea",
+        "fast-growing-trees": "autumnroyaltyencoreazalea"
+      }
+    },
+    "autumn-twist-encore-azalea": {
+      "name": "Autumn Twist Encore Azalea",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "autumn-twist-encore-azalea",
+        "planting-tree": "autumn-coral-azalea",
+        "fast-growing-trees": "autumn-twist-encore-azalea"
+      }
+    },
+    "autumn-angel-encore-azalea": {
+      "name": "Autumn Angel Encore Azalea",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "autumn-twist-encore-azalea",
+        "planting-tree": "autumn-angel-encore-azalea",
+        "fast-growing-trees": "autumnangelencoreazalea"
+      }
+    },
+    "nandina-heavenly-bamboo": {
+      "name": "Nandina Heavenly Bamboo",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "heavenly-bamboo-firepower",
+        "planting-tree": "heavenly-bamboo-nandina",
+        "fast-growing-trees": "heavenly-bamboo-nandina-shrub"
+      }
+    },
+    "santa-rosa-plum": {
+      "name": "Santa Rosa Plum",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "plum-tree-santa-rosa",
+        "planting-tree": "santa-rosa-plum",
+        "fast-growing-trees": "santarosaplum"
+      }
+    },
+    "dwarf-cavendish-banana": {
+      "name": "Dwarf Cavendish Banana",
+      "retailers_found": 2,
+      "handles": {
+        "planting-tree": "dwarf-cavendish-banana-tree",
+        "fast-growing-trees": "dwarf-cavendish-banana-tree"
+      }
+    },
+    "vinca-minor": {
+      "name": "Vinca Minor",
+      "retailers_found": 1,
+      "handles": {
+        "fast-growing-trees": "vinca-minor-periwinkle-plant"
+      }
+    },
+    "echinacea-powwow-wild-berry": {
+      "name": "Echinacea PowWow Wild Berry",
+      "retailers_found": 3,
+      "handles": {
+        "nature-hills": "pow-wow-wild-berry-coneflower",
+        "spring-hill": "pow-wow-wild-berry-coneflower",
+        "fast-growing-trees": "powwow-wild-berry-coneflower"
+      }
+    }
+  },
+  "failing_plants": [
+    {
+      "id": "bald-cypress",
+      "name": "Bald Cypress",
+      "retailers_found": [
+        "nature-hills"
+      ]
+    },
+    {
+      "id": "spirea-goldflame",
+      "name": "Spirea Goldflame",
+      "retailers_found": [
+        "fast-growing-trees"
+      ]
+    },
+    {
+      "id": "vinca-minor",
+      "name": "Vinca Minor",
+      "retailers_found": [
+        "fast-growing-trees"
+      ]
+    }
+  ]
+}

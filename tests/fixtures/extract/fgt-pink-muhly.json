@@ -1,0 +1,32 @@
+{
+  "product": {
+    "id": 5001,
+    "title": "Pink Muhly Grass",
+    "handle": "pink-muhly-grass-tree",
+    "body_html": "<p>The Pink Muhly Grass is a low-maintenance ornamental grass that produces stunning pink plumes from late summer through fall. A native to the southeastern United States.</p>\n<p><strong>Growing Zones:</strong> 6-11</p>\n<p><strong>Sun Requirements:</strong> Full Sun</p>\n<p><strong>Mature Height:</strong> 3-4 ft.</p>\n<p><strong>Mature Spread:</strong> 3-4 ft.</p>\n<p><strong>Bloom Season:</strong> Late Summer - Fall</p>\n<p><strong>Growth Rate:</strong> Moderate</p>",
+    "vendor": "Fast Growing Trees",
+    "product_type": "Grasses",
+    "tags": ["grass", "ornamental"],
+    "variants": [
+      {
+        "id": 6001,
+        "title": "1 Gallon",
+        "price": "22.95",
+        "compare_at_price": "29.95",
+        "sku": "FGT-PMG-1",
+        "available": true,
+        "option1": "1 Gallon"
+      },
+      {
+        "id": 6002,
+        "title": "3 Gallon",
+        "price": "39.95",
+        "compare_at_price": null,
+        "sku": "FGT-PMG-3",
+        "available": true,
+        "option1": "3 Gallon"
+      }
+    ],
+    "images": []
+  }
+}

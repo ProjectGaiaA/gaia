@@ -70,6 +70,7 @@ def stub_robots():
         patch("scrapers.starkbros.is_allowed_by_robots", return_value=True),
         patch("scrapers.discover_handles.is_allowed_by_robots", return_value=True),
         patch("scrapers.runner.is_allowed_by_robots", return_value=True),
+        patch("scrapers.extract_plant_data.is_allowed_by_robots", return_value=True),
     ):
         yield
 
