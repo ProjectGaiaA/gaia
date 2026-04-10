@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-08T23:58:00.671136+00:00",
+  "timestamp": "2026-04-10T00:02:01.861354+00:00",
   "retailers": [
     {
       "retailer_id": "stark-bros",
@@ -12,11 +12,11 @@
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 32.99,
+          "supreme": 69.99,
           "semi-dwarf": 26.99
         },
         "bing-cherry-tree:stark-bros": {
           "semi-dwarf": 41.99,
-          "supreme": 69.99,
           "standard": 38.99
         },
         "elberta-peach-tree:stark-bros": {
@@ -46,11 +46,11 @@
   "prices": {
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf": 32.99,
+      "supreme": 69.99,
       "semi-dwarf": 26.99
     },
     "bing-cherry-tree:stark-bros": {
       "semi-dwarf": 41.99,
-      "supreme": 69.99,
       "standard": 38.99
     },
     "elberta-peach-tree:stark-bros": {
