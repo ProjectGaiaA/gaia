@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-11T12:43:36.645960+00:00",
+  "timestamp": "2026-04-11T23:51:06.410938+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -921,7 +921,7 @@
       "products_expected": 62,
       "products_found": 60,
       "products_error": 2,
-      "prices_collected": 125,
+      "prices_collected": 127,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -938,8 +938,7 @@
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
           "1gal": 37.95,
-          "2gal": 50.95,
-          "3gal": 69.95
+          "2gal": 50.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
           "1gal": 36.95
@@ -959,7 +958,10 @@
           "3-4ft": 124.95
         },
         "fuji-apple-tree:fast-growing-trees": {
-          "4-5ft": 103.95
+          "default": 103.95,
+          "3-4ft": 86.95,
+          "5-6ft": 124.95,
+          "6-7ft": 149.95
         },
         "bing-cherry-tree:fast-growing-trees": {
           "1-2ft": 62.95,
@@ -1265,7 +1267,7 @@
       "products_expected": 8,
       "products_found": 7,
       "products_error": 1,
-      "prices_collected": 15,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1274,7 +1276,6 @@
         },
         "bing-cherry-tree:stark-bros": {
           "semi-dwarf": 41.99,
-          "ultra-supreme": 229.99,
           "standard": 38.99
         },
         "elberta-peach-tree:stark-bros": {
@@ -1283,7 +1284,6 @@
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf": 32.99,
-          "ultra-supreme": 229.99,
           "semi-dwarf": 26.99,
           "supreme-ez-start": 75.99,
           "standard": 26.99
@@ -2197,8 +2197,7 @@
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
       "1gal": 37.95,
-      "2gal": 50.95,
-      "3gal": 69.95
+      "2gal": 50.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
       "1gal": 36.95
@@ -2218,7 +2217,10 @@
       "3-4ft": 124.95
     },
     "fuji-apple-tree:fast-growing-trees": {
-      "4-5ft": 103.95
+      "default": 103.95,
+      "3-4ft": 86.95,
+      "5-6ft": 124.95,
+      "6-7ft": 149.95
     },
     "bing-cherry-tree:fast-growing-trees": {
       "1-2ft": 62.95,
@@ -2497,7 +2499,6 @@
     },
     "bing-cherry-tree:stark-bros": {
       "semi-dwarf": 41.99,
-      "ultra-supreme": 229.99,
       "standard": 38.99
     },
     "elberta-peach-tree:stark-bros": {
@@ -2506,7 +2507,6 @@
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf": 32.99,
-      "ultra-supreme": 229.99,
       "semi-dwarf": 26.99,
       "supreme-ez-start": 75.99,
       "standard": 26.99
