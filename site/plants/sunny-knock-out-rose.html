@@ -120,7 +120,7 @@
                 <h2>Current Prices</h2>
                 
                 <p class="table-disclosure">Some links below are affiliate links — we may earn a commission at no cost to you. <a href="/disclosure.html">See our disclosure.</a></p>
-                <p class="price-updated">Prices last checked: April 10, 2026</p>
+                <p class="price-updated">Prices last checked: April 11, 2026</p>
 
                 <!-- Best Prices Summary: mobile only (desktop uses full comparison table) -->
                 
@@ -299,7 +299,7 @@
                                 </td>
                                 <td class="last-checked-cell" data-label="Last Checked">
                                     
-                                    <span class="last-checked-date">Apr 10</span>
+                                    <span class="last-checked-date">Apr 11</span>
                                     
                                 </td>
                                 <td class="specials-cell" data-label="Specials">
@@ -379,7 +379,7 @@
                                 </td>
                                 <td class="last-checked-cell" data-label="Last Checked">
                                     
-                                    <span class="last-checked-date">Apr 10</span>
+                                    <span class="last-checked-date">Apr 11</span>
                                     
                                 </td>
                                 <td class="specials-cell" data-label="Specials">
@@ -435,7 +435,7 @@
                                 </td>
                                 <td class="last-checked-cell" data-label="Last Checked">
                                     
-                                    <span class="last-checked-date">Apr 10</span>
+                                    <span class="last-checked-date">Apr 11</span>
                                     
                                 </td>
                                 <td class="specials-cell" data-label="Specials">
@@ -450,7 +450,7 @@
                                 </td>
                             </tr>
                             
-                            <tr class="sold-out-row">
+                            <tr class="unavailable-row">
                                 <td class="retailer-name">
                                     Fast Growing Trees
                                     
@@ -482,7 +482,7 @@
                                 
                                 <td class="stock-cell" data-label="Stock">
                                     
-                                    <span class="out-of-stock">Sold Out</span>
+                                    <span class="currently-unavailable">Currently Unavailable</span>
                                     
                                 </td>
                                 <td class="shipping-cell" data-label="Shipping">
@@ -801,7 +801,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
-    const priceData = {"dates": ["2026-04-03", "2026-04-05", "2026-04-08", "2026-04-09", "2026-04-10"], "retailers": [{"name": "Fast Growing Trees", "prices": [null, null, 119.95, null, null]}, {"name": "Nature Hills", "prices": [18.15, 18.15, 18.15, 18.15, 18.15]}, {"name": "Planting Tree", "prices": [44.95, 44.95, 44.95, 44.95, 44.95]}, {"name": "Spring Hill", "prices": [39.99, 39.99, 39.99, 39.99, 39.99]}]};
+    const priceData = {"dates": ["2026-04-03", "2026-04-05", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11"], "retailers": [{"name": "Fast Growing Trees", "prices": [null, null, 119.95, null, null, null]}, {"name": "Nature Hills", "prices": [18.15, 18.15, 18.15, 18.15, 18.15, 18.15]}, {"name": "Planting Tree", "prices": [44.95, 44.95, 44.95, 44.95, 44.95, 44.95]}, {"name": "Spring Hill", "prices": [39.99, 39.99, 39.99, 39.99, 39.99, 39.99]}]};
     const ctx = document.getElementById('priceChart').getContext('2d');
     new Chart(ctx, {
         type: 'line',

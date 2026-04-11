@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-10T23:53:54.775369+00:00",
+  "timestamp": "2026-04-11T12:43:36.645960+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -305,9 +305,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 70,
-      "products_found": 69,
-      "products_error": 1,
-      "prices_collected": 297,
+      "products_found": 70,
+      "products_error": 0,
+      "prices_collected": 298,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -611,6 +611,9 @@
           "1gal": 40.95,
           "2gal": 77.95,
           "3gal": 88.95
+        },
+        "creeping-phlox:planting-tree": {
+          "1gal": 26.95
         },
         "butterfly-bush-miss-molly:planting-tree": {
           "1gal": 47.95,
@@ -919,10 +922,7 @@
       "products_found": 60,
       "products_error": 2,
       "prices_collected": 125,
-      "anomalies": [
-        "ANOMALY: purple-fountain-grass at fast-growing-trees tier=default: $90.95 -> $37.95 (58% change)",
-        "ANOMALY: dwarf-alberta-spruce at fast-growing-trees tier=default: $98.95 -> $199.95 (102% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 32.95
@@ -1100,6 +1100,10 @@
           "default": 49.95,
           "3gal": 34.95
         },
+        "purple-fountain-grass:fast-growing-trees": {
+          "default": 37.95,
+          "1gal": 24.95
+        },
         "hameln-dwarf-fountain-grass:fast-growing-trees": {
           "default": 79.95
         },
@@ -1159,6 +1163,11 @@
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95,
           "3gal": 43.95
+        },
+        "dwarf-alberta-spruce:fast-growing-trees": {
+          "default": 199.95,
+          "1-2ft": 32.95,
+          "2-3ft": 48.95
         }
       },
       "health": "healthy"
@@ -1292,12 +1301,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 682,
-  "total_anomalies": 2,
-  "anomalies": [
-    "ANOMALY: purple-fountain-grass at fast-growing-trees tier=default: $90.95 -> $37.95 (58% change)",
-    "ANOMALY: dwarf-alberta-spruce at fast-growing-trees tier=default: $98.95 -> $199.95 (102% change)"
-  ],
+  "total_prices_collected": 683,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1889,6 +1895,9 @@
       "2gal": 77.95,
       "3gal": 88.95
     },
+    "creeping-phlox:planting-tree": {
+      "1gal": 26.95
+    },
     "butterfly-bush-miss-molly:planting-tree": {
       "1gal": 47.95,
       "2gal": 84.95,
@@ -2350,6 +2359,10 @@
       "default": 49.95,
       "3gal": 34.95
     },
+    "purple-fountain-grass:fast-growing-trees": {
+      "default": 37.95,
+      "1gal": 24.95
+    },
     "hameln-dwarf-fountain-grass:fast-growing-trees": {
       "default": 79.95
     },
@@ -2409,6 +2422,11 @@
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95,
       "3gal": 43.95
+    },
+    "dwarf-alberta-spruce:fast-growing-trees": {
+      "default": 199.95,
+      "1-2ft": 32.95,
+      "2-3ft": 48.95
     },
     "limelight-hydrangea:proven-winners-direct": {
       "1gal": 35.99,
