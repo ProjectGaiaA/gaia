@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-12T12:49:51.736049+00:00",
+  "timestamp": "2026-04-12T23:53:38.871575+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -921,7 +921,7 @@
       "products_expected": 62,
       "products_found": 60,
       "products_error": 2,
-      "prices_collected": 127,
+      "prices_collected": 118,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -941,7 +941,7 @@
           "2gal": 50.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
-          "1gal": 36.95
+          "default": 67.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
           "quart": 35.95
@@ -954,14 +954,10 @@
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
-          "2-3ft": 90.95,
-          "3-4ft": 124.95
+          "2-3ft": 90.95
         },
         "fuji-apple-tree:fast-growing-trees": {
-          "default": 103.95,
-          "3-4ft": 86.95,
-          "5-6ft": 124.95,
-          "6-7ft": 149.95
+          "4-5ft": 103.95
         },
         "bing-cherry-tree:fast-growing-trees": {
           "1-2ft": 62.95,
@@ -1035,11 +1031,7 @@
           "1-galllon": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 30.95,
-          "quart": 31.95,
-          "1gal": 41.95,
-          "2gal": 44.95,
-          "3gal": 52.95
+          "default": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1063,8 +1055,7 @@
           "1-2ft": 86.95,
           "2-3ft": 104.95,
           "3-4ft": 124.95,
-          "4-5ft": 149.95,
-          "5-6ft": 178.95
+          "4-5ft": 149.95
         },
         "encore-azalea:fast-growing-trees": {
           "default": 94.95
@@ -1267,7 +1258,7 @@
       "products_expected": 8,
       "products_found": 7,
       "products_error": 1,
-      "prices_collected": 13,
+      "prices_collected": 12,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1285,8 +1276,7 @@
         "bartlett-pear-tree:stark-bros": {
           "dwarf": 32.99,
           "semi-dwarf": 26.99,
-          "supreme-ez-start": 75.99,
-          "standard": 26.99
+          "supreme-ez-start": 75.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 12.99
@@ -1301,7 +1291,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 683,
+  "total_prices_collected": 673,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2200,7 +2190,7 @@
       "2gal": 50.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
-      "1gal": 36.95
+      "default": 67.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
       "quart": 35.95
@@ -2213,14 +2203,10 @@
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
-      "2-3ft": 90.95,
-      "3-4ft": 124.95
+      "2-3ft": 90.95
     },
     "fuji-apple-tree:fast-growing-trees": {
-      "default": 103.95,
-      "3-4ft": 86.95,
-      "5-6ft": 124.95,
-      "6-7ft": 149.95
+      "4-5ft": 103.95
     },
     "bing-cherry-tree:fast-growing-trees": {
       "1-2ft": 62.95,
@@ -2294,11 +2280,7 @@
       "1-galllon": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 30.95,
-      "quart": 31.95,
-      "1gal": 41.95,
-      "2gal": 44.95,
-      "3gal": 52.95
+      "default": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2322,8 +2304,7 @@
       "1-2ft": 86.95,
       "2-3ft": 104.95,
       "3-4ft": 124.95,
-      "4-5ft": 149.95,
-      "5-6ft": 178.95
+      "4-5ft": 149.95
     },
     "encore-azalea:fast-growing-trees": {
       "default": 94.95
@@ -2508,8 +2489,7 @@
     "bartlett-pear-tree:stark-bros": {
       "dwarf": 32.99,
       "semi-dwarf": 26.99,
-      "supreme-ez-start": 75.99,
-      "standard": 26.99
+      "supreme-ez-start": 75.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 12.99
