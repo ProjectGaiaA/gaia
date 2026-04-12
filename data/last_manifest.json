@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-11T23:51:06.410938+00:00",
+  "timestamp": "2026-04-12T12:49:51.736049+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -925,7 +925,7 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 32.95
+          "default": 124.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 22.95,
@@ -2184,7 +2184,7 @@
       "1gal": 49.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 32.95
+      "default": 124.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 22.95,

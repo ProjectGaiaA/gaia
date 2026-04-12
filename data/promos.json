@@ -2,7 +2,7 @@
   "spring-hill": {
     "retailer_id": "spring-hill",
     "retailer_name": "Spring Hill Nurseries",
-    "timestamp": "2026-04-11T23:51:13.407782+00:00",
+    "timestamp": "2026-04-12T12:49:59.196689+00:00",
     "codes": [
       "ONLY"
     ],
@@ -13,33 +13,31 @@
   "nature-hills": {
     "retailer_id": "nature-hills",
     "retailer_name": "Nature Hills Nursery",
-    "timestamp": "2026-04-11T23:51:13.407782+00:00",
+    "timestamp": "2026-04-12T12:49:59.196689+00:00",
     "codes": [],
     "banners": []
   },
   "planting-tree": {
     "retailer_id": "planting-tree",
     "retailer_name": "PlantingTree",
-    "timestamp": "2026-04-11T23:51:13.407782+00:00",
+    "timestamp": "2026-04-12T12:49:59.196689+00:00",
     "codes": [],
     "banners": []
   },
   "fast-growing-trees": {
     "retailer_id": "fast-growing-trees",
     "retailer_name": "Fast Growing Trees",
-    "timestamp": "2026-04-11T23:51:13.407782+00:00",
+    "timestamp": "2026-04-12T12:49:59.196689+00:00",
     "codes": [],
     "banners": [
       "free shipping on orders over $99",
-      "Free shipping on orders over $99",
-      "20% OFF all orders",
-      "Buy 1, Get 1 FREE"
+      "Free shipping on orders over $99"
     ]
   },
   "proven-winners-direct": {
     "retailer_id": "proven-winners-direct",
     "retailer_name": "Proven Winners Direct",
-    "timestamp": "2026-04-11T23:51:13.407782+00:00",
+    "timestamp": "2026-04-12T12:49:59.196689+00:00",
     "codes": [
       "COMBO15",
       "BUNDLE15"
@@ -51,14 +49,14 @@
   "stark-bros": {
     "retailer_id": "stark-bros",
     "retailer_name": "Stark Bros",
-    "timestamp": "2026-04-11T23:51:13.407782+00:00",
+    "timestamp": "2026-04-12T12:49:59.196689+00:00",
     "codes": [],
     "banners": []
   },
   "great-garden-plants": {
     "retailer_id": "great-garden-plants",
     "retailer_name": "Great Garden Plants",
-    "timestamp": "2026-04-11T23:51:13.407782+00:00",
+    "timestamp": "2026-04-12T12:49:59.196689+00:00",
     "codes": [
       "SPRINGSALE"
     ],
