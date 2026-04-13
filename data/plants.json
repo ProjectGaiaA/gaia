@@ -10122,5 +10122,565 @@
       "tip": "Buy in fall for the best deals and ideal planting weather. Avoid hot, dry sites - this conifer dislikes summer heat above zone 6. Watch for spider mites in warm climates."
     },
     "active": false
+  },
+  {
+    "id": "autumn-royalty-encore-azalea",
+    "common_name": "Autumn Royalty Encore Azalea",
+    "botanical_name": "Rhododendron 'Conlec'",
+    "aliases": [
+      "Encore Autumn Royalty",
+      "Autumn Royalty Azalea",
+      "Rhododendron Autumn Royalty"
+    ],
+    "category": "azaleas-rhododendrons",
+    "zones": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade (morning sun, afternoon shade)",
+    "mature_size": "4-5 ft tall x 3-4 ft wide",
+    "bloom_time": "Spring, summer, and fall (reblooming)",
+    "type": "Evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Autumn Royalty is the largest of the Encore series and won Rhododendron of the Year from the American Rhododendron Society. Deep lavender-purple reblooming flowers make it the most asked-for Encore cultivar - prices stay firm in spring demand. Fall clearance offers the best deals.",
+      "tip": "Buy in fall for price and planting conditions. Plant with afternoon shade in zones 8-9 to protect reblooming flower buds from heat stress."
+    },
+    "active": false
+  },
+  {
+    "id": "autumn-twist-encore-azalea",
+    "common_name": "Autumn Twist Encore Azalea",
+    "botanical_name": "Rhododendron 'Conlep'",
+    "aliases": [
+      "Encore Autumn Twist",
+      "Autumn Twist Azalea"
+    ],
+    "category": "azaleas-rhododendrons",
+    "zones": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade (morning sun, afternoon shade)",
+    "mature_size": "4-5 ft tall x 3-4 ft wide",
+    "bloom_time": "Spring, summer, and fall (reblooming)",
+    "type": "Evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Autumn Twist is prized for its bi-color white-and-purple-striped blooms (each flower is unique). Same mid-size growth habit as Autumn Royalty but with showier flowers. Spring is peak demand and peak price; fall clearance offers 15-30% savings.",
+      "tip": "The striped flower pattern varies plant to plant - if you care about the look, buy in person or from a retailer with return policies. Fall planting establishes roots before the spring bloom flush."
+    },
+    "active": false
+  },
+  {
+    "id": "autumn-angel-encore-azalea",
+    "common_name": "Autumn Angel Encore Azalea",
+    "botanical_name": "Rhododendron 'Robleg'",
+    "aliases": [
+      "Encore Autumn Angel",
+      "Autumn Angel Azalea"
+    ],
+    "category": "azaleas-rhododendrons",
+    "zones": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Part shade (morning sun, afternoon shade)",
+    "mature_size": "2-3 ft tall x 2-3 ft wide",
+    "bloom_time": "Spring, summer, and fall (reblooming)",
+    "type": "Evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "March-April",
+      "note": "Autumn Angel is the dwarf white-flowered Encore - only 2-3 ft mature, much smaller than Royalty or Twist. Ideal for small-space foundation plantings or low hedges. Patented PP15227 so prices stay firm at retail; fall clearance is the best time to buy.",
+      "tip": "Because of its compact size, Autumn Angel is sold mostly in 1-gal and 3-gal containers. Plant in groups of 3-5 for hedge effect. Fall planting is ideal."
+    },
+    "active": false
+  },
+  {
+    "id": "nandina-heavenly-bamboo",
+    "common_name": "Nandina (Heavenly Bamboo)",
+    "botanical_name": "Nandina domestica",
+    "aliases": [
+      "Heavenly Bamboo",
+      "Sacred Bamboo",
+      "Chinese Sacred Bamboo"
+    ],
+    "category": "privacy-trees",
+    "zones": [
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "3-8 ft tall x 2-5 ft wide",
+    "bloom_time": "Late spring (followed by red berries)",
+    "type": "Evergreen shrub",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "6": {
+        "spring": "Mar-May",
+        "fall": "Sep-Nov"
+      },
+      "7": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "8": {
+        "spring": "Feb-Apr",
+        "fall": "Oct-Dec"
+      },
+      "9": {
+        "spring": "Feb-Mar",
+        "fall": "Nov-Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        2,
+        1,
+        1,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Nandina is a tough evergreen shrub with year-round foliage color (green in summer, red in fall/winter) and red berries. Cultivars range from dwarf 'Firepower' (2-3 ft, nearly fruitless) to standard species (5-8 ft with berries). Flagged as invasive in some southern states - check local regulations. Fall clearance offers 20-30% savings.",
+      "tip": "For a low-maintenance colorful hedge, standard Nandina is hard to beat. If you live in the deep South, consider sterile dwarf cultivars instead of the fruiting species to avoid volunteer seedlings."
+    },
+    "active": false
+  },
+  {
+    "id": "santa-rosa-plum",
+    "common_name": "Santa Rosa Plum Tree",
+    "botanical_name": "Prunus salicina 'Santa Rosa'",
+    "aliases": [
+      "Santa Rosa Japanese Plum",
+      "Santa Rosa Plum"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "sun": "Full sun",
+    "mature_size": "15-20 ft tall x 15-20 ft wide",
+    "bloom_time": "Early spring (white flowers)",
+    "type": "Deciduous fruit tree",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ],
+      "bareroot": [
+        "bare root",
+        "bare-root",
+        "bareroot"
+      ]
+    },
+    "price_range": "",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "5": {
+        "spring": "Apr-May",
+        "fall": "Oct"
+      },
+      "6": {
+        "spring": "Mar-Apr",
+        "fall": "Oct-Nov"
+      },
+      "7": {
+        "spring": "Feb-Apr",
+        "fall": "Nov"
+      },
+      "8": {
+        "spring": "Jan-Mar",
+        "fall": "Nov-Dec"
+      },
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        3,
+        4,
+        5,
+        4,
+        3,
+        2,
+        2,
+        2,
+        2,
+        1,
+        1,
+        2
+      ],
+      "best_buy": "October-November",
+      "worst_buy": "March",
+      "note": "Santa Rosa is the classic self-pollinating Japanese plum introduced by Luther Burbank in 1906 - still a home-orchard favorite for its crimson skin, amber flesh, and heavy crops. Bare-root trees (January-March) run 30-50% cheaper than potted. Requires 300-500 chill hours so it struggles in the deep South zone 9 without a cold winter.",
+      "tip": "Order bare-root in January for best price and selection. Self-fertile so one tree is enough, but planting a second Japanese plum increases yields. Needs full sun and well-drained soil."
+    },
+    "active": false
+  },
+  {
+    "id": "dwarf-cavendish-banana",
+    "common_name": "Dwarf Cavendish Banana",
+    "botanical_name": "Musa acuminata 'Dwarf Cavendish'",
+    "aliases": [
+      "Dwarf Cavendish Banana Tree",
+      "Dwarf Banana",
+      "Dwarf Cavendish"
+    ],
+    "category": "fruit-trees",
+    "zones": [
+      9,
+      10,
+      11
+    ],
+    "sun": "Full sun to part shade",
+    "mature_size": "6-10 ft tall x 6-10 ft wide",
+    "bloom_time": "Summer (on 2-3 year old plants)",
+    "type": "Tropical herbaceous perennial",
+    "size_tiers": {
+      "quart": [
+        "1 quart",
+        "qt",
+        "4.5 inch",
+        "4.5 in"
+      ],
+      "1gal": [
+        "1 gallon",
+        "1 gal",
+        "#1 container",
+        "1g",
+        "trade gallon"
+      ],
+      "2gal": [
+        "2 gallon",
+        "2 gal",
+        "#2 container"
+      ],
+      "3gal": [
+        "3 gallon",
+        "3 gal",
+        "#3 container"
+      ],
+      "5gal": [
+        "5 gallon",
+        "5 gal",
+        "#5 container"
+      ]
+    },
+    "price_range": "",
+    "image": "",
+    "image_credit": "",
+    "planting_seasons": {
+      "9": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      },
+      "10": {
+        "spring": "Jan-Feb",
+        "fall": "Dec"
+      },
+      "11": {
+        "spring": "Dec-Jan",
+        "fall": "Dec"
+      }
+    },
+    "price_seasonality": {
+      "monthly_index": [
+        2,
+        3,
+        4,
+        5,
+        5,
+        4,
+        3,
+        3,
+        2,
+        2,
+        2,
+        2
+      ],
+      "best_buy": "September-October",
+      "worst_buy": "April-May",
+      "note": "Dwarf Cavendish is the most common edible banana worldwide, bred for container growing and small-space yards. Tropical - outdoor year-round only in zones 10-11; in zone 9 it dies back in winter and resprouts from the corm. Can be grown indoors in containers in colder zones. Spring demand drives prices up; fall clearance is the best deal window.",
+      "tip": "Buy in fall for clearance, but plant in spring after last frost (zone 9) or anytime (zone 10-11). Plants take 2-3 years to fruit. A potted Dwarf Cavendish can be brought indoors for winter in zone 8 or colder."
+    },
+    "active": false
   }
 ]
