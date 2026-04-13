@@ -17,7 +17,6 @@ Prices on flowering trees vary 20-30% between online nurseries. On a $60-$100 tr
 | Eastern Redbud | 4-9 | 20-25' | March-April | Magenta-pink | 30-40 years | $30-$80 |
 | Serviceberry | 4-8 | 15-25' | April | White | 40+ years | $30-$80 |
 | Crape Myrtle | 7-9 | 15-25' | July-Aug | Various | 40+ years | $25-$80 |
-| Saucer Magnolia | 4-9 | 20-25' | March-April | Pink/white | 50+ years | $40-$100 |
 | Yoshino Cherry | 5-8 | 25-35' | April | Pale pink-white | 15-25 years | $40-$100 |
 
 ---
@@ -81,22 +80,6 @@ Pricing ranges from $25-$80. Smaller bush-form crape myrtles run $25-$40. Tree-f
 
 → [Compare Crape Myrtle prices](/plants/crape-myrtle)
 
-## Saucer Magnolia (*Magnolia × soulangeana*)
-
-Few trees in the temperate world produce flowers as dramatic as Saucer Magnolia. Each bloom is a goblet-shaped cup — 5-10 inches across — of soft pink exterior and creamy white interior, appearing on bare branches before any leaves emerge. When a mature Saucer Magnolia is in full bloom, with hundreds of these enormous flowers covering a bare canopy, the visual impact borders on surreal. It looks like something from a botanical illustration, not someone's front yard.
-
-The tree grows 20-25 feet tall with a spreading, rounded canopy that provides pleasant shade in summer. The leaves are large, dark green, and deciduous. Fall color is unremarkable (yellow-brown), but by that point, the tree has already justified its existence with the spring display.
-
-Pricing runs $40-$100 depending on size. Saucer Magnolia is widely available from major online nurseries and ships well.
-
-**The frost risk — and how to manage it:** The spectacular flowers are also the tree's vulnerability. Saucer Magnolia blooms early — often late March to early April — and the buds and flowers are susceptible to late frost damage. A hard freeze (below 28°F) after buds have opened can brown the flowers in a single night, ruining the entire year's display. In zones 5-6, this happens every 2-3 years on average. In zone 4, it happens most years.
-
-Mitigation strategies: Plant the tree on the north side of a building. This sounds counterintuitive, but the north exposure keeps the tree cooler in late winter, which delays bud development by 5-10 days. That delay can be enough to dodge a late frost. Alternatively, consider **Star Magnolia (*M. stellata*)**, which is smaller (15-20 feet), slightly later-blooming, and somewhat more frost-resilient than Saucer Magnolia.
-
-Hardy in zones 4-9.
-
-→ [Compare Saucer Magnolia prices](/plants/saucer-magnolia)
-
 ## Yoshino Cherry (*Prunus × yedoensis*)
 
 Yoshino Cherry is the tree that makes Washington D.C.'s Tidal Basin famous every spring — clouds of pale pink-white flowers covering graceful, spreading branches in early April. It's the tree that launched a million Instagram posts. It's beautiful. It's iconic. And it comes with honest trade-offs you should know about before buying.
@@ -125,7 +108,7 @@ Hardy in zones 5-8.
 
 Planting two flowering trees with staggered bloom times gives you months of color instead of one 2-3 week burst. The math is simple: pick one early bloomer and one late bloomer, and you cover the gap.
 
-**March–April:** Redbud, Saucer Magnolia, or Serviceberry
+**March–April:** Redbud or Serviceberry
 **April–May:** Dogwood (native) or Serviceberry (late-blooming varieties)
 **June:** Kousa Dogwood
 **July–August:** Crape Myrtle
