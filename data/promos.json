@@ -2,7 +2,7 @@
   "spring-hill": {
     "retailer_id": "spring-hill",
     "retailer_name": "Spring Hill Nurseries",
-    "timestamp": "2026-04-14T00:48:50.966864+00:00",
+    "timestamp": "2026-04-14T16:38:50.887586+00:00",
     "codes": [
       "ONLY"
     ],
@@ -13,53 +13,60 @@
   "nature-hills": {
     "retailer_id": "nature-hills",
     "retailer_name": "Nature Hills Nursery",
-    "timestamp": "2026-04-14T00:48:50.966864+00:00",
+    "timestamp": "2026-04-14T16:38:50.887586+00:00",
     "codes": [],
     "banners": []
   },
   "planting-tree": {
     "retailer_id": "planting-tree",
     "retailer_name": "PlantingTree",
-    "timestamp": "2026-04-14T00:48:50.966864+00:00",
+    "timestamp": "2026-04-14T16:38:50.887586+00:00",
     "codes": [],
     "banners": []
   },
   "fast-growing-trees": {
     "retailer_id": "fast-growing-trees",
     "retailer_name": "Fast Growing Trees",
-    "timestamp": "2026-04-14T00:48:50.966864+00:00",
-    "codes": [],
+    "timestamp": "2026-04-14T16:38:50.887586+00:00",
+    "codes": [
+      "EARTH20"
+    ],
     "banners": [
       "free shipping on orders over $99",
+      "60% off sitewide",
       "Free shipping on orders over $99"
     ]
   },
   "proven-winners-direct": {
     "retailer_id": "proven-winners-direct",
     "retailer_name": "Proven Winners Direct",
-    "timestamp": "2026-04-14T00:48:50.966864+00:00",
+    "timestamp": "2026-04-14T16:38:50.887586+00:00",
     "codes": [
       "COMBO15",
       "BUNDLE15"
     ],
     "banners": [
-      "free shipping on orders over $175"
+      "free shipping on orders over $175",
+      "LIMITED-TIME OFFER"
     ]
   },
   "stark-bros": {
     "retailer_id": "stark-bros",
     "retailer_name": "Stark Bros",
-    "timestamp": "2026-04-14T00:48:50.966864+00:00",
+    "timestamp": "2026-04-14T16:38:50.887586+00:00",
     "codes": [],
     "banners": []
   },
   "great-garden-plants": {
     "retailer_id": "great-garden-plants",
     "retailer_name": "Great Garden Plants",
-    "timestamp": "2026-04-14T00:48:50.966864+00:00",
+    "timestamp": "2026-04-14T16:38:50.887586+00:00",
     "codes": [
-      "SPRINGSALE"
+      "GARDENDAY"
     ],
-    "banners": []
+    "banners": [
+      "20% Off Sitewide",
+      "Flash Sale"
+    ]
   }
 }
