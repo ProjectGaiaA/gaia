@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-14T16:38:42.884680+00:00",
+  "timestamp": "2026-04-15T00:48:36.092715+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -921,10 +921,8 @@
       "products_expected": 62,
       "products_found": 59,
       "products_error": 3,
-      "prices_collected": 147,
-      "anomalies": [
-        "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=1-2ft: $44.95 -> $19.95 (56% change)"
-      ],
+      "prices_collected": 142,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "3gal": 57.95
@@ -959,8 +957,7 @@
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
-          "2-3ft": 90.95,
-          "3-4ft": 124.95
+          "2-3ft": 90.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 71.95,
@@ -987,8 +984,17 @@
           "2-3ft": 39.95,
           "3-4ft": 69.95
         },
+        "green-giant-arborvitae:fast-growing-trees": {
+          "1-2ft": 19.95,
+          "2-3ft": 34.95,
+          "3-4ft": 64.95,
+          "4-5ft": 112.95,
+          "5-6ft": 199.95,
+          "6-7ft": 459.95
+        },
         "leyland-cypress:fast-growing-trees": {
-          "2-3ft": 44.95
+          "2-3ft": 44.95,
+          "3-4ft": 84.95
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 29.95,
@@ -1043,11 +1049,7 @@
           "1-galllon": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 30.95,
-          "quart": 31.95,
-          "1gal": 41.95,
-          "2gal": 44.95,
-          "3gal": 52.95
+          "default": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1082,8 +1084,9 @@
           "default": 94.95
         },
         "pjm-rhododendron:fast-growing-trees": {
-          "default": 122.95,
-          "2gal": 73.95
+          "1gal": 38.95,
+          "2gal": 73.95,
+          "default": 122.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
           "1gal": 32.95,
@@ -1169,9 +1172,7 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "quart": 16.95,
           "1gal": 36.95,
-          "2gal": 51.95,
           "3gal": 74.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
@@ -1313,11 +1314,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 703,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=1-2ft: $44.95 -> $19.95 (56% change)"
-  ],
+  "total_prices_collected": 698,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2230,8 +2229,7 @@
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
-      "2-3ft": 90.95,
-      "3-4ft": 124.95
+      "2-3ft": 90.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 71.95,
@@ -2258,8 +2256,17 @@
       "2-3ft": 39.95,
       "3-4ft": 69.95
     },
+    "green-giant-arborvitae:fast-growing-trees": {
+      "1-2ft": 19.95,
+      "2-3ft": 34.95,
+      "3-4ft": 64.95,
+      "4-5ft": 112.95,
+      "5-6ft": 199.95,
+      "6-7ft": 459.95
+    },
     "leyland-cypress:fast-growing-trees": {
-      "2-3ft": 44.95
+      "2-3ft": 44.95,
+      "3-4ft": 84.95
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 29.95,
@@ -2314,11 +2321,7 @@
       "1-galllon": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 30.95,
-      "quart": 31.95,
-      "1gal": 41.95,
-      "2gal": 44.95,
-      "3gal": 52.95
+      "default": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2353,8 +2356,9 @@
       "default": 94.95
     },
     "pjm-rhododendron:fast-growing-trees": {
-      "default": 122.95,
-      "2gal": 73.95
+      "1gal": 38.95,
+      "2gal": 73.95,
+      "default": 122.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
       "1gal": 32.95,
@@ -2440,9 +2444,7 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "quart": 16.95,
       "1gal": 36.95,
-      "2gal": 51.95,
       "3gal": 74.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
