@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-15T15:46:19.196153+00:00",
+  "timestamp": "2026-04-16T00:47:05.250733+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -28,7 +28,7 @@
         "summer-crush-hydrangea:nature-hills": {
           "quart": 19.89,
           "1gal": 43.55,
-          "2gal": 65.2,
+          "2gal": 66.33,
           "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
@@ -84,14 +84,14 @@
         "double-knock-out-rose:nature-hills": {
           "quart": 18.15,
           "1gal": 37.13,
-          "2gal": 54.11,
-          "3gal": 72.09
+          "3gal": 72.09,
+          "2gal": 54.11
         },
         "pink-knock-out-rose:nature-hills": {
           "quart": 18.15,
           "1gal": 39.79,
-          "2gal": 59.22,
-          "3gal": 72.09
+          "3gal": 72.09,
+          "2gal": 59.22
         },
         "sunny-knock-out-rose:nature-hills": {
           "quart": 18.15,
@@ -179,7 +179,7 @@
         "karl-foerster-grass:nature-hills": {
           "quart": 16.99,
           "1gal": 33.17,
-          "2gal": 36.19,
+          "2gal": 51.67,
           "3gal": 60.67
         },
         "creeping-phlox:nature-hills": {
@@ -212,7 +212,7 @@
           "quart": 27.33
         },
         "ajuga-chocolate-chip:nature-hills": {
-          "quart": 16.99,
+          "quart": 13.59,
           "1gal": 25.83
         },
         "creeping-thyme:nature-hills": {
@@ -922,14 +922,12 @@
       "products_found": 59,
       "products_error": 3,
       "prices_collected": 145,
-      "anomalies": [],
+      "anomalies": [
+        "ANOMALY: nikko-blue-hydrangea at fast-growing-trees tier=default: $42.95 -> $72.95 (70% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "3gal": 57.95
-        },
-        "nikko-blue-hydrangea:fast-growing-trees": {
-          "quart": 22.95,
-          "default": 42.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
@@ -1119,8 +1117,7 @@
         },
         "pink-muhly-grass:fast-growing-trees": {
           "default": 49.95,
-          "1gal": 22.95,
-          "3gal": 34.95
+          "1gal": 22.95
         },
         "purple-fountain-grass:fast-growing-trees": {
           "default": 37.95,
@@ -1318,8 +1315,10 @@
     }
   ],
   "total_prices_collected": 701,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: nikko-blue-hydrangea at fast-growing-trees tier=default: $42.95 -> $72.95 (70% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1339,7 +1338,7 @@
     "summer-crush-hydrangea:nature-hills": {
       "quart": 19.89,
       "1gal": 43.55,
-      "2gal": 65.2,
+      "2gal": 66.33,
       "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
@@ -1395,14 +1394,14 @@
     "double-knock-out-rose:nature-hills": {
       "quart": 18.15,
       "1gal": 37.13,
-      "2gal": 54.11,
-      "3gal": 72.09
+      "3gal": 72.09,
+      "2gal": 54.11
     },
     "pink-knock-out-rose:nature-hills": {
       "quart": 18.15,
       "1gal": 39.79,
-      "2gal": 59.22,
-      "3gal": 72.09
+      "3gal": 72.09,
+      "2gal": 59.22
     },
     "sunny-knock-out-rose:nature-hills": {
       "quart": 18.15,
@@ -1490,7 +1489,7 @@
     "karl-foerster-grass:nature-hills": {
       "quart": 16.99,
       "1gal": 33.17,
-      "2gal": 36.19,
+      "2gal": 51.67,
       "3gal": 60.67
     },
     "creeping-phlox:nature-hills": {
@@ -1523,7 +1522,7 @@
       "quart": 27.33
     },
     "ajuga-chocolate-chip:nature-hills": {
-      "quart": 16.99,
+      "quart": 13.59,
       "1gal": 25.83
     },
     "creeping-thyme:nature-hills": {
@@ -2202,10 +2201,6 @@
     "limelight-hydrangea:fast-growing-trees": {
       "3gal": 57.95
     },
-    "nikko-blue-hydrangea:fast-growing-trees": {
-      "quart": 22.95,
-      "default": 42.95
-    },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
       "3gal": 82.95
@@ -2394,8 +2389,7 @@
     },
     "pink-muhly-grass:fast-growing-trees": {
       "default": 49.95,
-      "1gal": 22.95,
-      "3gal": 34.95
+      "1gal": 22.95
     },
     "purple-fountain-grass:fast-growing-trees": {
       "default": 37.95,
