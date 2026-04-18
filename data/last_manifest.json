@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-18T00:13:54.574872+00:00",
+  "timestamp": "2026-04-18T12:49:21.938879+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -921,7 +921,7 @@
       "products_expected": 62,
       "products_found": 59,
       "products_error": 3,
-      "prices_collected": 149,
+      "prices_collected": 147,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -957,13 +957,11 @@
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
-          "2-3ft": 90.95,
-          "3-4ft": 124.95
+          "2-3ft": 90.95
         },
         "fuji-apple-tree:fast-growing-trees": {
-          "default": 71.95,
+          "default": 103.95,
           "3-4ft": 86.95,
-          "4-5ft": 103.95,
           "5-6ft": 124.95,
           "6-7ft": 149.95
         },
@@ -1287,13 +1285,12 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 14,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 32.99,
-          "semi-dwarf": 26.99,
-          "supreme": 49.99
+          "semi-dwarf": 26.99
         },
         "bing-cherry-tree:stark-bros": {
           "semi-dwarf": 41.99,
@@ -1320,7 +1317,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 706,
+  "total_prices_collected": 703,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2235,13 +2232,11 @@
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
-      "2-3ft": 90.95,
-      "3-4ft": 124.95
+      "2-3ft": 90.95
     },
     "fuji-apple-tree:fast-growing-trees": {
-      "default": 71.95,
+      "default": 103.95,
       "3-4ft": 86.95,
-      "4-5ft": 103.95,
       "5-6ft": 124.95,
       "6-7ft": 149.95
     },
@@ -2534,8 +2529,7 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf": 32.99,
-      "semi-dwarf": 26.99,
-      "supreme": 49.99
+      "semi-dwarf": 26.99
     },
     "bing-cherry-tree:stark-bros": {
       "semi-dwarf": 41.99,
