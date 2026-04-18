@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-18T12:49:21.938879+00:00",
+  "timestamp": "2026-04-18T23:54:17.479678+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -921,8 +921,10 @@
       "products_expected": 62,
       "products_found": 59,
       "products_error": 3,
-      "prices_collected": 147,
-      "anomalies": [],
+      "prices_collected": 146,
+      "anomalies": [
+        "ANOMALY: purple-fountain-grass at fast-growing-trees tier=default: $90.95 -> $37.95 (58% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1123,11 +1125,6 @@
           "default": 49.95,
           "1gal": 22.95
         },
-        "purple-fountain-grass:fast-growing-trees": {
-          "default": 90.95,
-          "1gal": 24.95,
-          "3gal": 37.95
-        },
         "blue-fescue-elijah-blue:fast-growing-trees": {
           "1gal": 44.95
         },
@@ -1285,7 +1282,7 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 13,
+      "prices_collected": 12,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1304,8 +1301,7 @@
           "dwarf": 32.99,
           "ultra-supreme": 229.99,
           "semi-dwarf": 26.99,
-          "supreme-ez-start": 75.99,
-          "standard": 26.99
+          "supreme-ez-start": 75.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 12.99
@@ -1317,9 +1313,11 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 703,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 701,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: purple-fountain-grass at fast-growing-trees tier=default: $90.95 -> $37.95 (58% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2398,11 +2396,6 @@
       "default": 49.95,
       "1gal": 22.95
     },
-    "purple-fountain-grass:fast-growing-trees": {
-      "default": 90.95,
-      "1gal": 24.95,
-      "3gal": 37.95
-    },
     "blue-fescue-elijah-blue:fast-growing-trees": {
       "1gal": 44.95
     },
@@ -2543,8 +2536,7 @@
       "dwarf": 32.99,
       "ultra-supreme": 229.99,
       "semi-dwarf": 26.99,
-      "supreme-ez-start": 75.99,
-      "standard": 26.99
+      "supreme-ez-start": 75.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 12.99
