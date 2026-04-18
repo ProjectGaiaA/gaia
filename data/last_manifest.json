@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-17T15:32:37.576132+00:00",
+  "timestamp": "2026-04-18T00:13:54.574872+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -921,7 +921,7 @@
       "products_expected": 62,
       "products_found": 59,
       "products_error": 3,
-      "prices_collected": 150,
+      "prices_collected": 149,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -973,7 +973,7 @@
           "3-4ft": 97.95,
           "4-5ft": 119.95,
           "5-6ft": 148.95,
-          "6-7ft": 183.95
+          "default": 183.95
         },
         "stella-cherry-tree:fast-growing-trees": {
           "default": 121.95,
@@ -1138,7 +1138,7 @@
           "3gal": 46.95
         },
         "astilbe:fast-growing-trees": {
-          "default": 34.95
+          "1gal": 34.95
         },
         "heuchera-coral-bells:fast-growing-trees": {
           "1gal": 59.95
@@ -1161,7 +1161,6 @@
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft": 85.95,
-          "4-5ft": 125.95,
           "5-6ft": 152.95,
           "6-7ft": 184.95
         },
@@ -1293,7 +1292,8 @@
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 32.99,
-          "semi-dwarf": 26.99
+          "semi-dwarf": 26.99,
+          "supreme": 49.99
         },
         "bing-cherry-tree:stark-bros": {
           "semi-dwarf": 41.99,
@@ -1301,7 +1301,6 @@
           "standard": 38.99
         },
         "elberta-peach-tree:stark-bros": {
-          "semi-dwarf": 55.99,
           "ultra-supreme": 199.99
         },
         "bartlett-pear-tree:stark-bros": {
@@ -1321,7 +1320,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 707,
+  "total_prices_collected": 706,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2252,7 +2251,7 @@
       "3-4ft": 97.95,
       "4-5ft": 119.95,
       "5-6ft": 148.95,
-      "6-7ft": 183.95
+      "default": 183.95
     },
     "stella-cherry-tree:fast-growing-trees": {
       "default": 121.95,
@@ -2417,7 +2416,7 @@
       "3gal": 46.95
     },
     "astilbe:fast-growing-trees": {
-      "default": 34.95
+      "1gal": 34.95
     },
     "heuchera-coral-bells:fast-growing-trees": {
       "1gal": 59.95
@@ -2440,7 +2439,6 @@
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft": 85.95,
-      "4-5ft": 125.95,
       "5-6ft": 152.95,
       "6-7ft": 184.95
     },
@@ -2536,7 +2534,8 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf": 32.99,
-      "semi-dwarf": 26.99
+      "semi-dwarf": 26.99,
+      "supreme": 49.99
     },
     "bing-cherry-tree:stark-bros": {
       "semi-dwarf": 41.99,
@@ -2544,7 +2543,6 @@
       "standard": 38.99
     },
     "elberta-peach-tree:stark-bros": {
-      "semi-dwarf": 55.99,
       "ultra-supreme": 199.99
     },
     "bartlett-pear-tree:stark-bros": {
