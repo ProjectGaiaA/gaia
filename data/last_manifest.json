@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-19T12:50:14.877944+00:00",
+  "timestamp": "2026-04-19T23:55:16.895576+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -921,7 +921,7 @@
       "products_expected": 62,
       "products_found": 59,
       "products_error": 3,
-      "prices_collected": 145,
+      "prices_collected": 143,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -955,8 +955,7 @@
           "6-7ft": 161.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 65.95,
-          "2-3ft": 90.95
+          "1-2ft": 65.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 103.95,
@@ -1134,7 +1133,7 @@
           "3gal": 46.95
         },
         "astilbe:fast-growing-trees": {
-          "1gal": 34.95
+          "default": 34.95
         },
         "heuchera-coral-bells:fast-growing-trees": {
           "1gal": 59.95
@@ -1176,7 +1175,6 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "quart": 16.95,
           "1gal": 36.95,
           "3gal": 74.95
         },
@@ -1314,7 +1312,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 700,
+  "total_prices_collected": 698,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2227,8 +2225,7 @@
       "6-7ft": 161.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 65.95,
-      "2-3ft": 90.95
+      "1-2ft": 65.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 103.95,
@@ -2406,7 +2403,7 @@
       "3gal": 46.95
     },
     "astilbe:fast-growing-trees": {
-      "1gal": 34.95
+      "default": 34.95
     },
     "heuchera-coral-bells:fast-growing-trees": {
       "1gal": 59.95
@@ -2448,7 +2445,6 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "quart": 16.95,
       "1gal": 36.95,
       "3gal": 74.95
     },
