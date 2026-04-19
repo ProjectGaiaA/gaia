@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-18T23:54:17.479678+00:00",
+  "timestamp": "2026-04-19T12:50:14.877944+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -921,10 +921,8 @@
       "products_expected": 62,
       "products_found": 59,
       "products_error": 3,
-      "prices_collected": 146,
-      "anomalies": [
-        "ANOMALY: purple-fountain-grass at fast-growing-trees tier=default: $90.95 -> $37.95 (58% change)"
-      ],
+      "prices_collected": 145,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -952,7 +950,6 @@
           "quart": 51.95
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
-          "2-3ft": 78.95,
           "3-4ft": 89.95,
           "5-6ft": 129.95,
           "6-7ft": 161.95
@@ -1124,6 +1121,10 @@
         "pink-muhly-grass:fast-growing-trees": {
           "default": 49.95,
           "1gal": 22.95
+        },
+        "purple-fountain-grass:fast-growing-trees": {
+          "default": 37.95,
+          "1gal": 24.95
         },
         "blue-fescue-elijah-blue:fast-growing-trees": {
           "1gal": 44.95
@@ -1313,11 +1314,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 701,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: purple-fountain-grass at fast-growing-trees tier=default: $90.95 -> $37.95 (58% change)"
-  ],
+  "total_prices_collected": 700,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2223,7 +2222,6 @@
       "quart": 51.95
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
-      "2-3ft": 78.95,
       "3-4ft": 89.95,
       "5-6ft": 129.95,
       "6-7ft": 161.95
@@ -2395,6 +2393,10 @@
     "pink-muhly-grass:fast-growing-trees": {
       "default": 49.95,
       "1gal": 22.95
+    },
+    "purple-fountain-grass:fast-growing-trees": {
+      "default": 37.95,
+      "1gal": 24.95
     },
     "blue-fescue-elijah-blue:fast-growing-trees": {
       "1gal": 44.95
