@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-19T23:55:16.895576+00:00",
+  "timestamp": "2026-04-20T16:41:59.011610+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -921,7 +921,7 @@
       "products_expected": 62,
       "products_found": 59,
       "products_error": 3,
-      "prices_collected": 143,
+      "prices_collected": 139,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -950,12 +950,13 @@
           "quart": 51.95
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
-          "3-4ft": 89.95,
           "5-6ft": 129.95,
           "6-7ft": 161.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 65.95
+          "1-2ft": 65.95,
+          "2-3ft": 90.95,
+          "3-4ft": 124.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 103.95,
@@ -973,8 +974,7 @@
         },
         "stella-cherry-tree:fast-growing-trees": {
           "default": 121.95,
-          "3-4ft": 92.95,
-          "4-5ft": 100.95
+          "3-4ft": 92.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
@@ -991,13 +991,9 @@
           "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
-          "default": 524.95,
-          "4-5ft": 144.95,
-          "5-6ft": 219.95,
-          "6-7ft": 327.95
+          "2-3ft": 44.95
         },
         "skip-laurel:fast-growing-trees": {
-          "1gal": 29.95,
           "2gal": 46.95,
           "3gal": 73.95,
           "5gal": 116.95
@@ -1312,7 +1308,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 698,
+  "total_prices_collected": 694,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2220,12 +2216,13 @@
       "quart": 51.95
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
-      "3-4ft": 89.95,
       "5-6ft": 129.95,
       "6-7ft": 161.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 65.95
+      "1-2ft": 65.95,
+      "2-3ft": 90.95,
+      "3-4ft": 124.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 103.95,
@@ -2243,8 +2240,7 @@
     },
     "stella-cherry-tree:fast-growing-trees": {
       "default": 121.95,
-      "3-4ft": 92.95,
-      "4-5ft": 100.95
+      "3-4ft": 92.95
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
@@ -2261,13 +2257,9 @@
       "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
-      "default": 524.95,
-      "4-5ft": 144.95,
-      "5-6ft": 219.95,
-      "6-7ft": 327.95
+      "2-3ft": 44.95
     },
     "skip-laurel:fast-growing-trees": {
-      "1gal": 29.95,
       "2gal": 46.95,
       "3gal": 73.95,
       "5gal": 116.95
