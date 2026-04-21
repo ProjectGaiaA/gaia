@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-20T16:41:59.011610+00:00",
+  "timestamp": "2026-04-21T00:46:39.670518+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -921,7 +921,7 @@
       "products_expected": 62,
       "products_found": 59,
       "products_error": 3,
-      "prices_collected": 139,
+      "prices_collected": 142,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -950,8 +950,7 @@
           "quart": 51.95
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
-          "5-6ft": 129.95,
-          "6-7ft": 161.95
+          "5-6ft": 129.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
@@ -991,9 +990,13 @@
           "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
-          "2-3ft": 44.95
+          "default": 524.95,
+          "4-5ft": 144.95,
+          "5-6ft": 219.95,
+          "6-7ft": 327.95
         },
         "skip-laurel:fast-growing-trees": {
+          "1gal": 29.95,
           "2gal": 46.95,
           "3gal": 73.95,
           "5gal": 116.95
@@ -1008,6 +1011,7 @@
         "bloodgood-japanese-maple:fast-growing-trees": {
           "1-2ft": 66.95,
           "2-3ft": 85.95,
+          "3-4ft": 109.95,
           "4-5ft": 140.95,
           "5-6ft": 179.95,
           "6-7ft": 229.95
@@ -1043,7 +1047,7 @@
           "default": 59.95
         },
         "duke-blueberry:fast-growing-trees": {
-          "1-galllon": 46.95
+          "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
           "4inch": 30.95,
@@ -1118,8 +1122,7 @@
           "1gal": 22.95
         },
         "purple-fountain-grass:fast-growing-trees": {
-          "default": 37.95,
-          "1gal": 24.95
+          "default": 37.95
         },
         "blue-fescue-elijah-blue:fast-growing-trees": {
           "1gal": 44.95
@@ -1308,7 +1311,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 694,
+  "total_prices_collected": 697,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2216,8 +2219,7 @@
       "quart": 51.95
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
-      "5-6ft": 129.95,
-      "6-7ft": 161.95
+      "5-6ft": 129.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
@@ -2257,9 +2259,13 @@
       "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
-      "2-3ft": 44.95
+      "default": 524.95,
+      "4-5ft": 144.95,
+      "5-6ft": 219.95,
+      "6-7ft": 327.95
     },
     "skip-laurel:fast-growing-trees": {
+      "1gal": 29.95,
       "2gal": 46.95,
       "3gal": 73.95,
       "5gal": 116.95
@@ -2274,6 +2280,7 @@
     "bloodgood-japanese-maple:fast-growing-trees": {
       "1-2ft": 66.95,
       "2-3ft": 85.95,
+      "3-4ft": 109.95,
       "4-5ft": 140.95,
       "5-6ft": 179.95,
       "6-7ft": 229.95
@@ -2309,7 +2316,7 @@
       "default": 59.95
     },
     "duke-blueberry:fast-growing-trees": {
-      "1-galllon": 46.95
+      "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
       "4inch": 30.95,
@@ -2384,8 +2391,7 @@
       "1gal": 22.95
     },
     "purple-fountain-grass:fast-growing-trees": {
-      "default": 37.95,
-      "1gal": 24.95
+      "default": 37.95
     },
     "blue-fescue-elijah-blue:fast-growing-trees": {
       "1gal": 44.95
