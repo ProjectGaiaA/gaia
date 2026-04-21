@@ -1,0 +1,77 @@
+diff --git a/scrapers/shopify.py b/scrapers/shopify.py
+index 2f54c6e..078eaf3 100644
+--- a/scrapers/shopify.py
++++ b/scrapers/shopify.py
+@@ -56,6 +56,37 @@ class ShopifyScraper:
+         delay = polite_delay(self.delay_range[0], self.delay_range[1])
+         return delay
+ 
++    def _check_js_availability(self, handle: str) -> dict | None:
++        """Fetch accurate variant availability from Shopify .js endpoint.
++
++        The .json endpoint is unreliable for availability data:
++        - Some stores omit the 'available' field entirely (PlantingTree)
++        - Others return stale values (Spring Hill reports available:true
++          for sold-out items)
++
++        The .js endpoint consistently returns correct availability.
++        No extra polite delay needed — this immediately follows a .json
++        request for the same product.
++
++        Returns dict mapping variant_id -> available (bool), or None on failure.
++        """
++        js_url = f"{self.base_url}/products/{handle}.js"
++        if not is_allowed_by_robots(js_url):
++            return None
++        try:
++            resp = self.session.get(js_url, timeout=15)
++            log_request(js_url, status_code=resp.status_code)
++            if resp.status_code == 200:
++                data = resp.json()
++                return {
++                    v.get("id"): v.get("available")
++                    for v in data.get("variants", [])
++                    if v.get("id") is not None
++                }
++        except Exception as e:
++            logger.debug(f"JS availability check failed for {handle}: {e}")
++        return None
++
+     def _get_json(self, url: str, allow_redirects: bool = True) -> FetchResult:
+         """Fetch JSON from URL with error handling and robots.txt compliance.
+ 
+@@ -263,6 +294,34 @@ class ShopifyScraper:
+         if not has_any_explicit_availability:
+             any_available = None  # Unknown — show dash
+ 
++        # Cross-check availability against .js endpoint (authoritative source).
++        # The .json endpoint is unreliable — some stores omit the field,
++        # others return stale values. The .js endpoint is always accurate.
++        if handle and sizes:
++            js_avail = self._check_js_availability(handle)
++            if js_avail:
++                for tier in list(sizes.keys()):
++                    vid = sizes[tier].get("variant_id")
++                    if vid and js_avail.get(vid) is False:
++                        logger.info(f"  Filtering sold-out variant: {sizes[tier].get('raw_size', tier)}")
++                        del sizes[tier]
++                    elif vid and vid in js_avail:
++                        sizes[tier]["available"] = js_avail[vid]
++                # Recalculate stock status from filtered variants
++                if sizes:
++                    any_available = any(
++                        v.get("available") is True for v in sizes.values()
++                    )
++                    if not any(v.get("available") is not None for v in sizes.values()):
++                        any_available = None
++                else:
++                    any_available = False
++                # Update URL to cheapest available variant
++                if sizes:
++                    cheapest = min(sizes.values(), key=lambda x: x["price"])
++                    if cheapest.get("variant_id"):
++                        product_url = f"{self.base_url}/products/{handle}?variant={cheapest['variant_id']}"
++
+         return {
+             "retailer_id": self.retailer_id,
+             "retailer_name": self.retailer_id.replace("-", " ").title(),
