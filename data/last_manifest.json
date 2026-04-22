@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-22T00:14:18.518847+00:00",
+  "timestamp": "2026-04-22T16:40:49.580432+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,10 +967,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 162,
-      "anomalies": [
-        "ANOMALY: purple-fountain-grass at fast-growing-trees tier=default: $37.95 -> $90.95 (140% change)"
-      ],
+      "prices_collected": 156,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1004,9 +1002,7 @@
           "5-6ft": 134.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 65.95,
-          "2-3ft": 90.95,
-          "3-4ft": 124.95
+          "1-2ft": 65.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 103.95,
@@ -1090,17 +1086,13 @@
           "3gal": 63.95
         },
         "coral-knock-out-rose:fast-growing-trees": {
-          "default": 59.95
+          "3gal": 59.95
         },
         "duke-blueberry:fast-growing-trees": {
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 30.95,
-          "quart": 31.95,
-          "1gal": 41.95,
-          "2gal": 44.95,
-          "3gal": 52.95
+          "default": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1168,6 +1160,11 @@
           "default": 49.95,
           "1gal": 22.95,
           "3gal": 34.95
+        },
+        "purple-fountain-grass:fast-growing-trees": {
+          "default": 90.95,
+          "1gal": 24.95,
+          "3gal": 37.95
         },
         "blue-fescue-elijah-blue:fast-growing-trees": {
           "1gal": 44.95
@@ -1353,25 +1350,27 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 11,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 32.99,
+          "supreme": 69.99,
           "semi-dwarf": 26.99
         },
         "bing-cherry-tree:stark-bros": {
-          "semi-dwarf": 41.99,
           "standard": 38.99
         },
         "elberta-peach-tree:stark-bros": {
+          "semi-dwarf": 55.99,
           "ultra-supreme": 199.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf": 32.99,
           "ultra-supreme": 229.99,
           "semi-dwarf": 26.99,
-          "supreme-ez-start": 75.99
+          "supreme-ez-start": 75.99,
+          "supreme": 39.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
@@ -1383,11 +1382,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 744,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: purple-fountain-grass at fast-growing-trees tier=default: $37.95 -> $90.95 (140% change)"
-  ],
+  "total_prices_collected": 740,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2345,9 +2342,7 @@
       "5-6ft": 134.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 65.95,
-      "2-3ft": 90.95,
-      "3-4ft": 124.95
+      "1-2ft": 65.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 103.95,
@@ -2431,17 +2426,13 @@
       "3gal": 63.95
     },
     "coral-knock-out-rose:fast-growing-trees": {
-      "default": 59.95
+      "3gal": 59.95
     },
     "duke-blueberry:fast-growing-trees": {
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 30.95,
-      "quart": 31.95,
-      "1gal": 41.95,
-      "2gal": 44.95,
-      "3gal": 52.95
+      "default": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2509,6 +2500,11 @@
       "default": 49.95,
       "1gal": 22.95,
       "3gal": 34.95
+    },
+    "purple-fountain-grass:fast-growing-trees": {
+      "default": 90.95,
+      "1gal": 24.95,
+      "3gal": 37.95
     },
     "blue-fescue-elijah-blue:fast-growing-trees": {
       "1gal": 44.95
@@ -2663,20 +2659,22 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf": 32.99,
+      "supreme": 69.99,
       "semi-dwarf": 26.99
     },
     "bing-cherry-tree:stark-bros": {
-      "semi-dwarf": 41.99,
       "standard": 38.99
     },
     "elberta-peach-tree:stark-bros": {
+      "semi-dwarf": 55.99,
       "ultra-supreme": 199.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf": 32.99,
       "ultra-supreme": 229.99,
       "semi-dwarf": 26.99,
-      "supreme-ez-start": 75.99
+      "supreme-ez-start": 75.99,
+      "supreme": 39.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99

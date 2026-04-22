@@ -224,6 +224,21 @@
                         </tr>
                         
                         <tr>
+                            <td class="bp-size">Semi-Dwarf</td>
+                            <td class="bp-price">
+                                <a href="https://www.starkbros.com/products/fruit-trees/peach-trees/elberta-peach" target="_blank" rel="noopener nofollow sponsored" class="bp-price-link">
+                                    $55.99
+                                </a>
+                                <span class="bp-nursery">at Stark Bros</span>
+                            </td>
+                            <td class="bp-specials">
+                                
+                                &mdash;
+                                
+                            </td>
+                        </tr>
+                        
+                        <tr>
                             <td class="bp-size">Ultra Supreme</td>
                             <td class="bp-price">
                                 <a href="https://www.starkbros.com/products/fruit-trees/peach-trees/elberta-peach" target="_blank" rel="noopener nofollow sponsored" class="bp-price-link">
@@ -260,6 +275,8 @@
                                 <th>5-6ft</th>
                                 
                                 <th>6-7ft</th>
+                                
+                                <th>Semi-Dwarf</th>
                                 
                                 <th>Ultra-Supreme</th>
                                 
@@ -361,6 +378,12 @@
                                     
                                 </td>
                                 
+                                <td class="price-cell" data-label="Semi-Dwarf">
+                                    
+                                        <span class="no-data">&mdash;</span>
+                                    
+                                </td>
+                                
                                 <td class="price-cell" data-label="Ultra-Supreme">
                                     
                                         <span class="no-data">&mdash;</span>
@@ -383,7 +406,7 @@
                                 </td>
                                 <td class="last-checked-cell" data-label="Last Checked">
                                     
-                                    <span class="last-checked-date">Apr 21</span>
+                                    <span class="last-checked-date">Apr 22</span>
                                     
                                 </td>
                                 <td class="specials-cell" data-label="Specials">
@@ -432,6 +455,20 @@
                                 <td class="price-cell" data-label="6-7ft">
                                     
                                         <span class="no-data">&mdash;</span>
+                                    
+                                </td>
+                                
+                                <td class="price-cell" data-label="Semi-Dwarf">
+                                    
+                                    
+                                    <a href="https://www.starkbros.com/products/fruit-trees/peach-trees/elberta-peach" target="_blank" rel="noopener nofollow sponsored" class="price-link">
+                                    
+                                        
+                                        <span class="best-price">$55.99</span>
+                                        
+                                        
+                                        
+                                    </a>
                                     
                                 </td>
                                 
@@ -771,7 +808,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
-    const priceData = {"dates": ["2026-04-03", "2026-04-05", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19", "2026-04-20", "2026-04-21", "2026-04-22"], "retailers": [{"name": "Planting Tree", "prices": [39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, null]}, {"name": "Stark Bros", "prices": [55.99, 55.99, 55.99, null, 55.99, 55.99, 55.99, 55.99, 55.99, 55.99, 55.99, 55.99, 199.99, 199.99, 199.99, 199.99, 199.99]}]};
+    const priceData = {"dates": ["2026-04-03", "2026-04-05", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19", "2026-04-20", "2026-04-21", "2026-04-22"], "retailers": [{"name": "Planting Tree", "prices": [39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95, 39.95]}, {"name": "Stark Bros", "prices": [55.99, 55.99, 55.99, null, 55.99, 55.99, 55.99, 55.99, 55.99, 55.99, 55.99, 55.99, 199.99, 199.99, 199.99, 199.99, 55.99]}]};
     const ctx = document.getElementById('priceChart').getContext('2d');
     new Chart(ctx, {
         type: 'line',
