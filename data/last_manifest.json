@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-23T17:45:13.146551+00:00",
+  "timestamp": "2026-04-24T00:56:09.517340+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 157,
+      "prices_collected": 158,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -981,11 +981,11 @@
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
-          "2gal": 49.95,
           "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
-          "1gal": 37.95
+          "1gal": 37.95,
+          "3gal": 69.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
           "1gal": 36.95,
@@ -993,7 +993,8 @@
           "3gal": 67.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
-          "quart": 35.95
+          "quart": 35.95,
+          "3gal": 66.95
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 51.95
@@ -1087,7 +1088,7 @@
           "3gal": 63.95
         },
         "coral-knock-out-rose:fast-growing-trees": {
-          "default": 59.95
+          "3gal": 59.95
         },
         "duke-blueberry:fast-growing-trees": {
           "1-galllon": 46.95
@@ -1388,7 +1389,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 742,
+  "total_prices_collected": 743,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2327,11 +2328,11 @@
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
-      "2gal": 49.95,
       "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
-      "1gal": 37.95
+      "1gal": 37.95,
+      "3gal": 69.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
       "1gal": 36.95,
@@ -2339,7 +2340,8 @@
       "3gal": 67.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
-      "quart": 35.95
+      "quart": 35.95,
+      "3gal": 66.95
     },
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 51.95
@@ -2433,7 +2435,7 @@
       "3gal": 63.95
     },
     "coral-knock-out-rose:fast-growing-trees": {
-      "default": 59.95
+      "3gal": 59.95
     },
     "duke-blueberry:fast-growing-trees": {
       "1-galllon": 46.95
