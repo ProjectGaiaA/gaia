@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-24T15:47:16.989553+00:00",
+  "timestamp": "2026-04-25T00:17:04.296729+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 162,
+      "prices_collected": 160,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -980,6 +980,7 @@
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
+          "2gal": 49.95,
           "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
@@ -1003,8 +1004,7 @@
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
-          "2-3ft": 90.95,
-          "3-4ft": 124.95
+          "2-3ft": 90.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 103.95,
@@ -1045,11 +1045,13 @@
         "skip-laurel:fast-growing-trees": {
           "1gal": 29.95,
           "2gal": 46.95,
-          "3gal": 73.95
+          "3gal": 73.95,
+          "5gal": 116.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
           "quart": 14.95,
           "1gal": 25.95,
+          "3gal": 44.95,
           "5gal": 78.95,
           "7gal": 149.95
         },
@@ -1058,6 +1060,7 @@
           "2-3ft": 85.95,
           "3-4ft": 109.95,
           "4-5ft": 140.95,
+          "5-6ft": 179.95,
           "6-7ft": 229.95
         },
         "coral-bark-japanese-maple:fast-growing-trees": {
@@ -1094,11 +1097,7 @@
           "1-galllon": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 30.95,
-          "quart": 31.95,
-          "1gal": 41.95,
-          "2gal": 44.95,
-          "3gal": 52.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1166,8 +1165,7 @@
         },
         "pink-muhly-grass:fast-growing-trees": {
           "default": 49.95,
-          "1gal": 22.95,
-          "3gal": 34.95
+          "1gal": 22.95
         },
         "purple-fountain-grass:fast-growing-trees": {
           "default": 90.95,
@@ -1185,7 +1183,7 @@
           "default": 34.95
         },
         "heuchera-coral-bells:fast-growing-trees": {
-          "default": 59.95
+          "1gal": 59.95
         },
         "happy-returns-daylily:fast-growing-trees": {
           "1gal": 28.95
@@ -1224,7 +1222,7 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "1gal": 36.95
+          "quart": 16.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95
@@ -1356,11 +1354,13 @@
       "products_expected": 8,
       "products_found": 7,
       "products_error": 1,
-      "prices_collected": 13,
+      "prices_collected": 15,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
-          "dwarf": 29.99
+          "dwarf": 29.99,
+          "semi-dwarf": 26.99,
+          "supreme": 49.99
         },
         "bing-cherry-tree:stark-bros": {
           "standard": 29.99
@@ -1384,7 +1384,7 @@
           "default": 27.99
         },
         "pink-lemonade-blueberry:stark-bros": {
-          "default": 25.99
+          "default": 18.99
         }
       },
       "health": "healthy"
@@ -2328,6 +2328,7 @@
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
+      "2gal": 49.95,
       "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
@@ -2351,8 +2352,7 @@
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
-      "2-3ft": 90.95,
-      "3-4ft": 124.95
+      "2-3ft": 90.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 103.95,
@@ -2393,11 +2393,13 @@
     "skip-laurel:fast-growing-trees": {
       "1gal": 29.95,
       "2gal": 46.95,
-      "3gal": 73.95
+      "3gal": 73.95,
+      "5gal": 116.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
       "quart": 14.95,
       "1gal": 25.95,
+      "3gal": 44.95,
       "5gal": 78.95,
       "7gal": 149.95
     },
@@ -2406,6 +2408,7 @@
       "2-3ft": 85.95,
       "3-4ft": 109.95,
       "4-5ft": 140.95,
+      "5-6ft": 179.95,
       "6-7ft": 229.95
     },
     "coral-bark-japanese-maple:fast-growing-trees": {
@@ -2442,11 +2445,7 @@
       "1-galllon": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 30.95,
-      "quart": 31.95,
-      "1gal": 41.95,
-      "2gal": 44.95,
-      "3gal": 52.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2514,8 +2513,7 @@
     },
     "pink-muhly-grass:fast-growing-trees": {
       "default": 49.95,
-      "1gal": 22.95,
-      "3gal": 34.95
+      "1gal": 22.95
     },
     "purple-fountain-grass:fast-growing-trees": {
       "default": 90.95,
@@ -2533,7 +2531,7 @@
       "default": 34.95
     },
     "heuchera-coral-bells:fast-growing-trees": {
-      "default": 59.95
+      "1gal": 59.95
     },
     "happy-returns-daylily:fast-growing-trees": {
       "1gal": 28.95
@@ -2572,7 +2570,7 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "1gal": 36.95
+      "quart": 16.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95
@@ -2672,7 +2670,9 @@
       "quart": 23.99
     },
     "honeycrisp-apple-tree:stark-bros": {
-      "dwarf": 29.99
+      "dwarf": 29.99,
+      "semi-dwarf": 26.99,
+      "supreme": 49.99
     },
     "bing-cherry-tree:stark-bros": {
       "standard": 29.99
@@ -2696,7 +2696,7 @@
       "default": 27.99
     },
     "pink-lemonade-blueberry:stark-bros": {
-      "default": 25.99
+      "default": 18.99
     }
   },
   "degraded_retailers": [],
