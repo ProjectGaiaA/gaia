@@ -268,7 +268,7 @@
                                 </td>
                                 <td class="last-checked-cell" data-label="Last Checked">
                                     
-                                    <span class="last-checked-date">Apr 25</span>
+                                    <span class="last-checked-date">Apr 26</span>
                                     
                                 </td>
                                 <td class="specials-cell" data-label="Specials">
@@ -393,7 +393,7 @@
                                 </td>
                                 <td class="last-checked-cell" data-label="Last Checked">
                                     
-                                    <span class="last-checked-date">Apr 25</span>
+                                    <span class="last-checked-date">Apr 26</span>
                                     
                                 </td>
                                 <td class="specials-cell" data-label="Specials">
@@ -406,7 +406,7 @@
                                 </td>
                             </tr>
                             
-                            <tr>
+                            <tr class="unavailable-row">
                                 <td class="retailer-name">
                                     Stark Bros
                                     
@@ -432,8 +432,7 @@
                                 
                                 <td class="stock-cell" data-label="Stock">
                                     
-                                    <span class="in-stock">In Stock</span>
-                                    
+                                    <span class="currently-unavailable">Currently Unavailable</span>
                                     
                                 </td>
                                 <td class="shipping-cell" data-label="Shipping">
@@ -737,7 +736,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script>
-    const priceData = {"dates": ["2026-04-03", "2026-04-05", "2026-04-06", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-25", "2026-04-26"], "retailers": [{"name": "Fast Growing Trees", "prices": [null, null, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95]}, {"name": "Nature Hills", "prices": [39.96, 39.96, null, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, null]}, {"name": "Spring Hill", "prices": [15.49, 15.49, null, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, null]}, {"name": "Stark Bros", "prices": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 18.99, 18.99, null, null]}]};
+    const priceData = {"dates": ["2026-04-03", "2026-04-05", "2026-04-06", "2026-04-08", "2026-04-09", "2026-04-10", "2026-04-11", "2026-04-12", "2026-04-13", "2026-04-14", "2026-04-15", "2026-04-16", "2026-04-17", "2026-04-18", "2026-04-19", "2026-04-20", "2026-04-21", "2026-04-22", "2026-04-23", "2026-04-24", "2026-04-25", "2026-04-26"], "retailers": [{"name": "Fast Growing Trees", "prices": [null, null, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95, 46.95]}, {"name": "Nature Hills", "prices": [39.96, 39.96, null, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96, 39.96]}, {"name": "Spring Hill", "prices": [15.49, 15.49, null, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49, 15.49]}, {"name": "Stark Bros", "prices": [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, 18.99, 18.99, null, null]}]};
     const ctx = document.getElementById('priceChart').getContext('2d');
     new Chart(ctx, {
         type: 'line',
