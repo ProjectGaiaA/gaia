@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-25T14:59:18.836905+00:00",
+  "timestamp": "2026-04-26T00:13:47.900251+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 166,
+      "prices_collected": 165,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1139,9 +1139,8 @@
           "default": 94.95
         },
         "pjm-rhododendron:fast-growing-trees": {
-          "1gal": 38.95,
-          "2gal": 73.95,
-          "default": 122.95
+          "default": 122.95,
+          "2gal": 73.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
           "1gal": 32.95,
@@ -1358,17 +1357,14 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 6,
-      "products_error": 2,
-      "prices_collected": 12,
+      "products_found": 5,
+      "products_error": 3,
+      "prices_collected": 11,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 29.99,
           "semi-dwarf": 26.99
-        },
-        "bing-cherry-tree:stark-bros": {
-          "standard": 29.99
         },
         "elberta-peach-tree:stark-bros": {
           "semi-dwarf": 55.99,
@@ -1391,7 +1387,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 749,
+  "total_prices_collected": 747,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2488,9 +2484,8 @@
       "default": 94.95
     },
     "pjm-rhododendron:fast-growing-trees": {
-      "1gal": 38.95,
-      "2gal": 73.95,
-      "default": 122.95
+      "default": 122.95,
+      "2gal": 73.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
       "1gal": 32.95,
@@ -2679,9 +2674,6 @@
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf": 29.99,
       "semi-dwarf": 26.99
-    },
-    "bing-cherry-tree:stark-bros": {
-      "standard": 29.99
     },
     "elberta-peach-tree:stark-bros": {
       "semi-dwarf": 55.99,
