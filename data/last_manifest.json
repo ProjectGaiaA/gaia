@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-26T15:00:10.402718+00:00",
+  "timestamp": "2026-04-27T00:15:36.289391+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 165,
+      "prices_collected": 166,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1009,8 +1009,9 @@
           "4-5ft": 171.95
         },
         "fuji-apple-tree:fast-growing-trees": {
-          "default": 103.95,
+          "default": 71.95,
           "3-4ft": 86.95,
+          "4-5ft": 103.95,
           "5-6ft": 124.95,
           "6-7ft": 149.95
         },
@@ -1227,7 +1228,7 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "quart": 16.95
+          "default": 74.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95
@@ -1357,9 +1358,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 5,
-      "products_error": 3,
-      "prices_collected": 11,
+      "products_found": 4,
+      "products_error": 4,
+      "prices_collected": 10,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1379,9 +1380,6 @@
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
-        },
-        "patriot-blueberry:stark-bros": {
-          "default": 27.99
         }
       },
       "health": "degraded"
@@ -2354,8 +2352,9 @@
       "4-5ft": 171.95
     },
     "fuji-apple-tree:fast-growing-trees": {
-      "default": 103.95,
+      "default": 71.95,
       "3-4ft": 86.95,
+      "4-5ft": 103.95,
       "5-6ft": 124.95,
       "6-7ft": 149.95
     },
@@ -2572,7 +2571,7 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "quart": 16.95
+      "default": 74.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95
@@ -2688,9 +2687,6 @@
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
-    },
-    "patriot-blueberry:stark-bros": {
-      "default": 27.99
     }
   },
   "degraded_retailers": [
