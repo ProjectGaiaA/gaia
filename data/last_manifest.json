@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-04-27T00:15:36.289391+00:00",
+  "timestamp": "2026-04-27T17:03:40.688043+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 166,
+      "prices_collected": 162,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -988,7 +988,6 @@
           "3gal": 69.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
-          "2gal": 49.95,
           "3gal": 67.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
@@ -1009,9 +1008,8 @@
           "4-5ft": 171.95
         },
         "fuji-apple-tree:fast-growing-trees": {
-          "default": 71.95,
+          "default": 103.95,
           "3-4ft": 86.95,
-          "4-5ft": 103.95,
           "5-6ft": 124.95,
           "6-7ft": 149.95
         },
@@ -1020,8 +1018,7 @@
           "2-3ft": 79.95,
           "3-4ft": 97.95,
           "4-5ft": 119.95,
-          "5-6ft": 148.95,
-          "6-7ft": 183.95
+          "default": 183.95
         },
         "stella-cherry-tree:fast-growing-trees": {
           "default": 121.95,
@@ -1140,8 +1137,9 @@
           "default": 94.95
         },
         "pjm-rhododendron:fast-growing-trees": {
-          "default": 122.95,
-          "2gal": 73.95
+          "1gal": 38.95,
+          "2gal": 73.95,
+          "default": 122.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
           "1gal": 32.95,
@@ -1195,10 +1193,9 @@
           "1gal": 28.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "1gal": 28.95
+          "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
-          "1gal": 30.95,
           "default": 43.95
         },
         "october-glory-maple:fast-growing-trees": {
@@ -1239,7 +1236,6 @@
           "2-3ft": 48.95
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
-          "1gal": 44.95,
           "3gal": 57.95,
           "7gal": 109.95
         },
@@ -1360,7 +1356,7 @@
       "products_expected": 8,
       "products_found": 4,
       "products_error": 4,
-      "prices_collected": 10,
+      "prices_collected": 9,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1368,7 +1364,6 @@
           "semi-dwarf": 26.99
         },
         "elberta-peach-tree:stark-bros": {
-          "semi-dwarf": 55.99,
           "ultra-supreme": 199.99
         },
         "bartlett-pear-tree:stark-bros": {
@@ -1385,7 +1380,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 747,
+  "total_prices_collected": 742,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2331,7 +2326,6 @@
       "3gal": 69.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
-      "2gal": 49.95,
       "3gal": 67.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
@@ -2352,9 +2346,8 @@
       "4-5ft": 171.95
     },
     "fuji-apple-tree:fast-growing-trees": {
-      "default": 71.95,
+      "default": 103.95,
       "3-4ft": 86.95,
-      "4-5ft": 103.95,
       "5-6ft": 124.95,
       "6-7ft": 149.95
     },
@@ -2363,8 +2356,7 @@
       "2-3ft": 79.95,
       "3-4ft": 97.95,
       "4-5ft": 119.95,
-      "5-6ft": 148.95,
-      "6-7ft": 183.95
+      "default": 183.95
     },
     "stella-cherry-tree:fast-growing-trees": {
       "default": 121.95,
@@ -2483,8 +2475,9 @@
       "default": 94.95
     },
     "pjm-rhododendron:fast-growing-trees": {
-      "default": 122.95,
-      "2gal": 73.95
+      "1gal": 38.95,
+      "2gal": 73.95,
+      "default": 122.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
       "1gal": 32.95,
@@ -2538,10 +2531,9 @@
       "1gal": 28.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "1gal": 28.95
+      "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
-      "1gal": 30.95,
       "default": 43.95
     },
     "october-glory-maple:fast-growing-trees": {
@@ -2582,7 +2574,6 @@
       "2-3ft": 48.95
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
-      "1gal": 44.95,
       "3gal": 57.95,
       "7gal": 109.95
     },
@@ -2675,7 +2666,6 @@
       "semi-dwarf": 26.99
     },
     "elberta-peach-tree:stark-bros": {
-      "semi-dwarf": 55.99,
       "ultra-supreme": 199.99
     },
     "bartlett-pear-tree:stark-bros": {
