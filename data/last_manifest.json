@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-04-29T01:02:18.415327+00:00",
+  "timestamp": "2026-04-29T17:47:27.054487+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 63,
-      "products_error": 15,
-      "prices_collected": 116,
+      "products_found": 71,
+      "products_error": 7,
+      "prices_collected": 134,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -21,6 +21,11 @@
           "2gal": 65.1,
           "3gal": 77.01
         },
+        "bloomstruck-hydrangea:nature-hills": {
+          "quart": 23.49,
+          "2gal": 67.27,
+          "3gal": 75.01
+        },
         "summer-crush-hydrangea:nature-hills": {
           "quart": 19.89,
           "1gal": 43.55,
@@ -33,12 +38,14 @@
           "2gal": 69.63,
           "3gal": 85.75
         },
+        "incrediball-hydrangea:nature-hills": {
+          "quart": 26.14,
+          "1gal": 48.29,
+          "3gal": 84.58
+        },
         "fire-light-hydrangea:nature-hills": {
           "quart": 26.29,
           "3gal": 85.75
-        },
-        "honeycrisp-apple-tree:nature-hills": {
-          "2gal": 71.43
         },
         "fuji-apple-tree:nature-hills": {
           "3gal": 128.25
@@ -67,6 +74,12 @@
         "tamukeyama-japanese-maple:nature-hills": {
           "3gal": 184.65
         },
+        "double-knock-out-rose:nature-hills": {
+          "quart": 18.15,
+          "1gal": 37.13,
+          "3gal": 49.55,
+          "2gal": 54.11
+        },
         "pink-knock-out-rose:nature-hills": {
           "quart": 18.15,
           "1gal": 39.79,
@@ -84,11 +97,6 @@
         },
         "coral-knock-out-rose:nature-hills": {
           "3gal": 72.09
-        },
-        "duke-blueberry:nature-hills": {
-          "1gal": 39.96,
-          "2gal": 78.09,
-          "3gal": 90.41
         },
         "bluecrop-blueberry:nature-hills": {
           "1gal": 40.67
@@ -121,9 +129,6 @@
           "quart": 16.99,
           "1gal": 29.43
         },
-        "hosta-sum-and-substance:nature-hills": {
-          "1gal": 29.67
-        },
         "echinacea-powwow-wild-berry:nature-hills": {
           "quart": 16.99
         },
@@ -149,6 +154,15 @@
         },
         "chicago-hardy-fig:nature-hills": {
           "3gal": 102.99
+        },
+        "arbequina-olive:nature-hills": {
+          "3gal": 81.25
+        },
+        "karl-foerster-grass:nature-hills": {
+          "quart": 16.99,
+          "1gal": 33.17,
+          "2gal": 51.67,
+          "3gal": 60.67
         },
         "creeping-phlox:nature-hills": {
           "quart": 16.99,
@@ -179,19 +193,20 @@
         "big-blue-liriope:nature-hills": {
           "quart": 27.33
         },
+        "ajuga-chocolate-chip:nature-hills": {
+          "quart": 13.59,
+          "1gal": 25.83
+        },
         "creeping-thyme:nature-hills": {
           "1gal": 29.45
-        },
-        "sedum-angelina:nature-hills": {
-          "1gal": 29.6
         },
         "blue-rug-juniper:nature-hills": {
           "1gal": 44.5,
           "2gal": 59.61,
           "3gal": 84.75
         },
-        "purple-fountain-grass:nature-hills": {
-          "quart": 15.82
+        "pink-muhly-grass:nature-hills": {
+          "quart": 16.99
         },
         "hameln-dwarf-fountain-grass:nature-hills": {
           "quart": 16.99,
@@ -205,6 +220,10 @@
         },
         "astilbe:nature-hills": {
           "1gal": 31.4
+        },
+        "heuchera-coral-bells:nature-hills": {
+          "quart": 16.99,
+          "1gal": 43.72
         },
         "bleeding-heart:nature-hills": {
           "1gal": 38.28
@@ -224,6 +243,9 @@
           "quart": 16.99,
           "1gal": 28.17
         },
+        "russian-sage:nature-hills": {
+          "quart": 26.14
+        },
         "october-glory-maple:nature-hills": {
           "3gal": 92.0
         },
@@ -233,6 +255,9 @@
         "red-sunset-maple:nature-hills": {
           "3gal": 94.41
         },
+        "sweetbay-magnolia:nature-hills": {
+          "3gal": 94.07
+        },
         "rose-of-sharon:nature-hills": {
           "1gal": 44.9,
           "3gal": 123.88
@@ -241,13 +266,22 @@
           "quart": 26.14,
           "3gal": 82.58
         },
+        "gardenia-frost-proof:nature-hills": {
+          "quart": 26.96
+        },
         "dwarf-alberta-spruce:nature-hills": {
           "1gal": 47.29,
           "2gal": 83.58,
           "3gal": 109.22
         },
+        "autumn-royalty-encore-azalea:nature-hills": {
+          "1gal": 52.71
+        },
         "autumn-twist-encore-azalea:nature-hills": {
           "1gal": 56.39
+        },
+        "nandina-heavenly-bamboo:nature-hills": {
+          "1gal": 39.29
         },
         "santa-rosa-plum:nature-hills": {
           "2gal": 119.36
@@ -259,9 +293,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 74,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_found": 69,
+      "products_error": 6,
+      "prices_collected": 293,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -286,6 +320,11 @@
           "2gal": 63.95,
           "3gal": 73.95,
           "5gal": 84.95
+        },
+        "summer-crush-hydrangea:planting-tree": {
+          "1gal": 36.95,
+          "2gal": 57.95,
+          "3gal": 73.95
         },
         "little-lime-hydrangea:planting-tree": {
           "quart": 26.95,
@@ -626,12 +665,6 @@
           "2gal": 53.95,
           "3gal": 42.95
         },
-        "pink-muhly-grass:planting-tree": {
-          "1gal": 25.95,
-          "2gal": 71.95,
-          "3gal": 48.95,
-          "5gal": 99.95
-        },
         "pampas-grass:planting-tree": {
           "1gal": 56.95,
           "2gal": 72.95,
@@ -641,39 +674,11 @@
         "heuchera-coral-bells:planting-tree": {
           "1gal": 30.95
         },
-        "catmint-walkers-low:planting-tree": {
-          "quart": 21.95,
-          "1gal": 50.95,
-          "2gal": 58.95
-        },
-        "october-glory-maple:planting-tree": {
-          "1-2ft": 53.95,
-          "2-3ft": 41.95,
-          "3-4ft": 84.95,
-          "4-5ft": 99.95,
-          "5-6ft": 114.95,
-          "6-7ft": 124.95
-        },
-        "heritage-river-birch:planting-tree": {
-          "2-3ft": 104.95,
-          "3-4ft": 75.95,
-          "4-5ft": 119.95,
-          "5-6ft": 129.95,
-          "6-7ft": 169.95
-        },
         "red-sunset-maple:planting-tree": {
           "3-4ft": 119.95,
           "4-5ft": 129.95,
           "5-6ft": 144.95,
           "6-7ft": 154.95
-        },
-        "sweetbay-magnolia:planting-tree": {
-          "1-2ft": 92.95,
-          "2-3ft": 84.95,
-          "3-4ft": 109.95,
-          "4-5ft": 124.95,
-          "5-6ft": 119.95,
-          "6-7ft": 264.95
         },
         "rose-of-sharon:planting-tree": {
           "2gal": 51.95,
@@ -689,13 +694,6 @@
           "1gal": 20.95,
           "3gal": 41.95,
           "7gal": 139.95
-        },
-        "dwarf-alberta-spruce:planting-tree": {
-          "1gal": 53.95,
-          "2gal": 83.95,
-          "1-2ft": 37.95,
-          "2-3ft": 77.95,
-          "3-4ft": 169.95
         },
         "autumn-royalty-encore-azalea:planting-tree": {
           "1gal": 32.95,
@@ -904,11 +902,11 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 147,
+      "prices_collected": 153,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 30.95
+          "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 22.95
@@ -923,6 +921,7 @@
           "3gal": 69.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
+          "1gal": 44.95,
           "3gal": 67.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
@@ -939,7 +938,9 @@
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
-          "2-3ft": 90.95
+          "2-3ft": 90.95,
+          "3-4ft": 124.95,
+          "4-5ft": 171.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 124.95,
@@ -979,7 +980,6 @@
         "skip-laurel:fast-growing-trees": {
           "1gal": 57.95,
           "2gal": 46.95,
-          "3gal": 73.95,
           "5gal": 116.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
@@ -1031,7 +1031,11 @@
           "1-galllon": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "default": 44.95
+          "4inch": 30.95,
+          "quart": 31.95,
+          "1gal": 41.95,
+          "2gal": 44.95,
+          "3gal": 52.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1069,7 +1073,7 @@
           "3gal": 42.95
         },
         "echinacea-powwow-wild-berry:fast-growing-trees": {
-          "1gal": 54.95
+          "1gal": 39.95
         },
         "vinca-minor:fast-growing-trees": {
           "1gal": 46.95
@@ -1114,7 +1118,7 @@
           "1gal": 28.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "1gal": 28.95
+          "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
           "1gal": 30.95,
@@ -1212,7 +1216,7 @@
         },
         "astilbe:proven-winners-direct": {
           "1gal": 37.99,
-          "quart": 15.74
+          "quart": 20.99
         },
         "heuchera-coral-bells:proven-winners-direct": {
           "0-65-gallon": 32.99,
@@ -1220,14 +1224,14 @@
         },
         "bleeding-heart:proven-winners-direct": {
           "1gal": 37.99,
-          "quart": 15.74
+          "quart": 20.99
         },
         "bee-balm:proven-winners-direct": {
           "0-65-gallon": 32.99
         },
         "russian-sage:proven-winners-direct": {
           "0-65-gallon": 32.99,
-          "quart": 15.74
+          "quart": 20.99
         },
         "rose-of-sharon:proven-winners-direct": {
           "1gal": 39.99,
@@ -1276,8 +1280,8 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 5,
-      "products_error": 3,
+      "products_found": 4,
+      "products_error": 4,
       "prices_collected": 12,
       "anomalies": [],
       "price_records": {
@@ -1285,11 +1289,9 @@
           "dwarf": 29.99,
           "semi-dwarf": 26.99
         },
-        "bing-cherry-tree:stark-bros": {
-          "standard": 29.99
-        },
         "elberta-peach-tree:stark-bros": {
           "semi-dwarf": 55.99,
+          "semi-dwarf-potted": 116.99,
           "ultra-supreme": 199.99
         },
         "bartlett-pear-tree:stark-bros": {
@@ -1307,7 +1309,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 699,
+  "total_prices_collected": 697,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1322,6 +1324,11 @@
       "2gal": 65.1,
       "3gal": 77.01
     },
+    "bloomstruck-hydrangea:nature-hills": {
+      "quart": 23.49,
+      "2gal": 67.27,
+      "3gal": 75.01
+    },
     "summer-crush-hydrangea:nature-hills": {
       "quart": 19.89,
       "1gal": 43.55,
@@ -1334,12 +1341,14 @@
       "2gal": 69.63,
       "3gal": 85.75
     },
+    "incrediball-hydrangea:nature-hills": {
+      "quart": 26.14,
+      "1gal": 48.29,
+      "3gal": 84.58
+    },
     "fire-light-hydrangea:nature-hills": {
       "quart": 26.29,
       "3gal": 85.75
-    },
-    "honeycrisp-apple-tree:nature-hills": {
-      "2gal": 71.43
     },
     "fuji-apple-tree:nature-hills": {
       "3gal": 128.25
@@ -1368,6 +1377,12 @@
     "tamukeyama-japanese-maple:nature-hills": {
       "3gal": 184.65
     },
+    "double-knock-out-rose:nature-hills": {
+      "quart": 18.15,
+      "1gal": 37.13,
+      "3gal": 49.55,
+      "2gal": 54.11
+    },
     "pink-knock-out-rose:nature-hills": {
       "quart": 18.15,
       "1gal": 39.79,
@@ -1385,11 +1400,6 @@
     },
     "coral-knock-out-rose:nature-hills": {
       "3gal": 72.09
-    },
-    "duke-blueberry:nature-hills": {
-      "1gal": 39.96,
-      "2gal": 78.09,
-      "3gal": 90.41
     },
     "bluecrop-blueberry:nature-hills": {
       "1gal": 40.67
@@ -1422,9 +1432,6 @@
       "quart": 16.99,
       "1gal": 29.43
     },
-    "hosta-sum-and-substance:nature-hills": {
-      "1gal": 29.67
-    },
     "echinacea-powwow-wild-berry:nature-hills": {
       "quart": 16.99
     },
@@ -1450,6 +1457,15 @@
     },
     "chicago-hardy-fig:nature-hills": {
       "3gal": 102.99
+    },
+    "arbequina-olive:nature-hills": {
+      "3gal": 81.25
+    },
+    "karl-foerster-grass:nature-hills": {
+      "quart": 16.99,
+      "1gal": 33.17,
+      "2gal": 51.67,
+      "3gal": 60.67
     },
     "creeping-phlox:nature-hills": {
       "quart": 16.99,
@@ -1480,19 +1496,20 @@
     "big-blue-liriope:nature-hills": {
       "quart": 27.33
     },
+    "ajuga-chocolate-chip:nature-hills": {
+      "quart": 13.59,
+      "1gal": 25.83
+    },
     "creeping-thyme:nature-hills": {
       "1gal": 29.45
-    },
-    "sedum-angelina:nature-hills": {
-      "1gal": 29.6
     },
     "blue-rug-juniper:nature-hills": {
       "1gal": 44.5,
       "2gal": 59.61,
       "3gal": 84.75
     },
-    "purple-fountain-grass:nature-hills": {
-      "quart": 15.82
+    "pink-muhly-grass:nature-hills": {
+      "quart": 16.99
     },
     "hameln-dwarf-fountain-grass:nature-hills": {
       "quart": 16.99,
@@ -1506,6 +1523,10 @@
     },
     "astilbe:nature-hills": {
       "1gal": 31.4
+    },
+    "heuchera-coral-bells:nature-hills": {
+      "quart": 16.99,
+      "1gal": 43.72
     },
     "bleeding-heart:nature-hills": {
       "1gal": 38.28
@@ -1525,6 +1546,9 @@
       "quart": 16.99,
       "1gal": 28.17
     },
+    "russian-sage:nature-hills": {
+      "quart": 26.14
+    },
     "october-glory-maple:nature-hills": {
       "3gal": 92.0
     },
@@ -1534,6 +1558,9 @@
     "red-sunset-maple:nature-hills": {
       "3gal": 94.41
     },
+    "sweetbay-magnolia:nature-hills": {
+      "3gal": 94.07
+    },
     "rose-of-sharon:nature-hills": {
       "1gal": 44.9,
       "3gal": 123.88
@@ -1542,13 +1569,22 @@
       "quart": 26.14,
       "3gal": 82.58
     },
+    "gardenia-frost-proof:nature-hills": {
+      "quart": 26.96
+    },
     "dwarf-alberta-spruce:nature-hills": {
       "1gal": 47.29,
       "2gal": 83.58,
       "3gal": 109.22
     },
+    "autumn-royalty-encore-azalea:nature-hills": {
+      "1gal": 52.71
+    },
     "autumn-twist-encore-azalea:nature-hills": {
       "1gal": 56.39
+    },
+    "nandina-heavenly-bamboo:nature-hills": {
+      "1gal": 39.29
     },
     "santa-rosa-plum:nature-hills": {
       "2gal": 119.36
@@ -1575,6 +1611,11 @@
       "2gal": 63.95,
       "3gal": 73.95,
       "5gal": 84.95
+    },
+    "summer-crush-hydrangea:planting-tree": {
+      "1gal": 36.95,
+      "2gal": 57.95,
+      "3gal": 73.95
     },
     "little-lime-hydrangea:planting-tree": {
       "quart": 26.95,
@@ -1915,12 +1956,6 @@
       "2gal": 53.95,
       "3gal": 42.95
     },
-    "pink-muhly-grass:planting-tree": {
-      "1gal": 25.95,
-      "2gal": 71.95,
-      "3gal": 48.95,
-      "5gal": 99.95
-    },
     "pampas-grass:planting-tree": {
       "1gal": 56.95,
       "2gal": 72.95,
@@ -1930,39 +1965,11 @@
     "heuchera-coral-bells:planting-tree": {
       "1gal": 30.95
     },
-    "catmint-walkers-low:planting-tree": {
-      "quart": 21.95,
-      "1gal": 50.95,
-      "2gal": 58.95
-    },
-    "october-glory-maple:planting-tree": {
-      "1-2ft": 53.95,
-      "2-3ft": 41.95,
-      "3-4ft": 84.95,
-      "4-5ft": 99.95,
-      "5-6ft": 114.95,
-      "6-7ft": 124.95
-    },
-    "heritage-river-birch:planting-tree": {
-      "2-3ft": 104.95,
-      "3-4ft": 75.95,
-      "4-5ft": 119.95,
-      "5-6ft": 129.95,
-      "6-7ft": 169.95
-    },
     "red-sunset-maple:planting-tree": {
       "3-4ft": 119.95,
       "4-5ft": 129.95,
       "5-6ft": 144.95,
       "6-7ft": 154.95
-    },
-    "sweetbay-magnolia:planting-tree": {
-      "1-2ft": 92.95,
-      "2-3ft": 84.95,
-      "3-4ft": 109.95,
-      "4-5ft": 124.95,
-      "5-6ft": 119.95,
-      "6-7ft": 264.95
     },
     "rose-of-sharon:planting-tree": {
       "2gal": 51.95,
@@ -1978,13 +1985,6 @@
       "1gal": 20.95,
       "3gal": 41.95,
       "7gal": 139.95
-    },
-    "dwarf-alberta-spruce:planting-tree": {
-      "1gal": 53.95,
-      "2gal": 83.95,
-      "1-2ft": 37.95,
-      "2-3ft": 77.95,
-      "3-4ft": 169.95
     },
     "autumn-royalty-encore-azalea:planting-tree": {
       "1gal": 32.95,
@@ -2173,7 +2173,7 @@
       "1gal": 49.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 30.95
+      "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 22.95
@@ -2188,6 +2188,7 @@
       "3gal": 69.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
+      "1gal": 44.95,
       "3gal": 67.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
@@ -2204,7 +2205,9 @@
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
-      "2-3ft": 90.95
+      "2-3ft": 90.95,
+      "3-4ft": 124.95,
+      "4-5ft": 171.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 124.95,
@@ -2244,7 +2247,6 @@
     "skip-laurel:fast-growing-trees": {
       "1gal": 57.95,
       "2gal": 46.95,
-      "3gal": 73.95,
       "5gal": 116.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
@@ -2296,7 +2298,11 @@
       "1-galllon": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "default": 44.95
+      "4inch": 30.95,
+      "quart": 31.95,
+      "1gal": 41.95,
+      "2gal": 44.95,
+      "3gal": 52.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2334,7 +2340,7 @@
       "3gal": 42.95
     },
     "echinacea-powwow-wild-berry:fast-growing-trees": {
-      "1gal": 54.95
+      "1gal": 39.95
     },
     "vinca-minor:fast-growing-trees": {
       "1gal": 46.95
@@ -2379,7 +2385,7 @@
       "1gal": 28.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "1gal": 28.95
+      "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
       "1gal": 30.95,
@@ -2465,7 +2471,7 @@
     },
     "astilbe:proven-winners-direct": {
       "1gal": 37.99,
-      "quart": 15.74
+      "quart": 20.99
     },
     "heuchera-coral-bells:proven-winners-direct": {
       "0-65-gallon": 32.99,
@@ -2473,14 +2479,14 @@
     },
     "bleeding-heart:proven-winners-direct": {
       "1gal": 37.99,
-      "quart": 15.74
+      "quart": 20.99
     },
     "bee-balm:proven-winners-direct": {
       "0-65-gallon": 32.99
     },
     "russian-sage:proven-winners-direct": {
       "0-65-gallon": 32.99,
-      "quart": 15.74
+      "quart": 20.99
     },
     "rose-of-sharon:proven-winners-direct": {
       "1gal": 39.99,
@@ -2514,11 +2520,9 @@
       "dwarf": 29.99,
       "semi-dwarf": 26.99
     },
-    "bing-cherry-tree:stark-bros": {
-      "standard": 29.99
-    },
     "elberta-peach-tree:stark-bros": {
       "semi-dwarf": 55.99,
+      "semi-dwarf-potted": 116.99,
       "ultra-supreme": 199.99
     },
     "bartlett-pear-tree:stark-bros": {
