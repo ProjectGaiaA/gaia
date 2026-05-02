@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-01T15:28:07.798507+00:00",
+  "timestamp": "2026-05-02T00:59:42.420199+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -318,9 +318,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 75,
-      "products_error": 0,
-      "prices_collected": 322,
+      "products_found": 74,
+      "products_error": 1,
+      "prices_collected": 319,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -619,11 +619,6 @@
           "2gal": 48.95,
           "3gal": 61.95,
           "5gal": 89.95
-        },
-        "miscanthus-morning-light:planting-tree": {
-          "1gal": 40.95,
-          "2gal": 77.95,
-          "3gal": 88.95
         },
         "creeping-phlox:planting-tree": {
           "1gal": 26.95
@@ -968,7 +963,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 155,
+      "prices_collected": 156,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -981,8 +976,7 @@
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
           "2gal": 49.95,
-          "3gal": 82.95,
-          "7gal": 150.95
+          "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
           "1gal": 37.95,
@@ -1002,8 +996,7 @@
         "honeycrisp-apple-tree:fast-growing-trees": {
           "2-3ft": 78.95,
           "3-4ft": 92.95,
-          "4-5ft": 112.95,
-          "5-6ft": 134.95
+          "4-5ft": 112.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
@@ -1049,12 +1042,14 @@
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 57.95,
+          "2gal": 46.95,
           "5gal": 116.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
           "quart": 14.95,
           "1gal": 41.95,
           "3gal": 44.95,
+          "5gal": 78.95,
           "7gal": 149.95
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
@@ -1095,7 +1090,7 @@
           "3gal": 59.95
         },
         "duke-blueberry:fast-growing-trees": {
-          "1-galllon": 46.95
+          "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
           "4inch": 30.95,
@@ -1123,7 +1118,8 @@
         },
         "forest-pansy-redbud:fast-growing-trees": {
           "default": 197.95,
-          "4-5ft": 138.95
+          "4-5ft": 138.95,
+          "5-6ft": 165.95
         },
         "crape-myrtle:fast-growing-trees": {
           "4-5ft": 149.95
@@ -1189,7 +1185,6 @@
           "1gal": 28.95
         },
         "russian-sage:fast-growing-trees": {
-          "1gal": 30.95,
           "default": 43.95
         },
         "october-glory-maple:fast-growing-trees": {
@@ -1200,6 +1195,7 @@
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft": 85.95,
+          "3-4ft": 103.95,
           "4-5ft": 125.95,
           "5-6ft": 152.95
         },
@@ -1216,7 +1212,6 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "1gal": 36.95,
           "3gal": 74.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
@@ -1229,6 +1224,7 @@
           "2-3ft": 48.95
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
+          "1gal": 44.95,
           "3gal": 81.95,
           "7gal": 109.95
         },
@@ -1261,12 +1257,16 @@
       "retailer_id": "proven-winners-direct",
       "status": "completed",
       "products_expected": 11,
-      "products_found": 9,
-      "products_error": 2,
-      "prices_collected": 17,
+      "products_found": 11,
+      "products_error": 0,
+      "prices_collected": 21,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
+          "1gal": 39.99,
+          "quart": 20.99
+        },
+        "little-lime-hydrangea:proven-winners-direct": {
           "1gal": 39.99,
           "quart": 20.99
         },
@@ -1295,6 +1295,10 @@
         },
         "russian-sage:proven-winners-direct": {
           "0-65-gallon": 32.99,
+          "quart": 20.99
+        },
+        "rose-of-sharon:proven-winners-direct": {
+          "1gal": 39.99,
           "quart": 20.99
         },
         "wine-and-roses-weigela:proven-winners-direct": {
@@ -1342,13 +1346,14 @@
       "products_expected": 8,
       "products_found": 4,
       "products_error": 4,
-      "prices_collected": 12,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 29.99,
           "semi-dwarf": 26.99,
-          "supreme": 49.99
+          "supreme": 49.99,
+          "ultra-supreme": 199.99
         },
         "elberta-peach-tree:stark-bros": {
           "semi-dwarf": 55.99,
@@ -1369,7 +1374,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 735,
+  "total_prices_collected": 738,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1971,11 +1976,6 @@
       "3gal": 61.95,
       "5gal": 89.95
     },
-    "miscanthus-morning-light:planting-tree": {
-      "1gal": 40.95,
-      "2gal": 77.95,
-      "3gal": 88.95
-    },
     "creeping-phlox:planting-tree": {
       "1gal": 26.95
     },
@@ -2308,8 +2308,7 @@
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
       "2gal": 49.95,
-      "3gal": 82.95,
-      "7gal": 150.95
+      "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
       "1gal": 37.95,
@@ -2329,8 +2328,7 @@
     "honeycrisp-apple-tree:fast-growing-trees": {
       "2-3ft": 78.95,
       "3-4ft": 92.95,
-      "4-5ft": 112.95,
-      "5-6ft": 134.95
+      "4-5ft": 112.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
@@ -2376,12 +2374,14 @@
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 57.95,
+      "2gal": 46.95,
       "5gal": 116.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
       "quart": 14.95,
       "1gal": 41.95,
       "3gal": 44.95,
+      "5gal": 78.95,
       "7gal": 149.95
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
@@ -2422,7 +2422,7 @@
       "3gal": 59.95
     },
     "duke-blueberry:fast-growing-trees": {
-      "1-galllon": 46.95
+      "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
       "4inch": 30.95,
@@ -2450,7 +2450,8 @@
     },
     "forest-pansy-redbud:fast-growing-trees": {
       "default": 197.95,
-      "4-5ft": 138.95
+      "4-5ft": 138.95,
+      "5-6ft": 165.95
     },
     "crape-myrtle:fast-growing-trees": {
       "4-5ft": 149.95
@@ -2516,7 +2517,6 @@
       "1gal": 28.95
     },
     "russian-sage:fast-growing-trees": {
-      "1gal": 30.95,
       "default": 43.95
     },
     "october-glory-maple:fast-growing-trees": {
@@ -2527,6 +2527,7 @@
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft": 85.95,
+      "3-4ft": 103.95,
       "4-5ft": 125.95,
       "5-6ft": 152.95
     },
@@ -2543,7 +2544,6 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "1gal": 36.95,
       "3gal": 74.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
@@ -2556,6 +2556,7 @@
       "2-3ft": 48.95
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
+      "1gal": 44.95,
       "3gal": 81.95,
       "7gal": 109.95
     },
@@ -2582,6 +2583,10 @@
       "3-4ft": 104.95
     },
     "limelight-hydrangea:proven-winners-direct": {
+      "1gal": 39.99,
+      "quart": 20.99
+    },
+    "little-lime-hydrangea:proven-winners-direct": {
       "1gal": 39.99,
       "quart": 20.99
     },
@@ -2612,6 +2617,10 @@
       "0-65-gallon": 32.99,
       "quart": 20.99
     },
+    "rose-of-sharon:proven-winners-direct": {
+      "1gal": 39.99,
+      "quart": 20.99
+    },
     "wine-and-roses-weigela:proven-winners-direct": {
       "1gal": 39.99,
       "quart": 20.99
@@ -2639,7 +2648,8 @@
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf": 29.99,
       "semi-dwarf": 26.99,
-      "supreme": 49.99
+      "supreme": 49.99,
+      "ultra-supreme": 199.99
     },
     "elberta-peach-tree:stark-bros": {
       "semi-dwarf": 55.99,
