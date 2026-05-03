@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-03T00:52:14.633038+00:00",
+  "timestamp": "2026-05-03T15:04:42.838498+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -136,7 +136,7 @@
         },
         "nova-zembla-rhododendron:nature-hills": {
           "1gal": 39.96,
-          "3gal": 97.24
+          "3gal": 77.79
         },
         "gibraltar-azalea:nature-hills": {
           "3gal": 95.4
@@ -963,7 +963,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 154,
+      "prices_collected": 158,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1000,7 +1000,6 @@
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
-          "2-3ft": 90.95,
           "3-4ft": 124.95,
           "4-5ft": 171.95
         },
@@ -1121,7 +1120,12 @@
           "5-6ft": 165.95
         },
         "crape-myrtle:fast-growing-trees": {
-          "4-5ft": 149.95
+          "default": 177.95,
+          "1-2ft": 86.95,
+          "2-3ft": 104.95,
+          "3-4ft": 124.95,
+          "5-6ft": 178.95,
+          "6-7ft": 214.95
         },
         "encore-azalea:fast-growing-trees": {
           "default": 94.95
@@ -1344,14 +1348,13 @@
       "products_expected": 8,
       "products_found": 4,
       "products_error": 4,
-      "prices_collected": 12,
+      "prices_collected": 11,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 29.99,
           "semi-dwarf": 23.99,
-          "supreme": 49.99,
-          "ultra-supreme": 199.99
+          "supreme": 49.99
         },
         "elberta-peach-tree:stark-bros": {
           "ultra-supreme": 199.99
@@ -1371,7 +1374,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 735,
+  "total_prices_collected": 738,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1501,7 +1504,7 @@
     },
     "nova-zembla-rhododendron:nature-hills": {
       "1gal": 39.96,
-      "3gal": 97.24
+      "3gal": 77.79
     },
     "gibraltar-azalea:nature-hills": {
       "3gal": 95.4
@@ -2329,7 +2332,6 @@
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
-      "2-3ft": 90.95,
       "3-4ft": 124.95,
       "4-5ft": 171.95
     },
@@ -2450,7 +2452,12 @@
       "5-6ft": 165.95
     },
     "crape-myrtle:fast-growing-trees": {
-      "4-5ft": 149.95
+      "default": 177.95,
+      "1-2ft": 86.95,
+      "2-3ft": 104.95,
+      "3-4ft": 124.95,
+      "5-6ft": 178.95,
+      "6-7ft": 214.95
     },
     "encore-azalea:fast-growing-trees": {
       "default": 94.95
@@ -2643,8 +2650,7 @@
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf": 29.99,
       "semi-dwarf": 23.99,
-      "supreme": 49.99,
-      "ultra-supreme": 199.99
+      "supreme": 49.99
     },
     "elberta-peach-tree:stark-bros": {
       "ultra-supreme": 199.99
