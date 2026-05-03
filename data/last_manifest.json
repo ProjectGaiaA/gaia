@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-02T15:04:50.814029+00:00",
+  "timestamp": "2026-05-03T00:52:14.633038+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -797,9 +797,9 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 37,
-      "products_error": 3,
-      "prices_collected": 73,
+      "products_found": 38,
+      "products_error": 2,
+      "prices_collected": 76,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -938,6 +938,11 @@
         },
         "bee-balm:spring-hill": {
           "jumbo-bareroot": 49.99
+        },
+        "russian-sage:spring-hill": {
+          "premium-bareroot": 24.99,
+          "bareroot": 24.99,
+          "jumbo-bareroot": 39.99
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99,
@@ -1337,9 +1342,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 5,
-      "products_error": 3,
-      "prices_collected": 14,
+      "products_found": 4,
+      "products_error": 4,
+      "prices_collected": 12,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1349,7 +1354,6 @@
           "ultra-supreme": 199.99
         },
         "elberta-peach-tree:stark-bros": {
-          "semi-dwarf": 55.99,
           "ultra-supreme": 199.99
         },
         "bartlett-pear-tree:stark-bros": {
@@ -1362,15 +1366,12 @@
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
-        },
-        "pink-lemonade-blueberry:stark-bros": {
-          "default": 25.99
         }
       },
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 734,
+  "total_prices_collected": 735,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2279,6 +2280,11 @@
     "bee-balm:spring-hill": {
       "jumbo-bareroot": 49.99
     },
+    "russian-sage:spring-hill": {
+      "premium-bareroot": 24.99,
+      "bareroot": 24.99,
+      "jumbo-bareroot": 39.99
+    },
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99,
       "5-6ft": 161.99
@@ -2641,7 +2647,6 @@
       "ultra-supreme": 199.99
     },
     "elberta-peach-tree:stark-bros": {
-      "semi-dwarf": 55.99,
       "ultra-supreme": 199.99
     },
     "bartlett-pear-tree:stark-bros": {
@@ -2654,9 +2659,6 @@
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
-    },
-    "pink-lemonade-blueberry:stark-bros": {
-      "default": 25.99
     }
   },
   "degraded_retailers": [
