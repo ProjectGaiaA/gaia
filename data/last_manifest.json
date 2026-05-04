@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-03T15:04:42.838498+00:00",
+  "timestamp": "2026-05-04T00:58:24.835801+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -963,12 +963,11 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 158,
+      "prices_collected": 157,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 30.95,
-          "3gal": 57.95
+          "quart": 30.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 22.95
@@ -995,11 +994,11 @@
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
           "2-3ft": 78.95,
-          "3-4ft": 92.95,
-          "4-5ft": 112.95
+          "3-4ft": 92.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
+          "2-3ft": 90.95,
           "3-4ft": 124.95,
           "4-5ft": 171.95
         },
@@ -1176,7 +1175,7 @@
           "3gal": 46.95
         },
         "astilbe:fast-growing-trees": {
-          "1gal": 34.95
+          "default": 34.95
         },
         "heuchera-coral-bells:fast-growing-trees": {
           "1gal": 59.95
@@ -1185,9 +1184,10 @@
           "1gal": 28.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "1gal": 28.95
+          "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
+          "1gal": 30.95,
           "default": 43.95
         },
         "october-glory-maple:fast-growing-trees": {
@@ -1249,8 +1249,7 @@
           "3gal": 80.95,
           "5gal": 113.95,
           "1-2ft": 53.95,
-          "2-3ft": 74.95,
-          "3-4ft": 104.95
+          "2-3ft": 74.95
         }
       },
       "health": "healthy"
@@ -1346,18 +1345,15 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 4,
-      "products_error": 4,
-      "prices_collected": 11,
+      "products_found": 3,
+      "products_error": 5,
+      "prices_collected": 10,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 29.99,
           "semi-dwarf": 23.99,
           "supreme": 49.99
-        },
-        "elberta-peach-tree:stark-bros": {
-          "ultra-supreme": 199.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf": 32.99,
@@ -1374,7 +1370,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 738,
+  "total_prices_collected": 736,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2299,8 +2295,7 @@
       "1gal": 49.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 30.95,
-      "3gal": 57.95
+      "quart": 30.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 22.95
@@ -2327,11 +2322,11 @@
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
       "2-3ft": 78.95,
-      "3-4ft": 92.95,
-      "4-5ft": 112.95
+      "3-4ft": 92.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
+      "2-3ft": 90.95,
       "3-4ft": 124.95,
       "4-5ft": 171.95
     },
@@ -2508,7 +2503,7 @@
       "3gal": 46.95
     },
     "astilbe:fast-growing-trees": {
-      "1gal": 34.95
+      "default": 34.95
     },
     "heuchera-coral-bells:fast-growing-trees": {
       "1gal": 59.95
@@ -2517,9 +2512,10 @@
       "1gal": 28.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "1gal": 28.95
+      "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
+      "1gal": 30.95,
       "default": 43.95
     },
     "october-glory-maple:fast-growing-trees": {
@@ -2581,8 +2577,7 @@
       "3gal": 80.95,
       "5gal": 113.95,
       "1-2ft": 53.95,
-      "2-3ft": 74.95,
-      "3-4ft": 104.95
+      "2-3ft": 74.95
     },
     "limelight-hydrangea:proven-winners-direct": {
       "1gal": 39.99,
@@ -2651,9 +2646,6 @@
       "dwarf": 29.99,
       "semi-dwarf": 23.99,
       "supreme": 49.99
-    },
-    "elberta-peach-tree:stark-bros": {
-      "ultra-supreme": 199.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf": 32.99,
