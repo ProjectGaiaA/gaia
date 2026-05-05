@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-05T12:45:26.401650+00:00",
+  "timestamp": "2026-05-05T23:20:53.477322+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -963,13 +963,12 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 163,
-      "anomalies": [
-        "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=1-2ft: $44.95 -> $19.95 (56% change)"
-      ],
+      "prices_collected": 164,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 30.95
+          "quart": 30.95,
+          "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 22.95,
@@ -1019,16 +1018,23 @@
           "3-4ft": 97.95,
           "4-5ft": 119.95,
           "5-6ft": 148.95,
-          "default": 183.95
+          "6-7ft": 183.95
         },
         "stella-cherry-tree:fast-growing-trees": {
-          "default": 121.95,
-          "3-4ft": 92.95
+          "default": 121.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
           "2-3ft": 39.95,
           "3-4ft": 69.95
+        },
+        "green-giant-arborvitae:fast-growing-trees": {
+          "1-2ft": 19.95,
+          "2-3ft": 34.95,
+          "3-4ft": 64.95,
+          "4-5ft": 112.95,
+          "5-6ft": 199.95,
+          "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 24.95,
@@ -1121,6 +1127,7 @@
           "1-2ft": 86.95,
           "2-3ft": 104.95,
           "3-4ft": 124.95,
+          "4-5ft": 149.95,
           "5-6ft": 178.95,
           "6-7ft": 214.95
         },
@@ -1129,6 +1136,7 @@
         },
         "pjm-rhododendron:fast-growing-trees": {
           "1gal": 38.95,
+          "2gal": 73.95,
           "default": 122.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
@@ -1241,8 +1249,7 @@
         },
         "santa-rosa-plum:fast-growing-trees": {
           "default": 139.95,
-          "4-5ft": 92.95,
-          "5-6ft": 113.95
+          "4-5ft": 92.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "6-inch": 48.95,
@@ -1347,7 +1354,7 @@
       "products_expected": 8,
       "products_found": 3,
       "products_error": 5,
-      "prices_collected": 9,
+      "prices_collected": 7,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1356,11 +1363,9 @@
           "supreme": 49.99
         },
         "bartlett-pear-tree:stark-bros": {
-          "dwarf": 32.99,
           "ultra-supreme": 199.99,
           "semi-dwarf": 23.99,
-          "supreme-ez-start": 75.99,
-          "supreme": 39.99
+          "supreme-ez-start": 75.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
@@ -1369,11 +1374,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 741,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=1-2ft: $44.95 -> $19.95 (56% change)"
-  ],
+  "total_prices_collected": 740,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2296,7 +2299,8 @@
       "1gal": 49.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 30.95
+      "quart": 30.95,
+      "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 22.95,
@@ -2346,16 +2350,23 @@
       "3-4ft": 97.95,
       "4-5ft": 119.95,
       "5-6ft": 148.95,
-      "default": 183.95
+      "6-7ft": 183.95
     },
     "stella-cherry-tree:fast-growing-trees": {
-      "default": 121.95,
-      "3-4ft": 92.95
+      "default": 121.95
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
       "2-3ft": 39.95,
       "3-4ft": 69.95
+    },
+    "green-giant-arborvitae:fast-growing-trees": {
+      "1-2ft": 19.95,
+      "2-3ft": 34.95,
+      "3-4ft": 64.95,
+      "4-5ft": 112.95,
+      "5-6ft": 199.95,
+      "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 24.95,
@@ -2448,6 +2459,7 @@
       "1-2ft": 86.95,
       "2-3ft": 104.95,
       "3-4ft": 124.95,
+      "4-5ft": 149.95,
       "5-6ft": 178.95,
       "6-7ft": 214.95
     },
@@ -2456,6 +2468,7 @@
     },
     "pjm-rhododendron:fast-growing-trees": {
       "1gal": 38.95,
+      "2gal": 73.95,
       "default": 122.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
@@ -2568,8 +2581,7 @@
     },
     "santa-rosa-plum:fast-growing-trees": {
       "default": 139.95,
-      "4-5ft": 92.95,
-      "5-6ft": 113.95
+      "4-5ft": 92.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "6-inch": 48.95,
@@ -2647,11 +2659,9 @@
       "supreme": 49.99
     },
     "bartlett-pear-tree:stark-bros": {
-      "dwarf": 32.99,
       "ultra-supreme": 199.99,
       "semi-dwarf": 23.99,
-      "supreme-ez-start": 75.99,
-      "supreme": 39.99
+      "supreme-ez-start": 75.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
