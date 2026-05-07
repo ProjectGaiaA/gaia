@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-06T23:03:06.618226+00:00",
+  "timestamp": "2026-05-07T13:16:26.106583+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -318,9 +318,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 74,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_found": 73,
+      "products_error": 2,
+      "prices_collected": 313,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -369,14 +369,6 @@
           "4-5ft": 124.95,
           "5-6ft": 134.95,
           "6-7ft": 149.95
-        },
-        "elberta-peach-tree:planting-tree": {
-          "1-2ft": 39.95,
-          "2-3ft": 92.95,
-          "3-4ft": 92.95,
-          "4-5ft": 119.95,
-          "5-6ft": 129.95,
-          "6-7ft": 159.95
         },
         "bartlett-pear-tree:planting-tree": {
           "3-4ft": 104.95,
@@ -1017,7 +1009,7 @@
           "3-4ft": 97.95,
           "4-5ft": 119.95,
           "5-6ft": 148.95,
-          "6-7ft": 183.95
+          "default": 183.95
         },
         "stella-cherry-tree:fast-growing-trees": {
           "default": 121.95
@@ -1082,7 +1074,8 @@
         "double-knock-out-rose:fast-growing-trees": {
           "1gal": 24.95,
           "2gal": 39.95,
-          "3gal": 54.95
+          "3gal": 54.95,
+          "7gal": 129.95
         },
         "white-knock-out-rose:fast-growing-trees": {
           "default": 63.95
@@ -1227,7 +1220,6 @@
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 44.95,
-          "3gal": 57.95,
           "7gal": 109.95
         },
         "autumn-twist-encore-azalea:fast-growing-trees": {
@@ -1367,7 +1359,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 733,
+  "total_prices_collected": 727,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1718,14 +1710,6 @@
       "4-5ft": 124.95,
       "5-6ft": 134.95,
       "6-7ft": 149.95
-    },
-    "elberta-peach-tree:planting-tree": {
-      "1-2ft": 39.95,
-      "2-3ft": 92.95,
-      "3-4ft": 92.95,
-      "4-5ft": 119.95,
-      "5-6ft": 129.95,
-      "6-7ft": 159.95
     },
     "bartlett-pear-tree:planting-tree": {
       "3-4ft": 104.95,
@@ -2342,7 +2326,7 @@
       "3-4ft": 97.95,
       "4-5ft": 119.95,
       "5-6ft": 148.95,
-      "6-7ft": 183.95
+      "default": 183.95
     },
     "stella-cherry-tree:fast-growing-trees": {
       "default": 121.95
@@ -2407,7 +2391,8 @@
     "double-knock-out-rose:fast-growing-trees": {
       "1gal": 24.95,
       "2gal": 39.95,
-      "3gal": 54.95
+      "3gal": 54.95,
+      "7gal": 129.95
     },
     "white-knock-out-rose:fast-growing-trees": {
       "default": 63.95
@@ -2552,7 +2537,6 @@
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 44.95,
-      "3gal": 57.95,
       "7gal": 109.95
     },
     "autumn-twist-encore-azalea:fast-growing-trees": {
