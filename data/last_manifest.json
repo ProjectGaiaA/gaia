@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-08T23:19:12.001287+00:00",
+  "timestamp": "2026-05-09T12:33:07.027311+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -1338,7 +1338,7 @@
       "products_expected": 8,
       "products_found": 3,
       "products_error": 5,
-      "prices_collected": 8,
+      "prices_collected": 9,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1347,6 +1347,7 @@
           "supreme": 49.99
         },
         "bartlett-pear-tree:stark-bros": {
+          "dwarf": 32.99,
           "semi-dwarf": 23.99,
           "supreme-ez-start": 75.99,
           "supreme": 39.99,
@@ -1359,7 +1360,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 725,
+  "total_prices_collected": 726,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2628,6 +2629,7 @@
       "supreme": 49.99
     },
     "bartlett-pear-tree:stark-bros": {
+      "dwarf": 32.99,
       "semi-dwarf": 23.99,
       "supreme-ez-start": 75.99,
       "supreme": 39.99,
