@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-09T12:33:07.027311+00:00",
+  "timestamp": "2026-05-09T22:54:15.880428+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -963,7 +963,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 148,
+      "prices_collected": 149,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -975,7 +975,8 @@
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
-          "3gal": 82.95
+          "3gal": 82.95,
+          "7gal": 150.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
           "1gal": 37.95,
@@ -995,8 +996,7 @@
         "honeycrisp-apple-tree:fast-growing-trees": {
           "2-3ft": 78.95,
           "3-4ft": 92.95,
-          "4-5ft": 112.95,
-          "5-6ft": 134.95
+          "4-5ft": 112.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
@@ -1023,9 +1023,9 @@
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
-          "2-3ft": 39.95,
           "3-4ft": 69.95,
-          "5-6ft": 159.95
+          "5-6ft": 159.95,
+          "6-7ft": 248.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
@@ -1044,6 +1044,7 @@
           "6-7ft": 294.95
         },
         "skip-laurel:fast-growing-trees": {
+          "1gal": 29.95,
           "3gal": 73.95,
           "5gal": 116.95
         },
@@ -1151,7 +1152,6 @@
           "1gal": 29.95
         },
         "blue-rug-juniper:fast-growing-trees": {
-          "1gal": 26.95,
           "default": 46.95
         },
         "pink-muhly-grass:fast-growing-trees": {
@@ -1211,7 +1211,7 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "default": 74.95
+          "3gal": 74.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95,
@@ -1224,6 +1224,7 @@
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 44.95,
+          "3gal": 57.95,
           "7gal": 109.95
         },
         "autumn-twist-encore-azalea:fast-growing-trees": {
@@ -1338,7 +1339,7 @@
       "products_expected": 8,
       "products_found": 3,
       "products_error": 5,
-      "prices_collected": 9,
+      "prices_collected": 8,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1347,7 +1348,6 @@
           "supreme": 49.99
         },
         "bartlett-pear-tree:stark-bros": {
-          "dwarf": 32.99,
           "semi-dwarf": 23.99,
           "supreme-ez-start": 75.99,
           "supreme": 39.99,
@@ -2293,7 +2293,8 @@
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
-      "3gal": 82.95
+      "3gal": 82.95,
+      "7gal": 150.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
       "1gal": 37.95,
@@ -2313,8 +2314,7 @@
     "honeycrisp-apple-tree:fast-growing-trees": {
       "2-3ft": 78.95,
       "3-4ft": 92.95,
-      "4-5ft": 112.95,
-      "5-6ft": 134.95
+      "4-5ft": 112.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
@@ -2341,9 +2341,9 @@
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
-      "2-3ft": 39.95,
       "3-4ft": 69.95,
-      "5-6ft": 159.95
+      "5-6ft": 159.95,
+      "6-7ft": 248.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
@@ -2362,6 +2362,7 @@
       "6-7ft": 294.95
     },
     "skip-laurel:fast-growing-trees": {
+      "1gal": 29.95,
       "3gal": 73.95,
       "5gal": 116.95
     },
@@ -2469,7 +2470,6 @@
       "1gal": 29.95
     },
     "blue-rug-juniper:fast-growing-trees": {
-      "1gal": 26.95,
       "default": 46.95
     },
     "pink-muhly-grass:fast-growing-trees": {
@@ -2529,7 +2529,7 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "default": 74.95
+      "3gal": 74.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95,
@@ -2542,6 +2542,7 @@
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 44.95,
+      "3gal": 57.95,
       "7gal": 109.95
     },
     "autumn-twist-encore-azalea:fast-growing-trees": {
@@ -2629,7 +2630,6 @@
       "supreme": 49.99
     },
     "bartlett-pear-tree:stark-bros": {
-      "dwarf": 32.99,
       "semi-dwarf": 23.99,
       "supreme-ez-start": 75.99,
       "supreme": 39.99,
