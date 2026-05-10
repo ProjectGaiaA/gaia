@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-10T12:33:45.626894+00:00",
+  "timestamp": "2026-05-10T22:58:24.223939+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -963,7 +963,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 146,
+      "prices_collected": 149,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -999,7 +999,8 @@
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
-          "2-3ft": 90.95
+          "2-3ft": 90.95,
+          "3-4ft": 124.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 71.95,
@@ -1035,7 +1036,6 @@
           "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
-          "1-2ft": 21.95,
           "2-3ft": 39.95,
           "3-4ft": 75.95,
           "4-5ft": 129.95,
@@ -1090,13 +1090,16 @@
           "default": 63.95
         },
         "coral-knock-out-rose:fast-growing-trees": {
-          "3gal": 59.95
+          "default": 59.95
         },
         "duke-blueberry:fast-growing-trees": {
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "default": 44.95
+          "4inch": 30.95,
+          "quart": 31.95,
+          "1gal": 33.95,
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1357,7 +1360,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 723,
+  "total_prices_collected": 726,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2314,7 +2317,8 @@
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
-      "2-3ft": 90.95
+      "2-3ft": 90.95,
+      "3-4ft": 124.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 71.95,
@@ -2350,7 +2354,6 @@
       "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
-      "1-2ft": 21.95,
       "2-3ft": 39.95,
       "3-4ft": 75.95,
       "4-5ft": 129.95,
@@ -2405,13 +2408,16 @@
       "default": 63.95
     },
     "coral-knock-out-rose:fast-growing-trees": {
-      "3gal": 59.95
+      "default": 59.95
     },
     "duke-blueberry:fast-growing-trees": {
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "default": 44.95
+      "4inch": 30.95,
+      "quart": 31.95,
+      "1gal": 33.95,
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
