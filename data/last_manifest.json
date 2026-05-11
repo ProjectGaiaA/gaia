@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-10T22:58:24.223939+00:00",
+  "timestamp": "2026-05-11T14:31:09.738198+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -8,7 +8,9 @@
       "products_found": 78,
       "products_error": 0,
       "prices_collected": 145,
-      "anomalies": [],
+      "anomalies": [
+        "ANOMALY: nova-zembla-rhododendron at nature-hills tier=3gal: $52.33 -> $97.24 (86% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -133,10 +135,6 @@
         },
         "pjm-rhododendron:nature-hills": {
           "3gal": 92.24
-        },
-        "nova-zembla-rhododendron:nature-hills": {
-          "1gal": 39.96,
-          "3gal": 52.33
         },
         "gibraltar-azalea:nature-hills": {
           "3gal": 95.4
@@ -803,7 +801,7 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
-          "premium-bareroot": 18.74,
+          "premium-bareroot": 24.99,
           "1gal": 25.99,
           "jumbo-bareroot": 69.99
         },
@@ -817,7 +815,7 @@
           "1gal": 54.99
         },
         "summer-crush-hydrangea:spring-hill": {
-          "premium-bareroot": 35.99,
+          "premium-bareroot": 39.99,
           "1gal": 79.99,
           "4inch": 29.99,
           "jumbo-bareroot": 79.99
@@ -836,8 +834,8 @@
         },
         "emerald-green-arborvitae:spring-hill": {
           "1-2ft": 14.99,
-          "3-4ft": 59.99,
-          "5-6ft": 199.99,
+          "3-4ft": 57.99,
+          "5-6ft": 194.99,
           "bareroot": 90.99,
           "12-18in": 19.99,
           "18-24in": 39.99,
@@ -847,8 +845,8 @@
         },
         "green-giant-arborvitae:spring-hill": {
           "1-2ft": 14.99,
-          "3-4ft": 50.99,
-          "5-6ft": 199.99,
+          "3-4ft": 45.89,
+          "5-6ft": 194.99,
           "bareroot": 17.49,
           "24-36in": 59.99,
           "36-48in": 79.99,
@@ -893,8 +891,8 @@
           "3inch": 16.99
         },
         "yoshino-cherry:spring-hill": {
-          "2-4ft": 114.39,
-          "5-6ft": 179.99
+          "2-4ft": 129.99,
+          "5-6ft": 170.99
         },
         "gibraltar-azalea:spring-hill": {
           "default": 24.99
@@ -946,7 +944,7 @@
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99,
-          "5-6ft": 161.99
+          "5-6ft": 179.99
         },
         "rose-of-sharon:spring-hill": {
           "premium-bareroot": 24.99
@@ -1003,8 +1001,7 @@
           "3-4ft": 124.95
         },
         "fuji-apple-tree:fast-growing-trees": {
-          "default": 71.95,
-          "3-4ft": 86.95,
+          "default": 86.95,
           "4-5ft": 103.95,
           "5-6ft": 124.95,
           "6-7ft": 149.95
@@ -1036,6 +1033,7 @@
           "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
+          "1-2ft": 21.95,
           "2-3ft": 39.95,
           "3-4ft": 75.95,
           "4-5ft": 129.95,
@@ -1250,9 +1248,9 @@
       "retailer_id": "proven-winners-direct",
       "status": "completed",
       "products_expected": 11,
-      "products_found": 11,
-      "products_error": 0,
-      "prices_collected": 21,
+      "products_found": 10,
+      "products_error": 1,
+      "prices_collected": 19,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
@@ -1285,10 +1283,6 @@
         },
         "bee-balm:proven-winners-direct": {
           "0-65-gallon": 26.39
-        },
-        "russian-sage:proven-winners-direct": {
-          "0-65-gallon": 26.39,
-          "quart": 16.79
         },
         "rose-of-sharon:proven-winners-direct": {
           "1gal": 39.99,
@@ -1360,9 +1354,11 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 726,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 724,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: nova-zembla-rhododendron at nature-hills tier=3gal: $52.33 -> $97.24 (86% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1487,10 +1483,6 @@
     },
     "pjm-rhododendron:nature-hills": {
       "3gal": 92.24
-    },
-    "nova-zembla-rhododendron:nature-hills": {
-      "1gal": 39.96,
-      "3gal": 52.33
     },
     "gibraltar-azalea:nature-hills": {
       "3gal": 95.4
@@ -2133,7 +2125,7 @@
       "4-5ft": 144.95
     },
     "limelight-hydrangea:spring-hill": {
-      "premium-bareroot": 18.74,
+      "premium-bareroot": 24.99,
       "1gal": 25.99,
       "jumbo-bareroot": 69.99
     },
@@ -2147,7 +2139,7 @@
       "1gal": 54.99
     },
     "summer-crush-hydrangea:spring-hill": {
-      "premium-bareroot": 35.99,
+      "premium-bareroot": 39.99,
       "1gal": 79.99,
       "4inch": 29.99,
       "jumbo-bareroot": 79.99
@@ -2166,8 +2158,8 @@
     },
     "emerald-green-arborvitae:spring-hill": {
       "1-2ft": 14.99,
-      "3-4ft": 59.99,
-      "5-6ft": 199.99,
+      "3-4ft": 57.99,
+      "5-6ft": 194.99,
       "bareroot": 90.99,
       "12-18in": 19.99,
       "18-24in": 39.99,
@@ -2177,8 +2169,8 @@
     },
     "green-giant-arborvitae:spring-hill": {
       "1-2ft": 14.99,
-      "3-4ft": 50.99,
-      "5-6ft": 199.99,
+      "3-4ft": 45.89,
+      "5-6ft": 194.99,
       "bareroot": 17.49,
       "24-36in": 59.99,
       "36-48in": 79.99,
@@ -2223,8 +2215,8 @@
       "3inch": 16.99
     },
     "yoshino-cherry:spring-hill": {
-      "2-4ft": 114.39,
-      "5-6ft": 179.99
+      "2-4ft": 129.99,
+      "5-6ft": 170.99
     },
     "gibraltar-azalea:spring-hill": {
       "default": 24.99
@@ -2276,7 +2268,7 @@
     },
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99,
-      "5-6ft": 161.99
+      "5-6ft": 179.99
     },
     "rose-of-sharon:spring-hill": {
       "premium-bareroot": 24.99
@@ -2321,8 +2313,7 @@
       "3-4ft": 124.95
     },
     "fuji-apple-tree:fast-growing-trees": {
-      "default": 71.95,
-      "3-4ft": 86.95,
+      "default": 86.95,
       "4-5ft": 103.95,
       "5-6ft": 124.95,
       "6-7ft": 149.95
@@ -2354,6 +2345,7 @@
       "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
+      "1-2ft": 21.95,
       "2-3ft": 39.95,
       "3-4ft": 75.95,
       "4-5ft": 129.95,
@@ -2591,10 +2583,6 @@
     },
     "bee-balm:proven-winners-direct": {
       "0-65-gallon": 26.39
-    },
-    "russian-sage:proven-winners-direct": {
-      "0-65-gallon": 26.39,
-      "quart": 16.79
     },
     "rose-of-sharon:proven-winners-direct": {
       "1gal": 39.99,
