@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-12T23:28:51.802763+00:00",
+  "timestamp": "2026-05-13T13:57:02.135293+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -963,8 +963,10 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 147,
-      "anomalies": [],
+      "prices_collected": 155,
+      "anomalies": [
+        "ANOMALY: bing-cherry-tree at fast-growing-trees tier=2-3ft: $79.95 -> $39.95 (50% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95
@@ -996,10 +998,14 @@
         "honeycrisp-apple-tree:fast-growing-trees": {
           "2-3ft": 78.95,
           "3-4ft": 49.95,
-          "4-5ft": 112.95
+          "4-5ft": 112.95,
+          "5-6ft": 134.95,
+          "6-7ft": 161.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 65.95
+          "1-2ft": 65.95,
+          "2-3ft": 90.95,
+          "3-4ft": 124.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 71.95,
@@ -1007,14 +1013,6 @@
           "4-5ft": 103.95,
           "5-6ft": 124.95,
           "6-7ft": 149.95
-        },
-        "bing-cherry-tree:fast-growing-trees": {
-          "1-2ft": 62.95,
-          "2-3ft": 79.95,
-          "3-4ft": 54.95,
-          "4-5ft": 119.95,
-          "5-6ft": 148.95,
-          "6-7ft": 183.95
         },
         "stella-cherry-tree:fast-growing-trees": {
           "default": 121.95
@@ -1050,7 +1048,6 @@
         "nellie-stevens-holly:fast-growing-trees": {
           "1gal": 47.95,
           "3gal": 70.95,
-          "5gal": 104.95,
           "7gal": 188.95
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
@@ -1097,7 +1094,10 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "default": 44.95
+          "4inch": 30.95,
+          "quart": 31.95,
+          "1gal": 22.95,
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1149,6 +1149,7 @@
           "1gal": 29.95
         },
         "blue-rug-juniper:fast-growing-trees": {
+          "1gal": 26.95,
           "default": 46.95
         },
         "pink-muhly-grass:fast-growing-trees": {
@@ -1193,7 +1194,8 @@
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft": 76.95,
           "3-4ft": 93.95,
-          "4-5ft": 112.95
+          "4-5ft": 112.95,
+          "5-6ft": 160.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "5-6ft": 129.95
@@ -1333,7 +1335,7 @@
       "products_expected": 8,
       "products_found": 3,
       "products_error": 5,
-      "prices_collected": 9,
+      "prices_collected": 7,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1344,9 +1346,7 @@
         "bartlett-pear-tree:stark-bros": {
           "semi-dwarf": 23.99,
           "supreme-ez-start": 75.99,
-          "supreme": 39.99,
-          "semi-dwarf-potted": 107.99,
-          "standard": 26.99
+          "supreme": 39.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
@@ -1355,9 +1355,11 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 723,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 729,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: bing-cherry-tree at fast-growing-trees tier=2-3ft: $79.95 -> $39.95 (50% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2309,10 +2311,14 @@
     "honeycrisp-apple-tree:fast-growing-trees": {
       "2-3ft": 78.95,
       "3-4ft": 49.95,
-      "4-5ft": 112.95
+      "4-5ft": 112.95,
+      "5-6ft": 134.95,
+      "6-7ft": 161.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 65.95
+      "1-2ft": 65.95,
+      "2-3ft": 90.95,
+      "3-4ft": 124.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 71.95,
@@ -2320,14 +2326,6 @@
       "4-5ft": 103.95,
       "5-6ft": 124.95,
       "6-7ft": 149.95
-    },
-    "bing-cherry-tree:fast-growing-trees": {
-      "1-2ft": 62.95,
-      "2-3ft": 79.95,
-      "3-4ft": 54.95,
-      "4-5ft": 119.95,
-      "5-6ft": 148.95,
-      "6-7ft": 183.95
     },
     "stella-cherry-tree:fast-growing-trees": {
       "default": 121.95
@@ -2363,7 +2361,6 @@
     "nellie-stevens-holly:fast-growing-trees": {
       "1gal": 47.95,
       "3gal": 70.95,
-      "5gal": 104.95,
       "7gal": 188.95
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
@@ -2410,7 +2407,10 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "default": 44.95
+      "4inch": 30.95,
+      "quart": 31.95,
+      "1gal": 22.95,
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2462,6 +2462,7 @@
       "1gal": 29.95
     },
     "blue-rug-juniper:fast-growing-trees": {
+      "1gal": 26.95,
       "default": 46.95
     },
     "pink-muhly-grass:fast-growing-trees": {
@@ -2506,7 +2507,8 @@
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft": 76.95,
       "3-4ft": 93.95,
-      "4-5ft": 112.95
+      "4-5ft": 112.95,
+      "5-6ft": 160.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "5-6ft": 129.95
@@ -2621,9 +2623,7 @@
     "bartlett-pear-tree:stark-bros": {
       "semi-dwarf": 23.99,
       "supreme-ez-start": 75.99,
-      "supreme": 39.99,
-      "semi-dwarf-potted": 107.99,
-      "standard": 26.99
+      "supreme": 39.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
