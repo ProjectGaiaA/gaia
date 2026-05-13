@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-13T13:57:02.135293+00:00",
+  "timestamp": "2026-05-13T23:33:18.743903+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -963,10 +963,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 155,
-      "anomalies": [
-        "ANOMALY: bing-cherry-tree at fast-growing-trees tier=2-3ft: $79.95 -> $39.95 (50% change)"
-      ],
+      "prices_collected": 157,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95
@@ -996,7 +994,6 @@
           "quart": 51.95
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
-          "2-3ft": 78.95,
           "3-4ft": 49.95,
           "4-5ft": 112.95,
           "5-6ft": 134.95,
@@ -1013,6 +1010,14 @@
           "4-5ft": 103.95,
           "5-6ft": 124.95,
           "6-7ft": 149.95
+        },
+        "bing-cherry-tree:fast-growing-trees": {
+          "1-2ft": 62.95,
+          "2-3ft": 39.95,
+          "3-4ft": 54.95,
+          "4-5ft": 119.95,
+          "5-6ft": 148.95,
+          "6-7ft": 183.95
         },
         "stella-cherry-tree:fast-growing-trees": {
           "default": 121.95
@@ -1149,8 +1154,7 @@
           "1gal": 29.95
         },
         "blue-rug-juniper:fast-growing-trees": {
-          "1gal": 26.95,
-          "default": 46.95
+          "3gal": 46.95
         },
         "pink-muhly-grass:fast-growing-trees": {
           "default": 49.95,
@@ -1201,7 +1205,11 @@
           "5-6ft": 129.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
-          "default": 160.95
+          "default": 160.95,
+          "2-3ft": 56.95,
+          "3-4ft": 73.95,
+          "4-5ft": 95.95,
+          "5-6ft": 123.95
         },
         "rose-of-sharon:fast-growing-trees": {
           "2-3ft": 74.95,
@@ -1250,9 +1258,9 @@
       "retailer_id": "proven-winners-direct",
       "status": "completed",
       "products_expected": 11,
-      "products_found": 10,
-      "products_error": 1,
-      "prices_collected": 19,
+      "products_found": 11,
+      "products_error": 0,
+      "prices_collected": 21,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
@@ -1285,6 +1293,10 @@
         },
         "bee-balm:proven-winners-direct": {
           "0-65-gallon": 26.39
+        },
+        "russian-sage:proven-winners-direct": {
+          "0-65-gallon": 26.39,
+          "quart": 16.79
         },
         "rose-of-sharon:proven-winners-direct": {
           "1gal": 33.99,
@@ -1333,9 +1345,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 3,
-      "products_error": 5,
-      "prices_collected": 7,
+      "products_found": 4,
+      "products_error": 4,
+      "prices_collected": 8,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1350,16 +1362,17 @@
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
+        },
+        "patriot-blueberry:stark-bros": {
+          "default": 27.99
         }
       },
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 729,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: bing-cherry-tree at fast-growing-trees tier=2-3ft: $79.95 -> $39.95 (50% change)"
-  ],
+  "total_prices_collected": 734,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2309,7 +2322,6 @@
       "quart": 51.95
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
-      "2-3ft": 78.95,
       "3-4ft": 49.95,
       "4-5ft": 112.95,
       "5-6ft": 134.95,
@@ -2326,6 +2338,14 @@
       "4-5ft": 103.95,
       "5-6ft": 124.95,
       "6-7ft": 149.95
+    },
+    "bing-cherry-tree:fast-growing-trees": {
+      "1-2ft": 62.95,
+      "2-3ft": 39.95,
+      "3-4ft": 54.95,
+      "4-5ft": 119.95,
+      "5-6ft": 148.95,
+      "6-7ft": 183.95
     },
     "stella-cherry-tree:fast-growing-trees": {
       "default": 121.95
@@ -2462,8 +2482,7 @@
       "1gal": 29.95
     },
     "blue-rug-juniper:fast-growing-trees": {
-      "1gal": 26.95,
-      "default": 46.95
+      "3gal": 46.95
     },
     "pink-muhly-grass:fast-growing-trees": {
       "default": 49.95,
@@ -2514,7 +2533,11 @@
       "5-6ft": 129.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
-      "default": 160.95
+      "default": 160.95,
+      "2-3ft": 56.95,
+      "3-4ft": 73.95,
+      "4-5ft": 95.95,
+      "5-6ft": 123.95
     },
     "rose-of-sharon:fast-growing-trees": {
       "2-3ft": 74.95,
@@ -2587,6 +2610,10 @@
     "bee-balm:proven-winners-direct": {
       "0-65-gallon": 26.39
     },
+    "russian-sage:proven-winners-direct": {
+      "0-65-gallon": 26.39,
+      "quart": 16.79
+    },
     "rose-of-sharon:proven-winners-direct": {
       "1gal": 33.99,
       "quart": 17.84
@@ -2627,6 +2654,9 @@
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
+    },
+    "patriot-blueberry:stark-bros": {
+      "default": 27.99
     }
   },
   "degraded_retailers": [
