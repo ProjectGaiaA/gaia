@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-13T23:33:18.743903+00:00",
+  "timestamp": "2026-05-14T13:10:15.557525+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -1026,7 +1026,6 @@
           "1-2ft": 46.95,
           "2-3ft": 69.95,
           "3-4ft": 104.95,
-          "4-5ft": 164.95,
           "5-6ft": 276.95,
           "6-7ft": 676.95
         },
@@ -1119,7 +1118,8 @@
         },
         "forest-pansy-redbud:fast-growing-trees": {
           "default": 197.95,
-          "4-5ft": 138.95
+          "4-5ft": 138.95,
+          "5-6ft": 165.95
         },
         "crape-myrtle:fast-growing-trees": {
           "1-2ft": 86.95,
@@ -1151,7 +1151,7 @@
           "1gal": 39.95
         },
         "sedum-angelina:fast-growing-trees": {
-          "1gal": 29.95
+          "default": 29.95
         },
         "blue-rug-juniper:fast-growing-trees": {
           "3gal": 46.95
@@ -1264,47 +1264,47 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
-          "1gal": 33.99,
-          "quart": 17.84
+          "1gal": 39.99,
+          "quart": 20.99
         },
         "little-lime-hydrangea:proven-winners-direct": {
-          "1gal": 33.99,
-          "quart": 17.84
+          "1gal": 39.99,
+          "quart": 20.99
         },
         "incrediball-hydrangea:proven-winners-direct": {
-          "1gal": 33.99,
-          "quart": 17.84
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "fire-light-hydrangea:proven-winners-direct": {
-          "1gal": 33.99,
-          "quart": 17.84
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "astilbe:proven-winners-direct": {
-          "1gal": 30.39,
-          "quart": 16.79
+          "1gal": 37.99,
+          "quart": 20.99
         },
         "heuchera-coral-bells:proven-winners-direct": {
-          "0-65-gallon": 26.39,
-          "quart": 16.79
+          "0-65-gallon": 24.74,
+          "quart": 15.74
         },
         "bleeding-heart:proven-winners-direct": {
-          "1gal": 30.39,
-          "quart": 16.79
+          "1gal": 37.99,
+          "quart": 20.99
         },
         "bee-balm:proven-winners-direct": {
-          "0-65-gallon": 26.39
+          "0-65-gallon": 32.99
         },
         "russian-sage:proven-winners-direct": {
-          "0-65-gallon": 26.39,
-          "quart": 16.79
+          "0-65-gallon": 32.99,
+          "quart": 20.99
         },
         "rose-of-sharon:proven-winners-direct": {
-          "1gal": 33.99,
-          "quart": 17.84
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 33.99,
-          "quart": 17.84
+          "1gal": 39.99,
+          "quart": 20.99
         }
       },
       "health": "healthy"
@@ -1345,9 +1345,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 4,
-      "products_error": 4,
-      "prices_collected": 8,
+      "products_found": 3,
+      "products_error": 5,
+      "prices_collected": 7,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1362,15 +1362,12 @@
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
-        },
-        "patriot-blueberry:stark-bros": {
-          "default": 27.99
         }
       },
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 734,
+  "total_prices_collected": 733,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2354,7 +2351,6 @@
       "1-2ft": 46.95,
       "2-3ft": 69.95,
       "3-4ft": 104.95,
-      "4-5ft": 164.95,
       "5-6ft": 276.95,
       "6-7ft": 676.95
     },
@@ -2447,7 +2443,8 @@
     },
     "forest-pansy-redbud:fast-growing-trees": {
       "default": 197.95,
-      "4-5ft": 138.95
+      "4-5ft": 138.95,
+      "5-6ft": 165.95
     },
     "crape-myrtle:fast-growing-trees": {
       "1-2ft": 86.95,
@@ -2479,7 +2476,7 @@
       "1gal": 39.95
     },
     "sedum-angelina:fast-growing-trees": {
-      "1gal": 29.95
+      "default": 29.95
     },
     "blue-rug-juniper:fast-growing-trees": {
       "3gal": 46.95
@@ -2580,47 +2577,47 @@
       "3gal": 43.95
     },
     "limelight-hydrangea:proven-winners-direct": {
-      "1gal": 33.99,
-      "quart": 17.84
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "little-lime-hydrangea:proven-winners-direct": {
-      "1gal": 33.99,
-      "quart": 17.84
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "incrediball-hydrangea:proven-winners-direct": {
-      "1gal": 33.99,
-      "quart": 17.84
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "fire-light-hydrangea:proven-winners-direct": {
-      "1gal": 33.99,
-      "quart": 17.84
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "astilbe:proven-winners-direct": {
-      "1gal": 30.39,
-      "quart": 16.79
+      "1gal": 37.99,
+      "quart": 20.99
     },
     "heuchera-coral-bells:proven-winners-direct": {
-      "0-65-gallon": 26.39,
-      "quart": 16.79
+      "0-65-gallon": 24.74,
+      "quart": 15.74
     },
     "bleeding-heart:proven-winners-direct": {
-      "1gal": 30.39,
-      "quart": 16.79
+      "1gal": 37.99,
+      "quart": 20.99
     },
     "bee-balm:proven-winners-direct": {
-      "0-65-gallon": 26.39
+      "0-65-gallon": 32.99
     },
     "russian-sage:proven-winners-direct": {
-      "0-65-gallon": 26.39,
-      "quart": 16.79
+      "0-65-gallon": 32.99,
+      "quart": 20.99
     },
     "rose-of-sharon:proven-winners-direct": {
-      "1gal": 33.99,
-      "quart": 17.84
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 33.99,
-      "quart": 17.84
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "limelight-hydrangea:great-garden-plants": {
       "quart": 21.99,
@@ -2654,9 +2651,6 @@
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
-    },
-    "patriot-blueberry:stark-bros": {
-      "default": 27.99
     }
   },
   "degraded_retailers": [
