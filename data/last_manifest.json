@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-16T12:33:53.662753+00:00",
+  "timestamp": "2026-05-16T23:01:23.429562+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -963,7 +963,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 156,
+      "prices_collected": 157,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1192,12 +1192,14 @@
         },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 65.95,
-          "5-6ft": 98.95
+          "5-6ft": 98.95,
+          "6-7ft": 120.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft": 76.95,
           "3-4ft": 93.95,
-          "4-5ft": 112.95
+          "4-5ft": 112.95,
+          "5-6ft": 124.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "5-6ft": 129.95
@@ -1244,7 +1246,6 @@
         },
         "santa-rosa-plum:fast-growing-trees": {
           "default": 139.95,
-          "4-5ft": 92.95,
           "5-6ft": 113.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
@@ -1366,7 +1367,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 732,
+  "total_prices_collected": 733,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2516,12 +2517,14 @@
     },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 65.95,
-      "5-6ft": 98.95
+      "5-6ft": 98.95,
+      "6-7ft": 120.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft": 76.95,
       "3-4ft": 93.95,
-      "4-5ft": 112.95
+      "4-5ft": 112.95,
+      "5-6ft": 124.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "5-6ft": 129.95
@@ -2568,7 +2571,6 @@
     },
     "santa-rosa-plum:fast-growing-trees": {
       "default": 139.95,
-      "4-5ft": 92.95,
       "5-6ft": 113.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
