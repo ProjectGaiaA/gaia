@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-05-17T12:47:39.407109+00:00",
+  "timestamp": "2026-05-17T23:13:50.383632+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 77,
-      "products_error": 1,
-      "prices_collected": 141,
+      "products_found": 78,
+      "products_error": 0,
+      "prices_collected": 145,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -25,6 +25,12 @@
           "quart": 23.49,
           "2gal": 67.27,
           "3gal": 75.01
+        },
+        "summer-crush-hydrangea:nature-hills": {
+          "quart": 19.89,
+          "1gal": 43.55,
+          "2gal": 66.33,
+          "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
           "quart": 26.14,
@@ -312,9 +318,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 73,
-      "products_error": 2,
-      "prices_collected": 314,
+      "products_found": 74,
+      "products_error": 1,
+      "prices_collected": 319,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -377,6 +383,13 @@
           "4-5ft": 119.95,
           "5-6ft": 139.95,
           "6-7ft": 154.95
+        },
+        "fuji-apple-tree:planting-tree": {
+          "2-3ft": 92.95,
+          "3-4ft": 84.95,
+          "4-5ft": 109.95,
+          "5-6ft": 124.95,
+          "6-7ft": 149.95
         },
         "bing-cherry-tree:planting-tree": {
           "2-3ft": 48.95,
@@ -784,9 +797,9 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 38,
-      "products_error": 2,
-      "prices_collected": 76,
+      "products_found": 36,
+      "products_error": 4,
+      "prices_collected": 72,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -920,16 +933,8 @@
           "premium-bareroot": 14.99,
           "jumbo-bareroot": 54.99
         },
-        "happy-returns-daylily:spring-hill": {
-          "jumbo-bareroot": 39.99
-        },
         "bee-balm:spring-hill": {
           "jumbo-bareroot": 49.99
-        },
-        "russian-sage:spring-hill": {
-          "premium-bareroot": 24.99,
-          "bareroot": 24.99,
-          "jumbo-bareroot": 39.99
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99,
@@ -950,7 +955,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 156,
+      "prices_collected": 154,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -966,7 +971,6 @@
           "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
-          "1gal": 37.95,
           "3gal": 69.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
@@ -1001,7 +1005,6 @@
         "bing-cherry-tree:fast-growing-trees": {
           "1-2ft": 62.95,
           "4-5ft": 119.95,
-          "5-6ft": 148.95,
           "6-7ft": 183.95
         },
         "stella-cherry-tree:fast-growing-trees": {
@@ -1331,18 +1334,15 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 4,
-      "products_error": 4,
-      "prices_collected": 8,
+      "products_found": 3,
+      "products_error": 5,
+      "prices_collected": 7,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 29.99,
           "semi-dwarf": 23.99,
           "supreme": 49.99
-        },
-        "bing-cherry-tree:stark-bros": {
-          "ultra-supreme": 199.99
         },
         "bartlett-pear-tree:stark-bros": {
           "semi-dwarf": 23.99,
@@ -1356,7 +1356,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 724,
+  "total_prices_collected": 726,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1375,6 +1375,12 @@
       "quart": 23.49,
       "2gal": 67.27,
       "3gal": 75.01
+    },
+    "summer-crush-hydrangea:nature-hills": {
+      "quart": 19.89,
+      "1gal": 43.55,
+      "2gal": 66.33,
+      "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
       "quart": 26.14,
@@ -1715,6 +1721,13 @@
       "4-5ft": 119.95,
       "5-6ft": 139.95,
       "6-7ft": 154.95
+    },
+    "fuji-apple-tree:planting-tree": {
+      "2-3ft": 92.95,
+      "3-4ft": 84.95,
+      "4-5ft": 109.95,
+      "5-6ft": 124.95,
+      "6-7ft": 149.95
     },
     "bing-cherry-tree:planting-tree": {
       "2-3ft": 48.95,
@@ -2246,16 +2259,8 @@
       "premium-bareroot": 14.99,
       "jumbo-bareroot": 54.99
     },
-    "happy-returns-daylily:spring-hill": {
-      "jumbo-bareroot": 39.99
-    },
     "bee-balm:spring-hill": {
       "jumbo-bareroot": 49.99
-    },
-    "russian-sage:spring-hill": {
-      "premium-bareroot": 24.99,
-      "bareroot": 24.99,
-      "jumbo-bareroot": 39.99
     },
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99,
@@ -2280,7 +2285,6 @@
       "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
-      "1gal": 37.95,
       "3gal": 69.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
@@ -2315,7 +2319,6 @@
     "bing-cherry-tree:fast-growing-trees": {
       "1-2ft": 62.95,
       "4-5ft": 119.95,
-      "5-6ft": 148.95,
       "6-7ft": 183.95
     },
     "stella-cherry-tree:fast-growing-trees": {
@@ -2618,9 +2621,6 @@
       "dwarf": 29.99,
       "semi-dwarf": 23.99,
       "supreme": 49.99
-    },
-    "bing-cherry-tree:stark-bros": {
-      "ultra-supreme": 199.99
     },
     "bartlett-pear-tree:stark-bros": {
       "semi-dwarf": 23.99,
