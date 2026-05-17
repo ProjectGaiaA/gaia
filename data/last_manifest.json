@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-05-16T23:01:23.429562+00:00",
+  "timestamp": "2026-05-17T12:47:39.407109+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
-      "products_error": 0,
-      "prices_collected": 145,
+      "products_found": 77,
+      "products_error": 1,
+      "prices_collected": 141,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -25,12 +25,6 @@
           "quart": 23.49,
           "2gal": 67.27,
           "3gal": 75.01
-        },
-        "summer-crush-hydrangea:nature-hills": {
-          "quart": 19.89,
-          "1gal": 43.55,
-          "2gal": 66.33,
-          "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
           "quart": 26.14,
@@ -318,9 +312,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 74,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_found": 73,
+      "products_error": 2,
+      "prices_collected": 314,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -383,13 +377,6 @@
           "4-5ft": 119.95,
           "5-6ft": 139.95,
           "6-7ft": 154.95
-        },
-        "fuji-apple-tree:planting-tree": {
-          "2-3ft": 92.95,
-          "3-4ft": 84.95,
-          "4-5ft": 109.95,
-          "5-6ft": 124.95,
-          "6-7ft": 149.95
         },
         "bing-cherry-tree:planting-tree": {
           "2-3ft": 48.95,
@@ -963,7 +950,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 157,
+      "prices_collected": 156,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1198,8 +1185,7 @@
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft": 76.95,
           "3-4ft": 93.95,
-          "4-5ft": 112.95,
-          "5-6ft": 124.95
+          "4-5ft": 112.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "5-6ft": 129.95
@@ -1345,15 +1331,18 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 3,
-      "products_error": 5,
-      "prices_collected": 7,
+      "products_found": 4,
+      "products_error": 4,
+      "prices_collected": 8,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 29.99,
           "semi-dwarf": 23.99,
           "supreme": 49.99
+        },
+        "bing-cherry-tree:stark-bros": {
+          "ultra-supreme": 199.99
         },
         "bartlett-pear-tree:stark-bros": {
           "semi-dwarf": 23.99,
@@ -1367,7 +1356,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 733,
+  "total_prices_collected": 724,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1386,12 +1375,6 @@
       "quart": 23.49,
       "2gal": 67.27,
       "3gal": 75.01
-    },
-    "summer-crush-hydrangea:nature-hills": {
-      "quart": 19.89,
-      "1gal": 43.55,
-      "2gal": 66.33,
-      "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
       "quart": 26.14,
@@ -1732,13 +1715,6 @@
       "4-5ft": 119.95,
       "5-6ft": 139.95,
       "6-7ft": 154.95
-    },
-    "fuji-apple-tree:planting-tree": {
-      "2-3ft": 92.95,
-      "3-4ft": 84.95,
-      "4-5ft": 109.95,
-      "5-6ft": 124.95,
-      "6-7ft": 149.95
     },
     "bing-cherry-tree:planting-tree": {
       "2-3ft": 48.95,
@@ -2523,8 +2499,7 @@
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft": 76.95,
       "3-4ft": 93.95,
-      "4-5ft": 112.95,
-      "5-6ft": 124.95
+      "4-5ft": 112.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "5-6ft": 129.95
@@ -2643,6 +2618,9 @@
       "dwarf": 29.99,
       "semi-dwarf": 23.99,
       "supreme": 49.99
+    },
+    "bing-cherry-tree:stark-bros": {
+      "ultra-supreme": 199.99
     },
     "bartlett-pear-tree:stark-bros": {
       "semi-dwarf": 23.99,
