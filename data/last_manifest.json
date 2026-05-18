@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-18T15:15:17.516798+00:00",
+  "timestamp": "2026-05-18T23:19:37.318381+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -963,7 +963,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 154,
+      "prices_collected": 150,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -987,8 +987,7 @@
           "3gal": 67.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
-          "quart": 32.95,
-          "3gal": 66.95
+          "quart": 32.95
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 51.95
@@ -1027,7 +1026,8 @@
           "1-2ft": 19.95,
           "2-3ft": 34.95,
           "4-5ft": 112.95,
-          "5-6ft": 199.95
+          "5-6ft": 199.95,
+          "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 21.95,
@@ -1107,8 +1107,7 @@
           "default": 142.95
         },
         "kousa-dogwood:fast-growing-trees": {
-          "default": 79.95,
-          "3-4ft": 101.95,
+          "default": 101.95,
           "4-5ft": 129.95,
           "5-6ft": 166.95,
           "6-7ft": 212.95
@@ -1156,9 +1155,7 @@
           "3gal": 46.95
         },
         "pink-muhly-grass:fast-growing-trees": {
-          "default": 49.95,
-          "1gal": 22.95,
-          "3gal": 34.95
+          "5gal": 49.95
         },
         "purple-fountain-grass:fast-growing-trees": {
           "default": 90.95,
@@ -1189,7 +1186,6 @@
           "default": 43.95
         },
         "october-glory-maple:fast-growing-trees": {
-          "3-4ft": 65.95,
           "5-6ft": 98.95,
           "6-7ft": 120.95
         },
@@ -1216,7 +1212,7 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "3gal": 74.95
+          "default": 74.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95,
@@ -1342,9 +1338,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 3,
-      "products_error": 5,
-      "prices_collected": 7,
+      "products_found": 5,
+      "products_error": 3,
+      "prices_collected": 10,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1355,16 +1351,23 @@
         "bartlett-pear-tree:stark-bros": {
           "semi-dwarf": 23.99,
           "supreme-ez-start": 75.99,
-          "supreme": 39.99
+          "supreme": 39.99,
+          "standard": 26.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
+        },
+        "duke-blueberry:stark-bros": {
+          "default": 18.99
+        },
+        "pink-lemonade-blueberry:stark-bros": {
+          "default": 18.99
         }
       },
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 730,
+  "total_prices_collected": 729,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2309,8 +2312,7 @@
       "3gal": 67.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
-      "quart": 32.95,
-      "3gal": 66.95
+      "quart": 32.95
     },
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 51.95
@@ -2349,7 +2351,8 @@
       "1-2ft": 19.95,
       "2-3ft": 34.95,
       "4-5ft": 112.95,
-      "5-6ft": 199.95
+      "5-6ft": 199.95,
+      "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 21.95,
@@ -2429,8 +2432,7 @@
       "default": 142.95
     },
     "kousa-dogwood:fast-growing-trees": {
-      "default": 79.95,
-      "3-4ft": 101.95,
+      "default": 101.95,
       "4-5ft": 129.95,
       "5-6ft": 166.95,
       "6-7ft": 212.95
@@ -2478,9 +2480,7 @@
       "3gal": 46.95
     },
     "pink-muhly-grass:fast-growing-trees": {
-      "default": 49.95,
-      "1gal": 22.95,
-      "3gal": 34.95
+      "5gal": 49.95
     },
     "purple-fountain-grass:fast-growing-trees": {
       "default": 90.95,
@@ -2511,7 +2511,6 @@
       "default": 43.95
     },
     "october-glory-maple:fast-growing-trees": {
-      "3-4ft": 65.95,
       "5-6ft": 98.95,
       "6-7ft": 120.95
     },
@@ -2538,7 +2537,7 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "3gal": 74.95
+      "default": 74.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95,
@@ -2641,10 +2640,17 @@
     "bartlett-pear-tree:stark-bros": {
       "semi-dwarf": 23.99,
       "supreme-ez-start": 75.99,
-      "supreme": 39.99
+      "supreme": 39.99,
+      "standard": 26.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
+    },
+    "duke-blueberry:stark-bros": {
+      "default": 18.99
+    },
+    "pink-lemonade-blueberry:stark-bros": {
+      "default": 18.99
     }
   },
   "degraded_retailers": [
