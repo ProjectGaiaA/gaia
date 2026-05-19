@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-05-19T14:39:46.653523+00:00",
+  "timestamp": "2026-05-19T23:32:36.815538+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 77,
-      "products_error": 1,
-      "prices_collected": 141,
+      "products_found": 78,
+      "products_error": 0,
+      "prices_collected": 145,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -233,6 +233,12 @@
         "purple-fountain-grass:nature-hills": {
           "quart": 15.82
         },
+        "hameln-dwarf-fountain-grass:nature-hills": {
+          "quart": 16.99,
+          "1gal": 29.14,
+          "2gal": 56.13,
+          "3gal": 60.72
+        },
         "blue-fescue-elijah-blue:nature-hills": {
           "quart": 16.99,
           "1gal": 29.57
@@ -312,9 +318,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 69,
-      "products_error": 6,
-      "prices_collected": 309,
+      "products_found": 73,
+      "products_error": 2,
+      "prices_collected": 314,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -466,13 +472,6 @@
           "2-3ft": 154.95,
           "3-4ft": 314.95
         },
-        "emperor-japanese-maple:planting-tree": {
-          "1-2ft": 48.95,
-          "2-3ft": 99.95,
-          "3-4ft": 114.95,
-          "4-5ft": 124.95,
-          "5-6ft": 164.95
-        },
         "tamukeyama-japanese-maple:planting-tree": {
           "1-2ft": 54.95,
           "2-3ft": 84.95,
@@ -553,6 +552,11 @@
         "stella-de-oro-daylily:planting-tree": {
           "1gal": 21.95
         },
+        "lavender-phenomenal:planting-tree": {
+          "quart": 24.95,
+          "1gal": 31.95,
+          "2gal": 70.95
+        },
         "green-mountain-boxwood:planting-tree": {
           "1gal": 22.95,
           "2gal": 99.95,
@@ -591,6 +595,9 @@
           "2-3ft": 114.95,
           "3-4ft": 124.95,
           "4-5ft": 134.95
+        },
+        "peace-lily:planting-tree": {
+          "default": 51.95
         },
         "fiddle-leaf-fig:planting-tree": {
           "3gal": 99.95,
@@ -659,6 +666,10 @@
         "big-blue-liriope:planting-tree": {
           "1gal": 21.95
         },
+        "ajuga-chocolate-chip:planting-tree": {
+          "quart": 29.95,
+          "1gal": 30.95
+        },
         "sedum-angelina:planting-tree": {
           "1gal": 36.95
         },
@@ -678,6 +689,14 @@
           "2gal": 72.95,
           "3gal": 51.95,
           "5gal": 96.95
+        },
+        "heuchera-coral-bells:planting-tree": {
+          "1gal": 30.95
+        },
+        "catmint-walkers-low:planting-tree": {
+          "quart": 21.95,
+          "1gal": 50.95,
+          "2gal": 58.95
         },
         "october-glory-maple:planting-tree": {
           "1-2ft": 53.95,
@@ -937,7 +956,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 152,
+      "prices_collected": 154,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -945,7 +964,8 @@
           "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
-          "3gal": 42.95
+          "quart": 22.95,
+          "default": 42.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
@@ -973,6 +993,7 @@
           "6-7ft": 161.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
+          "1-2ft": 65.95,
           "2-3ft": 90.95,
           "3-4ft": 124.95
         },
@@ -994,8 +1015,7 @@
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
           "2-3ft": 39.95,
-          "3-4ft": 69.95,
-          "6-7ft": 248.95
+          "3-4ft": 69.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
@@ -1171,6 +1191,7 @@
           "4-5ft": 112.95
         },
         "red-sunset-maple:fast-growing-trees": {
+          "4-5ft": 105.95,
           "5-6ft": 129.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
@@ -1314,9 +1335,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 4,
-      "products_error": 4,
-      "prices_collected": 9,
+      "products_found": 3,
+      "products_error": 5,
+      "prices_collected": 8,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1332,15 +1353,12 @@
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
-        },
-        "duke-blueberry:stark-bros": {
-          "default": 18.99
         }
       },
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 716,
+  "total_prices_collected": 726,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1567,6 +1585,12 @@
     "purple-fountain-grass:nature-hills": {
       "quart": 15.82
     },
+    "hameln-dwarf-fountain-grass:nature-hills": {
+      "quart": 16.99,
+      "1gal": 29.14,
+      "2gal": 56.13,
+      "3gal": 60.72
+    },
     "blue-fescue-elijah-blue:nature-hills": {
       "quart": 16.99,
       "1gal": 29.57
@@ -1788,13 +1812,6 @@
       "2-3ft": 154.95,
       "3-4ft": 314.95
     },
-    "emperor-japanese-maple:planting-tree": {
-      "1-2ft": 48.95,
-      "2-3ft": 99.95,
-      "3-4ft": 114.95,
-      "4-5ft": 124.95,
-      "5-6ft": 164.95
-    },
     "tamukeyama-japanese-maple:planting-tree": {
       "1-2ft": 54.95,
       "2-3ft": 84.95,
@@ -1875,6 +1892,11 @@
     "stella-de-oro-daylily:planting-tree": {
       "1gal": 21.95
     },
+    "lavender-phenomenal:planting-tree": {
+      "quart": 24.95,
+      "1gal": 31.95,
+      "2gal": 70.95
+    },
     "green-mountain-boxwood:planting-tree": {
       "1gal": 22.95,
       "2gal": 99.95,
@@ -1913,6 +1935,9 @@
       "2-3ft": 114.95,
       "3-4ft": 124.95,
       "4-5ft": 134.95
+    },
+    "peace-lily:planting-tree": {
+      "default": 51.95
     },
     "fiddle-leaf-fig:planting-tree": {
       "3gal": 99.95,
@@ -1981,6 +2006,10 @@
     "big-blue-liriope:planting-tree": {
       "1gal": 21.95
     },
+    "ajuga-chocolate-chip:planting-tree": {
+      "quart": 29.95,
+      "1gal": 30.95
+    },
     "sedum-angelina:planting-tree": {
       "1gal": 36.95
     },
@@ -2000,6 +2029,14 @@
       "2gal": 72.95,
       "3gal": 51.95,
       "5gal": 96.95
+    },
+    "heuchera-coral-bells:planting-tree": {
+      "1gal": 30.95
+    },
+    "catmint-walkers-low:planting-tree": {
+      "quart": 21.95,
+      "1gal": 50.95,
+      "2gal": 58.95
     },
     "october-glory-maple:planting-tree": {
       "1-2ft": 53.95,
@@ -2243,7 +2280,8 @@
       "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
-      "3gal": 42.95
+      "quart": 22.95,
+      "default": 42.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
@@ -2271,6 +2309,7 @@
       "6-7ft": 161.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
+      "1-2ft": 65.95,
       "2-3ft": 90.95,
       "3-4ft": 124.95
     },
@@ -2292,8 +2331,7 @@
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
       "2-3ft": 39.95,
-      "3-4ft": 69.95,
-      "6-7ft": 248.95
+      "3-4ft": 69.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
@@ -2469,6 +2507,7 @@
       "4-5ft": 112.95
     },
     "red-sunset-maple:fast-growing-trees": {
+      "4-5ft": 105.95,
       "5-6ft": 129.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
@@ -2594,9 +2633,6 @@
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
-    },
-    "duke-blueberry:stark-bros": {
-      "default": 18.99
     }
   },
   "degraded_retailers": [
