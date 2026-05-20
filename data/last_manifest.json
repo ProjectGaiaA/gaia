@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-20T14:23:25.075355+00:00",
+  "timestamp": "2026-05-20T23:40:15.925361+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -8,7 +8,9 @@
       "products_found": 78,
       "products_error": 0,
       "prices_collected": 145,
-      "anomalies": [],
+      "anomalies": [
+        "ANOMALY: double-knock-out-rose at nature-hills tier=2gal: $54.11 -> $21.64 (60% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -82,29 +84,23 @@
         "tamukeyama-japanese-maple:nature-hills": {
           "3gal": 184.65
         },
-        "double-knock-out-rose:nature-hills": {
-          "quart": 18.15,
-          "1gal": 37.13,
-          "3gal": 49.55,
-          "2gal": 54.11
-        },
         "pink-knock-out-rose:nature-hills": {
-          "quart": 18.15,
-          "1gal": 39.79,
-          "3gal": 72.09,
-          "2gal": 59.22
+          "quart": 19.33,
+          "1gal": 25.07,
+          "3gal": 45.42,
+          "2gal": 37.31
         },
         "sunny-knock-out-rose:nature-hills": {
-          "quart": 18.15,
-          "1gal": 39.83,
-          "2gal": 59.15,
-          "3gal": 72.09
+          "quart": 19.33,
+          "1gal": 25.09,
+          "2gal": 41.41,
+          "3gal": 45.42
         },
         "white-knock-out-rose:nature-hills": {
-          "3gal": 72.09
+          "3gal": 45.42
         },
         "coral-knock-out-rose:nature-hills": {
-          "3gal": 72.09
+          "3gal": 45.42
         },
         "duke-blueberry:nature-hills": {
           "1gal": 39.96,
@@ -149,7 +145,7 @@
           "1gal": 29.67
         },
         "echinacea-powwow-wild-berry:nature-hills": {
-          "quart": 16.99
+          "quart": 17.99
         },
         "lavender-phenomenal:nature-hills": {
           "quart": 16.99,
@@ -247,8 +243,8 @@
           "1gal": 31.4
         },
         "heuchera-coral-bells:nature-hills": {
-          "quart": 16.99,
-          "1gal": 43.72
+          "quart": 19.33,
+          "1gal": 27.54
         },
         "bleeding-heart:nature-hills": {
           "1gal": 38.28
@@ -284,12 +280,12 @@
           "3gal": 94.07
         },
         "rose-of-sharon:nature-hills": {
-          "1gal": 44.9,
-          "3gal": 123.88
+          "1gal": 31.43,
+          "3gal": 86.72
         },
         "wine-and-roses-weigela:nature-hills": {
           "quart": 26.14,
-          "3gal": 82.58
+          "3gal": 52.03
         },
         "gardenia-frost-proof:nature-hills": {
           "quart": 26.96
@@ -797,9 +793,9 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 36,
-      "products_error": 4,
-      "prices_collected": 74,
+      "products_found": 38,
+      "products_error": 2,
+      "prices_collected": 76,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -879,6 +875,12 @@
         "duke-blueberry:spring-hill": {
           "default": 15.49
         },
+        "bluecrop-blueberry:spring-hill": {
+          "default": 29.99
+        },
+        "patriot-blueberry:spring-hill": {
+          "default": 29.99
+        },
         "pink-lemonade-blueberry:spring-hill": {
           "bareroot": 18.99,
           "jumbo-bareroot": 9.99
@@ -957,7 +959,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 153,
+      "prices_collected": 155,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -965,8 +967,7 @@
           "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
-          "quart": 22.95,
-          "default": 42.95
+          "3gal": 42.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
@@ -1061,6 +1062,7 @@
           "6-7ft": 189.95
         },
         "crimson-queen-japanese-maple:fast-growing-trees": {
+          "1-2ft": 66.95,
           "2-3ft": 81.95
         },
         "emperor-japanese-maple:fast-growing-trees": {
@@ -1080,10 +1082,11 @@
           "7gal": 129.95
         },
         "white-knock-out-rose:fast-growing-trees": {
-          "default": 63.95
+          "1gal": 37.95,
+          "3gal": 63.95
         },
         "coral-knock-out-rose:fast-growing-trees": {
-          "default": 59.95
+          "3gal": 59.95
         },
         "duke-blueberry:fast-growing-trees": {
           "default": 46.95
@@ -1133,7 +1136,7 @@
           "default": 78.95
         },
         "vinca-minor:fast-growing-trees": {
-          "1gal": 34.95
+          "default": 34.95
         },
         "big-blue-liriope:fast-growing-trees": {
           "default": 15.95,
@@ -1188,11 +1191,12 @@
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft": 76.95,
           "3-4ft": 93.95,
-          "4-5ft": 112.95
+          "4-5ft": 112.95,
+          "5-6ft": 124.95
         },
         "red-sunset-maple:fast-growing-trees": {
-          "4-5ft": 105.95,
-          "5-6ft": 129.95
+          "5-6ft": 129.95,
+          "6-7ft": 177.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
           "default": 160.95,
@@ -1345,9 +1349,6 @@
           "semi-dwarf": 23.99,
           "supreme": 49.99
         },
-        "bing-cherry-tree:stark-bros": {
-          "ultra-supreme": 229.99
-        },
         "bartlett-pear-tree:stark-bros": {
           "semi-dwarf": 23.99,
           "supreme-ez-start": 75.99,
@@ -1357,14 +1358,19 @@
         },
         "double-knock-out-rose:stark-bros": {
           "default": 12.99
+        },
+        "pink-lemonade-blueberry:stark-bros": {
+          "default": 25.99
         }
       },
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 730,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 734,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: double-knock-out-rose at nature-hills tier=2gal: $54.11 -> $21.64 (60% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1438,29 +1444,23 @@
     "tamukeyama-japanese-maple:nature-hills": {
       "3gal": 184.65
     },
-    "double-knock-out-rose:nature-hills": {
-      "quart": 18.15,
-      "1gal": 37.13,
-      "3gal": 49.55,
-      "2gal": 54.11
-    },
     "pink-knock-out-rose:nature-hills": {
-      "quart": 18.15,
-      "1gal": 39.79,
-      "3gal": 72.09,
-      "2gal": 59.22
+      "quart": 19.33,
+      "1gal": 25.07,
+      "3gal": 45.42,
+      "2gal": 37.31
     },
     "sunny-knock-out-rose:nature-hills": {
-      "quart": 18.15,
-      "1gal": 39.83,
-      "2gal": 59.15,
-      "3gal": 72.09
+      "quart": 19.33,
+      "1gal": 25.09,
+      "2gal": 41.41,
+      "3gal": 45.42
     },
     "white-knock-out-rose:nature-hills": {
-      "3gal": 72.09
+      "3gal": 45.42
     },
     "coral-knock-out-rose:nature-hills": {
-      "3gal": 72.09
+      "3gal": 45.42
     },
     "duke-blueberry:nature-hills": {
       "1gal": 39.96,
@@ -1505,7 +1505,7 @@
       "1gal": 29.67
     },
     "echinacea-powwow-wild-berry:nature-hills": {
-      "quart": 16.99
+      "quart": 17.99
     },
     "lavender-phenomenal:nature-hills": {
       "quart": 16.99,
@@ -1603,8 +1603,8 @@
       "1gal": 31.4
     },
     "heuchera-coral-bells:nature-hills": {
-      "quart": 16.99,
-      "1gal": 43.72
+      "quart": 19.33,
+      "1gal": 27.54
     },
     "bleeding-heart:nature-hills": {
       "1gal": 38.28
@@ -1640,12 +1640,12 @@
       "3gal": 94.07
     },
     "rose-of-sharon:nature-hills": {
-      "1gal": 44.9,
-      "3gal": 123.88
+      "1gal": 31.43,
+      "3gal": 86.72
     },
     "wine-and-roses-weigela:nature-hills": {
       "quart": 26.14,
-      "3gal": 82.58
+      "3gal": 52.03
     },
     "gardenia-frost-proof:nature-hills": {
       "quart": 26.96
@@ -2211,6 +2211,12 @@
     "duke-blueberry:spring-hill": {
       "default": 15.49
     },
+    "bluecrop-blueberry:spring-hill": {
+      "default": 29.99
+    },
+    "patriot-blueberry:spring-hill": {
+      "default": 29.99
+    },
     "pink-lemonade-blueberry:spring-hill": {
       "bareroot": 18.99,
       "jumbo-bareroot": 9.99
@@ -2285,8 +2291,7 @@
       "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
-      "quart": 22.95,
-      "default": 42.95
+      "3gal": 42.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
@@ -2381,6 +2386,7 @@
       "6-7ft": 189.95
     },
     "crimson-queen-japanese-maple:fast-growing-trees": {
+      "1-2ft": 66.95,
       "2-3ft": 81.95
     },
     "emperor-japanese-maple:fast-growing-trees": {
@@ -2400,10 +2406,11 @@
       "7gal": 129.95
     },
     "white-knock-out-rose:fast-growing-trees": {
-      "default": 63.95
+      "1gal": 37.95,
+      "3gal": 63.95
     },
     "coral-knock-out-rose:fast-growing-trees": {
-      "default": 59.95
+      "3gal": 59.95
     },
     "duke-blueberry:fast-growing-trees": {
       "default": 46.95
@@ -2453,7 +2460,7 @@
       "default": 78.95
     },
     "vinca-minor:fast-growing-trees": {
-      "1gal": 34.95
+      "default": 34.95
     },
     "big-blue-liriope:fast-growing-trees": {
       "default": 15.95,
@@ -2508,11 +2515,12 @@
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft": 76.95,
       "3-4ft": 93.95,
-      "4-5ft": 112.95
+      "4-5ft": 112.95,
+      "5-6ft": 124.95
     },
     "red-sunset-maple:fast-growing-trees": {
-      "4-5ft": 105.95,
-      "5-6ft": 129.95
+      "5-6ft": 129.95,
+      "6-7ft": 177.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
       "default": 160.95,
@@ -2629,9 +2637,6 @@
       "semi-dwarf": 23.99,
       "supreme": 49.99
     },
-    "bing-cherry-tree:stark-bros": {
-      "ultra-supreme": 229.99
-    },
     "bartlett-pear-tree:stark-bros": {
       "semi-dwarf": 23.99,
       "supreme-ez-start": 75.99,
@@ -2641,6 +2646,9 @@
     },
     "double-knock-out-rose:stark-bros": {
       "default": 12.99
+    },
+    "pink-lemonade-blueberry:stark-bros": {
+      "default": 25.99
     }
   },
   "degraded_retailers": [
