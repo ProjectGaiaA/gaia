@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-19T23:32:36.815538+00:00",
+  "timestamp": "2026-05-20T14:23:25.075355+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -318,9 +318,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 73,
-      "products_error": 2,
-      "prices_collected": 314,
+      "products_found": 74,
+      "products_error": 1,
+      "prices_collected": 319,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -471,6 +471,13 @@
           "1-2ft": 88.95,
           "2-3ft": 154.95,
           "3-4ft": 314.95
+        },
+        "emperor-japanese-maple:planting-tree": {
+          "1-2ft": 48.95,
+          "2-3ft": 99.95,
+          "3-4ft": 114.95,
+          "4-5ft": 124.95,
+          "5-6ft": 164.95
         },
         "tamukeyama-japanese-maple:planting-tree": {
           "1-2ft": 54.95,
@@ -790,9 +797,9 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 38,
-      "products_error": 2,
-      "prices_collected": 76,
+      "products_found": 36,
+      "products_error": 4,
+      "prices_collected": 74,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -872,12 +879,6 @@
         "duke-blueberry:spring-hill": {
           "default": 15.49
         },
-        "bluecrop-blueberry:spring-hill": {
-          "default": 29.99
-        },
-        "patriot-blueberry:spring-hill": {
-          "default": 29.99
-        },
         "pink-lemonade-blueberry:spring-hill": {
           "bareroot": 18.99,
           "jumbo-bareroot": 9.99
@@ -956,7 +957,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 154,
+      "prices_collected": 153,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1122,7 +1123,6 @@
           "default": 94.95
         },
         "pjm-rhododendron:fast-growing-trees": {
-          "1gal": 38.95,
           "default": 122.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
@@ -1335,9 +1335,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 3,
-      "products_error": 5,
-      "prices_collected": 8,
+      "products_found": 4,
+      "products_error": 4,
+      "prices_collected": 10,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1345,20 +1345,24 @@
           "semi-dwarf": 23.99,
           "supreme": 49.99
         },
+        "bing-cherry-tree:stark-bros": {
+          "ultra-supreme": 229.99
+        },
         "bartlett-pear-tree:stark-bros": {
           "semi-dwarf": 23.99,
           "supreme-ez-start": 75.99,
           "supreme": 39.99,
+          "ultra-supreme": 229.99,
           "standard": 26.99
         },
         "double-knock-out-rose:stark-bros": {
-          "default": 15.99
+          "default": 12.99
         }
       },
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 726,
+  "total_prices_collected": 730,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1812,6 +1816,13 @@
       "2-3ft": 154.95,
       "3-4ft": 314.95
     },
+    "emperor-japanese-maple:planting-tree": {
+      "1-2ft": 48.95,
+      "2-3ft": 99.95,
+      "3-4ft": 114.95,
+      "4-5ft": 124.95,
+      "5-6ft": 164.95
+    },
     "tamukeyama-japanese-maple:planting-tree": {
       "1-2ft": 54.95,
       "2-3ft": 84.95,
@@ -2200,12 +2211,6 @@
     "duke-blueberry:spring-hill": {
       "default": 15.49
     },
-    "bluecrop-blueberry:spring-hill": {
-      "default": 29.99
-    },
-    "patriot-blueberry:spring-hill": {
-      "default": 29.99
-    },
     "pink-lemonade-blueberry:spring-hill": {
       "bareroot": 18.99,
       "jumbo-bareroot": 9.99
@@ -2438,7 +2443,6 @@
       "default": 94.95
     },
     "pjm-rhododendron:fast-growing-trees": {
-      "1gal": 38.95,
       "default": 122.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
@@ -2625,14 +2629,18 @@
       "semi-dwarf": 23.99,
       "supreme": 49.99
     },
+    "bing-cherry-tree:stark-bros": {
+      "ultra-supreme": 229.99
+    },
     "bartlett-pear-tree:stark-bros": {
       "semi-dwarf": 23.99,
       "supreme-ez-start": 75.99,
       "supreme": 39.99,
+      "ultra-supreme": 229.99,
       "standard": 26.99
     },
     "double-knock-out-rose:stark-bros": {
-      "default": 15.99
+      "default": 12.99
     }
   },
   "degraded_retailers": [
