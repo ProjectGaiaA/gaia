@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-05-21T14:51:02.164096+00:00",
+  "timestamp": "2026-05-21T23:39:02.855395+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 76,
-      "products_error": 2,
-      "prices_collected": 138,
+      "products_found": 78,
+      "products_error": 0,
+      "prices_collected": 145,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -21,11 +21,22 @@
           "2gal": 65.1,
           "3gal": 77.01
         },
+        "bloomstruck-hydrangea:nature-hills": {
+          "quart": 23.49,
+          "2gal": 67.27,
+          "3gal": 75.01
+        },
         "summer-crush-hydrangea:nature-hills": {
           "quart": 19.89,
           "1gal": 43.55,
           "2gal": 66.33,
           "3gal": 76.98
+        },
+        "little-lime-hydrangea:nature-hills": {
+          "quart": 26.14,
+          "1gal": 42.93,
+          "2gal": 69.63,
+          "3gal": 85.75
         },
         "incrediball-hydrangea:nature-hills": {
           "quart": 26.14,
@@ -42,7 +53,7 @@
           "3gal": 85.75
         },
         "honeycrisp-apple-tree:nature-hills": {
-          "2gal": 71.43
+          "5gal": 142.53
         },
         "fuji-apple-tree:nature-hills": {
           "3gal": 128.25
@@ -966,8 +977,7 @@
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
           "2gal": 49.95,
-          "3gal": 82.95,
-          "7gal": 150.95
+          "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
           "default": 118.95
@@ -1011,7 +1021,6 @@
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
-          "2-3ft": 39.95,
           "3-4ft": 69.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
@@ -1023,6 +1032,7 @@
           "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
+          "1-2ft": 21.95,
           "2-3ft": 39.95,
           "3-4ft": 75.95,
           "4-5ft": 129.95,
@@ -1101,7 +1111,8 @@
           "default": 142.95
         },
         "kousa-dogwood:fast-growing-trees": {
-          "default": 101.95,
+          "default": 79.95,
+          "3-4ft": 101.95,
           "4-5ft": 129.95,
           "5-6ft": 166.95,
           "6-7ft": 212.95
@@ -1131,7 +1142,7 @@
           "default": 78.95
         },
         "vinca-minor:fast-growing-trees": {
-          "default": 34.95
+          "1gal": 34.95
         },
         "big-blue-liriope:fast-growing-trees": {
           "default": 15.95,
@@ -1341,8 +1352,8 @@
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 29.99,
-          "semi-dwarf": 23.99,
-          "supreme": 49.99
+          "supreme": 49.99,
+          "semi-dwarf": 23.99
         },
         "bartlett-pear-tree:stark-bros": {
           "semi-dwarf": 23.99,
@@ -1364,7 +1375,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 730,
+  "total_prices_collected": 737,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1379,11 +1390,22 @@
       "2gal": 65.1,
       "3gal": 77.01
     },
+    "bloomstruck-hydrangea:nature-hills": {
+      "quart": 23.49,
+      "2gal": 67.27,
+      "3gal": 75.01
+    },
     "summer-crush-hydrangea:nature-hills": {
       "quart": 19.89,
       "1gal": 43.55,
       "2gal": 66.33,
       "3gal": 76.98
+    },
+    "little-lime-hydrangea:nature-hills": {
+      "quart": 26.14,
+      "1gal": 42.93,
+      "2gal": 69.63,
+      "3gal": 85.75
     },
     "incrediball-hydrangea:nature-hills": {
       "quart": 26.14,
@@ -1400,7 +1422,7 @@
       "3gal": 85.75
     },
     "honeycrisp-apple-tree:nature-hills": {
-      "2gal": 71.43
+      "5gal": 142.53
     },
     "fuji-apple-tree:nature-hills": {
       "3gal": 128.25
@@ -2288,8 +2310,7 @@
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
       "2gal": 49.95,
-      "3gal": 82.95,
-      "7gal": 150.95
+      "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
       "default": 118.95
@@ -2333,7 +2354,6 @@
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
-      "2-3ft": 39.95,
       "3-4ft": 69.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
@@ -2345,6 +2365,7 @@
       "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
+      "1-2ft": 21.95,
       "2-3ft": 39.95,
       "3-4ft": 75.95,
       "4-5ft": 129.95,
@@ -2423,7 +2444,8 @@
       "default": 142.95
     },
     "kousa-dogwood:fast-growing-trees": {
-      "default": 101.95,
+      "default": 79.95,
+      "3-4ft": 101.95,
       "4-5ft": 129.95,
       "5-6ft": 166.95,
       "6-7ft": 212.95
@@ -2453,7 +2475,7 @@
       "default": 78.95
     },
     "vinca-minor:fast-growing-trees": {
-      "default": 34.95
+      "1gal": 34.95
     },
     "big-blue-liriope:fast-growing-trees": {
       "default": 15.95,
@@ -2627,8 +2649,8 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf": 29.99,
-      "semi-dwarf": 23.99,
-      "supreme": 49.99
+      "supreme": 49.99,
+      "semi-dwarf": 23.99
     },
     "bartlett-pear-tree:stark-bros": {
       "semi-dwarf": 23.99,
