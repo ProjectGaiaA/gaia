@@ -1,16 +1,14 @@
 {
-  "timestamp": "2026-05-20T23:40:15.925361+00:00",
+  "timestamp": "2026-05-21T14:51:02.164096+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
-      "products_error": 0,
-      "prices_collected": 145,
-      "anomalies": [
-        "ANOMALY: double-knock-out-rose at nature-hills tier=2gal: $54.11 -> $21.64 (60% change)"
-      ],
+      "products_found": 76,
+      "products_error": 2,
+      "prices_collected": 138,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -23,22 +21,11 @@
           "2gal": 65.1,
           "3gal": 77.01
         },
-        "bloomstruck-hydrangea:nature-hills": {
-          "quart": 23.49,
-          "2gal": 67.27,
-          "3gal": 75.01
-        },
         "summer-crush-hydrangea:nature-hills": {
           "quart": 19.89,
           "1gal": 43.55,
           "2gal": 66.33,
           "3gal": 76.98
-        },
-        "little-lime-hydrangea:nature-hills": {
-          "quart": 26.14,
-          "1gal": 42.93,
-          "2gal": 69.63,
-          "3gal": 85.75
         },
         "incrediball-hydrangea:nature-hills": {
           "quart": 26.14,
@@ -82,7 +69,13 @@
           "5gal": 228.11
         },
         "tamukeyama-japanese-maple:nature-hills": {
-          "3gal": 184.65
+          "3gal": 138.49
+        },
+        "double-knock-out-rose:nature-hills": {
+          "quart": 19.33,
+          "1gal": 23.39,
+          "3gal": 34.69,
+          "2gal": 21.64
         },
         "pink-knock-out-rose:nature-hills": {
           "quart": 19.33,
@@ -128,14 +121,14 @@
           "3gal": 109.5
         },
         "pjm-rhododendron:nature-hills": {
-          "3gal": 92.24
+          "3gal": 64.57
         },
         "nova-zembla-rhododendron:nature-hills": {
           "1gal": 39.96,
           "3gal": 97.24
         },
         "gibraltar-azalea:nature-hills": {
-          "3gal": 95.4
+          "3gal": 66.78
         },
         "stella-de-oro-daylily:nature-hills": {
           "quart": 16.99,
@@ -959,7 +952,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 155,
+      "prices_collected": 157,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -967,12 +960,14 @@
           "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
-          "3gal": 42.95
+          "quart": 22.95,
+          "default": 42.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
           "2gal": 49.95,
-          "3gal": 82.95
+          "3gal": 82.95,
+          "7gal": 150.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
           "default": 118.95
@@ -1339,9 +1334,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 4,
-      "products_error": 4,
-      "prices_collected": 10,
+      "products_found": 5,
+      "products_error": 3,
+      "prices_collected": 11,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1359,6 +1354,9 @@
         "double-knock-out-rose:stark-bros": {
           "default": 12.99
         },
+        "patriot-blueberry:stark-bros": {
+          "default": 18.99
+        },
         "pink-lemonade-blueberry:stark-bros": {
           "default": 25.99
         }
@@ -1366,11 +1364,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 734,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: double-knock-out-rose at nature-hills tier=2gal: $54.11 -> $21.64 (60% change)"
-  ],
+  "total_prices_collected": 730,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1383,22 +1379,11 @@
       "2gal": 65.1,
       "3gal": 77.01
     },
-    "bloomstruck-hydrangea:nature-hills": {
-      "quart": 23.49,
-      "2gal": 67.27,
-      "3gal": 75.01
-    },
     "summer-crush-hydrangea:nature-hills": {
       "quart": 19.89,
       "1gal": 43.55,
       "2gal": 66.33,
       "3gal": 76.98
-    },
-    "little-lime-hydrangea:nature-hills": {
-      "quart": 26.14,
-      "1gal": 42.93,
-      "2gal": 69.63,
-      "3gal": 85.75
     },
     "incrediball-hydrangea:nature-hills": {
       "quart": 26.14,
@@ -1442,7 +1427,13 @@
       "5gal": 228.11
     },
     "tamukeyama-japanese-maple:nature-hills": {
-      "3gal": 184.65
+      "3gal": 138.49
+    },
+    "double-knock-out-rose:nature-hills": {
+      "quart": 19.33,
+      "1gal": 23.39,
+      "3gal": 34.69,
+      "2gal": 21.64
     },
     "pink-knock-out-rose:nature-hills": {
       "quart": 19.33,
@@ -1488,14 +1479,14 @@
       "3gal": 109.5
     },
     "pjm-rhododendron:nature-hills": {
-      "3gal": 92.24
+      "3gal": 64.57
     },
     "nova-zembla-rhododendron:nature-hills": {
       "1gal": 39.96,
       "3gal": 97.24
     },
     "gibraltar-azalea:nature-hills": {
-      "3gal": 95.4
+      "3gal": 66.78
     },
     "stella-de-oro-daylily:nature-hills": {
       "quart": 16.99,
@@ -2291,12 +2282,14 @@
       "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
-      "3gal": 42.95
+      "quart": 22.95,
+      "default": 42.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
       "2gal": 49.95,
-      "3gal": 82.95
+      "3gal": 82.95,
+      "7gal": 150.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
       "default": 118.95
@@ -2646,6 +2639,9 @@
     },
     "double-knock-out-rose:stark-bros": {
       "default": 12.99
+    },
+    "patriot-blueberry:stark-bros": {
+      "default": 18.99
     },
     "pink-lemonade-blueberry:stark-bros": {
       "default": 25.99
