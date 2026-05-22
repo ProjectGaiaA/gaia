@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-05-22T14:17:26.507950+00:00",
+  "timestamp": "2026-05-22T23:20:38.091615+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 77,
-      "products_error": 1,
-      "prices_collected": 144,
+      "products_found": 78,
+      "products_error": 0,
+      "prices_collected": 145,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -68,6 +68,9 @@
           "quart": 17.32,
           "1gal": 31.2,
           "3gal": 90.58
+        },
+        "bloodgood-japanese-maple:nature-hills": {
+          "3gal": 156.61
         },
         "coral-bark-japanese-maple:nature-hills": {
           "1gal": 87.36,
@@ -315,9 +318,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 74,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_found": 28,
+      "products_error": 47,
+      "prices_collected": 117,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -401,13 +404,6 @@
           "4-5ft": 129.95,
           "5-6ft": 124.95
         },
-        "emerald-green-arborvitae:planting-tree": {
-          "1-2ft": 20.95,
-          "2-3ft": 59.95,
-          "3-4ft": 67.95,
-          "4-5ft": 144.95,
-          "5-6ft": 184.95
-        },
         "green-giant-arborvitae:planting-tree": {
           "1-2ft": 18.95,
           "2-3ft": 34.95,
@@ -416,103 +412,10 @@
           "5-6ft": 264.95,
           "6-7ft": 349.95
         },
-        "leyland-cypress:planting-tree": {
-          "quart": 21.95,
-          "1-2ft": 21.95,
-          "2-3ft": 63.95,
-          "3-4ft": 73.95,
-          "4-5ft": 119.95,
-          "5-6ft": 129.95,
-          "6-7ft": 154.95
-        },
-        "skip-laurel:planting-tree": {
-          "quart": 37.95,
-          "2gal": 62.95,
-          "3gal": 70.95,
-          "5gal": 99.95,
-          "1-2ft": 84.95,
-          "2-3ft": 124.95,
-          "3-4ft": 134.95,
-          "4-5ft": 159.95
-        },
-        "nellie-stevens-holly:planting-tree": {
-          "quart": 13.95,
-          "1gal": 20.95,
-          "3gal": 38.95,
-          "5gal": 80.95,
-          "7gal": 124.95,
-          "1-2ft": 36.95,
-          "2-3ft": 84.95,
-          "3-4ft": 99.95,
-          "4-5ft": 104.95,
-          "5-6ft": 204.95,
-          "6-7ft": 224.95
-        },
-        "bloodgood-japanese-maple:planting-tree": {
-          "1-2ft": 61.95,
-          "2-3ft": 69.95,
-          "3-4ft": 114.95,
-          "4-5ft": 179.95,
-          "5-6ft": 189.95,
-          "6-7ft": 324.95
-        },
-        "coral-bark-japanese-maple:planting-tree": {
-          "1-2ft": 92.95,
-          "2-3ft": 70.95,
-          "3-4ft": 149.95,
-          "4-5ft": 159.95,
-          "5-6ft": 179.95,
-          "6-7ft": 284.95
-        },
         "crimson-queen-japanese-maple:planting-tree": {
           "1-2ft": 88.95,
           "2-3ft": 154.95,
           "3-4ft": 314.95
-        },
-        "emperor-japanese-maple:planting-tree": {
-          "1-2ft": 48.95,
-          "2-3ft": 99.95,
-          "3-4ft": 114.95,
-          "4-5ft": 124.95,
-          "5-6ft": 164.95
-        },
-        "tamukeyama-japanese-maple:planting-tree": {
-          "1-2ft": 54.95,
-          "2-3ft": 84.95,
-          "3-4ft": 114.95,
-          "4-5ft": 374.95
-        },
-        "double-knock-out-rose:planting-tree": {
-          "1gal": 24.95,
-          "2gal": 56.95,
-          "3gal": 79.95
-        },
-        "pink-knock-out-rose:planting-tree": {
-          "quart": 41.95,
-          "1gal": 30.95,
-          "2gal": 44.95,
-          "3gal": 67.95
-        },
-        "sunny-knock-out-rose:planting-tree": {
-          "1gal": 44.95,
-          "2gal": 55.95,
-          "3gal": 99.95
-        },
-        "coral-knock-out-rose:planting-tree": {
-          "1gal": 70.95,
-          "2gal": 92.95,
-          "3gal": 62.95
-        },
-        "bluecrop-blueberry:planting-tree": {
-          "1gal": 30.95,
-          "3gal": 51.95
-        },
-        "pink-lemonade-blueberry:planting-tree": {
-          "quart": 51.95,
-          "1gal": 36.95,
-          "2gal": 53.95,
-          "3gal": 63.95,
-          "7gal": 209.95
         },
         "kousa-dogwood:planting-tree": {
           "1-2ft": 55.95,
@@ -522,134 +425,16 @@
           "5-6ft": 119.95,
           "6-7ft": 129.95
         },
-        "eastern-redbud:planting-tree": {
-          "1-2ft": 48.95,
-          "2-3ft": 74.95,
-          "3-4ft": 104.95,
-          "4-5ft": 119.95,
-          "5-6ft": 139.95,
-          "6-7ft": 154.95
-        },
-        "forest-pansy-redbud:planting-tree": {
-          "2-3ft": 97.95,
-          "3-4ft": 92.95,
-          "4-5ft": 119.95,
-          "5-6ft": 129.95,
-          "6-7ft": 144.95
-        },
-        "yoshino-cherry:planting-tree": {
-          "3-4ft": 109.95,
-          "4-5ft": 119.95,
-          "5-6ft": 124.95,
-          "6-7ft": 154.95
-        },
         "encore-azalea:planting-tree": {
           "1gal": 32.95,
           "2gal": 78.95,
           "3gal": 58.95
-        },
-        "delaware-valley-white-azalea:planting-tree": {
-          "1gal": 18.95,
-          "3gal": 55.95,
-          "7gal": 249.95
-        },
-        "stella-de-oro-daylily:planting-tree": {
-          "1gal": 21.95
-        },
-        "lavender-phenomenal:planting-tree": {
-          "quart": 24.95,
-          "1gal": 31.95,
-          "2gal": 70.95
-        },
-        "green-mountain-boxwood:planting-tree": {
-          "1gal": 22.95,
-          "2gal": 99.95,
-          "3gal": 58.95
-        },
-        "chicago-hardy-fig:planting-tree": {
-          "quart": 19.95,
-          "1gal": 47.95,
-          "2gal": 64.95,
-          "3gal": 80.95,
-          "3-4ft": 75.95
-        },
-        "arbequina-olive:planting-tree": {
-          "1gal": 25.95,
-          "1-2ft": 47.95,
-          "2-3ft": 84.95,
-          "3-4ft": 97.95,
-          "4-5ft": 134.95,
-          "5-6ft": 149.95,
-          "6-7ft": 604.95
-        },
-        "hass-avocado:planting-tree": {
-          "1gal": 97.95,
-          "1-2ft": 99.95,
-          "2-3ft": 114.95,
-          "3-4ft": 154.95,
-          "4-5ft": 284.95,
-          "5-6ft": 239.95,
-          "6-7ft": 224.95
-        },
-        "money-tree:planting-tree": {
-          "6inch": 56.95,
-          "1gal": 64.95,
-          "3gal": 104.95,
-          "1-2ft": 66.95,
-          "2-3ft": 114.95,
-          "3-4ft": 124.95,
-          "4-5ft": 134.95
-        },
-        "peace-lily:planting-tree": {
-          "default": 51.95
-        },
-        "fiddle-leaf-fig:planting-tree": {
-          "3gal": 99.95,
-          "2-3ft": 69.95,
-          "3-4ft": 89.95,
-          "4-5ft": 124.95,
-          "5-6ft": 174.95,
-          "6-7ft": 209.95
         },
         "karl-foerster-grass:planting-tree": {
           "1gal": 25.95,
           "2gal": 48.95,
           "3gal": 61.95,
           "5gal": 89.95
-        },
-        "creeping-phlox:planting-tree": {
-          "1gal": 26.95
-        },
-        "butterfly-bush-miss-molly:planting-tree": {
-          "1gal": 47.95,
-          "2gal": 84.95,
-          "3gal": 92.95
-        },
-        "forsythia-lynwood-gold:planting-tree": {
-          "quart": 16.95,
-          "1gal": 23.95,
-          "2gal": 43.95,
-          "3gal": 51.95,
-          "1-2ft": 41.95,
-          "2-3ft": 58.95,
-          "3-4ft": 99.95,
-          "4-5ft": 119.95
-        },
-        "miss-kim-lilac:planting-tree": {
-          "1gal": 27.95,
-          "2gal": 48.95,
-          "3gal": 65.95,
-          "7gal": 109.95,
-          "1-2ft": 50.95,
-          "2-3ft": 58.95
-        },
-        "tulip-poplar:planting-tree": {
-          "1-2ft": 35.95,
-          "2-3ft": 88.95,
-          "3-4ft": 92.95,
-          "4-5ft": 124.95,
-          "5-6ft": 134.95,
-          "6-7ft": 154.95
         },
         "weeping-willow:planting-tree": {
           "1-2ft": 30.95,
@@ -659,57 +444,6 @@
           "5-6ft": 228.95,
           "6-7ft": 114.95
         },
-        "autumn-blaze-maple:planting-tree": {
-          "1-2ft": 58.95,
-          "2-3ft": 73.95,
-          "3-4ft": 134.95,
-          "4-5ft": 139.95,
-          "5-6ft": 154.95,
-          "6-7ft": 164.95
-        },
-        "big-blue-liriope:planting-tree": {
-          "1gal": 21.95
-        },
-        "ajuga-chocolate-chip:planting-tree": {
-          "quart": 29.95,
-          "1gal": 30.95
-        },
-        "sedum-angelina:planting-tree": {
-          "1gal": 36.95
-        },
-        "blue-rug-juniper:planting-tree": {
-          "1gal": 20.95,
-          "2gal": 53.95,
-          "3gal": 42.95
-        },
-        "pink-muhly-grass:planting-tree": {
-          "1gal": 25.95,
-          "2gal": 71.95,
-          "3gal": 48.95,
-          "5gal": 99.95
-        },
-        "pampas-grass:planting-tree": {
-          "1gal": 56.95,
-          "2gal": 72.95,
-          "3gal": 51.95,
-          "5gal": 96.95
-        },
-        "heuchera-coral-bells:planting-tree": {
-          "1gal": 30.95
-        },
-        "catmint-walkers-low:planting-tree": {
-          "quart": 21.95,
-          "1gal": 50.95,
-          "2gal": 58.95
-        },
-        "october-glory-maple:planting-tree": {
-          "1-2ft": 53.95,
-          "2-3ft": 41.95,
-          "3-4ft": 84.95,
-          "4-5ft": 99.95,
-          "5-6ft": 114.95,
-          "6-7ft": 124.95
-        },
         "heritage-river-birch:planting-tree": {
           "2-3ft": 104.95,
           "3-4ft": 75.95,
@@ -717,34 +451,9 @@
           "5-6ft": 129.95,
           "6-7ft": 169.95
         },
-        "red-sunset-maple:planting-tree": {
-          "3-4ft": 119.95,
-          "4-5ft": 129.95,
-          "5-6ft": 144.95,
-          "6-7ft": 154.95
-        },
-        "sweetbay-magnolia:planting-tree": {
-          "1-2ft": 92.95,
-          "2-3ft": 84.95,
-          "3-4ft": 109.95,
-          "4-5ft": 124.95,
-          "5-6ft": 119.95,
-          "6-7ft": 264.95
-        },
         "rose-of-sharon:planting-tree": {
           "2gal": 51.95,
           "3gal": 62.95
-        },
-        "wine-and-roses-weigela:planting-tree": {
-          "quart": 29.95,
-          "1gal": 35.95,
-          "2gal": 55.95,
-          "3gal": 63.95
-        },
-        "gardenia-frost-proof:planting-tree": {
-          "1gal": 20.95,
-          "3gal": 41.95,
-          "7gal": 139.95
         },
         "dwarf-alberta-spruce:planting-tree": {
           "1gal": 53.95,
@@ -788,7 +497,7 @@
           "4-5ft": 144.95
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "spring-hill",
@@ -960,7 +669,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 156,
+      "prices_collected": 158,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1012,6 +721,7 @@
           "1-2ft": 62.95,
           "2-3ft": 69.95,
           "4-5ft": 119.95,
+          "5-6ft": 148.95,
           "6-7ft": 183.95
         },
         "stella-cherry-tree:fast-growing-trees": {
@@ -1019,6 +729,7 @@
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
+          "2-3ft": 39.95,
           "3-4ft": 69.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
@@ -1173,7 +884,7 @@
           "default": 34.95
         },
         "heuchera-coral-bells:fast-growing-trees": {
-          "default": 59.95
+          "1gal": 59.95
         },
         "happy-returns-daylily:fast-growing-trees": {
           "1gal": 28.95
@@ -1215,7 +926,7 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "default": 74.95
+          "3gal": 74.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95,
@@ -1341,9 +1052,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 5,
-      "products_error": 3,
-      "prices_collected": 10,
+      "products_found": 4,
+      "products_error": 4,
+      "prices_collected": 9,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1360,9 +1071,6 @@
         "double-knock-out-rose:stark-bros": {
           "default": 12.99
         },
-        "patriot-blueberry:stark-bros": {
-          "default": 18.99
-        },
         "pink-lemonade-blueberry:stark-bros": {
           "default": 25.99
         }
@@ -1370,7 +1078,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 734,
+  "total_prices_collected": 534,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1432,6 +1140,9 @@
       "quart": 17.32,
       "1gal": 31.2,
       "3gal": 90.58
+    },
+    "bloodgood-japanese-maple:nature-hills": {
+      "3gal": 156.61
     },
     "coral-bark-japanese-maple:nature-hills": {
       "1gal": 87.36,
@@ -1753,13 +1464,6 @@
       "4-5ft": 129.95,
       "5-6ft": 124.95
     },
-    "emerald-green-arborvitae:planting-tree": {
-      "1-2ft": 20.95,
-      "2-3ft": 59.95,
-      "3-4ft": 67.95,
-      "4-5ft": 144.95,
-      "5-6ft": 184.95
-    },
     "green-giant-arborvitae:planting-tree": {
       "1-2ft": 18.95,
       "2-3ft": 34.95,
@@ -1768,103 +1472,10 @@
       "5-6ft": 264.95,
       "6-7ft": 349.95
     },
-    "leyland-cypress:planting-tree": {
-      "quart": 21.95,
-      "1-2ft": 21.95,
-      "2-3ft": 63.95,
-      "3-4ft": 73.95,
-      "4-5ft": 119.95,
-      "5-6ft": 129.95,
-      "6-7ft": 154.95
-    },
-    "skip-laurel:planting-tree": {
-      "quart": 37.95,
-      "2gal": 62.95,
-      "3gal": 70.95,
-      "5gal": 99.95,
-      "1-2ft": 84.95,
-      "2-3ft": 124.95,
-      "3-4ft": 134.95,
-      "4-5ft": 159.95
-    },
-    "nellie-stevens-holly:planting-tree": {
-      "quart": 13.95,
-      "1gal": 20.95,
-      "3gal": 38.95,
-      "5gal": 80.95,
-      "7gal": 124.95,
-      "1-2ft": 36.95,
-      "2-3ft": 84.95,
-      "3-4ft": 99.95,
-      "4-5ft": 104.95,
-      "5-6ft": 204.95,
-      "6-7ft": 224.95
-    },
-    "bloodgood-japanese-maple:planting-tree": {
-      "1-2ft": 61.95,
-      "2-3ft": 69.95,
-      "3-4ft": 114.95,
-      "4-5ft": 179.95,
-      "5-6ft": 189.95,
-      "6-7ft": 324.95
-    },
-    "coral-bark-japanese-maple:planting-tree": {
-      "1-2ft": 92.95,
-      "2-3ft": 70.95,
-      "3-4ft": 149.95,
-      "4-5ft": 159.95,
-      "5-6ft": 179.95,
-      "6-7ft": 284.95
-    },
     "crimson-queen-japanese-maple:planting-tree": {
       "1-2ft": 88.95,
       "2-3ft": 154.95,
       "3-4ft": 314.95
-    },
-    "emperor-japanese-maple:planting-tree": {
-      "1-2ft": 48.95,
-      "2-3ft": 99.95,
-      "3-4ft": 114.95,
-      "4-5ft": 124.95,
-      "5-6ft": 164.95
-    },
-    "tamukeyama-japanese-maple:planting-tree": {
-      "1-2ft": 54.95,
-      "2-3ft": 84.95,
-      "3-4ft": 114.95,
-      "4-5ft": 374.95
-    },
-    "double-knock-out-rose:planting-tree": {
-      "1gal": 24.95,
-      "2gal": 56.95,
-      "3gal": 79.95
-    },
-    "pink-knock-out-rose:planting-tree": {
-      "quart": 41.95,
-      "1gal": 30.95,
-      "2gal": 44.95,
-      "3gal": 67.95
-    },
-    "sunny-knock-out-rose:planting-tree": {
-      "1gal": 44.95,
-      "2gal": 55.95,
-      "3gal": 99.95
-    },
-    "coral-knock-out-rose:planting-tree": {
-      "1gal": 70.95,
-      "2gal": 92.95,
-      "3gal": 62.95
-    },
-    "bluecrop-blueberry:planting-tree": {
-      "1gal": 30.95,
-      "3gal": 51.95
-    },
-    "pink-lemonade-blueberry:planting-tree": {
-      "quart": 51.95,
-      "1gal": 36.95,
-      "2gal": 53.95,
-      "3gal": 63.95,
-      "7gal": 209.95
     },
     "kousa-dogwood:planting-tree": {
       "1-2ft": 55.95,
@@ -1874,134 +1485,16 @@
       "5-6ft": 119.95,
       "6-7ft": 129.95
     },
-    "eastern-redbud:planting-tree": {
-      "1-2ft": 48.95,
-      "2-3ft": 74.95,
-      "3-4ft": 104.95,
-      "4-5ft": 119.95,
-      "5-6ft": 139.95,
-      "6-7ft": 154.95
-    },
-    "forest-pansy-redbud:planting-tree": {
-      "2-3ft": 97.95,
-      "3-4ft": 92.95,
-      "4-5ft": 119.95,
-      "5-6ft": 129.95,
-      "6-7ft": 144.95
-    },
-    "yoshino-cherry:planting-tree": {
-      "3-4ft": 109.95,
-      "4-5ft": 119.95,
-      "5-6ft": 124.95,
-      "6-7ft": 154.95
-    },
     "encore-azalea:planting-tree": {
       "1gal": 32.95,
       "2gal": 78.95,
       "3gal": 58.95
-    },
-    "delaware-valley-white-azalea:planting-tree": {
-      "1gal": 18.95,
-      "3gal": 55.95,
-      "7gal": 249.95
-    },
-    "stella-de-oro-daylily:planting-tree": {
-      "1gal": 21.95
-    },
-    "lavender-phenomenal:planting-tree": {
-      "quart": 24.95,
-      "1gal": 31.95,
-      "2gal": 70.95
-    },
-    "green-mountain-boxwood:planting-tree": {
-      "1gal": 22.95,
-      "2gal": 99.95,
-      "3gal": 58.95
-    },
-    "chicago-hardy-fig:planting-tree": {
-      "quart": 19.95,
-      "1gal": 47.95,
-      "2gal": 64.95,
-      "3gal": 80.95,
-      "3-4ft": 75.95
-    },
-    "arbequina-olive:planting-tree": {
-      "1gal": 25.95,
-      "1-2ft": 47.95,
-      "2-3ft": 84.95,
-      "3-4ft": 97.95,
-      "4-5ft": 134.95,
-      "5-6ft": 149.95,
-      "6-7ft": 604.95
-    },
-    "hass-avocado:planting-tree": {
-      "1gal": 97.95,
-      "1-2ft": 99.95,
-      "2-3ft": 114.95,
-      "3-4ft": 154.95,
-      "4-5ft": 284.95,
-      "5-6ft": 239.95,
-      "6-7ft": 224.95
-    },
-    "money-tree:planting-tree": {
-      "6inch": 56.95,
-      "1gal": 64.95,
-      "3gal": 104.95,
-      "1-2ft": 66.95,
-      "2-3ft": 114.95,
-      "3-4ft": 124.95,
-      "4-5ft": 134.95
-    },
-    "peace-lily:planting-tree": {
-      "default": 51.95
-    },
-    "fiddle-leaf-fig:planting-tree": {
-      "3gal": 99.95,
-      "2-3ft": 69.95,
-      "3-4ft": 89.95,
-      "4-5ft": 124.95,
-      "5-6ft": 174.95,
-      "6-7ft": 209.95
     },
     "karl-foerster-grass:planting-tree": {
       "1gal": 25.95,
       "2gal": 48.95,
       "3gal": 61.95,
       "5gal": 89.95
-    },
-    "creeping-phlox:planting-tree": {
-      "1gal": 26.95
-    },
-    "butterfly-bush-miss-molly:planting-tree": {
-      "1gal": 47.95,
-      "2gal": 84.95,
-      "3gal": 92.95
-    },
-    "forsythia-lynwood-gold:planting-tree": {
-      "quart": 16.95,
-      "1gal": 23.95,
-      "2gal": 43.95,
-      "3gal": 51.95,
-      "1-2ft": 41.95,
-      "2-3ft": 58.95,
-      "3-4ft": 99.95,
-      "4-5ft": 119.95
-    },
-    "miss-kim-lilac:planting-tree": {
-      "1gal": 27.95,
-      "2gal": 48.95,
-      "3gal": 65.95,
-      "7gal": 109.95,
-      "1-2ft": 50.95,
-      "2-3ft": 58.95
-    },
-    "tulip-poplar:planting-tree": {
-      "1-2ft": 35.95,
-      "2-3ft": 88.95,
-      "3-4ft": 92.95,
-      "4-5ft": 124.95,
-      "5-6ft": 134.95,
-      "6-7ft": 154.95
     },
     "weeping-willow:planting-tree": {
       "1-2ft": 30.95,
@@ -2011,57 +1504,6 @@
       "5-6ft": 228.95,
       "6-7ft": 114.95
     },
-    "autumn-blaze-maple:planting-tree": {
-      "1-2ft": 58.95,
-      "2-3ft": 73.95,
-      "3-4ft": 134.95,
-      "4-5ft": 139.95,
-      "5-6ft": 154.95,
-      "6-7ft": 164.95
-    },
-    "big-blue-liriope:planting-tree": {
-      "1gal": 21.95
-    },
-    "ajuga-chocolate-chip:planting-tree": {
-      "quart": 29.95,
-      "1gal": 30.95
-    },
-    "sedum-angelina:planting-tree": {
-      "1gal": 36.95
-    },
-    "blue-rug-juniper:planting-tree": {
-      "1gal": 20.95,
-      "2gal": 53.95,
-      "3gal": 42.95
-    },
-    "pink-muhly-grass:planting-tree": {
-      "1gal": 25.95,
-      "2gal": 71.95,
-      "3gal": 48.95,
-      "5gal": 99.95
-    },
-    "pampas-grass:planting-tree": {
-      "1gal": 56.95,
-      "2gal": 72.95,
-      "3gal": 51.95,
-      "5gal": 96.95
-    },
-    "heuchera-coral-bells:planting-tree": {
-      "1gal": 30.95
-    },
-    "catmint-walkers-low:planting-tree": {
-      "quart": 21.95,
-      "1gal": 50.95,
-      "2gal": 58.95
-    },
-    "october-glory-maple:planting-tree": {
-      "1-2ft": 53.95,
-      "2-3ft": 41.95,
-      "3-4ft": 84.95,
-      "4-5ft": 99.95,
-      "5-6ft": 114.95,
-      "6-7ft": 124.95
-    },
     "heritage-river-birch:planting-tree": {
       "2-3ft": 104.95,
       "3-4ft": 75.95,
@@ -2069,34 +1511,9 @@
       "5-6ft": 129.95,
       "6-7ft": 169.95
     },
-    "red-sunset-maple:planting-tree": {
-      "3-4ft": 119.95,
-      "4-5ft": 129.95,
-      "5-6ft": 144.95,
-      "6-7ft": 154.95
-    },
-    "sweetbay-magnolia:planting-tree": {
-      "1-2ft": 92.95,
-      "2-3ft": 84.95,
-      "3-4ft": 109.95,
-      "4-5ft": 124.95,
-      "5-6ft": 119.95,
-      "6-7ft": 264.95
-    },
     "rose-of-sharon:planting-tree": {
       "2gal": 51.95,
       "3gal": 62.95
-    },
-    "wine-and-roses-weigela:planting-tree": {
-      "quart": 29.95,
-      "1gal": 35.95,
-      "2gal": 55.95,
-      "3gal": 63.95
-    },
-    "gardenia-frost-proof:planting-tree": {
-      "1gal": 20.95,
-      "3gal": 41.95,
-      "7gal": 139.95
     },
     "dwarf-alberta-spruce:planting-tree": {
       "1gal": 53.95,
@@ -2340,6 +1757,7 @@
       "1-2ft": 62.95,
       "2-3ft": 69.95,
       "4-5ft": 119.95,
+      "5-6ft": 148.95,
       "6-7ft": 183.95
     },
     "stella-cherry-tree:fast-growing-trees": {
@@ -2347,6 +1765,7 @@
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
+      "2-3ft": 39.95,
       "3-4ft": 69.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
@@ -2501,7 +1920,7 @@
       "default": 34.95
     },
     "heuchera-coral-bells:fast-growing-trees": {
-      "default": 59.95
+      "1gal": 59.95
     },
     "happy-returns-daylily:fast-growing-trees": {
       "1gal": 28.95
@@ -2543,7 +1962,7 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "default": 74.95
+      "3gal": 74.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95,
@@ -2652,14 +2071,12 @@
     "double-knock-out-rose:stark-bros": {
       "default": 12.99
     },
-    "patriot-blueberry:stark-bros": {
-      "default": 18.99
-    },
     "pink-lemonade-blueberry:stark-bros": {
       "default": 25.99
     }
   },
   "degraded_retailers": [
+    "planting-tree",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
