@@ -1,21 +1,15 @@
 {
-  "timestamp": "2026-05-23T23:13:25.920558+00:00",
+  "timestamp": "2026-05-24T12:49:15.452552+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
-      "products_error": 0,
-      "prices_collected": 145,
+      "products_found": 76,
+      "products_error": 2,
+      "prices_collected": 140,
       "anomalies": [],
       "price_records": {
-        "limelight-hydrangea:nature-hills": {
-          "quart": 26.99,
-          "1gal": 43.57,
-          "3gal": 123.88,
-          "5gal": 165.33
-        },
         "endless-summer-hydrangea:nature-hills": {
           "1gal": 43.74,
           "2gal": 65.1,
@@ -124,9 +118,6 @@
           "1gal": 49.92,
           "2gal": 69.48,
           "3gal": 97.9
-        },
-        "forest-pansy-redbud:nature-hills": {
-          "3gal": 99.96
         },
         "yoshino-cherry:nature-hills": {
           "3gal": 109.5
@@ -1370,16 +1361,10 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 734,
+  "total_prices_collected": 729,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
-    "limelight-hydrangea:nature-hills": {
-      "quart": 26.99,
-      "1gal": 43.57,
-      "3gal": 123.88,
-      "5gal": 165.33
-    },
     "endless-summer-hydrangea:nature-hills": {
       "1gal": 43.74,
       "2gal": 65.1,
@@ -1488,9 +1473,6 @@
       "1gal": 49.92,
       "2gal": 69.48,
       "3gal": 97.9
-    },
-    "forest-pansy-redbud:nature-hills": {
-      "3gal": 99.96
     },
     "yoshino-cherry:nature-hills": {
       "3gal": 109.5
