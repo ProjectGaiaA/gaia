@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-24T12:49:15.452552+00:00",
+  "timestamp": "2026-05-24T23:18:39.373992+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -7,9 +7,15 @@
       "products_expected": 78,
       "products_found": 76,
       "products_error": 2,
-      "prices_collected": 140,
+      "prices_collected": 142,
       "anomalies": [],
       "price_records": {
+        "limelight-hydrangea:nature-hills": {
+          "quart": 26.99,
+          "1gal": 43.57,
+          "3gal": 123.88,
+          "5gal": 165.33
+        },
         "endless-summer-hydrangea:nature-hills": {
           "1gal": 43.74,
           "2gal": 65.1,
@@ -66,10 +72,6 @@
         "bloodgood-japanese-maple:nature-hills": {
           "3gal": 156.61
         },
-        "coral-bark-japanese-maple:nature-hills": {
-          "1gal": 87.36,
-          "2gal": 105.6
-        },
         "emperor-japanese-maple:nature-hills": {
           "5gal": 228.11
         },
@@ -97,9 +99,6 @@
         "white-knock-out-rose:nature-hills": {
           "3gal": 45.42
         },
-        "coral-knock-out-rose:nature-hills": {
-          "3gal": 45.42
-        },
         "duke-blueberry:nature-hills": {
           "1gal": 39.96,
           "2gal": 78.09,
@@ -118,6 +117,9 @@
           "1gal": 49.92,
           "2gal": 69.48,
           "3gal": 97.9
+        },
+        "forest-pansy-redbud:nature-hills": {
+          "3gal": 99.96
         },
         "yoshino-cherry:nature-hills": {
           "3gal": 109.5
@@ -309,9 +311,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 74,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_found": 73,
+      "products_error": 2,
+      "prices_collected": 313,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -653,14 +655,6 @@
           "5-6ft": 228.95,
           "6-7ft": 114.95
         },
-        "autumn-blaze-maple:planting-tree": {
-          "1-2ft": 58.95,
-          "2-3ft": 73.95,
-          "3-4ft": 134.95,
-          "4-5ft": 139.95,
-          "5-6ft": 154.95,
-          "6-7ft": 164.95
-        },
         "big-blue-liriope:planting-tree": {
           "1gal": 21.95
         },
@@ -954,7 +948,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 156,
+      "prices_collected": 157,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1027,7 +1021,6 @@
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 21.95,
-          "2-3ft": 39.95,
           "3-4ft": 75.95,
           "4-5ft": 129.95,
           "5-6ft": 197.95,
@@ -1150,7 +1143,9 @@
           "3gal": 46.95
         },
         "pink-muhly-grass:fast-growing-trees": {
-          "5gal": 49.95
+          "default": 49.95,
+          "1gal": 22.95,
+          "3gal": 34.95
         },
         "purple-fountain-grass:fast-growing-trees": {
           "default": 90.95,
@@ -1361,10 +1356,16 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 729,
+  "total_prices_collected": 726,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
+    "limelight-hydrangea:nature-hills": {
+      "quart": 26.99,
+      "1gal": 43.57,
+      "3gal": 123.88,
+      "5gal": 165.33
+    },
     "endless-summer-hydrangea:nature-hills": {
       "1gal": 43.74,
       "2gal": 65.1,
@@ -1421,10 +1422,6 @@
     "bloodgood-japanese-maple:nature-hills": {
       "3gal": 156.61
     },
-    "coral-bark-japanese-maple:nature-hills": {
-      "1gal": 87.36,
-      "2gal": 105.6
-    },
     "emperor-japanese-maple:nature-hills": {
       "5gal": 228.11
     },
@@ -1452,9 +1449,6 @@
     "white-knock-out-rose:nature-hills": {
       "3gal": 45.42
     },
-    "coral-knock-out-rose:nature-hills": {
-      "3gal": 45.42
-    },
     "duke-blueberry:nature-hills": {
       "1gal": 39.96,
       "2gal": 78.09,
@@ -1473,6 +1467,9 @@
       "1gal": 49.92,
       "2gal": 69.48,
       "3gal": 97.9
+    },
+    "forest-pansy-redbud:nature-hills": {
+      "3gal": 99.96
     },
     "yoshino-cherry:nature-hills": {
       "3gal": 109.5
@@ -1996,14 +1993,6 @@
       "5-6ft": 228.95,
       "6-7ft": 114.95
     },
-    "autumn-blaze-maple:planting-tree": {
-      "1-2ft": 58.95,
-      "2-3ft": 73.95,
-      "3-4ft": 134.95,
-      "4-5ft": 139.95,
-      "5-6ft": 154.95,
-      "6-7ft": 164.95
-    },
     "big-blue-liriope:planting-tree": {
       "1gal": 21.95
     },
@@ -2346,7 +2335,6 @@
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 21.95,
-      "2-3ft": 39.95,
       "3-4ft": 75.95,
       "4-5ft": 129.95,
       "5-6ft": 197.95,
@@ -2469,7 +2457,9 @@
       "3gal": 46.95
     },
     "pink-muhly-grass:fast-growing-trees": {
-      "5gal": 49.95
+      "default": 49.95,
+      "1gal": 22.95,
+      "3gal": 34.95
     },
     "purple-fountain-grass:fast-growing-trees": {
       "default": 90.95,
