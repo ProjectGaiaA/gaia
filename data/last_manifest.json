@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-27T15:12:20.646847+00:00",
+  "timestamp": "2026-05-27T23:45:54.499463+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -964,8 +964,10 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 154,
-      "anomalies": [],
+      "prices_collected": 159,
+      "anomalies": [
+        "ANOMALY: sweetbay-magnolia at fast-growing-trees tier=default: $160.95 -> $73.95 (54% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95
@@ -987,7 +989,8 @@
           "3gal": 67.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
-          "quart": 32.95
+          "quart": 32.95,
+          "3gal": 66.95
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 51.95
@@ -1014,6 +1017,7 @@
         "bing-cherry-tree:fast-growing-trees": {
           "1-2ft": 62.95,
           "4-5ft": 119.95,
+          "5-6ft": 148.95,
           "6-7ft": 183.95
         },
         "stella-cherry-tree:fast-growing-trees": {
@@ -1033,6 +1037,7 @@
           "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
+          "1-2ft": 21.95,
           "3-4ft": 75.95,
           "4-5ft": 129.95,
           "5-6ft": 197.95
@@ -1132,6 +1137,7 @@
           "default": 94.95
         },
         "pjm-rhododendron:fast-growing-trees": {
+          "1gal": 38.95,
           "default": 122.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
@@ -1139,7 +1145,7 @@
           "3gal": 42.95
         },
         "echinacea-powwow-wild-berry:fast-growing-trees": {
-          "default": 78.95
+          "1gal": 39.95
         },
         "vinca-minor:fast-growing-trees": {
           "1gal": 34.95
@@ -1185,7 +1191,7 @@
           "1gal": 28.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "default": 29.95
+          "1gal": 28.95
         },
         "russian-sage:fast-growing-trees": {
           "1gal": 30.95,
@@ -1203,12 +1209,6 @@
         },
         "red-sunset-maple:fast-growing-trees": {
           "default": 177.95
-        },
-        "sweetbay-magnolia:fast-growing-trees": {
-          "default": 160.95,
-          "2-3ft": 56.95,
-          "4-5ft": 95.95,
-          "5-6ft": 123.95
         },
         "rose-of-sharon:fast-growing-trees": {
           "2-3ft": 74.95,
@@ -1343,9 +1343,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 6,
-      "products_error": 2,
-      "prices_collected": 12,
+      "products_found": 4,
+      "products_error": 4,
+      "prices_collected": 10,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1354,17 +1354,11 @@
           "supreme": 49.99,
           "ultra-supreme": 199.99
         },
-        "bing-cherry-tree:stark-bros": {
-          "ultra-supreme": 229.99
-        },
-        "elberta-peach-tree:stark-bros": {
-          "ultra-supreme": 199.99
-        },
         "bartlett-pear-tree:stark-bros": {
+          "ultra-supreme": 229.99,
           "semi-dwarf": 23.99,
           "supreme-ez-start": 75.99,
-          "supreme": 39.99,
-          "ultra-supreme": 229.99
+          "supreme": 39.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
@@ -1376,9 +1370,11 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 736,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 739,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: sweetbay-magnolia at fast-growing-trees tier=default: $160.95 -> $73.95 (54% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2321,7 +2317,8 @@
       "3gal": 67.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
-      "quart": 32.95
+      "quart": 32.95,
+      "3gal": 66.95
     },
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 51.95
@@ -2348,6 +2345,7 @@
     "bing-cherry-tree:fast-growing-trees": {
       "1-2ft": 62.95,
       "4-5ft": 119.95,
+      "5-6ft": 148.95,
       "6-7ft": 183.95
     },
     "stella-cherry-tree:fast-growing-trees": {
@@ -2367,6 +2365,7 @@
       "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
+      "1-2ft": 21.95,
       "3-4ft": 75.95,
       "4-5ft": 129.95,
       "5-6ft": 197.95
@@ -2466,6 +2465,7 @@
       "default": 94.95
     },
     "pjm-rhododendron:fast-growing-trees": {
+      "1gal": 38.95,
       "default": 122.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
@@ -2473,7 +2473,7 @@
       "3gal": 42.95
     },
     "echinacea-powwow-wild-berry:fast-growing-trees": {
-      "default": 78.95
+      "1gal": 39.95
     },
     "vinca-minor:fast-growing-trees": {
       "1gal": 34.95
@@ -2519,7 +2519,7 @@
       "1gal": 28.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "default": 29.95
+      "1gal": 28.95
     },
     "russian-sage:fast-growing-trees": {
       "1gal": 30.95,
@@ -2537,12 +2537,6 @@
     },
     "red-sunset-maple:fast-growing-trees": {
       "default": 177.95
-    },
-    "sweetbay-magnolia:fast-growing-trees": {
-      "default": 160.95,
-      "2-3ft": 56.95,
-      "4-5ft": 95.95,
-      "5-6ft": 123.95
     },
     "rose-of-sharon:fast-growing-trees": {
       "2-3ft": 74.95,
@@ -2652,17 +2646,11 @@
       "supreme": 49.99,
       "ultra-supreme": 199.99
     },
-    "bing-cherry-tree:stark-bros": {
-      "ultra-supreme": 229.99
-    },
-    "elberta-peach-tree:stark-bros": {
-      "ultra-supreme": 199.99
-    },
     "bartlett-pear-tree:stark-bros": {
+      "ultra-supreme": 229.99,
       "semi-dwarf": 23.99,
       "supreme-ez-start": 75.99,
-      "supreme": 39.99,
-      "ultra-supreme": 229.99
+      "supreme": 39.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
