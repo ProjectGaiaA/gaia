@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-28T15:22:42.547014+00:00",
+  "timestamp": "2026-05-28T23:41:05.301212+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -964,7 +964,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 157,
+      "prices_collected": 159,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1204,7 +1204,9 @@
           "4-5ft": 112.95
         },
         "red-sunset-maple:fast-growing-trees": {
-          "6-7ft": 177.95
+          "3-4ft": 86.95,
+          "4-5ft": 105.95,
+          "5-6ft": 129.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
           "default": 73.95,
@@ -1370,7 +1372,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 736,
+  "total_prices_collected": 738,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2532,7 +2534,9 @@
       "4-5ft": 112.95
     },
     "red-sunset-maple:fast-growing-trees": {
-      "6-7ft": 177.95
+      "3-4ft": 86.95,
+      "4-5ft": 105.95,
+      "5-6ft": 129.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
       "default": 73.95,
