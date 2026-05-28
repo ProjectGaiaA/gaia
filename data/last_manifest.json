@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-27T23:45:54.499463+00:00",
+  "timestamp": "2026-05-28T15:22:42.547014+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -964,10 +964,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 159,
-      "anomalies": [
-        "ANOMALY: sweetbay-magnolia at fast-growing-trees tier=default: $160.95 -> $73.95 (54% change)"
-      ],
+      "prices_collected": 157,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95
@@ -1031,7 +1029,6 @@
         "green-giant-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
           "2-3ft": 34.95,
-          "3-4ft": 64.95,
           "4-5ft": 112.95,
           "5-6ft": 199.95,
           "6-7ft": 459.95
@@ -1137,7 +1134,6 @@
           "default": 94.95
         },
         "pjm-rhododendron:fast-growing-trees": {
-          "1gal": 38.95,
           "default": 122.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
@@ -1208,7 +1204,14 @@
           "4-5ft": 112.95
         },
         "red-sunset-maple:fast-growing-trees": {
-          "default": 177.95
+          "6-7ft": 177.95
+        },
+        "sweetbay-magnolia:fast-growing-trees": {
+          "default": 73.95,
+          "2-3ft": 56.95,
+          "4-5ft": 95.95,
+          "5-6ft": 123.95,
+          "6-7ft": 160.95
         },
         "rose-of-sharon:fast-growing-trees": {
           "2-3ft": 74.95,
@@ -1343,9 +1346,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 4,
-      "products_error": 4,
-      "prices_collected": 10,
+      "products_found": 3,
+      "products_error": 5,
+      "prices_collected": 9,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1362,19 +1365,14 @@
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
-        },
-        "pink-lemonade-blueberry:stark-bros": {
-          "default": 18.99
         }
       },
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 739,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: sweetbay-magnolia at fast-growing-trees tier=default: $160.95 -> $73.95 (54% change)"
-  ],
+  "total_prices_collected": 736,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2359,7 +2357,6 @@
     "green-giant-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
       "2-3ft": 34.95,
-      "3-4ft": 64.95,
       "4-5ft": 112.95,
       "5-6ft": 199.95,
       "6-7ft": 459.95
@@ -2465,7 +2462,6 @@
       "default": 94.95
     },
     "pjm-rhododendron:fast-growing-trees": {
-      "1gal": 38.95,
       "default": 122.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
@@ -2536,7 +2532,14 @@
       "4-5ft": 112.95
     },
     "red-sunset-maple:fast-growing-trees": {
-      "default": 177.95
+      "6-7ft": 177.95
+    },
+    "sweetbay-magnolia:fast-growing-trees": {
+      "default": 73.95,
+      "2-3ft": 56.95,
+      "4-5ft": 95.95,
+      "5-6ft": 123.95,
+      "6-7ft": 160.95
     },
     "rose-of-sharon:fast-growing-trees": {
       "2-3ft": 74.95,
@@ -2654,9 +2657,6 @@
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
-    },
-    "pink-lemonade-blueberry:stark-bros": {
-      "default": 18.99
     }
   },
   "degraded_retailers": [
