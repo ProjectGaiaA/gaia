@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-29T14:44:26.115390+00:00",
+  "timestamp": "2026-05-29T23:38:48.411312+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -8,17 +8,7 @@
       "products_found": 78,
       "products_error": 0,
       "prices_collected": 146,
-      "anomalies": [
-        "ANOMALY: double-knock-out-rose at nature-hills tier=1gal: $23.39 -> $37.13 (59% change)",
-        "ANOMALY: double-knock-out-rose at nature-hills tier=2gal: $21.64 -> $54.11 (150% change)",
-        "ANOMALY: pink-knock-out-rose at nature-hills tier=1gal: $25.07 -> $39.79 (59% change)",
-        "ANOMALY: pink-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
-        "ANOMALY: pink-knock-out-rose at nature-hills tier=2gal: $37.31 -> $59.22 (59% change)",
-        "ANOMALY: sunny-knock-out-rose at nature-hills tier=1gal: $25.09 -> $39.83 (59% change)",
-        "ANOMALY: sunny-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
-        "ANOMALY: white-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
-        "ANOMALY: coral-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -92,6 +82,30 @@
         },
         "tamukeyama-japanese-maple:nature-hills": {
           "3gal": 138.49
+        },
+        "double-knock-out-rose:nature-hills": {
+          "quart": 24.99,
+          "1gal": 37.13,
+          "3gal": 49.55,
+          "2gal": 54.11
+        },
+        "pink-knock-out-rose:nature-hills": {
+          "quart": 24.99,
+          "1gal": 39.79,
+          "3gal": 72.09,
+          "2gal": 59.22
+        },
+        "sunny-knock-out-rose:nature-hills": {
+          "quart": 24.99,
+          "1gal": 39.83,
+          "2gal": 59.15,
+          "3gal": 72.09
+        },
+        "white-knock-out-rose:nature-hills": {
+          "3gal": 72.09
+        },
+        "coral-knock-out-rose:nature-hills": {
+          "3gal": 72.09
         },
         "duke-blueberry:nature-hills": {
           "1gal": 39.96,
@@ -787,7 +801,11 @@
       "products_found": 38,
       "products_error": 2,
       "prices_collected": 79,
-      "anomalies": [],
+      "anomalies": [
+        "ANOMALY: bloomstruck-hydrangea at spring-hill tier=premium-bareroot: $25.99 -> $39.99 (54% change)",
+        "ANOMALY: pink-muhly-grass at spring-hill tier=premium-bareroot: $14.99 -> $24.99 (67% change)",
+        "ANOMALY: purple-coneflower at spring-hill tier=premium-bareroot: $14.99 -> $24.99 (67% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
           "premium-bareroot": 24.99,
@@ -799,11 +817,6 @@
           "premium-bareroot": 9.99,
           "1gal": 39.99
         },
-        "bloomstruck-hydrangea:spring-hill": {
-          "jumbo-bareroot": 79.99,
-          "premium-bareroot": 25.99,
-          "1gal": 54.99
-        },
         "summer-crush-hydrangea:spring-hill": {
           "premium-bareroot": 39.99,
           "1gal": 79.99,
@@ -811,7 +824,7 @@
           "jumbo-bareroot": 79.99
         },
         "incrediball-hydrangea:spring-hill": {
-          "premium-bareroot": 31.99
+          "premium-bareroot": 39.99
         },
         "honeycrisp-apple-tree:spring-hill": {
           "2gal": 69.99,
@@ -894,14 +907,8 @@
           "bareroot": 14.99
         },
         "big-blue-liriope:spring-hill": {
-          "premium-bareroot": 12.59,
+          "premium-bareroot": 13.99,
           "1gal": 29.99
-        },
-        "pink-muhly-grass:spring-hill": {
-          "premium-bareroot": 14.99,
-          "jumbo-bareroot": 39.99,
-          "bareroot": 16.99,
-          "3inch": 9.99
         },
         "blue-fescue-elijah-blue:spring-hill": {
           "jumbo-bareroot": 49.99,
@@ -919,10 +926,6 @@
         "bleeding-heart:spring-hill": {
           "default": 9.99
         },
-        "purple-coneflower:spring-hill": {
-          "premium-bareroot": 14.99,
-          "jumbo-bareroot": 54.99
-        },
         "happy-returns-daylily:spring-hill": {
           "jumbo-bareroot": 39.99
         },
@@ -930,9 +933,9 @@
           "jumbo-bareroot": 49.99
         },
         "russian-sage:spring-hill": {
-          "premium-bareroot": 24.99,
           "bareroot": 24.99,
-          "jumbo-bareroot": 39.99
+          "jumbo-bareroot": 39.99,
+          "premium-bareroot": 24.99
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99,
@@ -953,11 +956,12 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 161,
+      "prices_collected": 163,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 30.95
+          "quart": 30.95,
+          "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 22.95,
@@ -966,10 +970,11 @@
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
           "2gal": 49.95,
-          "3gal": 82.95
+          "3gal": 82.95,
+          "7gal": 150.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
-          "default": 118.95
+          "3gal": 69.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
           "2gal": 49.95,
@@ -1181,7 +1186,6 @@
           "1gal": 28.95
         },
         "russian-sage:fast-growing-trees": {
-          "1gal": 30.95,
           "default": 35.95,
           "3gal": 43.95
         },
@@ -1192,12 +1196,13 @@
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft": 76.95,
-          "3-4ft": 93.95
+          "5-6ft": 124.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 86.95,
           "4-5ft": 105.95,
-          "5-6ft": 129.95
+          "5-6ft": 129.95,
+          "6-7ft": 177.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
           "default": 73.95,
@@ -1341,20 +1346,19 @@
       "products_expected": 8,
       "products_found": 3,
       "products_error": 5,
-      "prices_collected": 9,
+      "prices_collected": 8,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 29.99,
-          "semi-dwarf": 23.99,
           "supreme": 49.99,
           "ultra-supreme": 199.99
         },
         "bartlett-pear-tree:stark-bros": {
-          "ultra-supreme": 229.99,
           "semi-dwarf": 23.99,
           "supreme-ez-start": 75.99,
-          "supreme": 39.99
+          "supreme": 39.99,
+          "ultra-supreme": 229.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
@@ -1363,18 +1367,12 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 743,
-  "total_anomalies": 9,
+  "total_prices_collected": 744,
+  "total_anomalies": 3,
   "anomalies": [
-    "ANOMALY: double-knock-out-rose at nature-hills tier=1gal: $23.39 -> $37.13 (59% change)",
-    "ANOMALY: double-knock-out-rose at nature-hills tier=2gal: $21.64 -> $54.11 (150% change)",
-    "ANOMALY: pink-knock-out-rose at nature-hills tier=1gal: $25.07 -> $39.79 (59% change)",
-    "ANOMALY: pink-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
-    "ANOMALY: pink-knock-out-rose at nature-hills tier=2gal: $37.31 -> $59.22 (59% change)",
-    "ANOMALY: sunny-knock-out-rose at nature-hills tier=1gal: $25.09 -> $39.83 (59% change)",
-    "ANOMALY: sunny-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
-    "ANOMALY: white-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
-    "ANOMALY: coral-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)"
+    "ANOMALY: bloomstruck-hydrangea at spring-hill tier=premium-bareroot: $25.99 -> $39.99 (54% change)",
+    "ANOMALY: pink-muhly-grass at spring-hill tier=premium-bareroot: $14.99 -> $24.99 (67% change)",
+    "ANOMALY: purple-coneflower at spring-hill tier=premium-bareroot: $14.99 -> $24.99 (67% change)"
   ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
@@ -1449,6 +1447,30 @@
     },
     "tamukeyama-japanese-maple:nature-hills": {
       "3gal": 138.49
+    },
+    "double-knock-out-rose:nature-hills": {
+      "quart": 24.99,
+      "1gal": 37.13,
+      "3gal": 49.55,
+      "2gal": 54.11
+    },
+    "pink-knock-out-rose:nature-hills": {
+      "quart": 24.99,
+      "1gal": 39.79,
+      "3gal": 72.09,
+      "2gal": 59.22
+    },
+    "sunny-knock-out-rose:nature-hills": {
+      "quart": 24.99,
+      "1gal": 39.83,
+      "2gal": 59.15,
+      "3gal": 72.09
+    },
+    "white-knock-out-rose:nature-hills": {
+      "3gal": 72.09
+    },
+    "coral-knock-out-rose:nature-hills": {
+      "3gal": 72.09
     },
     "duke-blueberry:nature-hills": {
       "1gal": 39.96,
@@ -2132,11 +2154,6 @@
       "premium-bareroot": 9.99,
       "1gal": 39.99
     },
-    "bloomstruck-hydrangea:spring-hill": {
-      "jumbo-bareroot": 79.99,
-      "premium-bareroot": 25.99,
-      "1gal": 54.99
-    },
     "summer-crush-hydrangea:spring-hill": {
       "premium-bareroot": 39.99,
       "1gal": 79.99,
@@ -2144,7 +2161,7 @@
       "jumbo-bareroot": 79.99
     },
     "incrediball-hydrangea:spring-hill": {
-      "premium-bareroot": 31.99
+      "premium-bareroot": 39.99
     },
     "honeycrisp-apple-tree:spring-hill": {
       "2gal": 69.99,
@@ -2227,14 +2244,8 @@
       "bareroot": 14.99
     },
     "big-blue-liriope:spring-hill": {
-      "premium-bareroot": 12.59,
+      "premium-bareroot": 13.99,
       "1gal": 29.99
-    },
-    "pink-muhly-grass:spring-hill": {
-      "premium-bareroot": 14.99,
-      "jumbo-bareroot": 39.99,
-      "bareroot": 16.99,
-      "3inch": 9.99
     },
     "blue-fescue-elijah-blue:spring-hill": {
       "jumbo-bareroot": 49.99,
@@ -2252,10 +2263,6 @@
     "bleeding-heart:spring-hill": {
       "default": 9.99
     },
-    "purple-coneflower:spring-hill": {
-      "premium-bareroot": 14.99,
-      "jumbo-bareroot": 54.99
-    },
     "happy-returns-daylily:spring-hill": {
       "jumbo-bareroot": 39.99
     },
@@ -2263,9 +2270,9 @@
       "jumbo-bareroot": 49.99
     },
     "russian-sage:spring-hill": {
-      "premium-bareroot": 24.99,
       "bareroot": 24.99,
-      "jumbo-bareroot": 39.99
+      "jumbo-bareroot": 39.99,
+      "premium-bareroot": 24.99
     },
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99,
@@ -2278,7 +2285,8 @@
       "1gal": 49.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 30.95
+      "quart": 30.95,
+      "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 22.95,
@@ -2287,10 +2295,11 @@
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
       "2gal": 49.95,
-      "3gal": 82.95
+      "3gal": 82.95,
+      "7gal": 150.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
-      "default": 118.95
+      "3gal": 69.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
       "2gal": 49.95,
@@ -2502,7 +2511,6 @@
       "1gal": 28.95
     },
     "russian-sage:fast-growing-trees": {
-      "1gal": 30.95,
       "default": 35.95,
       "3gal": 43.95
     },
@@ -2513,12 +2521,13 @@
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft": 76.95,
-      "3-4ft": 93.95
+      "5-6ft": 124.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 86.95,
       "4-5ft": 105.95,
-      "5-6ft": 129.95
+      "5-6ft": 129.95,
+      "6-7ft": 177.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
       "default": 73.95,
@@ -2631,15 +2640,14 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf": 29.99,
-      "semi-dwarf": 23.99,
       "supreme": 49.99,
       "ultra-supreme": 199.99
     },
     "bartlett-pear-tree:stark-bros": {
-      "ultra-supreme": 229.99,
       "semi-dwarf": 23.99,
       "supreme-ez-start": 75.99,
-      "supreme": 39.99
+      "supreme": 39.99,
+      "ultra-supreme": 229.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
