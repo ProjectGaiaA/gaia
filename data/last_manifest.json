@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-28T23:41:05.301212+00:00",
+  "timestamp": "2026-05-29T14:44:26.115390+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -8,7 +8,17 @@
       "products_found": 78,
       "products_error": 0,
       "prices_collected": 146,
-      "anomalies": [],
+      "anomalies": [
+        "ANOMALY: double-knock-out-rose at nature-hills tier=1gal: $23.39 -> $37.13 (59% change)",
+        "ANOMALY: double-knock-out-rose at nature-hills tier=2gal: $21.64 -> $54.11 (150% change)",
+        "ANOMALY: pink-knock-out-rose at nature-hills tier=1gal: $25.07 -> $39.79 (59% change)",
+        "ANOMALY: pink-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
+        "ANOMALY: pink-knock-out-rose at nature-hills tier=2gal: $37.31 -> $59.22 (59% change)",
+        "ANOMALY: sunny-knock-out-rose at nature-hills tier=1gal: $25.09 -> $39.83 (59% change)",
+        "ANOMALY: sunny-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
+        "ANOMALY: white-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
+        "ANOMALY: coral-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -82,30 +92,6 @@
         },
         "tamukeyama-japanese-maple:nature-hills": {
           "3gal": 138.49
-        },
-        "double-knock-out-rose:nature-hills": {
-          "quart": 19.33,
-          "1gal": 23.39,
-          "3gal": 34.69,
-          "2gal": 21.64
-        },
-        "pink-knock-out-rose:nature-hills": {
-          "quart": 19.33,
-          "1gal": 25.07,
-          "3gal": 45.42,
-          "2gal": 37.31
-        },
-        "sunny-knock-out-rose:nature-hills": {
-          "quart": 19.33,
-          "1gal": 25.09,
-          "2gal": 41.41,
-          "3gal": 45.42
-        },
-        "white-knock-out-rose:nature-hills": {
-          "3gal": 45.42
-        },
-        "coral-knock-out-rose:nature-hills": {
-          "3gal": 45.42
         },
         "duke-blueberry:nature-hills": {
           "1gal": 39.96,
@@ -800,13 +786,14 @@
       "products_expected": 40,
       "products_found": 38,
       "products_error": 2,
-      "prices_collected": 76,
+      "prices_collected": 79,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
           "premium-bareroot": 24.99,
           "1gal": 25.99,
-          "jumbo-bareroot": 69.99
+          "jumbo-bareroot": 69.99,
+          "4-5ft": 129.99
         },
         "nikko-blue-hydrangea:spring-hill": {
           "premium-bareroot": 9.99,
@@ -857,7 +844,8 @@
           "12-18in": 19.99
         },
         "bloodgood-japanese-maple:spring-hill": {
-          "3gal": 129.99
+          "3gal": 129.99,
+          "2-4ft": 109.99
         },
         "coral-bark-japanese-maple:spring-hill": {
           "2-4ft": 149.99
@@ -895,7 +883,8 @@
         },
         "yoshino-cherry:spring-hill": {
           "2-4ft": 129.99,
-          "5-6ft": 170.99
+          "5-6ft": 170.99,
+          "5gal": 179.99
         },
         "gibraltar-azalea:spring-hill": {
           "default": 24.99
@@ -964,7 +953,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 159,
+      "prices_collected": 161,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1029,12 +1018,14 @@
         "green-giant-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
           "2-3ft": 34.95,
+          "3-4ft": 64.95,
           "4-5ft": 112.95,
           "5-6ft": 199.95,
           "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 21.95,
+          "2-3ft": 39.95,
           "3-4ft": 75.95,
           "4-5ft": 129.95,
           "5-6ft": 197.95
@@ -1191,7 +1182,8 @@
         },
         "russian-sage:fast-growing-trees": {
           "1gal": 30.95,
-          "default": 43.95
+          "default": 35.95,
+          "3gal": 43.95
         },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 65.95,
@@ -1200,8 +1192,7 @@
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft": 76.95,
-          "3-4ft": 93.95,
-          "4-5ft": 112.95
+          "3-4ft": 93.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 86.95,
@@ -1372,9 +1363,19 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 738,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 743,
+  "total_anomalies": 9,
+  "anomalies": [
+    "ANOMALY: double-knock-out-rose at nature-hills tier=1gal: $23.39 -> $37.13 (59% change)",
+    "ANOMALY: double-knock-out-rose at nature-hills tier=2gal: $21.64 -> $54.11 (150% change)",
+    "ANOMALY: pink-knock-out-rose at nature-hills tier=1gal: $25.07 -> $39.79 (59% change)",
+    "ANOMALY: pink-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
+    "ANOMALY: pink-knock-out-rose at nature-hills tier=2gal: $37.31 -> $59.22 (59% change)",
+    "ANOMALY: sunny-knock-out-rose at nature-hills tier=1gal: $25.09 -> $39.83 (59% change)",
+    "ANOMALY: sunny-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
+    "ANOMALY: white-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)",
+    "ANOMALY: coral-knock-out-rose at nature-hills tier=3gal: $45.42 -> $72.09 (59% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1448,30 +1449,6 @@
     },
     "tamukeyama-japanese-maple:nature-hills": {
       "3gal": 138.49
-    },
-    "double-knock-out-rose:nature-hills": {
-      "quart": 19.33,
-      "1gal": 23.39,
-      "3gal": 34.69,
-      "2gal": 21.64
-    },
-    "pink-knock-out-rose:nature-hills": {
-      "quart": 19.33,
-      "1gal": 25.07,
-      "3gal": 45.42,
-      "2gal": 37.31
-    },
-    "sunny-knock-out-rose:nature-hills": {
-      "quart": 19.33,
-      "1gal": 25.09,
-      "2gal": 41.41,
-      "3gal": 45.42
-    },
-    "white-knock-out-rose:nature-hills": {
-      "3gal": 45.42
-    },
-    "coral-knock-out-rose:nature-hills": {
-      "3gal": 45.42
     },
     "duke-blueberry:nature-hills": {
       "1gal": 39.96,
@@ -2148,7 +2125,8 @@
     "limelight-hydrangea:spring-hill": {
       "premium-bareroot": 24.99,
       "1gal": 25.99,
-      "jumbo-bareroot": 69.99
+      "jumbo-bareroot": 69.99,
+      "4-5ft": 129.99
     },
     "nikko-blue-hydrangea:spring-hill": {
       "premium-bareroot": 9.99,
@@ -2199,7 +2177,8 @@
       "12-18in": 19.99
     },
     "bloodgood-japanese-maple:spring-hill": {
-      "3gal": 129.99
+      "3gal": 129.99,
+      "2-4ft": 109.99
     },
     "coral-bark-japanese-maple:spring-hill": {
       "2-4ft": 149.99
@@ -2237,7 +2216,8 @@
     },
     "yoshino-cherry:spring-hill": {
       "2-4ft": 129.99,
-      "5-6ft": 170.99
+      "5-6ft": 170.99,
+      "5gal": 179.99
     },
     "gibraltar-azalea:spring-hill": {
       "default": 24.99
@@ -2359,12 +2339,14 @@
     "green-giant-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
       "2-3ft": 34.95,
+      "3-4ft": 64.95,
       "4-5ft": 112.95,
       "5-6ft": 199.95,
       "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 21.95,
+      "2-3ft": 39.95,
       "3-4ft": 75.95,
       "4-5ft": 129.95,
       "5-6ft": 197.95
@@ -2521,7 +2503,8 @@
     },
     "russian-sage:fast-growing-trees": {
       "1gal": 30.95,
-      "default": 43.95
+      "default": 35.95,
+      "3gal": 43.95
     },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 65.95,
@@ -2530,8 +2513,7 @@
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft": 76.95,
-      "3-4ft": 93.95,
-      "4-5ft": 112.95
+      "3-4ft": 93.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 86.95,
