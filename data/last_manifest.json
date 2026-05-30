@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-30T12:50:18.588215+00:00",
+  "timestamp": "2026-05-30T23:19:42.770653+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -968,19 +968,7 @@
       "products_found": 64,
       "products_error": 4,
       "prices_collected": 159,
-      "anomalies": [
-        "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=1-2ft: $19.95 -> $44.95 (125% change)",
-        "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=2-3ft: $34.95 -> $66.95 (92% change)",
-        "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=3-4ft: $64.95 -> $99.95 (54% change)",
-        "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=4-5ft: $112.95 -> $179.95 (59% change)",
-        "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=5-6ft: $199.95 -> $329.95 (65% change)",
-        "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=6-7ft: $459.95 -> $729.95 (59% change)",
-        "ANOMALY: double-knock-out-rose at fast-growing-trees tier=1gal: $24.95 -> $39.95 (60% change)",
-        "ANOMALY: double-knock-out-rose at fast-growing-trees tier=2gal: $39.95 -> $63.95 (60% change)",
-        "ANOMALY: double-knock-out-rose at fast-growing-trees tier=3gal: $54.95 -> $87.95 (60% change)",
-        "ANOMALY: double-knock-out-rose at fast-growing-trees tier=7gal: $129.95 -> $207.95 (60% change)",
-        "ANOMALY: sweetbay-magnolia at fast-growing-trees tier=default: $73.95 -> $160.95 (118% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -997,7 +985,7 @@
           "7gal": 150.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
-          "3gal": 69.95
+          "default": 118.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
           "2gal": 49.95,
@@ -1043,6 +1031,14 @@
           "1-2ft": 19.95,
           "2-3ft": 39.95,
           "3-4ft": 69.95
+        },
+        "green-giant-arborvitae:fast-growing-trees": {
+          "1-2ft": 44.95,
+          "2-3ft": 66.95,
+          "3-4ft": 99.95,
+          "4-5ft": 179.95,
+          "5-6ft": 329.95,
+          "6-7ft": 729.95
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 21.95,
@@ -1091,6 +1087,12 @@
         "tamukeyama-japanese-maple:fast-growing-trees": {
           "2-3ft": 59.95,
           "3-4ft": 80.95
+        },
+        "double-knock-out-rose:fast-growing-trees": {
+          "1gal": 39.95,
+          "2gal": 63.95,
+          "3gal": 87.95,
+          "7gal": 207.95
         },
         "white-knock-out-rose:fast-growing-trees": {
           "1gal": 37.95,
@@ -1209,6 +1211,12 @@
           "4-5ft": 105.95,
           "5-6ft": 129.95,
           "6-7ft": 177.95
+        },
+        "sweetbay-magnolia:fast-growing-trees": {
+          "default": 160.95,
+          "2-3ft": 56.95,
+          "4-5ft": 95.95,
+          "5-6ft": 123.95
         },
         "rose-of-sharon:fast-growing-trees": {
           "2-3ft": 74.95,
@@ -1345,13 +1353,12 @@
       "products_expected": 8,
       "products_found": 3,
       "products_error": 5,
-      "prices_collected": 8,
+      "prices_collected": 7,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 29.99,
-          "supreme": 49.99,
-          "ultra-supreme": 199.99
+          "supreme": 49.99
         },
         "bartlett-pear-tree:stark-bros": {
           "semi-dwarf": 23.99,
@@ -1366,21 +1373,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 740,
-  "total_anomalies": 11,
-  "anomalies": [
-    "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=1-2ft: $19.95 -> $44.95 (125% change)",
-    "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=2-3ft: $34.95 -> $66.95 (92% change)",
-    "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=3-4ft: $64.95 -> $99.95 (54% change)",
-    "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=4-5ft: $112.95 -> $179.95 (59% change)",
-    "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=5-6ft: $199.95 -> $329.95 (65% change)",
-    "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=6-7ft: $459.95 -> $729.95 (59% change)",
-    "ANOMALY: double-knock-out-rose at fast-growing-trees tier=1gal: $24.95 -> $39.95 (60% change)",
-    "ANOMALY: double-knock-out-rose at fast-growing-trees tier=2gal: $39.95 -> $63.95 (60% change)",
-    "ANOMALY: double-knock-out-rose at fast-growing-trees tier=3gal: $54.95 -> $87.95 (60% change)",
-    "ANOMALY: double-knock-out-rose at fast-growing-trees tier=7gal: $129.95 -> $207.95 (60% change)",
-    "ANOMALY: sweetbay-magnolia at fast-growing-trees tier=default: $73.95 -> $160.95 (118% change)"
-  ],
+  "total_prices_collected": 739,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2321,7 +2316,7 @@
       "7gal": 150.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
-      "3gal": 69.95
+      "default": 118.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
       "2gal": 49.95,
@@ -2367,6 +2362,14 @@
       "1-2ft": 19.95,
       "2-3ft": 39.95,
       "3-4ft": 69.95
+    },
+    "green-giant-arborvitae:fast-growing-trees": {
+      "1-2ft": 44.95,
+      "2-3ft": 66.95,
+      "3-4ft": 99.95,
+      "4-5ft": 179.95,
+      "5-6ft": 329.95,
+      "6-7ft": 729.95
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 21.95,
@@ -2415,6 +2418,12 @@
     "tamukeyama-japanese-maple:fast-growing-trees": {
       "2-3ft": 59.95,
       "3-4ft": 80.95
+    },
+    "double-knock-out-rose:fast-growing-trees": {
+      "1gal": 39.95,
+      "2gal": 63.95,
+      "3gal": 87.95,
+      "7gal": 207.95
     },
     "white-knock-out-rose:fast-growing-trees": {
       "1gal": 37.95,
@@ -2534,6 +2543,12 @@
       "5-6ft": 129.95,
       "6-7ft": 177.95
     },
+    "sweetbay-magnolia:fast-growing-trees": {
+      "default": 160.95,
+      "2-3ft": 56.95,
+      "4-5ft": 95.95,
+      "5-6ft": 123.95
+    },
     "rose-of-sharon:fast-growing-trees": {
       "2-3ft": 74.95,
       "3-4ft": 60.95,
@@ -2638,8 +2653,7 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf": 29.99,
-      "supreme": 49.99,
-      "ultra-supreme": 199.99
+      "supreme": 49.99
     },
     "bartlett-pear-tree:stark-bros": {
       "semi-dwarf": 23.99,
