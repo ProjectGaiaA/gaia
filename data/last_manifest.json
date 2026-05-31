@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-31T12:54:37.939268+00:00",
+  "timestamp": "2026-05-31T23:19:05.303487+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 162,
+      "prices_collected": 160,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1007,7 +1007,6 @@
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
-          "2-3ft": 90.95,
           "3-4ft": 124.95
         },
         "fuji-apple-tree:fast-growing-trees": {
@@ -1035,9 +1034,8 @@
           "1-2ft": 44.95,
           "2-3ft": 66.95,
           "3-4ft": 99.95,
-          "4-5ft": 179.95,
           "5-6ft": 329.95,
-          "6-7ft": 729.95
+          "6-7ft": 579.95
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 21.95,
@@ -1106,7 +1104,6 @@
         "pink-lemonade-blueberry:fast-growing-trees": {
           "4inch": 30.95,
           "quart": 31.95,
-          "1gal": 41.95,
           "2gal": 44.95,
           "3gal": 52.95
         },
@@ -1165,7 +1162,8 @@
           "1gal": 29.95
         },
         "blue-rug-juniper:fast-growing-trees": {
-          "3gal": 46.95
+          "1gal": 26.95,
+          "default": 46.95
         },
         "pink-muhly-grass:fast-growing-trees": {
           "default": 49.95,
@@ -1376,7 +1374,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 742,
+  "total_prices_collected": 740,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2341,7 +2339,6 @@
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
-      "2-3ft": 90.95,
       "3-4ft": 124.95
     },
     "fuji-apple-tree:fast-growing-trees": {
@@ -2369,9 +2366,8 @@
       "1-2ft": 44.95,
       "2-3ft": 66.95,
       "3-4ft": 99.95,
-      "4-5ft": 179.95,
       "5-6ft": 329.95,
-      "6-7ft": 729.95
+      "6-7ft": 579.95
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 21.95,
@@ -2440,7 +2436,6 @@
     "pink-lemonade-blueberry:fast-growing-trees": {
       "4inch": 30.95,
       "quart": 31.95,
-      "1gal": 41.95,
       "2gal": 44.95,
       "3gal": 52.95
     },
@@ -2499,7 +2494,8 @@
       "1gal": 29.95
     },
     "blue-rug-juniper:fast-growing-trees": {
-      "3gal": 46.95
+      "1gal": 26.95,
+      "default": 46.95
     },
     "pink-muhly-grass:fast-growing-trees": {
       "default": 49.95,
