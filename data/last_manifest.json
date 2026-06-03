@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-03T00:04:30.633629+00:00",
+  "timestamp": "2026-06-03T16:14:06.003579+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,8 +967,10 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 157,
-      "anomalies": [],
+      "prices_collected": 159,
+      "anomalies": [
+        "ANOMALY: kousa-dogwood at fast-growing-trees tier=default: $79.95 -> $212.95 (166% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -980,7 +982,8 @@
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
-          "3gal": 82.95
+          "3gal": 82.95,
+          "7gal": 150.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
           "default": 118.95
@@ -1100,7 +1103,10 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "4inch": 30.95,
+          "quart": 31.95,
+          "2gal": 44.95,
+          "3gal": 52.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1108,13 +1114,6 @@
         },
         "dogwood-tree:fast-growing-trees": {
           "default": 142.95
-        },
-        "kousa-dogwood:fast-growing-trees": {
-          "default": 79.95,
-          "3-4ft": 101.95,
-          "4-5ft": 129.95,
-          "5-6ft": 166.95,
-          "6-7ft": 212.95
         },
         "eastern-redbud:fast-growing-trees": {
           "default": 136.95
@@ -1240,7 +1239,6 @@
           "7gal": 109.95
         },
         "autumn-twist-encore-azalea:fast-growing-trees": {
-          "1gal": 30.95,
           "3gal": 52.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
@@ -1370,9 +1368,11 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 736,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 738,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: kousa-dogwood at fast-growing-trees tier=default: $79.95 -> $212.95 (166% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2308,7 +2308,8 @@
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
-      "3gal": 82.95
+      "3gal": 82.95,
+      "7gal": 150.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
       "default": 118.95
@@ -2428,7 +2429,10 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "4inch": 30.95,
+      "quart": 31.95,
+      "2gal": 44.95,
+      "3gal": 52.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2436,13 +2440,6 @@
     },
     "dogwood-tree:fast-growing-trees": {
       "default": 142.95
-    },
-    "kousa-dogwood:fast-growing-trees": {
-      "default": 79.95,
-      "3-4ft": 101.95,
-      "4-5ft": 129.95,
-      "5-6ft": 166.95,
-      "6-7ft": 212.95
     },
     "eastern-redbud:fast-growing-trees": {
       "default": 136.95
@@ -2568,7 +2565,6 @@
       "7gal": 109.95
     },
     "autumn-twist-encore-azalea:fast-growing-trees": {
-      "1gal": 30.95,
       "3gal": 52.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
