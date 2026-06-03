@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-02T15:37:32.058381+00:00",
+  "timestamp": "2026-06-03T00:04:30.633629+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,10 +967,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 159,
-      "anomalies": [
-        "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=1-2ft: $44.95 -> $19.95 (56% change)"
-      ],
+      "prices_collected": 157,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -982,7 +980,6 @@
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
-          "2gal": 49.95,
           "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
@@ -1007,8 +1004,7 @@
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
-          "2-3ft": 90.95,
-          "3-4ft": 124.95
+          "2-3ft": 90.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 71.95,
@@ -1030,6 +1026,14 @@
           "1-2ft": 19.95,
           "2-3ft": 39.95,
           "3-4ft": 69.95
+        },
+        "green-giant-arborvitae:fast-growing-trees": {
+          "1-2ft": 19.95,
+          "2-3ft": 34.95,
+          "3-4ft": 64.95,
+          "4-5ft": 112.95,
+          "5-6ft": 199.95,
+          "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 21.95,
@@ -1096,11 +1100,7 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 30.95,
-          "quart": 31.95,
-          "1gal": 41.95,
-          "2gal": 44.95,
-          "3gal": 52.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1200,6 +1200,8 @@
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft": 76.95,
+          "3-4ft": 93.95,
+          "4-5ft": 112.95,
           "5-6ft": 124.95
         },
         "red-sunset-maple:fast-growing-trees": {
@@ -1210,6 +1212,7 @@
         "sweetbay-magnolia:fast-growing-trees": {
           "default": 160.95,
           "2-3ft": 56.95,
+          "3-4ft": 73.95,
           "4-5ft": 95.95
         },
         "rose-of-sharon:fast-growing-trees": {
@@ -1237,6 +1240,7 @@
           "7gal": 109.95
         },
         "autumn-twist-encore-azalea:fast-growing-trees": {
+          "1gal": 30.95,
           "3gal": 52.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
@@ -1366,11 +1370,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 738,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=1-2ft: $44.95 -> $19.95 (56% change)"
-  ],
+  "total_prices_collected": 736,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2306,7 +2308,6 @@
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
-      "2gal": 49.95,
       "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
@@ -2331,8 +2332,7 @@
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
-      "2-3ft": 90.95,
-      "3-4ft": 124.95
+      "2-3ft": 90.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 71.95,
@@ -2354,6 +2354,14 @@
       "1-2ft": 19.95,
       "2-3ft": 39.95,
       "3-4ft": 69.95
+    },
+    "green-giant-arborvitae:fast-growing-trees": {
+      "1-2ft": 19.95,
+      "2-3ft": 34.95,
+      "3-4ft": 64.95,
+      "4-5ft": 112.95,
+      "5-6ft": 199.95,
+      "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 21.95,
@@ -2420,11 +2428,7 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 30.95,
-      "quart": 31.95,
-      "1gal": 41.95,
-      "2gal": 44.95,
-      "3gal": 52.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2524,6 +2528,8 @@
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft": 76.95,
+      "3-4ft": 93.95,
+      "4-5ft": 112.95,
       "5-6ft": 124.95
     },
     "red-sunset-maple:fast-growing-trees": {
@@ -2534,6 +2540,7 @@
     "sweetbay-magnolia:fast-growing-trees": {
       "default": 160.95,
       "2-3ft": 56.95,
+      "3-4ft": 73.95,
       "4-5ft": 95.95
     },
     "rose-of-sharon:fast-growing-trees": {
@@ -2561,6 +2568,7 @@
       "7gal": 109.95
     },
     "autumn-twist-encore-azalea:fast-growing-trees": {
+      "1gal": 30.95,
       "3gal": 52.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
