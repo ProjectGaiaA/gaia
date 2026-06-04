@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-06-03T16:14:06.003579+00:00",
+  "timestamp": "2026-06-04T00:06:52.496625+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
-      "products_error": 0,
-      "prices_collected": 146,
+      "products_found": 76,
+      "products_error": 2,
+      "prices_collected": 141,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -31,12 +31,6 @@
           "1gal": 43.55,
           "2gal": 66.33,
           "3gal": 76.98
-        },
-        "little-lime-hydrangea:nature-hills": {
-          "quart": 26.14,
-          "1gal": 42.93,
-          "2gal": 69.63,
-          "3gal": 85.75
         },
         "incrediball-hydrangea:nature-hills": {
           "quart": 26.14,
@@ -79,9 +73,6 @@
         },
         "emperor-japanese-maple:nature-hills": {
           "5gal": 228.11
-        },
-        "tamukeyama-japanese-maple:nature-hills": {
-          "3gal": 138.49
         },
         "double-knock-out-rose:nature-hills": {
           "quart": 24.99,
@@ -967,26 +958,23 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 159,
-      "anomalies": [
-        "ANOMALY: kousa-dogwood at fast-growing-trees tier=default: $79.95 -> $212.95 (166% change)"
-      ],
+      "prices_collected": 158,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
           "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
-          "quart": 22.95,
           "default": 42.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
-          "3gal": 82.95,
-          "7gal": 150.95
+          "2gal": 49.95,
+          "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
-          "default": 118.95
+          "3gal": 69.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
           "2gal": 49.95,
@@ -1114,6 +1102,12 @@
         },
         "dogwood-tree:fast-growing-trees": {
           "default": 142.95
+        },
+        "kousa-dogwood:fast-growing-trees": {
+          "default": 212.95,
+          "3-4ft": 101.95,
+          "4-5ft": 129.95,
+          "5-6ft": 166.95
         },
         "eastern-redbud:fast-growing-trees": {
           "default": 136.95
@@ -1368,11 +1362,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 738,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: kousa-dogwood at fast-growing-trees tier=default: $79.95 -> $212.95 (166% change)"
-  ],
+  "total_prices_collected": 732,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1395,12 +1387,6 @@
       "1gal": 43.55,
       "2gal": 66.33,
       "3gal": 76.98
-    },
-    "little-lime-hydrangea:nature-hills": {
-      "quart": 26.14,
-      "1gal": 42.93,
-      "2gal": 69.63,
-      "3gal": 85.75
     },
     "incrediball-hydrangea:nature-hills": {
       "quart": 26.14,
@@ -1443,9 +1429,6 @@
     },
     "emperor-japanese-maple:nature-hills": {
       "5gal": 228.11
-    },
-    "tamukeyama-japanese-maple:nature-hills": {
-      "3gal": 138.49
     },
     "double-knock-out-rose:nature-hills": {
       "quart": 24.99,
@@ -2303,16 +2286,15 @@
       "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
-      "quart": 22.95,
       "default": 42.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
-      "3gal": 82.95,
-      "7gal": 150.95
+      "2gal": 49.95,
+      "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
-      "default": 118.95
+      "3gal": 69.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
       "2gal": 49.95,
@@ -2440,6 +2422,12 @@
     },
     "dogwood-tree:fast-growing-trees": {
       "default": 142.95
+    },
+    "kousa-dogwood:fast-growing-trees": {
+      "default": 212.95,
+      "3-4ft": 101.95,
+      "4-5ft": 129.95,
+      "5-6ft": 166.95
     },
     "eastern-redbud:fast-growing-trees": {
       "default": 136.95
