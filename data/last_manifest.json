@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-06-04T00:06:52.496625+00:00",
+  "timestamp": "2026-06-04T14:44:03.794095+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 76,
-      "products_error": 2,
-      "prices_collected": 141,
+      "products_found": 78,
+      "products_error": 0,
+      "prices_collected": 146,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -31,6 +31,12 @@
           "1gal": 43.55,
           "2gal": 66.33,
           "3gal": 76.98
+        },
+        "little-lime-hydrangea:nature-hills": {
+          "quart": 26.14,
+          "1gal": 42.93,
+          "2gal": 69.63,
+          "3gal": 85.75
         },
         "incrediball-hydrangea:nature-hills": {
           "quart": 26.14,
@@ -73,6 +79,9 @@
         },
         "emperor-japanese-maple:nature-hills": {
           "5gal": 228.11
+        },
+        "tamukeyama-japanese-maple:nature-hills": {
+          "3gal": 138.49
         },
         "double-knock-out-rose:nature-hills": {
           "quart": 24.99,
@@ -958,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 158,
+      "prices_collected": 165,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -970,7 +979,6 @@
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
-          "2gal": 49.95,
           "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
@@ -991,7 +999,8 @@
           "2-3ft": 78.95,
           "3-4ft": 92.95,
           "4-5ft": 112.95,
-          "5-6ft": 134.95
+          "5-6ft": 134.95,
+          "6-7ft": 161.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
@@ -1110,7 +1119,10 @@
           "5-6ft": 166.95
         },
         "eastern-redbud:fast-growing-trees": {
-          "default": 136.95
+          "2-3ft": 62.95,
+          "3-4ft": 84.95,
+          "4-5ft": 113.95,
+          "5-6ft": 152.95
         },
         "forest-pansy-redbud:fast-growing-trees": {
           "default": 114.95,
@@ -1119,7 +1131,11 @@
           "6-7ft": 197.95
         },
         "crape-myrtle:fast-growing-trees": {
-          "1-2ft": 64.95
+          "default": 177.95,
+          "3-4ft": 124.95,
+          "4-5ft": 149.95,
+          "5-6ft": 178.95,
+          "6-7ft": 214.95
         },
         "encore-azalea:fast-growing-trees": {
           "1gal": 34.95,
@@ -1343,7 +1359,7 @@
       "products_expected": 8,
       "products_found": 3,
       "products_error": 5,
-      "prices_collected": 6,
+      "prices_collected": 7,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1351,6 +1367,7 @@
           "supreme": 49.99
         },
         "bartlett-pear-tree:stark-bros": {
+          "ultra-supreme": 229.99,
           "semi-dwarf": 23.99,
           "supreme-ez-start": 75.99,
           "supreme": 39.99
@@ -1362,7 +1379,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 732,
+  "total_prices_collected": 745,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1387,6 +1404,12 @@
       "1gal": 43.55,
       "2gal": 66.33,
       "3gal": 76.98
+    },
+    "little-lime-hydrangea:nature-hills": {
+      "quart": 26.14,
+      "1gal": 42.93,
+      "2gal": 69.63,
+      "3gal": 85.75
     },
     "incrediball-hydrangea:nature-hills": {
       "quart": 26.14,
@@ -1429,6 +1452,9 @@
     },
     "emperor-japanese-maple:nature-hills": {
       "5gal": 228.11
+    },
+    "tamukeyama-japanese-maple:nature-hills": {
+      "3gal": 138.49
     },
     "double-knock-out-rose:nature-hills": {
       "quart": 24.99,
@@ -2290,7 +2316,6 @@
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
-      "2gal": 49.95,
       "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
@@ -2311,7 +2336,8 @@
       "2-3ft": 78.95,
       "3-4ft": 92.95,
       "4-5ft": 112.95,
-      "5-6ft": 134.95
+      "5-6ft": 134.95,
+      "6-7ft": 161.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
@@ -2430,7 +2456,10 @@
       "5-6ft": 166.95
     },
     "eastern-redbud:fast-growing-trees": {
-      "default": 136.95
+      "2-3ft": 62.95,
+      "3-4ft": 84.95,
+      "4-5ft": 113.95,
+      "5-6ft": 152.95
     },
     "forest-pansy-redbud:fast-growing-trees": {
       "default": 114.95,
@@ -2439,7 +2468,11 @@
       "6-7ft": 197.95
     },
     "crape-myrtle:fast-growing-trees": {
-      "1-2ft": 64.95
+      "default": 177.95,
+      "3-4ft": 124.95,
+      "4-5ft": 149.95,
+      "5-6ft": 178.95,
+      "6-7ft": 214.95
     },
     "encore-azalea:fast-growing-trees": {
       "1gal": 34.95,
@@ -2635,6 +2668,7 @@
       "supreme": 49.99
     },
     "bartlett-pear-tree:stark-bros": {
+      "ultra-supreme": 229.99,
       "semi-dwarf": 23.99,
       "supreme-ez-start": 75.99,
       "supreme": 39.99
