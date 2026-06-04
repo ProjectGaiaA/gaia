@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-04T14:44:03.794095+00:00",
+  "timestamp": "2026-06-04T23:41:38.383736+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -798,9 +798,9 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 38,
-      "products_error": 2,
-      "prices_collected": 79,
+      "products_found": 37,
+      "products_error": 3,
+      "prices_collected": 78,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -833,13 +833,10 @@
           "5-6ft": 99.99,
           "2-4ft": 49.99
         },
-        "bartlett-pear-tree:spring-hill": {
-          "default": 29.99
-        },
         "emerald-green-arborvitae:spring-hill": {
-          "1-2ft": 14.99,
-          "3-4ft": 57.99,
-          "5-6ft": 194.99,
+          "1-2ft": 19.99,
+          "3-4ft": 79.99,
+          "5-6ft": 199.99,
           "bareroot": 90.99,
           "12-18in": 19.99,
           "18-24in": 39.99,
@@ -850,7 +847,7 @@
         "green-giant-arborvitae:spring-hill": {
           "1-2ft": 14.99,
           "3-4ft": 45.89,
-          "5-6ft": 194.99,
+          "5-6ft": 199.99,
           "bareroot": 17.49,
           "24-36in": 59.99,
           "36-48in": 79.99,
@@ -967,7 +964,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 165,
+      "prices_collected": 166,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -975,6 +972,7 @@
           "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
+          "quart": 22.95,
           "default": 42.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
@@ -999,8 +997,7 @@
           "2-3ft": 78.95,
           "3-4ft": 92.95,
           "4-5ft": 112.95,
-          "5-6ft": 134.95,
-          "6-7ft": 161.95
+          "5-6ft": 134.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
@@ -1216,6 +1213,7 @@
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 86.95,
           "4-5ft": 105.95,
+          "5-6ft": 129.95,
           "6-7ft": 177.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
@@ -2182,13 +2180,10 @@
       "5-6ft": 99.99,
       "2-4ft": 49.99
     },
-    "bartlett-pear-tree:spring-hill": {
-      "default": 29.99
-    },
     "emerald-green-arborvitae:spring-hill": {
-      "1-2ft": 14.99,
-      "3-4ft": 57.99,
-      "5-6ft": 194.99,
+      "1-2ft": 19.99,
+      "3-4ft": 79.99,
+      "5-6ft": 199.99,
       "bareroot": 90.99,
       "12-18in": 19.99,
       "18-24in": 39.99,
@@ -2199,7 +2194,7 @@
     "green-giant-arborvitae:spring-hill": {
       "1-2ft": 14.99,
       "3-4ft": 45.89,
-      "5-6ft": 194.99,
+      "5-6ft": 199.99,
       "bareroot": 17.49,
       "24-36in": 59.99,
       "36-48in": 79.99,
@@ -2312,6 +2307,7 @@
       "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
+      "quart": 22.95,
       "default": 42.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
@@ -2336,8 +2332,7 @@
       "2-3ft": 78.95,
       "3-4ft": 92.95,
       "4-5ft": 112.95,
-      "5-6ft": 134.95,
-      "6-7ft": 161.95
+      "5-6ft": 134.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
@@ -2553,6 +2548,7 @@
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 86.95,
       "4-5ft": 105.95,
+      "5-6ft": 129.95,
       "6-7ft": 177.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
