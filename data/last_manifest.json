@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-05T23:31:40.439900+00:00",
+  "timestamp": "2026-06-06T12:54:44.432884+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -319,9 +319,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 74,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_found": 69,
+      "products_error": 6,
+      "prices_collected": 293,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -526,14 +526,6 @@
           "5-6ft": 119.95,
           "6-7ft": 129.95
         },
-        "eastern-redbud:planting-tree": {
-          "1-2ft": 48.95,
-          "2-3ft": 74.95,
-          "3-4ft": 104.95,
-          "4-5ft": 119.95,
-          "5-6ft": 139.95,
-          "6-7ft": 154.95
-        },
         "forest-pansy-redbud:planting-tree": {
           "2-3ft": 97.95,
           "3-4ft": 92.95,
@@ -615,12 +607,6 @@
           "5-6ft": 174.95,
           "6-7ft": 209.95
         },
-        "karl-foerster-grass:planting-tree": {
-          "1gal": 25.95,
-          "2gal": 48.95,
-          "3gal": 61.95,
-          "5gal": 89.95
-        },
         "creeping-phlox:planting-tree": {
           "1gal": 26.95
         },
@@ -647,14 +633,6 @@
           "1-2ft": 50.95,
           "2-3ft": 58.95
         },
-        "tulip-poplar:planting-tree": {
-          "1-2ft": 35.95,
-          "2-3ft": 88.95,
-          "3-4ft": 92.95,
-          "4-5ft": 124.95,
-          "5-6ft": 134.95,
-          "6-7ft": 154.95
-        },
         "weeping-willow:planting-tree": {
           "1-2ft": 30.95,
           "2-3ft": 53.95,
@@ -662,14 +640,6 @@
           "4-5ft": 92.95,
           "5-6ft": 228.95,
           "6-7ft": 114.95
-        },
-        "autumn-blaze-maple:planting-tree": {
-          "1-2ft": 58.95,
-          "2-3ft": 73.95,
-          "3-4ft": 134.95,
-          "4-5ft": 139.95,
-          "5-6ft": 154.95,
-          "6-7ft": 164.95
         },
         "big-blue-liriope:planting-tree": {
           "1gal": 21.95
@@ -691,12 +661,6 @@
           "2gal": 71.95,
           "3gal": 48.95,
           "5gal": 99.95
-        },
-        "pampas-grass:planting-tree": {
-          "1gal": 56.95,
-          "2gal": 72.95,
-          "3gal": 51.95,
-          "5gal": 96.95
         },
         "heuchera-coral-bells:planting-tree": {
           "1gal": 30.95
@@ -967,7 +931,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 163,
+      "prices_collected": 166,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1101,7 +1065,10 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "default": 44.95
+          "4inch": 30.95,
+          "quart": 31.95,
+          "2gal": 44.95,
+          "3gal": 52.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1192,7 +1159,7 @@
           "1gal": 28.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "1gal": 28.95
+          "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
           "1gal": 30.95,
@@ -1377,7 +1344,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 743,
+  "total_prices_collected": 720,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1885,14 +1852,6 @@
       "5-6ft": 119.95,
       "6-7ft": 129.95
     },
-    "eastern-redbud:planting-tree": {
-      "1-2ft": 48.95,
-      "2-3ft": 74.95,
-      "3-4ft": 104.95,
-      "4-5ft": 119.95,
-      "5-6ft": 139.95,
-      "6-7ft": 154.95
-    },
     "forest-pansy-redbud:planting-tree": {
       "2-3ft": 97.95,
       "3-4ft": 92.95,
@@ -1974,12 +1933,6 @@
       "5-6ft": 174.95,
       "6-7ft": 209.95
     },
-    "karl-foerster-grass:planting-tree": {
-      "1gal": 25.95,
-      "2gal": 48.95,
-      "3gal": 61.95,
-      "5gal": 89.95
-    },
     "creeping-phlox:planting-tree": {
       "1gal": 26.95
     },
@@ -2006,14 +1959,6 @@
       "1-2ft": 50.95,
       "2-3ft": 58.95
     },
-    "tulip-poplar:planting-tree": {
-      "1-2ft": 35.95,
-      "2-3ft": 88.95,
-      "3-4ft": 92.95,
-      "4-5ft": 124.95,
-      "5-6ft": 134.95,
-      "6-7ft": 154.95
-    },
     "weeping-willow:planting-tree": {
       "1-2ft": 30.95,
       "2-3ft": 53.95,
@@ -2021,14 +1966,6 @@
       "4-5ft": 92.95,
       "5-6ft": 228.95,
       "6-7ft": 114.95
-    },
-    "autumn-blaze-maple:planting-tree": {
-      "1-2ft": 58.95,
-      "2-3ft": 73.95,
-      "3-4ft": 134.95,
-      "4-5ft": 139.95,
-      "5-6ft": 154.95,
-      "6-7ft": 164.95
     },
     "big-blue-liriope:planting-tree": {
       "1gal": 21.95
@@ -2050,12 +1987,6 @@
       "2gal": 71.95,
       "3gal": 48.95,
       "5gal": 99.95
-    },
-    "pampas-grass:planting-tree": {
-      "1gal": 56.95,
-      "2gal": 72.95,
-      "3gal": 51.95,
-      "5gal": 96.95
     },
     "heuchera-coral-bells:planting-tree": {
       "1gal": 30.95
@@ -2436,7 +2367,10 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "default": 44.95
+      "4inch": 30.95,
+      "quart": 31.95,
+      "2gal": 44.95,
+      "3gal": 52.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2527,7 +2461,7 @@
       "1gal": 28.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "1gal": 28.95
+      "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
       "1gal": 30.95,
