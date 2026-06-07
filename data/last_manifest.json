@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-07T13:06:52.911371+00:00",
+  "timestamp": "2026-06-07T23:26:19.047878+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -798,9 +798,9 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 37,
-      "products_error": 3,
-      "prices_collected": 78,
+      "products_found": 38,
+      "products_error": 2,
+      "prices_collected": 79,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -940,6 +940,9 @@
         "happy-returns-daylily:spring-hill": {
           "jumbo-bareroot": 39.99
         },
+        "bee-balm:spring-hill": {
+          "jumbo-bareroot": 49.99
+        },
         "russian-sage:spring-hill": {
           "bareroot": 24.99,
           "jumbo-bareroot": 39.99,
@@ -964,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 164,
+      "prices_collected": 163,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -977,14 +980,14 @@
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
-          "3gal": 82.95
+          "3gal": 82.95,
+          "7gal": 150.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
           "3gal": 69.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
-          "2gal": 49.95,
-          "3gal": 67.95
+          "2gal": 49.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
           "quart": 32.95,
@@ -1099,8 +1102,7 @@
         "pink-lemonade-blueberry:fast-growing-trees": {
           "4inch": 30.95,
           "quart": 31.95,
-          "2gal": 44.95,
-          "3gal": 52.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1188,10 +1190,10 @@
           "default": 59.95
         },
         "happy-returns-daylily:fast-growing-trees": {
-          "1gal": 28.95
+          "default": 28.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "1gal": 28.95
+          "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
           "1gal": 30.95,
@@ -2284,6 +2286,9 @@
     "happy-returns-daylily:spring-hill": {
       "jumbo-bareroot": 39.99
     },
+    "bee-balm:spring-hill": {
+      "jumbo-bareroot": 49.99
+    },
     "russian-sage:spring-hill": {
       "bareroot": 24.99,
       "jumbo-bareroot": 39.99,
@@ -2309,14 +2314,14 @@
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
-      "3gal": 82.95
+      "3gal": 82.95,
+      "7gal": 150.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
       "3gal": 69.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
-      "2gal": 49.95,
-      "3gal": 67.95
+      "2gal": 49.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
       "quart": 32.95,
@@ -2431,8 +2436,7 @@
     "pink-lemonade-blueberry:fast-growing-trees": {
       "4inch": 30.95,
       "quart": 31.95,
-      "2gal": 44.95,
-      "3gal": 52.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2520,10 +2524,10 @@
       "default": 59.95
     },
     "happy-returns-daylily:fast-growing-trees": {
-      "1gal": 28.95
+      "default": 28.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "1gal": 28.95
+      "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
       "1gal": 30.95,
