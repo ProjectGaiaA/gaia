@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-06T23:25:11.217546+00:00",
+  "timestamp": "2026-06-07T13:06:52.911371+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -798,9 +798,9 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 38,
-      "products_error": 2,
-      "prices_collected": 79,
+      "products_found": 37,
+      "products_error": 3,
+      "prices_collected": 78,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -940,9 +940,6 @@
         "happy-returns-daylily:spring-hill": {
           "jumbo-bareroot": 39.99
         },
-        "bee-balm:spring-hill": {
-          "jumbo-bareroot": 49.99
-        },
         "russian-sage:spring-hill": {
           "bareroot": 24.99,
           "jumbo-bareroot": 39.99,
@@ -967,7 +964,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 166,
+      "prices_collected": 164,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1040,8 +1037,7 @@
           "1-2ft": 21.95,
           "2-3ft": 39.95,
           "3-4ft": 75.95,
-          "4-5ft": 129.95,
-          "5-6ft": 197.95
+          "4-5ft": 129.95
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 29.95,
@@ -1195,7 +1191,7 @@
           "1gal": 28.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "default": 29.95
+          "1gal": 28.95
         },
         "russian-sage:fast-growing-trees": {
           "1gal": 30.95,
@@ -1241,8 +1237,7 @@
         },
         "dwarf-alberta-spruce:fast-growing-trees": {
           "default": 199.95,
-          "1-2ft": 32.95,
-          "2-3ft": 48.95
+          "1-2ft": 32.95
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 44.95,
@@ -1379,7 +1374,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 745,
+  "total_prices_collected": 742,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2289,9 +2284,6 @@
     "happy-returns-daylily:spring-hill": {
       "jumbo-bareroot": 39.99
     },
-    "bee-balm:spring-hill": {
-      "jumbo-bareroot": 49.99
-    },
     "russian-sage:spring-hill": {
       "bareroot": 24.99,
       "jumbo-bareroot": 39.99,
@@ -2377,8 +2369,7 @@
       "1-2ft": 21.95,
       "2-3ft": 39.95,
       "3-4ft": 75.95,
-      "4-5ft": 129.95,
-      "5-6ft": 197.95
+      "4-5ft": 129.95
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 29.95,
@@ -2532,7 +2523,7 @@
       "1gal": 28.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "default": 29.95
+      "1gal": 28.95
     },
     "russian-sage:fast-growing-trees": {
       "1gal": 30.95,
@@ -2578,8 +2569,7 @@
     },
     "dwarf-alberta-spruce:fast-growing-trees": {
       "default": 199.95,
-      "1-2ft": 32.95,
-      "2-3ft": 48.95
+      "1-2ft": 32.95
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 44.95,
