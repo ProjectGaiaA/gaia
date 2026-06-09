@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-09T14:28:36.580452+00:00",
+  "timestamp": "2026-06-09T23:47:33.099136+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 163,
+      "prices_collected": 164,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -999,7 +999,8 @@
           "2-3ft": 78.95,
           "3-4ft": 92.95,
           "4-5ft": 112.95,
-          "5-6ft": 134.95
+          "5-6ft": 134.95,
+          "6-7ft": 161.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
@@ -1024,7 +1025,6 @@
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
-          "2-3ft": 39.95,
           "3-4ft": 69.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
@@ -1032,10 +1032,12 @@
           "2-3ft": 34.95,
           "3-4ft": 64.95,
           "4-5ft": 112.95,
+          "5-6ft": 199.95,
           "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 21.95,
+          "2-3ft": 39.95,
           "3-4ft": 75.95,
           "4-5ft": 129.95
         },
@@ -1099,8 +1101,7 @@
         "pink-lemonade-blueberry:fast-growing-trees": {
           "4inch": 30.95,
           "quart": 31.95,
-          "2gal": 44.95,
-          "3gal": 52.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1229,7 +1230,8 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "1gal": 36.95
+          "1gal": 36.95,
+          "3gal": 74.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95,
@@ -1254,9 +1256,8 @@
         "santa-rosa-plum:fast-growing-trees": {
           "default": 139.95,
           "2-3ft": 57.95,
-          "5-6ft": 120.95,
-          "3-4ft": 92.95,
-          "4-5ft": 113.95
+          "4-5ft": 120.95,
+          "3-4ft": 92.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "3gal": 80.95
@@ -1376,7 +1377,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 742,
+  "total_prices_collected": 743,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2333,7 +2334,8 @@
       "2-3ft": 78.95,
       "3-4ft": 92.95,
       "4-5ft": 112.95,
-      "5-6ft": 134.95
+      "5-6ft": 134.95,
+      "6-7ft": 161.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
@@ -2358,7 +2360,6 @@
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
-      "2-3ft": 39.95,
       "3-4ft": 69.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
@@ -2366,10 +2367,12 @@
       "2-3ft": 34.95,
       "3-4ft": 64.95,
       "4-5ft": 112.95,
+      "5-6ft": 199.95,
       "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 21.95,
+      "2-3ft": 39.95,
       "3-4ft": 75.95,
       "4-5ft": 129.95
     },
@@ -2433,8 +2436,7 @@
     "pink-lemonade-blueberry:fast-growing-trees": {
       "4inch": 30.95,
       "quart": 31.95,
-      "2gal": 44.95,
-      "3gal": 52.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2563,7 +2565,8 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "1gal": 36.95
+      "1gal": 36.95,
+      "3gal": 74.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95,
@@ -2588,9 +2591,8 @@
     "santa-rosa-plum:fast-growing-trees": {
       "default": 139.95,
       "2-3ft": 57.95,
-      "5-6ft": 120.95,
-      "3-4ft": 92.95,
-      "4-5ft": 113.95
+      "4-5ft": 120.95,
+      "3-4ft": 92.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "3gal": 80.95
