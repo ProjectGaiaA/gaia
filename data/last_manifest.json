@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-09T23:47:33.099136+00:00",
+  "timestamp": "2026-06-10T15:08:36.869997+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 164,
+      "prices_collected": 166,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1025,6 +1025,7 @@
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
+          "2-3ft": 39.95,
           "3-4ft": 69.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
@@ -1101,7 +1102,8 @@
         "pink-lemonade-blueberry:fast-growing-trees": {
           "4inch": 30.95,
           "quart": 31.95,
-          "2gal": 44.95
+          "2gal": 44.95,
+          "3gal": 52.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1275,47 +1277,47 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
-          "1gal": 31.99,
-          "quart": 16.79
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "little-lime-hydrangea:proven-winners-direct": {
-          "1gal": 31.99,
-          "quart": 16.79
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "incrediball-hydrangea:proven-winners-direct": {
-          "1gal": 31.99,
-          "quart": 16.79
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "fire-light-hydrangea:proven-winners-direct": {
-          "1gal": 31.99,
-          "quart": 16.79
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "astilbe:proven-winners-direct": {
-          "1gal": 30.39,
-          "quart": 16.79
+          "1gal": 28.49,
+          "quart": 15.74
         },
         "heuchera-coral-bells:proven-winners-direct": {
-          "0-65-gallon": 26.39,
-          "quart": 16.79
+          "0-65-gallon": 24.74,
+          "quart": 15.74
         },
         "bleeding-heart:proven-winners-direct": {
           "1gal": 37.99,
           "quart": 20.99
         },
         "bee-balm:proven-winners-direct": {
-          "0-65-gallon": 26.39
+          "0-65-gallon": 24.74
         },
         "russian-sage:proven-winners-direct": {
           "0-65-gallon": 26.39,
           "quart": 16.79
         },
         "rose-of-sharon:proven-winners-direct": {
-          "1gal": 31.99,
-          "quart": 16.79
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 31.99,
-          "quart": 16.79
+          "1gal": 29.99,
+          "quart": 15.74
         }
       },
       "health": "healthy"
@@ -1377,7 +1379,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 743,
+  "total_prices_collected": 745,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2360,6 +2362,7 @@
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
+      "2-3ft": 39.95,
       "3-4ft": 69.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
@@ -2436,7 +2439,8 @@
     "pink-lemonade-blueberry:fast-growing-trees": {
       "4inch": 30.95,
       "quart": 31.95,
-      "2gal": 44.95
+      "2gal": 44.95,
+      "3gal": 52.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2598,47 +2602,47 @@
       "3gal": 80.95
     },
     "limelight-hydrangea:proven-winners-direct": {
-      "1gal": 31.99,
-      "quart": 16.79
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "little-lime-hydrangea:proven-winners-direct": {
-      "1gal": 31.99,
-      "quart": 16.79
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "incrediball-hydrangea:proven-winners-direct": {
-      "1gal": 31.99,
-      "quart": 16.79
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "fire-light-hydrangea:proven-winners-direct": {
-      "1gal": 31.99,
-      "quart": 16.79
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "astilbe:proven-winners-direct": {
-      "1gal": 30.39,
-      "quart": 16.79
+      "1gal": 28.49,
+      "quart": 15.74
     },
     "heuchera-coral-bells:proven-winners-direct": {
-      "0-65-gallon": 26.39,
-      "quart": 16.79
+      "0-65-gallon": 24.74,
+      "quart": 15.74
     },
     "bleeding-heart:proven-winners-direct": {
       "1gal": 37.99,
       "quart": 20.99
     },
     "bee-balm:proven-winners-direct": {
-      "0-65-gallon": 26.39
+      "0-65-gallon": 24.74
     },
     "russian-sage:proven-winners-direct": {
       "0-65-gallon": 26.39,
       "quart": 16.79
     },
     "rose-of-sharon:proven-winners-direct": {
-      "1gal": 31.99,
-      "quart": 16.79
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 31.99,
-      "quart": 16.79
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "limelight-hydrangea:great-garden-plants": {
       "quart": 21.99,
