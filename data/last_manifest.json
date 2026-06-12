@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-12T14:47:23.739849+00:00",
+  "timestamp": "2026-06-12T23:45:09.354759+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -8,7 +8,9 @@
       "products_found": 78,
       "products_error": 0,
       "prices_collected": 146,
-      "anomalies": [],
+      "anomalies": [
+        "ANOMALY: summer-crush-hydrangea at nature-hills tier=2gal: $66.33 -> $31.99 (52% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -25,12 +27,6 @@
           "quart": 23.49,
           "2gal": 67.27,
           "3gal": 75.01
-        },
-        "summer-crush-hydrangea:nature-hills": {
-          "quart": 19.89,
-          "1gal": 43.55,
-          "2gal": 66.33,
-          "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
           "quart": 26.14,
@@ -967,7 +963,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 173,
+      "prices_collected": 174,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1105,6 +1101,7 @@
         "pink-lemonade-blueberry:fast-growing-trees": {
           "4inch": 30.95,
           "quart": 31.95,
+          "1gal": 41.95,
           "2gal": 44.95,
           "3gal": 52.95
         },
@@ -1386,9 +1383,11 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 752,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 753,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: summer-crush-hydrangea at nature-hills tier=2gal: $66.33 -> $31.99 (52% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1405,12 +1404,6 @@
       "quart": 23.49,
       "2gal": 67.27,
       "3gal": 75.01
-    },
-    "summer-crush-hydrangea:nature-hills": {
-      "quart": 19.89,
-      "1gal": 43.55,
-      "2gal": 66.33,
-      "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
       "quart": 26.14,
@@ -2449,6 +2442,7 @@
     "pink-lemonade-blueberry:fast-growing-trees": {
       "4inch": 30.95,
       "quart": 31.95,
+      "1gal": 41.95,
       "2gal": 44.95,
       "3gal": 52.95
     },
