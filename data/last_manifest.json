@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-11T15:20:46.316879+00:00",
+  "timestamp": "2026-06-11T23:57:58.268095+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 168,
+      "prices_collected": 169,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1032,7 +1032,6 @@
         "green-giant-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
           "2-3ft": 34.95,
-          "3-4ft": 64.95,
           "4-5ft": 112.95,
           "5-6ft": 199.95,
           "6-7ft": 459.95
@@ -1210,6 +1209,7 @@
           "2-3ft": 76.95,
           "3-4ft": 93.95,
           "4-5ft": 112.95,
+          "5-6ft": 124.95,
           "6-7ft": 165.95
         },
         "red-sunset-maple:fast-growing-trees": {
@@ -1243,7 +1243,8 @@
         },
         "dwarf-alberta-spruce:fast-growing-trees": {
           "default": 199.95,
-          "1-2ft": 32.95
+          "1-2ft": 32.95,
+          "2-3ft": 48.95
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 44.95,
@@ -1360,18 +1361,15 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 4,
-      "products_error": 4,
-      "prices_collected": 8,
+      "products_found": 3,
+      "products_error": 5,
+      "prices_collected": 7,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf": 29.99,
           "semi-dwarf": 23.99,
           "supreme": 49.99
-        },
-        "bing-cherry-tree:stark-bros": {
-          "semi-dwarf": 35.99
         },
         "bartlett-pear-tree:stark-bros": {
           "semi-dwarf": 23.99,
@@ -2375,7 +2373,6 @@
     "green-giant-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
       "2-3ft": 34.95,
-      "3-4ft": 64.95,
       "4-5ft": 112.95,
       "5-6ft": 199.95,
       "6-7ft": 459.95
@@ -2553,6 +2550,7 @@
       "2-3ft": 76.95,
       "3-4ft": 93.95,
       "4-5ft": 112.95,
+      "5-6ft": 124.95,
       "6-7ft": 165.95
     },
     "red-sunset-maple:fast-growing-trees": {
@@ -2586,7 +2584,8 @@
     },
     "dwarf-alberta-spruce:fast-growing-trees": {
       "default": 199.95,
-      "1-2ft": 32.95
+      "1-2ft": 32.95,
+      "2-3ft": 48.95
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 44.95,
@@ -2676,9 +2675,6 @@
       "dwarf": 29.99,
       "semi-dwarf": 23.99,
       "supreme": 49.99
-    },
-    "bing-cherry-tree:stark-bros": {
-      "semi-dwarf": 35.99
     },
     "bartlett-pear-tree:stark-bros": {
       "semi-dwarf": 23.99,
