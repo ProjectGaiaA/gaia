@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-12T23:45:09.354759+00:00",
+  "timestamp": "2026-06-13T13:10:39.203828+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -8,9 +8,7 @@
       "products_found": 78,
       "products_error": 0,
       "prices_collected": 146,
-      "anomalies": [
-        "ANOMALY: summer-crush-hydrangea at nature-hills tier=2gal: $66.33 -> $31.99 (52% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -27,6 +25,12 @@
           "quart": 23.49,
           "2gal": 67.27,
           "3gal": 75.01
+        },
+        "summer-crush-hydrangea:nature-hills": {
+          "quart": 19.89,
+          "1gal": 43.55,
+          "2gal": 31.99,
+          "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
           "quart": 26.14,
@@ -963,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 174,
+      "prices_collected": 170,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1065,8 +1069,7 @@
         "coral-bark-japanese-maple:fast-growing-trees": {
           "3-4ft": 101.95,
           "4-5ft": 125.95,
-          "5-6ft": 153.95,
-          "6-7ft": 189.95
+          "5-6ft": 153.95
         },
         "crimson-queen-japanese-maple:fast-growing-trees": {
           "1-2ft": 66.95,
@@ -1099,11 +1102,7 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 30.95,
-          "quart": 31.95,
-          "1gal": 41.95,
-          "2gal": 44.95,
-          "3gal": 52.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1140,6 +1139,7 @@
           "default": 94.95
         },
         "pjm-rhododendron:fast-growing-trees": {
+          "1gal": 38.95,
           "default": 122.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
@@ -1383,11 +1383,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 753,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: summer-crush-hydrangea at nature-hills tier=2gal: $66.33 -> $31.99 (52% change)"
-  ],
+  "total_prices_collected": 749,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1404,6 +1402,12 @@
       "quart": 23.49,
       "2gal": 67.27,
       "3gal": 75.01
+    },
+    "summer-crush-hydrangea:nature-hills": {
+      "quart": 19.89,
+      "1gal": 43.55,
+      "2gal": 31.99,
+      "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
       "quart": 26.14,
@@ -2406,8 +2410,7 @@
     "coral-bark-japanese-maple:fast-growing-trees": {
       "3-4ft": 101.95,
       "4-5ft": 125.95,
-      "5-6ft": 153.95,
-      "6-7ft": 189.95
+      "5-6ft": 153.95
     },
     "crimson-queen-japanese-maple:fast-growing-trees": {
       "1-2ft": 66.95,
@@ -2440,11 +2443,7 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 30.95,
-      "quart": 31.95,
-      "1gal": 41.95,
-      "2gal": 44.95,
-      "3gal": 52.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2481,6 +2480,7 @@
       "default": 94.95
     },
     "pjm-rhododendron:fast-growing-trees": {
+      "1gal": 38.95,
       "default": 122.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
