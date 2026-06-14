@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-13T23:23:14.027497+00:00",
+  "timestamp": "2026-06-14T13:47:42.987339+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -1365,9 +1365,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 4,
-      "products_error": 4,
-      "prices_collected": 7,
+      "products_found": 3,
+      "products_error": 5,
+      "prices_collected": 6,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1381,15 +1381,12 @@
         },
         "double-knock-out-rose:stark-bros": {
           "default": 12.99
-        },
-        "pink-lemonade-blueberry:stark-bros": {
-          "default": 25.99
         }
       },
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 753,
+  "total_prices_collected": 752,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2692,9 +2689,6 @@
     },
     "double-knock-out-rose:stark-bros": {
       "default": 12.99
-    },
-    "pink-lemonade-blueberry:stark-bros": {
-      "default": 25.99
     }
   },
   "degraded_retailers": [
