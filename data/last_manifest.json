@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-14T23:28:25.942261+00:00",
+  "timestamp": "2026-06-15T17:03:10.941391+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,10 +967,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 167,
-      "anomalies": [
-        "ANOMALY: pampas-grass at fast-growing-trees tier=default: $99.95 -> $46.95 (53% change)"
-      ],
+      "prices_collected": 169,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1103,6 +1101,9 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
+          "4inch": 30.95,
+          "quart": 31.95,
+          "1gal": 41.95,
           "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
@@ -1136,7 +1137,6 @@
           "1-2ft": 64.95
         },
         "encore-azalea:fast-growing-trees": {
-          "1gal": 34.95,
           "default": 94.95
         },
         "pjm-rhododendron:fast-growing-trees": {
@@ -1179,6 +1179,9 @@
         },
         "blue-fescue-elijah-blue:fast-growing-trees": {
           "1gal": 44.95
+        },
+        "pampas-grass:fast-growing-trees": {
+          "default": 46.95
         },
         "astilbe:fast-growing-trees": {
           "default": 34.95
@@ -1281,8 +1284,8 @@
           "quart": 16.79
         },
         "little-lime-hydrangea:proven-winners-direct": {
-          "1gal": 31.99,
-          "quart": 16.79
+          "1gal": 27.99,
+          "quart": 14.69
         },
         "incrediball-hydrangea:proven-winners-direct": {
           "1gal": 31.99,
@@ -1358,32 +1361,47 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 3,
-      "products_error": 5,
-      "prices_collected": 6,
+      "products_found": 7,
+      "products_error": 1,
+      "prices_collected": 15,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
+          "dwarf-ez-start": 74.99,
           "dwarf": 29.99,
+          "semi-dwarf-ez-start": 64.99,
           "supreme": 49.99
         },
+        "elberta-peach-tree:stark-bros": {
+          "semi-dwarf-ez-start": 75.99
+        },
         "bartlett-pear-tree:stark-bros": {
+          "dwarf-ez-start": 74.99,
+          "ultra-supreme": 229.99,
+          "semi-dwarf-ez-start": 44.99,
           "semi-dwarf": 23.99,
           "supreme-ez-start": 75.99,
-          "supreme": 35.99
+          "standard-ez-start": 64.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 12.99
+        },
+        "duke-blueberry:stark-bros": {
+          "default": 25.99
+        },
+        "patriot-blueberry:stark-bros": {
+          "default": 27.99
+        },
+        "pink-lemonade-blueberry:stark-bros": {
+          "default": 25.99
         }
       },
-      "health": "degraded"
+      "health": "healthy"
     }
   ],
-  "total_prices_collected": 746,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: pampas-grass at fast-growing-trees tier=default: $99.95 -> $46.95 (53% change)"
-  ],
+  "total_prices_collected": 757,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2440,6 +2458,9 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
+      "4inch": 30.95,
+      "quart": 31.95,
+      "1gal": 41.95,
       "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
@@ -2473,7 +2494,6 @@
       "1-2ft": 64.95
     },
     "encore-azalea:fast-growing-trees": {
-      "1gal": 34.95,
       "default": 94.95
     },
     "pjm-rhododendron:fast-growing-trees": {
@@ -2516,6 +2536,9 @@
     },
     "blue-fescue-elijah-blue:fast-growing-trees": {
       "1gal": 44.95
+    },
+    "pampas-grass:fast-growing-trees": {
+      "default": 46.95
     },
     "astilbe:fast-growing-trees": {
       "default": 34.95
@@ -2606,8 +2629,8 @@
       "quart": 16.79
     },
     "little-lime-hydrangea:proven-winners-direct": {
-      "1gal": 31.99,
-      "quart": 16.79
+      "1gal": 27.99,
+      "quart": 14.69
     },
     "incrediball-hydrangea:proven-winners-direct": {
       "1gal": 31.99,
@@ -2665,20 +2688,35 @@
       "quart": 23.99
     },
     "honeycrisp-apple-tree:stark-bros": {
+      "dwarf-ez-start": 74.99,
       "dwarf": 29.99,
+      "semi-dwarf-ez-start": 64.99,
       "supreme": 49.99
     },
+    "elberta-peach-tree:stark-bros": {
+      "semi-dwarf-ez-start": 75.99
+    },
     "bartlett-pear-tree:stark-bros": {
+      "dwarf-ez-start": 74.99,
+      "ultra-supreme": 229.99,
+      "semi-dwarf-ez-start": 44.99,
       "semi-dwarf": 23.99,
       "supreme-ez-start": 75.99,
-      "supreme": 35.99
+      "standard-ez-start": 64.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 12.99
+    },
+    "duke-blueberry:stark-bros": {
+      "default": 25.99
+    },
+    "patriot-blueberry:stark-bros": {
+      "default": 27.99
+    },
+    "pink-lemonade-blueberry:stark-bros": {
+      "default": 25.99
     }
   },
-  "degraded_retailers": [
-    "stark-bros"
-  ],
-  "pipeline_status": "degraded"
+  "degraded_retailers": [],
+  "pipeline_status": "healthy"
 }
