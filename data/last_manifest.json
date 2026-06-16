@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-15T17:03:10.941391+00:00",
+  "timestamp": "2026-06-16T00:04:59.845103+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,8 +967,10 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 169,
-      "anomalies": [],
+      "prices_collected": 168,
+      "anomalies": [
+        "ANOMALY: kousa-dogwood at fast-growing-trees tier=default: $79.95 -> $212.95 (166% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1112,13 +1114,6 @@
         },
         "dogwood-tree:fast-growing-trees": {
           "default": 142.95
-        },
-        "kousa-dogwood:fast-growing-trees": {
-          "default": 79.95,
-          "3-4ft": 101.95,
-          "4-5ft": 129.95,
-          "5-6ft": 166.95,
-          "6-7ft": 212.95
         },
         "eastern-redbud:fast-growing-trees": {
           "2-3ft": 62.95,
@@ -1399,9 +1394,11 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 757,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 756,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: kousa-dogwood at fast-growing-trees tier=default: $79.95 -> $212.95 (166% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2469,13 +2466,6 @@
     },
     "dogwood-tree:fast-growing-trees": {
       "default": 142.95
-    },
-    "kousa-dogwood:fast-growing-trees": {
-      "default": 79.95,
-      "3-4ft": 101.95,
-      "4-5ft": 129.95,
-      "5-6ft": 166.95,
-      "6-7ft": 212.95
     },
     "eastern-redbud:fast-growing-trees": {
       "2-3ft": 62.95,
