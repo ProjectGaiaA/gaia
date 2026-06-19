@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-18T14:50:14.699384+00:00",
+  "timestamp": "2026-06-19T00:04:51.021168+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -805,9 +805,9 @@
       "price_records": {
         "limelight-hydrangea:spring-hill": {
           "premium-bareroot": 24.99,
-          "1gal": 25.99,
           "jumbo-bareroot": 69.99,
-          "4-5ft": 129.99
+          "4-5ft": 129.99,
+          "1gal": 25.99
         },
         "nikko-blue-hydrangea:spring-hill": {
           "premium-bareroot": 9.99,
@@ -848,8 +848,8 @@
           "48-54in": 129.99
         },
         "green-giant-arborvitae:spring-hill": {
-          "1-2ft": 14.99,
-          "3-4ft": 45.89,
+          "1-2ft": 19.99,
+          "3-4ft": 67.99,
           "5-6ft": 199.99,
           "bareroot": 17.49,
           "24-36in": 59.99,
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 169,
+      "prices_collected": 171,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1070,11 +1070,11 @@
         "coral-bark-japanese-maple:fast-growing-trees": {
           "3-4ft": 101.95,
           "4-5ft": 125.95,
-          "5-6ft": 153.95,
-          "6-7ft": 189.95
+          "5-6ft": 153.95
         },
         "crimson-queen-japanese-maple:fast-growing-trees": {
-          "1-2ft": 66.95
+          "1-2ft": 66.95,
+          "2-3ft": 81.95
         },
         "emperor-japanese-maple:fast-growing-trees": {
           "1-2ft": 54.95,
@@ -1149,7 +1149,7 @@
           "3gal": 42.95
         },
         "echinacea-powwow-wild-berry:fast-growing-trees": {
-          "default": 78.95
+          "1gal": 39.95
         },
         "vinca-minor:fast-growing-trees": {
           "1gal": 34.95
@@ -1234,7 +1234,9 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "1gal": 36.95
+          "quart": 16.95,
+          "1gal": 36.95,
+          "2gal": 51.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "3gal": 43.95,
@@ -1396,7 +1398,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 754,
+  "total_prices_collected": 756,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2171,9 +2173,9 @@
     },
     "limelight-hydrangea:spring-hill": {
       "premium-bareroot": 24.99,
-      "1gal": 25.99,
       "jumbo-bareroot": 69.99,
-      "4-5ft": 129.99
+      "4-5ft": 129.99,
+      "1gal": 25.99
     },
     "nikko-blue-hydrangea:spring-hill": {
       "premium-bareroot": 9.99,
@@ -2214,8 +2216,8 @@
       "48-54in": 129.99
     },
     "green-giant-arborvitae:spring-hill": {
-      "1-2ft": 14.99,
-      "3-4ft": 45.89,
+      "1-2ft": 19.99,
+      "3-4ft": 67.99,
       "5-6ft": 199.99,
       "bareroot": 17.49,
       "24-36in": 59.99,
@@ -2424,11 +2426,11 @@
     "coral-bark-japanese-maple:fast-growing-trees": {
       "3-4ft": 101.95,
       "4-5ft": 125.95,
-      "5-6ft": 153.95,
-      "6-7ft": 189.95
+      "5-6ft": 153.95
     },
     "crimson-queen-japanese-maple:fast-growing-trees": {
-      "1-2ft": 66.95
+      "1-2ft": 66.95,
+      "2-3ft": 81.95
     },
     "emperor-japanese-maple:fast-growing-trees": {
       "1-2ft": 54.95,
@@ -2503,7 +2505,7 @@
       "3gal": 42.95
     },
     "echinacea-powwow-wild-berry:fast-growing-trees": {
-      "default": 78.95
+      "1gal": 39.95
     },
     "vinca-minor:fast-growing-trees": {
       "1gal": 34.95
@@ -2588,7 +2590,9 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "1gal": 36.95
+      "quart": 16.95,
+      "1gal": 36.95,
+      "2gal": 51.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "3gal": 43.95,
