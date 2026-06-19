@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-19T14:48:02.316684+00:00",
+  "timestamp": "2026-06-19T23:19:25.249071+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -8,7 +8,9 @@
       "products_found": 78,
       "products_error": 0,
       "prices_collected": 146,
-      "anomalies": [],
+      "anomalies": [
+        "ANOMALY: summer-crush-hydrangea at nature-hills tier=2gal: $31.99 -> $50.94 (59% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -25,12 +27,6 @@
           "quart": 23.49,
           "2gal": 67.27,
           "3gal": 75.01
-        },
-        "summer-crush-hydrangea:nature-hills": {
-          "quart": 19.89,
-          "1gal": 43.55,
-          "2gal": 31.99,
-          "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
           "quart": 26.14,
@@ -967,10 +963,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 162,
-      "anomalies": [
-        "ANOMALY: eastern-redbud at fast-growing-trees tier=5-6ft: $152.95 -> $69.95 (54% change)"
-      ],
+      "prices_collected": 165,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1101,7 +1095,9 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "4inch": 30.95,
+          "quart": 27.95,
+          "1gal": 41.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1113,6 +1109,12 @@
         "kousa-dogwood:fast-growing-trees": {
           "3-4ft": 84.95,
           "4-5ft": 89.95
+        },
+        "eastern-redbud:fast-growing-trees": {
+          "2-3ft": 69.95,
+          "3-4ft": 69.95,
+          "4-5ft": 69.95,
+          "5-6ft": 69.95
         },
         "forest-pansy-redbud:fast-growing-trees": {
           "1-2ft": 56.95,
@@ -1225,6 +1227,7 @@
           "2gal": 51.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
+          "1gal": 21.95,
           "3gal": 39.95,
           "7gal": 170.95
         },
@@ -1357,6 +1360,7 @@
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
+          "dwarf": 29.99,
           "semi-dwarf-ez-start": 64.99
         },
         "elberta-peach-tree:stark-bros": {
@@ -1364,7 +1368,6 @@
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
-          "ultra-supreme": 229.99,
           "semi-dwarf-ez-start": 44.99,
           "supreme-ez-start": 75.99,
           "standard-ez-start": 64.99
@@ -1385,10 +1388,10 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 747,
+  "total_prices_collected": 750,
   "total_anomalies": 1,
   "anomalies": [
-    "ANOMALY: eastern-redbud at fast-growing-trees tier=5-6ft: $152.95 -> $69.95 (54% change)"
+    "ANOMALY: summer-crush-hydrangea at nature-hills tier=2gal: $31.99 -> $50.94 (59% change)"
   ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
@@ -1406,12 +1409,6 @@
       "quart": 23.49,
       "2gal": 67.27,
       "3gal": 75.01
-    },
-    "summer-crush-hydrangea:nature-hills": {
-      "quart": 19.89,
-      "1gal": 43.55,
-      "2gal": 31.99,
-      "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
       "quart": 26.14,
@@ -2444,7 +2441,9 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "4inch": 30.95,
+      "quart": 27.95,
+      "1gal": 41.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2456,6 +2455,12 @@
     "kousa-dogwood:fast-growing-trees": {
       "3-4ft": 84.95,
       "4-5ft": 89.95
+    },
+    "eastern-redbud:fast-growing-trees": {
+      "2-3ft": 69.95,
+      "3-4ft": 69.95,
+      "4-5ft": 69.95,
+      "5-6ft": 69.95
     },
     "forest-pansy-redbud:fast-growing-trees": {
       "1-2ft": 56.95,
@@ -2568,6 +2573,7 @@
       "2gal": 51.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
+      "1gal": 21.95,
       "3gal": 39.95,
       "7gal": 170.95
     },
@@ -2664,6 +2670,7 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
+      "dwarf": 29.99,
       "semi-dwarf-ez-start": 64.99
     },
     "elberta-peach-tree:stark-bros": {
@@ -2671,7 +2678,6 @@
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
-      "ultra-supreme": 229.99,
       "semi-dwarf-ez-start": 44.99,
       "supreme-ez-start": 75.99,
       "standard-ez-start": 64.99
