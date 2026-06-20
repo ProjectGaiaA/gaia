@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-19T23:19:25.249071+00:00",
+  "timestamp": "2026-06-20T13:14:00.929496+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -8,9 +8,7 @@
       "products_found": 78,
       "products_error": 0,
       "prices_collected": 146,
-      "anomalies": [
-        "ANOMALY: summer-crush-hydrangea at nature-hills tier=2gal: $31.99 -> $50.94 (59% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -27,6 +25,12 @@
           "quart": 23.49,
           "2gal": 67.27,
           "3gal": 75.01
+        },
+        "summer-crush-hydrangea:nature-hills": {
+          "quart": 19.89,
+          "1gal": 43.55,
+          "2gal": 50.94,
+          "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
           "quart": 26.14,
@@ -963,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 165,
+      "prices_collected": 164,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -986,8 +990,7 @@
           "3gal": 67.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
-          "quart": 32.95,
-          "3gal": 66.95
+          "quart": 32.95
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 51.95
@@ -1388,11 +1391,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 750,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: summer-crush-hydrangea at nature-hills tier=2gal: $31.99 -> $50.94 (59% change)"
-  ],
+  "total_prices_collected": 749,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1409,6 +1410,12 @@
       "quart": 23.49,
       "2gal": 67.27,
       "3gal": 75.01
+    },
+    "summer-crush-hydrangea:nature-hills": {
+      "quart": 19.89,
+      "1gal": 43.55,
+      "2gal": 50.94,
+      "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
       "quart": 26.14,
@@ -2332,8 +2339,7 @@
       "3gal": 67.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
-      "quart": 32.95,
-      "3gal": 66.95
+      "quart": 32.95
     },
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 51.95
