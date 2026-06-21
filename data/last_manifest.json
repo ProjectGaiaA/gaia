@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-21T13:51:17.178990+00:00",
+  "timestamp": "2026-06-21T23:30:56.467873+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 163,
+      "prices_collected": 162,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1073,7 +1073,6 @@
         },
         "emperor-japanese-maple:fast-growing-trees": {
           "1-2ft": 54.95,
-          "2-3ft": 66.95,
           "3-4ft": 82.95,
           "4-5ft": 101.95
         },
@@ -1355,24 +1354,30 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 7,
-      "products_error": 1,
-      "prices_collected": 12,
+      "products_found": 8,
+      "products_error": 0,
+      "prices_collected": 16,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
           "dwarf": 29.99,
-          "semi-dwarf-ez-start": 64.99
+          "semi-dwarf-ez-start": 64.99,
+          "semi-dwarf": 23.99
+        },
+        "bing-cherry-tree:stark-bros": {
+          "semi-dwarf": 35.99
         },
         "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 75.99
+          "semi-dwarf-ez-start": 75.99,
+          "semi-dwarf": 55.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
           "semi-dwarf-ez-start": 44.99,
           "supreme-ez-start": 75.99,
-          "standard-ez-start": 64.99
+          "standard-ez-start": 64.99,
+          "standard": 26.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 12.99
@@ -1390,7 +1395,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 748,
+  "total_prices_collected": 751,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2421,7 +2426,6 @@
     },
     "emperor-japanese-maple:fast-growing-trees": {
       "1-2ft": 54.95,
-      "2-3ft": 66.95,
       "3-4ft": 82.95,
       "4-5ft": 101.95
     },
@@ -2675,16 +2679,22 @@
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
       "dwarf": 29.99,
-      "semi-dwarf-ez-start": 64.99
+      "semi-dwarf-ez-start": 64.99,
+      "semi-dwarf": 23.99
+    },
+    "bing-cherry-tree:stark-bros": {
+      "semi-dwarf": 35.99
     },
     "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 75.99
+      "semi-dwarf-ez-start": 75.99,
+      "semi-dwarf": 55.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
       "semi-dwarf-ez-start": 44.99,
       "supreme-ez-start": 75.99,
-      "standard-ez-start": 64.99
+      "standard-ez-start": 64.99,
+      "standard": 26.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 12.99
