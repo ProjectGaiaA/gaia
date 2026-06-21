@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-06-20T23:29:25.976951+00:00",
+  "timestamp": "2026-06-21T13:51:17.178990+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 71,
-      "products_error": 7,
-      "prices_collected": 130,
+      "products_found": 78,
+      "products_error": 0,
+      "prices_collected": 146,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -38,6 +38,16 @@
           "2gal": 69.63,
           "3gal": 85.75
         },
+        "incrediball-hydrangea:nature-hills": {
+          "quart": 26.14,
+          "1gal": 48.29,
+          "3gal": 84.58
+        },
+        "pinky-winky-hydrangea:nature-hills": {
+          "quart": 26.29,
+          "1gal": 42.94,
+          "3gal": 82.58
+        },
         "fire-light-hydrangea:nature-hills": {
           "quart": 26.29,
           "3gal": 85.75
@@ -55,12 +65,20 @@
           "3gal": 72.46,
           "2gal": 41.86
         },
+        "green-giant-arborvitae:nature-hills": {
+          "quart": 13.86,
+          "1gal": 31.2,
+          "3gal": 72.46
+        },
         "bloodgood-japanese-maple:nature-hills": {
           "3gal": 156.61
         },
         "coral-bark-japanese-maple:nature-hills": {
           "1gal": 69.89,
           "2gal": 84.48
+        },
+        "emperor-japanese-maple:nature-hills": {
+          "5gal": 228.11
         },
         "tamukeyama-japanese-maple:nature-hills": {
           "3gal": 110.79
@@ -86,6 +104,9 @@
         "white-knock-out-rose:nature-hills": {
           "3gal": 72.09
         },
+        "coral-knock-out-rose:nature-hills": {
+          "3gal": 72.09
+        },
         "duke-blueberry:nature-hills": {
           "1gal": 39.96,
           "2gal": 78.09,
@@ -99,6 +120,11 @@
         },
         "pink-lemonade-blueberry:nature-hills": {
           "quart": 30.64
+        },
+        "eastern-redbud:nature-hills": {
+          "1gal": 49.92,
+          "2gal": 69.48,
+          "3gal": 78.32
         },
         "forest-pansy-redbud:nature-hills": {
           "3gal": 79.97
@@ -157,6 +183,10 @@
           "1gal": 33.17,
           "2gal": 51.67,
           "3gal": 60.67
+        },
+        "creeping-phlox:nature-hills": {
+          "quart": 16.99,
+          "1gal": 31.83
         },
         "butterfly-bush-miss-molly:nature-hills": {
           "quart": 26.14,
@@ -289,9 +319,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 73,
-      "products_error": 2,
-      "prices_collected": 318,
+      "products_found": 74,
+      "products_error": 1,
+      "prices_collected": 319,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -647,6 +677,9 @@
         "ajuga-chocolate-chip:planting-tree": {
           "quart": 29.95,
           "1gal": 30.95
+        },
+        "sedum-angelina:planting-tree": {
+          "1gal": 36.95
         },
         "blue-rug-juniper:planting-tree": {
           "1gal": 20.95,
@@ -1357,7 +1390,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 731,
+  "total_prices_collected": 748,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1389,6 +1422,16 @@
       "2gal": 69.63,
       "3gal": 85.75
     },
+    "incrediball-hydrangea:nature-hills": {
+      "quart": 26.14,
+      "1gal": 48.29,
+      "3gal": 84.58
+    },
+    "pinky-winky-hydrangea:nature-hills": {
+      "quart": 26.29,
+      "1gal": 42.94,
+      "3gal": 82.58
+    },
     "fire-light-hydrangea:nature-hills": {
       "quart": 26.29,
       "3gal": 85.75
@@ -1406,12 +1449,20 @@
       "3gal": 72.46,
       "2gal": 41.86
     },
+    "green-giant-arborvitae:nature-hills": {
+      "quart": 13.86,
+      "1gal": 31.2,
+      "3gal": 72.46
+    },
     "bloodgood-japanese-maple:nature-hills": {
       "3gal": 156.61
     },
     "coral-bark-japanese-maple:nature-hills": {
       "1gal": 69.89,
       "2gal": 84.48
+    },
+    "emperor-japanese-maple:nature-hills": {
+      "5gal": 228.11
     },
     "tamukeyama-japanese-maple:nature-hills": {
       "3gal": 110.79
@@ -1437,6 +1488,9 @@
     "white-knock-out-rose:nature-hills": {
       "3gal": 72.09
     },
+    "coral-knock-out-rose:nature-hills": {
+      "3gal": 72.09
+    },
     "duke-blueberry:nature-hills": {
       "1gal": 39.96,
       "2gal": 78.09,
@@ -1450,6 +1504,11 @@
     },
     "pink-lemonade-blueberry:nature-hills": {
       "quart": 30.64
+    },
+    "eastern-redbud:nature-hills": {
+      "1gal": 49.92,
+      "2gal": 69.48,
+      "3gal": 78.32
     },
     "forest-pansy-redbud:nature-hills": {
       "3gal": 79.97
@@ -1508,6 +1567,10 @@
       "1gal": 33.17,
       "2gal": 51.67,
       "3gal": 60.67
+    },
+    "creeping-phlox:nature-hills": {
+      "quart": 16.99,
+      "1gal": 31.83
     },
     "butterfly-bush-miss-molly:nature-hills": {
       "quart": 26.14,
@@ -1986,6 +2049,9 @@
     "ajuga-chocolate-chip:planting-tree": {
       "quart": 29.95,
       "1gal": 30.95
+    },
+    "sedum-angelina:planting-tree": {
+      "1gal": 36.95
     },
     "blue-rug-juniper:planting-tree": {
       "1gal": 20.95,
