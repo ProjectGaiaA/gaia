@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-06-23T23:34:20.578342+00:00",
+  "timestamp": "2026-06-24T14:01:56.610141+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 73,
-      "products_error": 5,
-      "prices_collected": 136,
+      "products_found": 78,
+      "products_error": 0,
+      "prices_collected": 146,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -121,6 +121,11 @@
         "pink-lemonade-blueberry:nature-hills": {
           "quart": 30.64
         },
+        "eastern-redbud:nature-hills": {
+          "1gal": 49.92,
+          "2gal": 69.48,
+          "3gal": 78.32
+        },
         "forest-pansy-redbud:nature-hills": {
           "3gal": 79.97
         },
@@ -137,8 +142,19 @@
         "gibraltar-azalea:nature-hills": {
           "3gal": 66.78
         },
+        "stella-de-oro-daylily:nature-hills": {
+          "quart": 16.99,
+          "1gal": 29.43
+        },
+        "hosta-sum-and-substance:nature-hills": {
+          "1gal": 29.67
+        },
         "echinacea-powwow-wild-berry:nature-hills": {
           "quart": 17.99
+        },
+        "lavender-phenomenal:nature-hills": {
+          "quart": 16.99,
+          "1gal": 36.6
         },
         "black-eyed-susan-goldsturm:nature-hills": {
           "quart": 16.99,
@@ -146,6 +162,10 @@
         },
         "peony-sarah-bernhardt:nature-hills": {
           "2gal": 74.56
+        },
+        "clematis-jackmanii:nature-hills": {
+          "quart": 26.11,
+          "1gal": 58.28
         },
         "green-mountain-boxwood:nature-hills": {
           "quart": 19.35,
@@ -299,9 +319,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 72,
-      "products_error": 3,
-      "prices_collected": 311,
+      "products_found": 74,
+      "products_error": 1,
+      "prices_collected": 319,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -701,6 +721,12 @@
           "5-6ft": 129.95,
           "6-7ft": 169.95
         },
+        "red-sunset-maple:planting-tree": {
+          "3-4ft": 119.95,
+          "4-5ft": 129.95,
+          "5-6ft": 144.95,
+          "6-7ft": 154.95
+        },
         "sweetbay-magnolia:planting-tree": {
           "1-2ft": 92.95,
           "2-3ft": 84.95,
@@ -747,6 +773,12 @@
           "2gal": 69.95,
           "3gal": 46.95
         },
+        "santa-rosa-plum:planting-tree": {
+          "3-4ft": 114.95,
+          "4-5ft": 119.95,
+          "5-6ft": 134.95,
+          "6-7ft": 164.95
+        },
         "dwarf-cavendish-banana:planting-tree": {
           "starter-plug": 16.99,
           "6-inch": 47.95,
@@ -766,9 +798,9 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 32,
-      "products_error": 8,
-      "prices_collected": 71,
+      "products_found": 38,
+      "products_error": 2,
+      "prices_collected": 79,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -780,6 +812,11 @@
         "nikko-blue-hydrangea:spring-hill": {
           "premium-bareroot": 9.99,
           "1gal": 39.99
+        },
+        "bloomstruck-hydrangea:spring-hill": {
+          "jumbo-bareroot": 79.99,
+          "premium-bareroot": 39.99,
+          "1gal": 54.99
         },
         "summer-crush-hydrangea:spring-hill": {
           "premium-bareroot": 39.99,
@@ -795,6 +832,9 @@
           "1gal": 49.99,
           "5-6ft": 99.99,
           "2-4ft": 49.99
+        },
+        "bartlett-pear-tree:spring-hill": {
+          "default": 29.99
         },
         "emerald-green-arborvitae:spring-hill": {
           "1-2ft": 19.99,
@@ -821,6 +861,12 @@
           "3gal": 129.99,
           "2-4ft": 109.99
         },
+        "coral-bark-japanese-maple:spring-hill": {
+          "2-4ft": 149.99
+        },
+        "crimson-queen-japanese-maple:spring-hill": {
+          "default": 49.99
+        },
         "tamukeyama-japanese-maple:spring-hill": {
           "default": 129.99
         },
@@ -839,9 +885,15 @@
         "bluecrop-blueberry:spring-hill": {
           "default": 29.99
         },
+        "patriot-blueberry:spring-hill": {
+          "default": 29.99
+        },
         "pink-lemonade-blueberry:spring-hill": {
           "bareroot": 18.99,
           "jumbo-bareroot": 9.99
+        },
+        "sunshine-blue-blueberry:spring-hill": {
+          "3inch": 16.99
         },
         "yoshino-cherry:spring-hill": {
           "2-4ft": 129.99,
@@ -1356,7 +1408,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 738,
+  "total_prices_collected": 764,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1471,6 +1523,11 @@
     "pink-lemonade-blueberry:nature-hills": {
       "quart": 30.64
     },
+    "eastern-redbud:nature-hills": {
+      "1gal": 49.92,
+      "2gal": 69.48,
+      "3gal": 78.32
+    },
     "forest-pansy-redbud:nature-hills": {
       "3gal": 79.97
     },
@@ -1487,8 +1544,19 @@
     "gibraltar-azalea:nature-hills": {
       "3gal": 66.78
     },
+    "stella-de-oro-daylily:nature-hills": {
+      "quart": 16.99,
+      "1gal": 29.43
+    },
+    "hosta-sum-and-substance:nature-hills": {
+      "1gal": 29.67
+    },
     "echinacea-powwow-wild-berry:nature-hills": {
       "quart": 17.99
+    },
+    "lavender-phenomenal:nature-hills": {
+      "quart": 16.99,
+      "1gal": 36.6
     },
     "black-eyed-susan-goldsturm:nature-hills": {
       "quart": 16.99,
@@ -1496,6 +1564,10 @@
     },
     "peony-sarah-bernhardt:nature-hills": {
       "2gal": 74.56
+    },
+    "clematis-jackmanii:nature-hills": {
+      "quart": 26.11,
+      "1gal": 58.28
     },
     "green-mountain-boxwood:nature-hills": {
       "quart": 19.35,
@@ -2039,6 +2111,12 @@
       "5-6ft": 129.95,
       "6-7ft": 169.95
     },
+    "red-sunset-maple:planting-tree": {
+      "3-4ft": 119.95,
+      "4-5ft": 129.95,
+      "5-6ft": 144.95,
+      "6-7ft": 154.95
+    },
     "sweetbay-magnolia:planting-tree": {
       "1-2ft": 92.95,
       "2-3ft": 84.95,
@@ -2085,6 +2163,12 @@
       "2gal": 69.95,
       "3gal": 46.95
     },
+    "santa-rosa-plum:planting-tree": {
+      "3-4ft": 114.95,
+      "4-5ft": 119.95,
+      "5-6ft": 134.95,
+      "6-7ft": 164.95
+    },
     "dwarf-cavendish-banana:planting-tree": {
       "starter-plug": 16.99,
       "6-inch": 47.95,
@@ -2107,6 +2191,11 @@
       "premium-bareroot": 9.99,
       "1gal": 39.99
     },
+    "bloomstruck-hydrangea:spring-hill": {
+      "jumbo-bareroot": 79.99,
+      "premium-bareroot": 39.99,
+      "1gal": 54.99
+    },
     "summer-crush-hydrangea:spring-hill": {
       "premium-bareroot": 39.99,
       "1gal": 79.99,
@@ -2121,6 +2210,9 @@
       "1gal": 49.99,
       "5-6ft": 99.99,
       "2-4ft": 49.99
+    },
+    "bartlett-pear-tree:spring-hill": {
+      "default": 29.99
     },
     "emerald-green-arborvitae:spring-hill": {
       "1-2ft": 19.99,
@@ -2147,6 +2239,12 @@
       "3gal": 129.99,
       "2-4ft": 109.99
     },
+    "coral-bark-japanese-maple:spring-hill": {
+      "2-4ft": 149.99
+    },
+    "crimson-queen-japanese-maple:spring-hill": {
+      "default": 49.99
+    },
     "tamukeyama-japanese-maple:spring-hill": {
       "default": 129.99
     },
@@ -2165,9 +2263,15 @@
     "bluecrop-blueberry:spring-hill": {
       "default": 29.99
     },
+    "patriot-blueberry:spring-hill": {
+      "default": 29.99
+    },
     "pink-lemonade-blueberry:spring-hill": {
       "bareroot": 18.99,
       "jumbo-bareroot": 9.99
+    },
+    "sunshine-blue-blueberry:spring-hill": {
+      "3inch": 16.99
     },
     "yoshino-cherry:spring-hill": {
       "2-4ft": 129.99,
