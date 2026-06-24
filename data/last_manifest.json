@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-24T14:01:56.610141+00:00",
+  "timestamp": "2026-06-24T23:35:56.419069+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 172,
+      "prices_collected": 174,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -984,7 +984,7 @@
           "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
-          "default": 118.95
+          "3gal": 69.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
           "1gal": 36.95,
@@ -1236,7 +1236,9 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "2gal": 51.95
+          "quart": 16.95,
+          "2gal": 51.95,
+          "3gal": 74.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95,
@@ -1366,17 +1368,15 @@
       "products_expected": 8,
       "products_found": 8,
       "products_error": 0,
-      "prices_collected": 19,
+      "prices_collected": 16,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
           "semi-dwarf-ez-start": 64.99,
-          "supreme-ez-start": 75.99,
           "ultra-supreme": 199.99
         },
         "bing-cherry-tree:stark-bros": {
-          "supreme-ez-start": 95.99,
           "semi-dwarf-ez-start": 75.99,
           "standard-ez-start": 75.99
         },
@@ -1389,7 +1389,6 @@
           "ultra-supreme": 229.99,
           "semi-dwarf-ez-start": 44.99,
           "supreme-ez-start": 75.99,
-          "semi-dwarf-potted": 107.99,
           "standard-ez-start": 64.99
         },
         "double-knock-out-rose:stark-bros": {
@@ -1408,7 +1407,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 764,
+  "total_prices_collected": 763,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2350,7 +2349,7 @@
       "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
-      "default": 118.95
+      "3gal": 69.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
       "1gal": 36.95,
@@ -2602,7 +2601,9 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "2gal": 51.95
+      "quart": 16.95,
+      "2gal": 51.95,
+      "3gal": 74.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95,
@@ -2702,11 +2703,9 @@
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
       "semi-dwarf-ez-start": 64.99,
-      "supreme-ez-start": 75.99,
       "ultra-supreme": 199.99
     },
     "bing-cherry-tree:stark-bros": {
-      "supreme-ez-start": 95.99,
       "semi-dwarf-ez-start": 75.99,
       "standard-ez-start": 75.99
     },
@@ -2719,7 +2718,6 @@
       "ultra-supreme": 229.99,
       "semi-dwarf-ez-start": 44.99,
       "supreme-ez-start": 75.99,
-      "semi-dwarf-potted": 107.99,
       "standard-ez-start": 64.99
     },
     "double-knock-out-rose:stark-bros": {
