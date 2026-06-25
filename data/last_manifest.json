@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-06-25T14:01:00.145430+00:00",
+  "timestamp": "2026-06-25T23:42:19.701616+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
-      "products_error": 0,
-      "prices_collected": 146,
+      "products_found": 77,
+      "products_error": 1,
+      "prices_collected": 145,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -305,9 +305,6 @@
         },
         "autumn-twist-encore-azalea:nature-hills": {
           "1gal": 56.39
-        },
-        "nandina-heavenly-bamboo:nature-hills": {
-          "1gal": 39.29
         },
         "santa-rosa-plum:nature-hills": {
           "2gal": 119.36
@@ -967,7 +964,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 170,
+      "prices_collected": 171,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -975,8 +972,7 @@
           "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
-          "quart": 22.95,
-          "default": 42.95
+          "3gal": 42.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
@@ -984,7 +980,7 @@
           "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
-          "3gal": 69.95
+          "default": 118.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
           "1gal": 36.95,
@@ -1104,7 +1100,10 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "4inch": 30.95,
+          "quart": 31.95,
+          "1gal": 41.95,
+          "3gal": 52.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1232,7 +1231,6 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "quart": 16.95,
           "2gal": 51.95,
           "3gal": 74.95
         },
@@ -1702,9 +1700,6 @@
     },
     "autumn-twist-encore-azalea:nature-hills": {
       "1gal": 56.39
-    },
-    "nandina-heavenly-bamboo:nature-hills": {
-      "1gal": 39.29
     },
     "santa-rosa-plum:nature-hills": {
       "2gal": 119.36
@@ -2336,8 +2331,7 @@
       "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
-      "quart": 22.95,
-      "default": 42.95
+      "3gal": 42.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
@@ -2345,7 +2339,7 @@
       "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
-      "3gal": 69.95
+      "default": 118.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
       "1gal": 36.95,
@@ -2465,7 +2459,10 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "4inch": 30.95,
+      "quart": 31.95,
+      "1gal": 41.95,
+      "3gal": 52.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2593,7 +2590,6 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "quart": 16.95,
       "2gal": 51.95,
       "3gal": 74.95
     },
