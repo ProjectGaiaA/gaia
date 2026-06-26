@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-26T13:54:25.016775+00:00",
+  "timestamp": "2026-06-26T23:33:46.703656+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,11 +967,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 164,
-      "anomalies": [
-        "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=1-2ft: $44.95 -> $19.95 (56% change)",
-        "ANOMALY: eastern-redbud at fast-growing-trees tier=5-6ft: $152.95 -> $69.95 (54% change)"
-      ],
+      "prices_collected": 163,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1028,8 +1025,15 @@
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
           "2-3ft": 39.95,
-          "3-4ft": 69.95,
-          "6-7ft": 248.95
+          "3-4ft": 69.95
+        },
+        "green-giant-arborvitae:fast-growing-trees": {
+          "1-2ft": 19.95,
+          "2-3ft": 66.95,
+          "3-4ft": 64.95,
+          "4-5ft": 112.95,
+          "5-6ft": 199.95,
+          "6-7ft": 459.95
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 21.95,
@@ -1040,7 +1044,6 @@
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 29.95,
-          "2gal": 46.95,
           "3gal": 73.95,
           "5gal": 116.95
         },
@@ -1110,6 +1113,12 @@
           "3-4ft": 84.95,
           "4-5ft": 89.95
         },
+        "eastern-redbud:fast-growing-trees": {
+          "2-3ft": 69.95,
+          "3-4ft": 69.95,
+          "4-5ft": 69.95,
+          "5-6ft": 69.95
+        },
         "forest-pansy-redbud:fast-growing-trees": {
           "1-2ft": 56.95,
           "default": 114.95,
@@ -1148,6 +1157,7 @@
           "1gal": 29.95
         },
         "blue-rug-juniper:fast-growing-trees": {
+          "1gal": 26.95,
           "default": 46.95
         },
         "pink-muhly-grass:fast-growing-trees": {
@@ -1173,7 +1183,7 @@
           "default": 59.95
         },
         "happy-returns-daylily:fast-growing-trees": {
-          "default": 28.95
+          "1gal": 28.95
         },
         "catmint-walkers-low:fast-growing-trees": {
           "1gal": 28.95
@@ -1386,12 +1396,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 753,
-  "total_anomalies": 2,
-  "anomalies": [
-    "ANOMALY: green-giant-arborvitae at fast-growing-trees tier=1-2ft: $44.95 -> $19.95 (56% change)",
-    "ANOMALY: eastern-redbud at fast-growing-trees tier=5-6ft: $152.95 -> $69.95 (54% change)"
-  ],
+  "total_prices_collected": 752,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2372,8 +2379,15 @@
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
       "2-3ft": 39.95,
-      "3-4ft": 69.95,
-      "6-7ft": 248.95
+      "3-4ft": 69.95
+    },
+    "green-giant-arborvitae:fast-growing-trees": {
+      "1-2ft": 19.95,
+      "2-3ft": 66.95,
+      "3-4ft": 64.95,
+      "4-5ft": 112.95,
+      "5-6ft": 199.95,
+      "6-7ft": 459.95
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 21.95,
@@ -2384,7 +2398,6 @@
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 29.95,
-      "2gal": 46.95,
       "3gal": 73.95,
       "5gal": 116.95
     },
@@ -2454,6 +2467,12 @@
       "3-4ft": 84.95,
       "4-5ft": 89.95
     },
+    "eastern-redbud:fast-growing-trees": {
+      "2-3ft": 69.95,
+      "3-4ft": 69.95,
+      "4-5ft": 69.95,
+      "5-6ft": 69.95
+    },
     "forest-pansy-redbud:fast-growing-trees": {
       "1-2ft": 56.95,
       "default": 114.95,
@@ -2492,6 +2511,7 @@
       "1gal": 29.95
     },
     "blue-rug-juniper:fast-growing-trees": {
+      "1gal": 26.95,
       "default": 46.95
     },
     "pink-muhly-grass:fast-growing-trees": {
@@ -2517,7 +2537,7 @@
       "default": 59.95
     },
     "happy-returns-daylily:fast-growing-trees": {
-      "default": 28.95
+      "1gal": 28.95
     },
     "catmint-walkers-low:fast-growing-trees": {
       "1gal": 28.95
