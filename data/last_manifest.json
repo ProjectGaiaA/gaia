@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-26T23:33:46.703656+00:00",
+  "timestamp": "2026-06-27T12:54:13.987670+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -28,8 +28,8 @@
         },
         "summer-crush-hydrangea:nature-hills": {
           "quart": 19.89,
-          "1gal": 43.55,
           "2gal": 50.94,
+          "1gal": 43.55,
           "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 163,
+      "prices_collected": 160,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -978,8 +978,6 @@
           "3gal": 42.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
-          "1gal": 29.95,
-          "2gal": 49.95,
           "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
@@ -1213,7 +1211,6 @@
         "sweetbay-magnolia:fast-growing-trees": {
           "default": 160.95,
           "2-3ft": 56.95,
-          "3-4ft": 73.95,
           "4-5ft": 95.95,
           "5-6ft": 123.95
         },
@@ -1396,7 +1393,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 752,
+  "total_prices_collected": 749,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1418,8 +1415,8 @@
     },
     "summer-crush-hydrangea:nature-hills": {
       "quart": 19.89,
-      "1gal": 43.55,
       "2gal": 50.94,
+      "1gal": 43.55,
       "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
@@ -2332,8 +2329,6 @@
       "3gal": 42.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
-      "1gal": 29.95,
-      "2gal": 49.95,
       "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
@@ -2567,7 +2562,6 @@
     "sweetbay-magnolia:fast-growing-trees": {
       "default": 160.95,
       "2-3ft": 56.95,
-      "3-4ft": 73.95,
       "4-5ft": 95.95,
       "5-6ft": 123.95
     },
