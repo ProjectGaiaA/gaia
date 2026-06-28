@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-28T13:04:14.186409+00:00",
+  "timestamp": "2026-06-28T23:22:22.448164+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,8 +967,10 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 160,
-      "anomalies": [],
+      "prices_collected": 154,
+      "anomalies": [
+        "ANOMALY: eastern-redbud at fast-growing-trees tier=5-6ft: $69.95 -> $109.95 (57% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1081,12 +1083,10 @@
         },
         "double-knock-out-rose:fast-growing-trees": {
           "1gal": 24.95,
-          "2gal": 39.95,
           "3gal": 54.95,
           "7gal": 99.95
         },
         "white-knock-out-rose:fast-growing-trees": {
-          "1gal": 37.95,
           "3gal": 63.95
         },
         "coral-knock-out-rose:fast-growing-trees": {
@@ -1096,10 +1096,7 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 30.95,
-          "quart": 27.95,
-          "1gal": 41.95,
-          "3gal": 52.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1111,12 +1108,6 @@
         "kousa-dogwood:fast-growing-trees": {
           "3-4ft": 84.95,
           "4-5ft": 89.95
-        },
-        "eastern-redbud:fast-growing-trees": {
-          "2-3ft": 69.95,
-          "3-4ft": 69.95,
-          "4-5ft": 69.95,
-          "5-6ft": 69.95
         },
         "forest-pansy-redbud:fast-growing-trees": {
           "1-2ft": 56.95,
@@ -1156,7 +1147,6 @@
           "1gal": 29.95
         },
         "blue-rug-juniper:fast-growing-trees": {
-          "1gal": 26.95,
           "default": 46.95
         },
         "pink-muhly-grass:fast-growing-trees": {
@@ -1393,9 +1383,11 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 749,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 743,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: eastern-redbud at fast-growing-trees tier=5-6ft: $69.95 -> $109.95 (57% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2432,12 +2424,10 @@
     },
     "double-knock-out-rose:fast-growing-trees": {
       "1gal": 24.95,
-      "2gal": 39.95,
       "3gal": 54.95,
       "7gal": 99.95
     },
     "white-knock-out-rose:fast-growing-trees": {
-      "1gal": 37.95,
       "3gal": 63.95
     },
     "coral-knock-out-rose:fast-growing-trees": {
@@ -2447,10 +2437,7 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 30.95,
-      "quart": 27.95,
-      "1gal": 41.95,
-      "3gal": 52.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2462,12 +2449,6 @@
     "kousa-dogwood:fast-growing-trees": {
       "3-4ft": 84.95,
       "4-5ft": 89.95
-    },
-    "eastern-redbud:fast-growing-trees": {
-      "2-3ft": 69.95,
-      "3-4ft": 69.95,
-      "4-5ft": 69.95,
-      "5-6ft": 69.95
     },
     "forest-pansy-redbud:fast-growing-trees": {
       "1-2ft": 56.95,
@@ -2507,7 +2488,6 @@
       "1gal": 29.95
     },
     "blue-rug-juniper:fast-growing-trees": {
-      "1gal": 26.95,
       "default": 46.95
     },
     "pink-muhly-grass:fast-growing-trees": {
