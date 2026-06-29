@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-06-29T15:32:24.395422+00:00",
+  "timestamp": "2026-06-29T23:27:06.637330+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -28,8 +28,8 @@
         },
         "summer-crush-hydrangea:nature-hills": {
           "quart": 19.89,
-          "2gal": 50.94,
           "1gal": 43.55,
+          "2gal": 50.94,
           "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
@@ -1024,7 +1024,8 @@
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
           "2-3ft": 39.95,
-          "3-4ft": 69.95
+          "3-4ft": 69.95,
+          "6-7ft": 248.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
@@ -1124,8 +1125,7 @@
           "6-7ft": 197.95
         },
         "crape-myrtle:fast-growing-trees": {
-          "1-2ft": 64.95,
-          "3-4ft": 89.95
+          "1-2ft": 64.95
         },
         "encore-azalea:fast-growing-trees": {
           "default": 94.95
@@ -1263,9 +1263,9 @@
       "retailer_id": "proven-winners-direct",
       "status": "completed",
       "products_expected": 11,
-      "products_found": 11,
-      "products_error": 0,
-      "prices_collected": 21,
+      "products_found": 10,
+      "products_error": 1,
+      "prices_collected": 19,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
@@ -1291,10 +1291,6 @@
         "heuchera-coral-bells:proven-winners-direct": {
           "0-65-gallon": 24.74,
           "quart": 15.74
-        },
-        "bleeding-heart:proven-winners-direct": {
-          "1gal": 37.99,
-          "quart": 20.99
         },
         "bee-balm:proven-winners-direct": {
           "0-65-gallon": 32.99
@@ -1390,7 +1386,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 746,
+  "total_prices_collected": 744,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1412,8 +1408,8 @@
     },
     "summer-crush-hydrangea:nature-hills": {
       "quart": 19.89,
-      "2gal": 50.94,
       "1gal": 43.55,
+      "2gal": 50.94,
       "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
@@ -2372,7 +2368,8 @@
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
       "2-3ft": 39.95,
-      "3-4ft": 69.95
+      "3-4ft": 69.95,
+      "6-7ft": 248.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
@@ -2472,8 +2469,7 @@
       "6-7ft": 197.95
     },
     "crape-myrtle:fast-growing-trees": {
-      "1-2ft": 64.95,
-      "3-4ft": 89.95
+      "1-2ft": 64.95
     },
     "encore-azalea:fast-growing-trees": {
       "default": 94.95
@@ -2627,10 +2623,6 @@
     "heuchera-coral-bells:proven-winners-direct": {
       "0-65-gallon": 24.74,
       "quart": 15.74
-    },
-    "bleeding-heart:proven-winners-direct": {
-      "1gal": 37.99,
-      "quart": 20.99
     },
     "bee-balm:proven-winners-direct": {
       "0-65-gallon": 32.99
