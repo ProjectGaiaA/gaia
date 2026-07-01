@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-01T14:21:56.324678+00:00",
+  "timestamp": "2026-07-01T23:36:20.704929+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -806,7 +806,7 @@
         "limelight-hydrangea:spring-hill": {
           "premium-bareroot": 24.99,
           "jumbo-bareroot": 69.99,
-          "4-5ft": 129.99,
+          "4-5ft": 97.49,
           "1gal": 25.99
         },
         "nikko-blue-hydrangea:spring-hill": {
@@ -814,18 +814,18 @@
           "1gal": 39.99
         },
         "bloomstruck-hydrangea:spring-hill": {
-          "jumbo-bareroot": 79.99,
           "premium-bareroot": 39.99,
+          "jumbo-bareroot": 63.99,
           "1gal": 54.99
         },
         "summer-crush-hydrangea:spring-hill": {
           "premium-bareroot": 39.99,
-          "1gal": 79.99,
+          "1gal": 63.99,
           "4inch": 29.99,
           "jumbo-bareroot": 79.99
         },
         "incrediball-hydrangea:spring-hill": {
-          "premium-bareroot": 39.99
+          "premium-bareroot": 29.99
         },
         "honeycrisp-apple-tree:spring-hill": {
           "2gal": 69.99,
@@ -837,9 +837,9 @@
           "default": 29.99
         },
         "emerald-green-arborvitae:spring-hill": {
-          "1-2ft": 19.99,
-          "3-4ft": 79.99,
-          "5-6ft": 199.99,
+          "1-2ft": 14.99,
+          "3-4ft": 59.99,
+          "5-6ft": 149.99,
           "bareroot": 90.99,
           "12-18in": 19.99,
           "18-24in": 39.99,
@@ -859,7 +859,7 @@
         },
         "bloodgood-japanese-maple:spring-hill": {
           "3gal": 129.99,
-          "2-4ft": 109.99
+          "2-4ft": 101.19
         },
         "coral-bark-japanese-maple:spring-hill": {
           "2-4ft": 149.99
@@ -897,7 +897,7 @@
         },
         "yoshino-cherry:spring-hill": {
           "2-4ft": 129.99,
-          "5-6ft": 170.99,
+          "5-6ft": 143.99,
           "5gal": 179.99
         },
         "gibraltar-azalea:spring-hill": {
@@ -908,12 +908,12 @@
           "bareroot": 14.99
         },
         "big-blue-liriope:spring-hill": {
-          "premium-bareroot": 13.99,
+          "premium-bareroot": 12.59,
           "1gal": 29.99
         },
         "pink-muhly-grass:spring-hill": {
-          "premium-bareroot": 24.99,
-          "jumbo-bareroot": 39.99,
+          "premium-bareroot": 19.99,
+          "jumbo-bareroot": 31.99,
           "bareroot": 16.99,
           "3inch": 9.99
         },
@@ -934,7 +934,7 @@
           "default": 9.99
         },
         "purple-coneflower:spring-hill": {
-          "premium-bareroot": 24.99,
+          "premium-bareroot": 19.99,
           "jumbo-bareroot": 54.99
         },
         "happy-returns-daylily:spring-hill": {
@@ -946,14 +946,14 @@
         "russian-sage:spring-hill": {
           "bareroot": 24.99,
           "jumbo-bareroot": 39.99,
-          "premium-bareroot": 24.99
+          "premium-bareroot": 19.99
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99,
-          "5-6ft": 179.99
+          "5-6ft": 143.99
         },
         "rose-of-sharon:spring-hill": {
-          "premium-bareroot": 24.99
+          "premium-bareroot": 18.74
         },
         "dwarf-alberta-spruce:spring-hill": {
           "1gal": 49.99
@@ -967,8 +967,11 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 209,
-      "anomalies": [],
+      "prices_collected": 210,
+      "anomalies": [
+        "ANOMALY: encore-azalea at fast-growing-trees tier=default: $99.95 -> $34.95 (65% change)",
+        "ANOMALY: wine-and-roses-weigela at fast-growing-trees tier=default: $52.95 -> $109.95 (108% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 32.95,
@@ -989,7 +992,7 @@
         "summer-crush-hydrangea:fast-growing-trees": {
           "1gal": 44.95,
           "2gal": 60.95,
-          "3gal": 83.95
+          "default": 83.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
           "quart": 53.95,
@@ -1054,7 +1057,8 @@
           "2-3ft": 63.95,
           "3-4ft": 93.95,
           "4-5ft": 144.95,
-          "5-6ft": 219.95
+          "5-6ft": 219.95,
+          "6-7ft": 327.95
         },
         "skip-laurel:fast-growing-trees": {
           "default": 234.95,
@@ -1161,9 +1165,6 @@
           "5-6ft": 779.95,
           "6-7ft": 936.95
         },
-        "encore-azalea:fast-growing-trees": {
-          "default": 99.95
-        },
         "pjm-rhododendron:fast-growing-trees": {
           "default": 128.95
         },
@@ -1264,11 +1265,6 @@
           "5-6ft": 99.95,
           "6-7ft": 200.95
         },
-        "wine-and-roses-weigela:fast-growing-trees": {
-          "default": 52.95,
-          "2gal": 76.95,
-          "3gal": 109.95
-        },
         "gardenia-frost-proof:fast-growing-trees": {
           "default": 193.95,
           "1gal": 25.95,
@@ -1295,11 +1291,11 @@
           "3gal": 81.95
         },
         "santa-rosa-plum:fast-growing-trees": {
-          "default": 119.95,
+          "default": 146.95,
           "2-3ft": 60.95,
-          "4-5ft": 126.95,
+          "5-6ft": 126.95,
           "3-4ft": 97.95,
-          "6-7ft": 146.95
+          "4-5ft": 119.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "default": 194.95,
@@ -1436,9 +1432,12 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 794,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 795,
+  "total_anomalies": 2,
+  "anomalies": [
+    "ANOMALY: encore-azalea at fast-growing-trees tier=default: $99.95 -> $34.95 (65% change)",
+    "ANOMALY: wine-and-roses-weigela at fast-growing-trees tier=default: $52.95 -> $109.95 (108% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 21.59,
@@ -2212,7 +2211,7 @@
     "limelight-hydrangea:spring-hill": {
       "premium-bareroot": 24.99,
       "jumbo-bareroot": 69.99,
-      "4-5ft": 129.99,
+      "4-5ft": 97.49,
       "1gal": 25.99
     },
     "nikko-blue-hydrangea:spring-hill": {
@@ -2220,18 +2219,18 @@
       "1gal": 39.99
     },
     "bloomstruck-hydrangea:spring-hill": {
-      "jumbo-bareroot": 79.99,
       "premium-bareroot": 39.99,
+      "jumbo-bareroot": 63.99,
       "1gal": 54.99
     },
     "summer-crush-hydrangea:spring-hill": {
       "premium-bareroot": 39.99,
-      "1gal": 79.99,
+      "1gal": 63.99,
       "4inch": 29.99,
       "jumbo-bareroot": 79.99
     },
     "incrediball-hydrangea:spring-hill": {
-      "premium-bareroot": 39.99
+      "premium-bareroot": 29.99
     },
     "honeycrisp-apple-tree:spring-hill": {
       "2gal": 69.99,
@@ -2243,9 +2242,9 @@
       "default": 29.99
     },
     "emerald-green-arborvitae:spring-hill": {
-      "1-2ft": 19.99,
-      "3-4ft": 79.99,
-      "5-6ft": 199.99,
+      "1-2ft": 14.99,
+      "3-4ft": 59.99,
+      "5-6ft": 149.99,
       "bareroot": 90.99,
       "12-18in": 19.99,
       "18-24in": 39.99,
@@ -2265,7 +2264,7 @@
     },
     "bloodgood-japanese-maple:spring-hill": {
       "3gal": 129.99,
-      "2-4ft": 109.99
+      "2-4ft": 101.19
     },
     "coral-bark-japanese-maple:spring-hill": {
       "2-4ft": 149.99
@@ -2303,7 +2302,7 @@
     },
     "yoshino-cherry:spring-hill": {
       "2-4ft": 129.99,
-      "5-6ft": 170.99,
+      "5-6ft": 143.99,
       "5gal": 179.99
     },
     "gibraltar-azalea:spring-hill": {
@@ -2314,12 +2313,12 @@
       "bareroot": 14.99
     },
     "big-blue-liriope:spring-hill": {
-      "premium-bareroot": 13.99,
+      "premium-bareroot": 12.59,
       "1gal": 29.99
     },
     "pink-muhly-grass:spring-hill": {
-      "premium-bareroot": 24.99,
-      "jumbo-bareroot": 39.99,
+      "premium-bareroot": 19.99,
+      "jumbo-bareroot": 31.99,
       "bareroot": 16.99,
       "3inch": 9.99
     },
@@ -2340,7 +2339,7 @@
       "default": 9.99
     },
     "purple-coneflower:spring-hill": {
-      "premium-bareroot": 24.99,
+      "premium-bareroot": 19.99,
       "jumbo-bareroot": 54.99
     },
     "happy-returns-daylily:spring-hill": {
@@ -2352,14 +2351,14 @@
     "russian-sage:spring-hill": {
       "bareroot": 24.99,
       "jumbo-bareroot": 39.99,
-      "premium-bareroot": 24.99
+      "premium-bareroot": 19.99
     },
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99,
-      "5-6ft": 179.99
+      "5-6ft": 143.99
     },
     "rose-of-sharon:spring-hill": {
-      "premium-bareroot": 24.99
+      "premium-bareroot": 18.74
     },
     "dwarf-alberta-spruce:spring-hill": {
       "1gal": 49.99
@@ -2383,7 +2382,7 @@
     "summer-crush-hydrangea:fast-growing-trees": {
       "1gal": 44.95,
       "2gal": 60.95,
-      "3gal": 83.95
+      "default": 83.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
       "quart": 53.95,
@@ -2448,7 +2447,8 @@
       "2-3ft": 63.95,
       "3-4ft": 93.95,
       "4-5ft": 144.95,
-      "5-6ft": 219.95
+      "5-6ft": 219.95,
+      "6-7ft": 327.95
     },
     "skip-laurel:fast-growing-trees": {
       "default": 234.95,
@@ -2555,9 +2555,6 @@
       "5-6ft": 779.95,
       "6-7ft": 936.95
     },
-    "encore-azalea:fast-growing-trees": {
-      "default": 99.95
-    },
     "pjm-rhododendron:fast-growing-trees": {
       "default": 128.95
     },
@@ -2658,11 +2655,6 @@
       "5-6ft": 99.95,
       "6-7ft": 200.95
     },
-    "wine-and-roses-weigela:fast-growing-trees": {
-      "default": 52.95,
-      "2gal": 76.95,
-      "3gal": 109.95
-    },
     "gardenia-frost-proof:fast-growing-trees": {
       "default": 193.95,
       "1gal": 25.95,
@@ -2689,11 +2681,11 @@
       "3gal": 81.95
     },
     "santa-rosa-plum:fast-growing-trees": {
-      "default": 119.95,
+      "default": 146.95,
       "2-3ft": 60.95,
-      "4-5ft": 126.95,
+      "5-6ft": 126.95,
       "3-4ft": 97.95,
-      "6-7ft": 146.95
+      "4-5ft": 119.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "default": 194.95,
