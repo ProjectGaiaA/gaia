@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-01T23:36:20.704929+00:00",
+  "timestamp": "2026-07-02T13:43:51.513502+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,11 +967,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 210,
-      "anomalies": [
-        "ANOMALY: encore-azalea at fast-growing-trees tier=default: $99.95 -> $34.95 (65% change)",
-        "ANOMALY: wine-and-roses-weigela at fast-growing-trees tier=default: $52.95 -> $109.95 (108% change)"
-      ],
+      "prices_collected": 212,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 32.95,
@@ -983,6 +980,7 @@
           "default": 55.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
+          "1gal": 61.95,
           "default": 214.95,
           "3gal": 114.95
         },
@@ -1085,10 +1083,11 @@
           "6-7ft": 266.95
         },
         "coral-bark-japanese-maple:fast-growing-trees": {
-          "default": 276.95,
+          "default": 141.95,
           "3-4ft": 148.95,
           "4-5ft": 182.95,
-          "5-6ft": 224.95
+          "5-6ft": 224.95,
+          "6-7ft": 276.95
         },
         "crimson-queen-japanese-maple:fast-growing-trees": {
           "1-2ft": 107.95,
@@ -1164,6 +1163,10 @@
           "4-5ft": 653.95,
           "5-6ft": 779.95,
           "6-7ft": 936.95
+        },
+        "encore-azalea:fast-growing-trees": {
+          "default": 34.95,
+          "3gal": 99.95
         },
         "pjm-rhododendron:fast-growing-trees": {
           "default": 128.95
@@ -1264,6 +1267,10 @@
           "4-5ft": 78.95,
           "5-6ft": 99.95,
           "6-7ft": 200.95
+        },
+        "wine-and-roses-weigela:fast-growing-trees": {
+          "default": 109.95,
+          "2gal": 76.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "default": 193.95,
@@ -1432,12 +1439,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 795,
-  "total_anomalies": 2,
-  "anomalies": [
-    "ANOMALY: encore-azalea at fast-growing-trees tier=default: $99.95 -> $34.95 (65% change)",
-    "ANOMALY: wine-and-roses-weigela at fast-growing-trees tier=default: $52.95 -> $109.95 (108% change)"
-  ],
+  "total_prices_collected": 797,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 21.59,
@@ -2373,6 +2377,7 @@
       "default": 55.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
+      "1gal": 61.95,
       "default": 214.95,
       "3gal": 114.95
     },
@@ -2475,10 +2480,11 @@
       "6-7ft": 266.95
     },
     "coral-bark-japanese-maple:fast-growing-trees": {
-      "default": 276.95,
+      "default": 141.95,
       "3-4ft": 148.95,
       "4-5ft": 182.95,
-      "5-6ft": 224.95
+      "5-6ft": 224.95,
+      "6-7ft": 276.95
     },
     "crimson-queen-japanese-maple:fast-growing-trees": {
       "1-2ft": 107.95,
@@ -2554,6 +2560,10 @@
       "4-5ft": 653.95,
       "5-6ft": 779.95,
       "6-7ft": 936.95
+    },
+    "encore-azalea:fast-growing-trees": {
+      "default": 34.95,
+      "3gal": 99.95
     },
     "pjm-rhododendron:fast-growing-trees": {
       "default": 128.95
@@ -2654,6 +2664,10 @@
       "4-5ft": 78.95,
       "5-6ft": 99.95,
       "6-7ft": 200.95
+    },
+    "wine-and-roses-weigela:fast-growing-trees": {
+      "default": 109.95,
+      "2gal": 76.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "default": 193.95,
