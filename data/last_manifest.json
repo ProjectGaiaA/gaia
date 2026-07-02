@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-02T13:43:51.513502+00:00",
+  "timestamp": "2026-07-02T23:24:10.593116+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 212,
+      "prices_collected": 216,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -990,7 +990,7 @@
         "summer-crush-hydrangea:fast-growing-trees": {
           "1gal": 44.95,
           "2gal": 60.95,
-          "default": 83.95
+          "3gal": 83.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
           "quart": 53.95,
@@ -1126,7 +1126,8 @@
           "quart": 33.95,
           "1gal": 35.95,
           "default": 88.95,
-          "3gal": 45.95
+          "3gal": 45.95,
+          "5gal": 58.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1197,7 +1198,9 @@
           "1gal": 32.95
         },
         "blue-rug-juniper:fast-growing-trees": {
-          "default": 73.95
+          "1gal": 42.95,
+          "default": 108.95,
+          "3gal": 73.95
         },
         "pink-muhly-grass:fast-growing-trees": {
           "default": 72.95,
@@ -1269,6 +1272,7 @@
           "6-7ft": 200.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
+          "quart": 25.95,
           "default": 109.95,
           "2gal": 76.95
         },
@@ -1439,7 +1443,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 797,
+  "total_prices_collected": 801,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2387,7 +2391,7 @@
     "summer-crush-hydrangea:fast-growing-trees": {
       "1gal": 44.95,
       "2gal": 60.95,
-      "default": 83.95
+      "3gal": 83.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
       "quart": 53.95,
@@ -2523,7 +2527,8 @@
       "quart": 33.95,
       "1gal": 35.95,
       "default": 88.95,
-      "3gal": 45.95
+      "3gal": 45.95,
+      "5gal": 58.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2594,7 +2599,9 @@
       "1gal": 32.95
     },
     "blue-rug-juniper:fast-growing-trees": {
-      "default": 73.95
+      "1gal": 42.95,
+      "default": 108.95,
+      "3gal": 73.95
     },
     "pink-muhly-grass:fast-growing-trees": {
       "default": 72.95,
@@ -2666,6 +2673,7 @@
       "6-7ft": 200.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
+      "quart": 25.95,
       "default": 109.95,
       "2gal": 76.95
     },
