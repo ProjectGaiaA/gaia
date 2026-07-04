@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-04T12:51:50.769574+00:00",
+  "timestamp": "2026-07-04T23:15:10.724434+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -319,9 +319,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 74,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_found": 71,
+      "products_error": 4,
+      "prices_collected": 311,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -346,20 +346,6 @@
           "2gal": 63.95,
           "3gal": 73.95,
           "5gal": 84.95
-        },
-        "summer-crush-hydrangea:planting-tree": {
-          "1gal": 36.95,
-          "2gal": 57.95,
-          "3gal": 73.95
-        },
-        "little-lime-hydrangea:planting-tree": {
-          "quart": 26.95,
-          "1gal": 88.95,
-          "2gal": 84.95,
-          "3gal": 92.95
-        },
-        "pinky-winky-hydrangea:planting-tree": {
-          "3-4ft": 199.95
         },
         "fire-light-hydrangea:planting-tree": {
           "3gal": 70.95
@@ -967,7 +953,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 213,
+      "prices_collected": 212,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1269,7 +1255,6 @@
           "6-7ft": 200.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "quart": 25.95,
           "default": 109.95,
           "2gal": 76.95
         },
@@ -1440,7 +1425,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 798,
+  "total_prices_collected": 789,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1768,20 +1753,6 @@
       "2gal": 63.95,
       "3gal": 73.95,
       "5gal": 84.95
-    },
-    "summer-crush-hydrangea:planting-tree": {
-      "1gal": 36.95,
-      "2gal": 57.95,
-      "3gal": 73.95
-    },
-    "little-lime-hydrangea:planting-tree": {
-      "quart": 26.95,
-      "1gal": 88.95,
-      "2gal": 84.95,
-      "3gal": 92.95
-    },
-    "pinky-winky-hydrangea:planting-tree": {
-      "3-4ft": 199.95
     },
     "fire-light-hydrangea:planting-tree": {
       "3gal": 70.95
@@ -2667,7 +2638,6 @@
       "6-7ft": 200.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "quart": 25.95,
       "default": 109.95,
       "2gal": 76.95
     },
