@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-07-05T23:19:07.006226+00:00",
+  "timestamp": "2026-07-06T15:10:53.255820+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 75,
-      "products_error": 3,
-      "prices_collected": 141,
+      "products_found": 78,
+      "products_error": 0,
+      "prices_collected": 146,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -247,8 +247,16 @@
         "astilbe:nature-hills": {
           "1gal": 25.12
         },
+        "heuchera-coral-bells:nature-hills": {
+          "quart": 19.99,
+          "1gal": 34.98
+        },
         "bleeding-heart:nature-hills": {
           "1gal": 30.62
+        },
+        "purple-coneflower:nature-hills": {
+          "quart": 13.59,
+          "1gal": 23.69
         },
         "happy-returns-daylily:nature-hills": {
           "quart": 13.59,
@@ -266,6 +274,9 @@
         },
         "october-glory-maple:nature-hills": {
           "3gal": 55.2
+        },
+        "heritage-river-birch:nature-hills": {
+          "3gal": 71.54
         },
         "red-sunset-maple:nature-hills": {
           "3gal": 75.53
@@ -956,10 +967,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 211,
-      "anomalies": [
-        "ANOMALY: kousa-dogwood at fast-growing-trees tier=default: $83.95 -> $228.95 (173% change)"
-      ],
+      "prices_collected": 210,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 32.95,
@@ -971,7 +980,6 @@
           "default": 55.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
-          "1gal": 61.95,
           "default": 214.95,
           "3gal": 114.95
         },
@@ -1124,6 +1132,12 @@
         },
         "dogwood-tree:fast-growing-trees": {
           "default": 149.95
+        },
+        "kousa-dogwood:fast-growing-trees": {
+          "default": 228.95,
+          "3-4ft": 101.95,
+          "4-5ft": 129.95,
+          "5-6ft": 175.95
         },
         "eastern-redbud:fast-growing-trees": {
           "default": 485.95,
@@ -1390,8 +1404,8 @@
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 63.99,
-          "semi-dwarf-ez-start": 57.99
+          "dwarf-ez-start": 74.99,
+          "semi-dwarf-ez-start": 64.99
         },
         "bing-cherry-tree:stark-bros": {
           "standard-ez-start": 75.99
@@ -1408,13 +1422,13 @@
           "standard-ez-start": 64.99
         },
         "double-knock-out-rose:stark-bros": {
-          "default": 13.99
+          "default": 15.99
         },
         "duke-blueberry:stark-bros": {
           "default": 25.99
         },
         "patriot-blueberry:stark-bros": {
-          "default": 23.99
+          "default": 27.99
         },
         "pink-lemonade-blueberry:stark-bros": {
           "default": 25.99
@@ -1423,11 +1437,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 791,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: kousa-dogwood at fast-growing-trees tier=default: $83.95 -> $228.95 (173% change)"
-  ],
+  "total_prices_collected": 795,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 21.59,
@@ -1666,8 +1678,16 @@
     "astilbe:nature-hills": {
       "1gal": 25.12
     },
+    "heuchera-coral-bells:nature-hills": {
+      "quart": 19.99,
+      "1gal": 34.98
+    },
     "bleeding-heart:nature-hills": {
       "1gal": 30.62
+    },
+    "purple-coneflower:nature-hills": {
+      "quart": 13.59,
+      "1gal": 23.69
     },
     "happy-returns-daylily:nature-hills": {
       "quart": 13.59,
@@ -1685,6 +1705,9 @@
     },
     "october-glory-maple:nature-hills": {
       "3gal": 55.2
+    },
+    "heritage-river-birch:nature-hills": {
+      "3gal": 71.54
     },
     "red-sunset-maple:nature-hills": {
       "3gal": 75.53
@@ -2352,7 +2375,6 @@
       "default": 55.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
-      "1gal": 61.95,
       "default": 214.95,
       "3gal": 114.95
     },
@@ -2505,6 +2527,12 @@
     },
     "dogwood-tree:fast-growing-trees": {
       "default": 149.95
+    },
+    "kousa-dogwood:fast-growing-trees": {
+      "default": 228.95,
+      "3-4ft": 101.95,
+      "4-5ft": 129.95,
+      "5-6ft": 175.95
     },
     "eastern-redbud:fast-growing-trees": {
       "default": 485.95,
@@ -2735,8 +2763,8 @@
       "quart": 23.99
     },
     "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 63.99,
-      "semi-dwarf-ez-start": 57.99
+      "dwarf-ez-start": 74.99,
+      "semi-dwarf-ez-start": 64.99
     },
     "bing-cherry-tree:stark-bros": {
       "standard-ez-start": 75.99
@@ -2753,13 +2781,13 @@
       "standard-ez-start": 64.99
     },
     "double-knock-out-rose:stark-bros": {
-      "default": 13.99
+      "default": 15.99
     },
     "duke-blueberry:stark-bros": {
       "default": 25.99
     },
     "patriot-blueberry:stark-bros": {
-      "default": 23.99
+      "default": 27.99
     },
     "pink-lemonade-blueberry:stark-bros": {
       "default": 25.99
