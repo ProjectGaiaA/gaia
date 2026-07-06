@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-06T15:10:53.255820+00:00",
+  "timestamp": "2026-07-06T23:34:20.191318+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -1054,8 +1054,7 @@
           "2-3ft": 63.95,
           "3-4ft": 93.95,
           "4-5ft": 144.95,
-          "5-6ft": 219.95,
-          "6-7ft": 327.95
+          "5-6ft": 219.95
         },
         "skip-laurel:fast-growing-trees": {
           "default": 234.95,
@@ -1256,6 +1255,7 @@
         "sweetbay-magnolia:fast-growing-trees": {
           "default": 168.95,
           "2-3ft": 59.95,
+          "3-4ft": 77.95,
           "4-5ft": 100.95,
           "5-6ft": 129.95
         },
@@ -2449,8 +2449,7 @@
       "2-3ft": 63.95,
       "3-4ft": 93.95,
       "4-5ft": 144.95,
-      "5-6ft": 219.95,
-      "6-7ft": 327.95
+      "5-6ft": 219.95
     },
     "skip-laurel:fast-growing-trees": {
       "default": 234.95,
@@ -2651,6 +2650,7 @@
     "sweetbay-magnolia:fast-growing-trees": {
       "default": 168.95,
       "2-3ft": 59.95,
+      "3-4ft": 77.95,
       "4-5ft": 100.95,
       "5-6ft": 129.95
     },
