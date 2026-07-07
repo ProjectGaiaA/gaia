@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-06T23:34:20.191318+00:00",
+  "timestamp": "2026-07-07T14:04:42.717643+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -11,306 +11,306 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
-          "quart": 21.59,
-          "1gal": 34.86,
-          "3gal": 99.1,
-          "5gal": 132.26
+          "quart": 26.99,
+          "1gal": 43.57,
+          "3gal": 123.88,
+          "5gal": 165.33
         },
         "endless-summer-hydrangea:nature-hills": {
-          "1gal": 34.99,
-          "2gal": 52.08,
-          "3gal": 61.61
+          "1gal": 43.74,
+          "2gal": 65.1,
+          "3gal": 77.01
         },
         "bloomstruck-hydrangea:nature-hills": {
-          "quart": 18.79,
-          "2gal": 53.82,
-          "3gal": 60.01
+          "quart": 23.49,
+          "2gal": 67.27,
+          "3gal": 75.01
         },
         "summer-crush-hydrangea:nature-hills": {
-          "quart": 15.91,
-          "1gal": 34.84,
-          "2gal": 53.06,
-          "3gal": 61.58
+          "quart": 19.89,
+          "1gal": 43.55,
+          "2gal": 66.33,
+          "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
-          "quart": 20.91,
-          "1gal": 34.34,
-          "2gal": 55.7,
-          "3gal": 68.6
+          "quart": 26.14,
+          "1gal": 42.93,
+          "2gal": 69.63,
+          "3gal": 85.75
         },
         "incrediball-hydrangea:nature-hills": {
-          "quart": 20.91,
-          "1gal": 38.63,
-          "3gal": 67.66
+          "quart": 26.14,
+          "1gal": 48.29,
+          "3gal": 84.58
         },
         "pinky-winky-hydrangea:nature-hills": {
-          "quart": 21.03,
-          "1gal": 34.35,
-          "3gal": 66.06
+          "quart": 26.29,
+          "1gal": 42.94,
+          "3gal": 82.58
         },
         "fire-light-hydrangea:nature-hills": {
-          "quart": 21.03,
-          "3gal": 68.6
+          "quart": 26.29,
+          "3gal": 85.75
         },
         "honeycrisp-apple-tree:nature-hills": {
-          "2gal": 71.99,
-          "5gal": 114.02
+          "2gal": 89.99,
+          "5gal": 142.53
         },
         "fuji-apple-tree:nature-hills": {
-          "3gal": 102.6
+          "3gal": 128.25
         },
         "emerald-green-arborvitae:nature-hills": {
-          "quart": 13.86,
-          "1gal": 27.34,
-          "3gal": 72.46,
-          "2gal": 41.86
+          "quart": 17.32,
+          "1gal": 34.18,
+          "3gal": 90.58,
+          "2gal": 52.33
         },
         "green-giant-arborvitae:nature-hills": {
-          "quart": 13.86,
-          "1gal": 24.96,
-          "3gal": 72.46
+          "quart": 17.32,
+          "1gal": 31.2,
+          "3gal": 90.58
         },
         "bloodgood-japanese-maple:nature-hills": {
-          "3gal": 125.29
+          "3gal": 156.61
         },
         "coral-bark-japanese-maple:nature-hills": {
-          "1gal": 69.89,
-          "2gal": 84.48
+          "1gal": 87.36,
+          "2gal": 105.6
         },
         "emperor-japanese-maple:nature-hills": {
-          "5gal": 182.49
+          "5gal": 228.11
         },
         "tamukeyama-japanese-maple:nature-hills": {
-          "3gal": 110.79
+          "3gal": 138.49
         },
         "double-knock-out-rose:nature-hills": {
-          "quart": 19.99,
-          "1gal": 29.7,
-          "3gal": 39.64,
-          "2gal": 43.29
+          "quart": 24.99,
+          "1gal": 37.13,
+          "3gal": 49.55,
+          "2gal": 54.11
         },
         "pink-knock-out-rose:nature-hills": {
-          "quart": 19.99,
-          "1gal": 31.83,
-          "3gal": 57.67,
-          "2gal": 47.38
+          "quart": 24.99,
+          "1gal": 39.79,
+          "3gal": 72.09,
+          "2gal": 59.22
         },
         "sunny-knock-out-rose:nature-hills": {
-          "quart": 19.99,
-          "1gal": 31.86,
-          "2gal": 47.32,
-          "3gal": 57.67
+          "quart": 24.99,
+          "1gal": 39.83,
+          "2gal": 59.15,
+          "3gal": 72.09
         },
         "white-knock-out-rose:nature-hills": {
-          "3gal": 57.67
+          "3gal": 72.09
         },
         "coral-knock-out-rose:nature-hills": {
-          "3gal": 57.67
+          "3gal": 72.09
         },
         "duke-blueberry:nature-hills": {
-          "1gal": 31.97,
-          "2gal": 62.47,
-          "3gal": 72.33
+          "1gal": 39.96,
+          "2gal": 78.09,
+          "3gal": 90.41
         },
         "bluecrop-blueberry:nature-hills": {
-          "1gal": 32.54
+          "1gal": 40.67
         },
         "patriot-blueberry:nature-hills": {
-          "1gal": 32.5
+          "1gal": 40.63
         },
         "pink-lemonade-blueberry:nature-hills": {
-          "quart": 24.51
+          "quart": 30.64
         },
         "eastern-redbud:nature-hills": {
-          "1gal": 39.94,
-          "3gal": 78.32,
-          "2gal": 55.58
+          "1gal": 49.92,
+          "3gal": 97.9,
+          "2gal": 69.48
         },
         "forest-pansy-redbud:nature-hills": {
-          "3gal": 79.97
+          "3gal": 99.96
         },
         "yoshino-cherry:nature-hills": {
-          "3gal": 87.6
+          "3gal": 109.5
         },
         "pjm-rhododendron:nature-hills": {
-          "3gal": 73.79
+          "3gal": 92.24
         },
         "nova-zembla-rhododendron:nature-hills": {
-          "1gal": 31.97,
-          "3gal": 77.79
+          "1gal": 39.96,
+          "3gal": 97.24
         },
         "gibraltar-azalea:nature-hills": {
-          "3gal": 76.32
+          "3gal": 95.4
         },
         "stella-de-oro-daylily:nature-hills": {
-          "quart": 13.59,
-          "1gal": 23.54
+          "quart": 16.99,
+          "1gal": 29.43
         },
         "hosta-sum-and-substance:nature-hills": {
-          "1gal": 23.74
+          "1gal": 29.67
         },
         "echinacea-powwow-wild-berry:nature-hills": {
-          "quart": 14.39
+          "quart": 17.99
         },
         "lavender-phenomenal:nature-hills": {
-          "quart": 13.59,
-          "1gal": 29.28
+          "quart": 16.99,
+          "1gal": 36.6
         },
         "black-eyed-susan-goldsturm:nature-hills": {
-          "quart": 13.59,
-          "1gal": 23.67
+          "quart": 16.99,
+          "1gal": 29.59
         },
         "peony-sarah-bernhardt:nature-hills": {
-          "2gal": 59.65
+          "2gal": 74.56
         },
         "clematis-jackmanii:nature-hills": {
-          "quart": 20.89,
-          "1gal": 46.62
+          "quart": 26.11,
+          "1gal": 58.28
         },
         "green-mountain-boxwood:nature-hills": {
-          "quart": 15.48,
-          "1gal": 42.61,
-          "3gal": 122.01
+          "quart": 19.35,
+          "1gal": 53.26,
+          "3gal": 152.51
         },
         "chicago-hardy-fig:nature-hills": {
-          "3gal": 82.39
+          "3gal": 102.99
         },
         "arbequina-olive:nature-hills": {
-          "3gal": 65.0
+          "3gal": 81.25
         },
         "karl-foerster-grass:nature-hills": {
-          "quart": 13.59,
-          "1gal": 26.54,
-          "2gal": 41.34,
-          "3gal": 48.54
+          "quart": 16.99,
+          "1gal": 33.17,
+          "2gal": 51.67,
+          "3gal": 60.67
         },
         "creeping-phlox:nature-hills": {
-          "quart": 13.59,
-          "1gal": 25.46
+          "quart": 16.99,
+          "1gal": 31.83
         },
         "butterfly-bush-miss-molly:nature-hills": {
-          "quart": 20.91,
-          "3gal": 66.06
+          "quart": 26.14,
+          "3gal": 82.58
         },
         "forsythia-lynwood-gold:nature-hills": {
-          "3gal": 57.84
+          "3gal": 72.3
         },
         "miss-kim-lilac:nature-hills": {
-          "1gal": 29.44,
-          "3gal": 64.82,
-          "2gal": 43.04
+          "1gal": 36.8,
+          "3gal": 81.03,
+          "2gal": 53.8
         },
         "tulip-poplar:nature-hills": {
-          "3gal": 78.32
+          "3gal": 97.9
         },
         "weeping-willow:nature-hills": {
-          "1gal": 32.63,
-          "3gal": 74.33
+          "1gal": 40.79,
+          "3gal": 92.91
         },
         "autumn-blaze-maple:nature-hills": {
-          "3gal": 95.2
+          "3gal": 119.0
         },
         "big-blue-liriope:nature-hills": {
-          "quart": 21.86
+          "quart": 27.33
         },
         "ajuga-chocolate-chip:nature-hills": {
-          "quart": 10.87,
-          "1gal": 20.66
+          "quart": 13.59,
+          "1gal": 25.83
         },
         "creeping-thyme:nature-hills": {
-          "1gal": 23.56
+          "1gal": 29.45
         },
         "sedum-angelina:nature-hills": {
-          "1gal": 23.68
+          "1gal": 29.6
         },
         "blue-rug-juniper:nature-hills": {
-          "1gal": 35.6,
-          "2gal": 47.69,
-          "3gal": 67.8
+          "1gal": 44.5,
+          "2gal": 59.61,
+          "3gal": 84.75
         },
         "pink-muhly-grass:nature-hills": {
-          "quart": 15.99
+          "quart": 19.99
         },
         "purple-fountain-grass:nature-hills": {
-          "quart": 15.19
+          "quart": 18.99
         },
         "hameln-dwarf-fountain-grass:nature-hills": {
-          "quart": 13.59,
-          "1gal": 23.31,
-          "2gal": 44.9,
-          "3gal": 48.58
+          "quart": 16.99,
+          "1gal": 29.14,
+          "2gal": 56.13,
+          "3gal": 60.72
         },
         "blue-fescue-elijah-blue:nature-hills": {
-          "quart": 13.59,
-          "1gal": 23.66
+          "quart": 16.99,
+          "1gal": 29.57
         },
         "astilbe:nature-hills": {
-          "1gal": 25.12
+          "1gal": 31.4
         },
         "heuchera-coral-bells:nature-hills": {
-          "quart": 19.99,
-          "1gal": 34.98
+          "quart": 24.99,
+          "1gal": 43.72
         },
         "bleeding-heart:nature-hills": {
-          "1gal": 30.62
+          "1gal": 38.28
         },
         "purple-coneflower:nature-hills": {
-          "quart": 13.59,
-          "1gal": 23.69
+          "quart": 16.99,
+          "1gal": 29.61
         },
         "happy-returns-daylily:nature-hills": {
-          "quart": 13.59,
-          "1gal": 24.94
+          "quart": 16.99,
+          "1gal": 31.17
         },
         "bee-balm:nature-hills": {
-          "1gal": 26.54
+          "1gal": 33.17
         },
         "catmint-walkers-low:nature-hills": {
-          "quart": 13.59,
-          "1gal": 22.54
+          "quart": 16.99,
+          "1gal": 28.17
         },
         "russian-sage:nature-hills": {
-          "quart": 20.91
+          "quart": 26.14
         },
         "october-glory-maple:nature-hills": {
-          "3gal": 55.2
+          "3gal": 69.0
         },
         "heritage-river-birch:nature-hills": {
-          "3gal": 71.54
+          "3gal": 89.42
         },
         "red-sunset-maple:nature-hills": {
-          "3gal": 75.53
+          "3gal": 94.41
         },
         "sweetbay-magnolia:nature-hills": {
-          "3gal": 75.26
+          "3gal": 94.07
         },
         "rose-of-sharon:nature-hills": {
-          "1gal": 35.92,
-          "3gal": 99.1
+          "1gal": 44.9,
+          "3gal": 123.88
         },
         "wine-and-roses-weigela:nature-hills": {
-          "quart": 20.91,
-          "3gal": 66.06
+          "quart": 26.14,
+          "3gal": 82.58
         },
         "gardenia-frost-proof:nature-hills": {
-          "quart": 23.99
+          "quart": 29.99
         },
         "dwarf-alberta-spruce:nature-hills": {
-          "1gal": 37.83,
-          "2gal": 66.86,
-          "3gal": 87.38
+          "1gal": 47.29,
+          "2gal": 83.58,
+          "3gal": 109.22
         },
         "autumn-royalty-encore-azalea:nature-hills": {
-          "1gal": 42.17
+          "1gal": 52.71
         },
         "autumn-twist-encore-azalea:nature-hills": {
-          "1gal": 45.11
+          "1gal": 56.39
         },
         "nandina-heavenly-bamboo:nature-hills": {
-          "1gal": 31.43
+          "1gal": 39.29
         },
         "santa-rosa-plum:nature-hills": {
-          "2gal": 95.49
+          "2gal": 119.36
         }
       },
       "health": "healthy"
@@ -1321,43 +1321,43 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
-          "1gal": 29.99,
-          "quart": 15.99
+          "1gal": 39.99,
+          "quart": 20.99
         },
         "little-lime-hydrangea:proven-winners-direct": {
-          "1gal": 29.99,
-          "quart": 15.99
+          "1gal": 39.99,
+          "quart": 20.99
         },
         "incrediball-hydrangea:proven-winners-direct": {
-          "1gal": 29.99,
-          "quart": 15.99
+          "1gal": 39.99,
+          "quart": 20.99
         },
         "fire-light-hydrangea:proven-winners-direct": {
-          "1gal": 29.99,
-          "quart": 15.99
+          "1gal": 39.99,
+          "quart": 20.99
         },
         "astilbe:proven-winners-direct": {
-          "1gal": 27.99,
-          "quart": 15.99
+          "1gal": 37.99,
+          "quart": 20.99
         },
         "heuchera-coral-bells:proven-winners-direct": {
-          "0-65-gallon": 25.99,
-          "quart": 15.99
+          "0-65-gallon": 32.99,
+          "quart": 20.99
         },
         "bee-balm:proven-winners-direct": {
-          "0-65-gallon": 25.99
+          "0-65-gallon": 32.99
         },
         "russian-sage:proven-winners-direct": {
-          "0-65-gallon": 25.99,
-          "quart": 15.99
+          "0-65-gallon": 32.99,
+          "quart": 20.99
         },
         "rose-of-sharon:proven-winners-direct": {
-          "1gal": 29.99,
-          "quart": 15.99
+          "1gal": 39.99,
+          "quart": 20.99
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 29.99,
-          "quart": 15.99
+          "1gal": 39.99,
+          "quart": 20.99
         }
       },
       "health": "healthy"
@@ -1442,306 +1442,306 @@
   "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
-      "quart": 21.59,
-      "1gal": 34.86,
-      "3gal": 99.1,
-      "5gal": 132.26
+      "quart": 26.99,
+      "1gal": 43.57,
+      "3gal": 123.88,
+      "5gal": 165.33
     },
     "endless-summer-hydrangea:nature-hills": {
-      "1gal": 34.99,
-      "2gal": 52.08,
-      "3gal": 61.61
+      "1gal": 43.74,
+      "2gal": 65.1,
+      "3gal": 77.01
     },
     "bloomstruck-hydrangea:nature-hills": {
-      "quart": 18.79,
-      "2gal": 53.82,
-      "3gal": 60.01
+      "quart": 23.49,
+      "2gal": 67.27,
+      "3gal": 75.01
     },
     "summer-crush-hydrangea:nature-hills": {
-      "quart": 15.91,
-      "1gal": 34.84,
-      "2gal": 53.06,
-      "3gal": 61.58
+      "quart": 19.89,
+      "1gal": 43.55,
+      "2gal": 66.33,
+      "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
-      "quart": 20.91,
-      "1gal": 34.34,
-      "2gal": 55.7,
-      "3gal": 68.6
+      "quart": 26.14,
+      "1gal": 42.93,
+      "2gal": 69.63,
+      "3gal": 85.75
     },
     "incrediball-hydrangea:nature-hills": {
-      "quart": 20.91,
-      "1gal": 38.63,
-      "3gal": 67.66
+      "quart": 26.14,
+      "1gal": 48.29,
+      "3gal": 84.58
     },
     "pinky-winky-hydrangea:nature-hills": {
-      "quart": 21.03,
-      "1gal": 34.35,
-      "3gal": 66.06
+      "quart": 26.29,
+      "1gal": 42.94,
+      "3gal": 82.58
     },
     "fire-light-hydrangea:nature-hills": {
-      "quart": 21.03,
-      "3gal": 68.6
+      "quart": 26.29,
+      "3gal": 85.75
     },
     "honeycrisp-apple-tree:nature-hills": {
-      "2gal": 71.99,
-      "5gal": 114.02
+      "2gal": 89.99,
+      "5gal": 142.53
     },
     "fuji-apple-tree:nature-hills": {
-      "3gal": 102.6
+      "3gal": 128.25
     },
     "emerald-green-arborvitae:nature-hills": {
-      "quart": 13.86,
-      "1gal": 27.34,
-      "3gal": 72.46,
-      "2gal": 41.86
+      "quart": 17.32,
+      "1gal": 34.18,
+      "3gal": 90.58,
+      "2gal": 52.33
     },
     "green-giant-arborvitae:nature-hills": {
-      "quart": 13.86,
-      "1gal": 24.96,
-      "3gal": 72.46
+      "quart": 17.32,
+      "1gal": 31.2,
+      "3gal": 90.58
     },
     "bloodgood-japanese-maple:nature-hills": {
-      "3gal": 125.29
+      "3gal": 156.61
     },
     "coral-bark-japanese-maple:nature-hills": {
-      "1gal": 69.89,
-      "2gal": 84.48
+      "1gal": 87.36,
+      "2gal": 105.6
     },
     "emperor-japanese-maple:nature-hills": {
-      "5gal": 182.49
+      "5gal": 228.11
     },
     "tamukeyama-japanese-maple:nature-hills": {
-      "3gal": 110.79
+      "3gal": 138.49
     },
     "double-knock-out-rose:nature-hills": {
-      "quart": 19.99,
-      "1gal": 29.7,
-      "3gal": 39.64,
-      "2gal": 43.29
+      "quart": 24.99,
+      "1gal": 37.13,
+      "3gal": 49.55,
+      "2gal": 54.11
     },
     "pink-knock-out-rose:nature-hills": {
-      "quart": 19.99,
-      "1gal": 31.83,
-      "3gal": 57.67,
-      "2gal": 47.38
+      "quart": 24.99,
+      "1gal": 39.79,
+      "3gal": 72.09,
+      "2gal": 59.22
     },
     "sunny-knock-out-rose:nature-hills": {
-      "quart": 19.99,
-      "1gal": 31.86,
-      "2gal": 47.32,
-      "3gal": 57.67
+      "quart": 24.99,
+      "1gal": 39.83,
+      "2gal": 59.15,
+      "3gal": 72.09
     },
     "white-knock-out-rose:nature-hills": {
-      "3gal": 57.67
+      "3gal": 72.09
     },
     "coral-knock-out-rose:nature-hills": {
-      "3gal": 57.67
+      "3gal": 72.09
     },
     "duke-blueberry:nature-hills": {
-      "1gal": 31.97,
-      "2gal": 62.47,
-      "3gal": 72.33
+      "1gal": 39.96,
+      "2gal": 78.09,
+      "3gal": 90.41
     },
     "bluecrop-blueberry:nature-hills": {
-      "1gal": 32.54
+      "1gal": 40.67
     },
     "patriot-blueberry:nature-hills": {
-      "1gal": 32.5
+      "1gal": 40.63
     },
     "pink-lemonade-blueberry:nature-hills": {
-      "quart": 24.51
+      "quart": 30.64
     },
     "eastern-redbud:nature-hills": {
-      "1gal": 39.94,
-      "3gal": 78.32,
-      "2gal": 55.58
+      "1gal": 49.92,
+      "3gal": 97.9,
+      "2gal": 69.48
     },
     "forest-pansy-redbud:nature-hills": {
-      "3gal": 79.97
+      "3gal": 99.96
     },
     "yoshino-cherry:nature-hills": {
-      "3gal": 87.6
+      "3gal": 109.5
     },
     "pjm-rhododendron:nature-hills": {
-      "3gal": 73.79
+      "3gal": 92.24
     },
     "nova-zembla-rhododendron:nature-hills": {
-      "1gal": 31.97,
-      "3gal": 77.79
+      "1gal": 39.96,
+      "3gal": 97.24
     },
     "gibraltar-azalea:nature-hills": {
-      "3gal": 76.32
+      "3gal": 95.4
     },
     "stella-de-oro-daylily:nature-hills": {
-      "quart": 13.59,
-      "1gal": 23.54
+      "quart": 16.99,
+      "1gal": 29.43
     },
     "hosta-sum-and-substance:nature-hills": {
-      "1gal": 23.74
+      "1gal": 29.67
     },
     "echinacea-powwow-wild-berry:nature-hills": {
-      "quart": 14.39
+      "quart": 17.99
     },
     "lavender-phenomenal:nature-hills": {
-      "quart": 13.59,
-      "1gal": 29.28
+      "quart": 16.99,
+      "1gal": 36.6
     },
     "black-eyed-susan-goldsturm:nature-hills": {
-      "quart": 13.59,
-      "1gal": 23.67
+      "quart": 16.99,
+      "1gal": 29.59
     },
     "peony-sarah-bernhardt:nature-hills": {
-      "2gal": 59.65
+      "2gal": 74.56
     },
     "clematis-jackmanii:nature-hills": {
-      "quart": 20.89,
-      "1gal": 46.62
+      "quart": 26.11,
+      "1gal": 58.28
     },
     "green-mountain-boxwood:nature-hills": {
-      "quart": 15.48,
-      "1gal": 42.61,
-      "3gal": 122.01
+      "quart": 19.35,
+      "1gal": 53.26,
+      "3gal": 152.51
     },
     "chicago-hardy-fig:nature-hills": {
-      "3gal": 82.39
+      "3gal": 102.99
     },
     "arbequina-olive:nature-hills": {
-      "3gal": 65.0
+      "3gal": 81.25
     },
     "karl-foerster-grass:nature-hills": {
-      "quart": 13.59,
-      "1gal": 26.54,
-      "2gal": 41.34,
-      "3gal": 48.54
+      "quart": 16.99,
+      "1gal": 33.17,
+      "2gal": 51.67,
+      "3gal": 60.67
     },
     "creeping-phlox:nature-hills": {
-      "quart": 13.59,
-      "1gal": 25.46
+      "quart": 16.99,
+      "1gal": 31.83
     },
     "butterfly-bush-miss-molly:nature-hills": {
-      "quart": 20.91,
-      "3gal": 66.06
+      "quart": 26.14,
+      "3gal": 82.58
     },
     "forsythia-lynwood-gold:nature-hills": {
-      "3gal": 57.84
+      "3gal": 72.3
     },
     "miss-kim-lilac:nature-hills": {
-      "1gal": 29.44,
-      "3gal": 64.82,
-      "2gal": 43.04
+      "1gal": 36.8,
+      "3gal": 81.03,
+      "2gal": 53.8
     },
     "tulip-poplar:nature-hills": {
-      "3gal": 78.32
+      "3gal": 97.9
     },
     "weeping-willow:nature-hills": {
-      "1gal": 32.63,
-      "3gal": 74.33
+      "1gal": 40.79,
+      "3gal": 92.91
     },
     "autumn-blaze-maple:nature-hills": {
-      "3gal": 95.2
+      "3gal": 119.0
     },
     "big-blue-liriope:nature-hills": {
-      "quart": 21.86
+      "quart": 27.33
     },
     "ajuga-chocolate-chip:nature-hills": {
-      "quart": 10.87,
-      "1gal": 20.66
+      "quart": 13.59,
+      "1gal": 25.83
     },
     "creeping-thyme:nature-hills": {
-      "1gal": 23.56
+      "1gal": 29.45
     },
     "sedum-angelina:nature-hills": {
-      "1gal": 23.68
+      "1gal": 29.6
     },
     "blue-rug-juniper:nature-hills": {
-      "1gal": 35.6,
-      "2gal": 47.69,
-      "3gal": 67.8
+      "1gal": 44.5,
+      "2gal": 59.61,
+      "3gal": 84.75
     },
     "pink-muhly-grass:nature-hills": {
-      "quart": 15.99
+      "quart": 19.99
     },
     "purple-fountain-grass:nature-hills": {
-      "quart": 15.19
+      "quart": 18.99
     },
     "hameln-dwarf-fountain-grass:nature-hills": {
-      "quart": 13.59,
-      "1gal": 23.31,
-      "2gal": 44.9,
-      "3gal": 48.58
+      "quart": 16.99,
+      "1gal": 29.14,
+      "2gal": 56.13,
+      "3gal": 60.72
     },
     "blue-fescue-elijah-blue:nature-hills": {
-      "quart": 13.59,
-      "1gal": 23.66
+      "quart": 16.99,
+      "1gal": 29.57
     },
     "astilbe:nature-hills": {
-      "1gal": 25.12
+      "1gal": 31.4
     },
     "heuchera-coral-bells:nature-hills": {
-      "quart": 19.99,
-      "1gal": 34.98
+      "quart": 24.99,
+      "1gal": 43.72
     },
     "bleeding-heart:nature-hills": {
-      "1gal": 30.62
+      "1gal": 38.28
     },
     "purple-coneflower:nature-hills": {
-      "quart": 13.59,
-      "1gal": 23.69
+      "quart": 16.99,
+      "1gal": 29.61
     },
     "happy-returns-daylily:nature-hills": {
-      "quart": 13.59,
-      "1gal": 24.94
+      "quart": 16.99,
+      "1gal": 31.17
     },
     "bee-balm:nature-hills": {
-      "1gal": 26.54
+      "1gal": 33.17
     },
     "catmint-walkers-low:nature-hills": {
-      "quart": 13.59,
-      "1gal": 22.54
+      "quart": 16.99,
+      "1gal": 28.17
     },
     "russian-sage:nature-hills": {
-      "quart": 20.91
+      "quart": 26.14
     },
     "october-glory-maple:nature-hills": {
-      "3gal": 55.2
+      "3gal": 69.0
     },
     "heritage-river-birch:nature-hills": {
-      "3gal": 71.54
+      "3gal": 89.42
     },
     "red-sunset-maple:nature-hills": {
-      "3gal": 75.53
+      "3gal": 94.41
     },
     "sweetbay-magnolia:nature-hills": {
-      "3gal": 75.26
+      "3gal": 94.07
     },
     "rose-of-sharon:nature-hills": {
-      "1gal": 35.92,
-      "3gal": 99.1
+      "1gal": 44.9,
+      "3gal": 123.88
     },
     "wine-and-roses-weigela:nature-hills": {
-      "quart": 20.91,
-      "3gal": 66.06
+      "quart": 26.14,
+      "3gal": 82.58
     },
     "gardenia-frost-proof:nature-hills": {
-      "quart": 23.99
+      "quart": 29.99
     },
     "dwarf-alberta-spruce:nature-hills": {
-      "1gal": 37.83,
-      "2gal": 66.86,
-      "3gal": 87.38
+      "1gal": 47.29,
+      "2gal": 83.58,
+      "3gal": 109.22
     },
     "autumn-royalty-encore-azalea:nature-hills": {
-      "1gal": 42.17
+      "1gal": 52.71
     },
     "autumn-twist-encore-azalea:nature-hills": {
-      "1gal": 45.11
+      "1gal": 56.39
     },
     "nandina-heavenly-bamboo:nature-hills": {
-      "1gal": 31.43
+      "1gal": 39.29
     },
     "santa-rosa-plum:nature-hills": {
-      "2gal": 95.49
+      "2gal": 119.36
     },
     "limelight-hydrangea:planting-tree": {
       "1gal": 32.95,
@@ -2704,43 +2704,43 @@
       "2-3ft": 61.95
     },
     "limelight-hydrangea:proven-winners-direct": {
-      "1gal": 29.99,
-      "quart": 15.99
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "little-lime-hydrangea:proven-winners-direct": {
-      "1gal": 29.99,
-      "quart": 15.99
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "incrediball-hydrangea:proven-winners-direct": {
-      "1gal": 29.99,
-      "quart": 15.99
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "fire-light-hydrangea:proven-winners-direct": {
-      "1gal": 29.99,
-      "quart": 15.99
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "astilbe:proven-winners-direct": {
-      "1gal": 27.99,
-      "quart": 15.99
+      "1gal": 37.99,
+      "quart": 20.99
     },
     "heuchera-coral-bells:proven-winners-direct": {
-      "0-65-gallon": 25.99,
-      "quart": 15.99
+      "0-65-gallon": 32.99,
+      "quart": 20.99
     },
     "bee-balm:proven-winners-direct": {
-      "0-65-gallon": 25.99
+      "0-65-gallon": 32.99
     },
     "russian-sage:proven-winners-direct": {
-      "0-65-gallon": 25.99,
-      "quart": 15.99
+      "0-65-gallon": 32.99,
+      "quart": 20.99
     },
     "rose-of-sharon:proven-winners-direct": {
-      "1gal": 29.99,
-      "quart": 15.99
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 29.99,
-      "quart": 15.99
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "limelight-hydrangea:great-garden-plants": {
       "quart": 21.99,
