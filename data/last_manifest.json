@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-09T14:32:23.896841+00:00",
+  "timestamp": "2026-07-09T23:37:35.955088+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -486,6 +486,11 @@
           "3-4ft": 114.95,
           "4-5ft": 374.95
         },
+        "double-knock-out-rose:planting-tree": {
+          "1gal": 24.95,
+          "2gal": 56.95,
+          "3gal": 79.95
+        },
         "pink-knock-out-rose:planting-tree": {
           "quart": 41.95,
           "1gal": 30.95,
@@ -618,11 +623,6 @@
         },
         "creeping-phlox:planting-tree": {
           "1gal": 26.95
-        },
-        "butterfly-bush-miss-molly:planting-tree": {
-          "1gal": 47.95,
-          "2gal": 84.95,
-          "3gal": 92.95
         },
         "forsythia-lynwood-gold:planting-tree": {
           "quart": 16.95,
@@ -962,8 +962,12 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 209,
-      "anomalies": [],
+      "prices_collected": 211,
+      "anomalies": [
+        "ANOMALY: honeycrisp-apple-tree at fast-growing-trees tier=default: $75.95 -> $175.95 (132% change)",
+        "ANOMALY: meyer-lemon-tree at fast-growing-trees tier=default: $199.95 -> $574.95 (188% change)",
+        "ANOMALY: encore-azalea at fast-growing-trees tier=default: $34.95 -> $99.95 (186% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 32.95,
@@ -983,7 +987,7 @@
           "default": 128.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
-          "default": 44.95,
+          "1gal": 44.95,
           "2gal": 60.95,
           "3gal": 83.95
         },
@@ -993,19 +997,6 @@
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 54.95
-        },
-        "honeycrisp-apple-tree:fast-growing-trees": {
-          "default": 75.95,
-          "2-3ft": 84.95,
-          "3-4ft": 100.95,
-          "4-5ft": 123.95,
-          "5-6ft": 146.95,
-          "6-7ft": 175.95
-        },
-        "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 104.95,
-          "2-3ft": 144.95,
-          "default": 199.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 75.95,
@@ -1117,7 +1108,10 @@
           "default": 59.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "quart": 33.95,
+          "1gal": 35.95,
+          "default": 88.95,
+          "3gal": 45.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1154,10 +1148,6 @@
           "4-5ft": 653.95,
           "5-6ft": 779.95,
           "6-7ft": 936.95
-        },
-        "encore-azalea:fast-growing-trees": {
-          "default": 34.95,
-          "3gal": 99.95
         },
         "pjm-rhododendron:fast-growing-trees": {
           "default": 128.95
@@ -1261,6 +1251,7 @@
           "6-7ft": 200.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
+          "quart": 25.95,
           "default": 109.95,
           "2gal": 76.95
         },
@@ -1394,12 +1385,13 @@
       "products_expected": 8,
       "products_found": 7,
       "products_error": 1,
-      "prices_collected": 13,
+      "prices_collected": 14,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
-          "semi-dwarf-ez-start": 64.99
+          "semi-dwarf-ez-start": 64.99,
+          "supreme-ez-start": 75.99
         },
         "elberta-peach-tree:stark-bros": {
           "semi-dwarf-ez-start": 75.99,
@@ -1428,9 +1420,13 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 790,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 793,
+  "total_anomalies": 3,
+  "anomalies": [
+    "ANOMALY: honeycrisp-apple-tree at fast-growing-trees tier=default: $75.95 -> $175.95 (132% change)",
+    "ANOMALY: meyer-lemon-tree at fast-growing-trees tier=default: $199.95 -> $574.95 (188% change)",
+    "ANOMALY: encore-azalea at fast-growing-trees tier=default: $34.95 -> $99.95 (186% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1896,6 +1892,11 @@
       "3-4ft": 114.95,
       "4-5ft": 374.95
     },
+    "double-knock-out-rose:planting-tree": {
+      "1gal": 24.95,
+      "2gal": 56.95,
+      "3gal": 79.95
+    },
     "pink-knock-out-rose:planting-tree": {
       "quart": 41.95,
       "1gal": 30.95,
@@ -2028,11 +2029,6 @@
     },
     "creeping-phlox:planting-tree": {
       "1gal": 26.95
-    },
-    "butterfly-bush-miss-molly:planting-tree": {
-      "1gal": 47.95,
-      "2gal": 84.95,
-      "3gal": 92.95
     },
     "forsythia-lynwood-gold:planting-tree": {
       "quart": 16.95,
@@ -2369,7 +2365,7 @@
       "default": 128.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
-      "default": 44.95,
+      "1gal": 44.95,
       "2gal": 60.95,
       "3gal": 83.95
     },
@@ -2379,19 +2375,6 @@
     },
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 54.95
-    },
-    "honeycrisp-apple-tree:fast-growing-trees": {
-      "default": 75.95,
-      "2-3ft": 84.95,
-      "3-4ft": 100.95,
-      "4-5ft": 123.95,
-      "5-6ft": 146.95,
-      "6-7ft": 175.95
-    },
-    "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 104.95,
-      "2-3ft": 144.95,
-      "default": 199.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 75.95,
@@ -2503,7 +2486,10 @@
       "default": 59.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "quart": 33.95,
+      "1gal": 35.95,
+      "default": 88.95,
+      "3gal": 45.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2540,10 +2526,6 @@
       "4-5ft": 653.95,
       "5-6ft": 779.95,
       "6-7ft": 936.95
-    },
-    "encore-azalea:fast-growing-trees": {
-      "default": 34.95,
-      "3gal": 99.95
     },
     "pjm-rhododendron:fast-growing-trees": {
       "default": 128.95
@@ -2647,6 +2629,7 @@
       "6-7ft": 200.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
+      "quart": 25.95,
       "default": 109.95,
       "2gal": 76.95
     },
@@ -2749,7 +2732,8 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
-      "semi-dwarf-ez-start": 64.99
+      "semi-dwarf-ez-start": 64.99,
+      "supreme-ez-start": 75.99
     },
     "elberta-peach-tree:stark-bros": {
       "semi-dwarf-ez-start": 75.99,
