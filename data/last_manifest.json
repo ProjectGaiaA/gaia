@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-08T23:21:33.525316+00:00",
+  "timestamp": "2026-07-09T14:32:23.896841+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -319,9 +319,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 74,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_found": 73,
+      "products_error": 2,
+      "prices_collected": 316,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -485,11 +485,6 @@
           "2-3ft": 84.95,
           "3-4ft": 114.95,
           "4-5ft": 374.95
-        },
-        "double-knock-out-rose:planting-tree": {
-          "1gal": 24.95,
-          "2gal": 56.95,
-          "3gal": 79.95
         },
         "pink-knock-out-rose:planting-tree": {
           "quart": 41.95,
@@ -967,16 +962,18 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 208,
-      "anomalies": [
-        "ANOMALY: nikko-blue-hydrangea at fast-growing-trees tier=default: $55.95 -> $94.95 (70% change)",
-        "ANOMALY: meyer-lemon-tree at fast-growing-trees tier=default: $574.95 -> $199.95 (65% change)"
-      ],
+      "prices_collected": 209,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 32.95,
           "default": 160.95,
           "3gal": 60.95
+        },
+        "nikko-blue-hydrangea:fast-growing-trees": {
+          "quart": 23.95,
+          "default": 94.95,
+          "3gal": 55.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "default": 214.95,
@@ -1004,6 +1001,11 @@
           "4-5ft": 123.95,
           "5-6ft": 146.95,
           "6-7ft": 175.95
+        },
+        "meyer-lemon-tree:fast-growing-trees": {
+          "1-2ft": 104.95,
+          "2-3ft": 144.95,
+          "default": 199.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 75.95,
@@ -1264,6 +1266,7 @@
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "default": 193.95,
+          "1gal": 25.95,
           "3gal": 51.95
         },
         "dwarf-alberta-spruce:fast-growing-trees": {
@@ -1332,15 +1335,15 @@
           "quart": 20.99
         },
         "heuchera-coral-bells:proven-winners-direct": {
-          "0-65-gallon": 26.39,
-          "quart": 16.79
+          "0-65-gallon": 32.99,
+          "quart": 20.99
         },
         "bee-balm:proven-winners-direct": {
           "0-65-gallon": 32.99
         },
         "russian-sage:proven-winners-direct": {
-          "0-65-gallon": 26.39,
-          "quart": 16.79
+          "0-65-gallon": 32.99,
+          "quart": 20.99
         },
         "rose-of-sharon:proven-winners-direct": {
           "1gal": 39.99,
@@ -1425,12 +1428,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 792,
-  "total_anomalies": 2,
-  "anomalies": [
-    "ANOMALY: nikko-blue-hydrangea at fast-growing-trees tier=default: $55.95 -> $94.95 (70% change)",
-    "ANOMALY: meyer-lemon-tree at fast-growing-trees tier=default: $574.95 -> $199.95 (65% change)"
-  ],
+  "total_prices_collected": 790,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1896,11 +1896,6 @@
       "3-4ft": 114.95,
       "4-5ft": 374.95
     },
-    "double-knock-out-rose:planting-tree": {
-      "1gal": 24.95,
-      "2gal": 56.95,
-      "3gal": 79.95
-    },
     "pink-knock-out-rose:planting-tree": {
       "quart": 41.95,
       "1gal": 30.95,
@@ -2361,6 +2356,11 @@
       "default": 160.95,
       "3gal": 60.95
     },
+    "nikko-blue-hydrangea:fast-growing-trees": {
+      "quart": 23.95,
+      "default": 94.95,
+      "3gal": 55.95
+    },
     "endless-summer-hydrangea:fast-growing-trees": {
       "default": 214.95,
       "3gal": 114.95
@@ -2387,6 +2387,11 @@
       "4-5ft": 123.95,
       "5-6ft": 146.95,
       "6-7ft": 175.95
+    },
+    "meyer-lemon-tree:fast-growing-trees": {
+      "1-2ft": 104.95,
+      "2-3ft": 144.95,
+      "default": 199.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 75.95,
@@ -2647,6 +2652,7 @@
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "default": 193.95,
+      "1gal": 25.95,
       "3gal": 51.95
     },
     "dwarf-alberta-spruce:fast-growing-trees": {
@@ -2703,15 +2709,15 @@
       "quart": 20.99
     },
     "heuchera-coral-bells:proven-winners-direct": {
-      "0-65-gallon": 26.39,
-      "quart": 16.79
+      "0-65-gallon": 32.99,
+      "quart": 20.99
     },
     "bee-balm:proven-winners-direct": {
       "0-65-gallon": 32.99
     },
     "russian-sage:proven-winners-direct": {
-      "0-65-gallon": 26.39,
-      "quart": 16.79
+      "0-65-gallon": 32.99,
+      "quart": 20.99
     },
     "rose-of-sharon:proven-winners-direct": {
       "1gal": 39.99,
