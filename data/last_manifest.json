@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-09T23:37:35.955088+00:00",
+  "timestamp": "2026-07-10T13:55:31.482767+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -319,9 +319,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 73,
-      "products_error": 2,
-      "prices_collected": 316,
+      "products_found": 74,
+      "products_error": 1,
+      "prices_collected": 319,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -623,6 +623,11 @@
         },
         "creeping-phlox:planting-tree": {
           "1gal": 26.95
+        },
+        "butterfly-bush-miss-molly:planting-tree": {
+          "1gal": 47.95,
+          "2gal": 84.95,
+          "3gal": 92.95
         },
         "forsythia-lynwood-gold:planting-tree": {
           "quart": 16.95,
@@ -962,11 +967,9 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 211,
+      "prices_collected": 212,
       "anomalies": [
-        "ANOMALY: honeycrisp-apple-tree at fast-growing-trees tier=default: $75.95 -> $175.95 (132% change)",
-        "ANOMALY: meyer-lemon-tree at fast-growing-trees tier=default: $199.95 -> $574.95 (188% change)",
-        "ANOMALY: encore-azalea at fast-growing-trees tier=default: $34.95 -> $99.95 (186% change)"
+        "ANOMALY: santa-rosa-plum at fast-growing-trees tier=default: $146.95 -> $71.95 (51% change)"
       ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -998,6 +1001,19 @@
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 54.95
         },
+        "honeycrisp-apple-tree:fast-growing-trees": {
+          "default": 75.95,
+          "2-3ft": 84.95,
+          "3-4ft": 100.95,
+          "4-5ft": 123.95,
+          "5-6ft": 146.95,
+          "6-7ft": 175.95
+        },
+        "meyer-lemon-tree:fast-growing-trees": {
+          "1-2ft": 104.95,
+          "2-3ft": 144.95,
+          "default": 574.95
+        },
         "fuji-apple-tree:fast-growing-trees": {
           "default": 75.95,
           "3-4ft": 91.95,
@@ -1028,11 +1044,10 @@
         },
         "green-giant-arborvitae:fast-growing-trees": {
           "1-2ft": 32.95,
-          "2-3ft": 57.95,
-          "3-4ft": 107.95,
-          "4-5ft": 187.95,
-          "5-6ft": 332.95,
-          "6-7ft": 766.95,
+          "3-4ft": 57.95,
+          "4-5ft": 107.95,
+          "5-6ft": 187.95,
+          "6-7ft": 566.95,
           "default": 854.95
         },
         "leyland-cypress:fast-growing-trees": {
@@ -1148,6 +1163,9 @@
           "4-5ft": 653.95,
           "5-6ft": 779.95,
           "6-7ft": 936.95
+        },
+        "encore-azalea:fast-growing-trees": {
+          "default": 99.95
         },
         "pjm-rhododendron:fast-growing-trees": {
           "default": 128.95
@@ -1279,13 +1297,6 @@
           "1gal": 62.95,
           "default": 138.95,
           "3gal": 81.95
-        },
-        "santa-rosa-plum:fast-growing-trees": {
-          "default": 146.95,
-          "2-3ft": 60.95,
-          "5-6ft": 126.95,
-          "3-4ft": 97.95,
-          "4-5ft": 119.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "default": 194.95,
@@ -1420,12 +1431,10 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 793,
-  "total_anomalies": 3,
+  "total_prices_collected": 797,
+  "total_anomalies": 1,
   "anomalies": [
-    "ANOMALY: honeycrisp-apple-tree at fast-growing-trees tier=default: $75.95 -> $175.95 (132% change)",
-    "ANOMALY: meyer-lemon-tree at fast-growing-trees tier=default: $199.95 -> $574.95 (188% change)",
-    "ANOMALY: encore-azalea at fast-growing-trees tier=default: $34.95 -> $99.95 (186% change)"
+    "ANOMALY: santa-rosa-plum at fast-growing-trees tier=default: $146.95 -> $71.95 (51% change)"
   ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
@@ -2030,6 +2039,11 @@
     "creeping-phlox:planting-tree": {
       "1gal": 26.95
     },
+    "butterfly-bush-miss-molly:planting-tree": {
+      "1gal": 47.95,
+      "2gal": 84.95,
+      "3gal": 92.95
+    },
     "forsythia-lynwood-gold:planting-tree": {
       "quart": 16.95,
       "1gal": 23.95,
@@ -2376,6 +2390,19 @@
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 54.95
     },
+    "honeycrisp-apple-tree:fast-growing-trees": {
+      "default": 75.95,
+      "2-3ft": 84.95,
+      "3-4ft": 100.95,
+      "4-5ft": 123.95,
+      "5-6ft": 146.95,
+      "6-7ft": 175.95
+    },
+    "meyer-lemon-tree:fast-growing-trees": {
+      "1-2ft": 104.95,
+      "2-3ft": 144.95,
+      "default": 574.95
+    },
     "fuji-apple-tree:fast-growing-trees": {
       "default": 75.95,
       "3-4ft": 91.95,
@@ -2406,11 +2433,10 @@
     },
     "green-giant-arborvitae:fast-growing-trees": {
       "1-2ft": 32.95,
-      "2-3ft": 57.95,
-      "3-4ft": 107.95,
-      "4-5ft": 187.95,
-      "5-6ft": 332.95,
-      "6-7ft": 766.95,
+      "3-4ft": 57.95,
+      "4-5ft": 107.95,
+      "5-6ft": 187.95,
+      "6-7ft": 566.95,
       "default": 854.95
     },
     "leyland-cypress:fast-growing-trees": {
@@ -2526,6 +2552,9 @@
       "4-5ft": 653.95,
       "5-6ft": 779.95,
       "6-7ft": 936.95
+    },
+    "encore-azalea:fast-growing-trees": {
+      "default": 99.95
     },
     "pjm-rhododendron:fast-growing-trees": {
       "default": 128.95
@@ -2657,13 +2686,6 @@
       "1gal": 62.95,
       "default": 138.95,
       "3gal": 81.95
-    },
-    "santa-rosa-plum:fast-growing-trees": {
-      "default": 146.95,
-      "2-3ft": 60.95,
-      "5-6ft": 126.95,
-      "3-4ft": 97.95,
-      "4-5ft": 119.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "default": 194.95,
