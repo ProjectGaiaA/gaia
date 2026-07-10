@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-10T13:55:31.482767+00:00",
+  "timestamp": "2026-07-10T23:19:59.470051+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,10 +967,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 212,
-      "anomalies": [
-        "ANOMALY: santa-rosa-plum at fast-growing-trees tier=default: $146.95 -> $71.95 (51% change)"
-      ],
+      "prices_collected": 210,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 32.95,
@@ -1280,8 +1278,7 @@
         },
         "dwarf-alberta-spruce:fast-growing-trees": {
           "default": 285.95,
-          "1-2ft": 46.95,
-          "2-3ft": 69.95
+          "1-2ft": 46.95
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 62.95,
@@ -1297,6 +1294,13 @@
           "1gal": 62.95,
           "default": 138.95,
           "3gal": 81.95
+        },
+        "santa-rosa-plum:fast-growing-trees": {
+          "default": 146.95,
+          "2-3ft": 60.95,
+          "5-6ft": 126.95,
+          "3-4ft": 97.95,
+          "4-5ft": 119.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "default": 194.95,
@@ -1431,11 +1435,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 797,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: santa-rosa-plum at fast-growing-trees tier=default: $146.95 -> $71.95 (51% change)"
-  ],
+  "total_prices_collected": 795,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2669,8 +2671,7 @@
     },
     "dwarf-alberta-spruce:fast-growing-trees": {
       "default": 285.95,
-      "1-2ft": 46.95,
-      "2-3ft": 69.95
+      "1-2ft": 46.95
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 62.95,
@@ -2686,6 +2687,13 @@
       "1gal": 62.95,
       "default": 138.95,
       "3gal": 81.95
+    },
+    "santa-rosa-plum:fast-growing-trees": {
+      "default": 146.95,
+      "2-3ft": 60.95,
+      "5-6ft": 126.95,
+      "3-4ft": 97.95,
+      "4-5ft": 119.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "default": 194.95,
