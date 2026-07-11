@@ -2,7 +2,7 @@
   "spring-hill": {
     "retailer_id": "spring-hill",
     "retailer_name": "Spring Hill Nurseries",
-    "timestamp": "2026-07-11T12:36:52.334302+00:00",
+    "timestamp": "2026-07-11T23:02:07.810341+00:00",
     "codes": [],
     "banners": [
       "Flash Sale"
@@ -11,21 +11,21 @@
   "nature-hills": {
     "retailer_id": "nature-hills",
     "retailer_name": "Nature Hills Nursery",
-    "timestamp": "2026-07-11T12:36:52.334302+00:00",
+    "timestamp": "2026-07-11T23:02:07.810341+00:00",
     "codes": [],
     "banners": []
   },
   "planting-tree": {
     "retailer_id": "planting-tree",
     "retailer_name": "PlantingTree",
-    "timestamp": "2026-07-11T12:36:52.334302+00:00",
+    "timestamp": "2026-07-11T23:02:07.810341+00:00",
     "codes": [],
     "banners": []
   },
   "fast-growing-trees": {
     "retailer_id": "fast-growing-trees",
     "retailer_name": "Fast Growing Trees",
-    "timestamp": "2026-07-11T12:36:52.334302+00:00",
+    "timestamp": "2026-07-11T23:02:07.810341+00:00",
     "codes": [
       "HURRY30"
     ],
@@ -37,26 +37,25 @@
   "proven-winners-direct": {
     "retailer_id": "proven-winners-direct",
     "retailer_name": "Proven Winners Direct",
-    "timestamp": "2026-07-11T12:36:52.334302+00:00",
+    "timestamp": "2026-07-11T23:02:07.810341+00:00",
     "codes": [
       "COMBO25"
     ],
     "banners": [
-      "free shipping on orders over $175",
-      "Buy 6, Get 2 Free"
+      "free shipping on orders over $175"
     ]
   },
   "stark-bros": {
     "retailer_id": "stark-bros",
     "retailer_name": "Stark Bros",
-    "timestamp": "2026-07-11T12:36:52.334302+00:00",
+    "timestamp": "2026-07-11T23:02:07.810341+00:00",
     "codes": [],
     "banners": []
   },
   "great-garden-plants": {
     "retailer_id": "great-garden-plants",
     "retailer_name": "Great Garden Plants",
-    "timestamp": "2026-07-11T12:36:52.334302+00:00",
+    "timestamp": "2026-07-11T23:02:07.810341+00:00",
     "codes": [
       "SUMMERFLOWERS"
     ],
