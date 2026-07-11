@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-10T23:19:59.470051+00:00",
+  "timestamp": "2026-07-11T12:36:43.341716+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -1400,13 +1400,12 @@
       "products_expected": 8,
       "products_found": 7,
       "products_error": 1,
-      "prices_collected": 14,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
-          "semi-dwarf-ez-start": 64.99,
-          "supreme-ez-start": 75.99
+          "semi-dwarf-ez-start": 64.99
         },
         "elberta-peach-tree:stark-bros": {
           "semi-dwarf-ez-start": 75.99,
@@ -1435,7 +1434,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 795,
+  "total_prices_collected": 794,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2762,8 +2761,7 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
-      "semi-dwarf-ez-start": 64.99,
-      "supreme-ez-start": 75.99
+      "semi-dwarf-ez-start": 64.99
     },
     "elberta-peach-tree:stark-bros": {
       "semi-dwarf-ez-start": 75.99,
