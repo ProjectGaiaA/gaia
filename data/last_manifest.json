@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-13T14:03:32.640072+00:00",
+  "timestamp": "2026-07-13T23:16:51.522427+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,8 +967,10 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 207,
-      "anomalies": [],
+      "prices_collected": 209,
+      "anomalies": [
+        "ANOMALY: kousa-dogwood at fast-growing-trees tier=default: $228.95 -> $83.95 (63% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 32.95,
@@ -977,8 +979,7 @@
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 23.95,
-          "default": 94.95,
-          "3gal": 55.95
+          "default": 55.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "default": 214.95,
@@ -1054,7 +1055,8 @@
           "2-3ft": 63.95,
           "3-4ft": 93.95,
           "4-5ft": 144.95,
-          "5-6ft": 219.95
+          "5-6ft": 219.95,
+          "6-7ft": 327.95
         },
         "skip-laurel:fast-growing-trees": {
           "default": 234.95,
@@ -1132,12 +1134,6 @@
         },
         "dogwood-tree:fast-growing-trees": {
           "default": 149.95
-        },
-        "kousa-dogwood:fast-growing-trees": {
-          "default": 228.95,
-          "3-4ft": 101.95,
-          "4-5ft": 129.95,
-          "5-6ft": 175.95
         },
         "eastern-redbud:fast-growing-trees": {
           "default": 485.95,
@@ -1229,6 +1225,7 @@
           "1gal": 42.95
         },
         "russian-sage:fast-growing-trees": {
+          "1gal": 32.95,
           "default": 45.95
         },
         "october-glory-maple:fast-growing-trees": {
@@ -1266,7 +1263,8 @@
         },
         "wine-and-roses-weigela:fast-growing-trees": {
           "quart": 25.95,
-          "default": 109.95
+          "default": 109.95,
+          "2gal": 76.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "default": 193.95,
@@ -1295,9 +1293,8 @@
         "santa-rosa-plum:fast-growing-trees": {
           "default": 146.95,
           "2-3ft": 60.95,
-          "5-6ft": 126.95,
-          "3-4ft": 97.95,
-          "4-5ft": 119.95
+          "4-5ft": 126.95,
+          "3-4ft": 97.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "default": 194.95,
@@ -1312,9 +1309,9 @@
       "retailer_id": "proven-winners-direct",
       "status": "completed",
       "products_expected": 11,
-      "products_found": 9,
-      "products_error": 2,
-      "prices_collected": 18,
+      "products_found": 10,
+      "products_error": 1,
+      "prices_collected": 19,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
@@ -1340,6 +1337,9 @@
         "heuchera-coral-bells:proven-winners-direct": {
           "0-65-gallon": 24.74,
           "quart": 15.74
+        },
+        "bee-balm:proven-winners-direct": {
+          "0-65-gallon": 32.99
         },
         "russian-sage:proven-winners-direct": {
           "0-65-gallon": 24.74,
@@ -1427,9 +1427,11 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 789,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 792,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: kousa-dogwood at fast-growing-trees tier=default: $228.95 -> $83.95 (63% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2362,8 +2364,7 @@
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 23.95,
-      "default": 94.95,
-      "3gal": 55.95
+      "default": 55.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "default": 214.95,
@@ -2439,7 +2440,8 @@
       "2-3ft": 63.95,
       "3-4ft": 93.95,
       "4-5ft": 144.95,
-      "5-6ft": 219.95
+      "5-6ft": 219.95,
+      "6-7ft": 327.95
     },
     "skip-laurel:fast-growing-trees": {
       "default": 234.95,
@@ -2517,12 +2519,6 @@
     },
     "dogwood-tree:fast-growing-trees": {
       "default": 149.95
-    },
-    "kousa-dogwood:fast-growing-trees": {
-      "default": 228.95,
-      "3-4ft": 101.95,
-      "4-5ft": 129.95,
-      "5-6ft": 175.95
     },
     "eastern-redbud:fast-growing-trees": {
       "default": 485.95,
@@ -2614,6 +2610,7 @@
       "1gal": 42.95
     },
     "russian-sage:fast-growing-trees": {
+      "1gal": 32.95,
       "default": 45.95
     },
     "october-glory-maple:fast-growing-trees": {
@@ -2651,7 +2648,8 @@
     },
     "wine-and-roses-weigela:fast-growing-trees": {
       "quart": 25.95,
-      "default": 109.95
+      "default": 109.95,
+      "2gal": 76.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "default": 193.95,
@@ -2680,9 +2678,8 @@
     "santa-rosa-plum:fast-growing-trees": {
       "default": 146.95,
       "2-3ft": 60.95,
-      "5-6ft": 126.95,
-      "3-4ft": 97.95,
-      "4-5ft": 119.95
+      "4-5ft": 126.95,
+      "3-4ft": 97.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "default": 194.95,
@@ -2713,6 +2710,9 @@
     "heuchera-coral-bells:proven-winners-direct": {
       "0-65-gallon": 24.74,
       "quart": 15.74
+    },
+    "bee-balm:proven-winners-direct": {
+      "0-65-gallon": 32.99
     },
     "russian-sage:proven-winners-direct": {
       "0-65-gallon": 24.74,
