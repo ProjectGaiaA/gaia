@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-14T12:55:01.803638+00:00",
+  "timestamp": "2026-07-14T23:19:07.779375+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,14 +967,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 163,
-      "anomalies": [
-        "ANOMALY: double-knock-out-rose at fast-growing-trees tier=7gal: $207.95 -> $99.95 (52% change)",
-        "ANOMALY: crape-myrtle at fast-growing-trees tier=5-6ft: $779.95 -> $178.95 (77% change)",
-        "ANOMALY: crape-myrtle at fast-growing-trees tier=6-7ft: $936.95 -> $214.95 (77% change)",
-        "ANOMALY: pampas-grass at fast-growing-trees tier=default: $48.95 -> $104.95 (114% change)",
-        "ANOMALY: autumn-angel-encore-azalea at fast-growing-trees tier=1gal: $62.95 -> $30.95 (51% change)"
-      ],
+      "prices_collected": 164,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1091,6 +1085,11 @@
           "2-3ft": 53.95,
           "3-4ft": 72.95
         },
+        "double-knock-out-rose:fast-growing-trees": {
+          "1gal": 24.95,
+          "3gal": 92.95,
+          "7gal": 99.95
+        },
         "white-knock-out-rose:fast-growing-trees": {
           "3gal": 63.95
         },
@@ -1130,6 +1129,12 @@
           "5-6ft": 165.95,
           "6-7ft": 197.95
         },
+        "crape-myrtle:fast-growing-trees": {
+          "1-2ft": 282.95,
+          "4-5ft": 653.95,
+          "5-6ft": 178.95,
+          "6-7ft": 214.95
+        },
         "encore-azalea:fast-growing-trees": {
           "default": 99.95
         },
@@ -1141,7 +1146,8 @@
           "3gal": 42.95
         },
         "echinacea-powwow-wild-berry:fast-growing-trees": {
-          "default": 86.95
+          "default": 86.95,
+          "1gal": 60.95
         },
         "vinca-minor:fast-growing-trees": {
           "1gal": 34.95
@@ -1171,6 +1177,10 @@
         "blue-fescue-elijah-blue:fast-growing-trees": {
           "1gal": 44.95
         },
+        "pampas-grass:fast-growing-trees": {
+          "default": 104.95,
+          "3gal": 48.95
+        },
         "astilbe:fast-growing-trees": {
           "default": 36.95
         },
@@ -1181,7 +1191,7 @@
           "1gal": 28.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "1gal": 28.95
+          "default": 43.95
         },
         "russian-sage:fast-growing-trees": {
           "1gal": 32.95,
@@ -1235,6 +1245,10 @@
         "autumn-twist-encore-azalea:fast-growing-trees": {
           "3gal": 52.95
         },
+        "autumn-angel-encore-azalea:fast-growing-trees": {
+          "1gal": 30.95,
+          "3gal": 91.95
+        },
         "santa-rosa-plum:fast-growing-trees": {
           "2-3ft": 57.95,
           "3-4ft": 120.95,
@@ -1281,23 +1295,23 @@
           "quart": 20.99
         },
         "heuchera-coral-bells:proven-winners-direct": {
-          "0-65-gallon": 24.74,
-          "quart": 15.74
+          "0-65-gallon": 32.99,
+          "quart": 20.99
         },
         "bee-balm:proven-winners-direct": {
           "0-65-gallon": 32.99
         },
         "russian-sage:proven-winners-direct": {
-          "0-65-gallon": 24.74,
-          "quart": 15.74
+          "0-65-gallon": 32.99,
+          "quart": 20.99
         },
         "rose-of-sharon:proven-winners-direct": {
-          "1gal": 29.99,
-          "quart": 15.74
+          "1gal": 39.99,
+          "quart": 20.99
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 29.99,
-          "quart": 15.74
+          "1gal": 39.99,
+          "quart": 20.99
         }
       },
       "health": "healthy"
@@ -1373,15 +1387,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 746,
-  "total_anomalies": 5,
-  "anomalies": [
-    "ANOMALY: double-knock-out-rose at fast-growing-trees tier=7gal: $207.95 -> $99.95 (52% change)",
-    "ANOMALY: crape-myrtle at fast-growing-trees tier=5-6ft: $779.95 -> $178.95 (77% change)",
-    "ANOMALY: crape-myrtle at fast-growing-trees tier=6-7ft: $936.95 -> $214.95 (77% change)",
-    "ANOMALY: pampas-grass at fast-growing-trees tier=default: $48.95 -> $104.95 (114% change)",
-    "ANOMALY: autumn-angel-encore-azalea at fast-growing-trees tier=1gal: $62.95 -> $30.95 (51% change)"
-  ],
+  "total_prices_collected": 747,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2422,6 +2430,11 @@
       "2-3ft": 53.95,
       "3-4ft": 72.95
     },
+    "double-knock-out-rose:fast-growing-trees": {
+      "1gal": 24.95,
+      "3gal": 92.95,
+      "7gal": 99.95
+    },
     "white-knock-out-rose:fast-growing-trees": {
       "3gal": 63.95
     },
@@ -2461,6 +2474,12 @@
       "5-6ft": 165.95,
       "6-7ft": 197.95
     },
+    "crape-myrtle:fast-growing-trees": {
+      "1-2ft": 282.95,
+      "4-5ft": 653.95,
+      "5-6ft": 178.95,
+      "6-7ft": 214.95
+    },
     "encore-azalea:fast-growing-trees": {
       "default": 99.95
     },
@@ -2472,7 +2491,8 @@
       "3gal": 42.95
     },
     "echinacea-powwow-wild-berry:fast-growing-trees": {
-      "default": 86.95
+      "default": 86.95,
+      "1gal": 60.95
     },
     "vinca-minor:fast-growing-trees": {
       "1gal": 34.95
@@ -2502,6 +2522,10 @@
     "blue-fescue-elijah-blue:fast-growing-trees": {
       "1gal": 44.95
     },
+    "pampas-grass:fast-growing-trees": {
+      "default": 104.95,
+      "3gal": 48.95
+    },
     "astilbe:fast-growing-trees": {
       "default": 36.95
     },
@@ -2512,7 +2536,7 @@
       "1gal": 28.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "1gal": 28.95
+      "default": 43.95
     },
     "russian-sage:fast-growing-trees": {
       "1gal": 32.95,
@@ -2566,6 +2590,10 @@
     "autumn-twist-encore-azalea:fast-growing-trees": {
       "3gal": 52.95
     },
+    "autumn-angel-encore-azalea:fast-growing-trees": {
+      "1gal": 30.95,
+      "3gal": 91.95
+    },
     "santa-rosa-plum:fast-growing-trees": {
       "2-3ft": 57.95,
       "3-4ft": 120.95,
@@ -2600,23 +2628,23 @@
       "quart": 20.99
     },
     "heuchera-coral-bells:proven-winners-direct": {
-      "0-65-gallon": 24.74,
-      "quart": 15.74
+      "0-65-gallon": 32.99,
+      "quart": 20.99
     },
     "bee-balm:proven-winners-direct": {
       "0-65-gallon": 32.99
     },
     "russian-sage:proven-winners-direct": {
-      "0-65-gallon": 24.74,
-      "quart": 15.74
+      "0-65-gallon": 32.99,
+      "quart": 20.99
     },
     "rose-of-sharon:proven-winners-direct": {
-      "1gal": 29.99,
-      "quart": 15.74
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 29.99,
-      "quart": 15.74
+      "1gal": 39.99,
+      "quart": 20.99
     },
     "limelight-hydrangea:great-garden-plants": {
       "quart": 21.99,
