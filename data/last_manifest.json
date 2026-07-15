@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-15T12:59:04.715024+00:00",
+  "timestamp": "2026-07-15T23:19:08.942516+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -319,9 +319,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 72,
-      "products_error": 3,
-      "prices_collected": 313,
+      "products_found": 70,
+      "products_error": 5,
+      "prices_collected": 299,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -570,6 +570,13 @@
           "2gal": 99.95,
           "3gal": 58.95
         },
+        "chicago-hardy-fig:planting-tree": {
+          "quart": 19.95,
+          "1gal": 47.95,
+          "2gal": 64.95,
+          "3gal": 80.95,
+          "3-4ft": 75.95
+        },
         "arbequina-olive:planting-tree": {
           "1gal": 25.95,
           "1-2ft": 47.95,
@@ -671,6 +678,9 @@
           "quart": 29.95,
           "1gal": 30.95
         },
+        "sedum-angelina:planting-tree": {
+          "1gal": 36.95
+        },
         "blue-rug-juniper:planting-tree": {
           "1gal": 20.95,
           "2gal": 53.95,
@@ -696,34 +706,12 @@
           "1gal": 50.95,
           "2gal": 58.95
         },
-        "october-glory-maple:planting-tree": {
-          "1-2ft": 53.95,
-          "2-3ft": 41.95,
-          "3-4ft": 84.95,
-          "4-5ft": 99.95,
-          "5-6ft": 114.95,
-          "6-7ft": 124.95
-        },
         "heritage-river-birch:planting-tree": {
           "2-3ft": 104.95,
           "3-4ft": 75.95,
           "4-5ft": 119.95,
           "5-6ft": 129.95,
           "6-7ft": 169.95
-        },
-        "red-sunset-maple:planting-tree": {
-          "3-4ft": 119.95,
-          "4-5ft": 129.95,
-          "5-6ft": 144.95,
-          "6-7ft": 154.95
-        },
-        "sweetbay-magnolia:planting-tree": {
-          "1-2ft": 92.95,
-          "2-3ft": 84.95,
-          "3-4ft": 109.95,
-          "4-5ft": 124.95,
-          "5-6ft": 119.95,
-          "6-7ft": 264.95
         },
         "rose-of-sharon:planting-tree": {
           "2gal": 51.95,
@@ -751,12 +739,6 @@
           "1gal": 32.95,
           "2gal": 78.95,
           "3gal": 58.95
-        },
-        "autumn-angel-encore-azalea:planting-tree": {
-          "1gal": 34.95,
-          "2gal": 45.95,
-          "3gal": 79.95,
-          "7gal": 119.95
         },
         "nandina-heavenly-bamboo:planting-tree": {
           "1gal": 38.95,
@@ -788,9 +770,9 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 38,
-      "products_error": 2,
-      "prices_collected": 79,
+      "products_found": 34,
+      "products_error": 6,
+      "prices_collected": 67,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -826,17 +808,6 @@
         "bartlett-pear-tree:spring-hill": {
           "default": 29.99
         },
-        "emerald-green-arborvitae:spring-hill": {
-          "1-2ft": 19.99,
-          "3-4ft": 79.99,
-          "5-6ft": 199.99,
-          "bareroot": 90.99,
-          "12-18in": 19.99,
-          "18-24in": 39.99,
-          "24-36in": 59.99,
-          "36-48in": 79.99,
-          "48-54in": 129.99
-        },
         "green-giant-arborvitae:spring-hill": {
           "1-2ft": 19.99,
           "3-4ft": 67.99,
@@ -854,17 +825,11 @@
         "coral-bark-japanese-maple:spring-hill": {
           "2-4ft": 149.99
         },
-        "crimson-queen-japanese-maple:spring-hill": {
-          "default": 49.99
-        },
         "tamukeyama-japanese-maple:spring-hill": {
           "default": 129.99
         },
         "double-knock-out-rose:spring-hill": {
           "default": 62.99
-        },
-        "pink-knock-out-rose:spring-hill": {
-          "default": 39.99
         },
         "sunny-knock-out-rose:spring-hill": {
           "default": 39.99
@@ -917,9 +882,6 @@
         "astilbe:spring-hill": {
           "default": 34.99
         },
-        "heuchera-coral-bells:spring-hill": {
-          "default": 12.99
-        },
         "bleeding-heart:spring-hill": {
           "default": 9.99
         },
@@ -961,14 +923,13 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 30.95,
-          "3gal": 57.95
+          "quart": 30.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 34.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
-          "default": 150.95,
+          "1gal": 29.95,
           "3gal": 114.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
@@ -989,8 +950,7 @@
           "2-3ft": 78.95,
           "3-4ft": 69.95,
           "4-5ft": 117.95,
-          "5-6ft": 139.95,
-          "6-7ft": 166.95
+          "5-6ft": 139.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
@@ -1171,7 +1131,7 @@
           "1gal": 44.95
         },
         "pampas-grass:fast-growing-trees": {
-          "3gal": 46.95
+          "default": 46.95
         },
         "astilbe:fast-growing-trees": {
           "default": 34.95
@@ -1183,6 +1143,7 @@
           "1gal": 28.95
         },
         "catmint-walkers-low:fast-growing-trees": {
+          "quart": 13.95,
           "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
@@ -1244,7 +1205,8 @@
         "santa-rosa-plum:fast-growing-trees": {
           "2-3ft": 57.95,
           "3-4ft": 120.95,
-          "4-5ft": 92.95
+          "4-5ft": 92.95,
+          "5-6ft": 113.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "6-inch": 39.95,
@@ -1287,23 +1249,23 @@
           "quart": 20.99
         },
         "heuchera-coral-bells:proven-winners-direct": {
-          "0-65-gallon": 32.99,
-          "quart": 20.99
+          "0-65-gallon": 26.39,
+          "quart": 16.79
         },
         "bee-balm:proven-winners-direct": {
           "0-65-gallon": 32.99
         },
         "russian-sage:proven-winners-direct": {
-          "0-65-gallon": 32.99,
-          "quart": 20.99
+          "0-65-gallon": 26.39,
+          "quart": 16.79
         },
         "rose-of-sharon:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 33.99,
+          "quart": 17.84
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 33.99,
+          "quart": 17.84
         }
       },
       "health": "healthy"
@@ -1379,7 +1341,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 743,
+  "total_prices_collected": 717,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1931,6 +1893,13 @@
       "2gal": 99.95,
       "3gal": 58.95
     },
+    "chicago-hardy-fig:planting-tree": {
+      "quart": 19.95,
+      "1gal": 47.95,
+      "2gal": 64.95,
+      "3gal": 80.95,
+      "3-4ft": 75.95
+    },
     "arbequina-olive:planting-tree": {
       "1gal": 25.95,
       "1-2ft": 47.95,
@@ -2032,6 +2001,9 @@
       "quart": 29.95,
       "1gal": 30.95
     },
+    "sedum-angelina:planting-tree": {
+      "1gal": 36.95
+    },
     "blue-rug-juniper:planting-tree": {
       "1gal": 20.95,
       "2gal": 53.95,
@@ -2057,34 +2029,12 @@
       "1gal": 50.95,
       "2gal": 58.95
     },
-    "october-glory-maple:planting-tree": {
-      "1-2ft": 53.95,
-      "2-3ft": 41.95,
-      "3-4ft": 84.95,
-      "4-5ft": 99.95,
-      "5-6ft": 114.95,
-      "6-7ft": 124.95
-    },
     "heritage-river-birch:planting-tree": {
       "2-3ft": 104.95,
       "3-4ft": 75.95,
       "4-5ft": 119.95,
       "5-6ft": 129.95,
       "6-7ft": 169.95
-    },
-    "red-sunset-maple:planting-tree": {
-      "3-4ft": 119.95,
-      "4-5ft": 129.95,
-      "5-6ft": 144.95,
-      "6-7ft": 154.95
-    },
-    "sweetbay-magnolia:planting-tree": {
-      "1-2ft": 92.95,
-      "2-3ft": 84.95,
-      "3-4ft": 109.95,
-      "4-5ft": 124.95,
-      "5-6ft": 119.95,
-      "6-7ft": 264.95
     },
     "rose-of-sharon:planting-tree": {
       "2gal": 51.95,
@@ -2112,12 +2062,6 @@
       "1gal": 32.95,
       "2gal": 78.95,
       "3gal": 58.95
-    },
-    "autumn-angel-encore-azalea:planting-tree": {
-      "1gal": 34.95,
-      "2gal": 45.95,
-      "3gal": 79.95,
-      "7gal": 119.95
     },
     "nandina-heavenly-bamboo:planting-tree": {
       "1gal": 38.95,
@@ -2175,17 +2119,6 @@
     "bartlett-pear-tree:spring-hill": {
       "default": 29.99
     },
-    "emerald-green-arborvitae:spring-hill": {
-      "1-2ft": 19.99,
-      "3-4ft": 79.99,
-      "5-6ft": 199.99,
-      "bareroot": 90.99,
-      "12-18in": 19.99,
-      "18-24in": 39.99,
-      "24-36in": 59.99,
-      "36-48in": 79.99,
-      "48-54in": 129.99
-    },
     "green-giant-arborvitae:spring-hill": {
       "1-2ft": 19.99,
       "3-4ft": 67.99,
@@ -2203,17 +2136,11 @@
     "coral-bark-japanese-maple:spring-hill": {
       "2-4ft": 149.99
     },
-    "crimson-queen-japanese-maple:spring-hill": {
-      "default": 49.99
-    },
     "tamukeyama-japanese-maple:spring-hill": {
       "default": 129.99
     },
     "double-knock-out-rose:spring-hill": {
       "default": 62.99
-    },
-    "pink-knock-out-rose:spring-hill": {
-      "default": 39.99
     },
     "sunny-knock-out-rose:spring-hill": {
       "default": 39.99
@@ -2266,9 +2193,6 @@
     "astilbe:spring-hill": {
       "default": 34.99
     },
-    "heuchera-coral-bells:spring-hill": {
-      "default": 12.99
-    },
     "bleeding-heart:spring-hill": {
       "default": 9.99
     },
@@ -2298,14 +2222,13 @@
       "1gal": 49.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 30.95,
-      "3gal": 57.95
+      "quart": 30.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 34.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
-      "default": 150.95,
+      "1gal": 29.95,
       "3gal": 114.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
@@ -2326,8 +2249,7 @@
       "2-3ft": 78.95,
       "3-4ft": 69.95,
       "4-5ft": 117.95,
-      "5-6ft": 139.95,
-      "6-7ft": 166.95
+      "5-6ft": 139.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
@@ -2508,7 +2430,7 @@
       "1gal": 44.95
     },
     "pampas-grass:fast-growing-trees": {
-      "3gal": 46.95
+      "default": 46.95
     },
     "astilbe:fast-growing-trees": {
       "default": 34.95
@@ -2520,6 +2442,7 @@
       "1gal": 28.95
     },
     "catmint-walkers-low:fast-growing-trees": {
+      "quart": 13.95,
       "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
@@ -2581,7 +2504,8 @@
     "santa-rosa-plum:fast-growing-trees": {
       "2-3ft": 57.95,
       "3-4ft": 120.95,
-      "4-5ft": 92.95
+      "4-5ft": 92.95,
+      "5-6ft": 113.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "6-inch": 39.95,
@@ -2612,23 +2536,23 @@
       "quart": 20.99
     },
     "heuchera-coral-bells:proven-winners-direct": {
-      "0-65-gallon": 32.99,
-      "quart": 20.99
+      "0-65-gallon": 26.39,
+      "quart": 16.79
     },
     "bee-balm:proven-winners-direct": {
       "0-65-gallon": 32.99
     },
     "russian-sage:proven-winners-direct": {
-      "0-65-gallon": 32.99,
-      "quart": 20.99
+      "0-65-gallon": 26.39,
+      "quart": 16.79
     },
     "rose-of-sharon:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 33.99,
+      "quart": 17.84
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 33.99,
+      "quart": 17.84
     },
     "limelight-hydrangea:great-garden-plants": {
       "quart": 21.99,
