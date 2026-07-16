@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-15T23:19:08.942516+00:00",
+  "timestamp": "2026-07-16T13:06:20.949809+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -319,9 +319,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 70,
-      "products_error": 5,
-      "prices_collected": 299,
+      "products_found": 74,
+      "products_error": 1,
+      "prices_collected": 319,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -706,12 +706,34 @@
           "1gal": 50.95,
           "2gal": 58.95
         },
+        "october-glory-maple:planting-tree": {
+          "1-2ft": 53.95,
+          "2-3ft": 41.95,
+          "3-4ft": 84.95,
+          "4-5ft": 99.95,
+          "5-6ft": 114.95,
+          "6-7ft": 124.95
+        },
         "heritage-river-birch:planting-tree": {
           "2-3ft": 104.95,
           "3-4ft": 75.95,
           "4-5ft": 119.95,
           "5-6ft": 129.95,
           "6-7ft": 169.95
+        },
+        "red-sunset-maple:planting-tree": {
+          "3-4ft": 119.95,
+          "4-5ft": 129.95,
+          "5-6ft": 144.95,
+          "6-7ft": 154.95
+        },
+        "sweetbay-magnolia:planting-tree": {
+          "1-2ft": 92.95,
+          "2-3ft": 84.95,
+          "3-4ft": 109.95,
+          "4-5ft": 124.95,
+          "5-6ft": 119.95,
+          "6-7ft": 264.95
         },
         "rose-of-sharon:planting-tree": {
           "2gal": 51.95,
@@ -739,6 +761,12 @@
           "1gal": 32.95,
           "2gal": 78.95,
           "3gal": 58.95
+        },
+        "autumn-angel-encore-azalea:planting-tree": {
+          "1gal": 34.95,
+          "2gal": 45.95,
+          "3gal": 79.95,
+          "7gal": 119.95
         },
         "nandina-heavenly-bamboo:planting-tree": {
           "1gal": 38.95,
@@ -770,9 +798,9 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 34,
-      "products_error": 6,
-      "prices_collected": 67,
+      "products_found": 38,
+      "products_error": 2,
+      "prices_collected": 79,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -808,6 +836,17 @@
         "bartlett-pear-tree:spring-hill": {
           "default": 29.99
         },
+        "emerald-green-arborvitae:spring-hill": {
+          "1-2ft": 19.99,
+          "3-4ft": 79.99,
+          "5-6ft": 199.99,
+          "bareroot": 90.99,
+          "12-18in": 19.99,
+          "18-24in": 39.99,
+          "24-36in": 59.99,
+          "36-48in": 79.99,
+          "48-54in": 129.99
+        },
         "green-giant-arborvitae:spring-hill": {
           "1-2ft": 19.99,
           "3-4ft": 67.99,
@@ -825,11 +864,17 @@
         "coral-bark-japanese-maple:spring-hill": {
           "2-4ft": 149.99
         },
+        "crimson-queen-japanese-maple:spring-hill": {
+          "default": 49.99
+        },
         "tamukeyama-japanese-maple:spring-hill": {
           "default": 129.99
         },
         "double-knock-out-rose:spring-hill": {
           "default": 62.99
+        },
+        "pink-knock-out-rose:spring-hill": {
+          "default": 39.99
         },
         "sunny-knock-out-rose:spring-hill": {
           "default": 39.99
@@ -882,6 +927,9 @@
         "astilbe:spring-hill": {
           "default": 34.99
         },
+        "heuchera-coral-bells:spring-hill": {
+          "default": 12.99
+        },
         "bleeding-heart:spring-hill": {
           "default": 9.99
         },
@@ -919,7 +967,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 166,
+      "prices_collected": 163,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1053,10 +1101,7 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 30.95,
-          "quart": 27.95,
-          "1gal": 41.95,
-          "3gal": 52.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1128,7 +1173,7 @@
           "3gal": 37.95
         },
         "blue-fescue-elijah-blue:fast-growing-trees": {
-          "1gal": 44.95
+          "default": 104.95
         },
         "pampas-grass:fast-growing-trees": {
           "default": 46.95
@@ -1341,7 +1386,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 717,
+  "total_prices_collected": 746,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2029,12 +2074,34 @@
       "1gal": 50.95,
       "2gal": 58.95
     },
+    "october-glory-maple:planting-tree": {
+      "1-2ft": 53.95,
+      "2-3ft": 41.95,
+      "3-4ft": 84.95,
+      "4-5ft": 99.95,
+      "5-6ft": 114.95,
+      "6-7ft": 124.95
+    },
     "heritage-river-birch:planting-tree": {
       "2-3ft": 104.95,
       "3-4ft": 75.95,
       "4-5ft": 119.95,
       "5-6ft": 129.95,
       "6-7ft": 169.95
+    },
+    "red-sunset-maple:planting-tree": {
+      "3-4ft": 119.95,
+      "4-5ft": 129.95,
+      "5-6ft": 144.95,
+      "6-7ft": 154.95
+    },
+    "sweetbay-magnolia:planting-tree": {
+      "1-2ft": 92.95,
+      "2-3ft": 84.95,
+      "3-4ft": 109.95,
+      "4-5ft": 124.95,
+      "5-6ft": 119.95,
+      "6-7ft": 264.95
     },
     "rose-of-sharon:planting-tree": {
       "2gal": 51.95,
@@ -2062,6 +2129,12 @@
       "1gal": 32.95,
       "2gal": 78.95,
       "3gal": 58.95
+    },
+    "autumn-angel-encore-azalea:planting-tree": {
+      "1gal": 34.95,
+      "2gal": 45.95,
+      "3gal": 79.95,
+      "7gal": 119.95
     },
     "nandina-heavenly-bamboo:planting-tree": {
       "1gal": 38.95,
@@ -2119,6 +2192,17 @@
     "bartlett-pear-tree:spring-hill": {
       "default": 29.99
     },
+    "emerald-green-arborvitae:spring-hill": {
+      "1-2ft": 19.99,
+      "3-4ft": 79.99,
+      "5-6ft": 199.99,
+      "bareroot": 90.99,
+      "12-18in": 19.99,
+      "18-24in": 39.99,
+      "24-36in": 59.99,
+      "36-48in": 79.99,
+      "48-54in": 129.99
+    },
     "green-giant-arborvitae:spring-hill": {
       "1-2ft": 19.99,
       "3-4ft": 67.99,
@@ -2136,11 +2220,17 @@
     "coral-bark-japanese-maple:spring-hill": {
       "2-4ft": 149.99
     },
+    "crimson-queen-japanese-maple:spring-hill": {
+      "default": 49.99
+    },
     "tamukeyama-japanese-maple:spring-hill": {
       "default": 129.99
     },
     "double-knock-out-rose:spring-hill": {
       "default": 62.99
+    },
+    "pink-knock-out-rose:spring-hill": {
+      "default": 39.99
     },
     "sunny-knock-out-rose:spring-hill": {
       "default": 39.99
@@ -2192,6 +2282,9 @@
     },
     "astilbe:spring-hill": {
       "default": 34.99
+    },
+    "heuchera-coral-bells:spring-hill": {
+      "default": 12.99
     },
     "bleeding-heart:spring-hill": {
       "default": 9.99
@@ -2352,10 +2445,7 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 30.95,
-      "quart": 27.95,
-      "1gal": 41.95,
-      "3gal": 52.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2427,7 +2517,7 @@
       "3gal": 37.95
     },
     "blue-fescue-elijah-blue:fast-growing-trees": {
-      "1gal": 44.95
+      "default": 104.95
     },
     "pampas-grass:fast-growing-trees": {
       "default": 46.95
