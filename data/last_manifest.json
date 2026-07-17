@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-17T12:52:37.104317+00:00",
+  "timestamp": "2026-07-17T23:07:40.402108+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -967,11 +967,12 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 166,
+      "prices_collected": 172,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 30.95
+          "quart": 30.95,
+          "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 34.95
@@ -1090,6 +1091,7 @@
         },
         "double-knock-out-rose:fast-growing-trees": {
           "1gal": 24.95,
+          "2gal": 39.95,
           "3gal": 92.95,
           "7gal": 99.95
         },
@@ -1103,7 +1105,10 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "4inch": 30.95,
+          "quart": 27.95,
+          "1gal": 34.95,
+          "3gal": 52.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1126,8 +1131,7 @@
           "6-7ft": 216.95
         },
         "forest-pansy-redbud:fast-growing-trees": {
-          "4-5ft": 138.95,
-          "6-7ft": 197.95
+          "4-5ft": 138.95
         },
         "crape-myrtle:fast-growing-trees": {
           "1-2ft": 282.95,
@@ -1219,7 +1223,8 @@
         "sweetbay-magnolia:fast-growing-trees": {
           "2-3ft": 56.95,
           "3-4ft": 73.95,
-          "4-5ft": 95.95
+          "4-5ft": 95.95,
+          "5-6ft": 123.95
         },
         "rose-of-sharon:fast-growing-trees": {
           "2-3ft": 74.95,
@@ -1236,7 +1241,8 @@
           "3gal": 39.95
         },
         "dwarf-alberta-spruce:fast-growing-trees": {
-          "1-2ft": 32.95
+          "1-2ft": 32.95,
+          "2-3ft": 48.95
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 44.95,
@@ -1322,33 +1328,17 @@
       "retailer_id": "great-garden-plants",
       "status": "completed",
       "products_expected": 7,
-      "products_found": 6,
-      "products_error": 1,
-      "prices_collected": 8,
+      "products_found": 1,
+      "products_error": 6,
+      "prices_collected": 2,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:great-garden-plants": {
           "quart": 21.99,
           "1gal": 44.99
-        },
-        "little-lime-hydrangea:great-garden-plants": {
-          "quart": 23.99
-        },
-        "incrediball-hydrangea:great-garden-plants": {
-          "quart": 21.99,
-          "1gal": 44.99
-        },
-        "fire-light-hydrangea:great-garden-plants": {
-          "quart": 23.99
-        },
-        "emerald-green-arborvitae:great-garden-plants": {
-          "1gal": 23.99
-        },
-        "double-knock-out-rose:great-garden-plants": {
-          "quart": 23.99
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "stark-bros",
@@ -2318,7 +2308,8 @@
       "1gal": 49.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 30.95
+      "quart": 30.95,
+      "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 34.95
@@ -2437,6 +2428,7 @@
     },
     "double-knock-out-rose:fast-growing-trees": {
       "1gal": 24.95,
+      "2gal": 39.95,
       "3gal": 92.95,
       "7gal": 99.95
     },
@@ -2450,7 +2442,10 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "4inch": 30.95,
+      "quart": 27.95,
+      "1gal": 34.95,
+      "3gal": 52.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2473,8 +2468,7 @@
       "6-7ft": 216.95
     },
     "forest-pansy-redbud:fast-growing-trees": {
-      "4-5ft": 138.95,
-      "6-7ft": 197.95
+      "4-5ft": 138.95
     },
     "crape-myrtle:fast-growing-trees": {
       "1-2ft": 282.95,
@@ -2566,7 +2560,8 @@
     "sweetbay-magnolia:fast-growing-trees": {
       "2-3ft": 56.95,
       "3-4ft": 73.95,
-      "4-5ft": 95.95
+      "4-5ft": 95.95,
+      "5-6ft": 123.95
     },
     "rose-of-sharon:fast-growing-trees": {
       "2-3ft": 74.95,
@@ -2583,7 +2578,8 @@
       "3gal": 39.95
     },
     "dwarf-alberta-spruce:fast-growing-trees": {
-      "1-2ft": 32.95
+      "1-2ft": 32.95,
+      "2-3ft": 48.95
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 44.95,
@@ -2654,22 +2650,6 @@
       "quart": 21.99,
       "1gal": 44.99
     },
-    "little-lime-hydrangea:great-garden-plants": {
-      "quart": 23.99
-    },
-    "incrediball-hydrangea:great-garden-plants": {
-      "quart": 21.99,
-      "1gal": 44.99
-    },
-    "fire-light-hydrangea:great-garden-plants": {
-      "quart": 23.99
-    },
-    "emerald-green-arborvitae:great-garden-plants": {
-      "1gal": 23.99
-    },
-    "double-knock-out-rose:great-garden-plants": {
-      "quart": 23.99
-    },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 55.99,
       "semi-dwarf-ez-start": 64.99
@@ -2697,6 +2677,8 @@
       "default": 25.99
     }
   },
-  "degraded_retailers": [],
-  "pipeline_status": "healthy"
+  "degraded_retailers": [
+    "great-garden-plants"
+  ],
+  "pipeline_status": "degraded"
 }
