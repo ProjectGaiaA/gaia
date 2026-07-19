@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-07-18T23:09:03.948201+00:00",
+  "timestamp": "2026-07-19T12:39:49.913280+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
-      "products_error": 0,
-      "prices_collected": 146,
+      "products_found": 76,
+      "products_error": 2,
+      "prices_collected": 138,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -178,12 +178,6 @@
         "arbequina-olive:nature-hills": {
           "3gal": 81.25
         },
-        "karl-foerster-grass:nature-hills": {
-          "quart": 16.99,
-          "1gal": 33.17,
-          "2gal": 51.67,
-          "3gal": 60.67
-        },
         "creeping-phlox:nature-hills": {
           "quart": 16.99,
           "1gal": 31.83
@@ -233,12 +227,6 @@
         },
         "purple-fountain-grass:nature-hills": {
           "quart": 18.99
-        },
-        "hameln-dwarf-fountain-grass:nature-hills": {
-          "quart": 16.99,
-          "1gal": 29.14,
-          "2gal": 56.13,
-          "3gal": 60.72
         },
         "blue-fescue-elijah-blue:nature-hills": {
           "quart": 16.99,
@@ -967,12 +955,11 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 168,
+      "prices_collected": 164,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 30.95,
-          "3gal": 57.95
+          "quart": 30.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 34.95
@@ -1103,10 +1090,7 @@
           "default": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 30.95,
-          "quart": 27.95,
-          "1gal": 34.95,
-          "3gal": 52.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1391,7 +1375,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 751,
+  "total_prices_collected": 739,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1563,12 +1547,6 @@
     "arbequina-olive:nature-hills": {
       "3gal": 81.25
     },
-    "karl-foerster-grass:nature-hills": {
-      "quart": 16.99,
-      "1gal": 33.17,
-      "2gal": 51.67,
-      "3gal": 60.67
-    },
     "creeping-phlox:nature-hills": {
       "quart": 16.99,
       "1gal": 31.83
@@ -1618,12 +1596,6 @@
     },
     "purple-fountain-grass:nature-hills": {
       "quart": 18.99
-    },
-    "hameln-dwarf-fountain-grass:nature-hills": {
-      "quart": 16.99,
-      "1gal": 29.14,
-      "2gal": 56.13,
-      "3gal": 60.72
     },
     "blue-fescue-elijah-blue:nature-hills": {
       "quart": 16.99,
@@ -2320,8 +2292,7 @@
       "1gal": 49.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 30.95,
-      "3gal": 57.95
+      "quart": 30.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 34.95
@@ -2452,10 +2423,7 @@
       "default": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 30.95,
-      "quart": 27.95,
-      "1gal": 34.95,
-      "3gal": 52.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
