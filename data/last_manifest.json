@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-24T13:05:29.854672+00:00",
+  "timestamp": "2026-07-24T23:21:36.068837+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -972,7 +972,8 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 30.95
+          "quart": 30.95,
+          "3gal": 57.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 22.95
@@ -1006,7 +1007,7 @@
           "3-4ft": 124.95
         },
         "fuji-apple-tree:fast-growing-trees": {
-          "3-4ft": 86.95,
+          "3-4ft": 79.95,
           "4-5ft": 84.95,
           "5-6ft": 99.95,
           "6-7ft": 154.95
@@ -1025,7 +1026,6 @@
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
-          "2-3ft": 39.95,
           "3-4ft": 69.95,
           "4-5ft": 133.95,
           "5-6ft": 224.95,
@@ -1228,7 +1228,7 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "default": 74.95
+          "quart": 16.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95,
@@ -2298,7 +2298,8 @@
       "1gal": 49.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 30.95
+      "quart": 30.95,
+      "3gal": 57.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 22.95
@@ -2332,7 +2333,7 @@
       "3-4ft": 124.95
     },
     "fuji-apple-tree:fast-growing-trees": {
-      "3-4ft": 86.95,
+      "3-4ft": 79.95,
       "4-5ft": 84.95,
       "5-6ft": 99.95,
       "6-7ft": 154.95
@@ -2351,7 +2352,6 @@
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
-      "2-3ft": 39.95,
       "3-4ft": 69.95,
       "4-5ft": 133.95,
       "5-6ft": 224.95,
@@ -2554,7 +2554,7 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "default": 74.95
+      "quart": 16.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95,
