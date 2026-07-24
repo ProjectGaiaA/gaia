@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-07-23T23:19:45.025169+00:00",
+  "timestamp": "2026-07-24T13:05:29.854672+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 74,
-      "products_error": 4,
-      "prices_collected": 139,
+      "products_found": 78,
+      "products_error": 0,
+      "prices_collected": 147,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -72,6 +72,10 @@
         },
         "bloodgood-japanese-maple:nature-hills": {
           "3gal": 156.61
+        },
+        "coral-bark-japanese-maple:nature-hills": {
+          "1gal": 69.89,
+          "2gal": 84.48
         },
         "emperor-japanese-maple:nature-hills": {
           "5gal": 228.11
@@ -169,8 +173,17 @@
           "1gal": 39.95,
           "3gal": 99.13
         },
+        "chicago-hardy-fig:nature-hills": {
+          "3gal": 82.39
+        },
         "arbequina-olive:nature-hills": {
           "3gal": 81.25
+        },
+        "karl-foerster-grass:nature-hills": {
+          "quart": 16.99,
+          "1gal": 23.22,
+          "2gal": 38.75,
+          "3gal": 39.44
         },
         "creeping-phlox:nature-hills": {
           "quart": 16.99,
@@ -204,6 +217,9 @@
         "ajuga-chocolate-chip:nature-hills": {
           "quart": 13.59,
           "1gal": 20.66
+        },
+        "creeping-thyme:nature-hills": {
+          "1gal": 29.45
         },
         "sedum-angelina:nature-hills": {
           "1gal": 29.6
@@ -952,7 +968,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 164,
+      "prices_collected": 165,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -991,7 +1007,7 @@
         },
         "fuji-apple-tree:fast-growing-trees": {
           "3-4ft": 86.95,
-          "4-5ft": 103.95,
+          "4-5ft": 84.95,
           "5-6ft": 99.95,
           "6-7ft": 154.95
         },
@@ -1009,6 +1025,7 @@
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
+          "2-3ft": 39.95,
           "3-4ft": 69.95,
           "4-5ft": 133.95,
           "5-6ft": 224.95,
@@ -1033,7 +1050,7 @@
         "skip-laurel:fast-growing-trees": {
           "1gal": 29.95,
           "3gal": 73.95,
-          "5gal": 116.95,
+          "5gal": 99.95,
           "7gal": 196.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
@@ -1236,11 +1253,11 @@
         "santa-rosa-plum:fast-growing-trees": {
           "2-3ft": 57.95,
           "3-4ft": 120.95,
-          "4-5ft": 92.95,
+          "4-5ft": 79.95,
           "5-6ft": 113.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
-          "6-inch": 55.95,
+          "6-inch": 39.95,
           "3gal": 80.95,
           "5gal": 129.95,
           "1-2ft": 48.95,
@@ -1351,7 +1368,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 732,
+  "total_prices_collected": 741,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1417,6 +1434,10 @@
     },
     "bloodgood-japanese-maple:nature-hills": {
       "3gal": 156.61
+    },
+    "coral-bark-japanese-maple:nature-hills": {
+      "1gal": 69.89,
+      "2gal": 84.48
     },
     "emperor-japanese-maple:nature-hills": {
       "5gal": 228.11
@@ -1514,8 +1535,17 @@
       "1gal": 39.95,
       "3gal": 99.13
     },
+    "chicago-hardy-fig:nature-hills": {
+      "3gal": 82.39
+    },
     "arbequina-olive:nature-hills": {
       "3gal": 81.25
+    },
+    "karl-foerster-grass:nature-hills": {
+      "quart": 16.99,
+      "1gal": 23.22,
+      "2gal": 38.75,
+      "3gal": 39.44
     },
     "creeping-phlox:nature-hills": {
       "quart": 16.99,
@@ -1549,6 +1579,9 @@
     "ajuga-chocolate-chip:nature-hills": {
       "quart": 13.59,
       "1gal": 20.66
+    },
+    "creeping-thyme:nature-hills": {
+      "1gal": 29.45
     },
     "sedum-angelina:nature-hills": {
       "1gal": 29.6
@@ -2300,7 +2333,7 @@
     },
     "fuji-apple-tree:fast-growing-trees": {
       "3-4ft": 86.95,
-      "4-5ft": 103.95,
+      "4-5ft": 84.95,
       "5-6ft": 99.95,
       "6-7ft": 154.95
     },
@@ -2318,6 +2351,7 @@
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
+      "2-3ft": 39.95,
       "3-4ft": 69.95,
       "4-5ft": 133.95,
       "5-6ft": 224.95,
@@ -2342,7 +2376,7 @@
     "skip-laurel:fast-growing-trees": {
       "1gal": 29.95,
       "3gal": 73.95,
-      "5gal": 116.95,
+      "5gal": 99.95,
       "7gal": 196.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
@@ -2545,11 +2579,11 @@
     "santa-rosa-plum:fast-growing-trees": {
       "2-3ft": 57.95,
       "3-4ft": 120.95,
-      "4-5ft": 92.95,
+      "4-5ft": 79.95,
       "5-6ft": 113.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
-      "6-inch": 55.95,
+      "6-inch": 39.95,
       "3gal": 80.95,
       "5gal": 129.95,
       "1-2ft": 48.95,
