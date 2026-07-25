@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-24T23:21:36.068837+00:00",
+  "timestamp": "2026-07-25T12:46:49.057291+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -1205,7 +1205,7 @@
           "2-3ft": 68.95,
           "3-4ft": 84.95,
           "4-5ft": 101.95,
-          "5-6ft": 98.95,
+          "5-6ft": 119.95,
           "6-7ft": 148.95
         },
         "red-sunset-maple:fast-growing-trees": {
@@ -1228,7 +1228,7 @@
           "6-7ft": 190.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "quart": 16.95
+          "default": 74.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 21.95,
@@ -1252,7 +1252,7 @@
         },
         "santa-rosa-plum:fast-growing-trees": {
           "2-3ft": 57.95,
-          "3-4ft": 120.95,
+          "3-4ft": 94.95,
           "4-5ft": 79.95,
           "5-6ft": 113.95
         },
@@ -2531,7 +2531,7 @@
       "2-3ft": 68.95,
       "3-4ft": 84.95,
       "4-5ft": 101.95,
-      "5-6ft": 98.95,
+      "5-6ft": 119.95,
       "6-7ft": 148.95
     },
     "red-sunset-maple:fast-growing-trees": {
@@ -2554,7 +2554,7 @@
       "6-7ft": 190.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "quart": 16.95
+      "default": 74.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 21.95,
@@ -2578,7 +2578,7 @@
     },
     "santa-rosa-plum:fast-growing-trees": {
       "2-3ft": 57.95,
-      "3-4ft": 120.95,
+      "3-4ft": 94.95,
       "4-5ft": 79.95,
       "5-6ft": 113.95
     },
