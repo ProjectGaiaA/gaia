@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-29T13:46:39.134775+00:00",
+  "timestamp": "2026-07-29T23:17:25.366704+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -969,7 +969,9 @@
       "products_found": 64,
       "products_error": 4,
       "prices_collected": 212,
-      "anomalies": [],
+      "anomalies": [
+        "ANOMALY: pampas-grass at fast-growing-trees tier=default: $104.95 -> $199.95 (91% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1212,10 +1214,6 @@
         "blue-fescue-elijah-blue:fast-growing-trees": {
           "default": 104.95
         },
-        "pampas-grass:fast-growing-trees": {
-          "default": 104.95,
-          "3gal": 46.95
-        },
         "astilbe:fast-growing-trees": {
           "default": 34.95
         },
@@ -1416,8 +1414,10 @@
     }
   ],
   "total_prices_collected": 788,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: pampas-grass at fast-growing-trees tier=default: $104.95 -> $199.95 (91% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2584,10 +2584,6 @@
     },
     "blue-fescue-elijah-blue:fast-growing-trees": {
       "default": 104.95
-    },
-    "pampas-grass:fast-growing-trees": {
-      "default": 104.95,
-      "3gal": 46.95
     },
     "astilbe:fast-growing-trees": {
       "default": 34.95
