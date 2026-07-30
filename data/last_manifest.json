@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-30T13:15:17.697870+00:00",
+  "timestamp": "2026-07-30T23:23:28.690822+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -968,7 +968,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 211,
+      "prices_collected": 217,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1029,8 +1029,12 @@
           "6-7ft": 188.95
         },
         "stella-cherry-tree:fast-growing-trees": {
-          "default": 124.95,
-          "5-6ft": 154.95
+          "default": 180.95,
+          "1-2ft": 48.95,
+          "2-3ft": 78.95,
+          "3-4ft": 96.95,
+          "4-5ft": 118.95,
+          "5-6ft": 146.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "default": 372.95,
@@ -1154,8 +1158,9 @@
         },
         "forest-pansy-redbud:fast-growing-trees": {
           "1-2ft": 56.95,
-          "default": 197.95,
-          "4-5ft": 138.95
+          "default": 165.95,
+          "4-5ft": 138.95,
+          "6-7ft": 197.95
         },
         "crape-myrtle:fast-growing-trees": {
           "default": 775.95,
@@ -1227,6 +1232,7 @@
         },
         "catmint-walkers-low:fast-growing-trees": {
           "quart": 13.95,
+          "1gal": 28.95,
           "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
@@ -1358,8 +1364,8 @@
           "quart": 20.99
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         }
       },
       "health": "healthy"
@@ -1414,7 +1420,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 787,
+  "total_prices_collected": 793,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2401,8 +2407,12 @@
       "6-7ft": 188.95
     },
     "stella-cherry-tree:fast-growing-trees": {
-      "default": 124.95,
-      "5-6ft": 154.95
+      "default": 180.95,
+      "1-2ft": 48.95,
+      "2-3ft": 78.95,
+      "3-4ft": 96.95,
+      "4-5ft": 118.95,
+      "5-6ft": 146.95
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "default": 372.95,
@@ -2526,8 +2536,9 @@
     },
     "forest-pansy-redbud:fast-growing-trees": {
       "1-2ft": 56.95,
-      "default": 197.95,
-      "4-5ft": 138.95
+      "default": 165.95,
+      "4-5ft": 138.95,
+      "6-7ft": 197.95
     },
     "crape-myrtle:fast-growing-trees": {
       "default": 775.95,
@@ -2599,6 +2610,7 @@
     },
     "catmint-walkers-low:fast-growing-trees": {
       "quart": 13.95,
+      "1gal": 28.95,
       "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
@@ -2718,8 +2730,8 @@
       "quart": 20.99
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
