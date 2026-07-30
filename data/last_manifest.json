@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-29T23:17:25.366704+00:00",
+  "timestamp": "2026-07-30T13:15:17.697870+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -968,10 +968,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 212,
-      "anomalies": [
-        "ANOMALY: pampas-grass at fast-growing-trees tier=default: $104.95 -> $199.95 (91% change)"
-      ],
+      "prices_collected": 211,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1214,6 +1212,10 @@
         "blue-fescue-elijah-blue:fast-growing-trees": {
           "default": 104.95
         },
+        "pampas-grass:fast-growing-trees": {
+          "default": 199.95,
+          "3gal": 46.95
+        },
         "astilbe:fast-growing-trees": {
           "default": 34.95
         },
@@ -1225,7 +1227,6 @@
         },
         "catmint-walkers-low:fast-growing-trees": {
           "quart": 13.95,
-          "1gal": 28.95,
           "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
@@ -1413,11 +1414,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 788,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: pampas-grass at fast-growing-trees tier=default: $104.95 -> $199.95 (91% change)"
-  ],
+  "total_prices_collected": 787,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2585,6 +2584,10 @@
     "blue-fescue-elijah-blue:fast-growing-trees": {
       "default": 104.95
     },
+    "pampas-grass:fast-growing-trees": {
+      "default": 199.95,
+      "3gal": 46.95
+    },
     "astilbe:fast-growing-trees": {
       "default": 34.95
     },
@@ -2596,7 +2599,6 @@
     },
     "catmint-walkers-low:fast-growing-trees": {
       "quart": 13.95,
-      "1gal": 28.95,
       "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
