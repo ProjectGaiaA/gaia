@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-07-31T13:40:28.922577+00:00",
+  "timestamp": "2026-07-31T23:21:38.279875+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 77,
-      "products_error": 1,
-      "prices_collected": 146,
+      "products_found": 78,
+      "products_error": 0,
+      "prices_collected": 147,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -228,6 +228,9 @@
           "1gal": 44.5,
           "2gal": 47.69,
           "3gal": 63.56
+        },
+        "pink-muhly-grass:nature-hills": {
+          "quart": 19.99
         },
         "purple-fountain-grass:nature-hills": {
           "quart": 18.99
@@ -965,7 +968,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 215,
+      "prices_collected": 213,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -990,7 +993,6 @@
           "default": 67.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
-          "quart": 32.95,
           "default": 66.95
         },
         "incrediball-hydrangea:fast-growing-trees": {
@@ -1155,9 +1157,8 @@
         },
         "forest-pansy-redbud:fast-growing-trees": {
           "1-2ft": 56.95,
-          "default": 165.95,
-          "4-5ft": 138.95,
-          "6-7ft": 197.95
+          "default": 197.95,
+          "4-5ft": 138.95
         },
         "crape-myrtle:fast-growing-trees": {
           "default": 775.95,
@@ -1179,7 +1180,8 @@
           "default": 375.95
         },
         "echinacea-powwow-wild-berry:fast-growing-trees": {
-          "default": 86.95
+          "default": 86.95,
+          "1gal": 39.95
         },
         "vinca-minor:fast-growing-trees": {
           "default": 31.95,
@@ -1232,8 +1234,7 @@
           "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
-          "default": 43.95,
-          "2gal": 35.95
+          "default": 43.95
         },
         "october-glory-maple:fast-growing-trees": {
           "default": 68.95,
@@ -1415,7 +1416,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 790,
+  "total_prices_collected": 789,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1637,6 +1638,9 @@
       "1gal": 44.5,
       "2gal": 47.69,
       "3gal": 63.56
+    },
+    "pink-muhly-grass:nature-hills": {
+      "quart": 19.99
     },
     "purple-fountain-grass:nature-hills": {
       "quart": 18.99
@@ -2363,7 +2367,6 @@
       "default": 67.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
-      "quart": 32.95,
       "default": 66.95
     },
     "incrediball-hydrangea:fast-growing-trees": {
@@ -2528,9 +2531,8 @@
     },
     "forest-pansy-redbud:fast-growing-trees": {
       "1-2ft": 56.95,
-      "default": 165.95,
-      "4-5ft": 138.95,
-      "6-7ft": 197.95
+      "default": 197.95,
+      "4-5ft": 138.95
     },
     "crape-myrtle:fast-growing-trees": {
       "default": 775.95,
@@ -2552,7 +2554,8 @@
       "default": 375.95
     },
     "echinacea-powwow-wild-berry:fast-growing-trees": {
-      "default": 86.95
+      "default": 86.95,
+      "1gal": 39.95
     },
     "vinca-minor:fast-growing-trees": {
       "default": 31.95,
@@ -2605,8 +2608,7 @@
       "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
-      "default": 43.95,
-      "2gal": 35.95
+      "default": 43.95
     },
     "october-glory-maple:fast-growing-trees": {
       "default": 68.95,
