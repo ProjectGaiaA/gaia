@@ -1,13 +1,13 @@
 {
-  "timestamp": "2026-07-30T23:23:28.690822+00:00",
+  "timestamp": "2026-07-31T13:40:28.922577+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
-      "products_error": 0,
-      "prices_collected": 147,
+      "products_found": 77,
+      "products_error": 1,
+      "prices_collected": 146,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -228,9 +228,6 @@
           "1gal": 44.5,
           "2gal": 47.69,
           "3gal": 63.56
-        },
-        "pink-muhly-grass:nature-hills": {
-          "quart": 19.99
         },
         "purple-fountain-grass:nature-hills": {
           "quart": 18.99
@@ -968,7 +965,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 217,
+      "prices_collected": 215,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1232,13 +1229,11 @@
         },
         "catmint-walkers-low:fast-growing-trees": {
           "quart": 13.95,
-          "1gal": 28.95,
           "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
-          "1gal": 30.95,
-          "2gal": 35.95,
-          "default": 43.95
+          "default": 43.95,
+          "2gal": 35.95
         },
         "october-glory-maple:fast-growing-trees": {
           "default": 68.95,
@@ -1420,7 +1415,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 793,
+  "total_prices_collected": 790,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1642,9 +1637,6 @@
       "1gal": 44.5,
       "2gal": 47.69,
       "3gal": 63.56
-    },
-    "pink-muhly-grass:nature-hills": {
-      "quart": 19.99
     },
     "purple-fountain-grass:nature-hills": {
       "quart": 18.99
@@ -2610,13 +2602,11 @@
     },
     "catmint-walkers-low:fast-growing-trees": {
       "quart": 13.95,
-      "1gal": 28.95,
       "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
-      "1gal": 30.95,
-      "2gal": 35.95,
-      "default": 43.95
+      "default": 43.95,
+      "2gal": 35.95
     },
     "october-glory-maple:fast-growing-trees": {
       "default": 68.95,
