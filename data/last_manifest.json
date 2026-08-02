@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-02T12:46:25.091847+00:00",
+  "timestamp": "2026-08-02T23:16:14.814636+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -968,8 +968,10 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 212,
-      "anomalies": [],
+      "prices_collected": 209,
+      "anomalies": [
+        "ANOMALY: honeycrisp-apple-tree at fast-growing-trees tier=default: $75.95 -> $166.95 (120% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -989,7 +991,6 @@
           "3gal": 69.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
-          "1gal": 36.95,
           "default": 67.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
@@ -997,14 +998,6 @@
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 51.95
-        },
-        "honeycrisp-apple-tree:fast-growing-trees": {
-          "default": 75.95,
-          "3-4ft": 78.95,
-          "2-3ft": 69.95,
-          "4-5ft": 117.95,
-          "5-6ft": 139.95,
-          "6-7ft": 166.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
@@ -1038,7 +1031,6 @@
         "emerald-green-arborvitae:fast-growing-trees": {
           "default": 372.95,
           "1-2ft": 19.95,
-          "2-3ft": 39.95,
           "3-4ft": 69.95,
           "4-5ft": 133.95,
           "5-6ft": 224.95,
@@ -1380,44 +1372,19 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 7,
-      "products_error": 1,
-      "prices_collected": 12,
+      "products_found": 0,
+      "products_error": 8,
+      "prices_collected": 0,
       "anomalies": [],
-      "price_records": {
-        "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "semi-dwarf-ez-start": 64.99
-        },
-        "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 75.99
-        },
-        "bartlett-pear-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "ultra-supreme": 229.99,
-          "semi-dwarf-ez-start": 64.99,
-          "supreme-ez-start": 75.99,
-          "standard-ez-start": 64.99
-        },
-        "double-knock-out-rose:stark-bros": {
-          "default": 15.99
-        },
-        "duke-blueberry:stark-bros": {
-          "default": 25.99
-        },
-        "patriot-blueberry:stark-bros": {
-          "default": 27.99
-        },
-        "pink-lemonade-blueberry:stark-bros": {
-          "default": 25.99
-        }
-      },
-      "health": "healthy"
+      "price_records": {},
+      "health": "degraded"
     }
   ],
-  "total_prices_collected": 788,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 773,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: honeycrisp-apple-tree at fast-growing-trees tier=default: $75.95 -> $166.95 (120% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2362,7 +2329,6 @@
       "3gal": 69.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
-      "1gal": 36.95,
       "default": 67.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
@@ -2370,14 +2336,6 @@
     },
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 51.95
-    },
-    "honeycrisp-apple-tree:fast-growing-trees": {
-      "default": 75.95,
-      "3-4ft": 78.95,
-      "2-3ft": 69.95,
-      "4-5ft": 117.95,
-      "5-6ft": 139.95,
-      "6-7ft": 166.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
@@ -2411,7 +2369,6 @@
     "emerald-green-arborvitae:fast-growing-trees": {
       "default": 372.95,
       "1-2ft": 19.95,
-      "2-3ft": 39.95,
       "3-4ft": 69.95,
       "4-5ft": 133.95,
       "5-6ft": 224.95,
@@ -2722,36 +2679,11 @@
     "wine-and-roses-weigela:proven-winners-direct": {
       "1gal": 29.99,
       "quart": 15.74
-    },
-    "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "semi-dwarf-ez-start": 64.99
-    },
-    "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 75.99
-    },
-    "bartlett-pear-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "ultra-supreme": 229.99,
-      "semi-dwarf-ez-start": 64.99,
-      "supreme-ez-start": 75.99,
-      "standard-ez-start": 64.99
-    },
-    "double-knock-out-rose:stark-bros": {
-      "default": 15.99
-    },
-    "duke-blueberry:stark-bros": {
-      "default": 25.99
-    },
-    "patriot-blueberry:stark-bros": {
-      "default": 27.99
-    },
-    "pink-lemonade-blueberry:stark-bros": {
-      "default": 25.99
     }
   },
   "degraded_retailers": [
-    "great-garden-plants"
+    "great-garden-plants",
+    "stark-bros"
   ],
   "pipeline_status": "degraded"
 }
