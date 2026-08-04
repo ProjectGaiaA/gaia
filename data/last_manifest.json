@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-03T23:23:43.978266+00:00",
+  "timestamp": "2026-08-04T13:42:36.968696+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -968,7 +968,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 207,
+      "prices_collected": 206,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -985,8 +985,7 @@
           "3gal": 82.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
-          "default": 128.95,
-          "3gal": 69.95
+          "default": 128.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
           "default": 67.95
@@ -1319,12 +1318,12 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 31.99,
+          "quart": 16.79
         },
         "little-lime-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 31.99,
+          "quart": 16.79
         },
         "incrediball-hydrangea:proven-winners-direct": {
           "1gal": 39.99,
@@ -1346,16 +1345,16 @@
           "0-65-gallon": 32.99
         },
         "russian-sage:proven-winners-direct": {
-          "0-65-gallon": 32.99,
-          "quart": 20.99
+          "0-65-gallon": 26.39,
+          "quart": 16.79
         },
         "rose-of-sharon:proven-winners-direct": {
           "1gal": 39.99,
           "quart": 20.99
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 29.99,
-          "quart": 15.74
+          "1gal": 39.99,
+          "quart": 20.99
         }
       },
       "health": "healthy"
@@ -1375,15 +1374,42 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 0,
-      "products_error": 8,
-      "prices_collected": 0,
+      "products_found": 7,
+      "products_error": 1,
+      "prices_collected": 12,
       "anomalies": [],
-      "price_records": {},
-      "health": "degraded"
+      "price_records": {
+        "honeycrisp-apple-tree:stark-bros": {
+          "dwarf-ez-start": 74.99,
+          "semi-dwarf-ez-start": 64.99
+        },
+        "elberta-peach-tree:stark-bros": {
+          "semi-dwarf-ez-start": 75.99
+        },
+        "bartlett-pear-tree:stark-bros": {
+          "dwarf-ez-start": 74.99,
+          "ultra-supreme": 229.99,
+          "semi-dwarf-ez-start": 64.99,
+          "supreme-ez-start": 75.99,
+          "standard-ez-start": 64.99
+        },
+        "double-knock-out-rose:stark-bros": {
+          "default": 15.99
+        },
+        "duke-blueberry:stark-bros": {
+          "default": 25.99
+        },
+        "patriot-blueberry:stark-bros": {
+          "default": 27.99
+        },
+        "pink-lemonade-blueberry:stark-bros": {
+          "default": 25.99
+        }
+      },
+      "health": "healthy"
     }
   ],
-  "total_prices_collected": 771,
+  "total_prices_collected": 782,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2326,8 +2352,7 @@
       "3gal": 82.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
-      "default": 128.95,
-      "3gal": 69.95
+      "default": 128.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
       "default": 67.95
@@ -2648,12 +2673,12 @@
       "1-2ft": 48.95
     },
     "limelight-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 31.99,
+      "quart": 16.79
     },
     "little-lime-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 31.99,
+      "quart": 16.79
     },
     "incrediball-hydrangea:proven-winners-direct": {
       "1gal": 39.99,
@@ -2675,21 +2700,46 @@
       "0-65-gallon": 32.99
     },
     "russian-sage:proven-winners-direct": {
-      "0-65-gallon": 32.99,
-      "quart": 20.99
+      "0-65-gallon": 26.39,
+      "quart": 16.79
     },
     "rose-of-sharon:proven-winners-direct": {
       "1gal": 39.99,
       "quart": 20.99
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 29.99,
-      "quart": 15.74
+      "1gal": 39.99,
+      "quart": 20.99
+    },
+    "honeycrisp-apple-tree:stark-bros": {
+      "dwarf-ez-start": 74.99,
+      "semi-dwarf-ez-start": 64.99
+    },
+    "elberta-peach-tree:stark-bros": {
+      "semi-dwarf-ez-start": 75.99
+    },
+    "bartlett-pear-tree:stark-bros": {
+      "dwarf-ez-start": 74.99,
+      "ultra-supreme": 229.99,
+      "semi-dwarf-ez-start": 64.99,
+      "supreme-ez-start": 75.99,
+      "standard-ez-start": 64.99
+    },
+    "double-knock-out-rose:stark-bros": {
+      "default": 15.99
+    },
+    "duke-blueberry:stark-bros": {
+      "default": 25.99
+    },
+    "patriot-blueberry:stark-bros": {
+      "default": 27.99
+    },
+    "pink-lemonade-blueberry:stark-bros": {
+      "default": 25.99
     }
   },
   "degraded_retailers": [
-    "great-garden-plants",
-    "stark-bros"
+    "great-garden-plants"
   ],
   "pipeline_status": "degraded"
 }
