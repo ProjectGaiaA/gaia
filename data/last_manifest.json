@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-04T13:42:36.968696+00:00",
+  "timestamp": "2026-08-04T23:25:31.739254+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -968,8 +968,10 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 206,
-      "anomalies": [],
+      "prices_collected": 199,
+      "anomalies": [
+        "ANOMALY: october-glory-maple at fast-growing-trees tier=default: $68.95 -> $108.95 (58% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1092,7 +1094,6 @@
         },
         "crimson-queen-japanese-maple:fast-growing-trees": {
           "1-2ft": 59.95,
-          "2-3ft": 73.95,
           "default": 90.95
         },
         "emperor-japanese-maple:fast-growing-trees": {
@@ -1125,9 +1126,7 @@
           "1gal": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "1gal": 30.95,
-          "quart": 27.95,
-          "default": 88.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1154,7 +1153,8 @@
         "forest-pansy-redbud:fast-growing-trees": {
           "1-2ft": 56.95,
           "default": 197.95,
-          "4-5ft": 138.95
+          "4-5ft": 138.95,
+          "5-6ft": 165.95
         },
         "crape-myrtle:fast-growing-trees": {
           "default": 775.95,
@@ -1229,13 +1229,6 @@
         "russian-sage:fast-growing-trees": {
           "default": 43.95
         },
-        "october-glory-maple:fast-growing-trees": {
-          "default": 68.95,
-          "3-4ft": 58.95,
-          "4-5ft": 79.95,
-          "5-6ft": 80.95,
-          "6-7ft": 108.95
-        },
         "heritage-river-birch:fast-growing-trees": {
           "default": 147.95,
           "2-3ft": 68.95,
@@ -1293,11 +1286,7 @@
           "3gal": 57.95
         },
         "santa-rosa-plum:fast-growing-trees": {
-          "default": 139.95,
-          "2-3ft": 57.95,
-          "4-5ft": 94.95,
-          "3-4ft": 79.95,
-          "5-6ft": 113.95
+          "default": 113.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "default": 194.95,
@@ -1409,9 +1398,11 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 782,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 775,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: october-glory-maple at fast-growing-trees tier=default: $68.95 -> $108.95 (58% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2459,7 +2450,6 @@
     },
     "crimson-queen-japanese-maple:fast-growing-trees": {
       "1-2ft": 59.95,
-      "2-3ft": 73.95,
       "default": 90.95
     },
     "emperor-japanese-maple:fast-growing-trees": {
@@ -2492,9 +2482,7 @@
       "1gal": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "1gal": 30.95,
-      "quart": 27.95,
-      "default": 88.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2521,7 +2509,8 @@
     "forest-pansy-redbud:fast-growing-trees": {
       "1-2ft": 56.95,
       "default": 197.95,
-      "4-5ft": 138.95
+      "4-5ft": 138.95,
+      "5-6ft": 165.95
     },
     "crape-myrtle:fast-growing-trees": {
       "default": 775.95,
@@ -2596,13 +2585,6 @@
     "russian-sage:fast-growing-trees": {
       "default": 43.95
     },
-    "october-glory-maple:fast-growing-trees": {
-      "default": 68.95,
-      "3-4ft": 58.95,
-      "4-5ft": 79.95,
-      "5-6ft": 80.95,
-      "6-7ft": 108.95
-    },
     "heritage-river-birch:fast-growing-trees": {
       "default": 147.95,
       "2-3ft": 68.95,
@@ -2660,11 +2642,7 @@
       "3gal": 57.95
     },
     "santa-rosa-plum:fast-growing-trees": {
-      "default": 139.95,
-      "2-3ft": 57.95,
-      "4-5ft": 94.95,
-      "3-4ft": 79.95,
-      "5-6ft": 113.95
+      "default": 113.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "default": 194.95,
