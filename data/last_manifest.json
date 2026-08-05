@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-04T23:25:31.739254+00:00",
+  "timestamp": "2026-08-05T13:36:23.800802+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -909,12 +909,12 @@
           "bareroot": 14.99
         },
         "big-blue-liriope:spring-hill": {
-          "premium-bareroot": 13.99,
+          "premium-bareroot": 12.59,
           "1gal": 29.99
         },
         "pink-muhly-grass:spring-hill": {
-          "premium-bareroot": 24.99,
-          "jumbo-bareroot": 39.99,
+          "premium-bareroot": 16.24,
+          "jumbo-bareroot": 25.99,
           "bareroot": 16.99,
           "3inch": 9.99
         },
@@ -935,7 +935,7 @@
           "default": 9.99
         },
         "purple-coneflower:spring-hill": {
-          "premium-bareroot": 24.99,
+          "premium-bareroot": 19.99,
           "jumbo-bareroot": 54.99
         },
         "happy-returns-daylily:spring-hill": {
@@ -947,7 +947,7 @@
         "russian-sage:spring-hill": {
           "bareroot": 24.99,
           "jumbo-bareroot": 39.99,
-          "premium-bareroot": 24.99
+          "premium-bareroot": 19.99
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99,
@@ -968,10 +968,8 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 199,
-      "anomalies": [
-        "ANOMALY: october-glory-maple at fast-growing-trees tier=default: $68.95 -> $108.95 (58% change)"
-      ],
+      "prices_collected": 205,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
@@ -1126,7 +1124,9 @@
           "1gal": 46.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "1gal": 30.95,
+          "quart": 27.95,
+          "default": 88.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "default": 42.95,
@@ -1229,6 +1229,12 @@
         "russian-sage:fast-growing-trees": {
           "default": 43.95
         },
+        "october-glory-maple:fast-growing-trees": {
+          "default": 108.95,
+          "3-4ft": 58.95,
+          "4-5ft": 79.95,
+          "5-6ft": 80.95
+        },
         "heritage-river-birch:fast-growing-trees": {
           "default": 147.95,
           "2-3ft": 68.95,
@@ -1286,7 +1292,11 @@
           "3gal": 57.95
         },
         "santa-rosa-plum:fast-growing-trees": {
-          "default": 113.95
+          "default": 139.95,
+          "2-3ft": 57.95,
+          "4-5ft": 94.95,
+          "3-4ft": 79.95,
+          "5-6ft": 113.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "default": 194.95,
@@ -1398,11 +1408,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 775,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: october-glory-maple at fast-growing-trees tier=default: $68.95 -> $108.95 (58% change)"
-  ],
+  "total_prices_collected": 781,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2279,12 +2287,12 @@
       "bareroot": 14.99
     },
     "big-blue-liriope:spring-hill": {
-      "premium-bareroot": 13.99,
+      "premium-bareroot": 12.59,
       "1gal": 29.99
     },
     "pink-muhly-grass:spring-hill": {
-      "premium-bareroot": 24.99,
-      "jumbo-bareroot": 39.99,
+      "premium-bareroot": 16.24,
+      "jumbo-bareroot": 25.99,
       "bareroot": 16.99,
       "3inch": 9.99
     },
@@ -2305,7 +2313,7 @@
       "default": 9.99
     },
     "purple-coneflower:spring-hill": {
-      "premium-bareroot": 24.99,
+      "premium-bareroot": 19.99,
       "jumbo-bareroot": 54.99
     },
     "happy-returns-daylily:spring-hill": {
@@ -2317,7 +2325,7 @@
     "russian-sage:spring-hill": {
       "bareroot": 24.99,
       "jumbo-bareroot": 39.99,
-      "premium-bareroot": 24.99
+      "premium-bareroot": 19.99
     },
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99,
@@ -2482,7 +2490,9 @@
       "1gal": 46.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "1gal": 30.95,
+      "quart": 27.95,
+      "default": 88.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "default": 42.95,
@@ -2585,6 +2595,12 @@
     "russian-sage:fast-growing-trees": {
       "default": 43.95
     },
+    "october-glory-maple:fast-growing-trees": {
+      "default": 108.95,
+      "3-4ft": 58.95,
+      "4-5ft": 79.95,
+      "5-6ft": 80.95
+    },
     "heritage-river-birch:fast-growing-trees": {
       "default": 147.95,
       "2-3ft": 68.95,
@@ -2642,7 +2658,11 @@
       "3gal": 57.95
     },
     "santa-rosa-plum:fast-growing-trees": {
-      "default": 113.95
+      "default": 139.95,
+      "2-3ft": 57.95,
+      "4-5ft": 94.95,
+      "3-4ft": 79.95,
+      "5-6ft": 113.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "default": 194.95,
