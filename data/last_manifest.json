@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-05T13:36:23.800802+00:00",
+  "timestamp": "2026-08-05T23:23:35.318881+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -212,7 +212,7 @@
           "3gal": 119.0
         },
         "big-blue-liriope:nature-hills": {
-          "quart": 27.33
+          "quart": 20.5
         },
         "ajuga-chocolate-chip:nature-hills": {
           "quart": 13.59,
@@ -320,9 +320,9 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 75,
-      "products_found": 74,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_found": 73,
+      "products_error": 2,
+      "prices_collected": 313,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -460,14 +460,6 @@
           "4-5ft": 179.95,
           "5-6ft": 189.95,
           "6-7ft": 324.95
-        },
-        "coral-bark-japanese-maple:planting-tree": {
-          "1-2ft": 92.95,
-          "2-3ft": 70.95,
-          "3-4ft": 149.95,
-          "4-5ft": 159.95,
-          "5-6ft": 179.95,
-          "6-7ft": 284.95
         },
         "crimson-queen-japanese-maple:planting-tree": {
           "1-2ft": 88.95,
@@ -863,7 +855,7 @@
           "2-4ft": 109.99
         },
         "coral-bark-japanese-maple:spring-hill": {
-          "2-4ft": 149.99
+          "2-4ft": 169.99
         },
         "crimson-queen-japanese-maple:spring-hill": {
           "default": 49.99
@@ -936,7 +928,7 @@
         },
         "purple-coneflower:spring-hill": {
           "premium-bareroot": 19.99,
-          "jumbo-bareroot": 54.99
+          "jumbo-bareroot": 43.99
         },
         "happy-returns-daylily:spring-hill": {
           "jumbo-bareroot": 39.99
@@ -968,7 +960,7 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 205,
+      "prices_collected": 201,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1070,15 +1062,13 @@
           "quart": 14.95,
           "default": 344.95,
           "1gal": 25.95,
-          "3gal": 44.95,
           "5gal": 78.95,
           "7gal": 149.95
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
-          "default": 133.95,
+          "default": 98.95,
           "1-2ft": 53.95,
           "2-3ft": 75.95,
-          "3-4ft": 98.95,
           "4-5ft": 126.95,
           "5-6ft": 147.95,
           "6-7ft": 183.95
@@ -1237,7 +1227,6 @@
         },
         "heritage-river-birch:fast-growing-trees": {
           "default": 147.95,
-          "2-3ft": 68.95,
           "3-4ft": 84.95,
           "4-5ft": 101.95,
           "5-6ft": 119.95,
@@ -1295,8 +1284,7 @@
           "default": 139.95,
           "2-3ft": 57.95,
           "4-5ft": 94.95,
-          "3-4ft": 79.95,
-          "5-6ft": 113.95
+          "3-4ft": 79.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "default": 194.95,
@@ -1373,42 +1361,15 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 7,
-      "products_error": 1,
-      "prices_collected": 12,
+      "products_found": 0,
+      "products_error": 8,
+      "prices_collected": 0,
       "anomalies": [],
-      "price_records": {
-        "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "semi-dwarf-ez-start": 64.99
-        },
-        "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 75.99
-        },
-        "bartlett-pear-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "ultra-supreme": 229.99,
-          "semi-dwarf-ez-start": 64.99,
-          "supreme-ez-start": 75.99,
-          "standard-ez-start": 64.99
-        },
-        "double-knock-out-rose:stark-bros": {
-          "default": 15.99
-        },
-        "duke-blueberry:stark-bros": {
-          "default": 25.99
-        },
-        "patriot-blueberry:stark-bros": {
-          "default": 27.99
-        },
-        "pink-lemonade-blueberry:stark-bros": {
-          "default": 25.99
-        }
-      },
-      "health": "healthy"
+      "price_records": {},
+      "health": "degraded"
     }
   ],
-  "total_prices_collected": 781,
+  "total_prices_collected": 759,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1614,7 +1575,7 @@
       "3gal": 119.0
     },
     "big-blue-liriope:nature-hills": {
-      "quart": 27.33
+      "quart": 20.5
     },
     "ajuga-chocolate-chip:nature-hills": {
       "quart": 13.59,
@@ -1850,14 +1811,6 @@
       "4-5ft": 179.95,
       "5-6ft": 189.95,
       "6-7ft": 324.95
-    },
-    "coral-bark-japanese-maple:planting-tree": {
-      "1-2ft": 92.95,
-      "2-3ft": 70.95,
-      "3-4ft": 149.95,
-      "4-5ft": 159.95,
-      "5-6ft": 179.95,
-      "6-7ft": 284.95
     },
     "crimson-queen-japanese-maple:planting-tree": {
       "1-2ft": 88.95,
@@ -2241,7 +2194,7 @@
       "2-4ft": 109.99
     },
     "coral-bark-japanese-maple:spring-hill": {
-      "2-4ft": 149.99
+      "2-4ft": 169.99
     },
     "crimson-queen-japanese-maple:spring-hill": {
       "default": 49.99
@@ -2314,7 +2267,7 @@
     },
     "purple-coneflower:spring-hill": {
       "premium-bareroot": 19.99,
-      "jumbo-bareroot": 54.99
+      "jumbo-bareroot": 43.99
     },
     "happy-returns-daylily:spring-hill": {
       "jumbo-bareroot": 39.99
@@ -2436,15 +2389,13 @@
       "quart": 14.95,
       "default": 344.95,
       "1gal": 25.95,
-      "3gal": 44.95,
       "5gal": 78.95,
       "7gal": 149.95
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
-      "default": 133.95,
+      "default": 98.95,
       "1-2ft": 53.95,
       "2-3ft": 75.95,
-      "3-4ft": 98.95,
       "4-5ft": 126.95,
       "5-6ft": 147.95,
       "6-7ft": 183.95
@@ -2603,7 +2554,6 @@
     },
     "heritage-river-birch:fast-growing-trees": {
       "default": 147.95,
-      "2-3ft": 68.95,
       "3-4ft": 84.95,
       "4-5ft": 101.95,
       "5-6ft": 119.95,
@@ -2661,8 +2611,7 @@
       "default": 139.95,
       "2-3ft": 57.95,
       "4-5ft": 94.95,
-      "3-4ft": 79.95,
-      "5-6ft": 113.95
+      "3-4ft": 79.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "default": 194.95,
@@ -2708,36 +2657,11 @@
     "wine-and-roses-weigela:proven-winners-direct": {
       "1gal": 39.99,
       "quart": 20.99
-    },
-    "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "semi-dwarf-ez-start": 64.99
-    },
-    "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 75.99
-    },
-    "bartlett-pear-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "ultra-supreme": 229.99,
-      "semi-dwarf-ez-start": 64.99,
-      "supreme-ez-start": 75.99,
-      "standard-ez-start": 64.99
-    },
-    "double-knock-out-rose:stark-bros": {
-      "default": 15.99
-    },
-    "duke-blueberry:stark-bros": {
-      "default": 25.99
-    },
-    "patriot-blueberry:stark-bros": {
-      "default": 27.99
-    },
-    "pink-lemonade-blueberry:stark-bros": {
-      "default": 25.99
     }
   },
   "degraded_retailers": [
-    "great-garden-plants"
+    "great-garden-plants",
+    "stark-bros"
   ],
   "pipeline_status": "degraded"
 }
