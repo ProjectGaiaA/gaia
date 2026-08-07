@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-07T12:30:01.586717+00:00",
+  "timestamp": "2026-08-07T22:55:06.636653+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -968,18 +968,14 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 197,
+      "prices_collected": 199,
       "anomalies": [
-        "ANOMALY: eastern-redbud at fast-growing-trees tier=6-7ft: $205.95 -> $89.95 (56% change)"
+        "ANOMALY: nikko-blue-hydrangea at fast-growing-trees tier=default: $42.95 -> $94.95 (121% change)"
       ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
           "default": 160.95
-        },
-        "nikko-blue-hydrangea:fast-growing-trees": {
-          "quart": 22.95,
-          "default": 42.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
@@ -1140,6 +1136,12 @@
           "5-6ft": 166.95,
           "6-7ft": 217.95
         },
+        "eastern-redbud:fast-growing-trees": {
+          "default": 485.95,
+          "2-3ft": 69.95,
+          "5-6ft": 74.95,
+          "6-7ft": 89.95
+        },
         "forest-pansy-redbud:fast-growing-trees": {
           "1-2ft": 56.95,
           "default": 165.95,
@@ -1216,8 +1218,7 @@
           "default": 29.95
         },
         "russian-sage:fast-growing-trees": {
-          "default": 43.95,
-          "2gal": 35.95
+          "default": 43.95
         },
         "october-glory-maple:fast-growing-trees": {
           "default": 108.95,
@@ -1281,10 +1282,12 @@
           "3gal": 57.95
         },
         "santa-rosa-plum:fast-growing-trees": {
-          "default": 139.95,
+          "default": 71.95,
           "2-3ft": 57.95,
           "4-5ft": 94.95,
-          "3-4ft": 79.95
+          "3-4ft": 79.95,
+          "5-6ft": 113.95,
+          "6-7ft": 139.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "default": 194.95,
@@ -1340,8 +1343,8 @@
           "quart": 20.99
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 31.99,
+          "quart": 16.79
         }
       },
       "health": "healthy"
@@ -1396,10 +1399,10 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 773,
+  "total_prices_collected": 775,
   "total_anomalies": 1,
   "anomalies": [
-    "ANOMALY: eastern-redbud at fast-growing-trees tier=6-7ft: $205.95 -> $89.95 (56% change)"
+    "ANOMALY: nikko-blue-hydrangea at fast-growing-trees tier=default: $42.95 -> $94.95 (121% change)"
   ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
@@ -2331,10 +2334,6 @@
       "quart": 30.95,
       "default": 160.95
     },
-    "nikko-blue-hydrangea:fast-growing-trees": {
-      "quart": 22.95,
-      "default": 42.95
-    },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
       "default": 150.95
@@ -2494,6 +2493,12 @@
       "5-6ft": 166.95,
       "6-7ft": 217.95
     },
+    "eastern-redbud:fast-growing-trees": {
+      "default": 485.95,
+      "2-3ft": 69.95,
+      "5-6ft": 74.95,
+      "6-7ft": 89.95
+    },
     "forest-pansy-redbud:fast-growing-trees": {
       "1-2ft": 56.95,
       "default": 165.95,
@@ -2570,8 +2575,7 @@
       "default": 29.95
     },
     "russian-sage:fast-growing-trees": {
-      "default": 43.95,
-      "2gal": 35.95
+      "default": 43.95
     },
     "october-glory-maple:fast-growing-trees": {
       "default": 108.95,
@@ -2635,10 +2639,12 @@
       "3gal": 57.95
     },
     "santa-rosa-plum:fast-growing-trees": {
-      "default": 139.95,
+      "default": 71.95,
       "2-3ft": 57.95,
       "4-5ft": 94.95,
-      "3-4ft": 79.95
+      "3-4ft": 79.95,
+      "5-6ft": 113.95,
+      "6-7ft": 139.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "default": 194.95,
@@ -2682,8 +2688,8 @@
       "quart": 20.99
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 31.99,
+      "quart": 16.79
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
