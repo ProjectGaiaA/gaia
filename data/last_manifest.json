@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-07T22:55:06.636653+00:00",
+  "timestamp": "2026-08-08T12:09:32.111609+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -968,14 +968,16 @@
       "products_expected": 68,
       "products_found": 64,
       "products_error": 4,
-      "prices_collected": 199,
-      "anomalies": [
-        "ANOMALY: nikko-blue-hydrangea at fast-growing-trees tier=default: $42.95 -> $94.95 (121% change)"
-      ],
+      "prices_collected": 198,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 30.95,
           "default": 160.95
+        },
+        "nikko-blue-hydrangea:fast-growing-trees": {
+          "quart": 22.95,
+          "default": 42.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 29.95,
@@ -1399,11 +1401,9 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 775,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: nikko-blue-hydrangea at fast-growing-trees tier=default: $42.95 -> $94.95 (121% change)"
-  ],
+  "total_prices_collected": 774,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2333,6 +2333,10 @@
     "limelight-hydrangea:fast-growing-trees": {
       "quart": 30.95,
       "default": 160.95
+    },
+    "nikko-blue-hydrangea:fast-growing-trees": {
+      "quart": 22.95,
+      "default": 42.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 29.95,
