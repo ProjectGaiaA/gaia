@@ -53,24 +53,34 @@ h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
 .nav-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 56px;
+    justify-content: flex-start;
+    gap: 2rem;
+    height: 64px;
 }
 .site-logo {
     display: flex;
     align-items: center;
-    gap: 0.4rem;
+    gap: 0.55rem;
     font-weight: 700;
     font-size: 1.1rem;
     color: var(--green-dark);
     text-decoration: none;
+    flex-shrink: 0;
 }
+.site-logo:hover { text-decoration: none; color: var(--green-dark); }
 .logo-icon { font-size: 1.3rem; }
-.logo-img { height: 40px; width: auto; }
+.logo-img { height: 44px; width: auto; }
+.logo-text {
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+}
 .nav-links {
     display: flex;
     list-style: none;
     gap: 1.25rem;
+    flex-wrap: wrap;
 }
 .nav-links a {
     color: var(--gray-700);
@@ -79,6 +89,10 @@ h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
 }
 .nav-links a:hover { color: var(--green-dark); text-decoration: none; }
 
+/* Wordmark yields before the nav does */
+@media (max-width: 1080px) {
+    .logo-text { display: none; }
+}
 @media (max-width: 768px) {
     .nav-links { display: none; }
 }
