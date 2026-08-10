@@ -107,29 +107,7 @@ jobs:
 
       - name: Strip unresolved variants
         if: always()
-        run: |
-          python -c "
-          import glob, json
-          stripped = 0
-          for f in glob.glob('data/prices/*.jsonl'):
-              lines = []
-              mod = False
-              with open(f, encoding='utf-8') as fh:
-                  for line in fh:
-                      if not line.strip(): continue
-                      e = json.loads(line)
-                      sizes = e.get('sizes', {})
-                      clean = {k:v for k,v in sizes.items() if not k.startswith('variant-')}
-                      if len(clean) < len(sizes):
-                          stripped += len(sizes) - len(clean)
-                          e['sizes'] = clean
-                          mod = True
-                      lines.append(json.dumps(e, ensure_ascii=False))
-              if mod:
-                  with open(f, 'w', encoding='utf-8') as fh:
-                      fh.write('\n'.join(lines) + '\n')
-          print(f'Stripped {stripped} bad tiers')
-          "
+        run: python scripts/strip_unresolved_variants.py
 
       - name: Verify prices (10 random spot checks)
         if: always()
