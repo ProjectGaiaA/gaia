@@ -20,6 +20,16 @@ import requests
 logger = logging.getLogger(__name__)
 
 # ---------------------------------------------------------------------------
+# Bot identity
+# ---------------------------------------------------------------------------
+# Used for robots.txt fetches. Verified 2026-08-10 to return HTTP 200 from all
+# seven active retailers, including greatgardenplants.com, whose WAF rejects
+# Python-urllib's default UA with a 403.
+BOT_USER_AGENT = (
+    "PlantPriceTrackerBot/1.0 (+https://www.plantpricetracker.com/bot)"
+)
+
+# ---------------------------------------------------------------------------
 # 10 real browser user-agent strings (updated 2026-04)
 # ---------------------------------------------------------------------------
 USER_AGENTS = [
@@ -71,15 +81,35 @@ _robots_cache: dict[str, RobotFileParser] = {}
 
 
 def _get_robots_parser(domain: str) -> RobotFileParser | None:
-    """Fetch and cache robots.txt for a domain. Returns None on failure."""
+    """Fetch and cache robots.txt for a domain. Returns None on failure.
+
+    Fetches the file ourselves rather than calling RobotFileParser.read().
+    read() uses Python-urllib's default User-Agent, which some WAFs reject:
+    greatgardenplants.com returns 403 to it, and CPython's read() swallows
+    that HTTPError and sets disallow_all=True. The result is a parser that
+    silently forbids everything, with no exception for the caller's
+    fail-open branch to catch — which is how great-garden-plants vanished
+    from the site for 40+ consecutive runs while its robots.txt actually
+    says "Allow: /".
+    """
     if domain in _robots_cache:
         return _robots_cache[domain]
 
     robots_url = f"https://{domain}/robots.txt"
-    rp = RobotFileParser()
-    rp.set_url(robots_url)
     try:
-        rp.read()
+        resp = requests.get(
+            robots_url, headers={"User-Agent": BOT_USER_AGENT}, timeout=20
+        )
+        if resp.status_code >= 400:
+            # Genuine failure: fail open loudly (documented behavior).
+            logger.warning(
+                f"robots.txt for {domain} returned HTTP {resp.status_code} — "
+                f"proceeding without robots rules (fail-open)"
+            )
+            _robots_cache[domain] = None
+            return None
+        rp = RobotFileParser()
+        rp.parse(resp.text.splitlines())
         _robots_cache[domain] = rp
         return rp
     except Exception as e:

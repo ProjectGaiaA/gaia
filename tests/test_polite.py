@@ -80,3 +80,61 @@ def test_make_polite_session_sets_headers():
     session = make_polite_session()
     assert "User-Agent" in session.headers
     assert "Accept" in session.headers
+
+
+# --- robots.txt fetch must not use Python-urllib's default UA ---
+
+from unittest.mock import patch as _patch  # noqa: E402
+
+import scrapers.polite as _polite  # noqa: E402
+
+
+class _Resp:
+    def __init__(self, status, text=""):
+        self.status_code = status
+        self.text = text
+
+
+def _clear_cache():
+    _polite._robots_cache.clear()
+
+
+def test_robots_fetched_with_identifying_bot_ua():
+    """A WAF that 403s Python-urllib must not silently disable the scraper.
+
+    RobotFileParser.read() swallows the 403 and sets disallow_all=True, which
+    is how great-garden-plants disappeared for 40+ runs. We fetch it ourselves
+    with an honest identifier instead.
+    """
+    _clear_cache()
+    seen = {}
+
+    def fake_get(url, headers=None, timeout=None):
+        seen["url"] = url
+        seen["ua"] = (headers or {}).get("User-Agent")
+        return _Resp(200, "User-agent: *\nAllow: /\n")
+
+    with _patch.object(_polite.requests, "get", fake_get):
+        allowed = _polite.is_allowed_by_robots("https://example.com/products/x.json")
+
+    assert allowed is True
+    assert seen["url"] == "https://example.com/robots.txt"
+    assert seen["ua"] == _polite.BOT_USER_AGENT
+    assert "PlantPriceTrackerBot" in seen["ua"]
+    assert "Mozilla" not in seen["ua"], "robots.txt must not be fetched with a spoofed browser UA"
+
+
+def test_robots_403_fails_open_not_closed():
+    """A 403 on robots.txt must fail OPEN with a warning, never block everything."""
+    _clear_cache()
+    with _patch.object(_polite.requests, "get", lambda *a, **k: _Resp(403)):
+        assert _polite.is_allowed_by_robots("https://example.com/products/x.json") is True
+
+
+def test_robots_disallow_is_still_honored():
+    """Failing open on fetch errors must not mean ignoring real rules."""
+    _clear_cache()
+    body = "User-agent: *\nDisallow: /private/\n"
+    with _patch.object(_polite.requests, "get", lambda *a, **k: _Resp(200, body)):
+        assert _polite.is_allowed_by_robots("https://example.com/private/x") is False
+        assert _polite.is_allowed_by_robots("https://example.com/products/x") is True
