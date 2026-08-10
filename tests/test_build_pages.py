@@ -6,6 +6,8 @@ the generated HTML files for correctness.
 
 import os
 import shutil
+from datetime import date
+from unittest.mock import patch
 
 import pytest
 from bs4 import BeautifulSoup
@@ -73,7 +75,15 @@ def built_site(tmp_path_factory):
     build.ARTICLES_DIR = str(articles_dir)
 
     try:
-        build.build_site()
+        # Fixture JSONL timestamps are fixed in early April 2026. Freeze the
+        # clock to match (same pattern as test_build_data.py) so the 30-day
+        # staleness cutoff in build_price_table() sees fresh fixtures as
+        # fresh and the 2026-02-15 stale-plant fixture as stale — forever,
+        # instead of only for the 30 days after the fixtures were authored.
+        with patch("build.date") as mock_date:
+            mock_date.today.return_value = date(2026, 4, 6)
+            mock_date.side_effect = lambda *a, **kw: date(*a, **kw)
+            build.build_site()
     finally:
         # Restore originals so other tests aren't affected
         build.DATA_DIR = orig_data
