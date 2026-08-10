@@ -502,6 +502,65 @@ def build_guide_title(title):
     return " ".join(words) if words else truncated
 
 
+def displayable_price(tier, price_info):
+    """Return the price a visitor could actually act on, else None.
+
+    Single source of truth for "which prices count". A price is displayable
+    only if the size resolved — the hidden "default" pseudo-tier means the
+    scraper could not identify a size, so it is never shown in the table and
+    must never set a headline, a chart point, or an offer count — and the
+    variant is not explicitly unavailable.
+
+    This logic previously existed in four places that had drifted apart,
+    which is how pampas-grass advertised "from $4.49" in sibling-page
+    widgets and plotted $4.49 on its own price chart while the schema on
+    that same page said $46.95.
+    """
+    if tier == "default":
+        return None
+    if isinstance(price_info, dict):
+        if price_info.get("available") is False:
+            return None
+        price = price_info.get("price")
+    else:
+        price = price_info
+    if isinstance(price, bool) or not isinstance(price, (int, float)):
+        return None
+    return price if price > 0 else None
+
+
+def entry_is_stale(price_data, max_age_days=30):
+    """True when an entry is older than the display cutoff, or undated.
+
+    Mirrors the >30-day exclusion in build_price_table. Kept here so callers
+    outside that function apply the identical rule; when they didn't, sibling
+    widgets advertised prices the target page had already dropped as stale.
+    """
+    timestamp = price_data.get("timestamp", "")
+    if not timestamp:
+        return False
+    try:
+        scrape_date = datetime.fromisoformat(
+            str(timestamp).replace("Z", "+00:00")
+        ).date()
+    except (ValueError, TypeError):
+        return False
+    return (date.today() - scrape_date).days > max_age_days
+
+
+def flatten_displayable_prices(latest_prices, max_age_days=30):
+    """Every displayable, non-stale price across a plant's latest entries."""
+    out = []
+    for price_data in latest_prices.values():
+        if entry_is_stale(price_data, max_age_days):
+            continue
+        for raw_tier, price_info in price_data.get("sizes", {}).items():
+            price = displayable_price(normalize_size_tier(raw_tier), price_info)
+            if price is not None:
+                out.append(price)
+    return out
+
+
 def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=None, price_entries=None):
     """Build structured price data for the comparison table template."""
     prices = {}
@@ -558,12 +617,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                         "label": get_size_label(tier),
                         "variant_id": price_info.get("variant_id"),
                     }
-                    # Headline range / savings math excludes the hidden
-                    # "default" pseudo-tier (size unresolved) and variants
-                    # marked unavailable: a price nobody can click must not
-                    # set the public "from $X" — 12 live pages advertised a
-                    # lowPrice up to 10.5x below anything buyable that way.
-                    if tier != "default" and price_info.get("available") is not False:
+                    if displayable_price(tier, price_info) is not None:
                         all_prices_flat.append(price)
                     active_tiers.add(tier)
             elif isinstance(price_info, (int, float)) and price_info > 0:
@@ -575,7 +629,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                     "is_best": False,
                     "label": get_size_label(tier),
                 }
-                if tier != "default":
+                if displayable_price(tier, price_info) is not None:
                     all_prices_flat.append(price_info)
                 active_tiers.add(tier)
 
@@ -810,7 +864,17 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         "savings_pct": savings_pct,
         "same_tier_savings": same_tier_savings,
         "same_tier_info": same_tier_info,
-        "offer_count": len(prices),
+        # Count retailers that actually show a price a visitor can act on.
+        # len(prices) counted retailer ROWS, so pages with priceless rows
+        # claimed "2 Nurseries, $95-$95", and dogwood-tree / peace-lily
+        # scored 1 and escaped the zero-offer noindex with no price at all.
+        "offer_count": sum(
+            1 for r in prices.values()
+            if any(
+                isinstance(s, dict) and s.get("price")
+                for t, s in r["sizes"].items() if t != "default"
+            )
+        ),
         "any_in_stock": any_in_stock,
         "has_non_affiliate": has_non_affiliate,
         "best_deal": best_deal,
@@ -834,14 +898,15 @@ def build_price_history_json(price_entries, active_retailer_ids=None):
         ts = entry.get("timestamp", "")[:10]
         rname = entry.get("retailer_name", rid)
         retailer_names[rid] = rname
-        # Use the lowest price across all size tiers for the chart
-        sizes = entry.get("sizes", {})
+        # Lowest DISPLAYABLE price across size tiers. Charting a hidden
+        # "default"-tier price plotted a number below the page's own
+        # lowPrice on 17 pages — pampas-grass ended at $4.49 under a
+        # $46.95 headline.
         prices_list = []
-        for v in sizes.values():
-            if isinstance(v, dict) and v.get("price"):
-                prices_list.append(v["price"])
-            elif isinstance(v, (int, float)) and v > 0:
-                prices_list.append(v)
+        for raw_tier, v in entry.get("sizes", {}).items():
+            price = displayable_price(normalize_size_tier(raw_tier), v)
+            if price is not None:
+                prices_list.append(price)
         if prices_list:
             by_date[ts][rid] = min(prices_list)
 
@@ -1186,19 +1251,15 @@ def build_site(build_guides=True, build_products=True):
     env.globals["current_year"] = datetime.now().year
     env.filters["tojson"] = lambda obj: json.dumps(obj, ensure_ascii=False)
 
-    # Pre-enrich all plants with lowest_price so find_similar_plants() can sort by price
+    # Pre-enrich all plants with lowest_price so find_similar_plants() can sort by price.
+    # Must use the same displayable-price rule as the product page: this loop
+    # feeds the "Similar Plants" widget on OTHER plants' pages, and when it
+    # disagreed it published 33 stale cross-links (pampas "from $4.49" on six
+    # sibling pages whose own page said $46.95).
     for plant in plants:
         price_entries = load_prices(plant["id"])
         latest_prices = get_latest_prices(price_entries, retailers_by_id)
-        all_prices_flat = []
-        for price_data in latest_prices.values():
-            for price_info in price_data.get("sizes", {}).values():
-                if isinstance(price_info, dict):
-                    p = price_info.get("price")
-                    if p is not None and p > 0:
-                        all_prices_flat.append(p)
-                elif isinstance(price_info, (int, float)) and price_info > 0:
-                    all_prices_flat.append(price_info)
+        all_prices_flat = flatten_displayable_prices(latest_prices)
         plant["lowest_price"] = min(all_prices_flat) if all_prices_flat else None
 
     # Ensure output directories

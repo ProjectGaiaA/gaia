@@ -541,3 +541,93 @@ class TestMiscPages:
     def test_wishlist_page_exists(self, built_site):
         path = built_site / "my-list.html"
         assert path.exists()
+
+
+class TestPriceCrossConsistency:
+    """Every price shown anywhere on a page must agree with that page's schema.
+
+    Phase 1 fixed the headline price in one of four places that decide which
+    prices count. The other three kept publishing the old number: sibling
+    "Similar Plants" widgets, the price-history chart, and offer_count. This
+    class asserts the invariant directly on built HTML so the four can never
+    silently diverge again.
+    """
+
+    @staticmethod
+    def _schema_range(soup):
+        import json as _json
+        for tag in soup.find_all("script", type="application/ld+json"):
+            try:
+                data = _json.loads(tag.string or "{}")
+            except ValueError:
+                continue
+            offers = data.get("offers") or {}
+            if offers.get("lowPrice") is not None:
+                return float(offers["lowPrice"]), float(offers["highPrice"]), offers
+        return None, None, None
+
+    def _plant_pages(self, site_dir):
+        import glob as _glob
+        import os as _os
+        return sorted(_glob.glob(_os.path.join(str(site_dir), "plants", "*.html")))
+
+    def test_chart_prices_within_schema_range(self, built_site):
+        """The price-history chart must never plot a current price below the
+        page's own advertised lowPrice."""
+        import json as _json
+        import re as _re
+        violations = []
+        for path in self._plant_pages(built_site):
+            html = open(path, encoding="utf-8").read()
+            soup = BeautifulSoup(html, "html.parser")
+            low, high, _ = self._schema_range(soup)
+            if low is None:
+                continue
+            m = _re.search(r"priceHistoryData\s*=\s*(\{.*?\});", html, _re.S)
+            if not m:
+                continue
+            data = _json.loads(m.group(1))
+            for series in data.get("datasets", []):
+                pts = [p for p in series.get("data", []) if p is not None]
+                if pts and min(pts) < low - 0.01:
+                    violations.append(
+                        f"{os.path.basename(path)}: chart {series.get('label')} "
+                        f"min ${min(pts)} < lowPrice ${low}"
+                    )
+        assert not violations, "Chart contradicts schema:\n" + "\n".join(violations)
+
+    def test_offer_count_matches_rendered_prices(self, built_site):
+        """schema offerCount must equal the retailers actually showing a price."""
+        violations = []
+        for path in self._plant_pages(built_site):
+            soup = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser")
+            low, _, offers = self._schema_range(soup)
+            if offers is None:
+                continue
+            count = offers.get("offerCount")
+            priced_rows = 0
+            for row in soup.select("tbody tr"):
+                if row.select("a.price-link") or row.select(".price-cell a"):
+                    priced_rows += 1
+            if count is not None and priced_rows and int(count) > priced_rows:
+                violations.append(
+                    f"{os.path.basename(path)}: offerCount={count} but "
+                    f"{priced_rows} rows show a price"
+                )
+        assert not violations, "offerCount overstates:\n" + "\n".join(violations)
+
+    def test_no_page_claims_offers_without_a_price(self, built_site):
+        """A page with no displayable price must be noindexed, not indexed
+        as an N-Nursery commercial page."""
+        violations = []
+        for path in self._plant_pages(built_site):
+            soup = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser")
+            low, _, _ = self._schema_range(soup)
+            has_price_link = bool(soup.select("a.price-link"))
+            robots = soup.find("meta", attrs={"name": "robots"})
+            noindexed = robots is not None and "noindex" in robots.get("content", "")
+            if low is None and not has_price_link and not noindexed:
+                violations.append(os.path.basename(path))
+        assert not violations, (
+            "Indexed pages with no price at all: " + ", ".join(violations)
+        )
