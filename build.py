@@ -535,7 +535,13 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                         "label": get_size_label(tier),
                         "variant_id": price_info.get("variant_id"),
                     }
-                    all_prices_flat.append(price)
+                    # Headline range / savings math excludes the hidden
+                    # "default" pseudo-tier (size unresolved) and variants
+                    # marked unavailable: a price nobody can click must not
+                    # set the public "from $X" — 12 live pages advertised a
+                    # lowPrice up to 10.5x below anything buyable that way.
+                    if tier != "default" and price_info.get("available") is not False:
+                        all_prices_flat.append(price)
                     active_tiers.add(tier)
             elif isinstance(price_info, (int, float)) and price_info > 0:
                 if tier in sizes and sizes[tier]["price"] <= price_info:
@@ -546,7 +552,8 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                     "is_best": False,
                     "label": get_size_label(tier),
                 }
-                all_prices_flat.append(price_info)
+                if tier != "default":
+                    all_prices_flat.append(price_info)
                 active_tiers.add(tier)
 
         in_stock = price_data.get("in_stock", None)
@@ -684,6 +691,10 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         if rdata["in_stock"] is False:
             continue
         for tier, sdata in rdata["sizes"].items():
+            # "default" is not a size — comparing it across nurseries is
+            # apples-to-oranges (bare-root vs 3-gallon sold as one "tier")
+            if tier == "default":
+                continue
             if isinstance(sdata, dict) and sdata.get("price"):
                 tier_prices_map.setdefault(tier, []).append(
                     (sdata["price"], rdata["retailer_name"])
