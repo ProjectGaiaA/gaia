@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.plantpricetracker.com/</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/my-list.html</loc><lastmod>2026-08-10</lastmod></url>
+  <url><loc>https://www.plantpricetracker.com/my-list.html</loc></url>
   <url><loc>https://www.plantpricetracker.com/heat-map.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/improve.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/index.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/disclosure.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/privacy.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/about.html</loc><lastmod>2026-08-10</lastmod></url>
+  <url><loc>https://www.plantpricetracker.com/improve.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/index.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/disclosure.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/privacy.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/about.html</loc></url>
   <url><loc>https://www.plantpricetracker.com/plants/limelight-hydrangea.html</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://www.plantpricetracker.com/plants/nikko-blue-hydrangea.html</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://www.plantpricetracker.com/plants/endless-summer-hydrangea.html</loc><lastmod>2026-08-10</lastmod></url>
@@ -70,7 +70,6 @@
   <url><loc>https://www.plantpricetracker.com/plants/peace-lily.html</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://www.plantpricetracker.com/plants/fiddle-leaf-fig.html</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://www.plantpricetracker.com/plants/karl-foerster-grass.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/plants/miscanthus-morning-light.html</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://www.plantpricetracker.com/plants/creeping-phlox.html</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://www.plantpricetracker.com/plants/butterfly-bush-miss-molly.html</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://www.plantpricetracker.com/plants/forsythia-lynwood-gold.html</loc><lastmod>2026-08-10</lastmod></url>
@@ -123,15 +122,15 @@
   <url><loc>https://www.plantpricetracker.com/category/grasses.html</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://www.plantpricetracker.com/category/groundcovers.html</loc><lastmod>2026-08-10</lastmod></url>
   <url><loc>https://www.plantpricetracker.com/category/shade-trees.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/best-hydrangeas-to-buy-online.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/best-fruit-trees-to-buy-online.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/best-privacy-trees.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/cheapest-places-to-buy-online.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/best-japanese-maple-varieties.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/best-knock-out-roses.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/best-blueberry-bushes.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/best-flowering-trees-small-yards.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/best-azaleas-rhododendrons.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/best-time-to-buy-plants-online.html</loc><lastmod>2026-08-10</lastmod></url>
-  <url><loc>https://www.plantpricetracker.com/guides/why-same-plant-costs-20-or-60.html</loc><lastmod>2026-08-10</lastmod></url>
+  <url><loc>https://www.plantpricetracker.com/guides/best-hydrangeas-to-buy-online.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/best-fruit-trees-to-buy-online.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/best-privacy-trees.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/cheapest-places-to-buy-online.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/best-japanese-maple-varieties.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/best-knock-out-roses.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/best-blueberry-bushes.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/best-flowering-trees-small-yards.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/best-azaleas-rhododendrons.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/best-time-to-buy-plants-online.html</loc></url>
+  <url><loc>https://www.plantpricetracker.com/guides/why-same-plant-costs-20-or-60.html</loc></url>
 </urlset>
