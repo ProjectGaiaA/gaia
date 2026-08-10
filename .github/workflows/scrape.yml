@@ -96,30 +96,25 @@ jobs:
             echo "All nurseries scraped successfully"
           fi
 
-      - name: Run tests
-        id: tests
-        continue-on-error: true
-        run: pytest
-
-      - name: Flag test failures
-        if: steps.tests.outcome == 'failure'
-        run: echo "::warning::Tests failed — review pytest output above. Price data commit will proceed."
-
+      # --- Gates: any failure below skips the commit — the site keeps
+      # --- serving the last known good data instead of shipping garbage.
       - name: Strip unresolved variants
-        if: always()
         run: python scripts/strip_unresolved_variants.py
 
+      - name: Data sanity gate
+        run: python scripts/check_data_sanity.py
+
+      - name: Run tests
+        run: pytest
+
       - name: Verify prices (10 random spot checks)
-        if: always()
         run: |
-          python -m scrapers.verify --count 10 || echo "WARNING: Price mismatches detected -- review verify output above"
+          python -m scrapers.verify --count 10 || echo "::warning::Price spot-check mismatches — review verify output above"
 
       - name: Build site
-        if: always()
         run: python -X utf8 build.py
 
       - name: Verify internal links
-        if: always()
         run: |
           python -c "
           import os, re
@@ -143,7 +138,6 @@ jobs:
           "
 
       - name: Scrape promo codes
-        if: always()
         run: |
           python -c "
           import sys, json
@@ -155,11 +149,37 @@ jobs:
           " || echo "WARNING: Promo scraping failed -- skipping"
 
       - name: Commit updated price data
-        if: always()
         run: |
           git config user.name "PlantPriceTracker Bot"
           git config user.email "bot@plantpricetracker.com"
-          git add data/prices/ data/last_manifest.json data/promos.json site/
+          git add data/prices/ data/last_manifest.json data/promos.json data/handle_maps.json site/
+          # recovery.json only exists after a recovery pass has run
+          if [ -f data/recovery.json ]; then git add data/recovery.json; fi
           git diff --staged --quiet || git commit -m "Daily price update $(date +%Y-%m-%d_%H:%M)"
           git pull --rebase origin main
           git push
+
+      # Runs even when everything above succeeded and committed: a retailer
+      # dead for 2+ consecutive runs (runner exit 2) must turn the job red
+      # so the failure email fires — without blocking the other retailers'
+      # publish, which already happened above.
+      - name: Enforce retailer liveness
+        if: always()
+        run: |
+          FAILED=""
+          for pair in "nature-hills:${{ steps.nature_hills.outcome }}" \
+                      "planting-tree:${{ steps.planting_tree.outcome }}" \
+                      "spring-hill:${{ steps.spring_hill.outcome }}" \
+                      "fast-growing-trees:${{ steps.fast_growing_trees.outcome }}" \
+                      "proven-winners-direct:${{ steps.proven_winners.outcome }}" \
+                      "great-garden-plants:${{ steps.great_garden_plants.outcome }}" \
+                      "stark-bros:${{ steps.stark_bros.outcome }}"; do
+            if [ "${pair##*:}" = "failure" ]; then
+              FAILED="$FAILED ${pair%%:*}"
+            fi
+          done
+          if [ -n "$FAILED" ]; then
+            echo "::error::Scraper step failed for:$FAILED — dead retailer or crash. Data from healthy retailers was still published."
+            exit 1
+          fi
+          echo "All scraper steps healthy."
