@@ -567,6 +567,30 @@ CI_TIMEOUT_SECONDS = 90 * 60  # 90-minute CI timeout
 POST_SCRAPE_BUFFER_SECONDS = 10 * 60  # 10 minutes for build/commit/deploy
 
 
+def find_dead_retailers(this_run_entries: list[dict], prev_manifest: dict) -> list[str]:
+    """Retailers that returned ZERO products this run AND the previous run.
+
+    One zero can be flakiness (Stark Bros is all-or-nothing); two
+    consecutive zeros means the retailer is dead — bot-blocked, redesigned,
+    or handle-rotted — and silence is how great-garden-plants served
+    20-day-old prices without anyone knowing. Callers treat a non-empty
+    result as fatal for the run.
+    """
+    prev_by_rid = {
+        e.get("retailer_id"): e
+        for e in (prev_manifest or {}).get("retailers", [])
+    }
+    dead = []
+    for entry in this_run_entries:
+        if entry.get("status") != "completed":
+            continue
+        if entry.get("products_expected", 0) > 0 and entry.get("products_found", 0) == 0:
+            prev = prev_by_rid.get(entry.get("retailer_id"))
+            if prev is not None and prev.get("products_found", 1) == 0:
+                dead.append(entry["retailer_id"])
+    return dead
+
+
 def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = False):
     """Main scraper orchestrator."""
     run_start = time.monotonic()
@@ -712,6 +736,18 @@ def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = 
         logger.warning("Degraded retailers need manual handle review — pipeline continues.")
     else:
         logger.info("\nAll retailers healthy.")
+
+    # A retailer at zero products for two consecutive runs is dead, not
+    # flaky. Exit non-zero so the CI step goes red and someone is told —
+    # the manifest above is already saved, so state is not lost.
+    dead = find_dead_retailers(this_run_entries, prev_manifest)
+    if dead and not dry_run:
+        logger.error(
+            f"\nFATAL: retailer(s) returned 0 products for 2+ consecutive runs: "
+            f"{', '.join(dead)} — bot-block, redesign, or handle rot. "
+            f"Fix or deactivate; this exit is the alarm."
+        )
+        sys.exit(2)
 
     return manifest
 

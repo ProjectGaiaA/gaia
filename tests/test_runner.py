@@ -204,3 +204,49 @@ def test_merge_manifest_full_run_replaces_everything():
     assert retailer_ids == {"old-retailer", "nature-hills", "stark-bros"}
     # Stale old-retailer prices preserved because we didn't re-scrape it
     assert merged["prices"]["plant:old-retailer"] == {"1gal": 10}
+
+
+# --- Dead retailer detection (2 consecutive zero-product runs) ---
+
+from scrapers.runner import find_dead_retailers  # noqa: E402
+
+
+def _zero_entry(retailer_id: str, expected: int = 7, found: int = 0) -> dict:
+    return {
+        "retailer_id": retailer_id,
+        "status": "completed",
+        "products_expected": expected,
+        "products_found": found,
+    }
+
+
+def test_dead_after_two_consecutive_zero_runs():
+    """Zero this run AND zero in the previous manifest -> dead."""
+    prev = {"retailers": [_zero_entry("great-garden-plants")]}
+    dead = find_dead_retailers([_zero_entry("great-garden-plants")], prev)
+    assert dead == ["great-garden-plants"]
+
+
+def test_single_zero_run_is_flaky_not_dead():
+    """Stark Bros style all-or-nothing miss: previous run was fine."""
+    prev = {"retailers": [_zero_entry("stark-bros", found=7)]}
+    dead = find_dead_retailers([_zero_entry("stark-bros")], prev)
+    assert dead == []
+
+
+def test_first_ever_run_zero_is_not_dead():
+    """No previous manifest entry: cannot be 'consecutive' yet."""
+    dead = find_dead_retailers([_zero_entry("new-retailer")], {})
+    assert dead == []
+
+
+def test_healthy_run_never_dead():
+    prev = {"retailers": [_zero_entry("nature-hills")]}
+    dead = find_dead_retailers([_zero_entry("nature-hills", found=7)], prev)
+    assert dead == []
+
+
+def test_skipped_entries_ignored():
+    prev = {"retailers": [_zero_entry("brecks")]}
+    entries = [{"retailer_id": "brecks", "status": "skipped", "products_expected": 0}]
+    assert find_dead_retailers(entries, prev) == []
