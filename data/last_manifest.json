@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-09T22:45:44.658979+00:00",
+  "timestamp": "2026-08-10T12:31:13.534740+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -860,10 +860,10 @@
         },
         "bloodgood-japanese-maple:spring-hill": {
           "3gal": 129.99,
-          "2-4ft": 109.99
+          "2-4ft": 101.19
         },
         "coral-bark-japanese-maple:spring-hill": {
-          "2-4ft": 169.99
+          "2-4ft": 135.99
         },
         "crimson-queen-japanese-maple:spring-hill": {
           "default": 49.99
@@ -898,7 +898,7 @@
         },
         "yoshino-cherry:spring-hill": {
           "2-4ft": 129.99,
-          "5-6ft": 170.99,
+          "5-6ft": 143.99,
           "5gal": 179.99
         },
         "gibraltar-azalea:spring-hill": {
@@ -951,7 +951,7 @@
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99,
-          "5-6ft": 179.99
+          "5-6ft": 143.99
         },
         "rose-of-sharon:spring-hill": {
           "premium-bareroot": 24.99
@@ -2228,10 +2228,10 @@
     },
     "bloodgood-japanese-maple:spring-hill": {
       "3gal": 129.99,
-      "2-4ft": 109.99
+      "2-4ft": 101.19
     },
     "coral-bark-japanese-maple:spring-hill": {
-      "2-4ft": 169.99
+      "2-4ft": 135.99
     },
     "crimson-queen-japanese-maple:spring-hill": {
       "default": 49.99
@@ -2266,7 +2266,7 @@
     },
     "yoshino-cherry:spring-hill": {
       "2-4ft": 129.99,
-      "5-6ft": 170.99,
+      "5-6ft": 143.99,
       "5gal": 179.99
     },
     "gibraltar-azalea:spring-hill": {
@@ -2319,7 +2319,7 @@
     },
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99,
-      "5-6ft": 179.99
+      "5-6ft": 143.99
     },
     "rose-of-sharon:spring-hill": {
       "premium-bareroot": 24.99
