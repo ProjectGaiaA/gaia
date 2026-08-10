@@ -251,8 +251,23 @@ class TestSitemap:
 
     def test_sitemap_contains_active_plants(self, built_site):
         text = _read_text(built_site, "sitemap.xml")
-        for plant_id in ["test-hydrangea", "test-maple", "test-apple", "test-stale-plant"]:
+        for plant_id in ["test-hydrangea", "test-maple", "test-apple"]:
             assert f"/plants/{plant_id}.html" in text, f"{plant_id} missing from sitemap"
+
+    def test_sitemap_excludes_zero_offer_plants(self, built_site):
+        """A plant whose only prices aged out has zero offers: its page is
+        noindexed, so the sitemap must not point Google at it."""
+        text = _read_text(built_site, "sitemap.xml")
+        assert "test-stale-plant" not in text
+
+    def test_zero_offer_page_is_noindexed(self, built_site):
+        soup = _read_html(built_site, "plants", "test-stale-plant.html")
+        robots = soup.find("meta", attrs={"name": "robots"})
+        assert robots is not None and "noindex" in robots.get("content", "")
+
+    def test_normal_page_is_not_noindexed(self, built_site):
+        soup = _read_html(built_site, "plants", "test-hydrangea.html")
+        assert soup.find("meta", attrs={"name": "robots"}) is None
 
     def test_sitemap_excludes_inactive(self, built_site):
         text = _read_text(built_site, "sitemap.xml")

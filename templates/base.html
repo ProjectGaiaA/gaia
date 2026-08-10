@@ -9,6 +9,7 @@
     <meta name='impact-site-verification' value='c22b986a-d7a7-4615-a2dc-4b65f4d26996'>
     {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}" />{% endif %}
     {% if canonical_url %}<meta property="og:url" content="{{ canonical_url }}" />{% endif %}
+    {% if noindex %}<meta name="robots" content="noindex" />{% endif %}
     {% block schema %}{% endblock %}
     <link rel="stylesheet" href="/assets/css/style.css">
     {% block head_extra %}{% endblock %}

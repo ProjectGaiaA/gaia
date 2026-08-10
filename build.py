@@ -353,6 +353,29 @@ def compute_sale_pair_ages(price_entries):
     return ages
 
 
+def latest_scrape_date(price_entries):
+    """Most recent timezone-aware scrape timestamp in a history, as a date.
+
+    This — not the build clock — is what "Prices last checked" means. The
+    build previously stamped date.today(), which labelled 20-day-old data
+    as checked today.
+    """
+    best = None
+    for entry in price_entries:
+        ts_str = entry.get("timestamp", "")
+        if not ts_str:
+            continue
+        try:
+            ts = datetime.fromisoformat(str(ts_str).replace("Z", "+00:00"))
+        except (ValueError, TypeError):
+            continue
+        if ts.tzinfo is None:
+            continue
+        if best is None or ts > best:
+            best = ts
+    return best.date() if best else None
+
+
 def count_consecutive_run_misses(price_entries):
     """
     Cluster scrape entries into runs (>12h gap = new run) and return how many
@@ -1213,8 +1236,17 @@ def build_site(build_guides=True, build_products=True):
             plant["savings_pct"] = price_table["savings_pct"]
             plant["same_tier_info"] = price_table.get("same_tier_info")
             plant["retailer_count"] = price_table["offer_count"]
+            plant["_data_date"] = latest_scrape_date(price_entries)
 
             page_title = build_product_title(plant["common_name"], price_table["offer_count"])
+
+            # A page with zero priced offers is an empty commercial page —
+            # keep it reachable for anyone holding the URL, but don't index
+            # it or list it in the sitemap (miscanthus-morning-light spent
+            # 100 days being served to Google as "0 Nurseries").
+            zero_offers = price_table["offer_count"] == 0
+            if zero_offers:
+                print(f"  WARNING: {plant['id']} has zero priced offers — noindexed")
 
             # Guide link: dedicated guide for this plant's category, or fallback
             cat_id = plant.get("category", "uncategorized")
@@ -1224,7 +1256,10 @@ def build_site(build_guides=True, build_products=True):
             html = product_tpl.render(
                 plant=plant,
                 page_title=page_title,
-                last_updated=date.today().strftime("%B %d, %Y"),
+                last_updated=(
+                    plant["_data_date"].strftime("%B %d, %Y")
+                    if plant.get("_data_date") else None
+                ),
                 similar_plants=similar,
                 price_history=bool(price_history_json),
                 price_history_json=price_history_json or "{}",
@@ -1233,6 +1268,7 @@ def build_site(build_guides=True, build_products=True):
                 guide_link=guide_info,
                 category_name=cat_name,
                 category_slug=cat_id,
+                noindex=zero_offers,
                 **price_table,
             )
 
@@ -1508,20 +1544,49 @@ def build_site(build_guides=True, build_products=True):
     # Build sitemap.xml
     # -----------------------------------------------------------------------
     print("\nBuilding sitemap.xml...")
-    sitemap_urls = ["/", "/my-list.html", "/heat-map.html", "/improve.html", "/guides/index.html",
-                    "/disclosure.html", "/privacy.html", "/about.html"]
+    # lastmod is derived from real data dates, not the build clock — every
+    # URL previously claimed modification twice a day, which reads as
+    # sitemap spam and destroys lastmod as a crawl-priority signal.
+    # Pages without an honest date simply omit lastmod (valid per spec).
+    def _plant_date(p):
+        if "_data_date" not in p:
+            p["_data_date"] = latest_scrape_date(load_prices(p["id"]))
+        return p["_data_date"]
+
+    overall_date = max(
+        (d for d in (_plant_date(p) for p in plants) if d), default=None
+    )
+    sitemap_entries = [
+        ("/", overall_date),                 # price-driven content
+        ("/my-list.html", None),
+        ("/heat-map.html", overall_date),    # price-driven content
+        ("/improve.html", None),
+        ("/guides/index.html", None),
+        ("/disclosure.html", None),
+        ("/privacy.html", None),
+        ("/about.html", None),
+    ]
     for plant in plants:
-        sitemap_urls.append(f"/plants/{plant['id']}.html")
-    for cat_id in categories_map:
-        sitemap_urls.append(f"/category/{cat_id}.html")
+        # Zero-offer pages are noindexed — listing them in the sitemap
+        # would point Google at pages we tell it not to index.
+        if plant.get("retailer_count") == 0:
+            continue
+        sitemap_entries.append((f"/plants/{plant['id']}.html", _plant_date(plant)))
+    for cat_id, cat_plants in categories_map.items():
+        cat_date = max(
+            (d for d in (_plant_date(p) for p in cat_plants) if d), default=None
+        )
+        sitemap_entries.append((f"/category/{cat_id}.html", cat_date))
     for article in all_guides:
-        sitemap_urls.append(f"/guides/{article['slug']}.html")
+        sitemap_entries.append((f"/guides/{article['slug']}.html", None))
 
     sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
     sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-    for url in sitemap_urls:
+    for url, lastmod in sitemap_entries:
         sitemap_xml += f'  <url><loc>https://www.plantpricetracker.com{url}</loc>'
-        sitemap_xml += f'<lastmod>{date.today().isoformat()}</lastmod></url>\n'
+        if lastmod:
+            sitemap_xml += f'<lastmod>{lastmod.isoformat()}</lastmod>'
+        sitemap_xml += '</url>\n'
     sitemap_xml += '</urlset>'
 
     with open(os.path.join(SITE_DIR, "sitemap.xml"), "w", encoding="utf-8") as f:
