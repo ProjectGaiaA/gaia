@@ -34,6 +34,11 @@ PRICES_DIR = os.path.join(DATA_DIR, "prices")
 
 BASE_URL = "https://www.plantpricetracker.com"
 
+# A "sale" whose price/was_price pair hasn't moved in this many days is a
+# compare-at price the merchant leaves set year-round, not a sale. Render it
+# as a regular price (no badge, no strikethrough).
+SALE_MAX_AGE_DAYS = 21
+
 # ---------------------------------------------------------------------------
 # Guide SEO overrides — custom meta descriptions and FAQs per guide
 # ---------------------------------------------------------------------------
@@ -298,6 +303,54 @@ def get_latest_prices(price_entries, retailers_by_id):
         if retailer_id not in latest:
             latest[retailer_id] = entry
     return latest
+
+
+def compute_sale_pair_ages(price_entries):
+    """How long each retailer/tier's current price + was_price pair has persisted.
+
+    Walks history newest-first per retailer and, for tiers whose latest entry
+    carries a was_price, counts back through consecutive entries showing the
+    identical (price, was_price) pair. Returns dict:
+    (retailer_id, canonical_tier) -> days the pair has been unchanged.
+
+    Tiers without a was_price in their latest entry are omitted.
+    """
+    by_retailer = defaultdict(list)
+    for entry in price_entries:
+        ts_str = entry.get("timestamp", "")
+        rid = entry.get("retailer_id", "")
+        if not (ts_str and rid):
+            continue
+        try:
+            ts = datetime.fromisoformat(ts_str.replace("Z", "+00:00"))
+        except (ValueError, TypeError):
+            continue
+        if ts.tzinfo is None:
+            continue
+        by_retailer[rid].append((ts, entry))
+
+    ages = {}
+    for rid, rows in by_retailer.items():
+        rows.sort(key=lambda x: x[0], reverse=True)  # newest first
+        latest_ts, latest_entry = rows[0]
+        for raw_tier, info in latest_entry.get("sizes", {}).items():
+            if not isinstance(info, dict) or not info.get("was_price"):
+                continue
+            pair = (info.get("price"), info.get("was_price"))
+            first_seen = latest_ts
+            for ts, entry in rows[1:]:
+                older = entry.get("sizes", {}).get(raw_tier)
+                if (
+                    not isinstance(older, dict)
+                    or (older.get("price"), older.get("was_price")) != pair
+                ):
+                    break
+                first_seen = ts
+            tier = normalize_size_tier(raw_tier)
+            days = (date.today() - first_seen.date()).days
+            # Same canonical tier from two raw keys: keep the longer streak
+            ages[(rid, tier)] = max(ages.get((rid, tier), 0), days)
+    return ages
 
 
 def count_consecutive_run_misses(price_entries):
@@ -583,10 +636,17 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
     # Sale flag: only set when the retailer provides a was_price (strikethrough).
     # Price inversions (1 Gal cheaper than Quart) are NOT sales — some retailers
     # just price smaller propagation formats higher.
+    # TTL: a price/was_price pair frozen for more than SALE_MAX_AGE_DAYS is a
+    # compare-at price left set year-round (16 live instances found, worst a
+    # "60% off" unchanged for 128 days) — strip it back to a regular price.
+    sale_ages = compute_sale_pair_ages(price_entries) if price_entries else {}
     for rid, rdata in prices.items():
         for tier, sdata in rdata["sizes"].items():
             if isinstance(sdata, dict) and sdata.get("was_price"):
-                sdata["sale_flag"] = True
+                if sale_ages.get((rid, tier), 0) > SALE_MAX_AGE_DAYS:
+                    sdata["was_price"] = None
+                else:
+                    sdata["sale_flag"] = True
 
     # Sort retailers: cheapest first, no-price next, sold-out next, unavailable last
     # Only consider prices in visible tiers (active_tiers_sorted) — retailers whose

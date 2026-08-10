@@ -4,7 +4,7 @@ Task 2 of build-pipeline-tests spec. Tests call build.py functions directly
 with synthetic data from tests/fixtures/build/.
 """
 
-from datetime import date
+from datetime import date, timedelta
 from unittest.mock import patch
 
 from tests.conftest import load_build_fixture
@@ -250,6 +250,59 @@ class TestWasPriceSaleFlag:
         a_sizes = table["prices"]["test-nursery-a"]["sizes"]
         for tier, sdata in a_sizes.items():
             assert sdata.get("sale_flag") is None or sdata.get("sale_flag") is False
+
+
+class TestFrozenSaleTTL:
+    """A price/was_price pair unchanged past SALE_MAX_AGE_DAYS is not a sale."""
+
+    @staticmethod
+    def _entries(pair_days_old, price=25.99, was=39.99):
+        """History: identical price/was pair, oldest entry pair_days_old days
+        before the frozen 'today' (2026-04-06), scraped daily since."""
+        entries = []
+        for d in range(pair_days_old, -1, -1):
+            day = date(2026, 4, 6) - timedelta(days=d)
+            entries.append({
+                "retailer_id": "test-nursery-a",
+                "timestamp": f"{day.isoformat()}T10:00:00+00:00",
+                "sizes": {"1gal": {"price": price, "was_price": was,
+                                   "available": True, "raw_size": "1 Gallon"}},
+            })
+        return entries
+
+    def _table(self, entries):
+        plant = {"id": "test-hydrangea", "common_name": "Test Hydrangea"}
+        latest = build.get_latest_prices(entries, _retailers_by_id)
+        with patch("build.date") as mock_date:
+            mock_date.today.return_value = date(2026, 4, 6)
+            mock_date.side_effect = lambda *a, **kw: date(*a, **kw)
+            return build.build_price_table(
+                plant, latest, _retailers_by_id, price_entries=entries,
+            )
+
+    def test_fresh_sale_keeps_badge(self):
+        """Pair only 5 days old — genuine sale, badge stays."""
+        sdata = self._table(self._entries(5))["prices"]["test-nursery-a"]["sizes"]["1gal"]
+        assert sdata.get("sale_flag") is True
+        assert sdata.get("was_price") == 39.99
+
+    def test_frozen_sale_stripped(self):
+        """Pair frozen 40 days (> SALE_MAX_AGE_DAYS) — badge and
+        strikethrough both removed; the price itself is untouched."""
+        sdata = self._table(self._entries(40))["prices"]["test-nursery-a"]["sizes"]["1gal"]
+        assert not sdata.get("sale_flag")
+        assert sdata.get("was_price") is None
+        assert sdata.get("price") == 25.99
+
+    def test_price_change_resets_ttl(self):
+        """Same was_price but the price moved 10 days ago — the pair as
+        currently displayed is 10 days old, so the sale is genuine."""
+        entries = self._entries(40)
+        for e in entries[:-11]:  # older price differs; current pair began 10 days ago
+            e["sizes"]["1gal"]["price"] = 29.99
+        sdata = self._table(entries)["prices"]["test-nursery-a"]["sizes"]["1gal"]
+        assert sdata.get("sale_flag") is True
+        assert sdata.get("was_price") == 39.99
 
 
 class TestStaleExclusion:
