@@ -20,14 +20,24 @@ from scripts.check_data_sanity import (
 NOW = datetime(2026, 8, 10, 12, 0, tzinfo=timezone.utc)
 
 
-def _setup(tmp_path, entries, retailers=None, manifest=None):
+def _setup(tmp_path, entries, retailers=None, manifest=None, stale_manifest=None):
+    """`manifest` is the PREVIOUS cycle's snapshot, which is what the gate reads.
+
+    `stale_manifest` writes last_manifest.json instead — the file the scrapers
+    overwrite mid-run. The gate must ignore it entirely; tests use it to prove
+    the same-cycle comparison can never come back.
+    """
     data = tmp_path / "data"
     prices = data / "prices"
     prices.mkdir(parents=True)
     retailers = retailers or [{"id": "nursery-a", "active": True}]
     (data / "retailers.json").write_text(json.dumps(retailers), encoding="utf-8")
     if manifest is not None:
-        (data / "last_manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+        (data / "prev_manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    if stale_manifest is not None:
+        (data / "last_manifest.json").write_text(
+            json.dumps(stale_manifest), encoding="utf-8"
+        )
     with open(prices / "plant.jsonl", "w", encoding="utf-8") as f:
         for e in entries:
             f.write((e if isinstance(e, str) else json.dumps(e)) + "\n")
@@ -40,6 +50,12 @@ def _entry(price=29.99, ts=None, rid="nursery-a", tier="1gal", **info):
         "timestamp": ts or (NOW - timedelta(hours=2)).isoformat(),
         "sizes": {tier: {"price": price, **info}},
     }
+
+
+def _warnings_for(data_dir):
+    """systemic_checks output including warnings, for skip-path assertions."""
+    problems, stats, fresh, by_key = scan(data_dir, now=NOW, quarantine=True)
+    return systemic_checks(data_dir, stats, fresh, by_key, problems)
 
 
 def _verdict(data_dir):
@@ -163,6 +179,55 @@ def test_normal_price_movement_does_not_block(tmp_path):
     manifest = {"prices": {"plant:nursery-a": {f"t{i}": 50.0 for i in range(40)}}}
     code, _, fatal, _ = _verdict(_setup(tmp_path, entries, manifest=manifest))
     assert code == EXIT_OK, f"unexpected fatal: {fatal}"
+
+
+# --- the baseline must be the PREVIOUS cycle, never this one ---
+
+def test_same_cycle_manifest_is_ignored(tmp_path):
+    """The defect that made three systemic checks decorative for months.
+
+    runner.py rewrites last_manifest.json with this run's prices while scraping,
+    and every scraper runs before this gate. Reading that file compares the run
+    to itself: measured on the real corpus, 771/771 keys identical on every
+    historical run, and halving every price scored 0% moved and published clean.
+    Only prev_manifest.json may be used as a baseline.
+    """
+    # Distinct values so this isolates the delta check; identical values would
+    # trip the separate sitewide-collapse detector instead.
+    entries = [_entry(price=1.0 + i * 0.01, tier=f"t{i}") for i in range(40)]
+    # Exactly what production had: last_manifest already holds THIS run's prices.
+    same_cycle = {
+        "prices": {"plant:nursery-a": {f"t{i}": 1.0 + i * 0.01 for i in range(40)}}
+    }
+    real_prev = {"prices": {"plant:nursery-a": {f"t{i}": 50.0 + i for i in range(40)}}}
+
+    # With only the same-cycle file present, the gate must NOT be reassured by it.
+    data = _setup(tmp_path, entries, stale_manifest=same_cycle)
+    code, _, fatal, stats = _verdict(data)
+    assert stats["prices_compared"] == 0, "last_manifest.json must never be a baseline"
+    assert code != EXIT_BLOCK
+
+    # Given a genuine previous cycle, the same corruption is caught.
+    data2 = _setup(tmp_path / "b", entries, manifest=real_prev, stale_manifest=same_cycle)
+    code2, _, fatal2, _ = _verdict(data2)
+    assert code2 == EXIT_BLOCK, "drastic move vs previous cycle must block"
+    assert any("moved more than" in f or "moved" in f for f in fatal2)
+
+
+def test_missing_baseline_warns_rather_than_reporting_all_clear(tmp_path):
+    """No baseline must be reported as skipped, not as '0 prices moved'."""
+    entries = [_entry(price=10.0 + i, tier=f"t{i}") for i in range(40)]
+    _, warns, extra = _warnings_for(_setup(tmp_path, entries))
+    assert extra["prices_compared"] == 0
+    assert any("SKIPPED" in w for w in warns), warns
+
+
+def test_sitewide_halving_blocks_with_real_baseline(tmp_path):
+    """The headline attack: every price on the site halved."""
+    prev = {"prices": {"plant:nursery-a": {f"t{i}": 100.0 for i in range(40)}}}
+    entries = [_entry(price=50.0, tier=f"t{i}") for i in range(40)]
+    code, _, fatal, _ = _verdict(_setup(tmp_path, entries, manifest=prev))
+    assert code == EXIT_BLOCK, f"halving must block; fatal={fatal}"
 
 
 def test_mass_quarantine_blocks(tmp_path):

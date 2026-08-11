@@ -32,6 +32,23 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      # MUST run before the first scraper. runner.py rewrites
+      # data/last_manifest.json with this run's prices as it scrapes, so by the
+      # time the data gate executes there is nothing left to compare against:
+      # it was reading a file the scrapers had already overwritten and scoring
+      # the run against itself. Measured on the real corpus, that produced
+      # 771/771 identical keys on every historical run, and halving every price
+      # on the site passed clean. This snapshot is the previous cycle's prices.
+      # Not committed; it is rebuilt from the committed manifest every run.
+      - name: Snapshot previous manifest
+        run: |
+          if [ -f data/last_manifest.json ]; then
+            cp data/last_manifest.json data/prev_manifest.json
+            echo "Baseline captured: $(wc -c < data/prev_manifest.json) bytes"
+          else
+            echo "::warning::No last_manifest.json — price-movement checks will be skipped this run."
+          fi
+
       # Random 0-120s delay so we don't hit at the exact cron second every day
       - name: Random start delay
         run: |

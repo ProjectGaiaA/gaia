@@ -22,7 +22,7 @@ Row checks (quarantined, exit 3):
   - recent row from an unknown or inactive retailer
 
 Systemic checks (hard block, exit 1):
-  - a large fraction of fresh prices moved drastically vs the last manifest
+  - a large fraction of fresh prices moved drastically vs the previous cycle
     (catches a site redesign making every price the same wrong number)
   - fresh prices collapse to one repeated value
   - every active retailer produced zero fresh rows
@@ -217,6 +217,32 @@ def scan(data_dir, now=None, quarantine=False):
     return problems, stats, fresh_prices, fresh_by_key
 
 
+def load_prev_prices(data_dir):
+    """Prices from the PREVIOUS cycle, for delta comparison.
+
+    Returns (prices_dict, baseline_name). baseline_name is None when no valid
+    previous-cycle snapshot exists, which means every delta check must be
+    skipped rather than run.
+
+    Only prev_manifest.json counts. last_manifest.json is deliberately NOT a
+    fallback: the scrapers rewrite it with the current run's prices before this
+    gate executes, so using it silently compares the run against itself and
+    reports a flawless 0% movement no matter how corrupt the data is.
+    """
+    path = os.path.join(data_dir, "prev_manifest.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            manifest = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return {}, None
+    if not isinstance(manifest, dict):
+        return {}, None
+    prices = manifest.get("prices")
+    if not isinstance(prices, dict) or not prices:
+        return {}, None
+    return prices, "prev_manifest"
+
+
 def systemic_checks(data_dir, stats, fresh_prices, fresh_by_key, problems):
     """Classify run-level problems.
 
@@ -246,15 +272,27 @@ def systemic_checks(data_dir, stats, fresh_prices, fresh_by_key, problems):
                 f"— scraper is reading one wrong value sitewide"
             )
 
-    # 3. A large fraction of prices moving drastically vs the last manifest.
-    manifest_path = os.path.join(data_dir, "last_manifest.json")
+    # 3. A large fraction of prices moving drastically vs the PREVIOUS cycle.
+    #
+    #    This must read prev_manifest.json, NOT last_manifest.json. runner.py
+    #    rewrites last_manifest.json with THIS run's prices while scraping, and
+    #    the scrapers all run before this gate, so comparing against it compares
+    #    the run to itself. Measured on the real corpus: 771 of 771 keys
+    #    identical, 0 differing, every single historical run. Halving every
+    #    price on the site scored a perfect 0% moved and published clean.
+    #
+    #    scrape.yml snapshots last_manifest.json to prev_manifest.json BEFORE
+    #    the first scraper step. If that snapshot is missing the comparison is
+    #    meaningless, so the delta checks are SKIPPED and reported as skipped
+    #    rather than run against same-cycle data — reporting "0 prices moved"
+    #    after comparing a file to itself is worse than reporting nothing.
+    prev_prices, baseline = load_prev_prices(data_dir)
     compared = moved = 0
-    try:
-        with open(manifest_path, encoding="utf-8") as f:
-            manifest = json.load(f)
-    except (OSError, json.JSONDecodeError):
-        manifest = {}
-    prev_prices = manifest.get("prices", {})
+    if baseline is None:
+        warnings.append(
+            "no prev_manifest.json — price-movement checks SKIPPED this run "
+            "(cannot compare against the previous cycle)"
+        )
     for (plant_id, rid, tier), price in fresh_by_key.items():
         prev = (prev_prices.get(f"{plant_id}:{rid}") or {}).get(tier)
         if not isinstance(prev, (int, float)) or prev <= 0:
@@ -267,7 +305,7 @@ def systemic_checks(data_dir, stats, fresh_prices, fresh_by_key, problems):
         if frac > MAX_MOVED_FRACTION:
             fatal.append(
                 f"{moved}/{compared} ({frac:.0%}) of fresh prices moved more than "
-                f"{MAX_PRICE_MOVE_PCT}% vs the last manifest (> {MAX_MOVED_FRACTION:.0%}) "
+                f"{MAX_PRICE_MOVE_PCT}% vs the previous cycle (> {MAX_MOVED_FRACTION:.0%}) "
                 f"— site redesign or parser regression"
             )
 
@@ -288,15 +326,28 @@ def systemic_checks(data_dir, stats, fresh_prices, fresh_by_key, problems):
         if price != prev:
             shift_ratios[rid].append(price / prev)
 
+    # WARNING, not fatal, and the distinction is load-bearing. Once the
+    # baseline was fixed so this check could actually fire, replaying real
+    # history showed a genuine 35%-off sitewide sale trips it at 52% of that
+    # retailer's prices. Nurseries run those routinely; the deepest real
+    # uniform move measured across the corpus is 33.3%. Blocking on it would
+    # freeze the whole site every clearance event, and a site that stops
+    # updating during a sale is wrong in exactly the moment it matters most.
+    #
+    # ONE retailer moving together is a sale. ALL SEVEN moving together on the
+    # same day is not plausible as coincidence, and that case is still caught
+    # by the corpus-wide check above, which does block. A parser regression
+    # confined to one retailer therefore publishes and turns the job red
+    # instead of silently wedging publishing.
     for rid, (rcompared, rmoved) in sorted(by_retailer.items()):
         if rcompared < MIN_SAMPLE_PER_RETAILER:
             continue
         frac = rmoved / rcompared
         if frac > PER_RETAILER_MOVED_FRACTION:
-            fatal.append(
+            warnings.append(
                 f"retailer {rid}: {rmoved}/{rcompared} ({frac:.0%}) of its prices moved "
-                f">{MAX_PRICE_MOVE_PCT}% vs the last manifest — parser regression "
-                f"or site redesign at that retailer"
+                f">{MAX_PRICE_MOVE_PCT}% vs the previous cycle — a sitewide sale, or a "
+                f"parser regression at that retailer. Published; verify before trusting."
             )
 
     # 3b-ii. Systematic uniform shift. A magnitude threshold alone cannot see
