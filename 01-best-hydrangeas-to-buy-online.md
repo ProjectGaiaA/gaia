@@ -1,10 +1,8 @@
 # Best Hydrangeas to Buy Online in 2026: A Price Comparison Guide
 
-*Last updated: April 2026 | Prices compared across 5+ online nurseries*
-
 Hydrangeas are one of the top-selling flowering shrubs at every major online nursery — and April is when stock moves fastest. If you're shopping right now, you're competing with every other gardener in the country for the best varieties before they sell out. Nikko Blue and Endless Summer routinely go out of stock by late April. The panicle types (Limelight, Fire Light) last longer, but even those get picked over in popular sizes by mid-May.
 
-We track prices across Fast Growing Trees, Nature Hills, Proven Winners Direct, Brighter Blooms, and other top online nurseries so you can see who has the best price on the exact hydrangea you want. And the price differences are worth checking — the same cultivar in the same pot size routinely varies 20-35% between retailers. On a $40 plant, that's $8-$14 you're either saving or leaving on the table depending on where you click "buy." On a three-plant purchase, the math gets serious fast.
+We track prices across Fast Growing Trees, Nature Hills, Proven Winners Direct, PlantingTree, and the other nurseries listed on this site so you can see who has the best price on the exact hydrangea you want. And the price differences are worth checking — the same cultivar in the same pot size routinely varies 20-35% between retailers. On a $40 plant, that's $8-$14 you're either saving or leaving on the table depending on where you click "buy." On a three-plant purchase, the math gets serious fast.
 
 Here are the varieties worth buying this spring, what they actually cost, where to find the best deal, and — just as importantly — what can go wrong so you can avoid the most common disappointments.
 

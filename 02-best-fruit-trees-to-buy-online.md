@@ -1,7 +1,5 @@
 # Best Fruit Trees to Buy Online: Compare Prices Before You Plant
 
-*Last updated: April 2026 | Prices compared across 5+ online nurseries*
-
 April is the last practical window to get fruit trees in the ground in zones 5-7. Bare-root trees — the cheapest way to buy — need to be planted while still dormant, and containerized trees establish best when they have a full growing season ahead of them to build root mass before winter. Wait until June and you're fighting summer heat with a newly transplanted tree that hasn't had time to develop the roots it needs to survive.
 
 Fruit trees are also the highest-ROI plant purchase most home gardeners will ever make. A single mature apple tree produces 100-400 pounds of fruit per year. At grocery store prices — $2-$4/pound for conventional apples, $5+ for organic — that's $200-$1,600 worth of food from a tree that cost you $40 and takes up 15 feet of yard space. The payback period is real, and it's the reason fruit tree sales at online nurseries have surged in recent years.

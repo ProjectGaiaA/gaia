@@ -1,7 +1,5 @@
 # Best Knock Out Roses to Plant This Spring: Price Comparison
 
-*Last updated: April 2026 | Prices compared across 5+ online nurseries*
-
 Knock Out Roses are the bestselling rose brand in America, and it's not close. They dominate the rose market for one straightforward reason: they actually work. Traditional hybrid tea roses — the ones with the long-stemmed, florist-shop flowers — are beautiful when everything goes right, but "everything going right" means a spray program for black spot, another spray for powdery mildew, precise pruning, winter protection, and consistent fertilization. Most home gardeners try it for two years, watch their roses turn into disease-covered sticks, and give up.
 
 Knock Out Roses changed the equation. They bloom continuously from spring through first frost — not just once, not twice, but nonstop for 6-7 months in most climates. They resist the fungal diseases that kill traditional roses. They don't need deadheading (they're self-cleaning — spent flowers drop on their own). They grow into a compact, rounded shrub that looks presentable with minimal pruning. They are, by a wide margin, the lowest-maintenance way to have roses blooming in your yard from May through November.

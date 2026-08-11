@@ -1,7 +1,5 @@
 # Cheapest Places to Buy Trees and Shrubs Online (2026 Comparison)
 
-*Last updated: April 2026 | Based on real price tracking across 5+ nurseries*
-
 We track plant prices across major online nurseries every day. The same plant — same cultivar, same pot size — can vary by 20-35% between retailers. On a $50 tree, that's $10-$17 you either save or overpay depending on where you shop. On a $100 Japanese maple, the spread can hit $25-$30. Multiply that across a multi-tree purchase and the stakes get meaningful fast.
 
 But here's the thing most price comparison guides won't tell you: the cheapest sticker price isn't always the best deal. A $30 hydrangea with $15 shipping costs more than a $38 hydrangea with free shipping. A $22 arborvitae that arrives half-dead from poor packaging is infinitely more expensive than a $28 arborvitae that arrives healthy and thrives. The cheapest retailer on Tuesday might not be the cheapest retailer on Thursday — nursery pricing is more dynamic than most people realize, with prices shifting throughout the season as inventory levels change.

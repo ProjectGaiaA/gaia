@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}PlantPriceTracker{% endblock %}</title>
-    <meta name="description" content="{% block description %}Compare plant prices across 10+ online nurseries. Find the best deals on trees, shrubs, and perennials.{% endblock %}">
+    <meta name="description" content="{% block description %}Compare plant prices across {{ retailer_count }} online nurseries. Find the best deals on trees, shrubs, and perennials.{% endblock %}">
     <meta name="google-site-verification" content="zspl3BMFu9hZPGIGwtUO8UsS6myATjOnhRJw-eWH81A" />
     <meta name='impact-site-verification' value='c22b986a-d7a7-4615-a2dc-4b65f4d26996'>
     {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}" />{% endif %}
@@ -42,7 +42,13 @@
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-disclosure">
-                <p><strong>Affiliate Disclosure:</strong> We earn commissions from purchases made through links on this site. This does not affect our rankings or recommendations. We compare prices from all major nurseries, including those without affiliate programs, to ensure you see the best deal available. <a href="/disclosure.html">Full disclosure</a>.</p>
+                {# Both wordings are driven by AFFILIATE_PROGRAMS_ACTIVE in build.py.
+                   Never edit one branch without the other — they are the same claim. #}
+                {% if affiliate_programs_active %}
+                <p><strong>Affiliate disclosure:</strong> We earn a commission on purchases made through some links on this site, at no extra cost to you. This does not affect our rankings or recommendations. We compare prices at every nursery we track, including those that pay us nothing, so you see the best deal available. <a href="/disclosure.html">Full disclosure</a>.</p>
+                {% else %}
+                <p><strong>How we make money:</strong> We don't. PlantPriceTracker is not in any affiliate program, no retailer pays us, and none of the links on this site are affiliate links. We compare prices at every nursery we track so you see the best deal available. <a href="/disclosure.html">Full disclosure</a>.</p>
+                {% endif %}
             </div>
             <div class="footer-links">
                 <a href="/about.html">About</a>

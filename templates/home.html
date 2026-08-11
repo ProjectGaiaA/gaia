@@ -10,7 +10,7 @@
     "@type": "WebSite",
     "name": "PlantPriceTracker",
     "url": "https://www.plantpricetracker.com",
-    "description": "Compare plant prices across 10+ online nurseries. Find the best deals on trees, shrubs, and perennials.",
+    "description": "Compare plant prices across {{ retailer_count }} online nurseries. Find the best deals on trees, shrubs, and perennials.",
     "potentialAction": {
         "@type": "SearchAction",
         "target": "https://www.plantpricetracker.com/search?q={search_term_string}",
@@ -115,7 +115,7 @@
         <div class="step">
             <span class="step-num">3</span>
             <h3>Buy From Whoever's Cheapest</h3>
-            <p>We show all retailers honestly, including ones that don't pay us. Your best deal is our only goal.</p>
+            <p>{% if affiliate_programs_active %}We show all retailers honestly, including ones that don't pay us.{% else %}We show all retailers honestly. No nursery pays us anything.{% endif %} Your best deal is our only goal.</p>
         </div>
     </div>
 </section>

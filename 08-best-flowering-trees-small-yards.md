@@ -1,7 +1,5 @@
 # Best Flowering Trees for Small Yards: Compare Prices Online
 
-*Last updated: April 2026 | Prices compared across 5+ online nurseries*
-
 Not every yard has room for a 60-foot oak. But a 15-25 foot flowering tree can transform a small space in ways that no shrub, perennial, or hardscape feature can match. A well-chosen flowering tree shades a patio, anchors a garden bed, provides structure in winter, and delivers a spring bloom display that stops people on the sidewalk. It's the single highest-impact addition you can make to a small landscape — one tree, planted in the right spot, changes everything about how the yard looks and feels.
 
 The key word is "small." These trees need to actually fit the space at maturity, not just at planting. A Yoshino Cherry looks charming at 6 feet. At 30 feet with a spreading canopy, it's outgrown a 40-foot yard. Choosing a tree that's proportional to your space 10 years from now — not just proportional today — is the difference between a beautiful garden tree and an expensive removal job.

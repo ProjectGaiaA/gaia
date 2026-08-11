@@ -1,12 +1,10 @@
 # Why the Same Plant Costs $20 at One Nursery and $60 at Another
 
-*Last updated: April 2026 | Based on real price tracking across 12+ nurseries*
-
 You're looking at a Limelight Hydrangea in a one-gallon pot. At Spring Hill Nurseries it's $25.99. At Great Garden Plants it's $44.99. Same cultivar. Same species. Same pot size. Same genetics developed by the same breeder. Both plants will grow to the same size, produce the same flowers, and live for the same number of decades in your yard. But one costs 73% more than the other — and neither retailer is necessarily ripping you off.
 
 Plant pricing is one of the least transparent markets in retail. Unlike electronics or appliances, where the manufacturer sets an MSRP and every retailer competes against a known benchmark, plants have no standard pricing. There's no suggested retail price on a hydrangea. A nursery charges what it charges, and unless you happen to check five other nurseries before buying, you have no idea whether you're getting a fair deal or paying double what the gardener next door paid for the same plant last weekend.
 
-We track prices across 12+ online nurseries every day, and the spread on identical plants is consistently 20-35% between the cheapest and most expensive retailer — and on some plants, the gap is far wider. Consumers' Checkbook, a nonprofit that sends undercover shoppers to price-check local garden centers, found even larger gaps in the brick-and-mortar world: a #1-size lavender ranged from $7.99 to $25.99 across garden centers in the same metro area. A #3-size boxwood ranged from $19.50 to $75. That's not a rounding error. That's a 3-4x price difference on the same plant in the same pot size in the same city.
+We track prices across every nursery listed on this site each day, and the spread on identical plants is consistently 20-35% between the cheapest and most expensive retailer — and on some plants, the gap is far wider. Consumers' Checkbook, a nonprofit that sends undercover shoppers to price-check local garden centers, found even larger gaps in the brick-and-mortar world: a #1-size lavender ranged from $7.99 to $25.99 across garden centers in the same metro area. A #3-size boxwood ranged from $19.50 to $75. That's not a rounding error. That's a 3-4x price difference on the same plant in the same pot size in the same city.
 
 This guide breaks down why those gaps exist, which price differences reflect real value and which ones don't, and how to make sure you're paying a fair price every time you buy a plant.
 
@@ -72,6 +70,6 @@ But not all price variation is justified. Some retailers simply charge more beca
 
 The fix is simple: compare before you buy.
 
-*We track prices on 77+ plant varieties across 12+ online nurseries, checked daily.*
+*We track plant prices across every nursery listed on this site, checked daily.*
 
 → [Start comparing plant prices](/category/hydrangeas)

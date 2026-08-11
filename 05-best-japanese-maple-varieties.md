@@ -1,7 +1,5 @@
 # Best Japanese Maple Varieties for Home Gardens: Price Guide
 
-*Last updated: April 2026 | Prices compared across 5+ online nurseries*
-
 Japanese maples are the highest-value ornamental trees most home gardeners will ever buy — and the category where comparison shopping pays off in the largest dollar amounts. A small grafted tree starts around $40. A specimen-size cultivar pushes $200+. That price range means the savings from checking multiple nurseries aren't measured in the $4-$6 you save on a hydrangea — they're $15-$30 on a single tree. No other plant category puts that much money back in your pocket per purchase.
 
 They're also among the most rewarding trees to own. A well-placed Japanese maple becomes the focal point of a garden — the tree that people stop and ask about, the one that looks different every month as the foliage shifts through its seasonal color cycle, the one that improves with age as the branching structure matures into something that looks like living sculpture. There's a reason Japanese maples command premium prices: they deliver premium impact.

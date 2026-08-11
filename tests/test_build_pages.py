@@ -19,8 +19,7 @@ from tests.conftest import BUILD_FIXTURES_DIR
 # ---------------------------------------------------------------------------
 
 
-@pytest.fixture(scope="session")
-def built_site(tmp_path_factory):
+def _build_fixture_site(tmp, affiliate_programs_active=None):
     """Run build_site() against synthetic fixture data and return the output dir.
 
     Monkeypatches build.py module-level path constants to redirect:
@@ -29,10 +28,11 @@ def built_site(tmp_path_factory):
     - SITE_DIR → temp output dir
     - ARTICLES_DIR → temp dir with guide markdown
     - TEMPLATE_DIR stays pointed at real templates (templates are code)
+
+    affiliate_programs_active overrides build.AFFILIATE_PROGRAMS_ACTIVE for the
+    duration of the build; None uses whatever the repo currently ships.
     """
     import build
-
-    tmp = tmp_path_factory.mktemp("build_site")
 
     # Set up data directory
     data_dir = tmp / "data"
@@ -67,12 +67,15 @@ def built_site(tmp_path_factory):
     orig_prices = build.PRICES_DIR
     orig_site = build.SITE_DIR
     orig_articles = build.ARTICLES_DIR
+    orig_affiliate = build.AFFILIATE_PROGRAMS_ACTIVE
 
     # Monkeypatch module-level constants
     build.DATA_DIR = str(data_dir)
     build.PRICES_DIR = str(prices_dir)
     build.SITE_DIR = str(site_dir)
     build.ARTICLES_DIR = str(articles_dir)
+    if affiliate_programs_active is not None:
+        build.AFFILIATE_PROGRAMS_ACTIVE = affiliate_programs_active
 
     try:
         # Fixture JSONL timestamps are fixed in early April 2026. Freeze the
@@ -90,8 +93,27 @@ def built_site(tmp_path_factory):
         build.PRICES_DIR = orig_prices
         build.SITE_DIR = orig_site
         build.ARTICLES_DIR = orig_articles
+        build.AFFILIATE_PROGRAMS_ACTIVE = orig_affiliate
 
     return site_dir
+
+
+@pytest.fixture(scope="session")
+def built_site(tmp_path_factory):
+    """Site built exactly as the repo currently ships it."""
+    return _build_fixture_site(tmp_path_factory.mktemp("build_site"))
+
+
+@pytest.fixture(scope="session")
+def built_site_affiliates_on(tmp_path_factory):
+    """Same fixtures, built with AFFILIATE_PROGRAMS_ACTIVE forced True.
+
+    Proves the flag actually flips every claim, so approval day really is a
+    one-line change and the "programs on" wording never rots unexercised.
+    """
+    return _build_fixture_site(
+        tmp_path_factory.mktemp("build_site_aff_on"), affiliate_programs_active=True
+    )
 
 
 def _read_html(site_dir, *path_parts):
@@ -631,3 +653,149 @@ class TestPriceCrossConsistency:
         assert not violations, (
             "Indexed pages with no price at all: " + ", ".join(violations)
         )
+
+
+# ---------------------------------------------------------------------------
+# Affiliate-claim consistency
+# ---------------------------------------------------------------------------
+
+
+def _fixture_retailers():
+    """The retailers.json the built_site fixtures were generated from.
+
+    build.DATA_DIR is restored once the build finishes, so tests must read the
+    fixture directly rather than the live repo data.
+    """
+    import json
+
+    with open(BUILD_FIXTURES_DIR / "retailers.json", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _all_html(site_dir):
+    for root, _dirs, files in os.walk(str(site_dir)):
+        for f in files:
+            if f.endswith(".html"):
+                yield os.path.join(root, f)
+
+
+class TestAffiliateClaimConsistency:
+    """Every money claim on the site must agree with AFFILIATE_PROGRAMS_ACTIVE.
+
+    The site previously named five nurseries and three affiliate networks it
+    was "currently" partnered with, and told every visitor in the footer of
+    all 134 pages that it earned commissions — while containing zero affiliate
+    links. One flag now drives the footer, the notice above each price table,
+    the disclosure page and the About page copy; these tests fail if any of
+    them drifts from it.
+    """
+
+    def test_no_commission_claim_while_programs_are_off(self, built_site):
+        import build
+
+        if build.AFFILIATE_PROGRAMS_ACTIVE:
+            pytest.skip("programs are on; the commission claim is true")
+        offenders = []
+        for path in _all_html(built_site):
+            text = BeautifulSoup(
+                open(path, encoding="utf-8").read(), "html.parser"
+            ).get_text(" ")
+            for claim in (
+                "We earn commissions",
+                "We earn a commission on purchases",
+                "Some links below are affiliate links",
+                "earns affiliate commissions",
+            ):
+                if claim in text:
+                    offenders.append(f"{os.path.basename(path)}: {claim!r}")
+        assert not offenders, "False commission claims:\n" + "\n".join(offenders)
+
+    def test_no_sponsored_rel_while_programs_are_off(self, built_site):
+        """rel="sponsored" asserts paid placement. Nothing is paid yet."""
+        import build
+
+        if build.AFFILIATE_PROGRAMS_ACTIVE:
+            pytest.skip("programs are on; sponsored links are legitimate")
+        offenders = [
+            os.path.basename(p)
+            for p in _all_html(built_site)
+            if "sponsored" in open(p, encoding="utf-8").read()
+        ]
+        assert not offenders, "rel=sponsored on: " + ", ".join(offenders[:10])
+
+    def test_outbound_price_links_always_nofollow(self, built_site):
+        """noopener + nofollow apply in both flag states."""
+        bad = []
+        for path in _all_html(built_site):
+            soup = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser")
+            for a in soup.select("a.price-link, a.bp-price-link"):
+                rel = " ".join(a.get("rel", []))
+                if "noopener" not in rel or "nofollow" not in rel:
+                    bad.append(f"{os.path.basename(path)}: rel={rel!r}")
+        assert not bad, "Outbound price links missing rel tokens:\n" + "\n".join(bad[:10])
+
+    def test_flag_on_restores_the_affiliate_wording(self, built_site_affiliates_on):
+        """Flipping the one flag must flip every claim, not just the footer."""
+        footer = _read_html(built_site_affiliates_on, "index.html").select_one(
+            ".footer-disclosure"
+        )
+        assert "We earn a commission" in footer.get_text(" ")
+
+        disclosure = _read_html(
+            built_site_affiliates_on, "disclosure.html"
+        ).get_text(" ")
+        assert "Some of the links on this site are affiliate links." in disclosure
+        assert "not enrolled in any affiliate" not in disclosure
+
+        about = _read_html(built_site_affiliates_on, "about.html").get_text(" ")
+        assert "earns affiliate commissions" in about
+
+    def test_sponsored_returns_when_flag_is_on(self, built_site_affiliates_on):
+        found = any(
+            "sponsored" in open(p, encoding="utf-8").read()
+            for p in _all_html(built_site_affiliates_on)
+        )
+        assert found, "flag on but no rel=sponsored anywhere"
+
+    def test_disclosure_lists_exactly_the_active_retailers(self, built_site):
+        """The tracked-nursery list is rendered from retailers.json, not prose,
+        so it cannot claim a nursery the site does not actually check."""
+        expected = [r["name"] for r in _fixture_retailers() if r.get("active")]
+
+        soup = _read_html(built_site, "disclosure.html")
+        listed = [li.get_text(strip=True) for li in soup.select("ul.tracked-retailers li")]
+        assert listed == expected
+
+    def test_disclosure_names_no_affiliate_network(self, built_site):
+        """Naming networks in prose is what made this page false. Keep it out."""
+        text = _read_html(built_site, "disclosure.html").get_text(" ").lower()
+        for network in ("shareasale", "sovrn", "impact radius", "awin", "flexoffers"):
+            assert network not in text, f"disclosure page names {network}"
+
+    def test_no_page_names_an_inactive_retailer_as_tracked(self, built_site):
+        """About/disclosure listed two nurseries with zero price records ever."""
+        inactive = [r["name"] for r in _fixture_retailers() if not r.get("active")]
+        assert inactive, "fixture must contain an inactive retailer to test this"
+
+        offenders = []
+        for page in ("about.html", "disclosure.html", "index.html"):
+            text = _read_html(built_site, page).get_text(" ")
+            for name in inactive:
+                if name in text:
+                    offenders.append(f"{page}: {name}")
+        assert not offenders, "Inactive retailers presented as tracked: " + ", ".join(
+            offenders
+        )
+
+    def test_nursery_counts_are_not_hardcoded(self, built_site):
+        """"12+ nurseries" survived on 8 lines of about.html including its
+        FAQ schema. Counts must come from the data."""
+        count = sum(1 for r in _fixture_retailers() if r.get("active"))
+
+        for page in ("about.html", "disclosure.html", "index.html"):
+            text = _read_html(built_site, page).get_text(" ")
+            for stale in ("12+ online nurseries", "10+ online nurseries",
+                          "12+ nurseries", "10+ nurseries"):
+                assert stale not in text, f"{page} hardcodes {stale!r}"
+            if page == "about.html":
+                assert f"{count} online nurseries" in text

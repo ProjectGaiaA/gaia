@@ -38,5 +38,20 @@
     },
     "active": true,
     "priority": 2
+  },
+  {
+    "id": "test-nursery-inactive",
+    "name": "Test Nursery Retired",
+    "url": "https://test-nursery-retired.example.com",
+    "scraper_type": "shopify",
+    "affiliate": null,
+    "shipping": {
+      "free_threshold": null,
+      "flat_rate": null,
+      "free_all": false,
+      "notes": ""
+    },
+    "active": false,
+    "priority": 99
   }
 ]

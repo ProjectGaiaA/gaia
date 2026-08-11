@@ -28,7 +28,12 @@ class TestBuildFixturesLoad:
     def test_retailers_json_loads(self):
         retailers = load_build_fixture("retailers.json")
         assert isinstance(retailers, list)
-        assert len(retailers) == 2
+        # 2 active + 1 deactivated. The inactive entry exists so that pages
+        # rendering a retailer list from this file are tested against a fixture
+        # containing a retailer they must EXCLUDE. Without it, "lists only
+        # active retailers" and "lists every retailer" pass identically.
+        assert len(retailers) == 3
+        assert sum(1 for r in retailers if r.get("active")) == 2
 
     def test_retailers_have_required_fields(self):
         retailers = load_build_fixture("retailers.json")

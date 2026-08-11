@@ -1,7 +1,5 @@
 # When Is the Best Time to Buy Plants Online? A Price Guide
 
-*Last updated: April 2026 | Based on price tracking across 5+ online nurseries*
-
 Plant prices aren't static. They move with the seasons, shift around holidays, and drop significantly when nurseries need to clear inventory before winter. The same Limelight Hydrangea that costs $36 in April might be $24 in September — same plant, same nursery, same pot size, 33% less money. If you understand the pricing cycle and can be flexible about timing, you can save 15-30% on almost any plant purchase without sacrificing quality.
 
 But timing isn't just about price. It's also about selection (what's available), planting success (when plants establish best), and shipping risk (when transit conditions are safest for live plants). The cheapest time to buy isn't always the best time to plant, and the best time to plant isn't always the cheapest time to buy. Understanding the trade-offs lets you make smart decisions instead of expensive ones.

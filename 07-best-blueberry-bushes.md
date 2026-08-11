@@ -1,7 +1,5 @@
 # Best Blueberry Bushes to Grow at Home: Price Comparison
 
-*Last updated: April 2026 | Prices compared across 5+ online nurseries*
-
 Growing your own blueberries is one of the best returns on investment in home gardening — but the payoff isn't instant, and the requirements aren't optional. A single mature blueberry bush produces 5-10 pounds of berries per year. At $4-$6/pound retail for conventional blueberries (more for organic), that's $20-$60 worth of fruit from a plant that cost you $25. Three mature bushes produce more blueberries than most families can eat fresh, with enough left over for freezing, baking, and sharing.
 
 But "mature" means 5-6+ years old. Year one is about root establishment — you may not get berries at all. Year two gives you a handful. Year three starts to look promising. Years four through six are when production ramps up to full capacity. The timeline is longer than most online nursery descriptions imply, and the two non-negotiable requirements — acidic soil and bird protection — trip up first-time growers who plant blueberries expecting them to be as easy as tomatoes.

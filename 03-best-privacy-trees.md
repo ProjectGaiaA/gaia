@@ -1,7 +1,5 @@
 # Best Privacy Trees for Your Yard: Compare Prices Online
 
-*Last updated: April 2026 | Prices compared across 5+ online nurseries*
-
 Privacy trees are the one plant category where price comparison isn't just helpful — it's essential. Nobody buys one privacy tree. You buy 8, 12, 15, sometimes 20 trees to line a property border, and every dollar of per-tree price difference gets multiplied across the entire row. A $5 savings per tree across a 12-tree purchase is $60. A $10 savings — which is absolutely realistic when comparing nurseries on arborvitae — puts $120 back in your pocket before you've lifted a shovel.
 
 Spring is the ideal planting window for privacy trees. Get them in the ground in April and they'll put on a full season of root growth before their first winter. Established roots mean faster top growth starting in year two, which means faster privacy. Every month you wait is a month of root establishment you lose.

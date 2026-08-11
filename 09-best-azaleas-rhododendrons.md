@@ -1,7 +1,5 @@
 # Best Azaleas and Rhododendrons for Spring Color: Price Guide
 
-*Last updated: April 2026 | Prices compared across 5+ online nurseries*
-
 Azaleas and rhododendrons bloom in April and May — the same 6-week window when homeowners walk past their neighbors' yards, see walls of pink, purple, and white flowers, and immediately want their own. It's the most impulse-driven plant category in spring gardening. The neighbor's front yard looks incredible, the nursery has them stacked up front, and suddenly you're loading three azaleas into a cart without checking the soil pH.
 
 That last detail is the difference between a decade of stunning spring color and a frustrating decline that ends in a trip to the compost pile. Azaleas and rhododendrons have one hard requirement that no amount of watering, fertilizing, or good intentions can bypass: acidic soil. If you skip the soil test, everything that follows — the $35 Encore Azaleas, the careful planting, the mulching, the anticipation — is a coin flip.

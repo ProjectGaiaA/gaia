@@ -44,18 +44,41 @@ DEFAULT_GUIDE_DATE = "2026-04-02"
 SALE_MAX_AGE_DAYS = 21
 
 # ---------------------------------------------------------------------------
+# Affiliate program status — the single source of truth for every
+# money-related claim on the site.
+# ---------------------------------------------------------------------------
+# While this is False the site says plainly that it earns nothing: the footer
+# on every page, the notice above every price table, the disclosure page and
+# the About page copy all read from this one flag, and no outbound link
+# carries a rel="sponsored" token (nothing is sponsored). Flip it to True on
+# the day the first affiliate program is approved, update
+# AFFILIATE_STATUS_REVIEWED, and rebuild — every one of those places changes
+# together and they cannot contradict each other.
+#
+# Never enumerate partner networks or nurseries in prose. The disclosure page
+# renders its tracked-retailer list from data/retailers.json (active entries
+# only) so the page cannot drift from what the site actually tracks.
+AFFILIATE_PROGRAMS_ACTIVE = False
+
+# Human-readable date the statement above was last checked. Shown on the
+# disclosure page. Update it whenever AFFILIATE_PROGRAMS_ACTIVE changes.
+AFFILIATE_STATUS_REVIEWED = "August 2026"
+
+# ---------------------------------------------------------------------------
 # Guide SEO overrides — custom meta descriptions and FAQs per guide
 # ---------------------------------------------------------------------------
+# {retailer_count} is substituted at render time from data/retailers.json so a
+# meta description can never claim more nurseries than the site tracks.
 GUIDE_META_DESCRIPTIONS = {
-    "best-hydrangeas-to-buy-online": "Compare hydrangea prices across 10+ online nurseries. Incrediball, Limelight, Annabelle — find the best deal with prices checked daily.",
+    "best-hydrangeas-to-buy-online": "Compare hydrangea prices across {retailer_count} online nurseries. Incrediball, Limelight, Annabelle — find the best deal with prices checked daily.",
     "best-fruit-trees-to-buy-online": "Compare fruit tree prices online. Apple, peach, cherry, and pear trees from top nurseries — checked daily. Save 20–40% vs local garden centers.",
-    "best-privacy-trees": "Find the cheapest privacy trees online. Compare Thuja Green Giant, Leyland Cypress, and arborvitae prices across 10+ nurseries — checked daily.",
-    "cheapest-places-to-buy-online": "The cheapest places to buy plants online in 2026. We compared 10+ nurseries so you don't have to — see who wins by plant type.",
-    "best-japanese-maple-varieties": "Compare Japanese maple prices online. Bloodgood, Crimson Queen, Emperor I — find the best deal across 10+ nurseries with prices checked daily.",
-    "best-knock-out-roses": "Compare Knock Out rose prices across 10+ online nurseries. Double, Rainbow, and Petite varieties — find the lowest price, checked daily.",
-    "best-blueberry-bushes": "Compare blueberry bush prices online. Bluecrop, Duke, Sunshine Blue — find the best deal across 10+ nurseries. Prices checked daily.",
-    "best-flowering-trees-small-yards": "Compare small flowering tree prices online. Dogwood, Redbud, Cherry — find the lowest price across 10+ nurseries. Checked daily.",
-    "best-azaleas-rhododendrons": "Compare azalea and rhododendron prices online. Find the best deals across 10+ nurseries with prices checked daily.",
+    "best-privacy-trees": "Find the cheapest privacy trees online. Compare Thuja Green Giant, Leyland Cypress, and arborvitae prices across {retailer_count} nurseries — checked daily.",
+    "cheapest-places-to-buy-online": "The cheapest places to buy plants online in 2026. We compared {retailer_count} nurseries so you don't have to — see who wins by plant type.",
+    "best-japanese-maple-varieties": "Compare Japanese maple prices online. Bloodgood, Crimson Queen, Emperor I — find the best deal across {retailer_count} nurseries with prices checked daily.",
+    "best-knock-out-roses": "Compare Knock Out rose prices across {retailer_count} online nurseries. Double, Rainbow, and Petite varieties — find the lowest price, checked daily.",
+    "best-blueberry-bushes": "Compare blueberry bush prices online. Bluecrop, Duke, Sunshine Blue — find the best deal across {retailer_count} nurseries. Prices checked daily.",
+    "best-flowering-trees-small-yards": "Compare small flowering tree prices online. Dogwood, Redbud, Cherry — find the lowest price across {retailer_count} nurseries. Checked daily.",
+    "best-azaleas-rhododendrons": "Compare azalea and rhododendron prices online. Find the best deals across {retailer_count} nurseries with prices checked daily.",
     "best-time-to-buy-plants-online": "When is the cheapest time to buy plants online? See price seasonality data for trees, shrubs, and perennials — and exactly when to buy.",
     "why-same-plant-costs-20-or-60": "Plant pricing explained: container size, shipping, quality, branding, and seasonal timing all affect what you pay. Learn how to compare and avoid overpaying.",
 }
@@ -83,7 +106,7 @@ GUIDE_FAQS = {
         {"q": "When is the best time to plant privacy trees?", "a": "Fall is ideal — soil is warm, air is cool, and trees establish root systems before summer heat stress."},
     ],
     "cheapest-places-to-buy-online": [
-        {"q": "Where is the cheapest place to buy plants online?", "a": "Nature Hills, Fast Growing Trees, and Walmart Garden often have the lowest prices, but comparing across nurseries for your specific plant always finds the best deal."},
+        {"q": "Where is the cheapest place to buy plants online?", "a": "In our daily tracking, PlantingTree, Nature Hills, and Fast Growing Trees hold the lowest price most often. No nursery wins on everything though, so comparing all of them for your specific plant is what actually finds the best deal."},
         {"q": "Are cheap online plants worth it?", "a": "Yes, if you buy during sales and choose appropriate sizes. A 1-gallon plant at $15 from a reputable nursery performs the same as a $45 3-gallon from a local store."},
         {"q": "When do online nurseries have the biggest plant sales?", "a": "End of summer (August–September) and late spring (late May–June) are when nurseries discount heavily to move inventory before the off-season."},
         {"q": "Do online nurseries charge a lot for shipping?", "a": "Shipping typically runs $15–$30 per order regardless of plant count. Ordering 3+ plants makes the shipping cost much more efficient."},
@@ -139,6 +162,30 @@ GUIDE_FAQS = {
         {"q": "When are plants cheapest?", "a": "Fall, when nurseries discount remaining inventory to clear stock before winter. Late summer sales (August-September) offer the biggest discounts."},
     ],
 }
+
+
+def human_join(items):
+    """Join names into readable prose: "A", "A and B", "A, B, and C"."""
+    items = [str(i) for i in items]
+    if len(items) <= 1:
+        return items[0] if items else ""
+    if len(items) == 2:
+        return "%s and %s" % (items[0], items[1])
+    return "%s, and %s" % (", ".join(items[:-1]), items[-1])
+
+
+def guide_meta_description(slug, fallback, retailer_count):
+    """Meta description for a guide, with the live nursery count filled in.
+
+    Only the hand-written overrides above carry {retailer_count}; the fallback
+    is derived from guide markdown and may contain literal braces, so it is
+    never passed through str.format().
+    """
+    override = GUIDE_META_DESCRIPTIONS.get(slug)
+    if override is None:
+        return fallback
+    return override.format(retailer_count=retailer_count)
+
 
 # ---------------------------------------------------------------------------
 # Size tier normalization
@@ -1324,6 +1371,25 @@ def build_site(build_guides=True, build_products=True):
     )
     env.globals["current_year"] = datetime.now().year
     env.filters["tojson"] = lambda obj: json.dumps(obj, ensure_ascii=False)
+    env.filters["humanjoin"] = human_join
+
+    # Every page's footer states how the site makes money, so these are
+    # globals rather than per-render arguments: a template that forgets to
+    # pass them would otherwise silently render an empty count or drop the
+    # disclosure. One flag, one retailer list, read by every template.
+    active_retailers = [r for r in retailers if r.get("active")]
+    env.globals["affiliate_programs_active"] = AFFILIATE_PROGRAMS_ACTIVE
+    env.globals["affiliate_status_reviewed"] = AFFILIATE_STATUS_REVIEWED
+    env.globals["tracked_retailers"] = active_retailers
+    env.globals["retailer_count"] = len(active_retailers)
+    # Tracked nurseries that have no affiliate program to join at all — the
+    # same rule build_price_table() uses for the asterisk in the comparison
+    # table. The disclosure page only claims we track unpayable retailers
+    # while that is actually true of the data.
+    env.globals["non_affiliate_retailer_count"] = sum(
+        1 for r in active_retailers
+        if r.get("affiliate") is None or r.get("trust_builder") is True
+    )
 
     # Pre-enrich all plants with lowest_price so find_similar_plants() can sort by price.
     # Must use the same displayable-price rule as the product page: this loop
@@ -1463,7 +1529,9 @@ def build_site(build_guides=True, build_products=True):
                 page_title=page_title,
                 content=article["content"],
                 toc=article["toc"],
-                meta_description=GUIDE_META_DESCRIPTIONS.get(slug, article["meta_description"]),
+                meta_description=guide_meta_description(
+                    slug, article["meta_description"], len(active_retailers)
+                ),
                 date_published="2026-04-02",
                 # Guide content changes when its markdown changes, not when
                 # the build runs. Stamping today made every guide claim
@@ -1471,7 +1539,7 @@ def build_site(build_guides=True, build_products=True):
                 # header and Article JSON-LD — the same false freshness
                 # signal the sitemap was fixed for.
                 date_modified=article.get("date_modified") or DEFAULT_GUIDE_DATE,
-                retailer_count=len([r for r in retailers if r.get("active")]),
+                retailer_count=len(active_retailers),
                 related_plants=related_plants,
                 related_guides=related_guides[:5],
                 canonical_url=f"{BASE_URL}/guides/{slug}.html",
@@ -1523,7 +1591,7 @@ def build_site(build_guides=True, build_products=True):
                 category_name=cat_name,
                 page_title=page_title,
                 plants=cat_plants,
-                retailer_count=len([r for r in retailers if r.get("active")]),
+                retailer_count=len(active_retailers),
                 canonical_url=f"{BASE_URL}/category/{cat_id}.html",
                 guide_link=guide_info,
             )
@@ -1578,7 +1646,7 @@ def build_site(build_guides=True, build_products=True):
     guides_for_home = all_guides[:6]
 
     # Tracked retailers for homepage
-    tracked = [r for r in retailers if r.get("active")]
+    tracked = active_retailers
 
     home_title = f"Compare Plant Prices \u2014 {len(tracked)} Nurseries (2026)"
 
@@ -1620,7 +1688,7 @@ def build_site(build_guides=True, build_products=True):
         zones=hm_zones,
         default_zone=6,
         month_names=hm_month_names,
-        retailer_count=len([r for r in retailers if r.get("active")]),
+        retailer_count=len(active_retailers),
         canonical_url=f"{BASE_URL}/heat-map.html",
     )
     with open(os.path.join(SITE_DIR, "heat-map.html"), "w", encoding="utf-8") as f:
