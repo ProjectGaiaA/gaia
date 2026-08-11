@@ -668,15 +668,32 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             if isinstance(price_info, dict):
                 price = price_info.get("price")
                 if price is not None and price > 0:
-                    # If two raw tiers normalize to the same canonical tier, keep cheaper
-                    if tier in sizes and sizes[tier]["price"] <= price:
-                        continue
+                    # Carry the scraper's per-variant stock and the original
+                    # variant text through to the template. Without these two
+                    # keys every downstream consumer was blind: the size
+                    # columns linked sold-out variants as if they were
+                    # buyable, and the "Ships in Spring" detector below read
+                    # raw_size off a dict that never had it, so it could
+                    # never fire.
+                    available = price_info.get("available")
+                    # If two raw tiers normalize to the same canonical tier,
+                    # prefer the one a visitor can actually buy; break ties on
+                    # price. Previously this kept the cheaper variant even when
+                    # that variant was sold out and the dearer one was in stock.
+                    if tier in sizes:
+                        held = sizes[tier]
+                        held_rank = (held.get("available") is not False, -held["price"])
+                        new_rank = (available is not False, -price)
+                        if held_rank >= new_rank:
+                            continue
                     sizes[tier] = {
                         "price": price,
                         "was_price": price_info.get("was_price"),
                         "is_best": False,
                         "label": get_size_label(tier),
                         "variant_id": price_info.get("variant_id"),
+                        "available": available,
+                        "raw_size": price_info.get("raw_size", ""),
                     }
                     if displayable_price(tier, price_info) is not None:
                         all_prices_flat.append(price)
@@ -689,13 +706,24 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                     "was_price": None,
                     "is_best": False,
                     "label": get_size_label(tier),
+                    # A bare number carries no stock signal — unknown, not
+                    # in stock. displayable_price() treats None as showable.
+                    "available": None,
+                    "raw_size": "",
                 }
                 if displayable_price(tier, price_info) is not None:
                     all_prices_flat.append(price_info)
                 active_tiers.add(tier)
 
         in_stock = price_data.get("in_stock", None)
-        if in_stock or in_stock is None:
+        # A row counts toward "you can buy this somewhere" only if the retailer
+        # is still being reached, is not sold out overall, and has at least one
+        # variant that is not explicitly sold out. Row-level in_stock alone
+        # emitted schema.org/InStock for plants whose every variant was gone.
+        row_has_buyable_variant = any(
+            s.get("available") is not False for s in sizes.values()
+        )
+        if (in_stock or in_stock is None) and not unavailable and row_has_buyable_variant:
             any_in_stock = True  # Unknown stock (None) = assume available
 
         # Detect "Ships in Spring/Fall" from variant raw_size text
@@ -717,11 +745,17 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             if codes or banners:
                 promo_info = {"codes": codes, "banners": banners}
 
-        # Find cheapest variant_id for the default "Buy at" button
+        # Find the cheapest BUYABLE variant_id for the default "Buy at" button.
+        # Deep-linking to ?variant=<sold out> drops the visitor on a page whose
+        # only control is "Notify me when available" — the complaint that
+        # started this whole fix.
         default_variant = None
         if sizes:
             cheapest_size = min(
-                (s for s in sizes.values() if s.get("price")),
+                (
+                    s for tier, s in sizes.items()
+                    if displayable_price(tier, s) is not None
+                ),
                 key=lambda s: s["price"],
                 default=None,
             )
@@ -784,8 +818,15 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             # Only consider in-stock or unknown-stock, available retailers for best price
             if rdata["in_stock"] is False or rdata.get("unavailable"):
                 continue
-            if tier in rdata["sizes"] and rdata["sizes"][tier]["price"] < best_price:
-                best_price = rdata["sizes"][tier]["price"]
+            # ...and only sizes that are themselves buyable. A retailer can be
+            # "In Stock" overall while this particular size is sold out; awarding
+            # that cell the green best-price highlight sent visitors straight to
+            # an unbuyable variant.
+            sdata = rdata["sizes"].get(tier)
+            if displayable_price(tier, sdata) is None:
+                continue
+            if sdata["price"] < best_price:
+                best_price = sdata["price"]
                 best_retailer = rid
         if best_retailer:
             prices[best_retailer]["sizes"][tier]["is_best"] = True
@@ -819,7 +860,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             return (2, float("inf"))
         tier_prices = [
             s["price"] for tier, s in rdata["sizes"].items()
-            if tier in visible_tiers and isinstance(s, dict) and s.get("price")
+            if tier in visible_tiers and displayable_price(tier, s) is not None
         ]
         if not tier_prices:
             return (1, float("inf"))
@@ -843,13 +884,15 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             continue
         for tier, sdata in rdata["sizes"].items():
             # "default" is not a size — comparing it across nurseries is
-            # apples-to-oranges (bare-root vs 3-gallon sold as one "tier")
-            if tier == "default":
+            # apples-to-oranges (bare-root vs 3-gallon sold as one "tier").
+            # Sold-out variants are excluded too: a "save 62%" claim built on
+            # a price nobody can pay is not a saving, and this figure feeds
+            # the homepage hero.
+            if displayable_price(tier, sdata) is None:
                 continue
-            if isinstance(sdata, dict) and sdata.get("price"):
-                tier_prices_map.setdefault(tier, []).append(
-                    (sdata["price"], rdata["retailer_name"])
-                )
+            tier_prices_map.setdefault(tier, []).append(
+                (sdata["price"], rdata["retailer_name"])
+            )
     # Find the tier with the most nurseries, break ties by savings %
     # Filter outliers: if the highest price is 3x+ the second highest, drop it
     # (likely bad scraped data, e.g. FGT variant ID mis-parse)
@@ -890,7 +933,10 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             if rdata["in_stock"] is False:
                 continue
             sdata = rdata["sizes"].get(tier)
-            if not isinstance(sdata, dict) or not sdata.get("price"):
+            # Mobile shows ONE row per size — the best deal for that size.
+            # A sold-out variant must never be that row; on mobile it is the
+            # only price the visitor sees, so a wrong one here is the whole page.
+            if displayable_price(tier, sdata) is None:
                 continue
             buy_url_base = rdata["buy_url"]
             variant_url = buy_url_base
@@ -945,8 +991,8 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         "offer_count": sum(
             1 for r in prices.values()
             if any(
-                isinstance(s, dict) and s.get("price")
-                for t, s in r["sizes"].items() if t != "default"
+                displayable_price(t, s) is not None
+                for t, s in r["sizes"].items()
             )
         ),
         "any_in_stock": any_in_stock,

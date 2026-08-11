@@ -159,7 +159,16 @@
                                 </td>
                                 {% for tier in active_size_tiers %}
                                 <td class="price-cell" data-label="{{ tier|replace('gal',' Gal')|replace('quart','Quart')|replace('bareroot','Bare Root')|title }}">
-                                    {% if retailer_prices.sizes[tier] %}
+                                    {% if retailer_prices.sizes[tier] and retailer_prices.sizes[tier].available == false %}
+                                    {# Sold out at this size. Show the price so the
+                                       comparison stays complete, but never as a link —
+                                       it lands on a page whose only control is
+                                       "Notify me when available". #}
+                                    <span class="price-soldout" title="This size is sold out at {{ retailer_prices.retailer_name }}">
+                                        ${{ '%.2f'|format(retailer_prices.sizes[tier].price) }}
+                                        <span class="soldout-tag">Sold out</span>
+                                    </span>
+                                    {% elif retailer_prices.sizes[tier] %}
                                     {% if retailer_prices.sizes[tier].variant_id and not retailer_prices.affiliate_override %}
                                     <a href="{{ retailer_prices.buy_url }}?variant={{ retailer_prices.sizes[tier].variant_id }}" target="_blank" rel="noopener{% if retailer_prices.has_affiliate %} nofollow sponsored{% endif %}" class="price-link">
                                     {% else %}

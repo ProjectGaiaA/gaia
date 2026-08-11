@@ -358,6 +358,20 @@ h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
 .table-disclosure a { color: var(--gray-500); text-decoration: underline; }
 .price-accuracy-disclaimer { font-size: 0.8rem; color: var(--gray-500); margin-top: 0.5rem; font-style: italic; }
 
+/* A single size that is sold out, on a retailer row that is otherwise in
+   stock. Deliberately not a link: the price stays visible so the size-by-size
+   comparison is still complete, but it cannot be clicked through to a variant
+   nobody can buy. */
+.price-soldout { color: var(--gray-500); white-space: nowrap; }
+.price-soldout .soldout-tag {
+    display: block;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    color: var(--orange-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
 /* Grey out prices for sold-out retailers */
 tr.sold-out-row .price-cell { color: var(--gray-300); }
 tr.sold-out-row .price-cell .best-price { background: none; border: none; color: var(--gray-300); }
