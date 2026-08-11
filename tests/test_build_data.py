@@ -117,11 +117,15 @@ class TestGetSizeLabel:
     def test_jumbo_tier_sorts_next_to_its_plain_size(self):
         """A tier missing from tier_order falls to the end of the table,
         which would put Jumbo after the bare-root columns."""
-        order = build.SIZE_TIER_ORDER if hasattr(build, "SIZE_TIER_ORDER") else None
+        order = getattr(build, "SIZE_TIER_ORDER", None)
         if order is None:
+            # Read tier_order from the module's own source, located via the
+            # module object. A bare open("build.py") only worked when pytest
+            # happened to be run from the repo root.
+            import inspect
             import re
-            src = open("build.py", encoding="utf-8").read()
-            m = re.search(r"tier_order = \[(.*?)\]", src, re.S)
+            m = re.search(r"tier_order = \[(.*?)\]", inspect.getsource(build), re.S)
+            assert m, "tier_order list not found in build.py"
             order = re.findall(r'"([^"]+)"', m.group(1))
         assert order.index("6-7ft-jumbo") == order.index("6-7ft") + 1
 

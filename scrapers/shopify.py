@@ -39,11 +39,28 @@ logger = logging.getLogger(__name__)
 
 # schema.org Product/Offer blocks embedded in the product page HTML.
 # sku, price, availability — pack SKUs carry a "-10PACK"-style suffix.
+# `[^{}]*?` rather than `.*?` so a match cannot run past the end of its own
+# Offer object. With `.*?` an Offer that omits `availability` silently
+# inherited the NEXT Offer's, so a buyable price could be marked sold out and
+# vanish from the site — the same "value inferred instead of read" defect this
+# module has already been bitten by twice, in the availability dimension.
 _SCHEMA_OFFER_RE = re.compile(
-    r'\{"@type":"Offer","sku":"(\d+(?:-\w+)?)".*?'
-    r'"price":"([\d.]+)".*?'
+    r'\{"@type":"Offer","sku":"(\d+(?:-\w+)?)"[^{}]*?'
+    r'"price":"([\d.]+)"[^{}]*?'
     r'"availability":"([^"]+)"'
 )
+
+
+# schema.org availability values a shopper can actually place an order
+# against. Testing `"InStock" in value` alone marked PreOrder, BackOrder and
+# LimitedAvailability as sold out, which would hide a buyable price. FGT emits
+# only InStock/OutOfStock today, so this is cover for the day it does not.
+_ORDERABLE_AVAILABILITY = ("InStock", "PreOrder", "BackOrder", "LimitedAvailability")
+
+
+def _is_orderable(availability: str) -> bool:
+    """True when the schema.org availability value means "you can buy this"."""
+    return any(v in availability for v in _ORDERABLE_AVAILABILITY)
 
 
 class ShopifyScraper:
@@ -219,6 +236,12 @@ class ShopifyScraper:
         Returns {} on any failure, which reproduces today's behaviour
         (availability unknown) rather than asserting stock we cannot confirm.
         """
+        # This is a SECOND request to the same host for the same product, so it
+        # gets its own delay. Without one, every product became a back-to-back
+        # pair — 213 extra un-delayed requests per run, 426 a day — which
+        # contradicts the project's own stated rule of 5-15s between requests
+        # and is exactly the behaviour that gets a scraper blocked.
+        self._delay()
         url = f"{self.base_url}/products/{handle}.js"
         result = self._get_json(url)
         data = result.data
@@ -558,14 +581,28 @@ class ShopifyScraper:
         # products_found / products_expected, so a wrong-but-present product
         # still counts as a hit and the manifest stays "healthy".
         #
-        # So when a page clearly HAS a size selector but we could not read a
-        # single size out of it, publish nothing. A missing product trips the
-        # dead-retailer alarm; a wrong price trips nothing at all. Products
-        # with no size selector are unaffected and still publish normally.
-        if not aria_offers and self._size_selector_scope(text):
+        # So when a page offers more than one size but we could not read a
+        # single one of them, publish nothing. A missing product trips the
+        # dead-retailer alarm; a wrong price trips nothing at all. Genuinely
+        # single-size products are unaffected and still publish normally.
+        #
+        # "More than one size" is decided from the schema.org Offer COUNT, not
+        # from finding a "Select size" heading. The first version of this
+        # guard keyed on that heading, so it switched itself off whenever the
+        # heading changed — an <h3> instead of an <h2>, an inner <span>, or
+        # the words "Select a size" — and then published the Jumbo's $503.95
+        # on the standard 6-7ft row, the exact defect it exists to prevent. A
+        # theme redesign changes the heading and the aria format together, so
+        # that is precisely when the guard was least likely to be watching.
+        #
+        # The Offer count comes from the page's own structured data and does
+        # not depend on presentational markup. The heading check is kept as a
+        # second, independent trigger rather than the only one.
+        multi_size_product = len(offers) > 1 or bool(self._size_selector_scope(text))
+        if not aria_offers and multi_size_product:
             logger.error(
-                f"  {self.retailer_id}/{handle}: page has a size selector but no size "
-                f"could be read from it. The aria-label format has probably changed. "
+                f"  {self.retailer_id}/{handle}: page offers {len(offers)} sizes but not "
+                f"one could be read. The aria-label format has probably changed. "
                 f"REFUSING to fall back to positional size↔price pairing — that is how "
                 f"sizes came to wear their neighbour's price. Publishing nothing for "
                 f"this product so the gap is visible."
@@ -838,7 +875,7 @@ class ShopifyScraper:
             price = self._to_price(price_str)
             if price is None:
                 continue
-            buckets.setdefault(round(price, 2), set()).add("InStock" in availability)
+            buckets.setdefault(round(price, 2), set()).add(_is_orderable(availability))
         return {
             price: (next(iter(vals)) if len(vals) == 1 else None)
             for price, vals in buckets.items()

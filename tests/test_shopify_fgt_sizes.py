@@ -419,3 +419,39 @@ def test_the_guard_does_fire_when_a_size_selector_cannot_be_read():
     assert scraper._size_selector_scope(drifted), "fixture has no size selector"
     assert not scraper._extract_aria_size_offers(drifted), (
         "drifted labels still parsed; pick a mutation the parser really cannot read")
+
+
+@responses.activate
+def test_guard_survives_a_heading_redesign():
+    """The guard must not key on the "Select size" heading markup.
+
+    A theme redesign changes the heading AND the aria format together, so
+    keying on the heading meant the guard switched itself off in exactly the
+    scenario it was written for. Measured: 5 of 6 heading variants published
+    the Jumbo's $503.95 on the standard 6-7ft row (truth $372.95).
+
+    It now decides "is this a multi-size product" from the schema.org Offer
+    count, which comes from structured data and not from presentation.
+    """
+    import re as _re
+    html = load_fixture("fgt", "thuja-green-giant-page.html")
+    unreadable = html.replace(" - Price $", " – Price $").replace(
+        " - Original price $", " – Original price $")
+
+    variants = {
+        "inner span": lambda s: _re.sub(r"(?i)select size</h2>",
+                                        "<span>Select size</span></h2>", s),
+        "h3":         lambda s: _re.sub(r"(?i)select size</h2>", "Select size</h3>", s),
+        "div":        lambda s: _re.sub(r"(?i)select size</h2>", "Select size</div>", s),
+        "reworded":   lambda s: _re.sub(r"(?i)select size</h2>", "Select a size</h2>", s),
+        "shortened":  lambda s: _re.sub(r"(?i)select size</h2>", "Size</h2>", s),
+    }
+    for name, mutate in variants.items():
+        responses.reset()
+        result = _scrape("thuja-green-giant", mutate(unreadable))
+        if result is None:
+            continue                      # withheld, which is the point
+        for tier, sdata in result.get("sizes", {}).items():
+            assert tier != "default", f"{name}: published a phantom row"
+            assert abs(sdata["price"] - 503.95) > 0.01, (
+                f"{name}: published the Jumbo price ${sdata['price']} on {tier}")

@@ -1486,6 +1486,10 @@ def build_site(build_guides=True, build_products=True):
         # False, the sitemap's zero-offer exclusion silently stopped working
         # and put the noindexed miscanthus page straight back in.
         plant["retailer_count"] = table["offer_count"]
+        # Drives indexing and the sitemap. Deliberately a different number
+        # from retailer_count: see the two comments at the returns of
+        # build_price_table(). "Sold out this week" must not de-index a page.
+        plant["priced_offer_count"] = table["priced_offer_count"]
 
     # Ensure output directories
     ensure_dir(os.path.join(SITE_DIR, "plants"))
@@ -1876,7 +1880,13 @@ def build_site(build_guides=True, build_products=True):
     for plant in plants:
         # Zero-offer pages are noindexed — listing them in the sitemap
         # would point Google at pages we tell it not to index.
-        if plant.get("retailer_count") == 0:
+        # Must use the SAME field as the noindex decision at build.py:1549.
+        # It used retailer_count (= offer_count, buyable offers only) while
+        # noindex moved to priced_offer_count, so a plant sold out everywhere
+        # became indexable AND absent from the sitemap, titled "0 Nurseries" —
+        # measured on 4 pages at a 30% stock-out rate. Two gates answering the
+        # same question have to read the same number.
+        if plant.get("priced_offer_count") == 0:
             continue
         sitemap_entries.append((f"/plants/{plant['id']}.html", _plant_date(plant)))
     for cat_id, cat_plants in categories_map.items():
