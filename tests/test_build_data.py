@@ -217,8 +217,15 @@ class TestBuildPriceTableStructure:
         assert "3gal" in b_sizes
 
     def test_offer_count(self):
+        """Nursery B is in_stock: false, so it is not an offer.
+
+        Was 2. The fixture has two retailers but only Nursery A can be
+        ordered from; counting B inflated the "N Nurseries" claim in the page
+        title and schema offerCount. This now matches the rule its sibling
+        test_hydrangea_same_tier_savings already documents for savings.
+        """
         table = _build_hydrangea_table()
-        assert table["offer_count"] == 2
+        assert table["offer_count"] == 1
 
 
 class TestBestPriceMarking:
@@ -347,15 +354,25 @@ class TestSavingsCalculation:
     """Cross-tier and same-tier savings math."""
 
     def test_hydrangea_savings_pct(self):
-        """Overall savings: cheapest (15.99) vs most expensive (69.99)."""
+        """Overall savings across prices a visitor can actually order.
+
+        Was 77, computed as 15.99 vs Nursery B's 69.99 — but Nursery B is
+        in_stock: false, so nobody can pay 69.99 and the "save 77%" was
+        measured against a price that does not exist to be paid. Now 15.99
+        vs Nursery A's own 54.99.
+        """
         table = _build_hydrangea_table()
-        # round((1 - 15.99/69.99) * 100) = round(77.14) = 77
-        assert table["savings_pct"] == 77
+        # round((1 - 15.99/54.99) * 100) = round(70.92) = 71
+        assert table["savings_pct"] == 71
 
     def test_hydrangea_lowest_highest(self):
+        """The headline range must quote orderable prices at both ends.
+
+        highest_price was 69.99 from the sold-out Nursery B row.
+        """
         table = _build_hydrangea_table()
         assert table["lowest_price"] == 15.99
-        assert table["highest_price"] == 69.99
+        assert table["highest_price"] == 54.99
 
     def test_hydrangea_same_tier_savings(self):
         """Same-tier savings should compare within 1gal or 3gal (2 nurseries each).

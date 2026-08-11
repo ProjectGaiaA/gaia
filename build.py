@@ -701,8 +701,6 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                         "available": available,
                         "raw_size": price_info.get("raw_size", ""),
                     }
-                    if displayable_price(tier, price_info) is not None:
-                        all_prices_flat.append(price)
                     active_tiers.add(tier)
             elif isinstance(price_info, (int, float)) and price_info > 0:
                 if tier in sizes and sizes[tier]["price"] <= price_info:
@@ -717,8 +715,6 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                     "available": None,
                     "raw_size": "",
                 }
-                if displayable_price(tier, price_info) is not None:
-                    all_prices_flat.append(price_info)
                 active_tiers.add(tier)
 
         in_stock = price_data.get("in_stock", None)
@@ -732,15 +728,62 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         if (in_stock or in_stock is None) and not unavailable and row_has_buyable_variant:
             any_in_stock = True  # Unknown stock (None) = assume available
 
-        # Detect "Ships in Spring/Fall" from variant raw_size text
-        ships_season = None
+        # Decide ONCE per size whether a visitor can buy it, and let the
+        # template read the answer instead of deriving its own.
+        #
+        # The rule lived in build.py as `available is False` and again in
+        # product.html as `available == false`. Those are not the same test:
+        # Jinja's `==` makes 0 and 0.0 equal to False, so a non-bool would
+        # have the desktop table calling a size sold out while mobile, the
+        # savings claim and schema.org all still treated it as for sale.
+        # displayable_price()'s own docstring records that this logic once
+        # existed in four copies that drifted apart; the template was a fifth.
+        #
+        # It also folds in the row-level facts the template's copy could not
+        # see: a retailer flagged sold out wholesale, or one that has gone
+        # missing from three consecutive scrape runs, no longer renders live
+        # affiliate links under a heading that says "Sold Out".
+        row_is_orderable = bool(in_stock or in_stock is None) and not unavailable
+        for tier, sdata in sizes.items():
+            sdata["is_buyable"] = (
+                row_is_orderable and displayable_price(tier, sdata) is not None
+            )
+
+        # Headline range, collected from the SURVIVORS and only from sizes a
+        # visitor can order. Appending as we went counted variants a later
+        # collision then overwrote, so a price appearing nowhere on the page
+        # could still set schema.org highPrice, and which one won depended on
+        # the order the scraper emitted its variants in.
+        for sdata in sizes.values():
+            if sdata["is_buyable"]:
+                all_prices_flat.append(sdata["price"])
+
+        # "Ships in Spring/Fall" is a per-VARIANT fact, but this badge sits at
+        # the end of the retailer's ROW, next to "In Stock". So only claim a
+        # season when every size in the row agrees on it.
+        #
+        # This detector was dormant for as long as raw_size failed to reach
+        # it. The moment it started working it took the FIRST match and broke
+        # out of the loop, which told anyone buying Emerald Green Arborvitae's
+        # $19.99 1-2ft that it ships in Spring — that string belonged to a
+        # $90.99 bare root, the 1-2ft ships year-round, and five other sizes
+        # ship in Fall. 14 of the 23 badges it produced contradicted their own
+        # row.
+        #
+        # Comparing a set rather than stopping at the first hit also makes the
+        # answer independent of the order the scraper emitted variants in.
+        # Previously two scrape runs with identical data in a different order
+        # published different shipping claims.
+        seasons = set()
         for tier_data in sizes.values():
             raw = tier_data.get("raw_size", "") if isinstance(tier_data, dict) else ""
-            import re as _re
-            season_match = _re.search(r'ships?\s+in\s+(spring|fall|summer|winter)', raw, _re.IGNORECASE)
-            if season_match:
-                ships_season = season_match.group(1).title()
-                break
+            season_match = re.search(
+                r"ships?\s+in\s+(spring|fall|summer|winter)", raw, re.IGNORECASE
+            )
+            seasons.add(season_match.group(1).title() if season_match else None)
+        # A lone None means no size stated a season; a mixed set means they
+        # disagree. Either way the row has nothing true to say.
+        ships_season = seasons.pop() if len(seasons) == 1 else None
 
         # Attach promo data if available for this retailer
         promo_info = None
@@ -759,8 +802,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         if sizes:
             cheapest_size = min(
                 (
-                    s for tier, s in sizes.items()
-                    if displayable_price(tier, s) is not None
+                    s for s in sizes.values() if s["is_buyable"]
                 ),
                 key=lambda s: s["price"],
                 default=None,
@@ -830,7 +872,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             # that cell the green best-price highlight sent visitors straight to
             # an unbuyable variant.
             sdata = rdata["sizes"].get(tier)
-            if displayable_price(tier, sdata) is None:
+            if not (sdata or {}).get("is_buyable"):
                 continue
             if sdata["price"] < best_price:
                 best_price = sdata["price"]
@@ -867,7 +909,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             return (2, float("inf"))
         tier_prices = [
             s["price"] for tier, s in rdata["sizes"].items()
-            if tier in visible_tiers and displayable_price(tier, s) is not None
+            if tier in visible_tiers and s.get("is_buyable")
         ]
         if not tier_prices:
             return (1, float("inf"))
@@ -895,7 +937,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             # Sold-out variants are excluded too: a "save 62%" claim built on
             # a price nobody can pay is not a saving, and this figure feeds
             # the homepage hero.
-            if displayable_price(tier, sdata) is None:
+            if not (sdata or {}).get("is_buyable"):
                 continue
             tier_prices_map.setdefault(tier, []).append(
                 (sdata["price"], rdata["retailer_name"])
@@ -943,7 +985,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             # Mobile shows ONE row per size — the best deal for that size.
             # A sold-out variant must never be that row; on mobile it is the
             # only price the visitor sees, so a wrong one here is the whole page.
-            if displayable_price(tier, sdata) is None:
+            if not (sdata or {}).get("is_buyable"):
                 continue
             buy_url_base = rdata["buy_url"]
             variant_url = buy_url_base
@@ -998,8 +1040,8 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         "offer_count": sum(
             1 for r in prices.values()
             if any(
-                displayable_price(t, s) is not None
-                for t, s in r["sizes"].items()
+                s.get("is_buyable")
+                for s in r["sizes"].values()
             )
         ),
         "any_in_stock": any_in_stock,

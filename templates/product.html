@@ -159,14 +159,25 @@
                                 </td>
                                 {% for tier in active_size_tiers %}
                                 <td class="price-cell" data-label="{{ tier|replace('gal',' Gal')|replace('quart','Quart')|replace('bareroot','Bare Root')|title }}">
-                                    {% if retailer_prices.sizes[tier] and retailer_prices.sizes[tier].available == false %}
-                                    {# Sold out at this size. Show the price so the
+                                    {% if retailer_prices.sizes[tier] and not retailer_prices.sizes[tier].is_buyable %}
+                                    {# Not orderable — this size is sold out, or the
+                                       whole retailer is. Show the price so the
                                        comparison stays complete, but never as a link —
                                        it lands on a page whose only control is
-                                       "Notify me when available". #}
-                                    <span class="price-soldout" title="This size is sold out at {{ retailer_prices.retailer_name }}">
+                                       "Notify me when available".
+                                       `is_buyable` is computed once in build.py; do
+                                       NOT re-derive the rule here. #}
+                                    <span class="price-soldout" title="{% if retailer_prices.unavailable %}We have not been able to reach {{ retailer_prices.retailer_name }} in recent checks, so this price is not confirmed{% else %}This size is sold out at {{ retailer_prices.retailer_name }}{% endif %}">
                                         ${{ '%.2f'|format(retailer_prices.sizes[tier].price) }}
-                                        <span class="soldout-tag">Sold out</span>
+                                        {% if retailer_prices.sizes[tier].was_price %}
+                                        <span class="was-price">${{ '%.2f'|format(retailer_prices.sizes[tier].was_price) }}</span>
+                                        {% endif %}
+                                        {# "Sold out" is a claim about the retailer's stock. We can only
+                                           make it when we actually checked. A row we have failed to
+                                           reach for 3+ runs is UNCONFIRMED, which is a different and
+                                           weaker statement — saying "Sold out" there would be the same
+                                           kind of overclaim this whole change exists to remove. #}
+                                        <span class="soldout-tag">{% if retailer_prices.unavailable %}Not confirmed{% else %}Sold out{% endif %}</span>
                                     </span>
                                     {% elif retailer_prices.sizes[tier] %}
                                     {% if retailer_prices.sizes[tier].variant_id and not retailer_prices.affiliate_override %}
