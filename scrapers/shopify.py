@@ -2,7 +2,10 @@
 Shopify Product Scraper
 
 Most online nurseries use Shopify, which exposes structured JSON endpoints:
-  - /products/{handle}.json — single product with variants, prices, availability
+  - /products/{handle}.json — single product with variants and prices.
+    NOTE: .json does NOT carry stock. It has no `available` key at all.
+    Per-variant availability comes from /products/{handle}.js, fetched
+    separately by fetch_availability(). See that method for why.
   - /products.json?limit=250 — paginated product listing
 
 This scraper uses the JSON endpoints instead of HTML scraping:
@@ -130,7 +133,10 @@ class ShopifyScraper:
             # Follow the redirect to get data for this run
             follow_result = self._get_json(result.redirect_url)
             if follow_result.data and "product" in follow_result.data:
-                return self._parse_product(follow_result.data["product"])
+                return self._parse_product(
+                    follow_result.data["product"],
+                    self.fetch_availability(new_handle or handle),
+                )
             # JSON redirect didn't yield data — try HTML on new handle
             if new_handle:
                 return self._scrape_product_html(new_handle)
@@ -150,7 +156,9 @@ class ShopifyScraper:
 
         # Normal success path
         if result.data and "product" in result.data:
-            return self._parse_product(result.data["product"])
+            return self._parse_product(
+                result.data["product"], self.fetch_availability(handle)
+            )
 
         # Fall back to HTML scraping
         logger.info(f"  JSON endpoint unavailable, trying HTML for {handle}")
@@ -181,7 +189,46 @@ class ShopifyScraper:
                 self._delay()
         return results
 
-    def _parse_product(self, product: dict) -> dict:
+    def fetch_availability(self, handle: str) -> dict:
+        """Per-variant stock, keyed by variant id: {variant_id: bool}.
+
+        WHY THIS EXISTS. The scraper reads /products/{handle}.json, and that
+        endpoint HAS NO `available` FIELD. `variant.get("available")` therefore
+        returned None for every variant of every Shopify retailer, on every run,
+        since this scraper was written — 170 rows in the current corpus. The
+        module docstring claimed .json carried availability, which is why nobody
+        checked.
+
+        /products/{handle}.js does carry it, per variant, and it matches what a
+        shopper sees: verified against plantingtree.com's own size selector,
+        which lists exactly the variants this field reports as available.
+
+        Deliberately a SEPARATE fetch rather than switching endpoints. The .js
+        payload returns price in CENTS (3495) where .json returns dollar strings
+        ("34.95"); swapping wholesale would multiply every price on the site by
+        100. Only the boolean is taken from here.
+
+        Returns {} on any failure, which reproduces today's behaviour
+        (availability unknown) rather than asserting stock we cannot confirm.
+        """
+        url = f"{self.base_url}/products/{handle}.js"
+        result = self._get_json(url)
+        data = result.data
+        if not isinstance(data, dict):
+            return {}
+        out = {}
+        for variant in data.get("variants") or []:
+            if not isinstance(variant, dict):
+                continue
+            vid = variant.get("id")
+            avail = variant.get("available")
+            # Only a real boolean counts. A missing key means unknown, and
+            # unknown must never be coerced to True.
+            if vid is not None and isinstance(avail, bool):
+                out[str(vid)] = avail
+        return out
+
+    def _parse_product(self, product: dict, availability: dict | None = None) -> dict:
         """Parse a Shopify product JSON into our canonical format."""
         title = product.get("title", "")
         handle = product.get("handle", "")
@@ -218,9 +265,25 @@ class ShopifyScraper:
             if 'single' in variant_title.lower() and 'pack' in variant_title.lower():
                 continue
 
-            # If variant says "Ships in Spring/Fall", treat as available for order
-            if available is None and re.search(r'ships?\s+in\s+(?:spring|fall|summer|winter)', variant_title, re.IGNORECASE):
-                available = True
+            # Real per-variant stock, fetched from /products/{handle}.js because
+            # the .json endpoint this product came from has no `available` field.
+            if availability:
+                looked_up = availability.get(str(variant.get("id", "")))
+                if isinstance(looked_up, bool):
+                    available = looked_up
+
+            # REMOVED: a heuristic that set `available = True` whenever the
+            # variant title matched "ships in spring/fall/summer/winter".
+            # It fabricated stock. Spring Hill's Pink Lemonade Blueberry had
+            # every variant sold out at the retailer and rendered "In Stock"
+            # here, carrying the green best-price highlight, because the title
+            # contained the word "Spring". Measured: spring-hill asserted
+            # availability and was wrong 48 times out of 52.
+            #
+            # "Ships in Spring" describes WHEN an order ships, not WHETHER one
+            # can be placed. Those are different questions and only the
+            # retailer can answer the second. It is now answered by the `.js`
+            # lookup above, or left unknown.
 
             was_price = None
             if compare_price_str:

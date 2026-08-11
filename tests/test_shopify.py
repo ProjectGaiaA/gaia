@@ -343,10 +343,8 @@ def test_zero_price_variants_excluded(no_sleep):
 # --- Ships in Spring availability ---
 
 
-@responses.activate
-def test_ships_in_spring_treated_as_available(no_sleep):
-    """Variants with 'Ships in Spring' in title and null availability should be marked available."""
-    fixture = {
+def _spring_hill_fixture():
+    return {
         "product": {
             "id": 2,
             "title": "Spring Hill Rose",
@@ -357,16 +355,36 @@ def test_ships_in_spring_treated_as_available(no_sleep):
                     "title": "PREMIUM / 1 Plant(s) | Ships in Spring",
                     "price": "24.99",
                     "compare_at_price": None,
+                    # Note: the real .json endpoint has no `available` key at
+                    # all. Kept as None here to mirror what .get() returns.
                     "available": None,
                 },
             ],
         }
     }
+
+
+@responses.activate
+def test_ships_in_spring_does_not_imply_available(no_sleep):
+    """'Ships in Spring' says WHEN an order ships, not WHETHER one can be placed.
+
+    This previously set available=True on a title match, fabricating stock.
+    Spring Hill's Pink Lemonade Blueberry had every variant sold out at the
+    retailer and rendered "In Stock" with the green best-price highlight,
+    because the title contained the word "Spring". Measured against live data,
+    spring-hill asserted availability and was wrong 48 times out of 52.
+
+    With no .js availability to consult, the answer must be UNKNOWN — never a
+    guess in the direction that flatters the listing.
+    """
     responses.add(
         responses.GET,
         "https://test.com/products/spring-hill-rose.json",
-        json=fixture,
+        json=_spring_hill_fixture(),
         status=200,
+    )
+    responses.add(
+        responses.GET, "https://test.com/products/spring-hill-rose.js", status=404
     )
     _add_robots("https://test.com")
 
@@ -374,6 +392,141 @@ def test_ships_in_spring_treated_as_available(no_sleep):
     result = scraper.scrape_product("spring-hill-rose")
 
     assert result is not None
-    assert result["in_stock"] is True
     tier = list(result["sizes"].values())[0]
-    assert tier["available"] is True
+    assert tier["available"] is None, "unknown stock must stay unknown"
+    assert result["in_stock"] is None
+
+
+@responses.activate
+def test_js_availability_overrides_unknown(no_sleep):
+    """The .js endpoint is the only source of truth for stock.
+
+    /products/{handle}.json has NO `available` field, so every Shopify variant
+    read through it was None forever — 170 rows in the corpus. Verified against
+    plantingtree.com: the variants .js reports available are exactly the ones
+    its own size selector offers.
+    """
+    responses.add(
+        responses.GET,
+        "https://test.com/products/spring-hill-rose.json",
+        json=_spring_hill_fixture(),
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        "https://test.com/products/spring-hill-rose.js",
+        json={"variants": [{"id": 200, "available": False}]},
+        status=200,
+    )
+    _add_robots("https://test.com")
+
+    scraper = ShopifyScraper("test", "https://test.com")
+    result = scraper.scrape_product("spring-hill-rose")
+
+    tier = list(result["sizes"].values())[0]
+    assert tier["available"] is False
+    assert result["in_stock"] is False
+
+
+@responses.activate
+def test_js_failure_degrades_to_unknown_never_to_available(no_sleep):
+    """A failed availability fetch must not be read as "in stock"."""
+    responses.add(
+        responses.GET,
+        "https://test.com/products/spring-hill-rose.json",
+        json=_spring_hill_fixture(),
+        status=200,
+    )
+    responses.add(
+        responses.GET, "https://test.com/products/spring-hill-rose.js", status=500
+    )
+    _add_robots("https://test.com")
+
+    scraper = ShopifyScraper("test", "https://test.com")
+    result = scraper.scrape_product("spring-hill-rose")
+    assert list(result["sizes"].values())[0]["available"] is None
+
+
+@responses.activate
+def test_js_non_boolean_availability_is_ignored(no_sleep):
+    """Only a real bool counts. A string or null must not become True."""
+    responses.add(
+        responses.GET,
+        "https://test.com/products/spring-hill-rose.json",
+        json=_spring_hill_fixture(),
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        "https://test.com/products/spring-hill-rose.js",
+        json={"variants": [{"id": 200, "available": "yes"}]},
+        status=200,
+    )
+    _add_robots("https://test.com")
+
+    scraper = ShopifyScraper("test", "https://test.com")
+    result = scraper.scrape_product("spring-hill-rose")
+    assert list(result["sizes"].values())[0]["available"] is None
+
+
+@responses.activate
+def test_availability_join_is_by_variant_id_not_position(no_sleep):
+    """Guards against the positional-mapping class of bug.
+
+    If the join were by order, reversing the .js variant list would flip which
+    size is marked available. It must not.
+    """
+    fixture = {
+        "product": {
+            "id": 3,
+            "title": "Two Size Shrub",
+            "handle": "two-size",
+            "variants": [
+                {"id": 10, "title": "1 Gallon", "price": "34.95", "compare_at_price": None},
+                {"id": 20, "title": "3 Gallon", "price": "79.95", "compare_at_price": None},
+            ],
+        }
+    }
+    responses.add(
+        responses.GET, "https://test.com/products/two-size.json", json=fixture, status=200
+    )
+    responses.add(
+        responses.GET,
+        "https://test.com/products/two-size.js",
+        # Deliberately reversed relative to the .json order.
+        json={"variants": [{"id": 20, "available": True}, {"id": 10, "available": False}]},
+        status=200,
+    )
+    _add_robots("https://test.com")
+
+    scraper = ShopifyScraper("test", "https://test.com")
+    result = scraper.scrape_product("two-size")
+
+    assert result["sizes"]["1gal"]["available"] is False
+    assert result["sizes"]["3gal"]["available"] is True
+
+
+@responses.activate
+def test_prices_are_not_read_from_the_js_endpoint(no_sleep):
+    """.js returns price in CENTS; .json returns dollar strings.
+
+    Taking price from .js would multiply every price on the site by 100. Only
+    the boolean is read from there.
+    """
+    responses.add(
+        responses.GET,
+        "https://test.com/products/spring-hill-rose.json",
+        json=_spring_hill_fixture(),
+        status=200,
+    )
+    responses.add(
+        responses.GET,
+        "https://test.com/products/spring-hill-rose.js",
+        json={"variants": [{"id": 200, "available": True, "price": 2499}]},
+        status=200,
+    )
+    _add_robots("https://test.com")
+
+    scraper = ShopifyScraper("test", "https://test.com")
+    result = scraper.scrape_product("spring-hill-rose")
+    assert list(result["sizes"].values())[0]["price"] == 24.99
