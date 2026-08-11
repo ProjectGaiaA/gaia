@@ -152,7 +152,10 @@
                         </thead>
                         <tbody>
                             {% for retailer_id, retailer_prices in prices.items() %}
-                            <tr{% if retailer_prices.unavailable %} class="unavailable-row"{% elif retailer_prices.in_stock == false %} class="sold-out-row"{% endif %}>
+                            {# row_sold_out is precomputed in build.py — do NOT
+                               write `in_stock == false` here, Jinja's == makes
+                               0/0.0/"" match and disagree with the module. #}
+                            <tr{% if retailer_prices.unavailable %} class="unavailable-row"{% elif retailer_prices.row_sold_out %} class="sold-out-row"{% endif %}>
                                 <td class="retailer-name">
                                     {{ retailer_prices.retailer_name }}
                                     {% if not retailer_prices.has_affiliate %}<span class="no-affiliate" title="We don't earn a commission from this retailer">*</span>{% endif %}

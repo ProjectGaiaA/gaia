@@ -835,6 +835,12 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             "ships_season": ships_season,
             "promo": promo_info,
             "unavailable": unavailable,
+            # Precomputed so the template does not have to ask `in_stock ==
+            # false` itself. Jinja's `==` treats 0, 0.0 and "" as False where
+            # Python's `is False` does not, so the template's own copy of the
+            # test disagreed with this module for those values — the row could
+            # render every cell "Sold out" without being styled sold out.
+            "row_sold_out": in_stock is False,
             "last_checked": last_checked_str,
         }
 
@@ -1037,11 +1043,33 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         # len(prices) counted retailer ROWS, so pages with priceless rows
         # claimed "2 Nurseries, $95-$95", and dogwood-tree / peace-lily
         # scored 1 and escaped the zero-offer noindex with no price at all.
+        # Retailers a visitor can order from right now. Drives the "N
+        # Nurseries" page title and schema offerCount — both are claims, so
+        # both must count only real, orderable offers.
         "offer_count": sum(
             1 for r in prices.values()
             if any(
                 s.get("is_buyable")
                 for s in r["sizes"].values()
+            )
+        ),
+        # Retailers that list a price at all, orderable or not. Deliberately
+        # NOT a claim — it answers "do we know anything about this plant",
+        # which is the right question for whether the page is worth indexing.
+        # Keeping these two apart stops a seasonal sell-out from de-indexing
+        # a page that has perfectly good content on it.
+        # Deliberately NOT displayable_price(): that answers "can a visitor
+        # buy this", which offer_count above already asks. This asks only "is
+        # there a real size carrying a real price" — stock irrelevant —
+        # because that is what decides whether the page has content at all.
+        "priced_offer_count": sum(
+            1 for r in prices.values()
+            if any(
+                t != "default"
+                and isinstance(s.get("price"), (int, float))
+                and not isinstance(s.get("price"), bool)
+                and s["price"] > 0
+                for t, s in r["sizes"].items()
             )
         ),
         "any_in_stock": any_in_stock,
@@ -1425,24 +1453,39 @@ def build_site(build_guides=True, build_products=True):
     # feeds the "Similar Plants" widget on OTHER plants' pages, and when it
     # disagreed it published 33 stale cross-links (pampas "from $4.49" on six
     # sibling pages whose own page said $46.95).
+    # Pre-enrich every plant with the SAME numbers its own product page will
+    # publish, by running the same function that publishes them and caching
+    # the result for the product loop to reuse.
+    #
+    # These fields feed the "Similar Plants" widget on OTHER plants' pages,
+    # the category cards and the guide pages. They used to be computed here
+    # with flatten_displayable_prices(), a rule that knows nothing about a
+    # retailer being sold out wholesale or having gone missing from three
+    # consecutive scrape runs. Once build_price_table() started folding those
+    # facts in, the two disagreed: `build.py --guides` advertised Double
+    # Knock Out "from $23.99" while its own product page rendered that price
+    # as "Not confirmed" and quoted $24.95.
+    #
+    # Agreement is now structural rather than maintained by hand. That matters
+    # because this exact divergence has been fixed twice before — see
+    # displayable_price()'s docstring, and the 33 stale cross-links where
+    # pampas grass advertised "from $4.49" on six sibling pages whose own page
+    # said $46.95.
+    price_table_cache = {}
     for plant in plants:
         price_entries = load_prices(plant["id"])
         latest_prices = get_latest_prices(price_entries, retailers_by_id)
-        all_prices_flat = flatten_displayable_prices(latest_prices)
-        plant["lowest_price"] = min(all_prices_flat) if all_prices_flat else None
-        plant["highest_price"] = max(all_prices_flat) if all_prices_flat else None
+        table = build_price_table(
+            plant, latest_prices, retailers_by_id, promos_by_retailer, price_entries
+        )
+        price_table_cache[plant["id"]] = (price_entries, latest_prices, table)
+        plant["lowest_price"] = table["lowest_price"]
+        plant["highest_price"] = table["highest_price"]
         # Set here, not only in the product loop: `python build.py --guides`
         # skips that loop, leaving retailer_count None. Since `None == 0` is
         # False, the sitemap's zero-offer exclusion silently stopped working
         # and put the noindexed miscanthus page straight back in.
-        plant["retailer_count"] = sum(
-            1 for pd in latest_prices.values()
-            if not entry_is_stale(pd)
-            and any(
-                displayable_price(normalize_size_tier(t), i) is not None
-                for t, i in pd.get("sizes", {}).items()
-            )
-        )
+        plant["retailer_count"] = table["offer_count"]
 
     # Ensure output directories
     ensure_dir(os.path.join(SITE_DIR, "plants"))
@@ -1467,9 +1510,19 @@ def build_site(build_guides=True, build_products=True):
         product_tpl = env.get_template("product.html")
 
         for plant in plants:
-            price_entries = load_prices(plant["id"])
-            latest_prices = get_latest_prices(price_entries, retailers_by_id)
-            price_table = build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer, price_entries)
+            # Reuse the table the pre-enrichment loop already built, so the
+            # numbers on this page cannot drift from the ones already written
+            # into sibling pages' widgets. Rebuilding here would reintroduce
+            # exactly that risk, and cost a second pass over every price file.
+            cached = price_table_cache.get(plant["id"])
+            if cached is None:
+                price_entries = load_prices(plant["id"])
+                latest_prices = get_latest_prices(price_entries, retailers_by_id)
+                price_table = build_price_table(
+                    plant, latest_prices, retailers_by_id, promos_by_retailer, price_entries
+                )
+            else:
+                price_entries, latest_prices, price_table = cached
             price_history_json = build_price_history_json(price_entries, set(retailers_by_id.keys()))
             similar = find_similar_plants(plant, plants)
 
@@ -1487,7 +1540,13 @@ def build_site(build_guides=True, build_products=True):
             # keep it reachable for anyone holding the URL, but don't index
             # it or list it in the sitemap (miscanthus-morning-light spent
             # 100 days being served to Google as "0 Nurseries").
-            zero_offers = price_table["offer_count"] == 0
+            # De-index a page only when we have NOTHING to say about the
+            # plant — no priced offer at any nursery. "Sold out everywhere
+            # this week" is a routine seasonal state, not an empty page, and
+            # de-indexing on it makes the page drop out of the sitemap when
+            # stock lapses and reappear when it returns. Google is told about
+            # the stock separately, via schema.org availability.
+            zero_offers = price_table["priced_offer_count"] == 0
             if zero_offers:
                 print(f"  WARNING: {plant['id']} has zero priced offers — noindexed")
 

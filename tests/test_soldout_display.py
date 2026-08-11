@@ -363,3 +363,46 @@ class TestRenderedHtml:
         soup = self._render(_cheaper_but_sold_out())
         hrefs = [a["href"] for a in soup.find_all("a", href=True)]
         assert any("BBB" in h for h in hrefs), "buyable variant lost its link"
+
+
+class TestIndexingSurvivesASellOut:
+    """De-index a page when we know NOTHING about the plant, not when it
+    happens to be sold out everywhere this week.
+
+    offer_count answers "how many nurseries can you order from" and is a
+    claim, so it counts only buyable offers. Reusing it for the noindex rule
+    made a page drop out of the sitemap whenever stock lapsed and reappear
+    when it returned — index flapping on a routine seasonal state.
+    """
+
+    def test_sold_out_everywhere_still_has_priced_offers(self):
+        entries = [
+            _entry(_A, {"1gal": _size(19.99, False)}),
+            _entry(_B, {"1gal": _size(29.99, False)}),
+        ]
+        t = _table(entries)
+        assert t["offer_count"] == 0, "nothing is orderable, so nothing is an offer"
+        assert t["priced_offer_count"] == 2, "but we still know both prices"
+
+    def test_a_plant_with_no_prices_at_all_has_neither(self):
+        t = _table([_entry(_A, {})])
+        assert t["offer_count"] == 0
+        assert t["priced_offer_count"] == 0
+
+    def test_buyable_plant_counts_under_both(self):
+        t = _table([_entry(_A, {"1gal": _size(19.99, True)})])
+        assert t["offer_count"] == 1
+        assert t["priced_offer_count"] == 1
+
+
+class TestRowClassIsNotRederivedInTheTemplate:
+    def test_row_sold_out_flag_is_exposed(self):
+        t = _table([_entry(_A, {"1gal": _size(19.99, True)}, in_stock=False)])
+        assert t["prices"][_A]["row_sold_out"] is True
+
+    def test_non_bool_in_stock_does_not_count_as_sold_out(self):
+        """Jinja's `==` made 0 and "" match False. `is False` does not, and the
+        template now reads the precomputed flag rather than asking itself."""
+        for weird in (0, 0.0, "", "false"):
+            t = _table([_entry(_A, {"1gal": _size(19.99, True)}, in_stock=weird)])
+            assert t["prices"][_A]["row_sold_out"] is False, f"in_stock={weird!r}"
