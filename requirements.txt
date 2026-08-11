@@ -1,9 +1,21 @@
-jinja2
-markdown
-requests
+# Pinned deliberately. CI installs these fresh on every run, so an unpinned
+# dependency means the pipeline's behaviour can change without a commit.
+# Bump these on purpose during a maintenance session, never by surprise.
 
-# Dev dependencies
-pytest
-responses
-ruff
-beautifulsoup4
+jinja2==3.1.6
+markdown==3.10
+requests==2.32.5
+
+# lxml is REQUIRED at runtime: scrapers/extract_plant_data.py calls
+# BeautifulSoup(html, "lxml"). It was missing from this file entirely, so CI
+# never installed it and 14 tests failed there while passing on any machine
+# that happened to have lxml from another package. That failure blocked the
+# publish gate and stopped the site updating for a full day.
+beautifulsoup4==4.13.5
+lxml==6.0.2
+
+# Dev / CI
+pytest==9.1.1
+responses==0.25.8
+ruff==0.14.5
+PyYAML==6.0.3
