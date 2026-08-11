@@ -2,6 +2,7 @@
 
 {% block title %}{{ page_title }}{% endblock %}
 {% block description %}{{ meta_description }}{% endblock %}
+{% block og_type %}article{% endblock %}
 
 {% block schema %}
 <script type="application/ld+json">
@@ -53,7 +54,7 @@
 <article class="guide-page">
     <header class="guide-header">
         <h1>{{ title }}</h1>
-        <p class="guide-meta">Last updated: {{ date_modified }} | Prices compared across {{ retailer_count }}+ online nurseries</p>
+        <p class="guide-meta">Last updated: {{ date_modified }} | Prices compared across {{ retailer_count }} online nurseries</p>
     </header>
 
     <div class="guide-layout">
@@ -118,7 +119,7 @@
 
     <div class="guide-heatmap-cta">
         <h3>&#x1F4C5; Find the Best Time to Buy</h3>
-        <p>See our price seasonality heat map — find the months when prices are lowest AND conditions are right for planting in your zone.</p>
+        <p>See our price seasonality heat map to find the months when prices are lowest AND conditions are right for planting in your zone.</p>
         <a href="/heat-map.html" class="btn-cta">View Buy &amp; Plant Timing Heat Map &rarr;</a>
     </div>
 </article>

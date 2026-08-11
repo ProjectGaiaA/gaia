@@ -8,8 +8,25 @@
     <meta name="google-site-verification" content="zspl3BMFu9hZPGIGwtUO8UsS6myATjOnhRJw-eWH81A" />
     <meta name='impact-site-verification' value='c22b986a-d7a7-4615-a2dc-4b65f4d26996'>
     {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}" />{% endif %}
-    {% if canonical_url %}<meta property="og:url" content="{{ canonical_url }}" />{% endif %}
     {% if noindex %}<meta name="robots" content="noindex" />{% endif %}
+
+    {# Link previews. Every page already declares a title and a description,
+       so these re-emit those same blocks rather than inventing a second set
+       that could say something different from the page itself. og:image is
+       the site logo, which is the only image file this site actually ships —
+       pointing at anything else would 404 in every preview card. #}
+    <meta property="og:site_name" content="{{ site_name }}" />
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}" />
+    <meta property="og:title" content="{{ self.title() }}" />
+    <meta property="og:description" content="{{ self.description() }}" />
+    {% if canonical_url %}<meta property="og:url" content="{{ canonical_url }}" />{% endif %}
+    <meta property="og:image" content="{{ og_image }}" />
+    <meta property="og:image:alt" content="PlantPriceTracker logo" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ self.title() }}" />
+    <meta name="twitter:description" content="{{ self.description() }}" />
+    <meta name="twitter:image" content="{{ og_image }}" />
+
     {% block schema %}{% endblock %}
     <link rel="stylesheet" href="/assets/css/style.css">
     {% block head_extra %}{% endblock %}
@@ -18,7 +35,7 @@
     <header class="site-header">
         <nav class="nav-container">
             <a href="/" class="site-logo" aria-label="PlantPriceTracker home">
-                <img src="/assets/images/logo.png" alt="PlantPriceTracker — Compare Plant Prices Online" class="logo-img" height="44">
+                <img src="/assets/images/logo.png" alt="PlantPriceTracker, compare plant prices online" class="logo-img" height="44">
                 <span class="logo-text">PlantPriceTracker</span>
             </a>
             <ul class="nav-links">
@@ -43,21 +60,24 @@
         <div class="footer-content">
             <div class="footer-disclosure">
                 {# Both wordings are driven by AFFILIATE_PROGRAMS_ACTIVE in build.py.
-                   Never edit one branch without the other — they are the same claim. #}
+                   Never edit one branch without the other, they are the same
+                   claim. Keep the "if you buy" conditional: no program has paid
+                   out yet, so a present-tense "we earn" would be false. #}
                 {% if affiliate_programs_active %}
-                <p><strong>Affiliate disclosure:</strong> We earn a commission on purchases made through some links on this site, at no extra cost to you. This does not affect our rankings or recommendations. We compare prices at every nursery we track, including those that pay us nothing, so you see the best deal available. <a href="/disclosure.html">Full disclosure</a>.</p>
+                <p><strong>Affiliate disclosure:</strong> Some links on this site are affiliate links. If you buy through one, the retailer may pay us a commission at no extra cost to you. This does not affect our rankings or recommendations. We compare prices at every nursery we track, including the ones we are paid nothing by, so you see the best deal available. <a href="/disclosure.html">Full disclosure</a>.</p>
                 {% else %}
                 <p><strong>How we make money:</strong> We don't. PlantPriceTracker is not in any affiliate program, no retailer pays us, and none of the links on this site are affiliate links. We compare prices at every nursery we track so you see the best deal available. <a href="/disclosure.html">Full disclosure</a>.</p>
                 {% endif %}
             </div>
             <div class="footer-links">
                 <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
                 <a href="/disclosure.html">Disclosure</a>
                 <a href="/privacy.html">Privacy Policy</a>
                 <a href="/guides/index.html">Buying Guides</a>
                 <a href="/improve.html">Improve This Site</a>
             </div>
-            <p class="footer-copyright">&copy; {{ current_year }} PlantPriceTracker. Prices checked daily. Not affiliated with any nursery.</p>
+            <p class="footer-copyright">&copy; {{ current_year }} PlantPriceTracker. Prices checked daily. Independently owned; we do not own or operate any nursery.</p>
         </div>
     </footer>
 

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{# One route to a human, rendered from build.CONTACT_EMAIL so it cannot drift
+   from the address the rest of the site prints. There is deliberately no form
+   here: a form needs a backend to receive it, this site is static, and a form
+   that swallows a message is worse than no form at all. #}
+
+{% block title %}Contact PlantPriceTracker{% endblock %}
+{% block description %}How to reach PlantPriceTracker. Email {{ contact_email }} to report a wrong price, request a plant or nursery, or ask about how the site makes money.{% endblock %}
+
+{% block schema %}
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact PlantPriceTracker",
+    "url": "{{ canonical_url }}",
+    "mainEntity": {
+        "@type": "Organization",
+        "name": "{{ site_name }}",
+        "url": "{{ base_url }}",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "{{ contact_email }}",
+            "availableLanguage": "English"
+        }
+    }
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb">
+    <a href="/">Home</a> &rsaquo;
+    <span>Contact</span>
+</nav>
+
+        <h1>Contact</h1>
+
+        <p>PlantPriceTracker is run by one person, Brandon Hall, and email is the only way to reach him. There is no phone line, no support desk, and no contact form on this site, because a static site cannot receive one and a form that quietly discards your message would be worse than none.</p>
+
+        <p class="contact-primary"><strong>Email:</strong> <a href="mailto:{{ contact_email }}">{{ contact_email }}</a></p>
+
+        <p>That address is a real, monitored mailbox. Expect a reply within a few days; a wrong price gets looked at faster than that.</p>
+
+        <h2>What to Write About</h2>
+        <ul>
+            <li><strong>A price on this site is wrong.</strong> The most useful thing you can send. Include the plant page, the nursery, and what the nursery's own site actually says. Prices here come from automated daily checks, and a scraper that has drifted stays wrong until somebody notices.</li>
+            <li><strong>A plant or variety we don't track.</strong> Tell us the cultivar and, if you know it, which nurseries sell it.</li>
+            <li><strong>A nursery we should be tracking.</strong> Independent and regional sellers especially.</li>
+            <li><strong>Something is broken.</strong> A page that won't load, a link that goes nowhere, a table that renders wrong on your phone. The page address and your browser are enough to start with.</li>
+            <li><strong>You run a nursery and we have something wrong about your store.</strong> Shipping terms, a name, a URL, anything. We would rather be corrected than be wrong.</li>
+            <li><strong>How the site makes money.</strong> Answered in full on the <a href="/disclosure.html">affiliate disclosure</a> page, but ask if anything there is unclear.</li>
+        </ul>
+
+        <h2>What We Can't Help With</h2>
+        <ul>
+            <li><strong>Orders, shipping, returns, and refunds.</strong> We do not sell plants and we have no access to any retailer's order system. Contact the nursery you bought from; they are the only ones who can act on it.</li>
+            <li><strong>Plant health diagnosis.</strong> Your state's cooperative extension service will do this properly and for free.</li>
+        </ul>
+
+        <h2>Corrections</h2>
+        <p>When we get something wrong we fix it and, where it matters, say what changed. If you report a bad price, you will get a straight answer about what went wrong rather than a form reply.</p>
+
+        <h2>Who Runs This Site</h2>
+        <p>PlantPriceTracker is independently owned and operated by Brandon Hall, a gardener in Bucks County, Pennsylvania. There is no parent company and no investor group. More on the <a href="/about.html">about page</a>.</p>
+{% endblock %}

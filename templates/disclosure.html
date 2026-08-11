@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 
 {# Every money claim on this page comes from AFFILIATE_PROGRAMS_ACTIVE in
-   build.py, and the nursery list comes from data/retailers.json (active
-   entries only). Do not name a network or a partner nursery in prose here —
-   prose drifts, data does not. #}
+   build.py, the nursery list comes from data/retailers.json (active entries
+   only), and the number of affiliate links comes from
+   data/affiliate_overrides.json. Do not name a network or a partner nursery
+   in prose here, and do not write a number here by hand: prose drifts, data
+   does not.
+
+   Nothing on this page may say a commission has been earned. None has. The
+   applications are pending. Keep every money sentence conditional. #}
 
 {% block title %}Affiliate Disclosure | PlantPriceTracker{% endblock %}
-{% block description %}How PlantPriceTracker makes money.{% if affiliate_programs_active %} We earn a commission on some nursery links, and we show every retailer we track — including ones that pay us nothing — so you always see the best price.{% else %} We currently earn nothing from any retailer, and we show every price we find so you always see the best deal.{% endif %}{% endblock %}
+{% block description %}How PlantPriceTracker makes money.{% if affiliate_programs_active %} A small number of links are affiliate links, each one is marked in the comparison table, and we show every retailer we track so you always see the best price.{% else %} We currently earn nothing from any retailer, and we show every price we find so you always see the best deal.{% endif %}{% endblock %}
 
 {% block content %}
         <h1>Affiliate Disclosure</h1>
@@ -14,7 +19,9 @@
 
         <h2>How We Make Money</h2>
         {% if affiliate_programs_active %}
-        <p><strong>Some of the links on this site are affiliate links.</strong> When you click one and buy something, the retailer may pay us a commission at no extra cost to you. That revenue pays for the servers and for the daily price checks that keep the comparisons current. Not every nursery we track runs an affiliate program, and we track the ones that don't exactly the same way.</p>
+        <p><strong>Some of the links on this site are affiliate links.</strong> If you click one and buy something, the retailer may pay us a commission at no extra cost to you. That is the intended way for this site to cover its own costs.</p>
+        <p>Being specific about the scale of it, because "some links" could mean anything: {% if affiliate_link_count == 1 %}exactly one link on this entire site is an affiliate link today{% else %}{{ affiliate_link_count }} links on this site are affiliate links today{% endif %}, out of an outbound link on every retailer row of every plant page. Applications to further programs are in review and have not been approved. <strong>No affiliate program has paid us anything to date.</strong> As more links become affiliate links, that number goes up on its own, because it is counted from the links themselves rather than typed here by hand.</p>
+        <p>Every affiliate link is marked with an asterisk (*) in the comparison table on the page it appears on, and carries <code>rel="sponsored"</code> in its markup. Every other link on this site is an ordinary link that earns us nothing.</p>
         {% else %}
         <p><strong>Right now, we don't.</strong> PlantPriceTracker is not enrolled in any affiliate or advertising program. No retailer on this site pays us a commission, a referral fee, or anything else, and none of the links on this site are affiliate links.</p>
         <p>We do intend to apply to affiliate programs so the site can pay for itself. If we are accepted into one, this page, the notice in the footer of every page, and the notice above every price table will all change to say so before a single paid link goes live.</p>
@@ -23,10 +30,9 @@
 
         <h2>What This Means for You</h2>
         <ul>
-            <li><strong>You never pay more because of us.</strong> We never add a fee or a markup to a retailer's price — the prices shown are the retailer's own. An affiliate link{% if not affiliate_programs_active %}, if and when we use one,{% endif %} does not change what you are charged; any commission comes out of the retailer's marketing budget.</li>
-            {% if non_affiliate_retailer_count %}
-            <li><strong>We track nurseries that could never pay us.</strong> {{ non_affiliate_retailer_count }} of the retailers listed below run no affiliate program at all — there is no commission to earn from them under any circumstances, and we track them anyway. Showing you the genuinely cheapest option matters more to us than what we might earn on a click.</li>
-            {% endif %}
+            <li><strong>You never pay more because of us.</strong> We never add a fee or a markup to a retailer's price. The prices shown are the retailer's own. An affiliate link{% if not affiliate_programs_active %}, if and when we use one,{% endif %} does not change what you are charged; any commission comes out of the retailer's marketing budget.</li>
+            <li><strong>Monetization cannot move the comparison.</strong> Which retailers appear, what prices they show, and which price is highlighted as cheapest are all computed from the prices we scrape. That calculation never reads the affiliate data at all. An affiliate link changes the destination of one link and nothing else.</li>
+            <li><strong>We track nurseries we earn nothing from.</strong> That is nearly all of them{% if affiliate_programs_active %}: {{ retailer_count }} nurseries tracked, {% if affiliate_link_count == 1 %}one affiliate link{% else %}{{ affiliate_link_count }} affiliate links{% endif %}{% endif %}. Showing you the genuinely cheapest option matters more to us than what we might earn on a click.</li>
             <li><strong>Rankings are based on price, and only price.</strong> The lowest price is highlighted because it is the lowest price. No retailer can buy placement, ordering, or a recommendation on this site{% if affiliate_programs_active %}, and commission rates play no part in how prices are sorted{% endif %}.</li>
         </ul>
 
@@ -37,12 +43,8 @@
             <li>{{ retailer.name }}</li>
             {% endfor %}
         </ul>
-        {% if affiliate_programs_active %}
-        <p>We participate in an affiliate program with some of these and not with others. Any retailer we earn nothing from is marked with an asterisk (*) in our comparison tables, so you can see the difference on the page where it matters rather than having to take our word for it here.</p>
-        {% else %}
-        <p>We earn nothing from any of them. This list is generated from the same data file that drives the comparison tables, so it cannot fall out of step with what the site actually tracks.</p>
-        {% endif %}
+        <p>This list is generated from the same data file that drives the comparison tables, so it cannot fall out of step with what the site actually tracks.{% if not affiliate_programs_active %} We earn nothing from any of them.{% endif %}</p>
 
         <h2>Questions?</h2>
-        <p>If you have a question about how we are paid or how we compare prices, email <a href="mailto:ProjectGaiaA@proton.me">ProjectGaiaA@proton.me</a>. If you believe anything on this page is inaccurate, tell us and we will correct it.</p>
+        <p>If you have a question about how we are paid or how we compare prices, email <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>. If you believe anything on this page is inaccurate, tell us and we will correct it.</p>
 {% endblock %}

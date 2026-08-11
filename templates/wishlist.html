@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}My Plant List | PlantPriceTracker{% endblock %}
-{% block description %}Your saved plants on PlantPriceTracker. Track prices, get planting reminders, and find the best time to buy.{% endblock %}
+{% block description %}Your saved plants on PlantPriceTracker. Saved in your own browser, with current prices from every nursery we track.{% endblock %}
 
 {% block schema %}
 <script type="application/ld+json">
@@ -9,7 +9,7 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "/"},
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ base_url }}/"},
         {"@type": "ListItem", "position": 2, "name": "My Plant List"}
     ]
 }
@@ -24,18 +24,17 @@
 
 <div class="wishlist-page">
     <h1>&#x2661; My Plant List</h1>
-    <p class="wl-subtitle"><span id="wishlist-count">0</span> plants saved &mdash; click any plant to compare prices, or save more while browsing.</p>
+    <p class="wl-subtitle"><span id="wishlist-count">0</span> plants saved. Click any plant to compare prices, or save more while browsing.</p>
 
-    <!-- Price drop alert opt-in -->
-    <div class="wl-alert-banner" id="wl-alert-banner">
-        <div>
-            <strong>Get price drop alerts for your saved plants</strong>
-            We'll email you when a plant on your list drops in price or hits its best buying window.
-        </div>
-        <form class="wl-alert-form" id="wl-alert-form" onsubmit="return wlAlertSignup(event)">
-            <input type="email" id="wl-alert-email" placeholder="Your email address" autocomplete="email" required>
-            <button type="submit">Notify Me</button>
-        </form>
+    {#
+      A "get price drop alerts, we'll email you" form used to sit here. It had
+      no backend: it wrote the address to localStorage, told the visitor they
+      were signed up, and nothing was ever sent to anyone. Taking an email
+      address on a promise there is no machinery to keep is worse than making
+      no offer at all, so the offer is gone rather than restyled.
+    #}
+    <div class="wl-note">
+        <p>This list is stored in your own browser. There is no account and no mailing list, so nothing here is sent anywhere and we cannot email you when a price moves. Check back to see current prices, or <a href="/heat-map.html">see when each plant is usually cheapest</a>.</p>
     </div>
 
     <div class="wl-toolbar">
@@ -48,30 +47,4 @@
     <!-- Wishlist cards rendered by wishlist.js -->
     <div id="wishlist-container"></div>
 </div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-// Hide alert banner if already signed up
-(function () {
-    if (localStorage.getItem('ppt_signup')) {
-        var banner = document.getElementById('wl-alert-banner');
-        if (banner) banner.style.display = 'none';
-    }
-})();
-
-function wlAlertSignup(e) {
-    e.preventDefault();
-    var email = document.getElementById('wl-alert-email').value.trim();
-    if (!email) return false;
-    // Reuse existing email gate storage key for consistency
-    localStorage.setItem('ppt_signup', '1');
-    localStorage.setItem('ppt_email', email);
-    var banner = document.getElementById('wl-alert-banner');
-    if (banner) {
-        banner.innerHTML = '<p style="margin:0; color:var(--green-dark); font-weight:600;">&#x2713; You\'re signed up for price drop alerts.</p>';
-    }
-    return false;
-}
-</script>
 {% endblock %}

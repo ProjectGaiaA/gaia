@@ -4,19 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Plant List | PlantPriceTracker</title>
-    <meta name="description" content="Your saved plants on PlantPriceTracker. Track prices, get planting reminders, and find the best time to buy.">
+    <meta name="description" content="Your saved plants on PlantPriceTracker. Saved in your own browser, with current prices from every nursery we track.">
     <meta name="google-site-verification" content="zspl3BMFu9hZPGIGwtUO8UsS6myATjOnhRJw-eWH81A" />
     <meta name='impact-site-verification' value='c22b986a-d7a7-4615-a2dc-4b65f4d26996'>
     <link rel="canonical" href="https://www.plantpricetracker.com/my-list.html" />
-    <meta property="og:url" content="https://www.plantpricetracker.com/my-list.html" />
     
+
+    
+    <meta property="og:site_name" content="PlantPriceTracker" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="My Plant List | PlantPriceTracker" />
+    <meta property="og:description" content="Your saved plants on PlantPriceTracker. Saved in your own browser, with current prices from every nursery we track." />
+    <meta property="og:url" content="https://www.plantpricetracker.com/my-list.html" />
+    <meta property="og:image" content="https://www.plantpricetracker.com/assets/images/logo.png" />
+    <meta property="og:image:alt" content="PlantPriceTracker logo" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="My Plant List | PlantPriceTracker" />
+    <meta name="twitter:description" content="Your saved plants on PlantPriceTracker. Saved in your own browser, with current prices from every nursery we track." />
+    <meta name="twitter:image" content="https://www.plantpricetracker.com/assets/images/logo.png" />
+
     
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "/"},
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.plantpricetracker.com/"},
         {"@type": "ListItem", "position": 2, "name": "My Plant List"}
     ]
 }
@@ -29,7 +42,7 @@
     <header class="site-header">
         <nav class="nav-container">
             <a href="/" class="site-logo" aria-label="PlantPriceTracker home">
-                <img src="/assets/images/logo.png" alt="PlantPriceTracker — Compare Plant Prices Online" class="logo-img" height="44">
+                <img src="/assets/images/logo.png" alt="PlantPriceTracker, compare plant prices online" class="logo-img" height="44">
                 <span class="logo-text">PlantPriceTracker</span>
             </a>
             <ul class="nav-links">
@@ -55,18 +68,11 @@
 
 <div class="wishlist-page">
     <h1>&#x2661; My Plant List</h1>
-    <p class="wl-subtitle"><span id="wishlist-count">0</span> plants saved &mdash; click any plant to compare prices, or save more while browsing.</p>
+    <p class="wl-subtitle"><span id="wishlist-count">0</span> plants saved. Click any plant to compare prices, or save more while browsing.</p>
 
-    <!-- Price drop alert opt-in -->
-    <div class="wl-alert-banner" id="wl-alert-banner">
-        <div>
-            <strong>Get price drop alerts for your saved plants</strong>
-            We'll email you when a plant on your list drops in price or hits its best buying window.
-        </div>
-        <form class="wl-alert-form" id="wl-alert-form" onsubmit="return wlAlertSignup(event)">
-            <input type="email" id="wl-alert-email" placeholder="Your email address" autocomplete="email" required>
-            <button type="submit">Notify Me</button>
-        </form>
+    
+    <div class="wl-note">
+        <p>This list is stored in your own browser. There is no account and no mailing list, so nothing here is sent anywhere and we cannot email you when a price moves. Check back to see current prices, or <a href="/heat-map.html">see when each plant is usually cheapest</a>.</p>
     </div>
 
     <div class="wl-toolbar">
@@ -87,46 +93,23 @@
             <div class="footer-disclosure">
                 
                 
-                <p><strong>How we make money:</strong> We don't. PlantPriceTracker is not in any affiliate program, no retailer pays us, and none of the links on this site are affiliate links. We compare prices at every nursery we track so you see the best deal available. <a href="/disclosure.html">Full disclosure</a>.</p>
+                <p><strong>Affiliate disclosure:</strong> Some links on this site are affiliate links. If you buy through one, the retailer may pay us a commission at no extra cost to you. This does not affect our rankings or recommendations. We compare prices at every nursery we track, including the ones we are paid nothing by, so you see the best deal available. <a href="/disclosure.html">Full disclosure</a>.</p>
                 
             </div>
             <div class="footer-links">
                 <a href="/about.html">About</a>
+                <a href="/contact.html">Contact</a>
                 <a href="/disclosure.html">Disclosure</a>
                 <a href="/privacy.html">Privacy Policy</a>
                 <a href="/guides/index.html">Buying Guides</a>
                 <a href="/improve.html">Improve This Site</a>
             </div>
-            <p class="footer-copyright">&copy; 2026 PlantPriceTracker. Prices checked daily. Not affiliated with any nursery.</p>
+            <p class="footer-copyright">&copy; 2026 PlantPriceTracker. Prices checked daily. Independently owned; we do not own or operate any nursery.</p>
         </div>
     </footer>
 
     <script src="/assets/js/wishlist.js"></script>
     
-<script>
-// Hide alert banner if already signed up
-(function () {
-    if (localStorage.getItem('ppt_signup')) {
-        var banner = document.getElementById('wl-alert-banner');
-        if (banner) banner.style.display = 'none';
-    }
-})();
-
-function wlAlertSignup(e) {
-    e.preventDefault();
-    var email = document.getElementById('wl-alert-email').value.trim();
-    if (!email) return false;
-    // Reuse existing email gate storage key for consistency
-    localStorage.setItem('ppt_signup', '1');
-    localStorage.setItem('ppt_email', email);
-    var banner = document.getElementById('wl-alert-banner');
-    if (banner) {
-        banner.innerHTML = '<p style="margin:0; color:var(--green-dark); font-weight:600;">&#x2713; You\'re signed up for price drop alerts.</p>';
-    }
-    return false;
-}
-</script>
-
 
     <!-- Vercel Web Analytics -->
     <script>

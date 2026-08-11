@@ -67,12 +67,11 @@ class TestBuildFixturesLoad:
         # Timestamp should be old (>30 days from any reasonable run date)
         assert "2026-02-15" in entries[0]["timestamp"]
 
-    def test_feedback_json_loads(self):
-        feedback = load_build_fixture("feedback.json")
-        assert isinstance(feedback, list)
-        assert len(feedback) == 1
-        assert feedback[0]["id"] == "test-fb-001"
-        assert "response" in feedback[0]
+    def test_affiliate_overrides_json_loads(self):
+        """The fixture must contain a real override so the affiliate-marking
+        tests are exercised against data that actually has one."""
+        raw = load_build_fixture("affiliate_overrides.json")
+        assert raw["overrides"]["test-hydrangea"]["test-nursery-a"].startswith("https://")
 
     def test_guide_markdown_loads(self):
         text = load_build_fixture("01-test-guide.md")

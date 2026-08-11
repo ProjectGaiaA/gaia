@@ -5,9 +5,8 @@ with synthetic data from tests/fixtures/build/.
 """
 
 import json
-from unittest.mock import patch
 
-from tests.conftest import BUILD_FIXTURES_DIR, load_build_fixture
+from tests.conftest import load_build_fixture
 
 import build
 
@@ -335,59 +334,3 @@ class TestFindSimilarPlants:
         assert similar == []
 
 
-# ===================================================================
-# load_feedback()
-# ===================================================================
-class TestLoadFeedback:
-    """Enriches dates, handles missing fields."""
-
-    def test_loads_from_fixture(self):
-        """Load feedback.json from build fixtures directory."""
-        with patch("build.DATA_DIR", str(BUILD_FIXTURES_DIR)):
-            items = build.load_feedback()
-        assert len(items) == 1
-
-    def test_enriches_submitted_date(self):
-        with patch("build.DATA_DIR", str(BUILD_FIXTURES_DIR)):
-            items = build.load_feedback()
-        item = items[0]
-        assert item["submitted_date"] == "March 20, 2026"
-
-    def test_enriches_response_date(self):
-        with patch("build.DATA_DIR", str(BUILD_FIXTURES_DIR)):
-            items = build.load_feedback()
-        item = items[0]
-        assert item["response_date"] == "March 21, 2026"
-
-    def test_category_label_resolved(self):
-        with patch("build.DATA_DIR", str(BUILD_FIXTURES_DIR)):
-            items = build.load_feedback()
-        item = items[0]
-        assert item["category_label"] == "Missing Plants"
-
-    def test_status_label_resolved(self):
-        with patch("build.DATA_DIR", str(BUILD_FIXTURES_DIR)):
-            items = build.load_feedback()
-        item = items[0]
-        assert item["status_label"] == "Planned"
-
-    def test_missing_file_returns_empty(self):
-        """Nonexistent feedback.json → empty list."""
-        with patch("build.DATA_DIR", "/nonexistent/path"):
-            items = build.load_feedback()
-        assert items == []
-
-    def test_handles_missing_response(self):
-        """Entry without response field → response_date is empty string."""
-        with patch("build.DATA_DIR", str(BUILD_FIXTURES_DIR)):
-            with patch("build.load_json", return_value=[{
-                "id": "fb-no-response",
-                "category": "bug",
-                "title": "No response",
-                "body": "Test",
-                "submitted_at": "2026-03-20T14:00:00+00:00",
-                "status": "reviewing",
-            }]):
-                items = build.load_feedback()
-        assert items[0]["response"] is None
-        assert items[0]["response_date"] == ""

@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block title %}{{ page_title }}{% endblock %}
-{% block description %}Compare {{ category_name|lower }} prices across {{ retailer_count }}+ online nurseries. See side-by-side pricing for every variety — checked daily so you always find the best deal.{% endblock %}
+{% block description %}Compare {{ category_name|lower }} prices across {{ retailer_count }} online nurseries. See side-by-side pricing for every variety, checked daily so you always find the best deal.{% endblock %}
 
 {% block schema %}
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "{{ category_name }} — Price Comparison",
+    "name": "{{ category_name }}: Price Comparison",
     "description": "Compare {{ category_name|lower }} prices across online nurseries.",
     "numberOfItems": {{ plants|length }}
 }
@@ -18,7 +18,7 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "Home", "item": "/"},
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{ base_url }}/"},
         {"@type": "ListItem", "position": 2, "name": "{{ category_name }}"}
     ]
 }
@@ -33,8 +33,8 @@
 
 <section class="category-page">
     <header class="category-header">
-        <h1>{{ category_name }} &mdash; Price Comparison</h1>
-        <p>Comparing prices across {{ retailer_count }}+ nurseries for {{ plants|length }} varieties. Updated daily.</p>
+        <h1>{{ category_name }} Price Comparison</h1>
+        <p>Comparing prices across {{ retailer_count }} nurseries for {{ plants|length }} varieties. Updated daily.</p>
     </header>
 
     {% if guide_link %}

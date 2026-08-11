@@ -38,6 +38,22 @@ BASE_URL = "https://www.plantpricetracker.com"
 # modification date is its publication date — never the build date.
 DEFAULT_GUIDE_DATE = "2026-04-02"
 
+# Guides that HAVE been edited since publication, and when. Add a slug here in
+# the same commit that edits its markdown; leaving it out makes the page claim
+# a modification date earlier than its own content, which is the same lie as
+# claiming a later one. Deriving this from git or from file mtime was
+# rejected: CI checks out shallow, so both would collapse to the build date
+# and stamp every guide as freshly modified twice a day.
+GUIDE_MODIFIED_DATES = {
+    # Written in April, in the present tense, telling readers "April is now".
+    "best-hydrangeas-to-buy-online": "2026-08-11",
+    "best-fruit-trees-to-buy-online": "2026-08-11",
+    "best-privacy-trees": "2026-08-11",
+    "best-japanese-maple-varieties": "2026-08-11",
+    "best-knock-out-roses": "2026-08-11",
+    "best-blueberry-bushes": "2026-08-11",
+}
+
 # A "sale" whose price/was_price pair hasn't moved in this many days is a
 # compare-at price the merchant leaves set year-round, not a sale. Render it
 # as a regular price (no badge, no strikethrough).
@@ -47,22 +63,50 @@ SALE_MAX_AGE_DAYS = 21
 # Affiliate program status — the single source of truth for every
 # money-related claim on the site.
 # ---------------------------------------------------------------------------
+# True means exactly one thing: at least one link on this site is an affiliate
+# link. It does NOT mean commissions are being earned. Every claim rendered
+# under this flag is written in the conditional ("if you buy through one, the
+# retailer may pay us"), because nothing has paid out and the program
+# applications are still in review. Do not reword any of them into the
+# present tense until money has actually changed hands.
+#
 # While this is False the site says plainly that it earns nothing: the footer
 # on every page, the notice above every price table, the disclosure page and
 # the About page copy all read from this one flag, and no outbound link
-# carries a rel="sponsored" token (nothing is sponsored). Flip it to True on
-# the day the first affiliate program is approved, update
-# AFFILIATE_STATUS_REVIEWED, and rebuild — every one of those places changes
-# together and they cannot contradict each other.
+# carries a rel="sponsored" token (nothing is sponsored).
+#
+# WHICH links are affiliate links is not decided here. It comes from
+# data/affiliate_overrides.json through affiliate_override(): a link is an
+# affiliate link when a real affiliate URL exists for that exact plant at that
+# exact retailer. The `affiliate` blocks in data/retailers.json are research
+# notes about programs that could be joined, not programs that have been
+# joined, so nothing a visitor reads may be derived from them.
 #
 # Never enumerate partner networks or nurseries in prose. The disclosure page
 # renders its tracked-retailer list from data/retailers.json (active entries
 # only) so the page cannot drift from what the site actually tracks.
-AFFILIATE_PROGRAMS_ACTIVE = False
+AFFILIATE_PROGRAMS_ACTIVE = True
 
 # Human-readable date the statement above was last checked. Shown on the
 # disclosure page. Update it whenever AFFILIATE_PROGRAMS_ACTIVE changes.
 AFFILIATE_STATUS_REVIEWED = "August 2026"
+
+# The one address a reader can actually reach a human at. The domain this site
+# is served from has no MX record, so every address at it bounces — no
+# @plantpricetracker.com address may ever be printed on a page.
+CONTACT_EMAIL = "ProjectGaiaA@proton.me"
+
+# Absolute URL of the image used for link previews (Open Graph / Twitter).
+# Must be a file that actually exists in site/assets/.
+OG_IMAGE = f"{BASE_URL}/assets/images/logo.png"
+
+# When the standing policy pages (privacy, about, contact) were last actually
+# rewritten. Bump it in the commit that rewrites one. Never stamp it from the
+# build clock: that would claim a fresh review twice a day forever, which is
+# the same false-freshness signal the sitemap and the guide dates were fixed
+# to stop emitting.
+POLICY_LAST_UPDATED = "August 2026"
+POLICY_LAST_UPDATED_ISO = "2026-08-11"
 
 # ---------------------------------------------------------------------------
 # Guide SEO overrides — custom meta descriptions and FAQs per guide
@@ -70,40 +114,40 @@ AFFILIATE_STATUS_REVIEWED = "August 2026"
 # {retailer_count} is substituted at render time from data/retailers.json so a
 # meta description can never claim more nurseries than the site tracks.
 GUIDE_META_DESCRIPTIONS = {
-    "best-hydrangeas-to-buy-online": "Compare hydrangea prices across {retailer_count} online nurseries. Incrediball, Limelight, Annabelle — find the best deal with prices checked daily.",
-    "best-fruit-trees-to-buy-online": "Compare fruit tree prices online. Apple, peach, cherry, and pear trees from top nurseries — checked daily. Save 20–40% vs local garden centers.",
-    "best-privacy-trees": "Find the cheapest privacy trees online. Compare Thuja Green Giant, Leyland Cypress, and arborvitae prices across {retailer_count} nurseries — checked daily.",
-    "cheapest-places-to-buy-online": "The cheapest places to buy plants online in 2026. We compared {retailer_count} nurseries so you don't have to — see who wins by plant type.",
-    "best-japanese-maple-varieties": "Compare Japanese maple prices online. Bloodgood, Crimson Queen, Emperor I — find the best deal across {retailer_count} nurseries with prices checked daily.",
-    "best-knock-out-roses": "Compare Knock Out rose prices across {retailer_count} online nurseries. Double, Rainbow, and Petite varieties — find the lowest price, checked daily.",
-    "best-blueberry-bushes": "Compare blueberry bush prices online. Bluecrop, Duke, Sunshine Blue — find the best deal across {retailer_count} nurseries. Prices checked daily.",
-    "best-flowering-trees-small-yards": "Compare small flowering tree prices online. Dogwood, Redbud, Cherry — find the lowest price across {retailer_count} nurseries. Checked daily.",
+    "best-hydrangeas-to-buy-online": "Compare hydrangea prices across {retailer_count} online nurseries. Incrediball, Limelight, Annabelle: find the best deal with prices checked daily.",
+    "best-fruit-trees-to-buy-online": "Compare fruit tree prices online. Apple, peach, cherry, and pear trees from top nurseries, checked daily. Save 20–40% vs local garden centers.",
+    "best-privacy-trees": "Find the cheapest privacy trees online. Compare Thuja Green Giant, Leyland Cypress, and arborvitae prices across {retailer_count} nurseries, checked daily.",
+    "cheapest-places-to-buy-online": "The cheapest places to buy plants online in 2026. We compared {retailer_count} nurseries so you don't have to. See who wins by plant type.",
+    "best-japanese-maple-varieties": "Compare Japanese maple prices online. Bloodgood, Crimson Queen, Emperor I: find the best deal across {retailer_count} nurseries with prices checked daily.",
+    "best-knock-out-roses": "Compare Knock Out rose prices across {retailer_count} online nurseries. Double, Rainbow, and Petite varieties: find the lowest price, checked daily.",
+    "best-blueberry-bushes": "Compare blueberry bush prices online. Bluecrop, Duke, Sunshine Blue: find the best deal across {retailer_count} nurseries. Prices checked daily.",
+    "best-flowering-trees-small-yards": "Compare small flowering tree prices online. Dogwood, Redbud, Cherry: find the lowest price across {retailer_count} nurseries. Checked daily.",
     "best-azaleas-rhododendrons": "Compare azalea and rhododendron prices online. Find the best deals across {retailer_count} nurseries with prices checked daily.",
-    "best-time-to-buy-plants-online": "When is the cheapest time to buy plants online? See price seasonality data for trees, shrubs, and perennials — and exactly when to buy.",
+    "best-time-to-buy-plants-online": "When is the cheapest time to buy plants online? See price seasonality data for trees, shrubs, and perennials, and exactly when to buy.",
     "why-same-plant-costs-20-or-60": "Plant pricing explained: container size, shipping, quality, branding, and seasonal timing all affect what you pay. Learn how to compare and avoid overpaying.",
 }
 
 GUIDE_FAQS = {
     "best-hydrangeas-to-buy-online": [
-        {"q": "What are the best hydrangeas to buy online?", "a": "Incrediball, Limelight, Annabelle, and Endless Summer are consistently the best value — widely available from online nurseries at 20–40% below local garden center prices."},
+        {"q": "What are the best hydrangeas to buy online?", "a": "Incrediball, Limelight, Annabelle, and Endless Summer are consistently the best value, widely available from online nurseries at 20–40% below local garden center prices."},
         {"q": "When is the best time to buy hydrangeas online?", "a": "Late spring (May–June) for immediate planting, or fall (September–October) when nurseries discount to clear stock before winter."},
         {"q": "What size hydrangea should I order?", "a": "A 1-gallon plant establishes quickly and costs the least per plant. 3-gallon gives faster results if you need coverage sooner."},
         {"q": "How much do hydrangeas cost online vs local stores?", "a": "Online prices range from $18–$65 depending on size. Local garden centers typically charge $35–$80 for the same varieties."},
-        {"q": "Do online nurseries ship healthy hydrangeas?", "a": "Yes — top-rated nurseries ship dormant or bare-root stock that establishes well. Look for guarantees on arrival condition."},
+        {"q": "Do online nurseries ship healthy hydrangeas?", "a": "Yes. top-rated nurseries ship dormant or bare-root stock that establishes well. Look for guarantees on arrival condition."},
     ],
     "best-fruit-trees-to-buy-online": [
         {"q": "What fruit trees can you buy online and ship to your home?", "a": "Apples, pears, plums, cherries, peaches, and citrus are all available. Bare-root trees ship best in late winter when dormant."},
-        {"q": "Are online fruit trees as healthy as local nursery trees?", "a": "Yes — online nurseries often offer more variety and younger certified stock. Look for USDA certified disease-free designations."},
+        {"q": "Are online fruit trees as healthy as local nursery trees?", "a": "Yes. online nurseries often offer more variety and younger certified stock. Look for USDA certified disease-free designations."},
         {"q": "How much does a fruit tree cost online?", "a": "Bare-root trees start around $25–$40. Container trees range from $45–$120 depending on variety and size."},
         {"q": "Do I need two fruit trees for pollination?", "a": "Most apples, pears, and sweet cherries require a second compatible variety for pollination. Peaches, sour cherries, and figs are typically self-fertile."},
         {"q": "When should I plant a bare-root fruit tree?", "a": "Plant as soon as the ground is workable in early spring, before new growth begins. Fall planting works in zones 6+."},
     ],
     "best-privacy-trees": [
-        {"q": "What is the fastest growing privacy tree you can buy online?", "a": "Thuja Green Giant and Leyland Cypress are the fastest — growing 3–5 feet per year under good conditions."},
+        {"q": "What is the fastest growing privacy tree you can buy online?", "a": "Thuja Green Giant and Leyland Cypress are the fastest, growing 3–5 feet per year under good conditions."},
         {"q": "How many privacy trees do I need per foot of fence line?", "a": "Space Thuja Green Giant 5–6 feet apart; Leyland Cypress 6–8 feet apart for a dense hedge at maturity."},
-        {"q": "What are the cheapest privacy trees to buy online?", "a": "Arborvitae and Leyland Cypress in 1-gallon sizes start around $15–$25 online — significantly cheaper than 3-gallon local nursery stock."},
+        {"q": "What are the cheapest privacy trees to buy online?", "a": "Arborvitae and Leyland Cypress in 1-gallon sizes start around $15–$25 online, significantly cheaper than 3-gallon local nursery stock."},
         {"q": "Do privacy trees need full sun?", "a": "Most fast-growing options (Thuja, Leyland Cypress) prefer full sun. Emerald Green Arborvitae and Nellie Stevens Holly tolerate partial shade."},
-        {"q": "When is the best time to plant privacy trees?", "a": "Fall is ideal — soil is warm, air is cool, and trees establish root systems before summer heat stress."},
+        {"q": "When is the best time to plant privacy trees?", "a": "Fall is ideal: soil is warm, air is cool, and trees establish root systems before summer heat stress."},
     ],
     "cheapest-places-to-buy-online": [
         {"q": "Where is the cheapest place to buy plants online?", "a": "In our daily tracking, PlantingTree, Nature Hills, and Fast Growing Trees hold the lowest price most often. No nursery wins on everything though, so comparing all of them for your specific plant is what actually finds the best deal."},
@@ -113,28 +157,28 @@ GUIDE_FAQS = {
         {"q": "Is it safe to buy plants from Amazon or Walmart online?", "a": "Third-party sellers vary widely in quality. For best results, buy directly from the nursery's own website or use a dedicated plant comparison tool."},
     ],
     "best-japanese-maple-varieties": [
-        {"q": "What is the best Japanese maple to buy online?", "a": "Bloodgood, Emperor I, and Crimson Queen are the most available and competitively priced online — compare across nurseries for the best deal."},
+        {"q": "What is the best Japanese maple to buy online?", "a": "Bloodgood, Emperor I, and Crimson Queen are the most available and competitively priced online. Compare across nurseries for the best deal."},
         {"q": "How much does a Japanese maple cost online?", "a": "Small 1-gallon plants start around $20–$35. Named varieties in 3-gallon containers typically run $45–$95 online vs $75–$150 at local nurseries."},
         {"q": "Are Japanese maples slow-growing?", "a": "Most grow 1–2 feet per year. Upright varieties like Bloodgood grow faster than weeping laceleaf varieties."},
         {"q": "What hardiness zones can Japanese maples grow in?", "a": "Most Japanese maples grow in zones 5–8. Some tolerate zone 4 with protection; laceleaf weeping types prefer zone 6+."},
-        {"q": "When is the best time to buy a Japanese maple online?", "a": "Fall — prices drop at the end of the season and cooler weather helps newly planted trees establish before winter."},
+        {"q": "When is the best time to buy a Japanese maple online?", "a": "Fall. Prices drop at the end of the season and cooler weather helps newly planted trees establish before winter."},
     ],
     "best-knock-out-roses": [
-        {"q": "What makes Knock Out roses different from other roses?", "a": "They're disease-resistant, repeat-blooming from spring through frost, and don't need deadheading — the easiest rose to grow for most gardeners."},
+        {"q": "What makes Knock Out roses different from other roses?", "a": "They're disease-resistant, repeat-blooming from spring through frost, and don't need deadheading, the easiest rose to grow for most gardeners."},
         {"q": "How much do Knock Out roses cost online?", "a": "Prices range from $18–$55 depending on size and retailer. Comparing across nurseries typically saves $15–$25 per plant."},
         {"q": "How far apart should I plant Knock Out roses?", "a": "Space them 3–4 feet apart for a dense hedge. A single plant can spread 3–4 feet wide at maturity."},
         {"q": "What is the best Knock Out rose variety?", "a": "Double Knock Out has the fullest blooms. Rainbow Knock Out offers the most color variety. Petite Knock Out stays compact at about 18 inches tall."},
-        {"q": "Can Knock Out roses grow in pots?", "a": "Yes — a 5-gallon or larger container works well. Use well-draining potting mix and water regularly during hot weather."},
+        {"q": "Can Knock Out roses grow in pots?", "a": "Yes. a 5-gallon or larger container works well. Use well-draining potting mix and water regularly during hot weather."},
     ],
     "best-blueberry-bushes": [
         {"q": "What blueberry varieties are best for home gardens?", "a": "Bluecrop and Duke are the most popular northern highbush varieties. Sunshine Blue and Misty perform best in warmer zones (7–10)."},
-        {"q": "Do blueberries need acidic soil?", "a": "Yes — blueberries require soil pH of 4.5–5.5. Test your soil before planting and amend with sulfur if needed."},
+        {"q": "Do blueberries need acidic soil?", "a": "Yes. blueberries require soil pH of 4.5–5.5. Test your soil before planting and amend with sulfur if needed."},
         {"q": "Do I need two blueberry plants?", "a": "Blueberries produce much larger yields with cross-pollination. Plant at least two different compatible varieties for best fruit production."},
         {"q": "How much do blueberry bushes cost online?", "a": "1-gallon plants start around $12–$18. 3-gallon established bushes range from $25–$45. Ordering 3–5 at once usually qualifies for free shipping."},
         {"q": "How long until blueberry bushes produce fruit?", "a": "Most produce some fruit in year 2–3 after planting, with full production by year 4–5."},
     ],
     "best-flowering-trees-small-yards": [
-        {"q": "What is the best small flowering tree for a backyard?", "a": "Dogwood, Redbud, and Serviceberry are top picks — all under 25 feet, with multi-season interest and available from online nurseries at competitive prices."},
+        {"q": "What is the best small flowering tree for a backyard?", "a": "Dogwood, Redbud, and Serviceberry are top picks, all under 25 feet, with multi-season interest and available from online nurseries at competitive prices."},
         {"q": "How much do flowering trees cost online?", "a": "Prices range from $35–$120 for most varieties. Comparing nurseries can save $30–$60 per tree compared to local garden centers."},
         {"q": "Do flowering trees need full sun?", "a": "Most (Redbud, Serviceberry, Cherry) prefer full sun. Dogwood is one of the few flowering trees that blooms well in partial shade."},
         {"q": "When do flowering trees bloom?", "a": "Redbud blooms earliest (late March–April), followed by Dogwood and Cherry (April–May), then Crape Myrtle in summer."},
@@ -145,7 +189,7 @@ GUIDE_FAQS = {
         {"q": "How much do azaleas cost online?", "a": "Small 1-quart plants start around $10–$15. 1-gallon established plants run $18–$35. Larger 3-gallon shrubs range $35–$65 online."},
         {"q": "Do azaleas and rhododendrons prefer sun or shade?", "a": "Both prefer dappled shade or morning sun with afternoon shade in zones 6+. In cooler climates (zones 4–5) they tolerate more sun."},
         {"q": "What soil pH do azaleas need?", "a": "Acidic soil between pH 4.5–6.0, similar to blueberries. Amend with sulfur if your soil is neutral or alkaline."},
-        {"q": "When is the best time to plant azaleas?", "a": "Fall or early spring. Avoid planting in summer heat — azaleas establish poorly in dry, hot conditions."},
+        {"q": "When is the best time to plant azaleas?", "a": "Fall or early spring. Avoid planting in summer heat: azaleas establish poorly in dry, hot conditions."},
     ],
     "best-time-to-buy-plants-online": [
         {"q": "When is the cheapest time to buy plants online?", "a": "Late summer (August–September) and late spring (late May–June) are when online nurseries discount most heavily to clear inventory before the off-season."},
@@ -501,9 +545,9 @@ def _truncate_name(name, max_len):
 
 
 def build_product_title(plant_name, offer_count):
-    """Build SEO title: Compare {name} Prices — {N} Nursery/Nurseries (2026)."""
+    """Build SEO title: Compare {name} Prices: {N} Nursery/Nurseries (2026)."""
     nursery_word = "Nursery" if offer_count == 1 else "Nurseries"
-    suffix = f" Prices \u2014 {offer_count} {nursery_word} (2026)"
+    suffix = f" Prices: {offer_count} {nursery_word} (2026)"
     with_compare = f"Compare {plant_name}{suffix}"
     if len(with_compare) <= MAX_TITLE_LEN:
         return with_compare
@@ -518,8 +562,8 @@ def build_product_title(plant_name, offer_count):
 
 
 def build_category_title(category_name):
-    """Build SEO title: Best {cat} to Buy Online — Prices (2026)."""
-    suffix = " to Buy Online \u2014 Prices (2026)"
+    """Build SEO title: Best {cat} to Buy Online, Prices (2026)."""
+    suffix = " to Buy Online, Prices (2026)"
     prefix = "Best "
     name_budget = MAX_TITLE_LEN - len(prefix) - len(suffix)
     name = _truncate_name(category_name, name_budget)
@@ -675,6 +719,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
     all_prices_flat = []
     active_tiers = set()
     has_non_affiliate = False
+    has_affiliate_link = False
     any_in_stock = False
 
     # Compute consecutive missed runs per retailer when full history is available
@@ -704,8 +749,17 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             except (ValueError, TypeError):
                 pass
 
-        has_affiliate = retailer.get("affiliate") is not None and retailer.get("trust_builder") is not True
-        if not has_affiliate:
+        # An affiliate link is a link we actually hold, for this exact plant at
+        # this exact retailer. It is NOT "this retailer runs a program we could
+        # apply to" — that is what retailer["affiliate"] records, those are
+        # research notes, and driving the page off them marked seven retailers
+        # as paying us when none of them do. The only evidence that a link
+        # earns anything is the existence of the link.
+        override_url = affiliate_override(plant.get("id"), retailer_id)
+        has_affiliate = override_url is not None
+        if has_affiliate:
+            has_affiliate_link = True
+        else:
             has_non_affiliate = True
 
         sizes = {}
@@ -780,7 +834,6 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         # none of those ever consult it — monetization must not be able to
         # influence what the comparison says.
         buy_url = price_data.get("url", retailer.get("url", "#")).split("?variant=")[0]
-        override_url = affiliate_override(plant.get("id"), retailer_id)
         if override_url:
             buy_url = override_url
 
@@ -998,6 +1051,10 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
         ),
         "any_in_stock": any_in_stock,
         "has_non_affiliate": has_non_affiliate,
+        # True only when this page actually carries an affiliate link. The
+        # asterisk footnote under the table renders off this, so a page with
+        # no affiliate link makes no claim about one.
+        "has_affiliate_link": has_affiliate_link,
         "best_deal": best_deal,
         "runner_up_deals": runner_up_deals,
         "mobile_tiers": mobile_tiers,
@@ -1271,67 +1328,6 @@ def build_category_to_guide_map(all_guides):
     return category_to_guide
 
 
-_CATEGORY_LABELS = {
-    "missing-plants":  "Missing Plants",
-    "price-data":      "Price Data",
-    "site-feature":    "Feature Request",
-    "bug":             "Bug",
-    "other":           "Other",
-}
-
-_STATUS_LABELS = {
-    "reviewing":   "Under Review",
-    "planned":     "Planned",
-    "in-progress": "In Progress",
-    "responded":   "Responded",
-    "done":        "Done ✓",
-}
-
-
-def load_feedback():
-    """Load and enrich feedback items from data/feedback.json."""
-    path = os.path.join(DATA_DIR, "feedback.json")
-    raw = load_json(path)
-    if not isinstance(raw, list):
-        return []
-
-    items = []
-    for entry in raw:
-        submitted_raw = entry.get("submitted_at", "")
-        try:
-            submitted_dt = datetime.fromisoformat(submitted_raw.replace("Z", "+00:00"))
-            submitted_date = submitted_dt.strftime("%B %d, %Y")
-        except (ValueError, TypeError):
-            submitted_date = ""
-
-        response = entry.get("response")
-        response_date = ""
-        if response:
-            responded_raw = response.get("responded_at", "")
-            try:
-                rd = datetime.fromisoformat(responded_raw.replace("Z", "+00:00"))
-                response_date = rd.strftime("%B %d, %Y")
-            except (ValueError, TypeError):
-                response_date = ""
-
-        items.append({
-            "id":             entry.get("id", ""),
-            "category":       entry.get("category", "other"),
-            "category_label": _CATEGORY_LABELS.get(entry.get("category", ""), "Other"),
-            "title":          entry.get("title", ""),
-            "body":           entry.get("body", ""),
-            "submitted_at":   submitted_raw,
-            "submitted_date": submitted_date,
-            "status":         entry.get("status", "reviewing"),
-            "status_label":   _STATUS_LABELS.get(entry.get("status", "reviewing"), "Under Review"),
-            "upvotes":        entry.get("upvotes", 0),
-            "response":       response,
-            "response_date":  response_date,
-        })
-
-    return items
-
-
 def ensure_dir(path):
     """Create directory if it doesn't exist."""
     os.makedirs(path, exist_ok=True)
@@ -1342,6 +1338,12 @@ def build_site(build_guides=True, build_products=True):
     print("=" * 60)
     print("PlantPriceTracker — Static Site Build")
     print("=" * 60)
+
+    # Affiliate overrides are memoised per process. Drop the cache so a build
+    # always reads the DATA_DIR it was given rather than one an earlier build
+    # in the same process happened to read.
+    global _AFFILIATE_OVERRIDES
+    _AFFILIATE_OVERRIDES = None
 
     # Load data
     print("\nLoading data...")
@@ -1382,13 +1384,32 @@ def build_site(build_guides=True, build_products=True):
     env.globals["affiliate_status_reviewed"] = AFFILIATE_STATUS_REVIEWED
     env.globals["tracked_retailers"] = active_retailers
     env.globals["retailer_count"] = len(active_retailers)
-    # Tracked nurseries that have no affiliate program to join at all — the
-    # same rule build_price_table() uses for the asterisk in the comparison
-    # table. The disclosure page only claims we track unpayable retailers
-    # while that is actually true of the data.
-    env.globals["non_affiliate_retailer_count"] = sum(
-        1 for r in active_retailers
-        if r.get("affiliate") is None or r.get("trust_builder") is True
+    env.globals["contact_email"] = CONTACT_EMAIL
+    env.globals["policy_last_updated"] = POLICY_LAST_UPDATED
+    env.globals["policy_last_updated_iso"] = POLICY_LAST_UPDATED_ISO
+    env.globals["base_url"] = BASE_URL
+    env.globals["site_name"] = "PlantPriceTracker"
+    env.globals["og_image"] = OG_IMAGE
+
+    # How many links on the whole site are actually affiliate links, counted
+    # from data/affiliate_overrides.json restricted to plants and retailers
+    # that really render. The disclosure page prints this number instead of
+    # describing the arrangement in prose, so the page cannot overstate the
+    # commercial relationship: today it is 1.
+    #
+    # The previous count here came from the `affiliate` blocks in
+    # retailers.json, which are research notes about programs that could be
+    # joined. Every claim built on them was false.
+    _overrides = load_affiliate_overrides()
+    _active_plant_ids = {p.get("id") for p in plants}
+    _active_retailer_ids = {r.get("id") for r in active_retailers}
+    env.globals["affiliate_link_count"] = sum(
+        1
+        for plant_id, by_retailer in _overrides.items()
+        if plant_id in _active_plant_ids and isinstance(by_retailer, dict)
+        for retailer_id in by_retailer
+        if retailer_id in _active_retailer_ids
+        and affiliate_override(plant_id, retailer_id, _overrides)
     )
 
     # Pre-enrich all plants with lowest_price so find_similar_plants() can sort by price.
@@ -1538,7 +1559,11 @@ def build_site(build_guides=True, build_products=True):
                 # same-day modification twice daily in both the visible
                 # header and Article JSON-LD — the same false freshness
                 # signal the sitemap was fixed for.
-                date_modified=article.get("date_modified") or DEFAULT_GUIDE_DATE,
+                date_modified=(
+                    article.get("date_modified")
+                    or GUIDE_MODIFIED_DATES.get(slug)
+                    or DEFAULT_GUIDE_DATE
+                ),
                 retailer_count=len(active_retailers),
                 related_plants=related_plants,
                 related_guides=related_guides[:5],
@@ -1648,7 +1673,7 @@ def build_site(build_guides=True, build_products=True):
     # Tracked retailers for homepage
     tracked = active_retailers
 
-    home_title = f"Compare Plant Prices \u2014 {len(tracked)} Nurseries (2026)"
+    home_title = f"Compare Plant Prices at {len(tracked)} Nurseries (2026)"
 
     html = home_tpl.render(
         page_title=home_title,
@@ -1696,21 +1721,18 @@ def build_site(build_guides=True, build_products=True):
     print("  Written to site/heat-map.html")
 
     # -----------------------------------------------------------------------
-    # Build Improve page (community feedback board)
+    # Build Improve page (roadmap + how to reach us)
     # -----------------------------------------------------------------------
+    # This page used to render data/feedback.json: eight suggestions with
+    # upvote counts, submission dates and published replies, none of which any
+    # visitor had ever sent. The votes were localStorage-only, so even the
+    # counts a real visitor added went nowhere. Invented community activity is
+    # the single least defensible thing a site can publish, so the board, its
+    # data file and its script are gone. What is left is a roadmap, which is a
+    # statement about our own intentions and is therefore ours to make.
     print("\nBuilding improve page...")
-    feedback_items = load_feedback()
-    total_submissions = len(feedback_items)
-    responded_count = sum(1 for f in feedback_items if f.get("response"))
-    done_count = sum(1 for f in feedback_items if f.get("status") == "done")
-
     improve_tpl = env.get_template("improve.html")
     html = improve_tpl.render(
-        feedback_items=feedback_items,
-        total_submissions=total_submissions,
-        responded_count=responded_count,
-        done_count=done_count,
-        formspree_endpoint="https://formspree.io/f/mqegnnqe",
         canonical_url=f"{BASE_URL}/improve.html",
     )
     with open(os.path.join(SITE_DIR, "improve.html"), "w", encoding="utf-8") as f:
@@ -1747,6 +1769,17 @@ def build_site(build_guides=True, build_products=True):
     with open(os.path.join(SITE_DIR, "about.html"), "w", encoding="utf-8") as f:
         f.write(html)
     print("  Written to site/about.html")
+
+    # A site that asks people to trust its prices has to be reachable. Until
+    # now the only route to a human was an address buried in the About page.
+    print("Building contact page...")
+    contact_tpl = env.get_template("contact.html")
+    html = contact_tpl.render(
+        canonical_url=f"{BASE_URL}/contact.html",
+    )
+    with open(os.path.join(SITE_DIR, "contact.html"), "w", encoding="utf-8") as f:
+        f.write(html)
+    print("  Written to site/contact.html")
 
     # -----------------------------------------------------------------------
     # Generate robots.txt
@@ -1786,6 +1819,7 @@ def build_site(build_guides=True, build_products=True):
         ("/disclosure.html", None),
         ("/privacy.html", None),
         ("/about.html", None),
+        ("/contact.html", None),
     ]
     for plant in plants:
         # Zero-offer pages are noindexed — listing them in the sitemap
@@ -1817,7 +1851,7 @@ def build_site(build_guides=True, build_products=True):
     # -----------------------------------------------------------------------
     # Summary
     # -----------------------------------------------------------------------
-    total_pages = len(plants) + len(categories_map) + len(article_files) + 7
+    total_pages = len(plants) + len(categories_map) + len(article_files) + 8
     print(f"\n{'=' * 60}")
     print(f"Build complete: {total_pages} pages generated")
     print(f"  {len(plants)} product pages")
@@ -1826,10 +1860,11 @@ def build_site(build_guides=True, build_products=True):
     print("  1 homepage")
     print("  1 wishlist page (my-list.html)")
     print("  1 heat map page (heat-map.html)")
-    print(f"  1 improve page (improve.html) — {total_submissions} submissions, {responded_count} responded")
+    print("  1 improve page (improve.html)")
     print("  1 disclosure page (disclosure.html)")
     print("  1 privacy page (privacy.html)")
     print("  1 about page (about.html)")
+    print("  1 contact page (contact.html)")
     print("  1 sitemap.xml")
     print(f"Output: {SITE_DIR}")
     print(f"{'=' * 60}")

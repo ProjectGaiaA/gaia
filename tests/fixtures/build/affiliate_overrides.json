@@ -1,0 +1,18 @@
+{
+  "_comment": [
+    "Exactly one override, on one plant at one retailer.",
+    "",
+    "That shape is the point. build_price_table() decides whether a link is an",
+    "affiliate link by asking this file, so the fixture has to contain a page",
+    "that HAS one (test-hydrangea) and pages that do NOT (test-maple,",
+    "test-apple). Without both, 'marks the affiliate link' and 'marks every",
+    "retailer' would pass identically, which is the bug that shipped: the",
+    "asterisk was driven off retailers.json research notes and marked seven",
+    "retailers that pay the site nothing."
+  ],
+  "overrides": {
+    "test-hydrangea": {
+      "test-nursery-a": "https://example.test/affiliate/test-hydrangea"
+    }
+  }
+}

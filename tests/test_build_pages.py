@@ -7,12 +7,18 @@ the generated HTML files for correctness.
 import os
 import shutil
 from datetime import date
+from pathlib import Path
 from unittest.mock import patch
 
 import pytest
 from bs4 import BeautifulSoup
 
 from tests.conftest import BUILD_FIXTURES_DIR
+
+# The real site/assets tree. Templates reference these files by URL, so a page
+# can advertise an image the repo does not ship; tests resolve the URL back to
+# a file to prove it exists.
+SITE_ASSETS_DIR = Path(__file__).resolve().parents[1] / "site" / "assets"
 
 # ---------------------------------------------------------------------------
 # Session-scoped build fixture — one build, many assertions
@@ -23,7 +29,7 @@ def _build_fixture_site(tmp, affiliate_programs_active=None):
     """Run build_site() against synthetic fixture data and return the output dir.
 
     Monkeypatches build.py module-level path constants to redirect:
-    - DATA_DIR → temp dir with plants.json, retailers.json, feedback.json
+    - DATA_DIR → temp dir with plants.json, retailers.json, affiliate_overrides.json
     - PRICES_DIR → temp dir with price JSONL files
     - SITE_DIR → temp output dir
     - ARTICLES_DIR → temp dir with guide markdown
@@ -43,7 +49,14 @@ def _build_fixture_site(tmp, affiliate_programs_active=None):
     # Copy fixture files into temp data dir
     shutil.copy(BUILD_FIXTURES_DIR / "plants.json", data_dir / "plants.json")
     shutil.copy(BUILD_FIXTURES_DIR / "retailers.json", data_dir / "retailers.json")
-    shutil.copy(BUILD_FIXTURES_DIR / "feedback.json", data_dir / "feedback.json")
+    # Exactly one plant in this fixture carries a real affiliate link and the
+    # others carry none. That asymmetry is what makes "only the affiliate link
+    # is marked" distinguishable from "every retailer is marked" — without it
+    # both assertions would pass on the same output.
+    shutil.copy(
+        BUILD_FIXTURES_DIR / "affiliate_overrides.json",
+        data_dir / "affiliate_overrides.json",
+    )
 
     # Copy price JSONL files
     fixture_prices = BUILD_FIXTURES_DIR / "prices"
@@ -433,17 +446,32 @@ class TestGuidePage:
 
 
 class TestImprovePage:
-    """Verify improve page uses feedback fixture data."""
+    """The improve page must never imply community activity that never happened.
+
+    It used to render data/feedback.json: eight suggestions with upvote counts,
+    submission dates and published replies, none of which any visitor had sent.
+    The votes were localStorage-only, so they never left the browser either.
+    """
 
     def test_improve_page_exists(self, built_site):
         path = built_site / "improve.html"
         assert path.exists()
 
-    def test_improve_has_feedback_title(self, built_site):
-        """Improve page shows the feedback item title."""
+    def test_improve_has_no_vote_or_submission_ui(self, built_site):
+        html = _read_text(built_site, "improve.html").lower()
+        for token in ("upvote", "submissions", "awaiting response", "formspree",
+                      "feedback-card", "most upvoted"):
+            assert token not in html, f"improve page still shows {token!r}"
+
+    def test_improve_has_a_working_contact_route(self, built_site):
         soup = _read_html(built_site, "improve.html")
-        text = soup.get_text()
-        assert "Add test plant variety" in text
+        mailtos = [a["href"] for a in soup.select("a[href^='mailto:']")]
+        assert any("ProjectGaiaA@proton.me" in m for m in mailtos), mailtos
+
+    def test_improve_has_no_form(self, built_site):
+        """A form on a static site has nowhere to POST. Better none at all."""
+        soup = _read_html(built_site, "improve.html")
+        assert soup.find("form") is None
 
 
 # ---------------------------------------------------------------------------
@@ -739,7 +767,7 @@ class TestAffiliateClaimConsistency:
         footer = _read_html(built_site_affiliates_on, "index.html").select_one(
             ".footer-disclosure"
         )
-        assert "We earn a commission" in footer.get_text(" ")
+        assert "Some links on this site are affiliate links" in footer.get_text(" ")
 
         disclosure = _read_html(
             built_site_affiliates_on, "disclosure.html"
@@ -748,7 +776,64 @@ class TestAffiliateClaimConsistency:
         assert "not enrolled in any affiliate" not in disclosure
 
         about = _read_html(built_site_affiliates_on, "about.html").get_text(" ")
-        assert "earns affiliate commissions" in about
+        assert "the retailer may pay us a commission" in about
+
+    def test_no_page_claims_a_commission_has_been_earned(self, built_site):
+        """The flag means "an affiliate link exists", not "money has arrived".
+
+        Three program applications are pending and none has paid out, so a
+        present-tense earnings claim is false in either flag state.
+        """
+        offenders = []
+        for path in _all_html(built_site):
+            text = BeautifulSoup(
+                open(path, encoding="utf-8").read(), "html.parser"
+            ).get_text(" ")
+            for claim in (
+                "We earn a commission on purchases",
+                "earns affiliate commissions",
+                "We earn affiliate commissions",
+                "That revenue pays for",
+            ):
+                if claim in text:
+                    offenders.append(f"{os.path.basename(path)}: {claim!r}")
+        assert not offenders, "Present-tense earnings claims: " + "; ".join(offenders)
+
+    def test_asterisk_marks_only_links_that_are_actually_affiliate_links(
+        self, built_site_affiliates_on
+    ):
+        """The asterisk used to be driven by retailers.json "affiliate" blocks,
+        which are research notes about programs that COULD be joined. It marked
+        seven retailers as paying the site when none of them do. It is now
+        driven by data/affiliate_overrides.json, so it appears only where a real
+        affiliate link exists."""
+        marked = [
+            os.path.basename(p)
+            for p in _all_html(built_site_affiliates_on)
+            if "affiliate-marked" in open(p, encoding="utf-8").read()
+        ]
+        assert marked == ["test-hydrangea.html"], marked
+
+    def test_sponsored_rel_appears_only_on_the_real_affiliate_link(
+        self, built_site_affiliates_on
+    ):
+        """rel="sponsored" asserts a paid relationship for that specific link."""
+        for path in _all_html(built_site_affiliates_on):
+            soup = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser")
+            for a in soup.select("a[rel~=sponsored]"):
+                assert a["href"].startswith("https://example.test/affiliate/"), (
+                    f"{os.path.basename(path)} marks {a['href']} as sponsored"
+                )
+
+    def test_asterisk_footnote_only_where_an_asterisk_exists(
+        self, built_site_affiliates_on
+    ):
+        """A footnote explaining an asterisk that is not on the page is noise
+        at best and a claim about a link that does not exist at worst."""
+        for path in _all_html(built_site_affiliates_on):
+            html = open(path, encoding="utf-8").read()
+            if "table-footnote" in html:
+                assert "affiliate-marked" in html, os.path.basename(path)
 
     def test_sponsored_returns_when_flag_is_on(self, built_site_affiliates_on):
         found = any(
@@ -799,3 +884,157 @@ class TestAffiliateClaimConsistency:
                 assert stale not in text, f"{page} hardcodes {stale!r}"
             if page == "about.html":
                 assert f"{count} online nurseries" in text
+
+
+# ---------------------------------------------------------------------------
+# Reachability, link previews, and analytics honesty
+# ---------------------------------------------------------------------------
+
+
+def _content_pages(site_dir):
+    """Every generated page, minus the search-console verification stub."""
+    for p in _all_html(site_dir):
+        if os.path.basename(p).startswith("google"):
+            continue
+        yield p
+
+
+class TestContactRoute:
+    """A price-comparison site has to be reachable, at a mailbox that works."""
+
+    def test_contact_page_exists(self, built_site):
+        assert (built_site / "contact.html").exists()
+
+    def test_contact_page_is_in_the_sitemap(self, built_site):
+        assert "/contact.html" in _read_text(built_site, "sitemap.xml")
+
+    def test_contact_page_is_linked_from_every_page(self, built_site):
+        missing = [
+            os.path.basename(p)
+            for p in _content_pages(built_site)
+            if '"/contact.html"' not in open(p, encoding="utf-8").read()
+        ]
+        assert not missing, f"pages with no contact link: {missing[:5]}"
+
+    def test_contact_page_offers_a_real_address(self, built_site):
+        soup = _read_html(built_site, "contact.html")
+        mailtos = [a["href"] for a in soup.select("a[href^='mailto:']")]
+        assert any("ProjectGaiaA@proton.me" in m for m in mailtos), mailtos
+
+    def test_no_page_prints_an_address_at_a_domain_with_no_mx_record(
+        self, built_site
+    ):
+        """plantpricetracker.com resolves for web but publishes no MX record,
+        so every address at it bounces. privacy@plantpricetracker.com was
+        printed on the privacy policy as the way to reach us."""
+        offenders = [
+            os.path.basename(p)
+            for p in _all_html(built_site)
+            if "@plantpricetracker.com" in open(p, encoding="utf-8").read()
+        ]
+        assert not offenders, f"unreachable addresses on: {offenders}"
+
+    def test_no_page_collects_an_email_address(self, built_site):
+        """A static site cannot receive a form. Two of them used to take an
+        email address, one storing it in localStorage while telling the visitor
+        they were signed up for alerts that were never sent."""
+        offenders = []
+        for p in _content_pages(built_site):
+            soup = BeautifulSoup(open(p, encoding="utf-8").read(), "html.parser")
+            if soup.select("input[type=email]"):
+                offenders.append(os.path.basename(p))
+        assert not offenders, f"email capture on: {offenders}"
+
+
+class TestOpenGraphTags:
+    """Every page must produce a truthful link preview."""
+
+    REQUIRED = [
+        ("property", "og:title"),
+        ("property", "og:description"),
+        ("property", "og:url"),
+        ("property", "og:type"),
+        ("property", "og:site_name"),
+        ("property", "og:image"),
+        ("name", "twitter:card"),
+    ]
+
+    def test_every_page_has_the_full_tag_set(self, built_site):
+        missing = {}
+        for p in _content_pages(built_site):
+            soup = BeautifulSoup(open(p, encoding="utf-8").read(), "html.parser")
+            absent = [
+                tag
+                for attr, tag in self.REQUIRED
+                if soup.find("meta", attrs={attr: tag}) is None
+            ]
+            if absent:
+                missing[os.path.basename(p)] = absent
+        assert not missing, f"pages missing OG tags: {list(missing.items())[:3]}"
+
+    def test_og_title_and_description_match_the_page(self, built_site):
+        """The preview must not be able to say something the page does not."""
+        for name in ("index.html", "about.html", "contact.html", "disclosure.html"):
+            soup = _read_html(built_site, name)
+            og_title = soup.find("meta", attrs={"property": "og:title"})["content"]
+            og_desc = soup.find("meta", attrs={"property": "og:description"})["content"]
+            assert og_title == soup.title.string, name
+            assert (
+                og_desc == soup.find("meta", attrs={"name": "description"})["content"]
+            ), name
+
+    def test_og_image_is_a_file_that_exists(self, built_site):
+        """A preview card pointing at a 404 is worse than no card. The site
+        ships exactly one image."""
+        soup = _read_html(built_site, "index.html")
+        url = soup.find("meta", attrs={"property": "og:image"})["content"]
+        assert url.startswith("https://")
+        rel = url.split("/assets/", 1)[1]
+        assert (SITE_ASSETS_DIR / rel).exists(), f"og:image 404s: {url}"
+
+    def test_og_url_matches_canonical(self, built_site):
+        for p in _content_pages(built_site):
+            soup = BeautifulSoup(open(p, encoding="utf-8").read(), "html.parser")
+            canonical = soup.find("link", attrs={"rel": ["canonical"]})
+            og_url = soup.find("meta", attrs={"property": "og:url"})
+            if canonical is not None:
+                assert og_url["content"] == canonical["href"], os.path.basename(p)
+
+
+class TestPrivacyPageMatchesReality:
+    """The policy must describe the analytics the site actually loads."""
+
+    def test_names_the_analytics_that_is_deployed(self, built_site):
+        text = _read_html(built_site, "privacy.html").get_text(" ")
+        assert "Vercel Web Analytics" in text
+        assert "sets no cookies" in text
+
+    def test_does_not_name_analytics_that_is_not_deployed(self, built_site):
+        """The policy claimed Plausible or Fathom while base.html loaded the
+        Vercel beacon and neither of the other two was ever installed."""
+        text = _read_html(built_site, "privacy.html").get_text(" ").lower()
+        for tool in ("plausible", "fathom", "matomo", "hotjar"):
+            assert tool not in text, f"privacy policy names {tool}"
+
+    def test_the_named_analytics_is_the_one_in_the_page_source(self, built_site):
+        """Ties the claim to the markup: if the beacon changes, this fails."""
+        html = _read_text(built_site, "privacy.html")
+        assert "/_vercel/insights/script.js" in html
+
+    def test_does_not_promise_a_mailing_list_that_does_not_exist(self, built_site):
+        """The policy described a weekly deal newsletter, a price-alert list and
+        an unsubscribe link in every email we send. None of the three exists,
+        and there is nowhere on the site to sign up for any of them."""
+        text = " ".join(
+            _read_html(built_site, "privacy.html").get_text(" ").lower().split()
+        )
+        for claim in (
+            "send our weekly deal roundup newsletter",
+            "send price drop alerts",
+            "if you sign up for price alerts",
+            "unsubscribe from emails at any time",
+            "the link in every email we send",
+        ):
+            assert claim not in text, f"privacy policy promises {claim!r}"
+        # And it says so positively, so the absence above is deliberate.
+        assert "there is no mailing list" in text

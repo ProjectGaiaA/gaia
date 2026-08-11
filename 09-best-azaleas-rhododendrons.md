@@ -1,8 +1,8 @@
 # Best Azaleas and Rhododendrons for Spring Color: Price Guide
 
-Azaleas and rhododendrons bloom in April and May — the same 6-week window when homeowners walk past their neighbors' yards, see walls of pink, purple, and white flowers, and immediately want their own. It's the most impulse-driven plant category in spring gardening. The neighbor's front yard looks incredible, the nursery has them stacked up front, and suddenly you're loading three azaleas into a cart without checking the soil pH.
+Azaleas and rhododendrons bloom in April and May, the same 6-week window when homeowners walk past their neighbors' yards, see walls of pink, purple, and white flowers, and immediately want their own. It's the most impulse-driven plant category in spring gardening. The neighbor's front yard looks incredible, the nursery has them stacked up front, and suddenly you're loading three azaleas into a cart without checking the soil pH.
 
-That last detail is the difference between a decade of stunning spring color and a frustrating decline that ends in a trip to the compost pile. Azaleas and rhododendrons have one hard requirement that no amount of watering, fertilizing, or good intentions can bypass: acidic soil. If you skip the soil test, everything that follows — the $35 Encore Azaleas, the careful planting, the mulching, the anticipation — is a coin flip.
+That last detail is the difference between a decade of stunning spring color and a frustrating decline that ends in a trip to the compost pile. Azaleas and rhododendrons have one hard requirement that no amount of watering, fertilizing, or good intentions can bypass: acidic soil. If you skip the soil test, everything that follows (the $35 Encore Azaleas, the careful planting, the mulching, the anticipation) is a coin flip.
 
 Prices vary 20-30% between online nurseries on the same azalea and rhododendron varieties. But the soil test is the $5 investment that determines whether the $200 azalea planting survives at all.
 
@@ -22,13 +22,13 @@ Prices vary 20-30% between online nurseries on the same azalea and rhododendron 
 
 This section comes first for a reason. More azaleas and rhododendrons die from wrong soil pH than from cold winters, wrong sun exposure, bad watering, or any other cause combined. It's the #1 failure mode, and it's entirely preventable.
 
-Azaleas and rhododendrons require acidic soil — pH 4.5-6.0. Not "prefer." Require. In neutral or alkaline soil (pH 6.0+), they can't absorb iron from the soil even if iron is present. The result is iron chlorosis: leaves turn yellow with green veins, new growth is stunted, the plant looks increasingly sickly over a season or two, and it eventually dies. No variety is resistant. No fertilizer compensates. The pH has to be right.
+Azaleas and rhododendrons require acidic soil, pH 4.5-6.0. Not "prefer." Require. In neutral or alkaline soil (pH 6.0+), they can't absorb iron from the soil even if iron is present. The result is iron chlorosis: leaves turn yellow with green veins, new growth is stunted, the plant looks increasingly sickly over a season or two, and it eventually dies. No variety is resistant. No fertilizer compensates. The pH has to be right.
 
 **Before you buy a single azalea, test your soil.** A pH test kit costs $5-$10 at any garden center. Ten minutes and five bucks tells you whether your $200 azalea foundation planting will thrive or slowly die.
 
 **If your pH is 4.5-6.0:** You're good. Plant normally and mulch with pine bark or pine straw (which are naturally acidic) to maintain pH over time.
 
-**If your pH is 6.0-7.0:** You're in the correction zone. Work elemental sulfur into the planting area according to package directions and retest in 2-3 months. Sulfur acidification is gradual — it doesn't happen overnight. You may also want to amend the planting hole with 50% peat moss and pine bark fines to create a localized pocket of acidity around the root zone.
+**If your pH is 6.0-7.0:** You're in the correction zone. Work elemental sulfur into the planting area according to package directions and retest in 2-3 months. Sulfur acidification is gradual. It doesn't happen overnight. You may also want to amend the planting hole with 50% peat moss and pine bark fines to create a localized pocket of acidity around the root zone.
 
 **If your pH is 7.0+:** You're fighting an uphill battle. Severely alkaline soil is very difficult to correct permanently because the surrounding soil and underlying bedite constantly push the pH back up. Your best options: build raised beds filled with an acidic planting mix (peat, pine bark, compost) that's completely isolated from your native soil, or choose different plants. Some gardeners in alkaline-soil regions successfully grow azaleas in containers with controlled acidic media, but it requires ongoing attention.
 
@@ -38,15 +38,15 @@ The key insight: most garden soils in the eastern U.S. from New York south throu
 
 ## Encore Azaleas (Reblooming)
 
-Encore Azaleas are the bestselling azalea brand in America, and the reason is simple: they bloom three times. Traditional azaleas produce one flush of flowers in spring — spectacular for 2-3 weeks, then nothing but green foliage for the remaining 10 months. Encore Azaleas bloom in spring, again in summer, and again in fall. The repeat blooming isn't as heavy as the initial spring flush, but it's enough to provide consistent color from April through October. No other azalea does this.
+Encore Azaleas are the bestselling azalea brand in America, and the reason is simple: they bloom three times. Traditional azaleas produce one flush of flowers in spring, spectacular for 2-3 weeks, then nothing but green foliage for the remaining 10 months. Encore Azaleas bloom in spring, again in summer, and again in fall. The repeat blooming isn't as heavy as the initial spring flush, but it's enough to provide consistent color from April through October. No other azalea does this.
 
-The series includes 30+ varieties in colors ranging from white to deep red, with everything in between — pink, purple, coral, salmon, bicolor. The sheer range of options can be overwhelming. The most popular varieties, and the ones most widely stocked online, are Autumn Angel (pure white, good for shade), Autumn Amethyst (purple, strong rebloomer), Autumn Bonfire (cherry-red, one of the most vivid colors in the series), and Autumn Lilac (pink-purple, consistently popular).
+The series includes 30+ varieties in colors ranging from white to deep red, with everything in between, pink, purple, coral, salmon, bicolor. The sheer range of options can be overwhelming. The most popular varieties, and the ones most widely stocked online, are Autumn Angel (pure white, good for shade), Autumn Amethyst (purple, strong rebloomer), Autumn Bonfire (cherry-red, one of the most vivid colors in the series), and Autumn Lilac (pink-purple, consistently popular).
 
 All Encore varieties share the same basic characteristics: compact growth (3-5 feet), evergreen foliage in most climates, and the three-season reblooming habit. The primary differences between varieties are flower color and, to a lesser degree, cold hardiness at the margins.
 
-Pricing ranges from $20-$50 for a 1-gallon plant. Encore Azaleas are the most expensive azaleas in the market — you're paying a brand premium for the reblooming genetics. But the price variation between retailers on the same Encore variety is substantial: $8-$15 spreads on the same plant are common. This is the azalea category where comparison shopping pays off most.
+Pricing ranges from $20-$50 for a 1-gallon plant. Encore Azaleas are the most expensive azaleas in the market. You're paying a brand premium for the reblooming genetics. But the price variation between retailers on the same Encore variety is substantial: $8-$15 spreads on the same plant are common. This is the azalea category where comparison shopping pays off most.
 
-**What to know before buying:** Acidic soil (pH 4.5-6.0) is non-negotiable. Partial shade — morning sun with afternoon shade — is ideal. The afternoon shade isn't just about preventing leaf scorch (though it does that); it also keeps the soil cooler and moister, which azalea roots prefer. In zones 7-9, planting in full, all-day sun leads to washed-out flower color, scorched foliage, and stressed plants. In zones 6, they handle more sun because summer temperatures are cooler.
+**What to know before buying:** Acidic soil (pH 4.5-6.0) is non-negotiable. Partial shade (morning sun with afternoon shade) is ideal. The afternoon shade isn't just about preventing leaf scorch (though it does that); it also keeps the soil cooler and moister, which azalea roots prefer. In zones 7-9, planting in full, all-day sun leads to washed-out flower color, scorched foliage, and stressed plants. In zones 6, they handle more sun because summer temperatures are cooler.
 
 Hardy in zones 6-9. Some Encore varieties push into zone 10 for mild winter areas.
 
@@ -54,21 +54,21 @@ Hardy in zones 6-9. Some Encore varieties push into zone 10 for mild winter area
 
 ## P.J.M. Rhododendron
 
-Every cold-climate gardener who's been told "rhododendrons won't grow here" needs to hear about P.J.M. It's the toughest, most cold-hardy rhododendron available by a significant margin — reliable to zone 4, which means it survives winters that would kill every other commonly available rhododendron variety. P.J.M. blooms in early spring with lavender-pink flowers that cover the plant before most other rhododendrons have even started their buds.
+Every cold-climate gardener who's been told "rhododendrons won't grow here" needs to hear about P.J.M. It's the toughest, most cold-hardy rhododendron available by a significant margin, reliable to zone 4, which means it survives winters that would kill every other commonly available rhododendron variety. P.J.M. blooms in early spring with lavender-pink flowers that cover the plant before most other rhododendrons have even started their buds.
 
-But the year-round performance is what makes P.J.M. remarkable for a broadleaf evergreen. In summer, the small, leathery leaves are a deep green. In fall, they turn mahogany — a rich, warm brown-red that persists through winter, giving the plant winter color when everything else in the landscape is bare and gray. Then in spring, the mahogany foliage serves as the backdrop for the lavender-pink flowers, creating a color contrast that's genuinely beautiful.
+But the year-round performance is what makes P.J.M. remarkable for a broadleaf evergreen. In summer, the small, leathery leaves are a deep green. In fall, they turn mahogany, a rich, warm brown-red that persists through winter, giving the plant winter color when everything else in the landscape is bare and gray. Then in spring, the mahogany foliage serves as the backdrop for the lavender-pink flowers, creating a color contrast that's genuinely beautiful.
 
-P.J.M. grows 3-6 feet tall in a compact, rounded form. It handles more sun than most rhododendrons — it actually performs well in full sun in zones 4-6, which is unusual for the genus. It's also more tolerant of less-than-perfect soil conditions, though it still needs acidic soil to thrive long-term.
+P.J.M. grows 3-6 feet tall in a compact, rounded form. It handles more sun than most rhododendrons. It actually performs well in full sun in zones 4-6, which is unusual for the genus. It's also more tolerant of less-than-perfect soil conditions, though it still needs acidic soil to thrive long-term.
 
 Pricing runs $25-$55 for a 1-gallon plant.
 
-**What to know before buying:** P.J.M. adapts to conditions that would stress other rhododendrons, but it's not bulletproof. In zones 7-8, it can struggle with summer heat and humidity — the same conditions that Encore Azaleas handle easily. P.J.M. is a cold-climate specialist. If you're in zone 7+, you have better options.
+**What to know before buying:** P.J.M. adapts to conditions that would stress other rhododendrons, but it's not bulletproof. In zones 7-8, it can struggle with summer heat and humidity, the same conditions that Encore Azaleas handle easily. P.J.M. is a cold-climate specialist. If you're in zone 7+, you have better options.
 
 → [Compare P.J.M. Rhododendron prices](/plants/pjm-rhododendron)
 
 ## Delaware Valley White Azalea
 
-Delaware Valley White is the standard-issue white azalea that appears in foundation plantings across the eastern United States — the one planted in rows of five or ten along the front of houses, under windows, and along walkways. It does this job extremely well: solid white flowers in mid-spring, evergreen foliage year-round, compact 3-4 foot size that doesn't outgrow its space, and minimal maintenance requirements.
+Delaware Valley White is the standard-issue white azalea that appears in foundation plantings across the eastern United States, the one planted in rows of five or ten along the front of houses, under windows, and along walkways. It does this job extremely well: solid white flowers in mid-spring, evergreen foliage year-round, compact 3-4 foot size that doesn't outgrow its space, and minimal maintenance requirements.
 
 It's not flashy. It's not a rebloomer. It won't generate Instagram posts. But it's consistently attractive, reliably hardy (zones 5-8), and among the most affordable azalea options available. When you need 10 azaleas for a foundation planting and don't want to spend $50 each on Encore varieties, Delaware Valley White at $18-$25 per plant saves $200-$250 on a 10-plant purchase.
 
@@ -80,25 +80,25 @@ Pricing ranges from $18-$40 for a 1-gallon plant.
 
 ## Nova Zembla Rhododendron
 
-Nova Zembla is the answer to a specific question: "I want a red-flowered rhododendron and I live somewhere cold." Deep red flower trusses in late spring, evergreen foliage, 5-8 feet tall, and hardy to zone 4. For cold-climate gardeners who want a large, dramatic red-flowering shrub, the options are slim — and Nova Zembla is the best of them.
+Nova Zembla is the answer to a specific question: "I want a red-flowered rhododendron and I live somewhere cold." Deep red flower trusses in late spring, evergreen foliage, 5-8 feet tall, and hardy to zone 4. For cold-climate gardeners who want a large, dramatic red-flowering shrub, the options are slim, and Nova Zembla is the best of them.
 
-The flowers are a true, deep red — not pinkish-red, not faded red, but saturated red that photographs as well as it looks in person. Each flower truss is a cluster of 10-15 individual flowers, and a mature Nova Zembla in full bloom is covered with them. Against the dark, leathery evergreen foliage, the effect is striking.
+The flowers are a true, deep red, not pinkish-red, not faded red, but saturated red that photographs as well as it looks in person. Each flower truss is a cluster of 10-15 individual flowers, and a mature Nova Zembla in full bloom is covered with them. Against the dark, leathery evergreen foliage, the effect is striking.
 
 Pricing runs $30-$60 for a 1-gallon plant.
 
-**What to know before buying:** Nova Zembla wants well-drained, acidic soil and protection from harsh winter wind. Winter wind desiccation — where cold, dry wind pulls moisture from the evergreen leaves faster than frozen roots can replace it — is the most common cause of winter damage to rhododendrons. Plant Nova Zembla where it has some wind protection from a building, fence, or evergreen screen. Morning sun with afternoon shade is ideal.
+**What to know before buying:** Nova Zembla wants well-drained, acidic soil and protection from harsh winter wind. Winter wind desiccation, where cold, dry wind pulls moisture from the evergreen leaves faster than frozen roots can replace it, is the most common cause of winter damage to rhododendrons. Plant Nova Zembla where it has some wind protection from a building, fence, or evergreen screen. Morning sun with afternoon shade is ideal.
 
 → [Compare Nova Zembla Rhododendron prices](/plants/nova-zembla-rhododendron)
 
 ## Gibraltar Azalea (Deciduous)
 
-Every other azalea on this list is evergreen. Gibraltar is the exception — it drops its leaves in fall and stands bare through winter. What it gives up in winter foliage, it gains in spring flower impact. Gibraltar produces flame-orange ruffled blooms that are more vivid, more saturated, and more visually arresting than anything an evergreen azalea produces. The flowers appear before the leaves emerge, so for 2-3 weeks in mid-spring, you have a sculpture of bare branches covered in intense orange flowers. The effect is impossible to ignore.
+Every other azalea on this list is evergreen. Gibraltar is the exception. It drops its leaves in fall and stands bare through winter. What it gives up in winter foliage, it gains in spring flower impact. Gibraltar produces flame-orange ruffled blooms that are more vivid, more saturated, and more visually arresting than anything an evergreen azalea produces. The flowers appear before the leaves emerge, so for 2-3 weeks in mid-spring, you have a sculpture of bare branches covered in intense orange flowers. The effect is impossible to ignore.
 
 Deciduous azaleas are also generally more cold-hardy than evergreen types. Gibraltar is reliable to zone 4, which makes it an option for northern gardeners who can't grow Encore Azaleas or other evergreen varieties. It reaches 4-6 feet tall and wide.
 
 Pricing ranges from $25-$50.
 
-**What to know before buying:** Many deciduous azalea species are also fragrant — a trait that evergreen azaleas largely lack. Gibraltar itself has light fragrance. If you want stronger fragrance, look for native azalea species like sweet azalea (*Rhododendron viscosum*) or flame azalea (*R. calendulaceum*), which produce intensely fragrant flowers. These are available from specialty native plant nurseries and are worth seeking out if fragrance matters to you.
+**What to know before buying:** Many deciduous azalea species are also fragrant, a trait that evergreen azaleas largely lack. Gibraltar itself has light fragrance. If you want stronger fragrance, look for native azalea species like sweet azalea (*Rhododendron viscosum*) or flame azalea (*R. calendulaceum*), which produce intensely fragrant flowers. These are available from specialty native plant nurseries and are worth seeking out if fragrance matters to you.
 
 → [Compare Gibraltar Azalea prices](/plants/gibraltar-azalea)
 
@@ -106,7 +106,7 @@ Pricing ranges from $25-$50.
 
 ## Azaleas vs. Rhododendrons: What's the Difference?
 
-Botanically, all azaleas are rhododendrons — they're in the genus *Rhododendron*. But nurseries, garden centers, and gardeners treat them as separate categories, and the practical differences matter:
+Botanically, all azaleas are rhododendrons. They're in the genus *Rhododendron*. But nurseries, garden centers, and gardeners treat them as separate categories, and the practical differences matter:
 
 **Azaleas** are smaller (3-6 feet), have smaller leaves, and include both evergreen and deciduous species. They work in foundation plantings, borders, and mass plantings where you want repetition at a manageable scale. They're the workhorses of shade garden design.
 
@@ -116,19 +116,19 @@ For borders and foundations, azaleas are usually the better choice. For a statem
 
 ## A Pest to Know: Azalea Lacebug
 
-Azalea lacebug is the most common insect pest on azaleas, particularly in the southeastern U.S. and in plantings that get too much sun. Damage appears as stippled, bleached, or silvery-looking foliage — the leaves lose their deep green color and look washed out. Flip the leaf over and you'll see small (1/8 inch), flat, lacy-winged insects and their dark droppings on the underside.
+Azalea lacebug is the most common insect pest on azaleas, particularly in the southeastern U.S. and in plantings that get too much sun. Damage appears as stippled, bleached, or silvery-looking foliage, the leaves lose their deep green color and look washed out. Flip the leaf over and you'll see small (1/8 inch), flat, lacy-winged insects and their dark droppings on the underside.
 
-Lacebug damage is cosmetic rather than lethal — it won't kill the plant — but heavy infestations make the foliage look terrible and weaken the plant over time. The best defense is proper siting: azaleas in afternoon shade experience less lacebug pressure than azaleas in full sun. The shade reduces leaf temperature, which makes the foliage less attractive to lacebugs.
+Lacebug damage is cosmetic rather than lethal (it won't kill the plant) but heavy infestations make the foliage look terrible and weaken the plant over time. The best defense is proper siting: azaleas in afternoon shade experience less lacebug pressure than azaleas in full sun. The shade reduces leaf temperature, which makes the foliage less attractive to lacebugs.
 
 If you see damage, horticultural oil or insecticidal soap applied to the undersides of affected leaves in spring controls lacebug effectively without harsh chemicals. One or two applications usually resolves the problem for the season.
 
 ## How to Save Money
 
-- **Buy small plants.** Azaleas and rhododendrons grow more slowly than hydrangeas, so the patience required is longer — a quart-size azalea takes 2-3 years to reach the size of a gallon. But the savings are significant when buying multiples. Ten quart-size Delaware Valley White azaleas at $12 each versus ten 1-gallon plants at $28 each saves $160 — the cost of 6-7 additional plants.
+- **Buy small plants.** Azaleas and rhododendrons grow more slowly than hydrangeas, so the patience required is longer, a quart-size azalea takes 2-3 years to reach the size of a gallon. But the savings are significant when buying multiples. Ten quart-size Delaware Valley White azaleas at $12 each versus ten 1-gallon plants at $28 each saves $160, the cost of 6-7 additional plants.
 
 - **Compare prices on Encore varieties.** These carry the highest per-plant cost, so the dollar savings from comparison shopping are proportionally largest. A $10 savings per plant across a 5-plant Encore purchase is $50.
 
-- **Consider native azaleas.** Native deciduous azaleas — flame azalea (*R. calendulaceum*), pinxterbloom (*R. periclymenoides*), sweet azalea (*R. viscosum*) — are available from specialty native plant nurseries at competitive prices. They're fragrant (Encore Azaleas are not), they support local pollinator species, and they're adapted to your regional conditions without the pampered care that branded cultivars sometimes need. The native plant movement is growing for good reason, and native azaleas are one of the best entry points.
+- **Consider native azaleas.** Native deciduous azaleas, flame azalea (*R. calendulaceum*), pinxterbloom (*R. periclymenoides*), sweet azalea (*R. viscosum*), are available from specialty native plant nurseries at competitive prices. They're fragrant (Encore Azaleas are not), they support local pollinator species, and they're adapted to your regional conditions without the pampered care that branded cultivars sometimes need. The native plant movement is growing for good reason, and native azaleas are one of the best entry points.
 
 - **Buy in fall.** Azaleas and rhododendrons establish well when planted in early fall. September plantings often get 15-25% discounts as nurseries clear end-of-season inventory.
 
@@ -136,15 +136,15 @@ If you see damage, horticultural oil or insecticidal soap applied to the undersi
 
 ## Pruning: When, Why, and How Much
 
-Timing is everything with azalea and rhododendron pruning, and getting it wrong costs you a year of flowers. Both plants set their flower buds for next year during summer — on the new growth that develops after the current season's flowers finish. Prune after bud set and you're cutting off next year's blooms.
+Timing is everything with azalea and rhododendron pruning, and getting it wrong costs you a year of flowers. Both plants set their flower buds for next year during summer, on the new growth that develops after the current season's flowers finish. Prune after bud set and you're cutting off next year's blooms.
 
-**The rule:** Prune immediately after flowering — within 2-4 weeks of bloom. That's late April or May for most spring-blooming azaleas. You have a window of roughly 6-8 weeks between when the flowers fade and when the plant sets next year's buds. Prune in that window and you get a full year of regrowth before the following spring. Prune in August, September, or fall and you've cut off everything that would have bloomed.
+**The rule:** Prune immediately after flowering, within 2-4 weeks of bloom. That's late April or May for most spring-blooming azaleas. You have a window of roughly 6-8 weeks between when the flowers fade and when the plant sets next year's buds. Prune in that window and you get a full year of regrowth before the following spring. Prune in August, September, or fall and you've cut off everything that would have bloomed.
 
 **For Encore Azaleas**, the timing is more nuanced because they bloom in multiple flushes. Light shaping can be done after the spring flush (May-June). Avoid heavy pruning entirely because any major cuts will interrupt either the summer or fall bloom cycle.
 
-**How much to prune:** Less than you think. Azaleas and rhododendrons are not shrubs that need aggressive annual cutting. The goal is shaping, not reduction. Remove dead wood, crossing branches, and stems that are disrupting the plant's natural form. Never remove more than 1/3 of the plant in a single season. Hard pruning (cutting back to stubs) produces a temporary mess of weak, upright shoots and no flowers for 1-2 years — use it only on severely overgrown plants that need a complete reset.
+**How much to prune:** Less than you think. Azaleas and rhododendrons are not shrubs that need aggressive annual cutting. The goal is shaping, not reduction. Remove dead wood, crossing branches, and stems that are disrupting the plant's natural form. Never remove more than 1/3 of the plant in a single season. Hard pruning (cutting back to stubs) produces a temporary mess of weak, upright shoots and no flowers for 1-2 years, use it only on severely overgrown plants that need a complete reset.
 
-**Deadheading rhododendrons:** After a rhododendron blooms, the spent flower trusses can be snapped off by hand — just pinch them cleanly at the base, taking care not to damage the new growth buds that are already forming at the same spot. This deadheading redirects energy from seed production into new vegetative growth, producing a more floriferous plant the following year. It's not strictly necessary, but on small plants it makes a visible difference.
+**Deadheading rhododendrons:** After a rhododendron blooms, the spent flower trusses can be snapped off by hand, just pinch them cleanly at the base, taking care not to damage the new growth buds that are already forming at the same spot. This deadheading redirects energy from seed production into new vegetative growth, producing a more floriferous plant the following year. It's not strictly necessary, but on small plants it makes a visible difference.
 
 ---
 
@@ -152,7 +152,7 @@ Timing is everything with azalea and rhododendron pruning, and getting it wrong 
 
 **Yellow leaves with green veins (interveinal chlorosis):** Classic iron deficiency caused by high soil pH. The plant can't absorb iron from alkaline soil. Test your pH immediately. Short-term: chelated iron spray gives the foliage a quick boost. Long-term: lower the pH with elemental sulfur and add acidic mulch (pine bark, pine straw).
 
-**Yellow leaves falling off in spring:** This is normal. Azaleas are technically evergreen, but they do drop their oldest leaves (usually 2-3 year old inner foliage) in spring as new growth pushes out. A little yellowing and leaf drop at the center of the plant in April or May is not a sign of disease or stress — it's the plant's natural renewal cycle. If the yellowing is on the outer, newer growth, that's a different problem (likely pH or pest related).
+**Yellow leaves falling off in spring:** This is normal. Azaleas are technically evergreen, but they do drop their oldest leaves (usually 2-3 year old inner foliage) in spring as new growth pushes out. A little yellowing and leaf drop at the center of the plant in April or May is not a sign of disease or stress. It's the plant's natural renewal cycle. If the yellowing is on the outer, newer growth, that's a different problem (likely pH or pest related).
 
 **No flowers despite healthy foliage:** Most likely cause is pruning at the wrong time. If someone pruned the plant in late summer or fall, next year's buds were removed. Second cause: a late frost that killed the buds after they'd started to swell. Check whether the plant was pruned at the wrong time, and in future years protect buds in spring frost events with a temporary frost cloth.
 
@@ -167,21 +167,21 @@ Timing is everything with azalea and rhododendron pruning, and getting it wrong 
 ## Frequently Asked Questions
 
 **How fast do azaleas grow?**
-Most evergreen azaleas grow 4-6 inches per year under good conditions. Deciduous azaleas are slightly faster — 8-12 inches per year in fertile soil. Don't expect instant impact. A 1-gallon azalea planted this spring will be meaningfully larger by fall but won't reach mature size for 3-5 years. If you want a full look now, buy 3-gallon specimens and accept the higher cost.
+Most evergreen azaleas grow 4-6 inches per year under good conditions. Deciduous azaleas are slightly faster, 8-12 inches per year in fertile soil. Don't expect instant impact. A 1-gallon azalea planted this spring will be meaningfully larger by fall but won't reach mature size for 3-5 years. If you want a full look now, buy 3-gallon specimens and accept the higher cost.
 
 **Can azaleas grow in full sun?**
-Most evergreen azaleas prefer partial shade — morning sun with afternoon shade is the textbook recommendation. In zones 7-9, afternoon shade is almost mandatory to prevent leaf scorch and stress. In zones 5-6 where summer temperatures are cooler, azaleas handle more sun, but they still prefer dappled light. Deciduous azaleas (like Gibraltar and native species) are somewhat more sun-tolerant than evergreen types. P.J.M. Rhododendron is the most sun-tolerant species on this list, handling full sun in cold climates without issue.
+Most evergreen azaleas prefer partial shade, morning sun with afternoon shade is the textbook recommendation. In zones 7-9, afternoon shade is almost mandatory to prevent leaf scorch and stress. In zones 5-6 where summer temperatures are cooler, azaleas handle more sun, but they still prefer dappled light. Deciduous azaleas (like Gibraltar and native species) are somewhat more sun-tolerant than evergreen types. P.J.M. Rhododendron is the most sun-tolerant species on this list, handling full sun in cold climates without issue.
 
 **What's the difference between Encore Azaleas and regular azaleas?**
-Regular azaleas bloom once in spring — typically a 2-3 week display in April or May. Encore Azaleas bloom three times: spring, summer, and fall. The spring display is similar in intensity to traditional azaleas. The summer and fall rebloom is lighter but real and consistent. The trade-off is price — Encore Azaleas cost $5-$15 more per plant than comparable non-reblooming varieties, and they require the same acidic soil and partial shade that all azaleas need.
+Regular azaleas bloom once in spring, typically a 2-3 week display in April or May. Encore Azaleas bloom three times: spring, summer, and fall. The spring display is similar in intensity to traditional azaleas. The summer and fall rebloom is lighter but real and consistent. The trade-off is price. Encore Azaleas cost $5-$15 more per plant than comparable non-reblooming varieties, and they require the same acidic soil and partial shade that all azaleas need.
 
 **Do I need to fertilize azaleas?**
-Azaleas are light feeders. One application of an acidic slow-release fertilizer (formulated for azaleas, rhododendrons, and hollies) in early spring is typically sufficient. Don't over-fertilize — excess nitrogen produces lush foliage at the expense of flowers. Never fertilize after mid-July; late fertilization stimulates new growth that won't harden off before winter. And skip the general-purpose balanced fertilizers — the high phosphorus and non-acidic formulas can raise soil pH over time, working against you.
+Azaleas are light feeders. One application of an acidic slow-release fertilizer (formulated for azaleas, rhododendrons, and hollies) in early spring is typically sufficient. Don't over-fertilize, excess nitrogen produces lush foliage at the expense of flowers. Never fertilize after mid-July; late fertilization stimulates new growth that won't harden off before winter. And skip the general-purpose balanced fertilizers, the high phosphorus and non-acidic formulas can raise soil pH over time, working against you.
 
 **Can rhododendrons survive zone 5 winters?**
-Some can. P.J.M. Rhododendron is the cold-hardy standout — reliably zone 4. Nova Zembla is rated to zone 4-5. The standard-issue catawba hybrids that appear in many nurseries (Roseum Elegans, Cunningham's White) are zone 5-6. Most large-leafed tropical-looking rhododendrons that you see in Pacific Northwest and British Columbia gardens are zone 7-8 only and won't survive a zone 5 winter. When buying for cold climates, confirm the zone rating for the specific cultivar, not just the species.
+Some can. P.J.M. Rhododendron is the cold-hardy standout, reliably zone 4. Nova Zembla is rated to zone 4-5. The standard-issue catawba hybrids that appear in many nurseries (Roseum Elegans, Cunningham's White) are zone 5-6. Most large-leafed tropical-looking rhododendrons that you see in Pacific Northwest and British Columbia gardens are zone 7-8 only and won't survive a zone 5 winter. When buying for cold climates, confirm the zone rating for the specific cultivar, not just the species.
 
 **How far apart should I plant azaleas?**
-Space them based on mature width, not current size. Most compact azaleas (Delaware Valley White, most Encore varieties) mature at 3-5 feet wide. Plant them 3-4 feet apart for eventual coverage, or 4-5 feet apart if you want definition between individual plants. Resist the urge to pack them in for immediate impact — overcrowded azaleas have poor air circulation, higher disease pressure, and compete for moisture and nutrients. The bed will look sparse for 2-3 years and then fill in perfectly.
+Space them based on mature width, not current size. Most compact azaleas (Delaware Valley White, most Encore varieties) mature at 3-5 feet wide. Plant them 3-4 feet apart for eventual coverage, or 4-5 feet apart if you want definition between individual plants. Resist the urge to pack them in for immediate impact, overcrowded azaleas have poor air circulation, higher disease pressure, and compete for moisture and nutrients. The bed will look sparse for 2-3 years and then fill in perfectly.
 
 → [Browse all azalea and rhododendron price comparisons](/category/azaleas-rhododendrons)

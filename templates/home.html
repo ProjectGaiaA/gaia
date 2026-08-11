@@ -1,20 +1,29 @@
 {% extends "base.html" %}
 
 {% block title %}{{ page_title }}{% endblock %}
-{% block description %}Find the best deals on trees, shrubs, and perennials. We compare prices across Nature Hills, Fast Growing Trees, Stark Bros, and more — checked daily.{% endblock %}
+{# The nursery names that used to be hardcoded in this meta description are
+   rendered from data/retailers.json for the same reason as everywhere else:
+   a name typed into prose keeps being advertised after the site stops
+   tracking that nursery. #}
+{% block description %}Find the best deals on trees, shrubs, and perennials. We compare prices across {{ retailer_count }} online nurseries, checked daily.{% endblock %}
 
 {% block schema %}
+{# A SearchAction advertising /search?q= used to sit in this block. This site
+   has never had a search endpoint, so the target 404s. Schema.org markup is a
+   machine-readable claim about the page and has to be as true as the visible
+   copy, so it is removed rather than left pointing at nothing. Put it back on
+   the day a real search page exists. #}
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "PlantPriceTracker",
-    "url": "https://www.plantpricetracker.com",
+    "name": "{{ site_name }}",
+    "url": "{{ base_url }}",
     "description": "Compare plant prices across {{ retailer_count }} online nurseries. Find the best deals on trees, shrubs, and perennials.",
-    "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://www.plantpricetracker.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ site_name }}",
+        "url": "{{ base_url }}"
     }
 }
 </script>
@@ -24,7 +33,7 @@
 <!-- Hero Section -->
 <section class="hero">
     <h1>Compare Plant Prices Across Online Nurseries</h1>
-    <p class="hero-sub">We track prices on trees, shrubs, and perennials at {{ retailer_count }}+ retailers so you don't overpay. Updated daily.</p>
+    <p class="hero-sub">We track prices on trees, shrubs, and perennials at {{ retailer_count }} retailers so you don't overpay. Updated daily.</p>
 
     {% if hero_example %}
     <div class="hero-proof">
@@ -93,7 +102,7 @@
 <section class="heatmap-cta">
     <div class="heatmap-cta-inner">
         <h2>&#x1F4C5; When Should You Buy?</h2>
-        <p>Our Buy &amp; Plant Timing Heat Map overlays price seasonality with zone-specific planting windows — so you can see the exact months when price is low <em>and</em> conditions are right.</p>
+        <p>Our Buy &amp; Plant Timing Heat Map overlays price seasonality with zone-specific planting windows, so you can see the exact months when price is low <em>and</em> conditions are right.</p>
         <a href="/heat-map.html" class="btn-cta">View the Heat Map &rarr;</a>
     </div>
 </section>
@@ -105,7 +114,7 @@
         <div class="step">
             <span class="step-num">1</span>
             <h3>We Check Prices Daily</h3>
-            <p>Our scrapers check {{ retailer_count }}+ online nurseries every day and record prices for {{ plant_count }}+ plants.</p>
+            <p>Our scrapers check {{ retailer_count }} online nurseries every day and record prices for {{ plant_count }} plants.</p>
         </div>
         <div class="step">
             <span class="step-num">2</span>

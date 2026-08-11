@@ -10,7 +10,7 @@ The site is deployed and functional at **plantpricetracker.com** (Vercel + Cloud
 
 ### Data
 - **77 plants** across 13 categories (hydrangeas, japanese-maples, fruit-trees, roses, blueberries, privacy-trees, flowering-trees, azaleas-rhododendrons, perennials, houseplants, grasses, groundcovers, shade-trees)
-- **1,200 prices** across 8 retailers (verified 2026-04-06)
+- **1,200 prices** across 8 retailers (count verified 2026-04-06; prices are re-scraped twice daily, see data/last_manifest.json for the current run)
 - **9 plants at 5+ retailers**, 35 at 3+, 5 at zero coverage
 - 5 plants with zero price data: echinacea-powwow-wild-berry, golden-pothos, white-bird-of-paradise, rubber-plant-burgundy, vinca-minor
 - Top retailers by price count: PlantingTree (488), Nature Hills (310), Fast Growing Trees (216), Spring Hill (102), Stark Bros (33), Brighter Blooms (27), Proven Winners Direct (16), Great Garden Plants (8)
