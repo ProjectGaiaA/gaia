@@ -104,8 +104,41 @@ h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
     .nav-links { gap: 0.8rem; }
     .nav-links a { font-size: 0.82rem; }
 }
+/* Below 768px the nav used to be `display: none` with NOTHING in its place:
+   no hamburger, no dropdown, no alternative. On a phone the only working link
+   in the header was the logo, so categories and guides were unreachable from
+   every page. Most search traffic to a "compare plant prices" site is mobile,
+   so this hid the whole site from most of its visitors.
+
+   Fixed without JavaScript or extra markup: the nav becomes a single
+   horizontally scrollable row. Nothing to open, nothing to discover, and it
+   degrades safely if styles fail to load (the links simply wrap). */
 @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .nav-links {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 1.1rem;
+        width: 100%;
+        margin-top: 0.6rem;
+        padding-bottom: 0.35rem;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;          /* Firefox */
+        scroll-snap-type: x proximity;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }   /* Safari/Chrome */
+    .nav-links li { flex: 0 0 auto; scroll-snap-align: start; }
+    .nav-links a {
+        font-size: 0.88rem;
+        /* min-height rather than padding alone: padding gave a 33.7px target,
+           short of the 44px touch floor in the WCAG target-size guidance.
+           Measured at 375px after the change. */
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        white-space: nowrap;
+    }
+    .nav-container { flex-wrap: wrap; }
 }
 
 /* --- Breadcrumb --- */
