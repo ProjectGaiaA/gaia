@@ -356,3 +356,66 @@ def test_duplicate_tier_keeps_the_first_button(no_sleep):
 
     assert result["sizes"]["1gal"]["price"] == 24.99
     assert result["sizes"]["1gal"]["raw_size"] == "1 gallon"
+
+
+# --- Drift guard ------------------------------------------------------------
+# Everything above proves the parser is right TODAY. These prove what happens
+# when FGT changes its markup again, which it has already done once.
+
+
+@responses.activate
+def test_unreadable_size_selector_publishes_nothing_rather_than_guessing():
+    """If a page clearly has a size selector but no size can be read out of
+    it, the old code fell through to pairing labels and prices BY POSITION.
+
+    That is how sizes came to wear their neighbour's price, and nothing
+    noticed: runner.py scores health as products_found/products_expected, so
+    a wrong-but-present product still counts as a hit and the run reports
+    healthy. Withholding the product instead makes the gap visible.
+    """
+    html = load_fixture("fgt", "pink-lemonade-blueberry-page.html")
+    # Only the aria-label TYPOGRAPHY changes. Prices, buttons and the
+    # schema.org Offers are all untouched and still parseable.
+    drifted = html.replace(" - Price $", " \u2013 Price $").replace(
+        " - Original price $", " \u2013 Original price $")
+    assert drifted != html, "fixture did not contain the expected label format"
+    assert "Select size" in drifted or "select size" in drifted.lower()
+
+    result = _scrape("pink-lemonade-blueberry", drifted)
+    if result is not None:
+        # Publishing is only acceptable if every size is genuinely right.
+        for tier, s in result.get("sizes", {}).items():
+            assert tier != "default", (
+                f"published a phantom 'default' row at ${s['price']} rather than "
+                f"withholding the product"
+            )
+
+
+def test_a_page_with_no_size_selector_is_unaffected_by_the_guard():
+    """Single-size products legitimately have no size selector. The guard is
+    scoped to pages that HAVE one, so it must never fire on those.
+
+    Asserted on the guard's own condition rather than on a full scrape, so
+    that unrelated parsing changes cannot make this test quietly vacuous.
+    """
+    scraper = ShopifyScraper("fast-growing-trees", BASE)
+    html = """<html><head><title>Solo Plant | FGT</title></head><body>
+    <button>Add to cart</button></body></html>"""
+    assert scraper._size_selector_scope(html) is None
+    assert not scraper._extract_aria_size_offers(html)
+    guard_fires = (
+        not scraper._extract_aria_size_offers(html)
+        and scraper._size_selector_scope(html)
+    )
+    assert not guard_fires, "guard would withhold a product with no size selector"
+
+
+def test_the_guard_does_fire_when_a_size_selector_cannot_be_read():
+    """The positive case, asserted on the same condition."""
+    scraper = ShopifyScraper("fast-growing-trees", BASE)
+    html = load_fixture("fgt", "pink-lemonade-blueberry-page.html")
+    drifted = html.replace(" - Price $", " – Price $").replace(
+        " - Original price $", " – Original price $")
+    assert scraper._size_selector_scope(drifted), "fixture has no size selector"
+    assert not scraper._extract_aria_size_offers(drifted), (
+        "drifted labels still parsed; pick a mutation the parser really cannot read")

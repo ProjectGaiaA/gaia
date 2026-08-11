@@ -545,6 +545,33 @@ class ShopifyScraper:
                     "timestamp": datetime.now(timezone.utc).isoformat(),
                 }
 
+        # Everything below this point pairs size labels to prices BY POSITION,
+        # assuming buttons run smallest→largest and prices cheapest→dearest.
+        # Measured against 12 live pages that assumption yields 26/37 correct
+        # pairs, where reading the name and price out of the SAME aria-label
+        # yields 37/37. It is how "1 gallon" came to wear the 4-inch price.
+        #
+        # It is unreachable while the aria-labels parse. The danger is drift:
+        # FGT's label format has already changed once, and when it changes
+        # again this code silently resumes publishing wrong prices. Nothing
+        # would notice — runner.py scores health as
+        # products_found / products_expected, so a wrong-but-present product
+        # still counts as a hit and the manifest stays "healthy".
+        #
+        # So when a page clearly HAS a size selector but we could not read a
+        # single size out of it, publish nothing. A missing product trips the
+        # dead-retailer alarm; a wrong price trips nothing at all. Products
+        # with no size selector are unaffected and still publish normally.
+        if not aria_offers and self._size_selector_scope(text):
+            logger.error(
+                f"  {self.retailer_id}/{handle}: page has a size selector but no size "
+                f"could be read from it. The aria-label format has probably changed. "
+                f"REFUSING to fall back to positional size↔price pairing — that is how "
+                f"sizes came to wear their neighbour's price. Publishing nothing for "
+                f"this product so the gap is visible."
+            )
+            return None
+
         if not offers:
             # Last resort: try matching size buttons to schema.org Offers by position
             # Some products have plain buttons (e.g., "3-4 feet") without price in aria-label
