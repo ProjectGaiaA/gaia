@@ -116,6 +116,7 @@ jobs:
 
       # exit 0 = clean · 1 = systemic, BLOCK · 3 = rows quarantined, publish + alarm
       - name: Data sanity gate
+        id: sanity
         run: |
           set +e
           python scripts/check_data_sanity.py
@@ -135,6 +136,7 @@ jobs:
       # annotation because Actions logs require sign-in even on public repos —
       # the annotations API does not.
       - name: Run tests
+        id: tests
         run: |
           set +e
           pytest -q > pytest_out.txt 2>&1
@@ -168,6 +170,7 @@ jobs:
           fi
 
       - name: Build site
+        id: build
         run: python -X utf8 build.py
 
       - name: Verify internal links
@@ -204,12 +207,36 @@ jobs:
           scrape_promos(retailers)
           " || echo "WARNING: Promo scraping failed -- skipping"
 
+      # Must run BEFORE the commit (or the files it writes never get committed
+      # and never reach the site) and with `if: always()` (or a blocked run
+      # leaves the previous file in place still claiming health). It records
+      # gate outcomes only — never whether publishing succeeded, which has not
+      # happened yet. See scripts/write_status.py for why that distinction is
+      # load-bearing.
+      - name: Write health status
+        if: always()
+        run: |
+          # A skipped step is reported as "skipped", never silently as "pass".
+          # Collapsing skipped into pass is how a blocked run comes out looking
+          # healthy.
+          TESTS="${{ steps.tests.outcome }}"
+          if [ "$TESTS" = "success" ] && [ "${TESTS_FAILED:-0}" = "1" ]; then
+            TESTS="fail"   # the step swallows pytest's exit code by design
+          fi
+          python scripts/write_status.py \
+            --gate "${{ steps.sanity.outcome }}" \
+            --tests "$TESTS" \
+            --build "${{ steps.build.outcome }}" \
+            --quarantined "${QUARANTINED:-0}"
+
       - name: Commit updated price data
         id: commit
         run: |
           git config user.name "PlantPriceTracker Bot"
           git config user.email "bot@plantpricetracker.com"
           git add data/prices/ data/last_manifest.json data/promos.json data/handle_maps.json site/
+          # status.json is the triage record; site/health.json rides along in site/
+          if [ -f data/status.json ]; then git add data/status.json; fi
           # recovery.json only exists after a recovery pass has run
           if [ -f data/recovery.json ]; then git add data/recovery.json; fi
           git diff --staged --quiet || git commit -m "Daily price update $(date +%Y-%m-%d_%H:%M)"
@@ -227,6 +254,33 @@ jobs:
           done
           echo "::error::Could not push after 3 attempts — this cycle's prices were not published."
           exit 1
+
+      # The only signal that survives this GitHub account going quiet — every
+      # other check here is an Action in this repo, so a suspension, a billing
+      # lapse, or the 60-day inactivity rule silences all of them at once.
+      #
+      # Gated on the COMMIT succeeding, not on the job finishing: pinging when
+      # the job merely ran would report health during exactly the blocked-publish
+      # cycles this is meant to catch. No ping -> healthchecks.io emails from
+      # outside GitHub entirely.
+      - name: Ping dead-man's switch
+        if: always() && steps.commit.outcome == 'success'
+        env:
+          HEALTHCHECK_URL: ${{ secrets.HEALTHCHECK_URL }}
+        run: |
+          if [ -z "$HEALTHCHECK_URL" ]; then
+            # Loud, because a silently-absent secret is how the predecessor
+            # email workflow reported success 18 times while doing nothing.
+            echo "::warning::HEALTHCHECK_URL is not set — the EXTERNAL dead-man's switch is INACTIVE. Only in-repo checks are running."
+            exit 0
+          fi
+          if curl -fsS -m 10 --retry 3 --retry-delay 5 "$HEALTHCHECK_URL" -o /dev/null; then
+            echo "Dead-man's switch pinged."
+          else
+            # Do not fail the run: publishing already succeeded, and a monitoring
+            # outage must not be reported as a publishing outage.
+            echo "::warning::Publish succeeded but the dead-man's-switch ping failed — expect a false alarm email from healthchecks.io."
+          fi
 
       # Single alarm point. Runs last and always, so publishing has already
       # happened (or been deliberately blocked) before anything turns red.

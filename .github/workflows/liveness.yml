@@ -1,0 +1,52 @@
+name: Liveness
+
+# Checks the LIVE site from outside. Every other gate inspects this repo's own
+# working copy, which stays healthy while the deployed site rots — the Vercel
+# deploy failed 44 times over four months and nothing in here noticed.
+#
+# This is the SECOND line of defence, not the first. It is an Action in the same
+# repo under the same account, so an account suspension, a billing lapse, or the
+# 60-day inactivity rule kills it and the scrape together, silently. The
+# external dead-man's switch pinged from scrape.yml is the layer that survives
+# that; this one gives faster, more specific diagnosis when the account is fine.
+
+on:
+  schedule:
+    # 14:00 UTC. The 11:00 scrape plus its measured p90 cron delay and ~52min
+    # runtime lands well before this, so a red result on a normal morning is
+    # unambiguous rather than a race with the pipeline still running.
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'Override the URL to check (use to prove the alarm fires)'
+        required: false
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  liveness:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install requests
+        run: pip install "requests==2.32.5"
+
+      - name: Check live site
+        run: |
+          BASE="${{ github.event.inputs.base_url }}"
+          if [ -n "$BASE" ]; then
+            echo "Overriding base URL: $BASE"
+            python scripts/check_liveness.py --base "$BASE"
+          else
+            python scripts/check_liveness.py
+          fi

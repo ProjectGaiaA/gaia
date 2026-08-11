@@ -36,7 +36,7 @@ import json
 import math
 import os
 import sys
-from collections import Counter
+from collections import Counter, defaultdict
 from datetime import datetime, timedelta, timezone
 
 MAX_SANE_PRICE = 5000.0
@@ -44,11 +44,35 @@ RECENT_HOURS = 48
 FRESH_HOURS = 36
 
 # Systemic thresholds
-MAX_PRICE_MOVE_PCT = 60.0       # a single price moving more than this is "drastic"
-MAX_MOVED_FRACTION = 0.30       # if >30% of comparable prices moved drastically
-MAX_COLLAPSE_FRACTION = 0.50    # if >50% of fresh prices are one identical value
+#
+# Calibrated after an attack harness ran real corruptions through the real
+# corpus. At 60%/30% corpus-wide, EVERY realistic silent failure passed clean:
+# a cached page, a one-tier size shift, compare-at prices, a USD->CAD currency
+# change, a followed redirect — and halving every price on the site scored 0%
+# moved. With 7 retailers, one retailer is ~14% of the corpus, so no single
+# retailer could ever trip a corpus-wide fraction no matter how wrong it was.
+MAX_PRICE_MOVE_PCT = 35.0       # a single price moving more than this is "drastic"
+MAX_MOVED_FRACTION = 0.30       # corpus-wide share moving drastically
+MAX_COLLAPSE_FRACTION = 0.50    # >50% of fresh prices are one identical value
 QUARANTINE_ABORT_PCT = 20.0     # quarantining more than this much = systemic
 MIN_SAMPLE_FOR_SYSTEMIC = 25    # don't call it systemic on a tiny sample
+
+# Per-retailer checks — the corpus-wide fraction cannot see a single retailer.
+PER_RETAILER_MOVED_FRACTION = 0.50   # half of ONE retailer's prices moved drastically
+MIN_SAMPLE_PER_RETAILER = 12         # need enough of a retailer to judge it
+
+# Systematic uniform shift: nearly every price at one retailer moving the same
+# direction by a similar amount. Catches compare-at/currency/tax changes at any
+# magnitude, which a per-price threshold cannot. A genuine sale moves a minority
+# of SKUs by varying amounts, so this stays quiet for real promotions.
+# Calibrated against real history: nature-hills genuinely runs sitewide sales
+# where 100% of prices move 25-59% in one direction. At 90%/8% this fired on
+# 52% of real retailer-days; even 100%/50% still catches a real sale day. A
+# systematic shift therefore CANNOT be distinguished from a genuine promotion,
+# so it WARNS (publish + alarm) rather than blocking. Set where it fires on
+# 1 of 50 historical retailer-days.
+SYSTEMATIC_SAME_DIRECTION = 1.00
+SYSTEMATIC_MIN_MOVE_PCT = 35.0
 
 EXIT_OK, EXIT_BLOCK, EXIT_QUARANTINED = 0, 1, 3
 
@@ -194,8 +218,13 @@ def scan(data_dir, now=None, quarantine=False):
 
 
 def systemic_checks(data_dir, stats, fresh_prices, fresh_by_key, problems):
-    """Failures that mean the whole scrape is untrustworthy. Returns a list."""
+    """Classify run-level problems.
+
+    Returns (fatal, warnings, stats_extra). `fatal` blocks the publish;
+    `warnings` publish anyway but turn the job red so a human looks.
+    """
     fatal = []
+    warnings = []
 
     # 1. Quarantining a large share of fresh data is itself a systemic signal.
     if stats["fresh_rows"] + len(problems) >= MIN_SAMPLE_FOR_SYSTEMIC:
@@ -242,6 +271,69 @@ def systemic_checks(data_dir, stats, fresh_prices, fresh_by_key, problems):
                 f"— site redesign or parser regression"
             )
 
+    # 3b. Per-retailer movement. The corpus-wide fraction above is blind to a
+    #     single retailer: with 7 retailers one is ~14% of the corpus, so it
+    #     can never reach a 30% corpus threshold no matter how wrong it is.
+    #     An attack harness proved every realistic single-retailer corruption
+    #     passed clean. Judge each retailer against its own prices.
+    by_retailer = defaultdict(lambda: [0, 0])  # rid -> [compared, moved]
+    shift_ratios = defaultdict(list)  # rid -> [new/old, ...] for changed prices
+    for (plant_id, rid, tier), price in fresh_by_key.items():
+        prev = (prev_prices.get(f"{plant_id}:{rid}") or {}).get(tier)
+        if not isinstance(prev, (int, float)) or prev <= 0:
+            continue
+        by_retailer[rid][0] += 1
+        if abs(price - prev) / prev * 100.0 > MAX_PRICE_MOVE_PCT:
+            by_retailer[rid][1] += 1
+        if price != prev:
+            shift_ratios[rid].append(price / prev)
+
+    for rid, (rcompared, rmoved) in sorted(by_retailer.items()):
+        if rcompared < MIN_SAMPLE_PER_RETAILER:
+            continue
+        frac = rmoved / rcompared
+        if frac > PER_RETAILER_MOVED_FRACTION:
+            fatal.append(
+                f"retailer {rid}: {rmoved}/{rcompared} ({frac:.0%}) of its prices moved "
+                f">{MAX_PRICE_MOVE_PCT}% vs the last manifest — parser regression "
+                f"or site redesign at that retailer"
+            )
+
+    # 3b-ii. Systematic uniform shift. A magnitude threshold alone cannot see
+    #        a parser that switches to the compare-at price, or a currency or
+    #        tax change: each individual move may be modest. But such a change
+    #        moves nearly EVERY price at that retailer in the SAME direction by
+    #        a similar amount, which a genuine sale never does — real sales are
+    #        a minority of SKUs and move by varying amounts.
+    for rid, ratios in sorted(shift_ratios.items()):
+        if len(ratios) < MIN_SAMPLE_PER_RETAILER:
+            continue
+        ups = sum(1 for r in ratios if r > 1.0)
+        downs = sum(1 for r in ratios if r < 1.0)
+        same_dir = max(ups, downs) / len(ratios)
+        ordered = sorted(ratios)
+        median = ordered[len(ordered) // 2]
+        median_move = abs(median - 1.0) * 100.0
+        if same_dir >= SYSTEMATIC_SAME_DIRECTION and median_move >= SYSTEMATIC_MIN_MOVE_PCT:
+            warnings.append(
+                f"retailer {rid}: {same_dir:.0%} of {len(ratios)} prices moved the SAME "
+                f"direction by a median {median_move:.0f}% — either a sitewide sale "
+                f"or a parser reading the wrong price. Verify before trusting."
+            )
+
+    # 3c. Frozen-retailer detection REMOVED after calibration.
+    #
+    #     The idea was to catch a retailer serving a cached page: identical
+    #     prices while everyone else moves. Measured against real history it
+    #     fired 33 times across 13 qualifying days — planting-tree on 100% of
+    #     days, spring-hill 85%, nature-hills 62% — because these retailers
+    #     genuinely hold prices static for weeks. "Frozen" is indistinguishable
+    #     from normal here, so any such check is pure noise.
+    #
+    #     KNOWN GAP: a retailer serving a stale cached page is therefore still
+    #     invisible to this gate. Catching it needs a scraper-level signal
+    #     (HTTP caching headers / ETag), not a data-level one.
+
     # 4. Every active retailer silent. Only meaningful against a real corpus:
     #    on a trivial dataset "no fresh rows" is just a small sample, not an
     #    outage, and firing there would block on legitimate history-only data.
@@ -252,7 +344,8 @@ def systemic_checks(data_dir, stats, fresh_prices, fresh_by_key, problems):
     ):
         fatal.append("zero fresh rows from any retailer this cycle")
 
-    return fatal, {"prices_compared": compared, "prices_moved_drastically": moved}
+    return fatal, warnings, {"prices_compared": compared,
+                             "prices_moved_drastically": moved}
 
 
 def main():
@@ -266,7 +359,7 @@ def main():
     problems, stats, fresh_prices, fresh_by_key = scan(
         args.data_dir, quarantine=not args.report
     )
-    fatal, move_stats = systemic_checks(
+    fatal, warnings, move_stats = systemic_checks(
         args.data_dir, stats, fresh_prices, fresh_by_key, problems
     )
     stats.update(move_stats)
@@ -274,6 +367,7 @@ def main():
     summary = {
         "gate": "data_sanity",
         "systemic_failures": fatal,
+        "warnings": warnings,
         "quarantined_rows": len(problems),
         "quarantined_sample": problems[:25],
         "stats": stats,
@@ -292,7 +386,19 @@ def main():
         )
         return EXIT_BLOCK
 
+    if warnings and not problems:
+        for w in warnings:
+            print(f"::warning::data gate: {w}")
+        print(
+            f"\n{len(warnings)} warning(s); data still publishes, job marked "
+            f"failed so it is not silent.",
+            file=sys.stderr,
+        )
+        return EXIT_QUARANTINED
+
     if problems:
+        for w in warnings:
+            print(f"::warning::data gate: {w}")
         for p in problems[:25]:
             print(f"::warning::quarantined {p['file']}:{p['line']} — {p['reason']}")
         print(

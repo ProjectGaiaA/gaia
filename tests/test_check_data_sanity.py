@@ -45,7 +45,7 @@ def _entry(price=29.99, ts=None, rid="nursery-a", tier="1gal", **info):
 def _verdict(data_dir):
     """Mirror main()'s decision without touching argv."""
     problems, stats, fresh, by_key = scan(data_dir, now=NOW, quarantine=True)
-    fatal, extra = systemic_checks(data_dir, stats, fresh, by_key, problems)
+    fatal, warns, extra = systemic_checks(data_dir, stats, fresh, by_key, problems)
     stats.update(extra)
     if fatal:
         return EXIT_BLOCK, problems, fatal, stats

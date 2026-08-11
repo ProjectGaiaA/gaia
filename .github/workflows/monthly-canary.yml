@@ -1,0 +1,77 @@
+name: Monthly Canary
+
+# Sends one email a month, UNCONDITIONALLY, whether or not anything is wrong.
+#
+# Why unconditional: an alert channel that only fires on problems is untestable
+# by construction. Silence means "nothing is wrong" and "the channel is broken"
+# equally, and you cannot tell which. This repo has already lived that — its
+# predecessor weekly-recovery-email.yml ran 18 times, reported success every
+# time, and sent zero emails, because its trigger file has never existed in the
+# repo. Those SMTP credentials have therefore never once been exercised.
+#
+# Why monthly, not weekly: 52 sends a year is 52 chances for Gmail to reclassify
+# the sender, and it trains the reflex to filter. Twelve predictable sends do
+# not.
+#
+# The subject carries LIVENESS ONLY, plus a sequence number so a skipped month
+# shows as a numeric gap in a threaded inbox. The backlog goes in the body. A
+# subject that says PROBLEMS every month is a subject nobody opens.
+
+on:
+  schedule:
+    # 13:00 UTC on the 1st. After the 11:00 scrape, so the status it reports is
+    # from today rather than yesterday.
+    - cron: '0 13 1 * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  canary:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # Fail loudly and immediately rather than "succeeding" while sending
+      # nothing — the precise failure mode being replaced here.
+      - name: Verify SMTP secrets are present
+        env:
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          MISSING=""
+          [ -z "$SMTP_SERVER" ]   && MISSING="$MISSING SMTP_SERVER"
+          [ -z "$SMTP_USERNAME" ] && MISSING="$MISSING SMTP_USERNAME"
+          [ -z "$SMTP_PASSWORD" ] && MISSING="$MISSING SMTP_PASSWORD"
+          if [ -n "$MISSING" ]; then
+            echo "::error::Canary cannot send — missing repo secrets:$MISSING. The alert channel is DEAD."
+            exit 1
+          fi
+          echo "SMTP secrets present."
+
+      - name: Compose body
+        id: body
+        run: python -X utf8 scripts/canary_body.py
+
+      - name: Send canary
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT || 465 }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "[PPT] canary #${{ steps.body.outputs.seq }} alive ${{ github.run_id }}"
+          to: brandon.william.hall@gmail.com
+          from: ${{ secrets.SMTP_FROM || 'PlantPriceTracker <noreply@plantpricetracker.com>' }}
+          body: file://canary_body.txt
+
+      - name: Confirm
+        run: echo "Canary #${{ steps.body.outputs.seq }} sent. If it is not in the inbox, the channel is broken."
