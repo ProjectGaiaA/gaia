@@ -1,0 +1,24 @@
+{
+  "_comment": [
+    "Per-product affiliate link overrides: plant_id -> retailer_id -> URL.",
+    "",
+    "These replace the outbound buy URL for one specific product at one",
+    "specific retailer. Nothing else in the pipeline is affected: prices,",
+    "ranking, and which retailers appear are all computed from scraped data",
+    "and never consult this file. That separation is deliberate — the moment",
+    "monetization can influence ranking, the comparison is worthless.",
+    "",
+    "Note the affiliate blocks in data/retailers.json are RESEARCH NOTES about",
+    "programs that could be joined, not programs that have been joined. Their",
+    "link_template fields are all empty and build.py has never read them. This",
+    "file holds links that actually exist.",
+    "",
+    "Currently: one link, created during Sovrn Commerce onboarding, which",
+    "requires a live link and a click before it will review the site."
+  ],
+  "overrides": {
+    "ajuga-chocolate-chip": {
+      "fast-growing-trees": "https://sovrn.co/1c61g6j"
+    }
+  }
+}

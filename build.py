@@ -582,6 +582,46 @@ def category_price_range(cat_plants):
     return f"${min(lows):.0f}-${max(highs):.0f}"
 
 
+_AFFILIATE_OVERRIDES = None
+
+
+def load_affiliate_overrides(path=None):
+    """Per-product affiliate links: {plant_id: {retailer_id: url}}.
+
+    Absent or malformed means "no overrides" rather than a build failure: a
+    monetization file must never be able to stop the site publishing.
+    """
+    global _AFFILIATE_OVERRIDES
+    if _AFFILIATE_OVERRIDES is not None and path is None:
+        return _AFFILIATE_OVERRIDES
+    target = path or os.path.join(DATA_DIR, "affiliate_overrides.json")
+    try:
+        with open(target, encoding="utf-8") as f:
+            raw = json.load(f)
+        overrides = raw.get("overrides", {}) if isinstance(raw, dict) else {}
+        if not isinstance(overrides, dict):
+            overrides = {}
+    except (OSError, json.JSONDecodeError, ValueError, AttributeError):
+        overrides = {}
+    if path is None:
+        _AFFILIATE_OVERRIDES = overrides
+    return overrides
+
+
+def affiliate_override(plant_id, retailer_id, overrides=None):
+    """The override URL for this plant+retailer, or None."""
+    table = load_affiliate_overrides() if overrides is None else overrides
+    entry = table.get(plant_id)
+    if not isinstance(entry, dict):
+        return None
+    url = entry.get(retailer_id)
+    # Only absolute http(s) URLs; anything else (javascript:, a relative path,
+    # a non-string) is ignored rather than emitted into an href.
+    if isinstance(url, str) and url.startswith(("http://", "https://")):
+        return url
+    return None
+
+
 def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=None, price_entries=None):
     """Build structured price data for the comparison table template."""
     prices = {}
@@ -688,13 +728,26 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
             if cheapest_size:
                 default_variant = cheapest_size.get("variant_id")
 
+        # An affiliate override replaces the outbound URL only. It is applied
+        # AFTER prices, stock, and ranking are computed from scraped data, and
+        # none of those ever consult it — monetization must not be able to
+        # influence what the comparison says.
+        buy_url = price_data.get("url", retailer.get("url", "#")).split("?variant=")[0]
+        override_url = affiliate_override(plant.get("id"), retailer_id)
+        if override_url:
+            buy_url = override_url
+
         prices[retailer_id] = {
             "retailer_name": retailer["name"],
             "sizes": sizes,
             "in_stock": in_stock,
             "has_affiliate": has_affiliate,
             "has_best_price": False,
-            "buy_url": price_data.get("url", retailer.get("url", "#")).split("?variant=")[0],
+            # Affiliate links are opaque redirects; appending ?variant= to one
+            # corrupts it. Templates and the deals widget check this flag before
+            # adding a variant suffix.
+            "affiliate_override": bool(override_url),
+            "buy_url": buy_url,
             "default_variant_id": default_variant,
             "shipping": retailer.get("shipping"),
             "ships_season": ships_season,
@@ -841,7 +894,7 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
                 continue
             buy_url_base = rdata["buy_url"]
             variant_url = buy_url_base
-            if sdata.get("variant_id"):
+            if sdata.get("variant_id") and not rdata.get("affiliate_override"):
                 variant_url = f"{buy_url_base}?variant={sdata['variant_id']}"
             entry = {
                 "price": sdata["price"],
