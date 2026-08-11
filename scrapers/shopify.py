@@ -37,6 +37,14 @@ from scrapers.recovery import FetchResult
 
 logger = logging.getLogger(__name__)
 
+# schema.org Product/Offer blocks embedded in the product page HTML.
+# sku, price, availability — pack SKUs carry a "-10PACK"-style suffix.
+_SCHEMA_OFFER_RE = re.compile(
+    r'\{"@type":"Offer","sku":"(\d+(?:-\w+)?)".*?'
+    r'"price":"([\d.]+)".*?'
+    r'"availability":"([^"]+)"'
+)
+
 
 class ShopifyScraper:
     """Scrape product data from Shopify-based nursery stores."""
@@ -481,33 +489,48 @@ class ShopifyScraper:
             was_prices[match.group(1)] = float(match.group(2))
 
         # Strategy: Use aria-label prices ALWAYS when they exist and have size names.
-        # They are the most reliable source — directly from the rendered page with
-        # human-readable size names and correct single-plant prices.
-        # Schema.org Offers are a fallback ONLY when no aria-labels found.
-        aria_offers = re.findall(
-            r'aria-label=\"([^\"]*?)\s*-\s*Sale price:\s*([\d.]+)\s*-\s*List price:\s*\$?([\d.]+)',
-            text
-        )
-        # Filter out packs, singles, and quantity options — keep only size names
-        aria_offers = [(n, s, lp) for n, s, lp in aria_offers
-                       if 'pack' not in n.lower()
-                       and 'single' not in n.lower()
-                       and not re.match(r'^\d+-(?:pack|pk)', n.lower())]
+        # They are the most reliable source — directly from the rendered page, with
+        # the size name and its price in the SAME string, so there is no guessing
+        # about which price belongs to which size. Schema.org Offers are a fallback
+        # ONLY when no aria-labels are found.
+        aria_offers = self._extract_aria_size_offers(text)
 
         # Use aria-labels if we got ANY valid size-named results
         if aria_offers:
+            # Availability comes from the page's own schema.org Offers, matched by
+            # price. The size buttons carry no stock state, and the old code simply
+            # hardcoded available=True for every size it found.
+            avail_by_price = self._availability_by_price(text)
             sizes = {}
-            any_available = True
             for size_name, sale_price, list_price in aria_offers:
-                tier = self._normalize_size(size_name)
-                if float(sale_price) <= 0:
+                if sale_price <= 0:
                     continue  # a 0 is "no price", never a free plant
+                tier = self._normalize_size(size_name)
+                if tier in sizes:
+                    # Two different labels collapsed onto one tier. Keep the first
+                    # (buttons render smallest-first) rather than letting the later,
+                    # more expensive one silently overwrite it.
+                    logger.warning(
+                        f"  {self.retailer_id}/{handle}: size {size_name!r} collides with "
+                        f"tier {tier!r} already taken by {sizes[tier]['raw_size']!r} — keeping the first"
+                    )
+                    continue
+                available = avail_by_price.get(round(sale_price, 2))
+                if available is None and not avail_by_price:
+                    # No schema.org stock data on the page at all — no signal either
+                    # way, so keep the historical assumption that a priced, rendered
+                    # size button is buyable.
+                    available = True
                 sizes[tier] = {
-                    "price": float(sale_price),
-                    "was_price": float(list_price) if float(list_price) > float(sale_price) else None,
-                    "available": True,
+                    "price": sale_price,
+                    "was_price": list_price if list_price and list_price > sale_price else None,
+                    "available": available,
                     "raw_size": size_name,
                 }
+            # Aggregate, same rule as the JSON path: known-in-stock wins; all-unknown
+            # stays unknown rather than being reported as sold out.
+            explicit = [v["available"] for v in sizes.values() if isinstance(v["available"], bool)]
+            any_available = True if any(explicit) else (False if explicit else None)
             if sizes:
                 title_match = re.search(r'<title>([^<]+)</title>', text)
                 title = title_match.group(1).split("|")[0].strip() if title_match else handle.replace("-", " ").title()
@@ -679,6 +702,121 @@ class ShopifyScraper:
             "timestamp": datetime.now(timezone.utc).isoformat(),
         }
 
+    # aria-label formats used by fastgrowingtrees.com's size selector.
+    # Verified 2026-08-11 against 10 live product pages (fgt_ground_truth.json):
+    #   "1 gallon - Price $45.95"
+    #   "2-3 feet - Price $57.95 - Buy 1, Get 1"
+    #   "1 quart - Original price $35.95, sale price $30.95 - 14% OFF"
+    #   "6-7 feet Jumbo - Original price $766.95, sale price $503.95 - 34% OFF"
+    # plus the older theme this scraper was originally written against:
+    #   "1 Gallon - Sale price: 39.99 - List price: $49.99"
+    # Order matters: the "sale price:/list price:" form must be tried before the
+    # bare "- Price $" form.
+    _ARIA_LABEL_PATTERNS = (
+        re.compile(
+            r'^(?P<name>.+?)\s*-\s*original\s+price\s*\$?(?P<was>[\d,]+(?:\.\d+)?)\s*,\s*'
+            r'sale\s+price\s*\$?(?P<price>[\d,]+(?:\.\d+)?)',
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r'^(?P<name>.+?)\s*-\s*sale\s+price:\s*\$?(?P<price>[\d,]+(?:\.\d+)?)\s*-\s*'
+            r'list\s+price:\s*\$?(?P<was>[\d,]+(?:\.\d+)?)',
+            re.IGNORECASE,
+        ),
+        re.compile(
+            r'^(?P<name>.+?)\s*-\s*price:?\s*\$(?P<price>[\d,]+(?:\.\d+)?)',
+            re.IGNORECASE,
+        ),
+    )
+
+    @staticmethod
+    def _to_price(raw: str) -> float | None:
+        """'1,318.00' -> 1318.0. Returns None if it isn't a number."""
+        try:
+            return float(raw.replace(",", "").strip())
+        except (ValueError, AttributeError):
+            return None
+
+    @staticmethod
+    def _is_quantity_label(name: str) -> bool:
+        """True for buttons that pick a QUANTITY, not a size.
+
+        FGT renders two button groups: "Select size" (4 inch / 1 quart / 1 gallon)
+        and "Select quantity" (Single / 10-Pack). Both use the same aria-label
+        price format, and a pack price is not a per-plant price.
+        """
+        nl = name.strip().lower()
+        return (
+            "pack" in nl
+            or "single" in nl
+            or bool(re.match(r'^\d+[\s-]*(?:pk|ct|x)$', nl))
+        )
+
+    @staticmethod
+    def _size_selector_scope(text: str) -> str | None:
+        """Return only the markup of the 'Select size' section, or None.
+
+        Scoping matters: the "Select quantity" section that follows uses the same
+        aria-label format, so an unscoped scan mixes pack prices in with sizes.
+        """
+        m = re.search(r'select\s+size\s*</h2>', text, re.IGNORECASE)
+        if not m:
+            return None
+        end = text.find("</section>", m.end())
+        return text[m.end():end if end != -1 else len(text)]
+
+    def _extract_aria_size_offers(self, text: str) -> list[tuple[str, float, float | None]]:
+        """Size buttons as (label, price, was_price), read from aria-labels.
+
+        This is the FGT primary path. Each aria-label pairs a size name with its
+        own price inside one string, e.g. "1 gallon - Price $45.95", so the size
+        and the price cannot drift apart. Nothing here is positional.
+        """
+        scope = self._size_selector_scope(text)
+        found: list[tuple[str, float, float | None]] = []
+        for source in (scope, text):
+            if source is None:
+                continue
+            for label in re.findall(r'aria-label="([^"]+)"', source):
+                for pattern in self._ARIA_LABEL_PATTERNS:
+                    m = pattern.match(label.strip())
+                    if not m:
+                        continue
+                    name = m.group("name").strip()
+                    price = self._to_price(m.group("price"))
+                    was = self._to_price(m.groupdict().get("was") or "")
+                    if price is None or not name or self._is_quantity_label(name):
+                        break
+                    found.append((name, price, was))
+                    break
+            if found:
+                # The scoped pass found real sizes; never fall through to the
+                # whole document, which would pull in quantity/pack buttons.
+                break
+        return found
+
+    def _availability_by_price(self, text: str) -> dict[float, bool | None]:
+        """Per-price stock from the page's schema.org Offers: {price: in_stock}.
+
+        The size buttons themselves carry no stock state, but the page's
+        schema.org Product block lists every variant with an `availability` field.
+        On all 10 FGT pages checked, each visible size price matched exactly one
+        non-pack Offer. Prices shared by two Offers that disagree map to None
+        (unknown) rather than to a guess.
+        """
+        buckets: dict[float, set[bool]] = {}
+        for sku, price_str, availability in _SCHEMA_OFFER_RE.findall(text):
+            if "pack" in sku.lower():
+                continue  # multi-plant bundle, not a single-plant price
+            price = self._to_price(price_str)
+            if price is None:
+                continue
+            buckets.setdefault(round(price, 2), set()).add("InStock" in availability)
+        return {
+            price: (next(iter(vals)) if len(vals) == 1 else None)
+            for price, vals in buckets.items()
+        }
+
     def _normalize_size(self, variant_title: str) -> str:
         """Map a variant title to a canonical size tier.
 
@@ -708,21 +846,21 @@ class ShopifyScraper:
         # Step 2: Container/gallon patterns (most universal — check first)
         gallon_patterns = [
             # Explicit gallon — gal / gallon / gallons (all plural forms)
-            (r'\b1[\s-]?gal(?:lon)?s?\b', '1gal'),
+            (r'\b1[\s-]?gal(?:l*on)?s?\b', '1gal'),
             (r'one\s+gallon', '1gal'),
             (r'#1\s*container', '1gal'),
             (r'trade\s+gallon', '1gal'),
-            (r'\b2[\s-]?gal(?:lon)?s?\b', '2gal'),
+            (r'\b2[\s-]?gal(?:l*on)?s?\b', '2gal'),
             (r'#2\s*container', '2gal'),
-            (r'\b3[\s-]?gal(?:lon)?s?\b', '3gal'),
+            (r'\b3[\s-]?gal(?:l*on)?s?\b', '3gal'),
             (r'3\s*gallon\s*pot', '3gal'),
             (r'#3\s*container', '3gal'),
-            (r'\b5[\s-]?gal(?:lon)?s?\b', '5gal'),
+            (r'\b5[\s-]?gal(?:l*on)?s?\b', '5gal'),
             (r'#5\s*container', '5gal'),
-            (r'\b7[\s-]?gal(?:lon)?s?\b', '7gal'),
+            (r'\b7[\s-]?gal(?:l*on)?s?\b', '7gal'),
             (r'#7\s*container', '7gal'),
-            (r'\b10[\s-]?gal(?:lon)?s?\b', '10gal'),
-            (r'\b15[\s-]?gal(?:lon)?s?\b', '15gal'),
+            (r'\b10[\s-]?gal(?:l*on)?s?\b', '10gal'),
+            (r'\b15[\s-]?gal(?:l*on)?s?\b', '15gal'),
             # Quart
             (r'\bquart\b', 'quart'),
             (r'\bqt\b', 'quart'),
@@ -754,7 +892,14 @@ class ShopifyScraper:
         height_match = re.search(r'(\d+)\s*[-–]\s*(\d+)\s*(?:ft|feet|foot|\')', title_lower)
         if height_match:
             low, high = int(height_match.group(1)), int(height_match.group(2))
-            return f"{low}-{high}ft"
+            tier = f"{low}-{high}ft"
+            # "6-7 feet Jumbo" is a different, pricier product than "6-7 feet" —
+            # FGT sells both on thuja-green-giant. Without this suffix they
+            # collapse onto one tier and the 6-7ft row carried the Jumbo price
+            # ($503.95) instead of the real 6-7 feet price ($372.95).
+            if re.search(r'\bjumbo\b', title_lower):
+                tier += "-jumbo"
+            return tier
 
         # Match "X'" or "X ft" single height
         single_height = re.search(r'\b(\d+)\s*(?:ft|feet|foot|\')\b', title_lower)
