@@ -523,25 +523,49 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
         for w in anomaly_warnings:
             logger.warning(f"    {w}")
 
-        # Write price entry to JSONL (skip if anomaly detected)
-        if not anomaly_warnings:
-            price_entry = {
-                "retailer_id": retailer_id,
-                "retailer_name": result.get("retailer_name", retailer["name"]),
-                "timestamp": result["timestamp"],
-                "url": result.get("url", ""),
-                "sizes": sizes,
-                "in_stock": result.get("in_stock", None),
-            }
-            append_price(plant_id, price_entry)
+        # A large price move is recorded and flagged, NOT discarded.
+        #
+        # This used to `if not anomaly_warnings:` around the write, so any
+        # product that moved more than the threshold was silently dropped and
+        # the site kept serving the previous value. That is backwards when the
+        # previous value is the wrong one: it freezes a defect in place, and
+        # re-scraping can never dislodge it because every future run compares
+        # against the same stale number and raises the same anomaly.
+        #
+        # Measured on fastgrowingtrees.com's Delaware Valley White Azalea,
+        # 3 gallon. The positional size↔price bug moved it $42.95 -> $21.95,
+        # a 49% drop that slipped UNDER the 50% threshold and was written. The
+        # correction back to $46.95 is a 114% rise, so it was blocked. The
+        # guard admitted the defect and then refused the fix — for eight
+        # consecutive scrapes.
+        #
+        # The systemic case this was meant to catch is covered better
+        # elsewhere: scripts/check_data_sanity.py gates publishing on
+        # corpus-wide collapse, and the scraper now withholds a product whose
+        # sizes it cannot read rather than guessing. Those act on the failure
+        # mode (a broken parser) instead of on a single surprising number,
+        # which a real sale also produces.
+        price_entry = {
+            "retailer_id": retailer_id,
+            "retailer_name": result.get("retailer_name", retailer["name"]),
+            "timestamp": result["timestamp"],
+            "url": result.get("url", ""),
+            "sizes": sizes,
+            "in_stock": result.get("in_stock", None),
+        }
+        if anomaly_warnings:
+            # Travels with the row so a reviewer can find it later; the run
+            # also reports the count, and the warnings are already logged.
+            price_entry["price_anomaly"] = anomaly_warnings
+        append_price(plant_id, price_entry)
 
-            # Record for manifest
-            for tier, data in sizes.items():
-                price_val = data.get("price", 0) if isinstance(data, dict) else 0
-                price_records[f"{plant_id}:{retailer_id}"] = price_records.get(
-                    f"{plant_id}:{retailer_id}", {}
-                )
-                price_records[f"{plant_id}:{retailer_id}"][tier] = price_val
+        # Record for manifest
+        for tier, data in sizes.items():
+            price_val = data.get("price", 0) if isinstance(data, dict) else 0
+            price_records[f"{plant_id}:{retailer_id}"] = price_records.get(
+                f"{plant_id}:{retailer_id}", {}
+            )
+            price_records[f"{plant_id}:{retailer_id}"][tier] = price_val
 
     # Check if we got significantly fewer results than expected
     expected = len(handle_map)

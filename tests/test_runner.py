@@ -250,3 +250,39 @@ def test_skipped_entries_ignored():
     prev = {"retailers": [_zero_entry("brecks")]}
     entries = [{"retailer_id": "brecks", "status": "skipped", "products_expected": 0}]
     assert find_dead_retailers(entries, prev) == []
+
+
+def test_a_flagged_price_is_still_written(tmp_data_dir):
+    """A large price move must be RECORDED and flagged, never discarded.
+
+    The runner used to wrap the write in `if not anomaly_warnings:`, so a
+    product that moved more than the threshold was dropped and the site kept
+    serving the old value. When the old value is the wrong one that freezes
+    the defect permanently — every later run compares against the same stale
+    number and raises the same anomaly, so the correction can never land.
+
+    Measured on fastgrowingtrees.com's Delaware Valley White Azalea 3 gallon:
+    the size->price bug moved it 42.95 -> 21.95, a 49% drop that slipped under
+    the 50% threshold and was written. The correction to 46.95 is a 114% rise,
+    so it was blocked — for eight consecutive scrapes.
+    """
+    prev_manifest = {"prices": {"azalea:fgt": {"3gal": 21.95}}}
+    sizes = {"3gal": {"price": 46.95}}
+
+    warnings = check_price_anomaly("azalea", "fgt", sizes, prev_manifest)
+    assert warnings, "a 114% rise should be flagged"
+
+    entry = {
+        "retailer_id": "fgt",
+        "timestamp": "2026-08-11T16:00:00Z",
+        "sizes": sizes,
+        "price_anomaly": warnings,
+    }
+    prices_dir = tmp_data_dir / "prices"
+    with patch("scrapers.runner.PRICES_DIR", prices_dir):
+        append_price("azalea", entry)
+
+    written = json.loads(
+        (prices_dir / "azalea.jsonl").read_text(encoding="utf-8").strip())
+    assert written["sizes"]["3gal"]["price"] == 46.95, "the correction was lost"
+    assert written["price_anomaly"], "the row should carry its flag for review"
