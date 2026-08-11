@@ -135,7 +135,9 @@ class StarkBrosScraper:
                     else:
                         offers = ld_data.get("offers", {})
                     low_price = offers.get("lowPrice")
-                    if low_price:
+                    # JSON-LD lowPrice is routinely 0 for out-of-stock and
+                    # pre-order items; 0 means "no price", not a free plant.
+                    if low_price and float(low_price) > 0:
                         sizes["default"] = {
                             "price": float(low_price),
                             "was_price": None,

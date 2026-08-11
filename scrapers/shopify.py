@@ -437,6 +437,8 @@ class ShopifyScraper:
             any_available = True
             for size_name, sale_price, list_price in aria_offers:
                 tier = self._normalize_size(size_name)
+                if float(sale_price) <= 0:
+                    continue  # a 0 is "no price", never a free plant
                 sizes[tier] = {
                     "price": float(sale_price),
                     "was_price": float(list_price) if float(list_price) > float(sale_price) else None,
@@ -505,6 +507,8 @@ class ShopifyScraper:
                     in_stock = "InStock" in avail
                     if in_stock:
                         any_available = True
+                    if float(price_str) <= 0:
+                        continue  # a 0 is "no price", never a free plant
                     sizes[tier] = {
                         "price": float(price_str),
                         "was_price": None,

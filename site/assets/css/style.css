@@ -55,7 +55,13 @@ h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
     align-items: center;
     justify-content: flex-start;
     gap: 2rem;
-    height: 64px;
+    /* min-height, not a fixed height: a wrapped second nav row used to
+       spill through the header's bottom border between 769-825px while
+       pushing the first row to y=-4, above the top edge. */
+    min-height: 64px;
+    flex-wrap: wrap;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
 }
 .site-logo {
     display: flex;
@@ -89,9 +95,14 @@ h3 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
 }
 .nav-links a:hover { color: var(--green-dark); text-decoration: none; }
 
-/* Wordmark yields before the nav does */
-@media (max-width: 1080px) {
+/* Wordmark yields before the nav does, early enough that the nav never
+   needs a second row above the mobile breakpoint. */
+@media (max-width: 1180px) {
     .logo-text { display: none; }
+}
+@media (max-width: 900px) and (min-width: 769px) {
+    .nav-links { gap: 0.8rem; }
+    .nav-links a { font-size: 0.82rem; }
 }
 @media (max-width: 768px) {
     .nav-links { display: none; }

@@ -10,6 +10,12 @@ on:
 permissions:
   contents: write
 
+# A manual dispatch during a scheduled run would race the same branch on
+# push. Queue instead of colliding; never cancel a run mid-scrape.
+concurrency:
+  group: scrape-main
+  cancel-in-progress: false
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
@@ -96,20 +102,70 @@ jobs:
             echo "All nurseries scraped successfully"
           fi
 
-      # --- Gates: any failure below skips the commit — the site keeps
-      # --- serving the last known good data instead of shipping garbage.
+      # --- Two kinds of check, deliberately different consequences:
+      # ---   BLOCKING  — the OUTPUT would be bad (systemic data failure,
+      # ---               build error, broken links). Nothing publishes; the
+      # ---               site keeps serving the last known good build.
+      # ---   ALARMING  — something needs attention but the output is fine
+      # ---               (quarantined rows, test failures, a dead retailer).
+      # ---               Good data publishes, then the job is marked failed.
+      # --- Blocking on non-output problems is what let one `price: 0` row
+      # --- stop all publishing indefinitely, so those are alarms now.
       - name: Strip unresolved variants
         run: python scripts/strip_unresolved_variants.py
 
+      # exit 0 = clean · 1 = systemic, BLOCK · 3 = rows quarantined, publish + alarm
       - name: Data sanity gate
-        run: python scripts/check_data_sanity.py
+        run: |
+          set +e
+          python scripts/check_data_sanity.py
+          code=$?
+          set -e
+          if [ "$code" = "1" ]; then
+            echo "::error::Systemic data failure — nothing published this cycle."
+            exit 1
+          fi
+          if [ "$code" = "3" ]; then
+            echo "QUARANTINED=1" >> "$GITHUB_ENV"
+          fi
 
+      # Tests are fixture-based: they validate CODE, not this run's data, so a
+      # failure must not stop price publishing. Output is guarded by the build
+      # and link-check steps below. Failure detail is echoed into an ::error::
+      # annotation because Actions logs require sign-in even on public repos —
+      # the annotations API does not.
       - name: Run tests
-        run: pytest
+        run: |
+          set +e
+          pytest -q > pytest_out.txt 2>&1
+          code=$?
+          set -e
+          tail -40 pytest_out.txt
+          if [ "$code" != "0" ]; then
+            echo "TESTS_FAILED=1" >> "$GITHUB_ENV"
+            SUMMARY=$(grep -E "^(FAILED|ERROR)" pytest_out.txt | head -10 | tr '\n' ' | ')
+            echo "::error::pytest failed (exit $code): ${SUMMARY:-see uploaded artifact}"
+          fi
+
+      - name: Upload test output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-output
+          path: pytest_out.txt
+          retention-days: 14
+          if-no-files-found: ignore
 
       - name: Verify prices (10 random spot checks)
         run: |
-          python -m scrapers.verify --count 10 || echo "::warning::Price spot-check mismatches — review verify output above"
+          set +e
+          python -m scrapers.verify --count 10
+          code=$?
+          set -e
+          if [ "$code" != "0" ]; then
+            echo "VERIFY_FAILED=1" >> "$GITHUB_ENV"
+            echo "::error::Price spot-check mismatches — a scraper may be reading the wrong element."
+          fi
 
       - name: Build site
         run: python -X utf8 build.py
@@ -149,6 +205,7 @@ jobs:
           " || echo "WARNING: Promo scraping failed -- skipping"
 
       - name: Commit updated price data
+        id: commit
         run: |
           git config user.name "PlantPriceTracker Bot"
           git config user.email "bot@plantpricetracker.com"
@@ -156,16 +213,28 @@ jobs:
           # recovery.json only exists after a recovery pass has run
           if [ -f data/recovery.json ]; then git add data/recovery.json; fi
           git diff --staged --quiet || git commit -m "Daily price update $(date +%Y-%m-%d_%H:%M)"
-          git pull --rebase origin main
-          git push
+          # A human push during the ~50min run conflicts on site/ (a build
+          # artifact that is committed). Retry the rebase a few times, and
+          # abort cleanly rather than leaving the tree mid-rebase.
+          for attempt in 1 2 3; do
+            if git pull --rebase origin main && git push; then
+              echo "pushed on attempt $attempt"
+              exit 0
+            fi
+            git rebase --abort 2>/dev/null || true
+            echo "::warning::push attempt $attempt failed (likely a concurrent push); retrying"
+            sleep 15
+          done
+          echo "::error::Could not push after 3 attempts — this cycle's prices were not published."
+          exit 1
 
-      # Runs even when everything above succeeded and committed: a retailer
-      # dead for 2+ consecutive runs (runner exit 2) must turn the job red
-      # so the failure email fires — without blocking the other retailers'
-      # publish, which already happened above.
-      - name: Enforce retailer liveness
+      # Single alarm point. Runs last and always, so publishing has already
+      # happened (or been deliberately blocked) before anything turns red.
+      # Everything collected here is "needs attention", not "output is bad".
+      - name: Raise alarms
         if: always()
         run: |
+          PROBLEMS=""
           FAILED=""
           for pair in "nature-hills:${{ steps.nature_hills.outcome }}" \
                       "planting-tree:${{ steps.planting_tree.outcome }}" \
@@ -178,8 +247,32 @@ jobs:
               FAILED="$FAILED ${pair%%:*}"
             fi
           done
+          COMMITTED="${{ steps.commit.outcome }}"
           if [ -n "$FAILED" ]; then
-            echo "::error::Scraper step failed for:$FAILED — dead retailer or crash. Data from healthy retailers was still published."
+            echo "::error::Scraper failed for:$FAILED — dead retailer or crash."
+            PROBLEMS="$PROBLEMS scrapers"
+          fi
+          if [ "${QUARANTINED:-0}" = "1" ]; then
+            echo "::error::Bad rows were quarantined — see the data gate warnings above."
+            PROBLEMS="$PROBLEMS quarantine"
+          fi
+          if [ "${TESTS_FAILED:-0}" = "1" ]; then
+            echo "::error::Test suite failed — code defect; see the pytest-output artifact."
+            PROBLEMS="$PROBLEMS tests"
+          fi
+          if [ "${VERIFY_FAILED:-0}" = "1" ]; then
+            echo "::error::Live price spot-checks mismatched."
+            PROBLEMS="$PROBLEMS verify"
+          fi
+          # Say plainly whether data actually shipped, instead of assuming.
+          if [ "$COMMITTED" = "success" ]; then
+            echo "Publish: data from healthy retailers WAS published this cycle."
+          else
+            echo "::error::Publish: NOTHING was published this cycle (commit step: ${COMMITTED:-skipped})."
+            PROBLEMS="$PROBLEMS publish"
+          fi
+          if [ -n "$PROBLEMS" ]; then
+            echo "Problems:$PROBLEMS"
             exit 1
           fi
-          echo "All scraper steps healthy."
+          echo "All healthy: 7/7 scrapers, data clean, tests green, published."

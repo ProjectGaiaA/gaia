@@ -33,7 +33,15 @@ def strip_file(path):
         for line in fh:
             if not line.strip():
                 continue
-            entry = json.loads(line)
+            try:
+                entry = json.loads(line)
+            except json.JSONDecodeError:
+                # Preserve malformed lines and keep going. This step runs
+                # before the data gate, so crashing here would preempt the
+                # gate's quarantine with a raw traceback and block the whole
+                # publish over one bad byte.
+                lines.append(line.rstrip("\n"))
+                continue
             sizes = entry.get("sizes", {})
             clean = {
                 key: val

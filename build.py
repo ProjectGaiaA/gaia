@@ -34,6 +34,10 @@ PRICES_DIR = os.path.join(DATA_DIR, "prices")
 
 BASE_URL = "https://www.plantpricetracker.com"
 
+# Guides are hand-written markdown. Until one is actually edited, its
+# modification date is its publication date — never the build date.
+DEFAULT_GUIDE_DATE = "2026-04-02"
+
 # A "sale" whose price/was_price pair hasn't moved in this many days is a
 # compare-at price the merchant leaves set year-round, not a sale. Render it
 # as a regular price (no badge, no strikethrough).
@@ -559,6 +563,23 @@ def flatten_displayable_prices(latest_prices, max_age_days=30):
             if price is not None:
                 out.append(price)
     return out
+
+
+def category_price_range(cat_plants):
+    """"$low-$high" for a category card, from live prices. "" if none priced.
+
+    Was built by string-slicing plants.json's hardcoded `price_range` and
+    comparing the pieces as TEXT, which produced two live defects on the
+    homepage: 32 plants have an empty price_range, and the empty string was
+    coerced to "0", so 8 of 13 cards advertised a $0 minimum ("$0-$60");
+    and lexicographic max made "$9" beat "$100", understating three
+    categories (flowering-trees showed $95 against a true $110).
+    """
+    lows = [p["lowest_price"] for p in cat_plants if p.get("lowest_price")]
+    highs = [p["highest_price"] for p in cat_plants if p.get("highest_price")]
+    if not lows or not highs:
+        return ""
+    return f"${min(lows):.0f}-${max(highs):.0f}"
 
 
 def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=None, price_entries=None):
@@ -1261,6 +1282,19 @@ def build_site(build_guides=True, build_products=True):
         latest_prices = get_latest_prices(price_entries, retailers_by_id)
         all_prices_flat = flatten_displayable_prices(latest_prices)
         plant["lowest_price"] = min(all_prices_flat) if all_prices_flat else None
+        plant["highest_price"] = max(all_prices_flat) if all_prices_flat else None
+        # Set here, not only in the product loop: `python build.py --guides`
+        # skips that loop, leaving retailer_count None. Since `None == 0` is
+        # False, the sitemap's zero-offer exclusion silently stopped working
+        # and put the noindexed miscanthus page straight back in.
+        plant["retailer_count"] = sum(
+            1 for pd in latest_prices.values()
+            if not entry_is_stale(pd)
+            and any(
+                displayable_price(normalize_size_tier(t), i) is not None
+                for t, i in pd.get("sizes", {}).items()
+            )
+        )
 
     # Ensure output directories
     ensure_dir(os.path.join(SITE_DIR, "plants"))
@@ -1378,7 +1412,12 @@ def build_site(build_guides=True, build_products=True):
                 toc=article["toc"],
                 meta_description=GUIDE_META_DESCRIPTIONS.get(slug, article["meta_description"]),
                 date_published="2026-04-02",
-                date_modified=date.today().isoformat(),
+                # Guide content changes when its markdown changes, not when
+                # the build runs. Stamping today made every guide claim
+                # same-day modification twice daily in both the visible
+                # header and Article JSON-LD — the same false freshness
+                # signal the sitemap was fixed for.
+                date_modified=article.get("date_modified") or DEFAULT_GUIDE_DATE,
                 retailer_count=len([r for r in retailers if r.get("active")]),
                 related_plants=related_plants,
                 related_guides=related_guides[:5],
@@ -1458,7 +1497,7 @@ def build_site(build_guides=True, build_products=True):
             "id": cat_id,
             "name": cat_id.replace("-", " ").title(),
             "plant_count": len(cat_plants),
-            "price_range": f"${min(p.get('price_range', '$0').split('-')[0].replace('$','') or '0' for p in cat_plants)}-${max(p.get('price_range', '$0').split('-')[-1].replace('$','') or '0' for p in cat_plants)}" if cat_plants else "",
+            "price_range": category_price_range(cat_plants),
         })
 
     # Hero example — pick the plant with the biggest SAME-TIER price spread.
