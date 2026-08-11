@@ -108,6 +108,23 @@ class TestGetSizeLabel:
         assert build.get_size_label("3-4ft") == "3-4 ft"
         assert build.get_size_label("5-6ft") == "5-6 ft"
 
+    def test_jumbo_height_tier_has_its_own_label(self):
+        """Fast Growing Trees sells "6-7 feet Jumbo" beside plain "6-7 feet".
+        Without an explicit entry the generic fallback title-cases the key
+        into "6 7Ft Jumbo"."""
+        assert build.get_size_label("6-7ft-jumbo") == "6-7 ft Jumbo"
+
+    def test_jumbo_tier_sorts_next_to_its_plain_size(self):
+        """A tier missing from tier_order falls to the end of the table,
+        which would put Jumbo after the bare-root columns."""
+        order = build.SIZE_TIER_ORDER if hasattr(build, "SIZE_TIER_ORDER") else None
+        if order is None:
+            import re
+            src = open("build.py", encoding="utf-8").read()
+            m = re.search(r"tier_order = \[(.*?)\]", src, re.S)
+            order = re.findall(r'"([^"]+)"', m.group(1))
+        assert order.index("6-7ft-jumbo") == order.index("6-7ft") + 1
+
     def test_alias_resolves_to_label(self):
         """Passing an alias through get_size_label should resolve via normalize first."""
         assert build.get_size_label("#1-container") == "1 Gallon"

@@ -171,6 +171,12 @@ SIZE_TIER_LABELS = {
     "4-5ft":  "4-5 ft",
     "5-6ft":  "5-6 ft",
     "6-7ft":  "6-7 ft",
+    # Fast Growing Trees sells a heavier "6-7 feet Jumbo" grade alongside the
+    # ordinary 6-7 feet. Different product, different price, so it needs its
+    # own tier — sharing one let the Jumbo's $503.95 overwrite the standard
+    # tree's $372.95 on the 6-7 ft row. Without this entry the generic
+    # fallback renders the key as "6 7Ft Jumbo".
+    "6-7ft-jumbo": "6-7 ft Jumbo",
     "7-8ft":  "7-8 ft",
     "8-9ft":  "8-9 ft",
     # Stark Bros rootstock tiers
@@ -795,7 +801,8 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
     tier_order = [
         "quart", "1gal", "2gal", "3gal", "5gal", "7gal", "10gal", "15gal",
         "bareroot", "jumbo-bareroot", "premium-bareroot",
-        "1-2ft", "2-3ft", "3-4ft", "4-5ft", "5-6ft", "6-7ft", "7-8ft", "8-9ft",
+        "1-2ft", "2-3ft", "3-4ft", "4-5ft", "5-6ft", "6-7ft", "6-7ft-jumbo",
+        "7-8ft", "8-9ft",
         "dwarf", "dwarf-bareroot", "dwarf-ez-start", "dwarf-potted",
         "semi-dwarf", "semi-dwarf-bareroot", "semi-dwarf-ez-start", "semi-dwarf-potted",
         "supreme", "supreme-bareroot", "supreme-ez-start",
