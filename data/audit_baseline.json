@@ -1,0 +1,26 @@
+{
+  "_comment": "Accepted A/B/C findings. Anything not listed here is NEW and gets reported. Regenerated only by a human running scripts/nightly_audits.py --update-baseline; CI never does, because a self-refreshing baseline absorbs the next regression on the night it appears and reports silence forever afterwards.",
+  "accepted": {
+    "A_cross_retailer": [
+      "A|incrediball-hydrangea|quart|fast-growing-trees"
+    ],
+    "B_two_nursery_pairs": [
+      "B|green-mountain-boxwood|3gal|nature-hills|planting-tree"
+    ],
+    "C_within_retailer_inversion": [
+      "C|autumn-royalty-encore-azalea|planting-tree|2gal|3gal",
+      "C|blue-rug-juniper|planting-tree|2gal|3gal",
+      "C|coral-knock-out-rose|planting-tree|2gal|3gal",
+      "C|dwarf-alberta-spruce|nature-hills|2gal|3gal",
+      "C|encore-azalea|planting-tree|2gal|3gal",
+      "C|green-mountain-boxwood|planting-tree|2gal|3gal",
+      "C|nandina-heavenly-bamboo|planting-tree|2gal|3gal",
+      "C|nikko-blue-hydrangea|planting-tree|quart|1gal",
+      "C|pampas-grass|planting-tree|2gal|3gal",
+      "C|pink-knock-out-rose|planting-tree|quart|1gal",
+      "C|pink-lemonade-blueberry|planting-tree|quart|1gal",
+      "C|pink-muhly-grass|planting-tree|2gal|3gal"
+    ]
+  },
+  "generated": "2026-08-12T20:15:06.906781+00:00"
+}

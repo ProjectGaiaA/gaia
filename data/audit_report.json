@@ -1,0 +1,249 @@
+{
+  "alarms": [
+    "D_snapshot_value_diff: 32 prices moved to a different size label in one run (>= 5) \u2014 positional size/price pairing regression"
+  ],
+  "audit": "nightly_offline",
+  "audits": {
+    "A_cross_retailer": {
+      "denominator": 95,
+      "denominator_floor": 45,
+      "denominator_unit": "priced rows at tiers with 3+ nurseries",
+      "known_findings": 1,
+      "new_findings": [],
+      "total_findings": 1,
+      "what": "same plant+size at 3+ nurseries, >=2.5x off the median of the others"
+    },
+    "B_two_nursery_pairs": {
+      "denominator": 157,
+      "denominator_floor": 70,
+      "denominator_unit": "two-nursery tiers",
+      "known_findings": 1,
+      "new_findings": [],
+      "total_findings": 1,
+      "what": "same plant+size at exactly 2 nurseries, >=2.5x apart"
+    },
+    "C_within_retailer_inversion": {
+      "denominator": 191,
+      "denominator_floor": 90,
+      "denominator_unit": "adjacent container pairs",
+      "known_findings": 12,
+      "new_findings": [],
+      "total_findings": 12,
+      "what": "larger container >10% cheaper than the next smaller one"
+    },
+    "D_snapshot_value_diff": {
+      "denominator": 248,
+      "denominator_floor": 120,
+      "denominator_unit": "plant-retailer rows with a previous run to compare",
+      "known_findings": 0,
+      "new_findings": [
+        {
+          "detail": "bing-cherry-tree at fast-growing-trees: $49.95 was the 3-4ft price, now labelled 1-2ft",
+          "id": "D|bing-cherry-tree|fast-growing-trees|3-4ft->1-2ft"
+        },
+        {
+          "detail": "bing-cherry-tree at fast-growing-trees: $59.95 was the 4-5ft price, now labelled 2-3ft",
+          "id": "D|bing-cherry-tree|fast-growing-trees|4-5ft->2-3ft"
+        },
+        {
+          "detail": "bing-cherry-tree at fast-growing-trees: $107.95 was the 5-6ft price, now labelled 3-4ft",
+          "id": "D|bing-cherry-tree|fast-growing-trees|5-6ft->3-4ft"
+        },
+        {
+          "detail": "bing-cherry-tree at fast-growing-trees: $136.95 was the 6-7ft price, now labelled 4-5ft",
+          "id": "D|bing-cherry-tree|fast-growing-trees|6-7ft->4-5ft"
+        },
+        {
+          "detail": "coral-bark-japanese-maple at fast-growing-trees: $182.95 was the 5-6ft price, now labelled 4-5ft",
+          "id": "D|coral-bark-japanese-maple|fast-growing-trees|5-6ft->4-5ft"
+        },
+        {
+          "detail": "coral-bark-japanese-maple at fast-growing-trees: $224.95 was the 6-7ft price, now labelled 5-6ft",
+          "id": "D|coral-bark-japanese-maple|fast-growing-trees|6-7ft->5-6ft"
+        },
+        {
+          "detail": "coral-bark-japanese-maple at fast-growing-trees: $175.95 was the 4-5ft price, now labelled 6-7ft",
+          "id": "D|coral-bark-japanese-maple|fast-growing-trees|4-5ft->6-7ft"
+        },
+        {
+          "detail": "crape-myrtle at fast-growing-trees: $282.95 was the 5-6ft price, now labelled 1-2ft",
+          "id": "D|crape-myrtle|fast-growing-trees|5-6ft->1-2ft"
+        },
+        {
+          "detail": "crape-myrtle at fast-growing-trees: $653.95 was the 6-7ft price, now labelled 4-5ft",
+          "id": "D|crape-myrtle|fast-growing-trees|6-7ft->4-5ft"
+        },
+        {
+          "detail": "crape-myrtle at fast-growing-trees: $160.95 was the 1-2ft price, now labelled 5-6ft",
+          "id": "D|crape-myrtle|fast-growing-trees|1-2ft->5-6ft"
+        },
+        {
+          "detail": "crape-myrtle at fast-growing-trees: $193.95 was the 4-5ft price, now labelled 6-7ft",
+          "id": "D|crape-myrtle|fast-growing-trees|4-5ft->6-7ft"
+        },
+        {
+          "detail": "dwarf-cavendish-banana at fast-growing-trees: $48.95 was the 2-3ft price, now labelled 1-2ft",
+          "id": "D|dwarf-cavendish-banana|fast-growing-trees|2-3ft->1-2ft"
+        },
+        {
+          "detail": "dwarf-cavendish-banana at fast-growing-trees: $52.95 was the 3-4ft price, now labelled 6-inch",
+          "id": "D|dwarf-cavendish-banana|fast-growing-trees|3-4ft->6-inch"
+        },
+        {
+          "detail": "eastern-redbud at fast-growing-trees: $92.95 was the 3-4ft price, now labelled 2-3ft",
+          "id": "D|eastern-redbud|fast-growing-trees|3-4ft->2-3ft"
+        },
+        {
+          "detail": "eastern-redbud at fast-growing-trees: $79.95 was the 2-3ft price, now labelled 3-4ft",
+          "id": "D|eastern-redbud|fast-growing-trees|2-3ft->3-4ft"
+        },
+        {
+          "detail": "eastern-redbud at fast-growing-trees: $159.95 was the 5-6ft price, now labelled 4-5ft",
+          "id": "D|eastern-redbud|fast-growing-trees|5-6ft->4-5ft"
+        },
+        {
+          "detail": "eastern-redbud at fast-growing-trees: $120.95 was the 4-5ft price, now labelled 5-6ft",
+          "id": "D|eastern-redbud|fast-growing-trees|4-5ft->5-6ft"
+        },
+        {
+          "detail": "emerald-green-arborvitae at fast-growing-trees: $602.95 was the 6-7ft price, now labelled 6-7ft-jumbo",
+          "id": "D|emerald-green-arborvitae|fast-growing-trees|6-7ft->6-7ft-jumbo"
+        },
+        {
+          "detail": "fuji-apple-tree at fast-growing-trees: $113.95 was the 5-6ft price, now labelled 4-5ft",
+          "id": "D|fuji-apple-tree|fast-growing-trees|5-6ft->4-5ft"
+        },
+        {
+          "detail": "fuji-apple-tree at fast-growing-trees: $109.95 was the 4-5ft price, now labelled 5-6ft",
+          "id": "D|fuji-apple-tree|fast-growing-trees|4-5ft->5-6ft"
+        },
+        {
+          "detail": "green-giant-arborvitae at fast-growing-trees: $503.95 was the 6-7ft price, now labelled 6-7ft-jumbo",
+          "id": "D|green-giant-arborvitae|fast-growing-trees|6-7ft->6-7ft-jumbo"
+        },
+        {
+          "detail": "honeycrisp-apple-tree at fast-growing-trees: $86.95 was the 4-5ft price, now labelled 2-3ft",
+          "id": "D|honeycrisp-apple-tree|fast-growing-trees|4-5ft->2-3ft"
+        },
+        {
+          "detail": "honeycrisp-apple-tree at fast-growing-trees: $69.95 was the 2-3ft price, now labelled 3-4ft",
+          "id": "D|honeycrisp-apple-tree|fast-growing-trees|2-3ft->3-4ft"
+        },
+        {
+          "detail": "honeycrisp-apple-tree at fast-growing-trees: $129.95 was the 5-6ft price, now labelled 4-5ft",
+          "id": "D|honeycrisp-apple-tree|fast-growing-trees|5-6ft->4-5ft"
+        },
+        {
+          "detail": "honeycrisp-apple-tree at fast-growing-trees: $153.95 was the 6-7ft price, now labelled 5-6ft",
+          "id": "D|honeycrisp-apple-tree|fast-growing-trees|6-7ft->5-6ft"
+        },
+        {
+          "detail": "pink-lemonade-blueberry at fast-growing-trees: $33.95 was the 1gal price, now labelled 4inch",
+          "id": "D|pink-lemonade-blueberry|fast-growing-trees|1gal->4inch"
+        },
+        {
+          "detail": "red-sunset-maple at fast-growing-trees: $180.95 was the 6-7ft price, now labelled 5-6ft",
+          "id": "D|red-sunset-maple|fast-growing-trees|6-7ft->5-6ft"
+        },
+        {
+          "detail": "red-sunset-maple at fast-growing-trees: $169.95 was the 5-6ft price, now labelled 6-7ft",
+          "id": "D|red-sunset-maple|fast-growing-trees|5-6ft->6-7ft"
+        },
+        {
+          "detail": "rose-of-sharon at fast-growing-trees: $81.95 was the 3-4ft price, now labelled 2-3ft",
+          "id": "D|rose-of-sharon|fast-growing-trees|3-4ft->2-3ft"
+        },
+        {
+          "detail": "rose-of-sharon at fast-growing-trees: $54.95 was the 2-3ft price, now labelled 3-4ft",
+          "id": "D|rose-of-sharon|fast-growing-trees|2-3ft->3-4ft"
+        },
+        {
+          "detail": "santa-rosa-plum at fast-growing-trees: $103.95 was the 4-5ft price, now labelled 3-4ft",
+          "id": "D|santa-rosa-plum|fast-growing-trees|4-5ft->3-4ft"
+        },
+        {
+          "detail": "santa-rosa-plum at fast-growing-trees: $86.95 was the 3-4ft price, now labelled 4-5ft",
+          "id": "D|santa-rosa-plum|fast-growing-trees|3-4ft->4-5ft"
+        }
+      ],
+      "total_findings": 32,
+      "what": "a price that moved to a different size label since the previous run"
+    },
+    "E_cross_page_agreement": {
+      "denominator": 565,
+      "denominator_floor": 280,
+      "denominator_unit": "cross-page price quotes",
+      "known_findings": 0,
+      "new_findings": [],
+      "total_findings": 0,
+      "what": "a price quoted about another page vs that page's own lowPrice"
+    },
+    "F_stock_consistency": {
+      "counts": {
+        "latest_rows": 282,
+        "mobile_price_links": 494,
+        "pages": 102,
+        "retailer_variant_availability": {
+          "fast-growing-trees": {
+            "True": 151
+          },
+          "great-garden-plants": {
+            "None": 8
+          },
+          "nature-hills": {
+            "None": 147
+          },
+          "planting-tree": {
+            "None": 322
+          },
+          "proven-winners-direct": {
+            "None": 21
+          },
+          "spring-hill": {
+            "None": 27,
+            "True": 52
+          },
+          "stark-bros": {
+            "True": 13
+          }
+        },
+        "retailers_all_unknown_stock": [
+          "great-garden-plants",
+          "nature-hills",
+          "planting-tree",
+          "proven-winners-direct"
+        ],
+        "schema_instock_pages": 99,
+        "sold_out_price_cells": 0,
+        "sold_out_rows": 13,
+        "table_rows": 276
+      },
+      "denominator": 276,
+      "denominator_floor": 140,
+      "denominator_unit": "comparison-table rows",
+      "known_findings": 0,
+      "new_findings": [],
+      "total_findings": 0,
+      "what": "sold-out rows/sizes that are still offered, and InStock schema with nothing buyable"
+    }
+  },
+  "generated": "2026-08-12T20:29:43.404352+00:00",
+  "notices": [
+    "F: 0 sold-out price cells exist site-wide, so the variant-level sold-out display path was NOT exercised this run (examined nothing, which is not the same as found nothing)"
+  ],
+  "thresholds": {
+    "A_ratio": 2.5,
+    "B_ratio": 2.5,
+    "C_tolerance": 0.1,
+    "d_cluster": 5,
+    "denominator_floors": {
+      "A_cross_retailer": 45,
+      "B_two_nursery_pairs": 70,
+      "C_within_retailer_inversion": 90,
+      "D_snapshot_value_diff": 120,
+      "E_cross_page_agreement": 280,
+      "F_stock_consistency": 140
+    },
+    "new_cluster": 5
+  }
+}

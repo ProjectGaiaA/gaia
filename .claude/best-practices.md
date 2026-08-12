@@ -47,3 +47,7 @@ Updated: 2026-04-07
 - **Auto-deploy** -- Vercel deploys on push to main.
 - **Graceful degradation** -- individual scraper failures don't block build/deploy.
 - **Internal link checker** -- verifies all hrefs resolve after build.
+- **Nightly offline audits** (`scripts/nightly_audits.py`) -- six no-network checks run after the build as ALARMS, never gates: cross-retailer outlier, two-nursery pairs, within-retailer inversion, snapshot value diff, cross-page agreement, stock-consistency sweeps. Every audit prints its denominator, and a denominator below its calibrated floor is itself an alarm.
+- **Calibrated, not guessed** -- audit thresholds were replayed against 130 scrape days / 61,429 row transitions before being enabled; the alarm rate on real history is the number that mattered, not the detection rate.
+- **Accepted-findings baseline** (`data/audit_baseline.json`) -- known heuristic leads are suppressed so only NEW ones surface. Regenerated only by a human running `--update-baseline`; CI never rewrites it, because a self-refreshing baseline absorbs the next regression the night it appears.
+- **Dead-man's switch** (`.github/workflows/heartbeat.yml`) -- alerts if `data/prices/` has not been committed in 30h (calibrated: 0 false alarms across 239 real commit gaps; max real gap 23.9h). Alerts via a failed job + `::error::` (no secrets needed) AND best-effort SMTP, and says out loud when SMTP is unconfigured. Weaker than an external monitor because it runs inside what it watches -- healthchecks.io remains the stronger option.

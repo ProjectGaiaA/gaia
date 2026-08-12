@@ -217,6 +217,43 @@ jobs:
           print('All internal links OK')
           "
 
+      # ALARMING, not blocking — see the BLOCKING vs ALARMING note above.
+      # These six audits run against the data just scraped and the site just
+      # built. They exist because runner.py scores health as
+      # products_found / products_expected, so a WRONG price counts as a hit:
+      # a missing product trips an alarm, a wrong price trips nothing. The FGT
+      # positional size/price bug survived at least 15 days that way.
+      #
+      # This step must never gate the publish. It runs after the build and
+      # exits nonzero only to set a flag that "Raise alarms" reads at the end,
+      # by which point the commit has already happened.
+      #
+      # Audit D compares this run's rows against the previous run's rows in
+      # the committed data/prices/*.jsonl, NOT against data/prev_manifest.json
+      # — that file is written by the snapshot step above but is absent from
+      # the commit step's `git add` list, so it does not exist on a fresh
+      # checkout and would give the audit a denominator of 0 every time.
+      - name: Nightly offline audits
+        run: |
+          set +e
+          python -X utf8 scripts/nightly_audits.py | tee audit_out.txt
+          code=${PIPESTATUS[0]}
+          set -e
+          if [ "$code" != "0" ]; then
+            echo "AUDITS_ALARMED=1" >> "$GITHUB_ENV"
+          fi
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nightly-audit
+          path: |
+            audit_out.txt
+            data/audit_report.json
+          retention-days: 30
+          if-no-files-found: warn
+
       - name: Scrape promo codes
         run: |
           python -c "
@@ -233,9 +270,19 @@ jobs:
         run: |
           git config user.name "PlantPriceTracker Bot"
           git config user.email "bot@plantpricetracker.com"
+          # audit_report.json is committed so a weekly digest can read it
+          # straight from the repo. audit_baseline.json is NOT added here:
+          # it is the accepted-findings list and is only ever changed by a
+          # human running --update-baseline. A baseline CI could rewrite
+          # would absorb the next regression on the night it appeared.
           git add data/prices/ data/last_manifest.json data/promos.json data/handle_maps.json site/
           # recovery.json only exists after a recovery pass has run
           if [ -f data/recovery.json ]; then git add data/recovery.json; fi
+          # Guarded, not bare. This step runs under `bash -e`, so a `git add`
+          # of a missing path aborts it and NOTHING publishes — which would
+          # turn a deliberately non-blocking audit into a publish blocker, the
+          # exact failure the BLOCKING vs ALARMING split exists to prevent.
+          if [ -f data/audit_report.json ]; then git add data/audit_report.json; fi
           git diff --staged --quiet || git commit -m "Daily price update $(date +%Y-%m-%d_%H:%M)"
           # A human push during the ~50min run conflicts on site/ (a build
           # artifact that is committed). Retry the rebase a few times, and
@@ -288,6 +335,10 @@ jobs:
             echo "::error::Live price spot-checks mismatched."
             PROBLEMS="$PROBLEMS verify"
           fi
+          if [ "${AUDITS_ALARMED:-0}" = "1" ]; then
+            echo "::error::Nightly offline audits raised an alarm — see the nightly-audit artifact and the ::error:: lines above. Good data still published."
+            PROBLEMS="$PROBLEMS audits"
+          fi
           # Say plainly whether data actually shipped, instead of assuming.
           if [ "$COMMITTED" = "success" ]; then
             echo "Publish: data from healthy retailers WAS published this cycle."
@@ -299,4 +350,4 @@ jobs:
             echo "Problems:$PROBLEMS"
             exit 1
           fi
-          echo "All healthy: 7/7 scrapers, data clean, tests green, published."
+          echo "All healthy: 7/7 scrapers, data clean, tests green, audits quiet, published."

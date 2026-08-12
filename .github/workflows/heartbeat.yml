@@ -1,0 +1,262 @@
+name: Pipeline Heartbeat
+
+# DEAD-MAN'S SWITCH — the no-account fallback.
+#
+# Nothing in this repo currently notices if the pipeline stops ENTIRELY. Every
+# other guard (the data gate, the audits, the scraper health report) only runs
+# as part of a scrape, so a scrape that never happens trips none of them. The
+# site would keep serving the last good build, silently, forever.
+#
+# THIS IS WEAKER THAN AN EXTERNAL DEAD-MAN'S SWITCH, AND DELIBERATELY SO.
+# It runs inside the thing it monitors. If GitHub Actions is down, if billing
+# lapses, if the repo is disabled, or if scheduled workflows stop firing, then
+# the monitor stops at the same moment as the thing it watches and reports
+# nothing. Specifically:
+#
+#   * GitHub disables scheduled workflows in a repository with no commit
+#     activity for 60 days. A pipeline that dies goes quiet, and after 60 days
+#     of quiet this heartbeat is disabled too — exactly when it is needed.
+#   * Scheduled runs are best-effort and are dropped under load.
+#
+# healthchecks.io (or any external cron monitor) remains the STRONGER option
+# and should replace this the moment the owner has 10 minutes: it lives
+# outside GitHub, so it fires precisely when GitHub is the thing that failed.
+# The scrape workflow would ping it on success; silence is the alarm. This
+# file exists because it needs no signup, no account and no secrets, and
+# something imperfect that exists beats something better that does not.
+#
+# TWO INDEPENDENT ALERT PATHS, because the email path has plausibly never
+# fired in this repo's history (see the SMTP notes below):
+#   1. a failed job + an ::error:: annotation. Needs NO secrets and no
+#      configuration. GitHub emails the repo owner on workflow failure.
+#   2. SMTP mail through the same action weekly-recovery-email.yml uses.
+#      Best-effort: it is checked for configuration first and never allowed
+#      to swallow the alarm.
+
+on:
+  schedule:
+    # Every 6 hours, offset away from the scrape crons (11:00 and 21:30 UTC)
+    # so a heartbeat never lands in the middle of a scrape's commit.
+    - cron: '0 1,7,13,19 * * *'
+  workflow_dispatch:
+    inputs:
+      force_alert:
+        description: 'Fire the full alert path now, to test that it works'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+jobs:
+  heartbeat:
+    runs-on: ubuntu-latest
+    steps:
+      # 100 commits is ~50 days of scrapes at 2x/day — comfortably more
+      # history than the alert window needs, while staying a cheap clone.
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 100
+
+      # WINDOW CALIBRATION (R9 — measured against real history, not guessed).
+      #
+      # 239 consecutive commit gaps on main from 2026-05-01 to 2026-08-12:
+      #     median 10.4h   p95 15.6h   max 23.9h
+      #     gaps >= 18h :  2 of 239 (0.8%)
+      #     gaps >= 20h :  1 of 239 (0.4%)
+      #     gaps >= 24h :  0 of 239
+      #     gaps >= 26h :  0 of 239
+      #     gaps >= 30h :  0 of 239
+      #
+      # Healthy spacing is 13.5h (21:30 -> 11:00) and 10.5h (11:00 -> 21:30),
+      # plus up to ~1.5h for the job itself (90 min timeout, plus the random
+      # 0-120s start delay and up to 3 push retries).
+      #
+      # One entirely missed cycle therefore shows up as ~24h — and the
+      # observed 23.9h maximum is exactly that, a single missed run that
+      # recovered on its own. Alerting there would page the owner for
+      # something the pipeline already fixed.
+      #
+      # CHOSEN 30h: zero false alarms across all 239 real gaps, ~6h of
+      # headroom over the worst genuine gap, still well under the ~34.5h that
+      # TWO consecutive missed cycles produce. So: one missed run is tolerated
+      # in silence, two is an alarm. Worst-case detection latency is
+      # 30h + 6h (the heartbeat's own cadence) = 36h.
+      #
+      # The age measured is that of the last commit TOUCHING data/prices/,
+      # not the last commit of any kind. A documentation or config push would
+      # otherwise reset the clock and mask a scraper that has been dead for
+      # days — the repo would look alive while producing no data.
+      - name: Measure pipeline freshness
+        id: check
+        env:
+          MAX_AGE_HOURS: '30'
+          FORCE: ${{ inputs.force_alert }}
+        run: |
+          set -euo pipefail
+
+          DATA_ISO=$(git log -1 --format=%cI -- data/prices/ || true)
+          ANY_ISO=$(git log -1 --format=%cI || true)
+
+          if [ -z "$DATA_ISO" ]; then
+            # No data commit inside the fetched depth. That is not "fresh" and
+            # must never be read as healthy — it means either the pipeline has
+            # been dead longer than 100 commits' worth of history, or the
+            # path moved. Either way a human needs to look.
+            echo "::error::Heartbeat: no commit touching data/prices/ in the last 100 commits. Either the pipeline has been dead for a very long time, or data/prices/ has moved and this check is now looking at nothing."
+            {
+              echo "stale=true"
+              echo "age_hours=unknown"
+              echo "last_data_commit=none-in-range"
+            } >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          NOW=$(date -u +%s)
+          DATA_TS=$(date -u -d "$DATA_ISO" +%s)
+          AGE_H=$(( (NOW - DATA_TS) / 3600 ))
+
+          echo "last data commit : $DATA_ISO"
+          echo "last commit (any): $ANY_ISO"
+          echo "age              : ${AGE_H}h"
+          echo "alert window     : ${MAX_AGE_HOURS}h"
+
+          STALE=false
+          if [ "$AGE_H" -ge "$MAX_AGE_HOURS" ]; then
+            STALE=true
+          fi
+          if [ "${FORCE:-false}" = "true" ]; then
+            echo "force_alert requested — exercising the full alert path on purpose."
+            STALE=true
+          fi
+
+          {
+            echo "stale=$STALE"
+            echo "age_hours=$AGE_H"
+            echo "last_data_commit=$DATA_ISO"
+          } >> "$GITHUB_OUTPUT"
+
+          {
+            echo "### Pipeline heartbeat"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| last data commit | \`$DATA_ISO\` |"
+            echo "| age | ${AGE_H}h |"
+            echo "| alert window | ${MAX_AGE_HOURS}h |"
+            echo "| verdict | $([ "$STALE" = "true" ] && echo 'STALE — alerting' || echo 'fresh') |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Is the mail path even usable? weekly-recovery-email.yml has plausibly
+      # never sent anything: its trigger requires a data/recovery.json entry
+      # with status unrecoverable / rejected / confirmation_failed, and all 73
+      # entries currently in that file are status "broken". So the SMTP
+      # secrets have most likely never been exercised and may be unset or
+      # wrong. Reporting "unconfigured" out loud is the whole point — a mail
+      # alarm that silently does nothing is worse than no mail alarm, because
+      # it gets counted as coverage.
+      - name: Check whether SMTP is configured
+        id: smtp
+        env:
+          # Deliberately HB_-prefixed. Naming these SERVER/PORT/USERNAME/
+          # PASSWORD collides with variables the runner may already export —
+          # USERNAME in particular is pre-set in some environments, which made
+          # an unset secret test as "configured" and would have reported a
+          # working mail path that does not exist.
+          HB_SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          HB_SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          HB_SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          HB_SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          set -euo pipefail
+          MISSING=""
+          [ -z "${HB_SMTP_SERVER:-}" ]   && MISSING="$MISSING SMTP_SERVER"
+          [ -z "${HB_SMTP_PORT:-}" ]     && MISSING="$MISSING SMTP_PORT"
+          [ -z "${HB_SMTP_USERNAME:-}" ] && MISSING="$MISSING SMTP_USERNAME"
+          [ -z "${HB_SMTP_PASSWORD:-}" ] && MISSING="$MISSING SMTP_PASSWORD"
+          if [ -n "$MISSING" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::SMTP is NOT configured (missing:$MISSING). Heartbeat alerts will arrive only as a failed workflow run. Set these repository secrets to enable email."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "SMTP secrets are present. Presence is not proof they work — only a delivered message is."
+          fi
+
+      - name: Compose alert
+        if: steps.check.outputs.stale == 'true'
+        run: |
+          cat > heartbeat_alert.txt <<EOF
+          PlantPriceTracker has stopped publishing price data.
+
+          Last commit touching data/prices/ : ${{ steps.check.outputs.last_data_commit }}
+          Age at time of check              : ${{ steps.check.outputs.age_hours }} hours
+          Alert window                      : 30 hours
+
+          The scrape is scheduled twice a day (11:00 and 21:30 UTC). Crossing
+          30 hours means at least two consecutive runs produced no data.
+
+          What to look at, in order:
+            1. https://github.com/${{ github.repository }}/actions/workflows/scrape.yml
+               — did the runs fail, or did they never start?
+            2. If they failed: open the newest run and read the "Raise alarms"
+               step, which names what went wrong.
+            3. If they never started: GitHub disables scheduled workflows in
+               repositories with no commit activity for 60 days. Re-enable it
+               from the Actions tab.
+            4. The live site keeps serving the last good build throughout, so
+               nothing is broken for visitors — the prices are just ageing.
+
+          This alert came from .github/workflows/heartbeat.yml, which runs
+          INSIDE GitHub Actions and therefore cannot report a failure of
+          GitHub Actions itself. An external monitor (healthchecks.io) is the
+          stronger version of this check.
+          EOF
+          cat heartbeat_alert.txt
+
+      # Best-effort. continue-on-error so a broken mailbox can never swallow
+      # the alarm — the annotation step below runs regardless and is what
+      # actually fails the job.
+      - name: Send alert email
+        id: mail
+        if: steps.check.outputs.stale == 'true' && steps.smtp.outputs.configured == 'true'
+        continue-on-error: true
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "PlantPriceTracker — pipeline has stopped publishing"
+          to: brandon.william.hall@gmail.com
+          from: ${{ secrets.SMTP_FROM || 'PlantPriceTracker <noreply@plantpricetracker.com>' }}
+          body: file://heartbeat_alert.txt
+
+      # The secret-free alert path, and the single place the job turns red.
+      # Runs even if the mail step errored, so there is always a signal.
+      - name: Raise the alarm
+        if: always() && steps.check.outputs.stale == 'true'
+        run: |
+          echo "::error::PIPELINE DOWN: no price data committed for ${{ steps.check.outputs.age_hours }} hours (window 30h). Last data commit: ${{ steps.check.outputs.last_data_commit }}."
+
+          case "${{ steps.smtp.outputs.configured }}" in
+            true)
+              case "${{ steps.mail.outcome }}" in
+                success) echo "Email path: message accepted by the SMTP server." ;;
+                *)       echo "::error::Email path FAILED (send step: ${{ steps.mail.outcome }}). This alert exists only as a failed workflow run. Check the SMTP secrets." ;;
+              esac
+              ;;
+            *)
+              echo "::error::Email path UNAVAILABLE — SMTP secrets are not set. This alert exists only as a failed workflow run."
+              ;;
+          esac
+
+          {
+            echo ""
+            echo "**ALERT RAISED** — see the annotations above."
+          } >> "$GITHUB_STEP_SUMMARY"
+          exit 1
+
+      - name: Report healthy
+        if: steps.check.outputs.stale != 'true'
+        run: |
+          echo "Pipeline is publishing: last data commit ${{ steps.check.outputs.age_hours }}h ago, window 30h."
