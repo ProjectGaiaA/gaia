@@ -63,6 +63,66 @@ def _is_orderable(availability: str) -> bool:
     return any(v in availability for v in _ORDERABLE_AVAILABILITY)
 
 
+# Values that positively mean "cannot be bought". Deliberately an ALLOWLIST,
+# and deliberately NOT `not _is_orderable(...)`.
+#
+# The two predicates drive opposite decisions and so need opposite defaults.
+# _is_orderable gates whether to SHOW a price: an unknown value falling to
+# False merely hides something, which is conservative. The sold-out branch
+# below decides whether to PUBLISH A ROW AND DOWNGRADE THE DRIFT ALARM, so an
+# unknown value falling into "sold out" both invents a fact and silences the
+# warning. Review measured exactly that: OnlineOnly, PreSale and MadeToOrder
+# are all orderable states and all three published a sold-out row. PreSale is
+# the one that matters here — a nursery's spring pre-sale is precisely it.
+#
+# Anything not on this list is UNKNOWN, and unknown must withhold.
+_DEFINITELY_UNAVAILABLE = ("outofstock", "soldout", "discontinued", "instoreonly")
+
+
+def _is_definitely_unavailable(availability: str) -> bool:
+    """True only for values positively stating the item cannot be bought."""
+    normalized = re.sub(r"[^a-z]", "", (availability or "").lower())
+    return bool(normalized) and any(v in normalized for v in _DEFINITELY_UNAVAILABLE)
+
+
+def _offers_from_ld_json(text: str) -> list[dict]:
+    """Offer objects parsed with a real JSON parser, not a regex.
+
+    _SCHEMA_OFFER_RE serves the price path and is documented there as unable
+    to be trusted across Offer boundaries. Review found three ways it misreads
+    AVAILABILITY specifically: an Offer emitting `availability` before
+    `price`, an Offer omitting `availability` and inheriting the next one's,
+    and a non-numeric SKU that makes the Offer invisible. Each produced a
+    sold-out row while a buyable price sat on the page. It is also 0-for-172
+    on real FGT Offers, which nest price inside priceSpecification.
+
+    Returns [] when nothing parses; the caller treats that as "cannot decide"
+    and withholds, which is the safe direction.
+    """
+    found = []
+    for match in re.finditer(
+        r'<script[^>]+application/ld\+json[^>]*>(.*?)</script>',
+        text, re.DOTALL | re.IGNORECASE,
+    ):
+        try:
+            blob = json.loads(match.group(1).strip())
+        except (json.JSONDecodeError, ValueError):
+            continue
+
+        def walk(node):
+            if isinstance(node, dict):
+                if str(node.get("@type", "")).endswith("Offer"):
+                    found.append(node)
+                for value in node.values():
+                    walk(value)
+            elif isinstance(node, list):
+                for item in node:
+                    walk(item)
+
+        walk(blob)
+    return found
+
+
 class ShopifyScraper:
     """Scrape product data from Shopify-based nursery stores."""
 
@@ -617,14 +677,26 @@ class ShopifyScraper:
             # drift, a price exists that we cannot attribute, withhold.
             # No sizes are fabricated from Offer SKUs — that was the
             # phantom-row generator this module already removed once.
-            non_pack = [
-                (sku, p, avail) for sku, p, avail in offers
-                if "PACK" not in sku.upper()
+            # Decide from a REAL JSON parse of the ld+json block. `offers`
+            # comes from _SCHEMA_OFFER_RE, which this module already documents
+            # as untrustworthy across Offer boundaries; review showed three
+            # ways it misreads availability, each producing a sold-out row
+            # while a buyable price sat on the page.
+            ld_offers = [
+                o for o in _offers_from_ld_json(text)
+                if "pack" not in str(o.get("sku", "")).lower()
             ]
-            if non_pack and all(not _is_orderable(a) for _, _, a in non_pack):
+            availabilities = [str(o.get("availability", "")) for o in ld_offers]
+            # EVERY offer must positively say unavailable. No offers parsed,
+            # or any value we do not recognise, means we cannot decide — and
+            # "cannot decide" is drift, which withholds and alarms.
+            all_gone = bool(availabilities) and all(
+                _is_definitely_unavailable(a) for a in availabilities
+            )
+            if all_gone:
                 logger.info(
                     f"  {self.retailer_id}/{handle}: every size sold out "
-                    f"({len(non_pack)} offers, none orderable) — recording as "
+                    f"({len(ld_offers)} offers, none orderable) — recording as "
                     f"out of stock rather than withholding"
                 )
                 title_match = re.search(r"<title>([^<]+)</title>", text)
@@ -640,6 +712,17 @@ class ShopifyScraper:
                     "url": url,
                     "sizes": {},
                     "in_stock": False,
+                    # The drift alarm and the sold-out fact are NOT mutually
+                    # exclusive, and the first version of this branch treated
+                    # them as if they were. A page can be drifted AND fully
+                    # sold out; publishing the row then silenced the alarm.
+                    # Review measured the result: a retailer with not one
+                    # readable price on any of 68 pages reported
+                    # pipeline_status "healthy" at a 100% hit rate, because
+                    # empty rows count as products_found and the row carries a
+                    # fresh timestamp. This flag lets runner.py keep counting
+                    # the fact separately from a successful price read.
+                    "no_sizes_readable": True,
                     "timestamp": datetime.now(timezone.utc).isoformat(),
                 }
             logger.error(

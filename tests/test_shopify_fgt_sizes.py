@@ -490,3 +490,68 @@ def test_orderable_but_unreadable_is_still_withheld_as_drift():
       {"@type":"Offer","sku":"222","price":"38.95","availability":"https://schema.org/InStock"}]}
     </script></body></html>"""
     assert _scrape("drifted-product", html) is None
+
+
+# --- Fail-closed vocabulary (kills mutant M3) -------------------------------
+
+def test_unknown_availability_values_do_not_count_as_sold_out():
+    """The sold-out branch publishes a row AND downgrades the drift alarm, so
+    an unrecognised availability value must NOT land there.
+
+    Review measured the original `not _is_orderable(...)` test publishing
+    sold-out rows for OnlineOnly, PreSale and MadeToOrder — all orderable
+    states. PreSale is the one that matters for a nursery: a spring pre-sale
+    is exactly this case.
+    """
+    from scrapers.shopify import _is_definitely_unavailable as gone
+
+    for value in ("OutOfStock", "SoldOut", "Discontinued", "InStoreOnly",
+                  "https://schema.org/OutOfStock", "http://schema.org/SoldOut",
+                  "out_of_stock", "OUTOFSTOCK"):
+        assert gone(value), f"{value!r} should count as definitely unavailable"
+
+    for value in ("InStock", "PreOrder", "BackOrder", "LimitedAvailability",
+                  "OnlineOnly", "PreSale", "MadeToOrder",
+                  "https://schema.org/PreSale", "", "  ", "wat"):
+        assert not gone(value), (
+            f"{value!r} is not a positive statement of unavailability and must "
+            f"not silence the drift alarm")
+
+
+@responses.activate
+def test_one_presale_offer_among_sold_out_ones_is_treated_as_drift():
+    html = """<html><head><title>PreSale | FGT</title></head><body>
+    <script type="application/ld+json">{"@type":"Product","offers":[
+      {"@type":"Offer","sku":"111","price":"24.95","availability":"https://schema.org/OutOfStock"},
+      {"@type":"Offer","sku":"222","price":"38.95","availability":"https://schema.org/PreSale"}]}
+    </script></body></html>"""
+    assert _scrape("presale-product", html) is None, (
+        "a pre-sale offer is orderable — this page is drift, not sold out")
+
+
+# --- Cannot-decide is drift (kills mutant M4) -------------------------------
+
+@responses.activate
+def test_unparseable_schema_block_withholds_rather_than_publishing():
+    """all([]) is True, so an empty offer list made the WORST drift — a schema
+    block that will not parse at all — publish a clean sold-out row."""
+    html = """<html><head><title>Broken | FGT</title></head><body>
+    <h2>Select size</h2>
+    <script type="application/ld+json">{"@type":"Product","offers":[{ THIS IS NOT JSON </script>
+    </body></html>"""
+    assert _scrape("broken-schema", html) is None, (
+        "no parseable offers means we cannot decide — that is drift, withhold")
+
+
+@responses.activate
+def test_sold_out_row_is_marked_as_having_no_readable_sizes():
+    """The published row must carry the flag runner.py uses to keep the drift
+    signal alive; without it a fully broken retailer reported 100% healthy."""
+    html = """<html><head><title>Gone | FGT</title></head><body>
+    <script type="application/ld+json">{"@type":"Product","offers":[
+      {"@type":"Offer","sku":"111","price":"24.95","availability":"https://schema.org/OutOfStock"},
+      {"@type":"Offer","sku":"222","price":"38.95","availability":"https://schema.org/OutOfStock"}]}
+    </script></body></html>"""
+    result = _scrape("gone-product", html)
+    assert result is not None and result["in_stock"] is False
+    assert result.get("no_sizes_readable") is True

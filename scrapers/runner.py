@@ -501,6 +501,7 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
     # Process results
     products_found = 0
     products_error = 0
+    products_no_sizes = 0
     prices_collected = 0
     anomalies = []
     price_records = {}
@@ -514,6 +515,14 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
             continue
 
         products_found += 1
+        # A product the scraper published but could read no sizes from is NOT
+        # a successful price read. It is published because "sold out" is a
+        # true fact worth recording, but counting it as a hit let a totally
+        # broken retailer report 100% healthy: review drove all 68 FGT
+        # products through a drifted-and-sold-out page and got
+        # products_found=68, prices_collected=0, pipeline_status "healthy".
+        if result.get("no_sizes_readable"):
+            products_no_sizes += 1
         sizes = result.get("sizes", {})
         prices_collected += len(sizes)
 
@@ -567,12 +576,16 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
             )
             price_records[f"{plant_id}:{retailer_id}"][tier] = price_val
 
-    # Check if we got significantly fewer results than expected
+    # Check if we got significantly fewer results than expected.
+    # products_priced, not products_found: a published sold-out row proves the
+    # page was reachable, not that we can still read it.
     expected = len(handle_map)
-    if products_found < expected * 0.8:
+    products_priced = products_found - products_no_sizes
+    if products_priced < expected * 0.8:
         logger.error(
-            f"  {retailer_id}: Only found {products_found}/{expected} products "
-            f"({products_found/expected*100:.0f}%). Possible scraper breakage!"
+            f"  {retailer_id}: Only {products_priced}/{expected} products yielded "
+            f"prices ({products_priced/expected*100:.0f}%; {products_no_sizes} published "
+            f"with no readable sizes). Possible scraper breakage!"
         )
 
     return {
@@ -580,6 +593,10 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
         "status": "completed",
         "products_expected": expected,
         "products_found": products_found,
+        # products_priced is the honest health input: a published sold-out row
+        # proves the page was reachable, not that its sizes are still readable.
+        "products_no_sizes": products_no_sizes,
+        "products_priced": products_priced,
         "products_error": products_error,
         "prices_collected": prices_collected,
         "anomalies": anomalies,
@@ -724,7 +741,14 @@ def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = 
     # where only one retailer is scraped at a time.
     for entry in this_run_entries:
         if entry.get("status") == "completed":
-            found = entry.get("products_found", 0)
+            # products_priced, NOT products_found. A product published with no
+            # readable sizes proves the page was reachable, not that we can
+            # still parse it. Counting those as hits let a completely broken
+            # retailer report perfect health: driving all 68 FGT products
+            # through a drifted-and-sold-out page produced products_found=68,
+            # prices_collected=0, hit_rate 100%, health "healthy". Falls back
+            # to products_found for entries written before this field existed.
+            found = entry.get("products_priced", entry.get("products_found", 0))
             expected = entry.get("products_expected", 1)
             hit_rate = found / expected if expected else 1.0
             if hit_rate < 0.8:
