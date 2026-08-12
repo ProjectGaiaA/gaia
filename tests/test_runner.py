@@ -252,37 +252,56 @@ def test_skipped_entries_ignored():
     assert find_dead_retailers(entries, prev) == []
 
 
-def test_a_flagged_price_is_still_written(tmp_data_dir):
+def test_a_flagged_price_is_still_written(tmp_data_dir, monkeypatch):
     """A large price move must be RECORDED and flagged, never discarded.
 
-    The runner used to wrap the write in `if not anomaly_warnings:`, so a
-    product that moved more than the threshold was dropped and the site kept
-    serving the old value. When the old value is the wrong one that freezes
-    the defect permanently — every later run compares against the same stale
-    number and raises the same anomaly, so the correction can never land.
+    Drives the REAL scrape_retailer() with a stubbed scraper, then asserts the
+    row landed on disk. The first version of this test hand-built the row dict
+    and asserted append_price returned it — circular, and it passed with the
+    old discard-on-anomaly guard fully restored, which is exactly the class of
+    worthless test PRICE_AND_STOCK_AUDIT.md warns about.
 
-    Measured on fastgrowingtrees.com's Delaware Valley White Azalea 3 gallon:
-    the size->price bug moved it 42.95 -> 21.95, a 49% drop that slipped under
-    the 50% threshold and was written. The correction to 46.95 is a 114% rise,
-    so it was blocked — for eight consecutive scrapes.
+    Why it matters: runner.py used to wrap the write in
+    `if not anomaly_warnings:`, so a product that moved past the threshold was
+    dropped and the site kept the old value. When the old value is the wrong
+    one that freezes the defect permanently — every later run compares against
+    the same stale number and raises the same anomaly. Measured on
+    fastgrowingtrees.com's Delaware Valley White Azalea 3 gallon: the
+    size->price bug entered as a 49% drop (under the 50% threshold) and the
+    114% correction was refused for eight consecutive scrapes.
     """
-    prev_manifest = {"prices": {"azalea:fgt": {"3gal": 21.95}}}
-    sizes = {"3gal": {"price": 46.95}}
+    from scrapers import runner as runner_mod
 
-    warnings = check_price_anomaly("azalea", "fgt", sizes, prev_manifest)
-    assert warnings, "a 114% rise should be flagged"
+    class _StubScraper:
+        def __init__(self, retailer_id, url):
+            pass
 
-    entry = {
-        "retailer_id": "fgt",
-        "timestamp": "2026-08-11T16:00:00Z",
-        "sizes": sizes,
-        "price_anomaly": warnings,
-    }
+        def scrape_products(self, handles, plant_ids=None):
+            return [{
+                "retailer_name": "Fast Growing Trees",
+                "timestamp": "2026-08-12T16:00:00+00:00",
+                "url": "https://example.com/products/azalea",
+                "sizes": {"3gal": {"price": 46.95, "available": True}},
+                "in_stock": True,
+            }]
+
     prices_dir = tmp_data_dir / "prices"
-    with patch("scrapers.runner.PRICES_DIR", prices_dir):
-        append_price("azalea", entry)
+    monkeypatch.setattr(runner_mod, "ShopifyScraper", _StubScraper)
+    monkeypatch.setattr(runner_mod, "PRICES_DIR", prices_dir)
+    monkeypatch.setattr(runner_mod, "get_handles_for_retailer",
+                        lambda rid, plant_ids: {"azalea": "azalea-handle"})
 
-    written = json.loads(
-        (prices_dir / "azalea.jsonl").read_text(encoding="utf-8").strip())
-    assert written["sizes"]["3gal"]["price"] == 46.95, "the correction was lost"
-    assert written["price_anomaly"], "the row should carry its flag for review"
+    retailer = {"id": "fast-growing-trees", "name": "Fast Growing Trees",
+                "url": "https://example.com", "scraper_type": "shopify"}
+    # Baseline 21.95 -> 46.95 is +114%, well past the 50% anomaly threshold.
+    prev_manifest = {"prices": {"azalea:fast-growing-trees": {"3gal": 21.95}}}
+
+    entry = runner_mod.scrape_retailer(retailer, ["azalea"], prev_manifest)
+
+    assert entry["anomalies"], "a 114% rise should have been flagged"
+
+    written = prices_dir / "azalea.jsonl"
+    assert written.exists(), "the flagged row was discarded instead of written"
+    row = json.loads(written.read_text(encoding="utf-8").strip())
+    assert row["sizes"]["3gal"]["price"] == 46.95, "the correction was lost"
+    assert row["price_anomaly"], "the row should carry its flag for review"

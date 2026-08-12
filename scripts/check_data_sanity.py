@@ -22,7 +22,7 @@ Row checks (quarantined, exit 3):
   - recent row from an unknown or inactive retailer
 
 Systemic checks (hard block, exit 1):
-  - a large fraction of fresh prices moved drastically vs the last manifest
+  - a large fraction of fresh prices moved drastically vs the PREVIOUS cycle
     (catches a site redesign making every price the same wrong number)
   - fresh prices collapse to one repeated value
   - every active retailer produced zero fresh rows
@@ -108,6 +108,7 @@ def scan(data_dir, now=None, quarantine=False):
     fresh_prices = []           # values of fresh, valid prices
     fresh_by_key = {}           # (plant, retailer, tier) -> price
     fresh_rows = 0
+    fresh_flagged = 0
     zero_offer_plants = 0
     total_lines = 0
 
@@ -168,6 +169,13 @@ def scan(data_dir, now=None, quarantine=False):
                 plant_has_offer = True
             if ts >= fresh_cutoff:
                 fresh_rows += 1
+                # runner.py flags a row whose price moved more than the
+                # anomaly threshold instead of discarding it. Nothing in the
+                # repo read that key until now, which made "flagged for
+                # review" decorative. Counting it here puts it in the gate's
+                # output and JSON report.
+                if entry.get("price_anomaly"):
+                    fresh_flagged += 1
                 for tier, info in entry.get("sizes", {}).items():
                     price = info.get("price") if isinstance(info, dict) else info
                     if isinstance(price, (int, float)) and not isinstance(price, bool) and price > 0:
@@ -186,6 +194,7 @@ def scan(data_dir, now=None, quarantine=False):
     stats = {
         "total_lines": total_lines,
         "fresh_rows": fresh_rows,
+        "rows_flagged_price_anomaly": fresh_flagged,
         "fresh_price_points": len(fresh_prices),
         "zero_offer_plants": zero_offer_plants,
         "active_retailers": len(active_ids),
@@ -217,14 +226,29 @@ def systemic_checks(data_dir, stats, fresh_prices, fresh_by_key, problems):
                 f"— scraper is reading one wrong value sitewide"
             )
 
-    # 3. A large fraction of prices moving drastically vs the last manifest.
-    manifest_path = os.path.join(data_dir, "last_manifest.json")
+    # 3. A large fraction of prices moving drastically vs the PREVIOUS cycle.
+    #
+    # Only prev_manifest.json counts. last_manifest.json is deliberately NOT a
+    # fallback: every scraper step rewrites it with THIS run's prices long
+    # before this gate executes, so reading it compares the run against itself
+    # and reports flawless 0% movement however corrupt the data is. Measured
+    # on this corpus: 735 prices compared, 735 exactly equal — and tripling
+    # every price still exited 0 while corrupting 127 of 133 pages.
+    #
+    # With no snapshot the check is SKIPPED, not passed. Silence is the honest
+    # answer when there is nothing to compare against; a green light would be
+    # the same lie this file exists to catch.
+    manifest_path = os.path.join(data_dir, "prev_manifest.json")
     compared = moved = 0
     try:
         with open(manifest_path, encoding="utf-8") as f:
             manifest = json.load(f)
     except (OSError, json.JSONDecodeError):
         manifest = {}
+        print(
+            "  NOTE: no prev_manifest.json baseline — price-movement check "
+            "SKIPPED this run (skipped, not passed)"
+        )
     prev_prices = manifest.get("prices", {})
     for (plant_id, rid, tier), price in fresh_by_key.items():
         prev = (prev_prices.get(f"{plant_id}:{rid}") or {}).get(tier)
@@ -238,7 +262,7 @@ def systemic_checks(data_dir, stats, fresh_prices, fresh_by_key, problems):
         if frac > MAX_MOVED_FRACTION:
             fatal.append(
                 f"{moved}/{compared} ({frac:.0%}) of fresh prices moved more than "
-                f"{MAX_PRICE_MOVE_PCT}% vs the last manifest (> {MAX_MOVED_FRACTION:.0%}) "
+                f"{MAX_PRICE_MOVE_PCT}% vs the previous cycle (> {MAX_MOVED_FRACTION:.0%}) "
                 f"— site redesign or parser regression"
             )
 
@@ -252,7 +276,20 @@ def systemic_checks(data_dir, stats, fresh_prices, fresh_by_key, problems):
     ):
         fatal.append("zero fresh rows from any retailer this cycle")
 
-    return fatal, {"prices_compared": compared, "prices_moved_drastically": moved}
+    # Count rows the scraper flagged with price_anomaly. Until now nothing in
+    # the repo READ that key — runner.py wrote it and no code, workflow or
+    # template consumed it, so "flagged for review" was decorative. Reporting
+    # it here puts it in the gate's stdout and JSON report, which is where the
+    # run summary and any future digest can pick it up.
+    flagged = stats.get("rows_flagged_price_anomaly", 0)
+    if flagged:
+        print(f"  {flagged} fresh row(s) carry a price_anomaly flag (recorded, not blocking)")
+
+    return fatal, {
+        "prices_compared": compared,
+        "prices_moved_drastically": moved,
+        "rows_flagged_price_anomaly": flagged,
+    }
 
 
 def main():

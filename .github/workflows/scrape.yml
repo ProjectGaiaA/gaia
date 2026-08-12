@@ -39,6 +39,30 @@ jobs:
           echo "Sleeping ${DELAY} seconds before starting..."
           sleep $DELAY
 
+      # Snapshot the PREVIOUS cycle's prices before any scraper runs.
+      #
+      # Without this the sanity gate is a self-comparison: it reads
+      # data/last_manifest.json, which every scraper step overwrites with THIS
+      # run's prices long before the gate executes. Measured on this corpus,
+      # the gate compared 735 prices against themselves and found 735 exactly
+      # equal — a flawless 0% movement no matter how corrupt the data was. A
+      # guard that cannot fire is worse than none, because it gets cited as a
+      # reason none is needed: this one was, to justify removing the anomaly
+      # write-block in 52b1ae52.
+      #
+      # Proven: with an honest baseline, tripling every price takes the gate
+      # from exit 0 to exit 1 ("725/737 (98%) moved"). Calibrated against 128
+      # real day-over-day cycles from 2026-04-03 on: worst genuine movement
+      # 4.5% vs the 30% block threshold, zero false blocks.
+      - name: Snapshot previous manifest
+        run: |
+          if [ -f data/last_manifest.json ]; then
+            cp data/last_manifest.json data/prev_manifest.json
+            echo "Baseline captured: $(wc -c < data/prev_manifest.json) bytes"
+          else
+            echo "::warning::No last_manifest.json — price-movement checks skipped this run."
+          fi
+
       # --- Each nursery runs as its own step with continue-on-error ---
       - name: Scrape nature-hills
         continue-on-error: true

@@ -27,7 +27,12 @@ def _setup(tmp_path, entries, retailers=None, manifest=None):
     retailers = retailers or [{"id": "nursery-a", "active": True}]
     (data / "retailers.json").write_text(json.dumps(retailers), encoding="utf-8")
     if manifest is not None:
-        (data / "last_manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+        # prev_manifest.json, NOT last_manifest.json. The gate deliberately
+        # refuses to read last_manifest: the scrapers overwrite it with the
+        # current run's prices before the gate executes, so reading it made
+        # the check compare the run against itself and report a flawless 0%
+        # movement over corrupt data. CI snapshots this file before scraping.
+        (data / "prev_manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
     with open(prices / "plant.jsonl", "w", encoding="utf-8") as f:
         for e in entries:
             f.write((e if isinstance(e, str) else json.dumps(e)) + "\n")
@@ -155,6 +160,26 @@ def test_mass_price_move_vs_manifest_blocks(tmp_path):
     code, _, fatal, _ = _verdict(_setup(tmp_path, entries, manifest=manifest))
     assert code == EXIT_BLOCK
     assert any("moved more than" in f for f in fatal)
+
+
+def test_last_manifest_is_not_used_as_a_baseline(tmp_path):
+    """The scrapers rewrite last_manifest.json before the gate runs, so using
+    it compares the run against itself. Measured on the real corpus: 735
+    prices compared, 735 exactly equal, and tripling every price still exited
+    0 while corrupting 127 of 133 pages. Writing the baseline to the wrong
+    filename must therefore NOT produce a pass — the check is skipped."""
+    entries = [_entry(price=1.99, tier=f"t{i}") for i in range(40)]
+    manifest = {"prices": {"plant:nursery-a": {f"t{i}": 50.0 for i in range(40)}}}
+    data_dir = _setup(tmp_path, entries)
+    import os
+    # deliberately the WRONG file — what the scrapers leave behind
+    with open(os.path.join(data_dir, "last_manifest.json"), "w", encoding="utf-8") as f:
+        json.dump(manifest, f)
+    code, _, fatal, _ = _verdict(data_dir)
+    assert not any("moved more than" in x for x in fatal), (
+        "gate read last_manifest.json — that is the self-comparison this "
+        "design exists to prevent"
+    )
 
 
 def test_normal_price_movement_does_not_block(tmp_path):
