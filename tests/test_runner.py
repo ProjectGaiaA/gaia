@@ -305,3 +305,106 @@ def test_a_flagged_price_is_still_written(tmp_data_dir, monkeypatch):
     row = json.loads(written.read_text(encoding="utf-8").strip())
     assert row["sizes"]["3gal"]["price"] == 46.95, "the correction was lost"
     assert row["price_anomaly"], "the row should carry its flag for review"
+
+
+# --- Health must not be satisfiable by the failure mode (plan rule R5) ------
+
+def test_hit_rate_excludes_products_with_no_readable_sizes():
+    """A product published with no readable sizes is not a successful read.
+
+    Counting it let a completely broken retailer report perfect health:
+    driving all 68 FGT products through a drifted-and-sold-out page produced
+    products_found=68, prices_collected=0, hit_rate 100%, health "healthy".
+    Review found two mutants reverting this that survived all 474 tests,
+    because the logic was inline in run() and unreachable from a test.
+    """
+    from scrapers.runner import retailer_hit_rate
+
+    broken = {"products_expected": 68, "products_found": 68,
+              "products_no_sizes": 68, "products_priced": 0}
+    found, expected, rate = retailer_hit_rate(broken)
+    assert found == 0, "a page we cannot read is not a hit"
+    assert rate == 0.0 and rate < 0.8, "a fully unreadable retailer must be degraded"
+
+
+def test_hit_rate_counts_genuinely_priced_products():
+    from scrapers.runner import retailer_hit_rate
+
+    healthy = {"products_expected": 68, "products_found": 68,
+               "products_no_sizes": 0, "products_priced": 68}
+    found, _, rate = retailer_hit_rate(healthy)
+    assert found == 68 and rate == 1.0
+
+
+def test_hit_rate_partial_break_is_caught():
+    """Half the catalogue unreadable must degrade, not average out to fine."""
+    from scrapers.runner import retailer_hit_rate
+
+    half = {"products_expected": 68, "products_found": 68,
+            "products_no_sizes": 34, "products_priced": 34}
+    _, _, rate = retailer_hit_rate(half)
+    assert rate < 0.8, f"50% unreadable scored {rate:.0%} — should be degraded"
+
+
+def test_hit_rate_falls_back_for_older_manifest_entries():
+    """Entries written before products_priced existed, and stark-bros (which
+    only ever appends products that produced a price), must still work."""
+    from scrapers.runner import retailer_hit_rate
+
+    legacy = {"products_expected": 10, "products_found": 9}
+    found, _, rate = retailer_hit_rate(legacy)
+    assert found == 9 and rate == 0.9
+
+
+def test_scrape_retailer_computes_products_priced_from_results(tmp_data_dir, monkeypatch):
+    """The COMPUTATION of products_priced, not just its use.
+
+    A previous version of these tests built the manifest entry by hand, so a
+    mutant replacing `products_priced = products_found - products_no_sizes`
+    with `= products_found` survived the whole suite. This drives the real
+    scrape_retailer with a scraper returning a mix of readable and
+    unreadable-but-published products.
+    """
+    from scrapers import runner as runner_mod
+
+    class _MixedScraper:
+        def __init__(self, retailer_id, url):
+            pass
+
+        def scrape_products(self, handles, plant_ids=None):
+            out = []
+            for i, _ in enumerate(handles):
+                if i < 2:                      # readable: a real price
+                    out.append({
+                        "retailer_name": "R", "timestamp": "2026-08-12T16:00:00+00:00",
+                        "url": "https://example.com/p",
+                        "sizes": {"1gal": {"price": 19.99, "available": True}},
+                        "in_stock": True,
+                    })
+                else:                          # published, but no readable size
+                    out.append({
+                        "retailer_name": "R", "timestamp": "2026-08-12T16:00:00+00:00",
+                        "url": "https://example.com/p",
+                        "sizes": {}, "in_stock": False, "no_sizes_readable": True,
+                    })
+            return out
+
+    handles = {f"plant{i}": f"h{i}" for i in range(5)}
+    monkeypatch.setattr(runner_mod, "ShopifyScraper", _MixedScraper)
+    monkeypatch.setattr(runner_mod, "PRICES_DIR", tmp_data_dir / "prices")
+    monkeypatch.setattr(runner_mod, "get_handles_for_retailer",
+                        lambda rid, pids: handles)
+
+    entry = runner_mod.scrape_retailer(
+        {"id": "r", "name": "R", "url": "https://e.com", "scraper_type": "shopify"},
+        list(handles), {"prices": {}},
+    )
+
+    assert entry["products_found"] == 5, "all five were published"
+    assert entry["products_no_sizes"] == 3
+    assert entry["products_priced"] == 2, (
+        "products_priced must exclude published-but-unreadable rows; got "
+        f"{entry['products_priced']}"
+    )
+    _, _, rate = runner_mod.retailer_hit_rate(entry)
+    assert rate < 0.8, "3 of 5 unreadable must degrade the retailer"

@@ -608,6 +608,31 @@ CI_TIMEOUT_SECONDS = 90 * 60  # 90-minute CI timeout
 POST_SCRAPE_BUFFER_SECONDS = 10 * 60  # 10 minutes for build/commit/deploy
 
 
+def retailer_hit_rate(entry: dict) -> tuple[int, int, float]:
+    """(products that yielded prices, expected, ratio) for one manifest entry.
+
+    Counts products_priced, NOT products_found. A product published with no
+    readable sizes proves the page was reachable, not that we can still parse
+    it. Counting those as hits let a completely broken retailer report perfect
+    health: driving all 68 FGT products through a drifted-and-sold-out page
+    produced products_found=68, prices_collected=0, hit_rate 100%, "healthy".
+
+    Extracted from run() so it is reachable from tests. While this logic was
+    inline, two mutants that reverted it survived the entire 474-test suite —
+    the rule in GAIA_FINAL_PLAN.md R2(b) requires a test that fails when a
+    replacement control is disabled, and there was none.
+
+    Falls back to products_found for manifest entries written before
+    products_priced existed, and for scrapers (stark-bros) that only ever
+    append products which produced at least one price.
+    """
+    found = entry.get("products_priced")
+    if found is None:
+        found = entry.get("products_found", 0)
+    expected = entry.get("products_expected", 1)
+    return found, expected, (found / expected if expected else 1.0)
+
+
 def find_dead_retailers(this_run_entries: list[dict], prev_manifest: dict) -> list[str]:
     """Retailers that returned ZERO products this run AND the previous run.
 
@@ -741,16 +766,7 @@ def run(retailer_filter: str = None, dry_run: bool = False, skip_promos: bool = 
     # where only one retailer is scraped at a time.
     for entry in this_run_entries:
         if entry.get("status") == "completed":
-            # products_priced, NOT products_found. A product published with no
-            # readable sizes proves the page was reachable, not that we can
-            # still parse it. Counting those as hits let a completely broken
-            # retailer report perfect health: driving all 68 FGT products
-            # through a drifted-and-sold-out page produced products_found=68,
-            # prices_collected=0, hit_rate 100%, health "healthy". Falls back
-            # to products_found for entries written before this field existed.
-            found = entry.get("products_priced", entry.get("products_found", 0))
-            expected = entry.get("products_expected", 1)
-            hit_rate = found / expected if expected else 1.0
+            found, expected, hit_rate = retailer_hit_rate(entry)
             if hit_rate < 0.8:
                 entry["health"] = "degraded"
                 logger.warning(
