@@ -600,6 +600,48 @@ class ShopifyScraper:
         # second, independent trigger rather than the only one.
         multi_size_product = len(offers) > 1 or bool(self._size_selector_scope(text))
         if not aria_offers and multi_size_product:
+            # One legitimate page state also looks exactly like drift: a
+            # product whose EVERY size is sold out. FGT removes the size
+            # selector entirely then, so there are schema Offers but zero
+            # readable sizes. Measured live on /products/russian-sage:
+            # HTTP 200, 6 Offers, all OutOfStock, no selector rendered —
+            # and 11 of 13 "failed" FGT products in the 2026-08-12 run were
+            # this, not drift. Withholding them threw away a true fact (the
+            # product exists and is sold out) and permanently pinned FGT
+            # below the 80% health threshold, which is recurring alarm
+            # noise — the thing that gets alert channels ignored.
+            #
+            # The distinction is decidable from the page's own data: ALL
+            # Offers non-orderable -> genuinely sold out, publish an empty
+            # sold-out row. ANY Offer orderable but unreadable -> that is
+            # drift, a price exists that we cannot attribute, withhold.
+            # No sizes are fabricated from Offer SKUs — that was the
+            # phantom-row generator this module already removed once.
+            non_pack = [
+                (sku, p, avail) for sku, p, avail in offers
+                if "PACK" not in sku.upper()
+            ]
+            if non_pack and all(not _is_orderable(a) for _, _, a in non_pack):
+                logger.info(
+                    f"  {self.retailer_id}/{handle}: every size sold out "
+                    f"({len(non_pack)} offers, none orderable) — recording as "
+                    f"out of stock rather than withholding"
+                )
+                title_match = re.search(r"<title>([^<]+)</title>", text)
+                title = (
+                    title_match.group(1).split("|")[0].strip()
+                    if title_match else handle.replace("-", " ").title()
+                )
+                return {
+                    "retailer_id": self.retailer_id,
+                    "retailer_name": self.retailer_id.replace("-", " ").title(),
+                    "handle": handle,
+                    "title": title,
+                    "url": url,
+                    "sizes": {},
+                    "in_stock": False,
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                }
             logger.error(
                 f"  {self.retailer_id}/{handle}: page offers {len(offers)} sizes but not "
                 f"one could be read. The aria-label format has probably changed. "

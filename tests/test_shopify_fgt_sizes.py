@@ -455,3 +455,38 @@ def test_guard_survives_a_heading_redesign():
             assert tier != "default", f"{name}: published a phantom row"
             assert abs(sdata["price"] - 503.95) > 0.01, (
                 f"{name}: published the Jumbo price ${sdata['price']} on {tier}")
+
+
+@responses.activate
+def test_fully_sold_out_page_records_out_of_stock_not_error():
+    """FGT strips the size selector when every size is gone. That page state
+    is indistinguishable from markup drift by structure alone — but not by
+    the page's own Offers: all non-orderable means sold out, a true fact
+    worth recording. Withholding it threw away the fact and pinned FGT
+    below the health threshold every run (recurring false alarm).
+
+    Shape taken from the live /products/russian-sage page 2026-08-12:
+    HTTP 200, six Offers all OutOfStock, no size selector rendered."""
+    html = """<html><head><title>Russian Sage | FGT</title></head><body>
+    <script type="application/ld+json">{"@type":"Product","offers":[
+      {"@type":"Offer","sku":"111","price":"24.95","availability":"https://schema.org/OutOfStock"},
+      {"@type":"Offer","sku":"222","price":"38.95","availability":"https://schema.org/OutOfStock"},
+      {"@type":"Offer","sku":"333","price":"52.95","availability":"https://schema.org/OutOfStock"}]}
+    </script></body></html>"""
+    result = _scrape("russian-sage", html)
+    assert result is not None, "sold-out product was withheld as if it were drift"
+    assert result["in_stock"] is False
+    assert result["sizes"] == {}, "no sizes may be fabricated from Offer SKUs"
+
+
+@responses.activate
+def test_orderable_but_unreadable_is_still_withheld_as_drift():
+    """The boundary: ONE orderable Offer among the sold-out ones means a
+    price exists that we cannot attribute to a size. That is drift, and
+    publishing anything would risk the neighbour's-price defect."""
+    html = """<html><head><title>Drifted | FGT</title></head><body>
+    <script type="application/ld+json">{"@type":"Product","offers":[
+      {"@type":"Offer","sku":"111","price":"24.95","availability":"https://schema.org/OutOfStock"},
+      {"@type":"Offer","sku":"222","price":"38.95","availability":"https://schema.org/InStock"}]}
+    </script></body></html>"""
+    assert _scrape("drifted-product", html) is None
