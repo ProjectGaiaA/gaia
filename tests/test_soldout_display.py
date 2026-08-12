@@ -406,3 +406,57 @@ class TestRowClassIsNotRederivedInTheTemplate:
         for weird in (0, 0.0, "", "false"):
             t = _table([_entry(_A, {"1gal": _size(19.99, True)}, in_stock=weird)])
             assert t["prices"][_A]["row_sold_out"] is False, f"in_stock={weird!r}"
+
+
+class TestRowWithNoAttributablePrices:
+    """`sizes: {}` — the shape a fully sold-out FGT page produces (f5b8d89e)
+    and the shape left behind when strip_unresolved_variants.py removes a
+    row's only tier. The row is kept, not deleted, so the page must render
+    it as a retailer we checked and could not price — never invent one.
+    """
+
+    def test_row_survives_with_no_sizes(self):
+        t = _table([
+            _entry(_A, {}, in_stock=False),
+            _entry(_B, {"1gal": _size(29.99, True)}),
+        ])
+        assert _A in t["prices"], "priceless row was dropped from the table"
+        assert t["prices"][_A]["sizes"] == {}
+
+    def test_empty_row_contributes_no_price_anywhere(self):
+        t = _table([
+            _entry(_A, {}, in_stock=False),
+            _entry(_B, {"1gal": _size(29.99, True)}),
+        ])
+        assert t["lowest_price"] == 29.99 and t["highest_price"] == 29.99
+        assert t["same_tier_savings"] == 0
+        assert all(m["retailer_name"] != _retailers_by_id[_A]["name"]
+                   for m in t["mobile_tiers"])
+        assert t["prices"][_A]["default_variant_id"] is None
+
+    def test_empty_row_does_not_claim_stock_it_cannot_show(self):
+        """in_stock=True with nothing orderable inside must not set the
+        page-level availability — that is the one row shape the strip
+        leaves behind on a live product (endless-summer-hydrangea)."""
+        t = _table([_entry(_A, {}, in_stock=True)])
+        assert t["any_in_stock"] is False
+        assert t["offer_count"] == 0 and t["priced_offer_count"] == 0
+
+    def test_rendered_row_shows_no_price(self):
+        soup = TestRenderedHtml()._render([
+            _entry(_A, {}, in_stock=False),
+            _entry(_B, {"1gal": _size(29.99, True)}),
+        ])
+        rows = [tr for tr in soup.find_all("tr")
+                if tr.select_one("td.retailer-name")
+                and _retailers_by_id[_A]["name"] in
+                tr.select_one("td.retailer-name").get_text()]
+        assert rows, "the priceless retailer lost its row in the rendered page"
+        cells = rows[0].select("td.price-cell")
+        assert cells, "row rendered without the size columns"
+        for cell in cells:
+            text = cell.get_text()
+            assert "$" not in text, f"a price was fabricated for a priceless row: {text}"
+        # ...and nothing in the row links a variant we cannot price.
+        for a in rows[0].find_all("a", href=True):
+            assert "?variant=" not in a["href"]

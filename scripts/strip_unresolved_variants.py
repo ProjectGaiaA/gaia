@@ -10,6 +10,14 @@ accumulated. The marker survives in raw_size, so that is what we match.
 Rows like Shopify's legitimate single-variant "Default Title" are NOT
 stripped: they resolved to a real price for the product's only form.
 
+A row left with NO tiers is kept, with `sizes: {}`. That is the shape the
+FGT parser already writes for a fully sold-out page (f5b8d89e), and
+build_price_table renders it as a retailer row of dashes — a product we
+checked and could not price, never an invented one. Rows older than 30
+days drop off the page anyway, which is what happens to the two products
+FGT has deleted. Deleting the row here instead would make an append-only
+history lie about what the scrape saw.
+
 Usage: python scripts/strip_unresolved_variants.py [--prices-dir DIR]
 Prints a summary; exits 0 always (stripping nothing is a valid outcome).
 """

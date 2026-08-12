@@ -55,6 +55,40 @@ def test_keeps_legitimate_default_title(tmp_path):
     assert _read_jsonl(path) == entries
 
 
+def test_row_whose_every_tier_is_phantom_keeps_the_row(tmp_path):
+    """Stripping the last tier leaves `sizes: {}` — it never drops the row.
+
+    `in_stock: false` with `sizes: {}` is this pipeline's canonical "the
+    retailer has this product and nothing orderable" shape: it is exactly
+    what the FGT parser writes for a fully sold-out page (f5b8d89e), and
+    build_price_table renders it as a row with dashes, no fabricated price.
+    Deleting the row instead would discard the fact that we checked, and
+    would make an append-only history lie about what the scrape saw.
+    """
+    path = tmp_path / "plant.jsonl"
+    row = {
+        "retailer_id": "fast-growing-trees",
+        "timestamp": "2026-08-10T12:23:59+00:00",
+        "url": "https://example.com/p",
+        "sizes": {
+            "default": {
+                "price": 34.95,
+                "available": False,
+                "raw_size": "variant-42520132157502",
+            }
+        },
+        "in_stock": False,
+    }
+    _write_jsonl(path, [row])
+    stripped, modified = strip_file(str(path))
+    assert stripped == 1 and modified
+    out = _read_jsonl(path)
+    assert len(out) == 1, "the row itself must survive"
+    assert out[0]["sizes"] == {}
+    assert out[0]["in_stock"] is False
+    assert out[0]["url"] == "https://example.com/p"
+
+
 def test_untouched_file_not_rewritten(tmp_path):
     """A file with nothing to strip keeps its exact bytes."""
     path = tmp_path / "plant.jsonl"
