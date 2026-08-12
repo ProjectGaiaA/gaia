@@ -55,9 +55,38 @@ cd site && python -m http.server 8151
 - `data/prices/*.jsonl` — Append-only price history. One file per plant.
 - `data/last_manifest.json` — Last scrape run health status (committed to repo)
 - `templates/` — Jinja2 templates (base, product, category, guide, home, heat_map, wishlist, improve)
-- `site/` — Generated output deployed to Vercel
-- `.github/workflows/scrape.yml` — 2x/day scrape + build + deploy
-- `.github/workflows/deploy.yml` — Vercel deploy on push to main
+- `site/` — Generated output. Committed to git, and served verbatim (see below)
+- `.github/workflows/scrape.yml` — 2x/day scrape + build + commit of `data/` and `site/`
+
+## How a deploy actually happens
+
+There is **no deploy workflow**. `.github/workflows/deploy.yml` was deleted in
+`841f767e` ("Remove deploy.yml — failed all 44 runs"). The only workflows left
+are `scrape.yml`, `wayback-extract.yml`, and `weekly-recovery-email.yml`.
+
+Deploys are done by **Vercel's own Git integration**, which watches `main` and
+publishes on every push. Vercel runs **no build step**: there is no root
+`vercel.json` or `package.json` — the only `vercel.json` is inside `site/`,
+which means Vercel's root directory is `site/` and it serves those files as-is.
+
+What follows from that, in the order it tends to bite:
+
+1. **The committed `site/` IS the live site.** Reverting a code change alone
+   (`build.py`, `templates/`) changes nothing visitors see — the old HTML is
+   still sitting in `site/`. A rollback must rebuild and commit `site/` too.
+2. **Never hand-edit `site/`.** Regenerate with `python -X utf8 build.py`.
+   `git status --short site/` must be empty after a build; if it is not, the
+   committed site and the sources it claims to come from have diverged.
+3. **The bot deploys twice a day on its own.** `scrape.yml` runs at 11:00 and
+   21:30 UTC and commits `data/` **and** `site/`; that push is what triggers
+   the next production deploy.
+4. `site/vercel.json` caches HTML for 24h and `/assets/*` for 7 days, and asset
+   filenames are not fingerprinted — verify a deploy with a cache-busting `?v=N`
+   query string, never a plain reload.
+5. **To undo a deploy**, the two levers are `git revert` on `main` followed by
+   a rebuild+commit of `site/` (the real fix), or promoting the previous
+   deployment in the Vercel dashboard (fast, but the next scheduled scrape
+   re-publishes `main` over it).
 
 ## Best Practices
 
