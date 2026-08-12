@@ -613,6 +613,61 @@ def test_a_row_inside_the_window_is_still_this_run(tmp_path):
     assert FRESH_HOURS >= 24, "one missed scrape run is ~24h and must stay silent"
 
 
+@pytest.mark.parametrize("seconds_behind,expect_fresh", [
+    (FRESH_HOURS * 3600 - 1, True),      # inside
+    (FRESH_HOURS * 3600, True),          # EXACTLY at the window: inclusive
+    (FRESH_HOURS * 3600 + 1, False),     # one second past
+])
+def test_the_fresh_window_boundary_is_inclusive(tmp_path, seconds_behind,
+                                                expect_fresh):
+    """F-K, a surviving mutant: `stamp >= cutoff` -> `stamp > cutoff` passed
+    all 544 tests. The boundary is inclusive; nothing asserted it, so nothing
+    stopped a later edit from moving it. Pinned here in both directions."""
+    from datetime import datetime, timedelta
+
+    newest = datetime.fromisoformat(TS2)
+    older = (newest - timedelta(seconds=seconds_behind)).isoformat()
+    history = load_price_history(str(_write(tmp_path, {"rose": [
+        _entry("a", {"1gal": 20.0}, ts=TS2),
+        _entry("edge", {"1gal": 20.0}, ts=older),
+    ]})))
+    fresh, _stale, meta = split_by_freshness(history)
+    assert (("rose", "edge") in fresh) is expect_fresh
+    assert (meta["retailers_with_no_fresh_row"] == []) is expect_fresh
+
+
+def test_main_alarms_when_no_row_carries_a_usable_timestamp(tmp_path):
+    """F-K, a surviving mutant: replacing this alarm's condition with `False`
+    passed all 544 tests. If a schema change renames `timestamp`, every row
+    becomes undated, there is no reference point, and every audit below
+    examines nothing — which must be an alarm, not a quiet exit 0."""
+    undated = _entry("a", {"1gal": 20.0})
+    del undated["timestamp"]
+    data = str(_write(tmp_path, {f"p{i}": [dict(undated)] for i in range(3)}))
+    site = _fsite(tmp_path, rows=BUYABLE_ROW)
+    assert _run(tmp_path, data, site) == EXIT_ALARM
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert report["freshness"]["newest_row"] is None
+    assert report["freshness"]["pairs_fresh"] == 0
+    assert any("examined nothing" in a for a in report["alarms"]), report["alarms"]
+
+
+def test_the_printed_freshness_line_carries_its_denominator(tmp_path, capsys):
+    """R10, and F-K's third surviving mutant: dropping ` of {pairs_total}`
+    from the printed line passed all 544 tests, because the only denominator
+    assertion was on the JSON report. The CI log is what a human reads at
+    03:00; assert the LINE, not just the JSON behind it."""
+    data, site = _full_corpus(tmp_path, {
+        "old": [_entry("a", {"1gal": 20.0}, ts=STALE_TS)],
+    })
+    _run(tmp_path, data, site)
+    out = capsys.readouterr().out
+    examined = [ln for ln in out.splitlines() if "examined   :" in ln]
+    assert examined == ["   examined   : 3 of 4 plant-retailer pairs"], out
+    excluded = [ln for ln in out.splitlines() if "excluded   :" in ln]
+    assert len(excluded) == 1 and "1 stale of 4" in excluded[0], out
+
+
 def test_an_undated_row_counts_as_stale_not_as_fresh(tmp_path):
     """R7 — re-derive the safe default. If a schema change drops `timestamp`,
     keeping the rows would leave every denominator looking healthy forever;
@@ -634,17 +689,24 @@ def test_one_broken_clock_does_not_declare_every_other_retailer_dead(tmp_path):
     newest row, so a single row dated 3000-01-01 dragged the cutoff forward
     and marked 2 of 3 retailers as having stopped contributing. Rows dated
     after this run started are excluded from the reference point and alarmed
-    on separately."""
+    on separately.
+
+    Amended for F-J: `skew` itself is NOT counted as fresh. Its stamp is the
+    only thing that could place it in this run and that stamp is known wrong,
+    so it is evidence of nothing — see the mask test below. The claim this
+    test defends is about the OTHER retailers."""
     history = load_price_history(str(_write(tmp_path, {"rose": [
         _entry("a", {"1gal": 20.0}, ts=TS2),
         _entry("b", {"1gal": 20.0}, ts=TS2),
         _entry("skew", {"1gal": 20.0}, ts="3000-01-01T00:00:00+00:00"),
     ]})))
     fresh, stale, meta = split_by_freshness(history)
-    assert meta["retailers_with_no_fresh_row"] == []
-    assert sorted(k[1] for k in fresh) == ["a", "b", "skew"]
-    assert stale == {}
+    assert "a" not in meta["retailers_with_no_fresh_row"]
+    assert "b" not in meta["retailers_with_no_fresh_row"]
+    assert sorted(k[1] for k in fresh) == ["a", "b"]
+    assert sorted(k[1] for k in stale) == ["skew"]
     assert meta["future_rows"] == [{"plant": "rose", "retailer": "skew"}]
+    assert meta["future_retailers"] == ["skew"]
 
 
 @pytest.mark.parametrize("offset_hours,is_future", [(0.5, False), (6, True)])
@@ -661,7 +723,12 @@ def test_the_future_boundary_is_hours_not_centuries(tmp_path, offset_hours, is_f
     ]})))
     _fresh, _stale, meta = split_by_freshness(history)
     assert bool(meta["future_rows"]) is is_future
-    assert meta["retailers_with_no_fresh_row"] == []
+    # The retailer with the sane clock is never collateral damage. The one
+    # over the slack line is named (F-J: a stamp that cannot be trusted must
+    # not stand in as proof that its own retailer is alive), but the run is
+    # already red from the future-row alarm, so this adds no new failure mode.
+    assert "a" not in meta["retailers_with_no_fresh_row"]
+    assert meta["retailers_with_no_fresh_row"] == (["b"] if is_future else [])
 
 
 def test_a_future_dated_row_is_an_alarm_in_its_own_right(tmp_path):
@@ -671,6 +738,85 @@ def test_a_future_dated_row_is_an_alarm_in_its_own_right(tmp_path):
     report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
     assert any("dated after this run started" in a for a in report["alarms"]), \
         report["alarms"]
+    # ...and retailer "a" reports normally elsewhere in this corpus, so the
+    # F-J fix must not turn its one bad stamp into a dead-retailer claim.
+    assert report["freshness"]["retailers_with_no_fresh_row"] == []
+
+
+def test_a_future_row_cannot_mask_a_dead_retailer(tmp_path):
+    """F-J, found by a second red team. THE mask test.
+
+    `split_by_freshness` excluded future-dated rows from the reference point
+    but not from the fresh set, so one row dated 3000-01-01 put its retailer
+    back into `fresh_retailers` and emptied `retailers_with_no_fresh_row` —
+    the entire deliverable of the dead-retailer fix, cancelled by one row.
+    Measured on the real corpus: great-garden-plants killed (451 rows deleted)
+    gives dead=['great-garden-plants']; add one future row for it and pre-fix
+    gives dead=[], at an unchanged exit 2 and an unchanged alarm count of 2.
+    """
+    history = load_price_history(str(_write(tmp_path, {
+        "rose": [_entry("live", {"1gal": 20.0}, ts=TS2),
+                 _entry("dead", {"1gal": 20.0}, ts=STALE_TS)],
+        "lilac": [_entry("dead", {"1gal": 20.0},
+                         ts="3000-01-01T00:00:00+00:00")],
+    })))
+    _fresh, _stale, meta = split_by_freshness(history)
+    assert meta["retailers_with_no_fresh_row"] == ["dead"], \
+        "one future-dated row must not stand in as evidence of life"
+    assert meta["future_rows"] == [{"plant": "lilac", "retailer": "dead"}]
+    assert meta["per_retailer"]["dead"] == {"fresh": 0, "stale": 2}
+
+
+def test_a_future_row_at_a_live_retailer_does_not_kill_it(tmp_path):
+    """The inverse, and the fourth-layer risk of the F-J fix: a retailer that
+    is genuinely reporting must not be called dead just because one of its
+    rows has a bad stamp. One fresh row is enough."""
+    history = load_price_history(str(_write(tmp_path, {
+        "rose": [_entry("busy", {"1gal": 20.0}, ts=TS2)],
+        "lilac": [_entry("busy", {"1gal": 20.0},
+                         ts="3000-01-01T00:00:00+00:00")],
+    })))
+    _fresh, _stale, meta = split_by_freshness(history)
+    assert meta["retailers_with_no_fresh_row"] == []
+    assert meta["per_retailer"]["busy"] == {"fresh": 1, "stale": 1}
+
+
+def test_main_still_names_a_dead_retailer_that_has_a_future_row(tmp_path):
+    """F-J end to end, at the level the CI log is read at: both alarms, and
+    the dead retailer named in the text."""
+    dead = {f"d{i}": [_entry("gone", {"1gal": 20.0}, ts=STALE_TS)]
+            for i in range(3)}
+    dead["skewed"] = [_entry("gone", {"1gal": 20.0},
+                             ts="3000-01-01T00:00:00+00:00")]
+    data, site = _full_corpus(tmp_path, dead)
+    assert _run(tmp_path, data, site) == EXIT_ALARM
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert report["freshness"]["retailers_with_no_fresh_row"] == ["gone"]
+    assert any("gone" in a and "contributed no row" in a for a in report["alarms"]), \
+        report["alarms"]
+    assert any("dated after this run started" in a for a in report["alarms"]), \
+        report["alarms"]
+
+
+def test_the_discontinued_notice_never_describes_a_dead_retailers_rows(tmp_path):
+    """R3/R6. With `dead` masked, the old `elif` published 'N pairs are stale
+    at retailers that are otherwise reporting — probably discontinued
+    products' about a retailer that was not reporting at all. The count must
+    cover only retailers that DID contribute a fresh row, and it must not be
+    suppressed just because some other retailer is dead."""
+    plants = {f"d{i}": [_entry("gone", {"1gal": 20.0}, ts=STALE_TS)]
+              for i in range(3)}
+    plants["discontinued"] = [_entry("a", {"1gal": 20.0}, ts=STALE_TS)]
+    data, site = _full_corpus(tmp_path, plants)
+    assert _run(tmp_path, data, site) == EXIT_ALARM
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    fresh = report["freshness"]
+    assert fresh["retailers_with_no_fresh_row"] == ["gone"]
+    assert fresh["pairs_stale"] == 4          # 3 dead + 1 discontinued
+    assert fresh["stale_at_reporting_retailers"] == 1
+    notice = [n for n in report["notices"] if "discontinued" in n]
+    assert len(notice) == 1, report["notices"]
+    assert notice[0].startswith("1 of 7 "), notice[0]
 
 
 def test_a_stale_row_cannot_convict_a_live_one_in_audit_a(tmp_path):

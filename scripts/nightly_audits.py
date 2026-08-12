@@ -188,13 +188,23 @@ Window calibration (R9), same 253-run replay as D:
         36h : great-garden-plants 39, planting-tree 1, proven-winners 1,
               spring-hill 1
         30h : great-garden-plants 40, and 1 each for five retailers
-    The great-garden-plants firings are a genuine 21-day outage
-    (2026-07-21 -> 2026-08-11, absent from 40 consecutive runs); the others
-    are all the 2026-04-05 -> 2026-04-08 bring-up gap, when the whole
-    pipeline was down for 3.5 days.
-  * CHOSEN 48 — the only window with zero firings outside the one confirmed
-    outage. It tolerates a retailer missing two consecutive scrape runs
-    (~36h) and alarms on three (~48h). Cost of the choice, stated: a
+    Nearly all the great-garden-plants firings are a genuine 21-day outage
+    (2026-07-21 -> 2026-08-11, absent from 40 consecutive runs); the rest,
+    its own included, are the 2026-04-05 -> 2026-04-08 bring-up gap, when the
+    whole pipeline was down for 3.5 days.
+  * CHOSEN 48 — the largest window in the tested range at which the only
+    retailer ever named is the one with a real multi-week outage. Correcting
+    an earlier claim here, which said "the only window with zero firings
+    outside the one confirmed outage": 48h fires on 38 of 253 runs, in TWO
+    contiguous episodes — 37 consecutive runs 2026-07-23..2026-08-10 (the
+    great-garden-plants outage) plus 1 run on 2026-04-06 (the bring-up gap).
+    No window in 24h..72h produces a FALSE positive on this history: every
+    firing at every window lands inside one of those two real gaps. What 30h
+    and 36h buy is only noise — they re-report the 3.5-day whole-pipeline
+    gap once per retailer (5 and 3 extra retailers respectively), which is
+    heartbeat.yml's signal, not this one's. The choice of 48 stands; the
+    sentence did not. It tolerates a retailer missing two consecutive scrape
+    runs (~36h) and alarms on three (~48h). Cost of the choice, stated: a
     retailer that dies right after a run is reported ~48h later, not ~24h.
 
 Defect introduced by this fix and caught by probing it (not by review):
@@ -204,11 +214,50 @@ single row dated 3000-01-01 marked 2 of 3 retailers as stopped. Rows dated
 more than FUTURE_SLACK_HOURS after the run started are therefore excluded
 from the reference point and alarmed on separately.
 
+Third defect, introduced by THAT fix and found by a second red team (F-J):
+excluding future-dated rows from the reference point but not from the fresh
+set made one forged row cancel the whole dead-retailer signal. Kill
+great-garden-plants (delete its 451 rows after 2026-06-15) and the run says
+`dead=['great-garden-plants']`; add ONE row for it dated 3000-01-01 and the
+run says `dead=[]`, at an unchanged exit code 2 and an unchanged alarm count
+of 2, with every denominator still above its floor (A 85/45, B 156/70,
+C 186/90, D 239/120, E 565/280, F 276/140). Same on fast-growing-trees
+(7,388 rows deleted): `dead=['fast-growing-trees']` -> `dead=[]`. Future
+rows are therefore excluded from `fresh` too (R7 — the same predicate, a new
+decision, so the safe default is re-derived: fail-closed for the reference
+point is fail-OPEN for the alarm). A retailer whose only newer row is
+future-dated is named in the dead list but described separately, because
+this module has not measured that its scraper stopped.
+
 Consequence to know about: a retailer in a real outage alarms on EVERY run
-until it comes back (great-garden-plants would have been 38 consecutive red
-runs). That is deliberate — the alternative is a one-shot alarm that is
-missed and never repeats — but it is why this is an alarm on the retailer,
-not on each stale row. Stale rows at a live retailer are a NOTICE.
+until it comes back (great-garden-plants would have been 37 consecutive red
+runs in July-August 2026; the 38th firing is a separate one-run episode four
+months earlier). That is deliberate — the alternative is a one-shot alarm
+that is missed and never repeats — but it is why this is an alarm on the
+retailer, not on each stale row. Stale rows at a live retailer are a NOTICE.
+
+What the F-J fix does NOT buy, found by probing it: a row dated within
+FUTURE_SLACK_HOURS ahead is not "from the future" and does count as fresh, so
+it still masks the dead-retailer alarm with no alarm of its own — measured,
+great-garden-plants killed plus one row at now+0.5h gives `dead=[]`,
+alarms=1 (only the unrelated D alarm). That is not a hole this check can
+close: a row stamped 30 minutes ahead is exactly what a live scraper with a
+slightly fast clock produces, and a corrupt corpus can equally forge
+`now - 1h`. No freshness test can defend against a plausible timestamp. What
+F-J was is narrower and was a real contradiction: a row this module had
+ALREADY classified as untrustworthy was still being counted as trustworthy.
+
+What this metric still CANNOT see, stated rather than implied (R5 residual):
+it is relative, so it is satisfiable by the TOTAL-failure mode. If every row
+in the corpus is equally old the newest stale row becomes its own reference
+point and everything is fresh relative to itself — measured, with three rows
+all dated 2020-01-01: `pairs 3 fresh / 0 stale of 3, DEAD RETAILERS = []`.
+The same is true if the whole pipeline stops for a month: nothing here goes
+red. That is a deliberate division of labour, not an oversight — "no run
+happened at all" is `.github/workflows/heartbeat.yml`'s job, and it has to
+be, because every scraper step is `continue-on-error: true`, so this script
+cannot distinguish "no new rows" from "not invoked". This check answers only
+"is one retailer missing from a run that DID happen".
 
 THE BASELINE FILE
 -----------------
@@ -316,8 +365,10 @@ def split_by_freshness(history, fresh_hours=FRESH_HOURS):
     """Split each pair's last row into fresh vs stale.
 
     Returns (fresh, stale, meta). `fresh` is what the audits should measure;
-    `stale` is what a dead retailer leaves behind. See FRESHNESS above for
-    why this exists and how 48h was chosen.
+    `stale` is what a dead retailer leaves behind. A row lands in `fresh` only
+    if its timestamp is readable, not in the future, and within `fresh_hours`
+    of the newest trustworthy row — anything else is evidence of nothing. See
+    FRESHNESS above for why this exists and how 48h was chosen.
     """
     latest = {key: entries[-1] for key, entries in history.items() if entries}
     stamps = {key: _row_time(entry) for key, entry in latest.items()}
@@ -333,15 +384,27 @@ def split_by_freshness(history, fresh_hours=FRESH_HOURS):
         (key for key, t in stamps.items() if t is not None and t > horizon),
         key=lambda k: (k[1], k[0]),
     )
+    future_keys = set(from_the_future)
     dated = [t for key, t in stamps.items()
-             if t is not None and key not in set(from_the_future)]
+             if t is not None and key not in future_keys]
     newest = max(dated) if dated else None
     cutoff = newest - timedelta(hours=fresh_hours) if newest else None
 
+    # R7 — the SAME predicate, a different decision, so the safe default has to
+    # be re-derived. Excluding a future row from the reference point is
+    # fail-safe; letting that row still count as FRESH is fail-OPEN, because
+    # `fresh` is what the dead-retailer alarm reads. A second red team proved
+    # it: kill great-garden-plants (451 rows deleted) and the alarm names it;
+    # add ONE row dated 3000-01-01 for that same dead retailer and the alarm
+    # disappears, at an unchanged exit code 2 and an unchanged alarm count of
+    # 2. So an untrustworthy stamp is not evidence of life either — same rule
+    # already applied to an unreadable stamp in `_row_time`.
     fresh, stale = {}, {}
     for key, entry in latest.items():
         stamp = stamps[key]
-        if stamp is not None and cutoff is not None and stamp >= cutoff:
+        if key in future_keys:
+            stale[key] = entry
+        elif stamp is not None and cutoff is not None and stamp >= cutoff:
             fresh[key] = entry
         else:
             stale[key] = entry
@@ -364,14 +427,26 @@ def split_by_freshness(history, fresh_hours=FRESH_HOURS):
         "pairs_stale": len(stale),
         "undated_rows": sum(1 for t in stamps.values() if t is None),
         "future_rows": [{"plant": p, "retailer": r} for p, r in from_the_future],
+        # Retailers that contributed at least one future-dated row. The dead
+        # list below cannot say "the scraper has stopped" about these without
+        # asserting something it has not measured, so main() names them apart.
+        "future_retailers": sorted({rid for _plant, rid in from_the_future}),
         "per_retailer": per_retailer,
         "retailers_with_no_fresh_row": sorted(all_retailers - fresh_retailers),
+        # Stale pairs at retailers that ARE still reporting elsewhere — the
+        # only pairs the "probably discontinued" notice may describe. A dead
+        # retailer's rows are not discontinued products.
+        "stale_at_reporting_retailers": sum(1 for _p, r in stale
+                                            if r in fresh_retailers),
+        # Future-dated pairs are excluded here: their "hours behind newest"
+        # would be negative and meaningless. They are listed in `future_rows`.
         "stalest": [
             {"plant": k[0], "retailer": k[1],
              "hours": round((newest - stamps[k]).total_seconds() / 3600, 1)
                       if newest and stamps[k] else None}
-            for k in sorted(stale, key=lambda k: (stamps[k] or newest or
-                                                  datetime.min.replace(tzinfo=timezone.utc)))
+            for k in sorted((k for k in stale if k not in future_keys),
+                            key=lambda k: (stamps[k] or newest or
+                                           datetime.min.replace(tzinfo=timezone.utc)))
         ][:20],
     }
     return fresh, stale, meta
@@ -772,8 +847,10 @@ def main(argv=None):
     print(f"   cutoff     : {fresh_meta['cutoff']}")
     print(f"   examined   : {fresh_meta['pairs_fresh']} of "
           f"{fresh_meta['pairs_total']} plant-retailer pairs")
-    print(f"   excluded   : {fresh_meta['pairs_stale']} stale "
-          f"({fresh_meta['undated_rows']} of them carry no readable timestamp)")
+    print(f"   excluded   : {fresh_meta['pairs_stale']} stale of "
+          f"{fresh_meta['pairs_total']} "
+          f"({fresh_meta['undated_rows']} carry no readable timestamp, "
+          f"{len(fresh_meta['future_rows'])} are dated in the future)")
     for rid, counts in fresh_meta["per_retailer"].items():
         print(f"     {rid:26s} fresh {counts['fresh']:4d}  stale {counts['stale']:4d}")
     for row in fresh_meta["stalest"][:5]:
@@ -787,31 +864,47 @@ def main(argv=None):
               f"{len(fresh_meta['future_rows'])} ({named})")
         alarms.append(
             f"{len(fresh_meta['future_rows'])} row(s) are dated after this run "
-            f"started ({named}) — a clock is wrong somewhere, and freshness is "
-            f"measured relative to the newest row, so they are excluded from "
-            f"that reference point rather than making every other retailer "
-            f"look dead"
+            f"started ({named}) — a clock is wrong somewhere. They are excluded "
+            f"from the freshness reference point, so they cannot make every "
+            f"other retailer look dead, AND from the fresh set, so they cannot "
+            f"stand in as evidence that their own retailer is still reporting"
         )
     if fresh_meta["newest_row"] is None:
         alarms.append(
-            "no row in data/prices/ carries a readable timestamp, so freshness "
-            "could not be measured and every row was excluded — the audits "
-            "below examined nothing"
+            "no row in data/prices/ carries a timestamp this run could use as a "
+            "reference point — every row is either unreadable or dated in the "
+            "future, so freshness could not be measured and every row was "
+            "excluded; the audits below examined nothing"
         )
     dead = fresh_meta["retailers_with_no_fresh_row"]
     if dead:
-        alarms.append(
-            f"retailer(s) {', '.join(dead)} contributed no row within "
-            f"{FRESH_HOURS}h of the newest committed row "
-            f"({fresh_meta['newest_row']}) — their last-known prices are still "
-            f"on the site but the scraper has stopped producing them"
-        )
-    elif fresh_meta["pairs_stale"]:
+        # A retailer whose only recent row is future-dated is in this list on
+        # purpose (R6: publishing "there is a row" must not silence the dead-
+        # retailer signal), but this run has NOT measured that its scraper
+        # stopped, so it must not be told that it did. Name the two groups.
+        skewed = [rid for rid in dead if rid in fresh_meta["future_retailers"]]
+        stopped = [rid for rid in dead if rid not in fresh_meta["future_retailers"]]
+        parts = [f"retailer(s) {', '.join(dead)} contributed no row within "
+                 f"{FRESH_HOURS}h of the newest committed row "
+                 f"({fresh_meta['newest_row']})"]
+        if stopped:
+            parts.append(f"{', '.join(stopped)}: last-known prices are still on "
+                         f"the site but the scraper has stopped producing them")
+        if skewed:
+            parts.append(f"{', '.join(skewed)}: the only newer row(s) are dated "
+                         f"in the future, so nothing here can show the scraper "
+                         f"is still running")
+        alarms.append(" — ".join(parts))
+    # NOT an elif. A dead retailer must not suppress this notice, and the
+    # notice must not describe a dead retailer's rows: it counts only stale
+    # pairs at retailers that DID contribute a fresh row somewhere.
+    if fresh_meta["stale_at_reporting_retailers"]:
         notices.append(
-            f"{fresh_meta['pairs_stale']} of {fresh_meta['pairs_total']} "
-            f"plant-retailer pairs are stale (>{FRESH_HOURS}h) at retailers "
-            f"that are otherwise reporting — probably discontinued products; "
-            f"they are excluded from every denominator below"
+            f"{fresh_meta['stale_at_reporting_retailers']} of "
+            f"{fresh_meta['pairs_total']} plant-retailer pairs are stale "
+            f"(>{FRESH_HOURS}h) at retailers that are otherwise reporting — "
+            f"probably discontinued products; they are excluded from every "
+            f"denominator below"
         )
 
     for name, audit in audits.items():
