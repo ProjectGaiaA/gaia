@@ -192,20 +192,35 @@ Window calibration (R9), same 253-run replay as D:
     (2026-07-21 -> 2026-08-11, absent from 40 consecutive runs); the rest,
     its own included, are the 2026-04-05 -> 2026-04-08 bring-up gap, when the
     whole pipeline was down for 3.5 days.
-  * CHOSEN 48 — the largest window in the tested range at which the only
-    retailer ever named is the one with a real multi-week outage. Correcting
-    an earlier claim here, which said "the only window with zero firings
-    outside the one confirmed outage": 48h fires on 38 of 253 runs, in TWO
-    contiguous episodes — 37 consecutive runs 2026-07-23..2026-08-10 (the
-    great-garden-plants outage) plus 1 run on 2026-04-06 (the bring-up gap).
+  * CHOSEN 48 — on NOISE, not on correctness. 48 is not the only window that
+    would do, and the two earlier attempts to say why it is special were both
+    false. Re-derived over all 49 integer windows 24h..72h on the same 253
+    runs: EVERY window from 45h up names only great-garden-plants (45-48h: 38
+    of 253 runs; 49-58h: 37; 59-71h: 36; 72h: 35 — the same two real gaps,
+    reported fewer times as the window widens). Below 45h other retailers
+    appear: 44h adds spring-hill; 36h adds planting-tree,
+    proven-winners-direct and spring-hill; 30h adds nature-hills and
+    stark-bros on top of those. Every one of those extra firings is the
+    2026-04-05 -> 2026-04-08 bring-up gap re-reported once per retailer,
+    which is heartbeat.yml's signal, not this one's. So 48 is neither the
+    smallest (45) nor the largest (72) window that names only the retailer
+    with a real multi-week outage: it sits inside a band of 28 windows that
+    this history cannot tell apart, and what it buys over 24h..44h is less
+    noise, nothing more.
+    The two false sentences, corrected rather than restated: "the only window
+    with zero firings outside the one confirmed outage" — 48h fires on 38 of
+    253 runs, in TWO contiguous episodes, 37 consecutive runs
+    2026-07-23..2026-08-10 plus 1 run on 2026-04-06; and "the largest window
+    in the tested range at which the only retailer ever named is the one with
+    a real multi-week outage" — 45h..72h all qualify and 72 is the largest.
     No window in 24h..72h produces a FALSE positive on this history: every
-    firing at every window lands inside one of those two real gaps. What 30h
-    and 36h buy is only noise — they re-report the 3.5-day whole-pipeline
-    gap once per retailer (5 and 3 extra retailers respectively), which is
-    heartbeat.yml's signal, not this one's. The choice of 48 stands; the
-    sentence did not. It tolerates a retailer missing two consecutive scrape
-    runs (~36h) and alarms on three (~48h). Cost of the choice, stated: a
-    retailer that dies right after a run is reported ~48h later, not ~24h.
+    firing at every window lands inside one of those two real gaps.
+    What 48 buys operationally, measured over the same replay (median gap
+    between runs 12.9h): a retailer absent from 1 or 2 consecutive runs is
+    never named — 18 such occurrences, 13 at one run and 5 at two, all
+    silent. Three consecutive is the boundary: 2 occurrences, 1 silent and 1
+    named. Four or more is always named. Cost of the choice, stated: a
+    retailer that dies right after a run is reported ~48h later, not ~13h.
 
 Defect introduced by this fix and caught by probing it (not by review):
 measuring "stale" relative to the newest row means one row with a broken
@@ -243,7 +258,15 @@ great-garden-plants killed plus one row at now+0.5h gives `dead=[]`,
 alarms=1 (only the unrelated D alarm). That is not a hole this check can
 close: a row stamped 30 minutes ahead is exactly what a live scraper with a
 slightly fast clock produces, and a corrupt corpus can equally forge
-`now - 1h`. No freshness test can defend against a plausible timestamp. What
+`now - 1h`. Narrowing an over-broad earlier sentence here ("no freshness test
+can defend against a plausible timestamp"): the timestamp is only half of it.
+What makes ONE plausible row decisive is that a single fresh pair clears a
+whole retailer — great-garden-plants has 6 pairs, and 1 fresh of 6 counts the
+same as 6 of 6. A per-retailer coverage rule (a retailer counts as reporting
+only if a non-trivial fraction of its pairs are fresh) would close that and is
+NOT a freshness test. It is deliberately not in this commit: it needs its own
+R9 calibration over the 253 runs, and picking that fraction wrong wedges the
+pipeline. Recorded as future work. What
 F-J was is narrower and was a real contradiction: a row this module had
 ALREADY classified as untrustworthy was still being counted as trustworthy.
 
@@ -435,9 +458,24 @@ def split_by_freshness(history, fresh_hours=FRESH_HOURS):
         "retailers_with_no_fresh_row": sorted(all_retailers - fresh_retailers),
         # Stale pairs at retailers that ARE still reporting elsewhere — the
         # only pairs the "probably discontinued" notice may describe. A dead
-        # retailer's rows are not discontinued products.
-        "stale_at_reporting_retailers": sum(1 for _p, r in stale
-                                            if r in fresh_retailers),
+        # retailer's rows are not discontinued products, and neither are
+        # future-dated ones. R7 a third time, and this counter got it wrong on
+        # the commit that fixed F-J: `stale` stopped meaning "too old" the
+        # moment F-J moved future-dated pairs into it, so every decision that
+        # reads `stale` has to re-derive what membership means. A pair dated
+        # 3000-01-01 is not ">48h stale" and not "probably discontinued"; it
+        # is a wrong clock, already alarmed on via `future_rows`. Excluded
+        # here for the same reason `stalest` excludes it below.
+        # UNDATED pairs are deliberately NOT excluded, and the symmetry is the
+        # wrong instinct: a future row has an alarm of its own, so dropping it
+        # here loses nothing, while an undated row has none — this notice is
+        # the only place it surfaces, and R6 says publishing a fact must not
+        # silence a signal. The cost, stated and pinned by a test: the notice
+        # calls it ">48h stale, probably discontinued" when its age was never
+        # measured (`stalest` prints hours=None for it in the same run).
+        "stale_at_reporting_retailers": sum(
+            1 for key in stale
+            if key not in future_keys and key[1] in fresh_retailers),
         # Future-dated pairs are excluded here: their "hours behind newest"
         # would be negative and meaningless. They are listed in `future_rows`.
         "stalest": [
@@ -884,12 +922,20 @@ def main(argv=None):
         # stopped, so it must not be told that it did. Name the two groups.
         skewed = [rid for rid in dead if rid in fresh_meta["future_retailers"]]
         stopped = [rid for rid in dead if rid not in fresh_meta["future_retailers"]]
-        parts = [f"retailer(s) {', '.join(dead)} contributed no row within "
-                 f"{FRESH_HOURS}h of the newest committed row "
-                 f"({fresh_meta['newest_row']})"]
+        # The "within {FRESH_HOURS}h" phrase belongs to the `stopped` group
+        # only. It was false about the `skewed` group — a row dated now+2h IS
+        # within 48h of the newest committed row; what disqualifies it is the
+        # direction, not the distance.
+        parts = [f"retailer(s) {', '.join(dead)} contributed no row this run "
+                 f"can treat as evidence they are still reporting (newest "
+                 f"committed row {fresh_meta['newest_row']})"]
         if stopped:
-            parts.append(f"{', '.join(stopped)}: last-known prices are still on "
-                         f"the site but the scraper has stopped producing them")
+            # No em-dash inside a clause: " — " is what joins the clauses, and
+            # a reader (or a test) splitting on it must get one part per group.
+            parts.append(f"{', '.join(stopped)}: no row dated within "
+                         f"{FRESH_HOURS}h of it; last-known prices are still "
+                         f"on the site but the scraper has stopped producing "
+                         f"them")
         if skewed:
             parts.append(f"{', '.join(skewed)}: the only newer row(s) are dated "
                          f"in the future, so nothing here can show the scraper "

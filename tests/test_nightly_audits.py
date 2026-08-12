@@ -18,6 +18,7 @@ from scripts.nightly_audits import (
     EXIT_ALARM,
     EXIT_OK,
     FRESH_HOURS,
+    FUTURE_SLACK_HOURS,
     audit_a_cross_retailer,
     audit_b_two_nursery_pairs,
     audit_c_within_retailer_inversion,
@@ -817,6 +818,243 @@ def test_the_discontinued_notice_never_describes_a_dead_retailers_rows(tmp_path)
     notice = [n for n in report["notices"] if "discontinued" in n]
     assert len(notice) == 1, report["notices"]
     assert notice[0].startswith("1 of 7 "), notice[0]
+
+
+def test_the_discontinued_notice_never_describes_a_future_dated_pair(tmp_path):
+    """MEDIUM-1, found by a third red team, and introduced by the F-J fix
+    itself — the same R7 mistake F-J was, one function later.
+
+    F-J moved future-dated pairs into `stale`. `stale_at_reporting_retailers`
+    kept summing over `stale` with no exclusion, so at an otherwise-reporting
+    retailer a pair dated 3000-01-01 was published as "stale (>48h) ...
+    probably discontinued". Both halves are false: it is 974 years AHEAD, not
+    48h behind, and its problem is a clock, not a delisting. Measured before
+    the fix: three healthy pairs at `a` plus one future-dated pair at `a` gave
+    "1 of 4"; fa3c8dae emitted no such notice at all.
+    """
+    data, site = _full_corpus(tmp_path, {
+        "skewed": [_entry("a", {"1gal": 20.0},
+                          ts="3000-01-01T00:00:00+00:00")],
+    })
+    assert _run(tmp_path, data, site) == EXIT_ALARM      # the future-row alarm
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    fresh = report["freshness"]
+    assert fresh["pairs_total"] == 4 and fresh["pairs_stale"] == 1
+    assert fresh["future_rows"] == [{"plant": "skewed", "retailer": "a"}]
+    assert fresh["stale_at_reporting_retailers"] == 0
+    assert [n for n in report["notices"] if "discontinued" in n] == [], \
+        report["notices"]
+
+
+def test_the_discontinued_notice_still_counts_a_real_one_beside_a_future_row(
+        tmp_path):
+    """The other direction of MEDIUM-1: excluding future pairs must not
+    swallow a genuinely discontinued pair sitting next to one. Pre-fix this
+    corpus said "2 of 5"; fa3c8dae said "1 of 5", which was correct."""
+    data, site = _full_corpus(tmp_path, {
+        "skewed": [_entry("a", {"1gal": 20.0},
+                          ts="3000-01-01T00:00:00+00:00")],
+        "gone": [_entry("a", {"1gal": 20.0}, ts=STALE_TS)],
+    })
+    _run(tmp_path, data, site)
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert report["freshness"]["stale_at_reporting_retailers"] == 1
+    notice = [n for n in report["notices"] if "discontinued" in n]
+    assert len(notice) == 1 and notice[0].startswith("1 of 5 "), notice
+
+
+def test_an_undated_pair_is_still_counted_by_the_discontinued_notice(tmp_path):
+    """The asymmetry the MEDIUM-1 fix must NOT be extended to, pinned so the
+    next reader has to argue for it rather than tidy it away. A future-dated
+    pair is dropped from this notice because it raises an alarm of its own; an
+    undated pair raises none, and this notice is the only place it surfaces
+    (R6 — publishing a fact must not silence a signal). Cost, measured here:
+    the notice calls it ">48h" stale when its age was never read, and
+    `stalest` prints hours=None for the same pair in the same run."""
+    undated = _entry("a", {"1gal": 20.0})
+    del undated["timestamp"]
+    data, site = _full_corpus(tmp_path, {"nd": [undated]})
+    _run(tmp_path, data, site)
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    fresh = report["freshness"]
+    assert fresh["undated_rows"] == 1 and fresh["future_rows"] == []
+    assert fresh["stale_at_reporting_retailers"] == 1
+    assert fresh["stalest"] == [{"plant": "nd", "retailer": "a", "hours": None}]
+    assert [n for n in report["notices"] if "discontinued" in n], report["notices"]
+
+
+def test_the_dead_alarm_separates_a_stopped_retailer_from_a_skewed_one(tmp_path):
+    """MEDIUM-2 (R2). The two-group alarm is the stated deliverable of the F-J
+    commit — "it never asserts 'the scraper has stopped' about a merely
+    clock-skewed retailer" — and nothing tested it. Five mutations of the
+    group clauses survived all 553 tests, because the only assertion was
+    `"gone" in a and "contributed no row" in a`, which the LEADING sentence
+    already satisfies. Pin the clauses, not the lead: which retailer each
+    claim is made about, and that both clauses are present.
+    """
+    plants = {f"s{i}": [_entry("stopped", {"1gal": 20.0}, ts=STALE_TS)]
+              for i in range(2)}
+    plants["x"] = [_entry("skewed", {"1gal": 20.0},
+                          ts="3000-01-01T00:00:00+00:00")]
+    data, site = _full_corpus(tmp_path, plants)
+    assert _run(tmp_path, data, site) == EXIT_ALARM
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert report["freshness"]["retailers_with_no_fresh_row"] == \
+        ["skewed", "stopped"]
+
+    dead_alarm = [a for a in report["alarms"] if "contributed no row" in a]
+    assert len(dead_alarm) == 1, report["alarms"]
+    clauses = dead_alarm[0].split(" — ")
+    assert len(clauses) == 3, dead_alarm[0]
+
+    # The "scraper has stopped" claim is made about `stopped` and ONLY it.
+    # This module has not measured that the skewed retailer's scraper stopped,
+    # so it must not say so, however red the run already is.
+    stopped_clause = [c for c in clauses if "scraper has stopped" in c]
+    assert len(stopped_clause) == 1, dead_alarm[0]
+    assert stopped_clause[0].startswith("stopped: "), stopped_clause[0]
+    assert "skewed" not in stopped_clause[0], stopped_clause[0]
+
+    skewed_clause = [c for c in clauses if "dated in the future" in c]
+    assert len(skewed_clause) == 1, dead_alarm[0]
+    assert skewed_clause[0].startswith("skewed: "), skewed_clause[0]
+    assert "stopped" not in skewed_clause[0], skewed_clause[0]
+
+    # LOW-1: the leading sentence covers BOTH groups, so it may not carry the
+    # "within {FRESH_HOURS}h" claim — a row dated now+2h is trivially within
+    # 48h of the newest committed row. That phrase lives in the stopped clause.
+    assert f"{FRESH_HOURS}h" not in clauses[0], clauses[0]
+    assert f"within {FRESH_HOURS}h" in stopped_clause[0], stopped_clause[0]
+
+
+def test_a_lone_skewed_retailer_is_never_told_its_scraper_stopped(tmp_path):
+    """The single-group case, which is what a real clock skew looks like: no
+    `stopped` group at all, so the alarm must carry the skew clause and no
+    "scraper has stopped" claim anywhere in it."""
+    data, site = _full_corpus(tmp_path, {
+        "x": [_entry("skewed", {"1gal": 20.0},
+                     ts="3000-01-01T00:00:00+00:00")],
+    })
+    assert _run(tmp_path, data, site) == EXIT_ALARM
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    dead_alarm = [a for a in report["alarms"] if "contributed no row" in a]
+    assert len(dead_alarm) == 1, report["alarms"]
+    assert "scraper has stopped" not in dead_alarm[0], dead_alarm[0]
+    assert "skewed: the only newer row(s) are dated in the future" in \
+        dead_alarm[0], dead_alarm[0]
+
+
+def test_a_lone_stopped_retailer_still_gets_the_stopped_clause(tmp_path):
+    """And the mirror image, so the pair of tests cannot both pass on a
+    message that only ever emits one of the two clauses."""
+    data, site = _full_corpus(tmp_path, {
+        f"s{i}": [_entry("stopped", {"1gal": 20.0}, ts=STALE_TS)]
+        for i in range(2)
+    })
+    assert _run(tmp_path, data, site) == EXIT_ALARM
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    dead_alarm = [a for a in report["alarms"] if "contributed no row" in a]
+    assert len(dead_alarm) == 1, report["alarms"]
+    assert "dated in the future" not in dead_alarm[0], dead_alarm[0]
+    assert "stopped: no row dated within" in dead_alarm[0], dead_alarm[0]
+    assert "the scraper has stopped producing them" in dead_alarm[0], dead_alarm[0]
+
+
+@pytest.mark.parametrize("seconds_ahead,is_future", [
+    (FUTURE_SLACK_HOURS * 3600 - 1, False),   # inside the slack
+    (FUTURE_SLACK_HOURS * 3600, False),       # EXACTLY at it: not yet future
+    (FUTURE_SLACK_HOURS * 3600 + 1, True),    # one second past
+])
+def test_the_future_horizon_boundary_is_exclusive_at_equality(
+        tmp_path, monkeypatch, seconds_ahead, is_future):
+    """LOW-3: `t > horizon` -> `t >= horizon` survived all 553 tests — an
+    unpinned comparison boundary in the very commit that added
+    test_the_fresh_window_boundary_is_inclusive because an unpinned boundary
+    was a finding. Shipped behaviour is exclusive at equality; pinned here in
+    both directions. The clock is frozen so the assertion at exactly the
+    horizon is not a race between the test's `now` and the module's."""
+    from datetime import datetime as _dt
+    from datetime import timedelta, timezone
+
+    import scripts.nightly_audits as na
+
+    frozen = _dt(2026, 8, 12, 12, 0, 0, tzinfo=timezone.utc)
+
+    class _Frozen(_dt):
+        @classmethod
+        def now(cls, tz=None):
+            return frozen
+
+    monkeypatch.setattr(na, "datetime", _Frozen)
+    history = load_price_history(str(_write(tmp_path, {"rose": [
+        _entry("a", {"1gal": 20.0},
+               ts=(frozen - timedelta(hours=1)).isoformat()),
+        _entry("edge", {"1gal": 20.0},
+               ts=(frozen + timedelta(seconds=seconds_ahead)).isoformat()),
+    ]})))
+    _fresh, _stale, meta = split_by_freshness(history)
+    assert bool(meta["future_rows"]) is is_future
+    assert (meta["future_retailers"] == ["edge"]) is is_future
+    assert (meta["retailers_with_no_fresh_row"] == ["edge"]) is is_future
+
+
+def test_the_printed_excluded_line_splits_undated_from_future(tmp_path, capsys):
+    """R10, and two survivors (N10, N15). Dropping the future-row count from
+    this line survived all 553 tests, in the line that had just been rewritten
+    FOR R10; so did reporting `pairs_stale` as `len(stale) - len(future)`,
+    which prints the self-contradictory "0 stale of 4 (... 1 are dated in the
+    future)". Future-dated pairs ARE stale — that is what F-J changed — and
+    the line a human reads at 03:00 has to say so."""
+    undated = _entry("a", {"1gal": 20.0})
+    del undated["timestamp"]
+    data, site = _full_corpus(tmp_path, {
+        "skewed": [_entry("a", {"1gal": 20.0},
+                          ts="3000-01-01T00:00:00+00:00")],
+        "nodate": [undated],
+    })
+    _run(tmp_path, data, site)
+    out = capsys.readouterr().out
+    excluded = [ln for ln in out.splitlines() if "excluded   :" in ln]
+    assert excluded == ["   excluded   : 2 stale of 5 (1 carry no readable "
+                        "timestamp, 1 are dated in the future)"], out
+
+
+def test_the_future_row_alarm_says_it_is_not_evidence_of_life(tmp_path):
+    """N13: deleting the second half of this alarm survived all 553 tests.
+    That half is the whole of F-J — a future row is excluded from the fresh
+    set, not just from the reference point — and it is the sentence that tells
+    a reader why the retailer is also in the dead list."""
+    data, site = _full_corpus(tmp_path, {
+        "skewed": [_entry("a", {"1gal": 20.0},
+                          ts="3000-01-01T00:00:00+00:00")],
+    })
+    _run(tmp_path, data, site)
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    future_alarm = [a for a in report["alarms"]
+                    if "dated after this run started" in a]
+    assert len(future_alarm) == 1, report["alarms"]
+    assert "freshness reference point" in future_alarm[0], future_alarm[0]
+    assert "stand in as evidence that their own retailer is still reporting" \
+        in future_alarm[0], future_alarm[0]
+
+
+def test_stalest_never_reports_a_future_pair(tmp_path):
+    """N12: dropping the `not in future_keys` filter from `stalest` survived
+    all 553 tests. It puts a pair with hours=-8532529.5 at the top of the
+    "last seen Nh ago" list — 974 years in the FUTURE, printed as the oldest
+    thing in the corpus."""
+    history = load_price_history(str(_write(tmp_path, {
+        "rose": [_entry("live", {"1gal": 20.0}, ts=TS2),
+                 _entry("dead", {"1gal": 20.0}, ts=STALE_TS)],
+        "lilac": [_entry("c", {"1gal": 20.0},
+                         ts="3000-01-01T00:00:00+00:00")],
+    })))
+    _fresh, stale, meta = split_by_freshness(history)
+    assert len(stale) == 2, sorted(stale)
+    assert [(r["plant"], r["retailer"]) for r in meta["stalest"]] == \
+        [("rose", "dead")]
+    assert all(r["hours"] is None or r["hours"] >= 0 for r in meta["stalest"]), \
+        meta["stalest"]
 
 
 def test_a_stale_row_cannot_convict_a_live_one_in_audit_a(tmp_path):
