@@ -17,6 +17,7 @@ import pytest
 from scripts.nightly_audits import (
     EXIT_ALARM,
     EXIT_OK,
+    FRESH_HOURS,
     audit_a_cross_retailer,
     audit_b_two_nursery_pairs,
     audit_c_within_retailer_inversion,
@@ -25,6 +26,7 @@ from scripts.nightly_audits import (
     audit_f_stock_consistency,
     load_price_history,
     main,
+    split_by_freshness,
 )
 
 TS1 = "2026-08-11T11:00:00+00:00"
@@ -501,6 +503,256 @@ def test_update_baseline_accepts_current_findings_and_is_not_a_ci_path(tmp_path)
     assert "D_snapshot_value_diff" not in accepted
     assert "E_cross_page_agreement" not in accepted
     assert "F_stock_consistency" not in accepted
+
+
+# --------------------------------------------------------------------------
+# the exit code itself. Mutant M10 (`EXIT_OK, EXIT_ALARM = 0, 0`) survived all
+# 516 tests: every assertion above compares main()'s return to the IMPORTED
+# symbol, i.e. the constant against itself. Nothing checked the number the
+# workflow reads. These tests use literals on purpose — do not "tidy" them
+# back into the symbols.
+# --------------------------------------------------------------------------
+
+def test_the_alarm_exit_code_is_literally_two():
+    """scrape.yml reads `${PIPESTATUS[0]}` and only knows 0 from not-0. If
+    EXIT_ALARM ever becomes 0 the alarm is silently disabled everywhere, and
+    every symbol-vs-symbol assertion in this file still passes."""
+    assert EXIT_OK == 0
+    assert EXIT_ALARM == 2
+    assert EXIT_ALARM != 0
+
+
+def test_an_alarming_run_returns_a_nonzero_number(tmp_path):
+    """The end-to-end version: a corpus that must alarm, asserted against the
+    literal, not against whatever EXIT_ALARM happens to be bound to."""
+    data, _site = _full_corpus(tmp_path)
+    empty = tmp_path / "emptysite2"
+    (empty / "plants").mkdir(parents=True)
+    (empty / "guides").mkdir(parents=True)
+    code = _run(tmp_path, data, str(empty), floors_off=False)
+    assert code == 2
+    assert code != 0
+
+
+def test_a_clean_run_returns_literal_zero(tmp_path):
+    """The other direction, so 'always alarms' is not a way to pass."""
+    data, site = _full_corpus(tmp_path)
+    assert _run(tmp_path, data, site) == 0
+
+
+# --------------------------------------------------------------------------
+# D's ALARM path through main(). Mutant M05 (D_CLUSTER 5 -> 50) also survived
+# the suite: every D test above calls audit_d_snapshot_value_diff directly, so
+# the threshold that decides whether the FGT positional-bug detector says
+# anything at all was never executed.
+# --------------------------------------------------------------------------
+
+def _migrating(plant_seed):
+    """One plant-retailer pair whose price leaves its old label: the exact
+    signature from audit doc §4D, {1gal:p, 3gal:q} -> {3gal:p}."""
+    price = 20.0 + plant_seed
+    return [_entry("a", {"1gal": price, "3gal": price * 2}, ts=TS1),
+            _entry("a", {"3gal": price}, ts=TS2)]
+
+
+def test_main_alarms_when_a_cluster_of_prices_change_size_label(tmp_path):
+    """Five migrations in one run is the positional-pairing regression. This
+    is the audit the whole file exists for and nothing was exercising its
+    alarm: measured over 253 real runs, the noisiest quiet run produced 3 and
+    the smallest real event produced 6."""
+    data, site = _full_corpus(tmp_path, {f"m{i}": _migrating(i) for i in range(5)})
+    assert _run(tmp_path, data, site) == 2
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert len(report["audits"]["D_snapshot_value_diff"]["new_findings"]) == 5
+    assert any("D_snapshot_value_diff" in a for a in report["alarms"]), report["alarms"]
+
+
+def test_main_only_notices_migrations_below_the_cluster_threshold(tmp_path):
+    """The other side of the threshold, so raising it cannot pass unnoticed.
+    Four is inside the measured noise band (max 3 on a quiet run)."""
+    data, site = _full_corpus(tmp_path, {f"m{i}": _migrating(i) for i in range(4)})
+    assert _run(tmp_path, data, site) == 0
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert len(report["audits"]["D_snapshot_value_diff"]["new_findings"]) == 4
+    assert report["alarms"] == []
+    assert any("D_snapshot_value_diff" in n for n in report["notices"])
+
+
+# --------------------------------------------------------------------------
+# freshness — R5: the metric must not be satisfiable by the failure mode
+# --------------------------------------------------------------------------
+
+STALE_TS = "2026-06-15T11:00:00+00:00"      # ~1416h before TS2
+
+
+def test_a_row_older_than_the_window_is_not_treated_as_this_run(tmp_path):
+    history = load_price_history(str(_write(tmp_path, {
+        "rose": [_entry("live", {"1gal": 20.0}, ts=TS2),
+                 _entry("dead", {"1gal": 20.0}, ts=STALE_TS)],
+    })))
+    fresh, stale, meta = split_by_freshness(history)
+    assert set(fresh) == {("rose", "live")}
+    assert set(stale) == {("rose", "dead")}
+    assert meta["pairs_total"] == 2 and meta["pairs_fresh"] == 1
+    assert meta["pairs_stale"] == 1
+    assert meta["retailers_with_no_fresh_row"] == ["dead"]
+
+
+def test_a_row_inside_the_window_is_still_this_run(tmp_path):
+    """The inverse. A retailer that missed one or two scrape runs must not be
+    declared dead — measured: over 253 runs the only retailer ever absent for
+    more than 2 consecutive runs was great-garden-plants' real 21-day outage."""
+    recent = "2026-08-11T13:00:00+00:00"          # 22h before TS2
+    history = load_price_history(str(_write(tmp_path, {
+        "rose": [_entry("a", {"1gal": 20.0}, ts=TS2),
+                 _entry("b", {"1gal": 20.0}, ts=recent)],
+    })))
+    fresh, stale, meta = split_by_freshness(history)
+    assert len(fresh) == 2 and stale == {}
+    assert meta["retailers_with_no_fresh_row"] == []
+    assert FRESH_HOURS >= 24, "one missed scrape run is ~24h and must stay silent"
+
+
+def test_an_undated_row_counts_as_stale_not_as_fresh(tmp_path):
+    """R7 — re-derive the safe default. If a schema change drops `timestamp`,
+    keeping the rows would leave every denominator looking healthy forever;
+    dropping them collapses the denominators and trips the floor alarms."""
+    undated = _entry("b", {"1gal": 20.0})
+    del undated["timestamp"]
+    history = load_price_history(str(_write(tmp_path, {
+        "rose": [_entry("a", {"1gal": 20.0}, ts=TS2), undated],
+    })))
+    fresh, stale, meta = split_by_freshness(history)
+    assert set(stale) == {("rose", "b")}
+    assert meta["undated_rows"] == 1
+    assert set(fresh) == {("rose", "a")}
+
+
+def test_one_broken_clock_does_not_declare_every_other_retailer_dead(tmp_path):
+    """A defect introduced by the freshness fix itself and found by probing
+    split_by_freshness, not by review: freshness is measured relative to the
+    newest row, so a single row dated 3000-01-01 dragged the cutoff forward
+    and marked 2 of 3 retailers as having stopped contributing. Rows dated
+    after this run started are excluded from the reference point and alarmed
+    on separately."""
+    history = load_price_history(str(_write(tmp_path, {"rose": [
+        _entry("a", {"1gal": 20.0}, ts=TS2),
+        _entry("b", {"1gal": 20.0}, ts=TS2),
+        _entry("skew", {"1gal": 20.0}, ts="3000-01-01T00:00:00+00:00"),
+    ]})))
+    fresh, stale, meta = split_by_freshness(history)
+    assert meta["retailers_with_no_fresh_row"] == []
+    assert sorted(k[1] for k in fresh) == ["a", "b", "skew"]
+    assert stale == {}
+    assert meta["future_rows"] == [{"plant": "rose", "retailer": "skew"}]
+
+
+@pytest.mark.parametrize("offset_hours,is_future", [(0.5, False), (6, True)])
+def test_the_future_boundary_is_hours_not_centuries(tmp_path, offset_hours, is_future):
+    """Pins FUTURE_SLACK_HOURS at a realistic scale. A row half an hour ahead
+    is clock jitter between the runner and the commit; six hours ahead is a
+    wrong clock. Written relative to now so it stays true whenever it runs."""
+    from datetime import datetime, timedelta, timezone
+    now = datetime.now(timezone.utc)
+    history = load_price_history(str(_write(tmp_path, {"rose": [
+        _entry("a", {"1gal": 20.0}, ts=(now - timedelta(hours=1)).isoformat()),
+        _entry("b", {"1gal": 20.0},
+               ts=(now + timedelta(hours=offset_hours)).isoformat()),
+    ]})))
+    _fresh, _stale, meta = split_by_freshness(history)
+    assert bool(meta["future_rows"]) is is_future
+    assert meta["retailers_with_no_fresh_row"] == []
+
+
+def test_a_future_dated_row_is_an_alarm_in_its_own_right(tmp_path):
+    data, site = _full_corpus(tmp_path, {"skewed": [
+        _entry("a", {"1gal": 20.0}, ts="3000-01-01T00:00:00+00:00")]})
+    assert _run(tmp_path, data, site) == 2
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert any("dated after this run started" in a for a in report["alarms"]), \
+        report["alarms"]
+
+
+def test_a_stale_row_cannot_convict_a_live_one_in_audit_a(tmp_path):
+    """The concrete harm, not just the bookkeeping: audit A compared a
+    4-month-old price against today's as if the two were contemporaneous. With
+    only two live rows on the tier there is no median, so A must not fire."""
+    history = load_price_history(str(_write(tmp_path, {
+        "rose": [_entry("a", {"3gal": 40.0}, ts=TS2),
+                 _entry("b", {"3gal": 42.0}, ts=TS2),
+                 _entry("c", {"3gal": 10.0}, ts=STALE_TS)],
+    })))
+    stale_denom, stale_findings = audit_a_cross_retailer(
+        {k: v[-1] for k, v in history.items()})
+    assert stale_denom == 3 and len(stale_findings) == 1, "pre-fix behaviour"
+
+    fresh, _stale, _meta = split_by_freshness(history)
+    denom, findings = audit_a_cross_retailer(fresh)
+    assert denom == 0 and findings == []
+
+
+def test_main_alarms_when_a_retailer_stops_contributing(tmp_path):
+    """The red team's scenario, in miniature: an entire retailer's rows stop
+    two months ago. Before this fix the run exited 0 with zero alarms and
+    every denominator ABOVE its floor, because a dead retailer's last-ever row
+    counted toward every denominator forever."""
+    dead = {f"d{i}": [_entry("gone", {"1gal": 20.0}, ts=STALE_TS),
+                      _entry("gone", {"1gal": 20.0}, ts=STALE_TS)]
+            for i in range(3)}
+    data, site = _full_corpus(tmp_path, dead)
+    assert _run(tmp_path, data, site) == 2
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert any("gone" in a and "contributed no row" in a for a in report["alarms"]), \
+        report["alarms"]
+    assert report["freshness"]["retailers_with_no_fresh_row"] == ["gone"]
+
+
+def test_main_reports_the_stale_count_with_its_denominator(tmp_path):
+    """R10. A retailer that is alive but has one discontinued product is a
+    notice with numbers, not an alarm — 5 of 282 pairs on the live corpus."""
+    data, site = _full_corpus(tmp_path, {
+        "old": [_entry("a", {"1gal": 20.0}, ts=STALE_TS)],
+    })
+    assert _run(tmp_path, data, site) == 0
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    fresh = report["freshness"]
+    assert fresh["pairs_total"] == 4 and fresh["pairs_stale"] == 1
+    assert fresh["pairs_fresh"] == 3
+    assert fresh["fresh_window_hours"] == FRESH_HOURS
+    assert fresh["retailers_with_no_fresh_row"] == []
+    assert report["alarms"] == []
+    assert any("stale" in n for n in report["notices"])
+
+
+def test_stale_rows_do_not_inflate_the_denominators_in_the_report(tmp_path):
+    """The mechanism of the original defect, asserted end to end. Two live
+    nurseries and one that stopped two months ago: pre-fix that tier had three
+    rows, so A claimed a median and B saw no pair at all. The stale row must
+    change which audit even applies."""
+    data, site = _full_corpus(tmp_path, {"rose": [
+        _entry("live1", {"3gal": 40.0}, ts=TS2),
+        _entry("live2", {"3gal": 42.0}, ts=TS2),
+        _entry("gone", {"3gal": 10.0}, ts=STALE_TS),
+    ]})
+    _run(tmp_path, data, site)
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert report["audits"]["A_cross_retailer"]["denominator"] == 0
+    assert report["audits"]["B_two_nursery_pairs"]["denominator"] == 1
+    assert report["audits"]["F_stock_consistency"]["counts"]["latest_rows"] == \
+        report["freshness"]["pairs_fresh"]
+
+
+def test_a_dead_retailers_last_migration_is_not_re_reported_forever(tmp_path):
+    """D is stateless and not baselined, so a stale pair's migration would be
+    re-found on every run until the end of time. Only fresh pairs are
+    compared."""
+    data, site = _full_corpus(tmp_path, {"ghost": [
+        _entry("gone", {"1gal": 21.95, "3gal": 42.95}, ts="2026-06-14T11:00:00+00:00"),
+        _entry("gone", {"3gal": 21.95}, ts=STALE_TS),
+    ]})
+    _run(tmp_path, data, site)
+    report = json.loads((tmp_path / "report.json").read_text(encoding="utf-8"))
+    assert report["audits"]["D_snapshot_value_diff"]["new_findings"] == []
 
 
 @pytest.mark.parametrize("mutation,expect_silent", [

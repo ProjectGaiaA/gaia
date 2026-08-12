@@ -60,28 +60,55 @@ jobs:
 
       # WINDOW CALIBRATION (R9 — measured against real history, not guessed).
       #
-      # 239 consecutive commit gaps on main from 2026-05-01 to 2026-08-12:
-      #     median 10.4h   p95 15.6h   max 23.9h
-      #     gaps >= 18h :  2 of 239 (0.8%)
-      #     gaps >= 20h :  1 of 239 (0.4%)
-      #     gaps >= 24h :  0 of 239
-      #     gaps >= 26h :  0 of 239
-      #     gaps >= 30h :  0 of 239
+      # CORRECTED 2026-08-12. The previous version of this block was measured
+      # on gaps between ALL commits (239 gaps, median 10.4h, max 23.9h) and
+      # concluded "zero false alarms across all 239 real gaps". This step does
+      # not measure that. It measures `git log -1 --format=%cI -- data/prices/`
+      # — gaps between DATA commits only, which is a different and sparser
+      # series. A red team found the mismatch. Re-derived on the metric the
+      # step actually uses:
+      #
+      #   git log --format=%cI --since=2026-05-01 -- data/prices/
+      #     205 commits, 204 gaps, 2026-05-01 .. 2026-08-12
+      #     median 12.70h   p95 15.87h   max 34.51h
+      #     gaps >= 18h : 3 of 204 (1.5%)
+      #     gaps >= 24h : 1 of 204 (0.5%)
+      #     gaps >= 30h : 1 of 204 (0.5%)
+      #     gaps >= 36h : 0 of 204
+      #
+      #   The single gap over 30h is 34.51h: 183524da 2026-08-10T12:33Z ->
+      #   a09a9f07 2026-08-11T23:03Z. Fifteen non-data commits landed inside
+      #   it, which is exactly why measuring all commits hid it: on that
+      #   metric the same window reads 23.88h.
+      #
+      #   Over FULL history (261 gaps) the max is 40.42h and 2 gaps exceed
+      #   36h — both in the 2026-04-03..04-08 bring-up, before the twice-daily
+      #   cron was stable. They are excluded on that basis, stated rather than
+      #   quietly dropped.
       #
       # Healthy spacing is 13.5h (21:30 -> 11:00) and 10.5h (11:00 -> 21:30),
       # plus up to ~1.5h for the job itself (90 min timeout, plus the random
-      # 0-120s start delay and up to 3 push retries).
+      # 0-120s start delay and up to 3 push retries). One entirely missed
+      # cycle is ~24h; two consecutive missed cycles are 34.5h (11:00 -> 21:30
+      # two days later) or 37.5h (21:30 -> 11:00), plus jitter.
       #
-      # One entirely missed cycle therefore shows up as ~24h — and the
-      # observed 23.9h maximum is exactly that, a single missed run that
-      # recovered on its own. Alerting there would page the owner for
-      # something the pipeline already fixed.
+      # KEPT 30h, NOT widened to 36h. Stated plainly, both halves:
+      #   * 30h will fire about once per 3.4 months at the observed rate
+      #     (1 in 204 gaps).
+      #   * That one firing is NOT a false alarm. 2026-08-10T12:33 ->
+      #     2026-08-11T23:03 is two consecutive scheduled runs that published
+      #     no data, which is precisely the condition this window is declared
+      #     to report ("one missed run tolerated in silence, two is an
+      #     alarm"). The defect was the calibration text, not the threshold.
+      #   * 36h would give 0 firings on this history, but it splits the
+      #     two-missed-cycle band: it would stay silent for the 34.5h form and
+      #     alert on the 37.5h form of the same event. A threshold that fires
+      #     on half of one failure mode is worse than one that fires on all of
+      #     it once a quarter. Anything genuinely quieter has to be >=38h,
+      #     which means "three missed cycles" and ~48h to detect.
       #
-      # CHOSEN 30h: zero false alarms across all 239 real gaps, ~6h of
-      # headroom over the worst genuine gap, still well under the ~34.5h that
-      # TWO consecutive missed cycles produce. So: one missed run is tolerated
-      # in silence, two is an alarm. Worst-case detection latency is
-      # 30h + 6h (the heartbeat's own cadence) = 36h.
+      # Worst-case detection latency is 30h + 6h (the heartbeat's own
+      # cadence) = 36h.
       #
       # The age measured is that of the last commit TOUCHING data/prices/,
       # not the last commit of any kind. A documentation or config push would
