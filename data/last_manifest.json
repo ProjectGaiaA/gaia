@@ -1,15 +1,15 @@
 {
-  "timestamp": "2026-08-12T21:21:47.146238+00:00",
+  "timestamp": "2026-08-12T23:36:08.751149+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 77,
+      "products_found": 78,
       "products_no_sizes": 0,
-      "products_priced": 77,
-      "products_error": 1,
-      "prices_collected": 146,
+      "products_priced": 78,
+      "products_error": 0,
+      "prices_collected": 147,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -174,6 +174,9 @@
           "quart": 19.35,
           "1gal": 53.26,
           "3gal": 152.51
+        },
+        "chicago-hardy-fig:nature-hills": {
+          "3gal": 102.99
         },
         "arbequina-olive:nature-hills": {
           "3gal": 81.25
@@ -973,7 +976,7 @@
       "products_no_sizes": 12,
       "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 153,
+      "prices_collected": 152,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1050,8 +1053,7 @@
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
           "3gal": 81.95,
-          "5gal": 128.95,
-          "7gal": 217.95
+          "5gal": 128.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
           "quart": 15.95,
@@ -1528,6 +1530,9 @@
       "quart": 19.35,
       "1gal": 53.26,
       "3gal": 152.51
+    },
+    "chicago-hardy-fig:nature-hills": {
+      "3gal": 102.99
     },
     "arbequina-olive:nature-hills": {
       "3gal": 81.25
@@ -2362,8 +2367,7 @@
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
       "3gal": 81.95,
-      "5gal": 128.95,
-      "7gal": 217.95
+      "5gal": 128.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
       "quart": 15.95,
