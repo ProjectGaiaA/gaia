@@ -604,7 +604,10 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
     }
 
 
-CI_TIMEOUT_SECONDS = 90 * 60  # 90-minute CI timeout
+# Must match `timeout-minutes` on the scrape job in
+# .github/workflows/scrape.yml. Raised 90 -> 180 on 2026-08-13 after runs hit
+# 88-90 min and one was cancelled at the ceiling.
+CI_TIMEOUT_SECONDS = 180 * 60  # 3-hour CI timeout
 POST_SCRAPE_BUFFER_SECONDS = 10 * 60  # 10 minutes for build/commit/deploy
 
 

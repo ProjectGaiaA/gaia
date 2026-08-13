@@ -19,7 +19,14 @@ concurrency:
 jobs:
   scrape:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    # 180, not 90. Runs measured 88.3 and 88.7 min after the availability fix
+    # added a second request per product, and run 31645766847 was CANCELLED at
+    # 90.1 min. Under two minutes of headroom is not headroom.
+    # This is a self-imposed limit, not a billing one: the repo is public, so
+    # GitHub-hosted Actions minutes are free and unlimited. GitHub's own hard
+    # cap is 6 hours per job, so 180 is well inside it.
+    # Keep in step with CI_TIMEOUT_SECONDS in scrapers/runner.py.
+    timeout-minutes: 180
 
     steps:
       - uses: actions/checkout@v4
