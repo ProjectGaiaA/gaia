@@ -153,6 +153,13 @@ GUIDE_FAQS = {
 SIZE_TIER_LABELS = {
     # Container / gallon sizes
     "quart":   "Quart",
+    # "2 Quart" and "3 Quart" are bigger pots, not other words for a quart.
+    # PlantingTree lists 1, 2 and 3 Quart of one plant at different prices and
+    # different stock; they all normalised to `quart`, so the last variant in
+    # the list overwrote the rest and the site published a sold-out $13.95
+    # where the retailer was selling $21.95.
+    "2quart":  "2 Quart",
+    "3quart":  "3 Quart",
     "1gal":    "1 Gallon",
     "2gal":    "2 Gallon",
     "3gal":    "3 Gallon",
@@ -272,10 +279,52 @@ def normalize_size_tier(tier: str) -> str:
     return canonical
 
 
+# Qualifier suffixes the scraper appends to a base tier when a variant names a
+# DIFFERENT PRODUCT at the same nominal size (the "-jumbo" precedent). Composed
+# rather than enumerated because the base set is open: every height, quart and
+# gallon tier can carry "-multistem".
+_TIER_SUFFIX_LABELS = (
+    ("-multistem", "Multi-Stem"),
+    ("-bareroot", "Bare Root"),
+)
+
+
+def _dimension_label(base: str) -> str | None:
+    """Human label for a dimension-shaped tier id, or None if it is not one.
+
+    `12-18in` -> 12-18",  `3inch` -> 3",  `2-5inch` -> 2.5"
+    ('.' is carried as '-' in tier ids; PWD's "0.65 Gallon" is `0-65-gallon`.)
+    """
+    span = re.fullmatch(r'(\d+)-(\d+)in', base)
+    if span:
+        return f'{span.group(1)}-{span.group(2)}"'
+    single = re.fullmatch(r'(\d+(?:-\d+)?)inch', base)
+    if single:
+        return f'{single.group(1).replace("-", ".")}"'
+    return None
+
+
 def get_size_label(tier: str) -> str:
     """Return the human-readable label for a canonical size tier."""
     canonical = normalize_size_tier(tier)
-    return SIZE_TIER_LABELS.get(canonical, canonical.replace("-", " ").title())
+    if canonical in SIZE_TIER_LABELS:
+        return SIZE_TIER_LABELS[canonical]
+    # A qualified tier must not fall through to the generic fallback, which
+    # renders "4-5ft-multistem" as "4 5Ft Multistem" — the same class of
+    # unreadable column the "6-7ft-jumbo" entry was added to prevent.
+    for suffix, tail in _TIER_SUFFIX_LABELS:
+        if canonical.endswith(suffix) and len(canonical) > len(suffix):
+            base = canonical[:-len(suffix)]
+            base_label = (
+                _dimension_label(base)
+                or SIZE_TIER_LABELS.get(base)
+                or base.replace("-", " ").title()
+            )
+            return f"{base_label} {tail}"
+    dim = _dimension_label(canonical)
+    if dim:
+        return dim
+    return canonical.replace("-", " ").title()
 
 
 def load_json(path):
@@ -847,7 +896,8 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
     # Mark best price per tier
     # Full canonical order — tiers not in this list sort to the end alphabetically
     tier_order = [
-        "quart", "1gal", "2gal", "3gal", "5gal", "7gal", "10gal", "15gal",
+        "quart", "2quart", "3quart",
+        "1gal", "2gal", "3gal", "5gal", "7gal", "10gal", "15gal",
         "bareroot", "jumbo-bareroot", "premium-bareroot",
         "1-2ft", "2-3ft", "3-4ft", "4-5ft", "5-6ft", "6-7ft", "6-7ft-jumbo",
         "7-8ft", "8-9ft",
@@ -862,9 +912,28 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
     # can't identify a real size. Retailers with only "default" still appear as
     # rows with a "Buy at" link, just without prices in size columns.
     active_tiers.discard("default")
-    known = set(tier_order)
-    leftover = sorted(t for t in active_tiers if t not in known)
-    active_tiers_sorted = [t for t in tier_order if t in active_tiers] + leftover
+    _tier_index = {t: i for i, t in enumerate(tier_order)}
+
+    def _tier_rank(tier):
+        """Sort key that keeps a qualified tier next to the size it qualifies.
+
+        Tiers the scraper can now emit are open-ended — every height, quart
+        and gallon tier can carry "-multistem", and every dormant dimension
+        carries "-bareroot" — so enumerating them in tier_order is not
+        possible. Without this, "4-5ft-multistem" sorted alphabetically after
+        every known tier and appeared at the far right of the table, columns
+        away from the "4-5 ft" it is a variant of. Nothing vanishes either
+        way; this is ordering, not filtering.
+        """
+        if tier in _tier_index:
+            return (_tier_index[tier], 0, tier)
+        for suffix, _ in _TIER_SUFFIX_LABELS:
+            base = tier[: -len(suffix)]
+            if tier.endswith(suffix) and base in _tier_index:
+                return (_tier_index[base], 1, tier)
+        return (len(tier_order), 0, tier)
+
+    active_tiers_sorted = sorted(active_tiers, key=_tier_rank)
 
     for tier in active_tiers_sorted:
         best_price = float("inf")

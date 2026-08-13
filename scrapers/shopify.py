@@ -123,6 +123,73 @@ def _offers_from_ld_json(text: str) -> list[dict]:
     return found
 
 
+def _record_size(
+    sizes: dict,
+    quarantined: set,
+    tier: str,
+    entry: dict,
+    *,
+    retailer_id: str,
+    handle: str,
+    collisions: list,
+) -> None:
+    """Write one size tier, refusing to silently overwrite a different product.
+
+    A plain `sizes[tier] = {...}` is last-write-wins, and that is how the live
+    site came to advertise planting-tree's SOLD-OUT "2 Quart" at $13.95 in the
+    `quart` column while the retailer was actively selling "1 Quart" at
+    $21.95: both titles normalised to `quart`, the later variant overwrote the
+    earlier one, and the price a visitor could actually pay was never
+    published at all. _normalize_size now separates those products, so what
+    reaches this function is a RESIDUAL collision — something the tier rules
+    cannot tell apart — and it must be loud rather than resolved by list order.
+
+    Three outcomes:
+
+    * no clash                        -> write it
+    * same price AND same stock       -> the same product listed twice
+                                         (measured: FGT renders a duplicate
+                                         "1 quart" button on 2 of 65 cached
+                                         pages). Dropped silently; there is
+                                         no disagreement to report.
+    * anything else                   -> QUARANTINE. The tier is removed and
+                                         poisoned so no later variant can
+                                         claim it, and the clash is logged at
+                                         ERROR with both raw labels.
+
+    Quarantine is per-TIER, deliberately, not per-product and not an
+    exception. Raising would have withheld whole products for the residual
+    cases actually present in the cached corpus — three FGT pages carry two
+    buttons with the SAME label and different prices ("1 quart" $25.95 and
+    "1 quart" $44.95 on dwarf-cavendish-banana), which no normaliser can
+    split — so a raise would delete live, mostly-correct products from the
+    site to punish one unattributable cell. That would be a fresh defect of
+    the class this change exists to remove. Dropping only the cell we cannot
+    attribute keeps every other tier of the product publishing, which is the
+    same trade this module already makes for a product whose sizes it cannot
+    read: a missing cell is visible, a wrong price is not.
+    """
+    if tier in quarantined:
+        collisions.append((tier, entry.get("raw_size"), entry.get("price")))
+        return
+    held = sizes.get(tier)
+    if held is None:
+        sizes[tier] = entry
+        return
+    if (held.get("price"), held.get("available")) == (entry.get("price"), entry.get("available")):
+        return
+    del sizes[tier]
+    quarantined.add(tier)
+    collisions.append((tier, entry.get("raw_size"), entry.get("price")))
+    logger.error(
+        f"  {retailer_id}/{handle}: size tier {tier!r} claimed by two different "
+        f"products — {held.get('raw_size')!r} at {held.get('price')} and "
+        f"{entry.get('raw_size')!r} at {entry.get('price')}. Publishing NEITHER: "
+        f"an arbitrary winner here is how a sold-out variant's price came to be "
+        f"advertised under another variant's label."
+    )
+
+
 class ShopifyScraper:
     """Scrape product data from Shopify-based nursery stores."""
 
@@ -327,7 +394,8 @@ class ShopifyScraper:
 
         # Extract prices by size variant
         sizes = {}
-        any_available = False
+        quarantined_tiers: set[str] = set()
+        collisions: list = []
 
         for variant in variants:
             variant_title = variant.get("title", "").strip()
@@ -388,17 +456,18 @@ class ShopifyScraper:
             # Normalize the variant title to a size tier
             size_tier = self._normalize_size(variant_title)
 
-            if available is True:
-                any_available = True
-
             variant_id = variant.get("id", "")
-            sizes[size_tier] = {
-                "price": price,
-                "was_price": was_price,
-                "available": available,
-                "raw_size": variant_title,
-                "variant_id": variant_id,
-            }
+            _record_size(
+                sizes, quarantined_tiers, size_tier,
+                {
+                    "price": price,
+                    "was_price": was_price,
+                    "available": available,
+                    "raw_size": variant_title,
+                    "variant_id": variant_id,
+                },
+                retailer_id=self.retailer_id, handle=handle, collisions=collisions,
+            )
 
         # Product URL — use variant ID of the first/cheapest size for deep linking
         product_url = f"{self.base_url}/products/{handle}"
@@ -408,16 +477,21 @@ class ShopifyScraper:
             if cheapest.get("variant_id"):
                 product_url = f"{self.base_url}/products/{handle}?variant={cheapest['variant_id']}"
 
-        # If NO variant had an explicit available field, stock is unknown.
-        # Nature Hills returns null for both in-stock AND sold-out products,
-        # so we can't assume either way.
-        has_any_explicit_availability = any(
-            v.get("available") is not None for v in sizes.values()
-        )
-        if not has_any_explicit_availability:
-            any_available = None  # Unknown — show dash
+        # Aggregate stock from the tiers that SURVIVED quarantine, not from the
+        # variants as they were read. Computing it inside the loop above let a
+        # variant vote "in stock" and then be withheld by _record_size, so a row
+        # could render "In Stock" over the price of a different, sold-out tier —
+        # a claim backed by nothing published on the page. Same rule as the aria
+        # path (known-in-stock wins; all-unknown stays unknown rather than being
+        # reported sold out) because it is the same question.
+        # Nature Hills returns null for both in-stock AND sold-out products, so
+        # "no explicit value anywhere" must stay None and show a dash.
+        explicit = [
+            v["available"] for v in sizes.values() if isinstance(v.get("available"), bool)
+        ]
+        any_available = True if any(explicit) else (False if explicit else None)
 
-        return {
+        result = {
             "retailer_id": self.retailer_id,
             "retailer_name": self.retailer_id.replace("-", " ").title(),
             "handle": handle,
@@ -425,8 +499,24 @@ class ShopifyScraper:
             "url": product_url,
             "sizes": sizes,
             "in_stock": any_available,
+            # Count of tiers withheld because two products claimed them. Kept
+            # on the result so a test can assert the guard fired; runner.py is
+            # untouched and ignores unknown keys.
+            "size_collisions": len(collisions),
             "timestamp": datetime.now(timezone.utc).isoformat(),
         }
+        # Quarantine opened a NEW way to reach defect F1: every tier withheld
+        # leaves an empty, freshly-timestamped row, which runner.py counts as a
+        # product found and scores as healthy — a retailer publishing not one
+        # readable price reporting a 100% hit rate. The aria path already
+        # refuses to publish in this state; the JSON path keeps the row (the
+        # product does exist) but must not let it pass for a successful price
+        # read. Gated on `collisions` so a genuinely priceless product — no
+        # variants, all zero-price, all filtered as packs — is untouched: that
+        # is a different fact and already has its own handling.
+        if not sizes and collisions:
+            result["no_sizes_readable"] = True
+        return result
 
     def _scrape_product_html(self, handle: str) -> dict | None:
         """Scrape product data from HTML page when JSON endpoint is disabled.
@@ -585,31 +675,37 @@ class ShopifyScraper:
             # hardcoded available=True for every size it found.
             avail_by_price = self._availability_by_price(text)
             sizes = {}
+            quarantined_tiers: set[str] = set()
+            collisions: list = []
             for size_name, sale_price, list_price in aria_offers:
                 if sale_price <= 0:
                     continue  # a 0 is "no price", never a free plant
                 tier = self._normalize_size(size_name)
-                if tier in sizes:
-                    # Two different labels collapsed onto one tier. Keep the first
-                    # (buttons render smallest-first) rather than letting the later,
-                    # more expensive one silently overwrite it.
-                    logger.warning(
-                        f"  {self.retailer_id}/{handle}: size {size_name!r} collides with "
-                        f"tier {tier!r} already taken by {sizes[tier]['raw_size']!r} — keeping the first"
-                    )
-                    continue
                 available = avail_by_price.get(round(sale_price, 2))
                 if available is None and not avail_by_price:
                     # No schema.org stock data on the page at all — no signal either
                     # way, so keep the historical assumption that a priced, rendered
                     # size button is buyable.
                     available = True
-                sizes[tier] = {
-                    "price": sale_price,
-                    "was_price": list_price if list_price and list_price > sale_price else None,
-                    "available": available,
-                    "raw_size": size_name,
-                }
+                # REPLACED: "keep the first (buttons render smallest-first)".
+                # Keeping the first is still picking a winner between two
+                # products, and the assumption underneath it is false — on the
+                # cached crape-myrtle page the first `quart` button is
+                # "1 quart Multi-stem" and the second is "2 quart Multi-stem",
+                # a bigger pot, so "first" meant "publish the small pot's price
+                # under a tier the big pot also claims". _normalize_size now
+                # tells those two apart; what still lands here is a clash no
+                # tier rule can resolve, and it is withheld, not guessed.
+                _record_size(
+                    sizes, quarantined_tiers, tier,
+                    {
+                        "price": sale_price,
+                        "was_price": list_price if list_price and list_price > sale_price else None,
+                        "available": available,
+                        "raw_size": size_name,
+                    },
+                    retailer_id=self.retailer_id, handle=handle, collisions=collisions,
+                )
             # Aggregate, same rule as the JSON path: known-in-stock wins; all-unknown
             # stays unknown rather than being reported as sold out.
             explicit = [v["available"] for v in sizes.values() if isinstance(v["available"], bool)]
@@ -625,8 +721,20 @@ class ShopifyScraper:
                     "url": url,
                     "sizes": sizes,
                     "in_stock": any_available,
+                    "size_collisions": len(collisions),
                     "timestamp": datetime.now(timezone.utc).isoformat(),
                 }
+            # The page HAD readable size buttons and every one of them was
+            # quarantined. Do NOT fall through: everything below pairs sizes
+            # to prices BY POSITION, and answering "we could not tell two
+            # products apart" with a positional guess is strictly worse than
+            # answering nothing. Withhold the product — a gap is visible in
+            # products_error, a wrong price is not.
+            logger.error(
+                f"  {self.retailer_id}/{handle}: all {len(aria_offers)} size buttons "
+                f"were withheld as unattributable — publishing nothing for this product"
+            )
+            return None
 
         # Everything below this point pairs size labels to prices BY POSITION,
         # assuming buttons run smallest→largest and prices cheapest→dearest.
@@ -933,11 +1041,26 @@ class ShopifyScraper:
         FGT renders two button groups: "Select size" (4 inch / 1 quart / 1 gallon)
         and "Select quantity" (Single / 10-Pack). Both use the same aria-label
         price format, and a pack price is not a per-plant price.
+
+        "Single-stem" is a FORM, not a quantity. Matching bare "single" threw
+        away every Single-stem size button FGT renders — on crape-myrtle that
+        left only the Multi-stem prices, published under the plain height
+        tiers, so the site quoted a multi-stem price for a plant a visitor
+        would receive as a single-stem tree. Verified against the cached page
+        scratchpad/fgt_cm.html, which lists "1-2 feet Multi-stem" and
+        "1-2 feet Single-stem" side by side at different prices.
         """
         nl = name.strip().lower()
         return (
             "pack" in nl
-            or "single" in nl
+            # "6 Plants ( 4 Inch Pot)" is a six-plant bundle, and it was
+            # claiming the `4inch` size tier next to the real "4 inch" button
+            # at a third of the price. The JSON path has filtered exactly this
+            # for as long as it has existed — same count guard, so "1 Plant(s)"
+            # (a single plant, which Spring Hill writes on every variant) is
+            # still a size, not a pack.
+            or bool(re.search(r'(?:[2-9]|1\d)[\s-]*plants?\b', nl))
+            or ("single" in nl and not re.search(r'\bsingle[\s-]?stems?\b', nl))
             or bool(re.match(r'^\d+[\s-]*(?:pk|ct|x)$', nl))
         )
 
@@ -1017,7 +1140,58 @@ class ShopifyScraper:
         - GGP: "One Quart", "One Gallon", "3 Feet (One Gallon)"
         - PWD: "1 Gallon / Ship Week 23 (June 1st – June 5th)"
         - Stark Bros: "Honeycrisp Apple Dwarf", "Semi-Dwarf", "Supreme"
+
+        A tier is a claim that two rows are the SAME PRODUCT at the SAME SIZE.
+        When it is not, the tier write downstream is last-write-wins and one
+        product's price is published under another product's label. Measured
+        live on planting-tree's Nellie Stevens Holly: "1 Quart" ($21.95, in
+        stock) and "2 Quart" ($13.95, sold out) both mapped to `quart`, so the
+        site advertised the sold-out $13.95 and never published the price a
+        visitor could actually pay. Splitting genuinely different products
+        into different tiers is what makes the collision guard in
+        _record_size() a rare alarm instead of a daily one.
         """
+        return self._apply_form_suffix(
+            self._normalize_size_base(variant_title), variant_title.lower()
+        )
+
+    # Form qualifiers that name a DIFFERENT PRODUCT at the same nominal size,
+    # the same way "6-7 feet Jumbo" does (see the -jumbo suffix below). FGT
+    # lists "4-5 feet Multi-stem" and "4-5 feet Single-stem" on ONE page at
+    # different prices, and both normalised to `4-5ft`. Single-stem is the
+    # ordinary form — it keeps the plain tier so it still compares against
+    # every other retailer's plain "4-5 Feet" — and only multi-stem moves to
+    # its own column.
+    _MULTISTEM_RE = re.compile(r'\bmulti[\s-]?stems?\b')
+
+    @classmethod
+    def _apply_form_suffix(cls, tier: str, title_lower: str) -> str:
+        if tier and not tier.endswith("-multistem") and cls._MULTISTEM_RE.search(title_lower):
+            return tier + "-multistem"
+        return tier
+
+    @staticmethod
+    def _bareroot_tier(title_lower: str) -> str:
+        """Tier for a bare-root/dormant variant, keeping any real dimension.
+
+        Spring Hill sells 'DORMANT 2.5" POT' and 'DORMANT 48-54"' of different
+        plants under labels that all collapsed onto one `bareroot` tier — a
+        two-and-a-half-inch pot and a four-foot plant sharing a column and a
+        "Bare Root" label. A stated dimension is the size; dropping it is the
+        collision.
+        """
+        span = re.search(r'(\d+)\s*[-–]\s*(\d+)\s*(?:"|in\b|inch(?:es)?\b)', title_lower)
+        if span:
+            return f'{span.group(1)}-{span.group(2)}in-bareroot'
+        single = re.search(r'(\d+(?:\.\d+)?)\s*(?:"|inch(?:es)?\b)', title_lower)
+        if single:
+            # '.' -> '-' follows the existing tier-key convention: PWD's
+            # "0.65 Gallon" is already carried as `0-65-gallon`.
+            return f'{single.group(1).replace(".", "-")}inch-bareroot'
+        return 'bareroot'
+
+    def _normalize_size_base(self, variant_title: str) -> str:
+        """The size tier before form qualifiers are applied. See _normalize_size."""
         raw = variant_title.strip()
         title_lower = raw.lower()
 
@@ -1030,7 +1204,22 @@ class ShopifyScraper:
         title_lower = re.sub(r'/\s*ship\s+week\s+\d+\s*\([^)]*\)', '', title_lower)
         # Remove "Ships Now"
         title_lower = re.sub(r'/?\s*ships?\s+now', '', title_lower)
+        # Remove a promotional prefix. "Flash Sale - 1-2 feet" is the same
+        # product as "1-2 feet"; a sale is a state of the offer, not a size,
+        # exactly like the "Ships in Spring" strip above. Left in, it survives
+        # into raw_size and into the Step 9 unrecognised-tier fallback.
+        title_lower = re.sub(r'^\s*flash\s+sale\s*[-–—:]\s*', '', title_lower)
         title_lower = title_lower.strip().strip('/').strip()
+
+        # Step 2a: quantity-bearing quart sizes. "2 Quart" and "3 Quart" are
+        # BIGGER POTS, not other spellings of "quart" — planting-tree lists
+        # 1/2/3 Quart of the same plant at different prices and stock. "1
+        # Quart" keeps the plain `quart` tier because it IS a quart: splitting
+        # it off would strand Nature Hills' "Quart Container" and GGP's "One
+        # Quart" in a different column and lose a comparison the site has today.
+        multi_quart = re.search(r'\b([2-9])\s*-?\s*quarts?\b', title_lower)
+        if multi_quart:
+            return f'{multi_quart.group(1)}quart'
 
         # Step 2: Container/gallon patterns (most universal — check first)
         gallon_patterns = [
@@ -1042,7 +1231,11 @@ class ShopifyScraper:
             (r'\b2[\s-]?gal(?:l*on)?s?\b', '2gal'),
             (r'#2\s*container', '2gal'),
             (r'\b3[\s-]?gal(?:l*on)?s?\b', '3gal'),
-            (r'3\s*gallon\s*pot', '3gal'),
+            # DELETED: (r'3\s*gallon\s*pot', '3gal'). Unreachable dead code —
+            # every string it matches contains "3 gallon", which the entry
+            # above already matches, to the same tier. Removing it cannot
+            # change any output; proved exhaustively over all 1,4xx distinct
+            # raw_size values in data/prices/ in test_shopify_sizes.py.
             (r'#3\s*container', '3gal'),
             (r'\b5[\s-]?gal(?:l*on)?s?\b', '5gal'),
             (r'#5\s*container', '5gal'),
@@ -1050,10 +1243,14 @@ class ShopifyScraper:
             (r'#7\s*container', '7gal'),
             (r'\b10[\s-]?gal(?:l*on)?s?\b', '10gal'),
             (r'\b15[\s-]?gal(?:l*on)?s?\b', '15gal'),
-            # Quart
+            # Quart. Bare "Quart", "1 Quart", "One Quart" and "Quart
+            # Container" are all one quart and share this tier; 2/3 Quart were
+            # split off in Step 2a above.
             (r'\bquart\b', 'quart'),
             (r'\bqt\b', 'quart'),
-            (r'one\s+quart', 'quart'),
+            # DELETED: (r'one\s+quart', 'quart'). Unreachable dead code — the
+            # \bquart\b entry above matches "one quart" first, to the same
+            # tier. Same exhaustive proof as the 3-gallon-pot entry.
             (r'4\.5[\s-]?(?:in|")', 'quart'),
             # Small pots
             (r'\b3[\s-]?(?:inch|in|")\s*pot', '3inch'),
@@ -1068,7 +1265,7 @@ class ShopifyScraper:
 
         # Step 3: Bare root / dormant / field (check BEFORE height matching)
         if 'dormant' in title_lower:
-            return 'bareroot'
+            return self._bareroot_tier(title_lower)
         if 'field' in title_lower:
             inch_match = re.search(r'(\d+)\s*[-–]\s*(\d+)\s*"', title_lower)
             if inch_match:
@@ -1101,8 +1298,9 @@ class ShopifyScraper:
             return 'jumbo-bareroot'
         if 'premium' in title_lower:
             return 'premium-bareroot'
+        # Checked AFTER jumbo/premium so "JUMBO BAREROOT" keeps its own tier.
         if re.search(r'bare[\s-]?root', title_lower):
-            return 'bareroot'
+            return self._bareroot_tier(title_lower)
 
         # Step 6: Stark Bros rootstock variants
         if 'ultra supreme' in title_lower or 'ultra-supreme' in title_lower:

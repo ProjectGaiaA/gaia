@@ -1,0 +1,108 @@
+{
+ "product": {
+  "id": 1571442688055,
+  "title": "Nellie Stevens Holly",
+  "handle": "nellie-stevens-holly",
+  "vendor": "PlantingTree",
+  "product_type": "Trees",
+  "variants": [
+   {
+    "id": 41604617207854,
+    "title": "1 Quart",
+    "option1": "1 Quart",
+    "price": "21.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-1"
+   },
+   {
+    "id": 41604617207855,
+    "title": "2 Quart",
+    "option1": "2 Quart",
+    "price": "13.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-2"
+   },
+   {
+    "id": 39295113658415,
+    "title": "1 Gallon",
+    "option1": "1 Gallon",
+    "price": "20.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-3"
+   },
+   {
+    "id": 9634645016623,
+    "title": "3 Gallon",
+    "option1": "3 Gallon",
+    "price": "38.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-4"
+   },
+   {
+    "id": 39958697017391,
+    "title": "5 Gallon",
+    "option1": "5 Gallon",
+    "price": "80.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-5"
+   },
+   {
+    "id": 41613229817903,
+    "title": "7 Gallon",
+    "option1": "7 Gallon",
+    "price": "124.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-6"
+   },
+   {
+    "id": 7041228832815,
+    "title": "1-2 Feet",
+    "option1": "1-2 Feet",
+    "price": "36.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-7"
+   },
+   {
+    "id": 9420563742767,
+    "title": "2-3 Feet",
+    "option1": "2-3 Feet",
+    "price": "84.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-8"
+   },
+   {
+    "id": 9420563775535,
+    "title": "3-4 Feet",
+    "option1": "3-4 Feet",
+    "price": "99.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-9"
+   },
+   {
+    "id": 39986374017071,
+    "title": "4-5 Feet",
+    "option1": "4-5 Feet",
+    "price": "104.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-10"
+   },
+   {
+    "id": 40148294467631,
+    "title": "5-6 Feet",
+    "option1": "5-6 Feet",
+    "price": "204.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-11"
+   },
+   {
+    "id": 40148294664239,
+    "title": "6-7 Feet",
+    "option1": "6-7 Feet",
+    "price": "224.95",
+    "compare_at_price": null,
+    "sku": "PT-NSH-12"
+   }
+  ],
+  "images": []
+ }
+}

@@ -1,0 +1,79 @@
+{
+ "id": 1571442688055,
+ "title": "Nellie Stevens Holly",
+ "handle": "nellie-stevens-holly",
+ "variants": [
+  {
+   "id": 41604617207854,
+   "title": "1 Quart",
+   "price": 2195,
+   "available": true
+  },
+  {
+   "id": 41604617207855,
+   "title": "2 Quart",
+   "price": 1395,
+   "available": false
+  },
+  {
+   "id": 39295113658415,
+   "title": "1 Gallon",
+   "price": 2095,
+   "available": true
+  },
+  {
+   "id": 9634645016623,
+   "title": "3 Gallon",
+   "price": 3895,
+   "available": false
+  },
+  {
+   "id": 39958697017391,
+   "title": "5 Gallon",
+   "price": 8095,
+   "available": true
+  },
+  {
+   "id": 41613229817903,
+   "title": "7 Gallon",
+   "price": 12495,
+   "available": true
+  },
+  {
+   "id": 7041228832815,
+   "title": "1-2 Feet",
+   "price": 3695,
+   "available": false
+  },
+  {
+   "id": 9420563742767,
+   "title": "2-3 Feet",
+   "price": 8495,
+   "available": false
+  },
+  {
+   "id": 9420563775535,
+   "title": "3-4 Feet",
+   "price": 9995,
+   "available": false
+  },
+  {
+   "id": 39986374017071,
+   "title": "4-5 Feet",
+   "price": 10495,
+   "available": false
+  },
+  {
+   "id": 40148294467631,
+   "title": "5-6 Feet",
+   "price": 20495,
+   "available": false
+  },
+  {
+   "id": 40148294664239,
+   "title": "6-7 Feet",
+   "price": 22495,
+   "available": false
+  }
+ ]
+}

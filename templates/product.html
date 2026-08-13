@@ -142,7 +142,7 @@
                             <tr>
                                 <th>Retailer</th>
                                 {% for tier in active_size_tiers %}
-                                <th>{{ tier|replace('gal', ' Gal')|replace('quart', 'Quart')|replace('bareroot', 'Bare Root')|title }}</th>
+                                <th>{{ tier|replace('gal', ' Gal')|replace('quart', 'Quart')|replace('bareroot', 'Bare Root')|title|replace('2quart', '2 Quart')|replace('3quart', '3 Quart') }}</th>
                                 {% endfor %}
                                 <th>In Stock</th>
                                 <th>Shipping</th>
@@ -161,7 +161,7 @@
                                     {% if not retailer_prices.has_affiliate %}<span class="no-affiliate" title="We don't earn a commission from this retailer">*</span>{% endif %}
                                 </td>
                                 {% for tier in active_size_tiers %}
-                                <td class="price-cell" data-label="{{ tier|replace('gal',' Gal')|replace('quart','Quart')|replace('bareroot','Bare Root')|title }}">
+                                <td class="price-cell" data-label="{{ tier|replace('gal',' Gal')|replace('quart','Quart')|replace('bareroot','Bare Root')|title|replace('2quart', '2 Quart')|replace('3quart', '3 Quart') }}">
                                     {% if retailer_prices.sizes[tier] and not retailer_prices.sizes[tier].is_buyable %}
                                     {# Not orderable — this size is sold out, or the
                                        whole retailer is. Show the price so the

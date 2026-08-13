@@ -16,6 +16,8 @@ pages captured 2026-08-11; the expected values below are the ones a shopper saw
 on those pages (recorded independently in fgt_ground_truth.json at the repo root).
 """
 
+import logging
+
 import responses
 
 from tests.conftest import load_fixture
@@ -342,20 +344,77 @@ def test_zero_price_size_is_dropped(no_sleep):
 
 
 @responses.activate
-def test_duplicate_tier_keeps_the_first_button(no_sleep):
-    """Two labels collapsing to one tier must not let the later, pricier one
-    overwrite the earlier. Buttons render smallest-first."""
+def test_duplicate_tier_is_withheld_not_resolved_by_button_order(no_sleep, caplog):
+    """REPLACES test_duplicate_tier_keeps_the_first_button.
+
+    The old rule kept the FIRST button, justified by "buttons render
+    smallest-first". That justification is false on the real page: on the
+    cached crape-myrtle page the first `quart` button is "1 quart Multi-stem"
+    and the second is "2 quart Multi-stem", a BIGGER pot. Keeping the first is
+    still picking a winner between two products by list order, which is the
+    defect class rather than a fix for it.
+    """
     html = (
         "<html><head><title>Test Plant | FGT</title></head><body>"
         '<h2>Select size</h2>'
         '<button aria-label="1 gallon - Price $24.99">1 gallon</button>'
         '<button aria-label="1 Gallon Pot - Price $99.99">1 Gallon Pot</button>'
+        '<button aria-label="3 gallon - Price $49.99">3 gallon</button>'
+        "</section></body></html>"
+    )
+    with caplog.at_level(logging.ERROR, logger="scrapers.shopify"):
+        result = _scrape("test-plant", html)
+
+    # The contested tier is published by NEITHER product...
+    assert "1gal" not in result["sizes"]
+    # ...and the uncontested one is untouched: one bad tier never costs a product.
+    assert result["sizes"]["3gal"]["price"] == 49.99
+    assert result["size_collisions"] == 1
+    assert "claimed by two different products" in caplog.text
+
+
+@responses.activate
+def test_identical_duplicate_button_is_not_a_collision(no_sleep):
+    """FGT renders the same size button twice on 2 of 65 cached pages, at the
+    same price. That is one product listed twice, not two products, and must
+    not trip the guard or cost the tier."""
+    html = (
+        "<html><head><title>Test Plant | FGT</title></head><body>"
+        '<h2>Select size</h2>'
+        '<button aria-label="1 quart - Price $35.95">1 quart</button>'
+        '<button aria-label="1 quart - Price $35.95">1 quart</button>'
         "</section></body></html>"
     )
     result = _scrape("test-plant", html)
 
-    assert result["sizes"]["1gal"]["price"] == 24.99
-    assert result["sizes"]["1gal"]["raw_size"] == "1 gallon"
+    assert result["sizes"]["quart"]["price"] == 35.95
+    assert result["size_collisions"] == 0
+
+
+@responses.activate
+def test_every_tier_quarantined_withholds_rather_than_pairing_by_position(no_sleep):
+    """A page whose every size button is contested must NOT fall through to
+    the positional size<->price pairing below the aria path.
+
+    The page below is built so the fall-through is VISIBLE rather than merely
+    unreachable: it carries a schema.org Offer and a loose "3-4 feet" string
+    outside the size selector. Without the guard the scraper returns
+    3-4ft = $24.99 — a size that was never on a size button, wearing a price
+    paired to it by position, from a page whose only two real buttons we just
+    admitted we could not tell apart.
+    """
+    html = (
+        "<html><head><title>Test Plant | FGT</title></head><body>"
+        '<h2>Select size</h2>'
+        '<button aria-label="1 gallon - Price $24.99">1 gallon</button>'
+        '<button aria-label="1 Gallon Pot - Price $99.99">1 Gallon Pot</button>'
+        "</section>"
+        "<span>3-4 feet</span>"
+        '<script type="application/ld+json">{"@type":"Offer","sku":"111",'
+        '"price":"24.99","availability":"https://schema.org/InStock"}</script>'
+        "</body></html>"
+    )
+    assert _scrape("test-plant", html) is None
 
 
 # --- Drift guard ------------------------------------------------------------
