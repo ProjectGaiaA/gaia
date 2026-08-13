@@ -1,0 +1,25 @@
+{
+  "ucp": {
+    "version": "2026-04-08",
+    "capabilities": {
+      "dev.ucp.shopping.catalog": {
+        "version": "2026-04-08",
+        "spec": "https://ucp.dev/2026-04-08/specification/catalog/"
+      }
+    }
+  },
+  "name": "Plant Price Tracker",
+  "description": "Read-only plant price comparison. Reads catalog price and availability twice daily for roughly 100 tracked plants and displays them side by side with a link back to the merchant. Does not resell, transact, or check out.",
+  "homepage": "https://www.plantpricetracker.com/",
+  "contact": "https://www.plantpricetracker.com/bot",
+  "signing_keys": [
+    {
+      "kty": "OKP",
+      "crv": "Ed25519",
+      "x": "nYRJmn_g8dSw8XmeA1aLqSGG9V65CHt9GqYztlx4WtI",
+      "kid": "ppt-2026-08-13",
+      "use": "sig",
+      "alg": "EdDSA"
+    }
+  ]
+}
