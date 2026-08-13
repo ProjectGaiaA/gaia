@@ -123,6 +123,129 @@ def _offers_from_ld_json(text: str) -> list[dict]:
     return found
 
 
+# schema.org priceType values that name a REFERENCE price — what the item once
+# cost, what it lists at, what a reseller may advertise — rather than what a
+# shopper pays today. An Offer carrying several priceSpecification entries has
+# exactly one payable price and the rest are these.
+#
+# Deliberately an allowlist of the PAYABLE side (absent priceType, or an
+# explicit SalePrice), not a denylist of these. A denylist would let an
+# unrecognised future priceType silently become the payable price, and the
+# payable price is what the availability map is KEYED on: get it wrong and a
+# size button's stock state is read off the wrong variant, or off nothing.
+#
+# The allowlist has a cost the denylist would not: a priceType we have never
+# seen is skipped, and if a retailer renamed the payable entry then EVERY
+# Offer would be skipped, the map would empty, and the caller's "no stock
+# data" fallback would quietly restore the very defect this change removes —
+# silently, because all-unknown looks like a page that simply has no Offers.
+# So a value on NEITHER list is logged as drift. This list exists to keep that
+# alarm quiet for the reference types we already know about; it is measured at
+# 430 StrikethroughPrice and 0 of everything else across the cached corpus.
+_REFERENCE_PRICE_TYPES = (
+    "strikethroughprice", "listprice", "msrp",
+    "minimumadvertisedprice", "invoiceprice",
+)
+_PAYABLE_PRICE_TYPES = ("", "saleprice")
+
+
+def _availability_of(offer: dict) -> bool | None:
+    """Three-way stock reading for one Offer: True / False / cannot tell.
+
+    NOT `_is_orderable(...)` on its own. That predicate answers "may we SHOW
+    this price", where an unrecognised value falling to False merely hides
+    something. Here the answer decides whether the site PUBLISHES "Sold Out"
+    against a size, so False must be a positive statement and never the
+    residue of a missing field.
+
+    The distinction is not theoretical: _SCHEMA_OFFER_RE could only match an
+    Offer that HAD an `availability` value, so switching the source to a JSON
+    parse newly admits Offers that omit it. Read through `_is_orderable`
+    alone, every one of those would have published a sold-out size on the
+    strength of an absent key. Measured in the adversarial probe before this
+    function existed: `{"sku":"1","price":"9.99"}` -> {9.99: False}.
+
+    Uses the same allowlist as the sold-out branch, so "sold out" means the
+    same thing in both places.
+    """
+    raw = str(offer.get("availability") or "")
+    if _is_orderable(raw):
+        return True
+    if _is_definitely_unavailable(raw):
+        return False
+    return None
+
+
+def _price_type(entry: dict) -> str:
+    """'https://schema.org/StrikethroughPrice' -> 'strikethroughprice'."""
+    return re.sub(r"[^a-z]", "", str(entry.get("priceType") or "").lower().rsplit("/", 1)[-1])
+
+
+def _offer_payable_price(offer: dict) -> str | None:
+    """The price a shopper actually pays for this Offer, as a raw string.
+
+    THE DEFECT THIS EXISTS FOR. FGT does not emit a flat `"price"` key on its
+    variant Offers; it nests them in `priceSpecification`, and it emits TWO of
+    them per discounted variant:
+
+        {"@type":"Offer","sku":"13940811038772",
+         "priceSpecification":[
+           {"@type":"UnitPriceSpecification","price":"69.95","priceCurrency":"USD"},
+           {"@type":"UnitPriceSpecification","price":"100.95","priceCurrency":"USD",
+            "priceType":"https://schema.org/StrikethroughPrice"}],
+         "availability":"https://schema.org/InStock"}
+
+    _SCHEMA_OFFER_RE requires a flat `"price"` immediately inside the Offer, so
+    it matched 0 of 644 Offers across the 66 cached FGT pages — measured, not
+    assumed. That made _availability_by_price return {} for every FGT page,
+    which made the caller's "no stock data at all" fallback fire for every
+    size, which is why FGT has never once recorded a sold-out size in 34,898
+    cells of history. Every "In Stock" we published for FGT was a default.
+
+    SELECTION IS ON priceType, NOT ON POSITION. On today's pages the payable
+    entry happens to be [0] in all 430 two-entry Offers, so "take the first"
+    is indistinguishable from correct on live data and a price-map assertion
+    cannot tell them apart. It is not the same rule: nothing in schema.org
+    orders priceSpecification, and taking [0] on a reordered page publishes
+    the strikethrough price as the payable one, keying stock state to a price
+    no button carries. Taking the min is worse still — a genuine price rise
+    makes the OLD price the smaller one.
+
+    Returns None when the payable price cannot be identified: no entries, or
+    more than one entry claiming to be payable. The caller treats None as "no
+    signal for this Offer", which withholds rather than guessing.
+    """
+    spec = offer.get("priceSpecification")
+    if spec is None:
+        # Flat-price Offer. Every non-FGT Shopify theme in the corpus emits
+        # this shape, and 43 of FGT's own Offers do too.
+        raw = offer.get("price")
+        return str(raw) if raw is not None else None
+
+    entries = [e for e in (spec if isinstance(spec, list) else [spec])
+               if isinstance(e, dict) and e.get("price") is not None]
+    for e in entries:
+        ptype = _price_type(e)
+        if ptype not in _PAYABLE_PRICE_TYPES and ptype not in _REFERENCE_PRICE_TYPES:
+            # Neither payable nor a reference price we know. Skipping it is the
+            # safe move, but doing so silently is how an emptied availability
+            # map would pass for "this page has no Offers".
+            logger.warning(
+                "unrecognised schema.org priceType %r on offer sku %r — "
+                "treating it as NOT the payable price. If this is the sale "
+                "price, availability has just gone unknown for this variant.",
+                e.get("priceType"), offer.get("sku"),
+            )
+    payable = [e for e in entries if _price_type(e) in _PAYABLE_PRICE_TYPES]
+    if len(payable) != 1:
+        # 0 -> every entry is a reference price or an unknown type; >1 -> the
+        # Offer contradicts itself. Either way we cannot say what it costs,
+        # and an availability entry keyed on a guessed price is worse than no
+        # entry at all.
+        return None
+    return str(payable[0]["price"])
+
+
 def _record_size(
     sizes: dict,
     quarantined: set,
@@ -1115,15 +1238,44 @@ class ShopifyScraper:
         On all 10 FGT pages checked, each visible size price matched exactly one
         non-pack Offer. Prices shared by two Offers that disagree map to None
         (unknown) rather than to a guess.
+
+        Offers come from a REAL JSON PARSE, not from _SCHEMA_OFFER_RE. The
+        regex requires a flat `"price"` key inside the Offer object and FGT
+        nests price inside `priceSpecification`, so it matched 0 of 644 Offers
+        on the 66 cached FGT pages and this method returned {} for every one of
+        them. An empty map is exactly what the caller reads as "the page has no
+        stock data", so every FGT size fell back to available=True — 34,898
+        cells of history without a single sold-out reading. The module already
+        knew: _offers_from_ld_json's docstring has said "0-for-172 on real FGT
+        Offers" since it was written, but only the sold-out branch used it.
+
+        _SCHEMA_OFFER_RE is kept as a FALLBACK, used only when the ld+json
+        blocks yield nothing (a page whose JSON does not parse, e.g. two Offer
+        objects concatenated inside one <script>). That is strictly more stock
+        data than before, never less, and never overrides the parsed source.
         """
-        buckets: dict[float, set[bool]] = {}
-        for sku, price_str, availability in _SCHEMA_OFFER_RE.findall(text):
-            if "pack" in sku.lower():
+        offers = _offers_from_ld_json(text)
+        if not offers:
+            offers = [
+                {"sku": sku, "price": price_str, "availability": availability}
+                for sku, price_str, availability in _SCHEMA_OFFER_RE.findall(text)
+            ]
+
+        buckets: dict[float, set[bool | None]] = {}
+        for offer in offers:
+            if "pack" in str(offer.get("sku") or "").lower():
                 continue  # multi-plant bundle, not a single-plant price
+            price_str = _offer_payable_price(offer)
+            if price_str is None:
+                continue  # cannot tell what it costs — contribute no signal
             price = self._to_price(price_str)
             if price is None:
                 continue
-            buckets.setdefault(round(price, 2), set()).add(_is_orderable(availability))
+            buckets.setdefault(round(price, 2), set()).add(
+                _availability_of(offer)
+            )
+        # A price claimed by two Offers that disagree, or by one Offer we could
+        # not read, is unknown. {None} collapses to None here for free.
         return {
             price: (next(iter(vals)) if len(vals) == 1 else None)
             for price, vals in buckets.items()
