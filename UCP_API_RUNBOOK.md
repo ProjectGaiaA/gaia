@@ -146,11 +146,20 @@ explanation for FGT's unexplained 49-of-68 too.
    one extra call per full pass.
 3. ~~**No compare-at / list price.**~~ **CORRECTED 2026-08-13 — this was an
    FGT-and-planting-tree-only result that I wrongly generalised.**
-   `list_price` IS returned by 4 of 6 retailers: spring-hill 79/79 (14 real
+   `list_price` IS returned by 5 of 6 retailers: spring-hill 79/79 (14 real
    discounts), proven-winners-direct 21/21 (19 real), nature-hills 18/147,
-   great-garden-plants 2/8. **Only planting-tree returns none (0 of 319)**,
-   matching FGT. Was-price and sale detection ARE available on this path for
-   most retailers.
+   great-garden-plants 2/8, and **fast-growing-trees 231/231 with 118 (51.1%)
+   genuinely discounted** — e.g. honeycrisp `3-4 ft.` price $69.95 /
+   list $100.95, matching our own scraped `was_price` to the cent.
+   **Only planting-tree returns none (0 of 319).**
+
+   This entry has now been wrong TWICE in opposite directions. The original
+   said no retailer had it (generalised from FGT). The first correction said
+   FGT lacked it (inherited from a plan that never checked). Measured
+   directly: FGT has it on every variant. `was_price = list_price if
+   list_price > price else None` — no extra requests, full per-variant
+   fidelity. **Do not restate this field's availability without running the
+   measurement.**
 
 ### Rate limits — CORRECTED 2026-08-13
 
@@ -358,3 +367,79 @@ columns.
    refused us, the only one with no `list_price`, and the one our existing
    data already matches best (316 of 319). Lowest benefit, highest risk.
    Requires solving the rate limit first.
+
+## 12. Corrections log — read this before trusting any number above
+
+This file has been wrong three times in one day. Each entry is a claim that
+was stated confidently, committed as canon, and then falsified by measurement.
+
+| # | claim | reality | how it was caught |
+|---|---|---|---|
+| 1 | search-first is the way in | `lookup_catalog` takes VARIANT GIDs, 10 per call; search resolves only 151/197 by handle | five-retailer sweep |
+| 2 | no compare-at price on this path | `list_price` on 5 of 6 retailers; FGT 231/231 | FGT plan review |
+| 3 | FGT lacks `list_price` (the "fix" for #2) | FGT has it on every variant, 118 discounted | red team of that plan |
+
+**Two things that survived attack and can be relied on:**
+- **Truncation IS detectable via `product.options`** — 0 of 40 products had
+  empty options; all 10 at the 10-variant cap were detectable. A plan claimed
+  otherwise; it had only read options named `"Size"`.
+- **`option.name` is NOT always `"Size"`.** FGT uses `"Height"` on at least 6
+  products; nature-hills uses `"Plant Size"` and a separate `"Form Type"`;
+  spring-hill uses `"Select Size"` + `"Select Quantity"`; PWD adds
+  `"Ship Week"`. **Hardcoding `"Size"` in a `get_product` `selected` call
+  returns ZERO variants with HTTP 200, no error and an empty `messages`
+  array** — silent data loss. Always read the real option name first.
+
+### FGT has never recorded a sold-out size
+
+```
+FGT cell-level `available`, all history: {'True': 34896, 'None': 2}
+```
+
+Zero `False` in 34,898 cells. `_SCHEMA_OFFER_RE` matches 0 offers on FGT pages
+because they nest price inside `priceSpecification[]`, so
+`_availability_by_price()` returns `{}` and the `available = True` fallback
+fires for every size. Every FGT in-stock claim we have ever published is a
+default, not a reading. A prototype reading `priceSpecification` properly
+reached 16/16 agreement with the API, reproduced independently.
+
+**Trap for whoever fixes it:** FGT variants carry TWO `priceSpecification`
+entries — `[('69.95',''), ('100.95','StrikethroughPrice')]`. Select on the
+`priceType` field. Taking element [0] is correct on today's data by accident,
+so a test asserting on the resulting price map will NOT catch a
+take-the-first-entry mutant. Assert on the priceType selection itself.
+
+### Two controls that are weaker than they look
+
+- **`scripts/check_data_sanity.py --report` ALWAYS returns exit 0**, whatever
+  it finds. An "exit 0" from report mode is not evidence of anything. Run it
+  in enforcing mode.
+- **The sanity gate cannot see a single-retailer catastrophe.** Multiplying
+  every FGT price by 100 yields 20/701 cells moved = 2.9% against a 30%
+  threshold — quarantine, not a block, and the data still publishes. FGT is
+  ~18% of the corpus; the gate is corpus-wide by construction.
+
+### Three live defects found on 2026-08-13, none of them FGT parser bugs
+
+1. **We publish California-only prices.** Four cells match FGT's `(CA)`
+   region-restricted duplicate variants on price AND compare-at
+   simultaneously — e.g. `2 Gallon` $48.95 sold out vs `2 Gallon (CA)` $44.95
+   available, and we publish $44.95. Three handles in `handle_maps.json`
+   point at FGT's California mirror pages (`stella-cherry-tree-ca`,
+   `sunshine-blue-blueberry-bush-ca`, `eastern-redbud-tree-form-ca`); all
+   three national twins exist. 7 published cells affected, 5 of which happen
+   to be correct today.
+   **Region codes seen in labels: CA, FL, GA, OR, SC, TX.** An enumerated
+   filter list that omits GA and SC causes a tier collision that quarantines
+   BOTH variants and deletes a correct national price. Verified failing.
+2. **nature-hills `Form Type` collapse** — our 3-gallon column for Limelight
+   Hydrangea carries the $123.88 tree-form price; the $80.92 shrub is absent.
+3. **PWD publishes 6 pre-discount prices**, ~33% high. Cause unresolved.
+
+### The 08-11 repricing — do not mistake it for a bug
+
+FGT repriced upward on 2026-08-11: **149 of 164 tiers moved, 129 of them up,
+median +9.6%**, against 16-28 moving at every control boundary. Visible in our
+own series with no API involved. Comparing pre-08-11 rows against today's API
+produces a spurious "we are ~10% low" reading. I made exactly that error and
+reported it as a defect.
