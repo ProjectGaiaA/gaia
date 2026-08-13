@@ -45,25 +45,22 @@
         <ul>
             <li>It reads the price, the size options and whether an item is in stock, on
                 product pages for roughly 100 plants we track.</li>
-            <li>It identifies itself as
-                <code>PlantPriceTrackerBot/1.0 (+https://www.plantpricetracker.com/bot)</code>.</li>
             <li>It runs twice a day and requests only pages for products we already track —
-                on the order of a few dozen requests per nursery per day, spaced several
-                seconds apart.</li>
-            <li>It reads <code>robots.txt</code> before requesting anything and honours
-                <code>Disallow</code> and <code>Crawl-delay</code>.</li>
-            <li>Where a merchant publishes a machine-readable catalog endpoint, we prefer it
-                over reading pages. We would rather use the interface you intended for this.</li>
+                on the order of a few dozen requests per nursery per day, with a randomised
+                pause of 5 to 15 seconds between requests.</li>
+            <li>It checks <code>robots.txt</code> before requesting a page and does not
+                request anything disallowed for <code>User-agent: *</code>.</li>
         </ul>
 
         <h2>What it never does</h2>
         <ul>
             <li>It never creates an account, signs in, or submits a form.</li>
             <li>It never adds to a cart or begins a checkout.</li>
-            <li>It never solves or works around a CAPTCHA, and it does not rotate IP addresses
-                or identities to get around a block.</li>
-            <li>It does not copy product descriptions, photographs or written content. We store
-                a price, a size label, a stock flag and a link.</li>
+            <li>It never solves or works around a CAPTCHA, and it does not use proxies or
+                rotate IP addresses.</li>
+            <li>It does not copy product descriptions, photographs or written content. What we
+                store per product is a price, a size label, a stock flag, a timestamp and a
+                link back to you.</li>
         </ul>
 
         <h2>If you want us to stop</h2>
