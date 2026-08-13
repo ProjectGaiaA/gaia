@@ -135,10 +135,15 @@ def test_real_cached_fgt_page_reports_two_of_three_sizes_sold_out(no_sleep):
     # the in-stock "1 Quart" one. Price alone cannot tell them apart, so this
     # cell stays unknown rather than guessing either way.
     assert result["sizes"]["quart"]["available"] is None
-    # Row aggregate: no tier is KNOWN buyable (two sold out, one unknown), so
-    # the row reads sold out. Unchanged rule -- known-in-stock wins, and
-    # all-unknown would stay None -- applied to real readings for the first time.
-    assert result["in_stock"] is False
+    # Row aggregate: UNKNOWN, not sold out. The quart really is buyable -- the
+    # live page reports 584 units -- and we simply cannot prove which variant
+    # owns the $35.95. Reporting the row sold out would grey out every cell and
+    # withdraw a working affiliate link over a cell we could not read.
+    #
+    # This assertion previously read `is False`, pinning that exact bug as
+    # correct. An unknown size must block a sold-out verdict; only a size we
+    # positively read as unavailable may contribute to one.
+    assert result["in_stock"] is None
 
 
 # ---------------------------------------------------------------------------

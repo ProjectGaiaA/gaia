@@ -829,10 +829,26 @@ class ShopifyScraper:
                     },
                     retailer_id=self.retailer_id, handle=handle, collisions=collisions,
                 )
-            # Aggregate, same rule as the JSON path: known-in-stock wins; all-unknown
-            # stays unknown rather than being reported as sold out.
-            explicit = [v["available"] for v in sizes.values() if isinstance(v["available"], bool)]
-            any_available = True if any(explicit) else (False if explicit else None)
+            # Known-in-stock wins. Otherwise an UNKNOWN size must block a
+            # sold-out verdict, because "sold out" is a claim and we cannot
+            # make it while a size we could not read might be buyable.
+            #
+            # The previous rule dropped None cells before deciding, so
+            # [None, False, False] became False. Review caught that on
+            # ajuga-chocolate-chip, which has 584 units of its $35.95 quart
+            # in stock: two variants share that payable price (a retired
+            # 3.5-inch pot and the live quart), so the cell is correctly
+            # unknown -- and the row was then reported sold out, greying out
+            # every cell and withdrawing an affiliate link that works today.
+            # A false "sold out" is quieter than a false "in stock" but it is
+            # still a false claim, and this one also costs a click-through.
+            vals = [v["available"] for v in sizes.values()]
+            if any(v is True for v in vals):
+                any_available = True
+            elif any(v is None for v in vals) or not vals:
+                any_available = None
+            else:
+                any_available = False
             if sizes:
                 title_match = re.search(r'<title>([^<]+)</title>', text)
                 title = title_match.group(1).split("|")[0].strip() if title_match else handle.replace("-", " ").title()
