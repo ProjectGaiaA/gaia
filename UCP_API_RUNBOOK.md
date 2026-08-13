@@ -103,6 +103,34 @@ separate options with their own price and stock. There is nothing to normalise
 out of free text and no collision to resolve. This is the single biggest
 reason to be on this path.
 
+### THE IMPORTANT PART: look up by variant ID, not by search
+
+**Added 2026-08-13 after measuring all five non-FGT retailers. This supersedes
+the search-first approach implied below.**
+
+`lookup_catalog` accepts **Shopify GIDs, up to 10 per call**. Our price rows
+already store `variant_id`. Feed them back as
+`gid://shopify/ProductVariant/<id>` and you get the exact variant — price,
+availability, sku — with **no label matching whatsoever**. It returns only the
+matched variant, but `product.options` still carries the full label list.
+
+Why this is the path to build on:
+- **60 calls refreshes all 577 cells across five retailers, versus 426 HTTP
+  requests the scrape makes today — an 86% traffic reduction.**
+- Immune to the 10-variant search cap AND to the search-relevance problem.
+- It is what made the oracle numbers exact rather than approximate.
+
+It cannot DISCOVER new variants, so pair it with a low-frequency
+`search_catalog` discovery pass (213 calls, weekly ≈ 30/day). Steady state
+≈ 90 requests/day against 426 today.
+
+**Search-by-handle is unreliable and must not be the primary key.** Measured
+match rate 151 of 197 (76.6%) — but **41 of the 46 misses are products the API
+demonstrably holds**, proven by resolving their variant IDs. Querying the
+display name recovered only 1 of 12 retries. Shopify catalog search will not
+reliably surface a specific known product. This is almost certainly the
+explanation for FGT's unexplained 49-of-68 too.
+
 ### Three limits, verified
 1. **`search_catalog` returns at most 10 variants per product.** Nellie
    Stevens Holly has 12 sizes; two were silently absent. **This is
@@ -116,13 +144,32 @@ reason to be on this path.
    Measured across current data: only **1 of 274** tracked (plant, retailer)
    rows on UCP retailers has more than 10 sizes, so the top-up cost is about
    one extra call per full pass.
-3. **No compare-at / list price.** `list_price_range` came back as 0 and
-   variant `list_price` as null, so **was-price and sale detection are not
-   available on this path.**
+3. ~~**No compare-at / list price.**~~ **CORRECTED 2026-08-13 — this was an
+   FGT-and-planting-tree-only result that I wrongly generalised.**
+   `list_price` IS returned by 4 of 6 retailers: spring-hill 79/79 (14 real
+   discounts), proven-winners-direct 21/21 (19 real), nature-hills 18/147,
+   great-garden-plants 2/8. **Only planting-tree returns none (0 of 319)**,
+   matching FGT. Was-price and sale detection ARE available on this path for
+   most retailers.
 
-**No rate-limit headers are advertised.** Three sequential calls took 1.9s with
-no throttling. The ceiling is unknown — stay conservative, sequential, >=1.5s
-between calls, and back off hard on 429/503.
+### Rate limits — CORRECTED 2026-08-13
+
+The original text said "no rate-limit headers are advertised, ceiling
+unknown". Headers are still not advertised, but the ceiling is real and one
+retailer enforces it hard:
+
+- **planting-tree refuses after roughly 93 calls** with
+  `HTTP 429 / -32000 "Too many requests, please retry after 1933 seconds"` —
+  a **32-minute lockout**. Honour the `retry after N seconds` payload and
+  ABANDON that retailer for the session. Do not retry into it: a naive
+  3-attempt retry policy burned 42 refused requests before the error was
+  recorded.
+- **nature-hills tolerated 97 calls** in the same session without complaint.
+- The other four were never pushed hard enough to find a ceiling, and
+  deliberately so — probing means provoking a 429 against someone who has
+  been nothing but accommodating.
+- Unknown: the window length, and whether the bucket is per-IP, per-profile
+  or per-shop.
 
 ## 5. Why this migration exists — the FGT measurement
 
@@ -229,3 +276,85 @@ reachable. `profile_malformed` means our profile changed or the spec moved.
 - Every change is red-teamed by an INDEPENDENT agent before it ships.
 - Be respectful on the API: sequential, >=1.5s apart, honest user agent,
   never more traffic than the scraper it replaces.
+
+---
+
+## 11. Measured across the five non-FGT retailers (2026-08-13)
+
+**The FGT failure is LOCAL, not systemic.** Keyed on stored Shopify variant
+IDs so a disagreement is a real disagreement, not a label-matching artefact:
+
+| retailer | cells | agree on price AND stock | price differs | stock differs |
+|---|---|---|---|---|
+| spring-hill | 79 | 79 | 0 | 0 |
+| nature-hills | 147 | 146 | 0 | 1 |
+| planting-tree | 319 | 316 | 0 | 3 |
+| proven-winners-direct | 21 | 15 | **6** | 0 |
+| great-garden-plants | 8 | 8 | 0 | 0 |
+| **total** | **574** | **564 (98.3%)** | **6** | **4** |
+
+Our data already carries sold-out cells everywhere. Nothing resembling FGT's
+"121 of 121 in stock". Stock totals track within one cell per retailer.
+
+### Two live defects this surfaced, both unrelated to FGT
+
+**1. nature-hills exposes `Form Type` as a SEPARATE option dimension, and we
+collapse it.** On `hydrangea-lime-light`, 2 forms x 6 sizes:
+
+```
+Shrub / #3 Container            $ 80.92  <- absent from our data entirely
+Tree  / #3 Container | 3-4 ft   $123.88  <- what we publish as "3gal"
+```
+
+Our 3-gallon column for that plant carries the **tree-form** price, competing
+against every other nursery's ordinary 3-gallon shrub. Same bug class as the
+FGT multi-stem collapse that `394da845` fixed, at a different retailer, via a
+dimension the scrape cannot even see — the API returns all six in one
+response. `394da845` handles multi-stem/jumbo/premium/bareroot correctly;
+**tree form is the gap it does not cover.**
+
+**2. proven-winners-direct: 6 cells publish the PRE-DISCOUNT price**, ~33%
+high. Our figure equals the API's `list_price` exactly with our `was_price`
+null. Arbitrated against the live page: JSON-LD says $29.99/$15.74 InStock;
+we publish $39.99/$20.99. **Cause not established** — a promotion may have
+started between our 12:59 scrape and the read, but `little-lime` is genuinely
+undiscounted in the API, which argues against a simple site-wide sale switch.
+Re-running the PWD scraper and diffing settles it in one pass.
+
+Also found: planting-tree `miscanthus-morning-light` is **delisted** — handle
+returns no match, all three variant IDs `not_found`, our row is 104 days old,
+and we are still publishing it.
+
+### Size-label vocabulary — it is NOT always "Size"
+
+Four distinct option names across five retailers: `Select Size` +
+`Select Quantity` (spring-hill), `Plant Size` + `Form Type` (nature-hills),
+`Size` (planting-tree, PWD, GGP), plus `Ship Week` at PWD, plus one product
+whose option is named after the product (`Hass Avocado Tree`).
+
+Distinct size labels: spring-hill 42 (messiest by far), planting-tree 26,
+nature-hills 17, PWD 4, GGP 2.
+
+**7 labels do not map cleanly onto `_normalize_size`**, two of them losing a
+form qualifier: spring-hill `4-5 FT TREE FORM` -> `4-5ft`, nature-hills
+`#3 Container - Tree Form` -> `3gal`. Others fall through to the Step-9 slug
+fallback: `2.5" POT`, `6" STARTER POT`, `3-4' BOGO`, `0.65 Gallon`, and
+planting-tree `6 Inch` vs `6 Inch Pot` which puts one physical size in two
+columns.
+
+### Migration order, by value over risk
+
+1. **nature-hills** — 79 products / 147 cells, largest clean win. 146 of 147
+   already agree, no truncation, no rate limiting at 97 calls, cleanest
+   vocabulary. Also the only way to fix the tree-form defect above.
+2. **great-garden-plants** — same change. 7 products, flawless agreement;
+   use it as the pilot that proves the code path.
+3. **proven-winners-direct** — small, but the only retailer where we publish
+   wrong prices today. Diagnose the 6 cells FIRST; migrating would mask the
+   cause rather than explain it.
+4. **spring-hill** — works, but expensive: two option dimensions, 42 messy
+   labels, quantity-bundle filtering, and the only real 10-variant truncation.
+5. **planting-tree — last.** Largest cell count but the only retailer that has
+   refused us, the only one with no `list_price`, and the one our existing
+   data already matches best (316 of 319). Lowest benefit, highest risk.
+   Requires solving the rate limit first.
