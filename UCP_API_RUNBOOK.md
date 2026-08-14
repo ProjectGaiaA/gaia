@@ -443,3 +443,48 @@ median +9.6%**, against 16-28 moving at every control boundary. Visible in our
 own series with no API involved. Comparing pre-08-11 rows against today's API
 produces a spurious "we are ~10% low" reading. I made exactly that error and
 reported it as a defect.
+
+---
+
+## 13. Open defects at end of 2026-08-13 — start here
+
+`origin/main` = `bfcc089f`. Shipped today: `394da845` (size-tier collisions),
+`818741f4`/`17ca2370` (UCP profile + /bot), `6ee2c79e` (bot page trim),
+`bfcc089f` (FGT availability -- **166 false In-Stock claims removed, zero
+introduced**; takes effect at the next scrape; 170 cells flip to Sold Out
+across 57 plants).
+
+**1. BOGO bundle prices are published as single-plant prices. NOT FIXED.**
+FGT aria-labels read `1-2 feet Multi-stem - Price $282.95 - Buy 1, Get 1`.
+The size name is extracted as `1-2 feet Multi-stem`, so the bundle marker is
+gone before `_is_quantity_label` (`shopify.py:1177`) sees it -- and that
+predicate matches the literal "BOGO", not "Buy 1, Get 1". The JSON path's
+check at `shopify.py:545` has the same hole.
+
+Measured over the 66 cached pages: **24 of 174 priced size aria-labels, 9
+plants** (bloodgood-japanese-maple, coral-bark-japanese-maple, crape-myrtle,
+eastern-redbud, endless-summer-hydrangea, green-giant-arborvitae,
+kousa-dogwood, october-glory-maple, red-sunset-maple). bloodgood 1-2ft
+$94.95 is the price of TWO trees, shown against other nurseries' one.
+
+**This also retires a "finding" that was wrong.** A review reported "20 of 195
+adjacent height pairs have a taller tree priced at or below the shorter one"
+as evidence of rotated size-price mapping. It is not rotation -- its own
+example, eastern-redbud 2-3ft $92.95 vs 3-4ft $79.95, is a two-for-one.
+**Monotonicity is an invalid test on a page carrying bundles.** Do not
+re-derive that alarm without excluding BOGO labels first.
+
+**2-4.** CA mirror handles / region-restricted duplicates; PWD's 6
+pre-discount prices; nature-hills `Form Type` collapse. All detailed in §12.
+
+### Two of my own claims, retracted for the record
+- "FGT prices are systematically ~10% low" -- **false**, it was a July-vs-
+  August comparison across FGT's 08-11 repricing (149 of 164 tiers, +9.6%).
+- "The site serves rotated size-price pairs" -- **false**, they are real BOGO
+  prices. I relayed this from a review without testing the alternative.
+
+### What to do first
+BOGO (narrowest, live wrong pricing) -> nature-hills migration (146/147
+already agree, and the only route to defect 4) with great-garden-plants as
+the pilot -> diagnose PWD before migrating it -> spring-hill -> planting-tree
+LAST (it rate-limits).
