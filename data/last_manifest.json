@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-14T13:04:54.336230+00:00",
+  "timestamp": "2026-08-14T23:11:38.056288+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -803,11 +803,11 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 38,
+      "products_found": 37,
       "products_no_sizes": 6,
-      "products_priced": 32,
-      "products_error": 2,
-      "prices_collected": 60,
+      "products_priced": 31,
+      "products_error": 3,
+      "prices_collected": 59,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -865,9 +865,6 @@
           "default": 62.99
         },
         "pink-knock-out-rose:spring-hill": {
-          "default": 39.99
-        },
-        "sunny-knock-out-rose:spring-hill": {
           "default": 39.99
         },
         "duke-blueberry:spring-hill": {
@@ -935,17 +932,17 @@
           "premium-bareroot": 24.99
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "fast-growing-trees",
       "status": "completed",
       "products_expected": 68,
-      "products_found": 63,
+      "products_found": 64,
       "products_no_sizes": 11,
-      "products_priced": 52,
-      "products_error": 5,
-      "prices_collected": 136,
+      "products_priced": 53,
+      "products_error": 4,
+      "prices_collected": 138,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -956,6 +953,9 @@
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 32.95
+        },
+        "little-lime-hydrangea:fast-growing-trees": {
+          "quart": 35.95
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 56.95
@@ -1019,7 +1019,8 @@
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
           "3gal": 81.95,
-          "5gal": 128.95
+          "5gal": 128.95,
+          "7gal": 217.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
           "quart": 15.95,
@@ -1208,7 +1209,7 @@
         },
         "little-lime-hydrangea:proven-winners-direct": {
           "1gal": 39.99,
-          "quart": 20.99
+          "quart": 16.79
         },
         "incrediball-hydrangea:proven-winners-direct": {
           "1gal": 29.99,
@@ -1282,15 +1283,42 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 0,
-      "products_error": 8,
-      "prices_collected": 0,
+      "products_found": 7,
+      "products_error": 1,
+      "prices_collected": 12,
       "anomalies": [],
-      "price_records": {},
-      "health": "degraded"
+      "price_records": {
+        "honeycrisp-apple-tree:stark-bros": {
+          "dwarf-ez-start": 74.99,
+          "semi-dwarf-ez-start": 64.99
+        },
+        "elberta-peach-tree:stark-bros": {
+          "semi-dwarf-ez-start": 75.99
+        },
+        "bartlett-pear-tree:stark-bros": {
+          "dwarf-ez-start": 74.99,
+          "ultra-supreme": 229.99,
+          "semi-dwarf-ez-start": 64.99,
+          "supreme-ez-start": 75.99,
+          "standard-ez-start": 64.99
+        },
+        "double-knock-out-rose:stark-bros": {
+          "default": 15.99
+        },
+        "duke-blueberry:stark-bros": {
+          "default": 25.99
+        },
+        "patriot-blueberry:stark-bros": {
+          "default": 27.99
+        },
+        "pink-lemonade-blueberry:stark-bros": {
+          "default": 25.99
+        }
+      },
+      "health": "healthy"
     }
   ],
-  "total_prices_collected": 689,
+  "total_prices_collected": 702,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2121,9 +2149,6 @@
     "pink-knock-out-rose:spring-hill": {
       "default": 39.99
     },
-    "sunny-knock-out-rose:spring-hill": {
-      "default": 39.99
-    },
     "duke-blueberry:spring-hill": {
       "default": 15.49
     },
@@ -2197,6 +2222,9 @@
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 32.95
     },
+    "little-lime-hydrangea:fast-growing-trees": {
+      "quart": 35.95
+    },
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 56.95
     },
@@ -2259,7 +2287,8 @@
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
       "3gal": 81.95,
-      "5gal": 128.95
+      "5gal": 128.95,
+      "7gal": 217.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
       "quart": 15.95,
@@ -2434,7 +2463,7 @@
     },
     "little-lime-hydrangea:proven-winners-direct": {
       "1gal": 39.99,
-      "quart": 20.99
+      "quart": 16.79
     },
     "incrediball-hydrangea:proven-winners-direct": {
       "1gal": 29.99,
@@ -2486,11 +2515,37 @@
     },
     "double-knock-out-rose:great-garden-plants": {
       "quart": 23.99
+    },
+    "honeycrisp-apple-tree:stark-bros": {
+      "dwarf-ez-start": 74.99,
+      "semi-dwarf-ez-start": 64.99
+    },
+    "elberta-peach-tree:stark-bros": {
+      "semi-dwarf-ez-start": 75.99
+    },
+    "bartlett-pear-tree:stark-bros": {
+      "dwarf-ez-start": 74.99,
+      "ultra-supreme": 229.99,
+      "semi-dwarf-ez-start": 64.99,
+      "supreme-ez-start": 75.99,
+      "standard-ez-start": 64.99
+    },
+    "double-knock-out-rose:stark-bros": {
+      "default": 15.99
+    },
+    "duke-blueberry:stark-bros": {
+      "default": 25.99
+    },
+    "patriot-blueberry:stark-bros": {
+      "default": 27.99
+    },
+    "pink-lemonade-blueberry:stark-bros": {
+      "default": 25.99
     }
   },
   "degraded_retailers": [
-    "fast-growing-trees",
-    "stark-bros"
+    "spring-hill",
+    "fast-growing-trees"
   ],
   "pipeline_status": "degraded"
 }
