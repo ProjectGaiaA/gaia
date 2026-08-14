@@ -198,6 +198,33 @@ jobs:
             echo "::error::Price spot-check mismatches — a scraper may be reading the wrong element."
           fi
 
+      # MUST run before "Build site". build.py reads data/promos.json to render
+      # every Specials cell, and the commit step publishes data/promos.json and
+      # site/ in the SAME commit. When this step ran after the build, each cycle
+      # shipped HTML built from the PREVIOUS cycle's promos alongside the
+      # CURRENT cycle's promos.json — the two disagreed on arrival, breaking the
+      # "git status --short site/ must be empty after a build" invariant in
+      # CLAUDE.md and leaving every future site/ diff with a dirty baseline.
+      #
+      # It published wrong offers, not just a stale artifact: in a09a9f07 the
+      # FGT code FAST20 was already gone from promos.json while 63 committed
+      # pages still advertised it, and it stayed live until the next cycle
+      # (3c548f16) happened to rebuild it away.
+      #
+      # The per-retailer steps above pass --skip-promos, so this is the only
+      # thing that refreshes promos.json. Keep it here, and keep the trailing
+      # `|| echo` — a promo fetch failure must never stop price publishing.
+      - name: Scrape promo codes
+        run: |
+          python -c "
+          import sys, json
+          from pathlib import Path
+          sys.path.insert(0, '.')
+          from scrapers.runner import scrape_promos, load_json
+          retailers = load_json(Path('data/retailers.json'))
+          scrape_promos(retailers)
+          " || echo "WARNING: Promo scraping failed -- skipping"
+
       - name: Build site
         run: python -X utf8 build.py
 
@@ -261,16 +288,32 @@ jobs:
           retention-days: 30
           if-no-files-found: warn
 
-      - name: Scrape promo codes
+      # Machine-checks the CLAUDE.md invariant instead of trusting step order:
+      # rebuild, and confirm nothing changes. Anything a second build alters is
+      # a build input that some step wrote AFTER the first build — exactly the
+      # defect that shipped the expired code FAST20 to 63 pages.
+      #
+      # `git add` first, then compare worktree against the INDEX. site/ is a
+      # committed build artifact, so it differs from HEAD on every cycle that
+      # moved a price; staging makes the index hold the first build's output so
+      # the diff isolates first-build-vs-rebuild and nothing else. Comparing
+      # against HEAD here would fire on every normal run. The commit step below
+      # re-adds site/, so staging early changes nothing about what publishes.
+      #
+      # ALARMING, not blocking. The rebuild has already corrected site/ in the
+      # working tree, so the commit below publishes the right HTML; this only
+      # flags that a step is out of order and needs moving.
+      - name: Verify the build is reproducible
         run: |
-          python -c "
-          import sys, json
-          from pathlib import Path
-          sys.path.insert(0, '.')
-          from scrapers.runner import scrape_promos, load_json
-          retailers = load_json(Path('data/retailers.json'))
-          scrape_promos(retailers)
-          " || echo "WARNING: Promo scraping failed -- skipping"
+          git add -A site/
+          python -X utf8 build.py
+          if git diff --quiet -- site/; then
+            echo "Rebuild is a no-op — committed site/ matches its sources."
+          else
+            echo "REBUILD_DIVERGED=1" >> "$GITHUB_ENV"
+            echo "::error::Rebuilding site/ changed it — a step after 'Build site' wrote a build input. Files:"
+            git diff --name-only -- site/
+          fi
 
       - name: Commit updated price data
         id: commit
@@ -345,6 +388,10 @@ jobs:
           if [ "${AUDITS_ALARMED:-0}" = "1" ]; then
             echo "::error::Nightly offline audits raised an alarm — see the nightly-audit artifact and the ::error:: lines above. Good data still published."
             PROBLEMS="$PROBLEMS audits"
+          fi
+          if [ "${REBUILD_DIVERGED:-0}" = "1" ]; then
+            echo "::error::A rebuild changed site/ — some step now writes a build input after 'Build site'. Move it earlier. The corrected build was published."
+            PROBLEMS="$PROBLEMS rebuild"
           fi
           # Say plainly whether data actually shipped, instead of assuming.
           if [ "$COMMITTED" = "success" ]; then
