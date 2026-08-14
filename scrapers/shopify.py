@@ -542,7 +542,10 @@ class ShopifyScraper:
             # Matches: "3 Plant(s)", "10 Plant(s)", "10-Pack", "4-Pack", "BOGO / 2 Plant(s)"
             if re.search(r'(?:[2-9]|1\d)[\s-]*(?:plant|pack)', variant_title, re.IGNORECASE):
                 continue
-            if 'bogo' in variant_title.lower():
+            # Was a bare `'bogo' in variant_title`, which missed every
+            # spelled-out form. Shared with the aria path so the two cannot
+            # drift apart again.
+            if self._is_bundle_offer(variant_title):
                 continue
             if 'single' in variant_title.lower() and 'pack' in variant_title.lower():
                 continue
@@ -1173,6 +1176,40 @@ class ShopifyScraper:
         except (ValueError, AttributeError):
             return None
 
+    # An offer whose price buys MORE THAN ONE PLANT. Distinct from
+    # _is_quantity_label, which reads a SIZE NAME: these markers ride on the
+    # end of the offer text, AFTER the price, so by the time a size name has
+    # been extracted the evidence is gone. That is exactly how FGT's
+    # "1-2 feet - Price $94.95 - Buy 1, Get 1" was published as the price of
+    # one Bloodgood Japanese Maple next to other nurseries' single trees.
+    #
+    # Verified 2026-08-14 against 66 cached FGT pages: FGT writes exactly one
+    # form, a trailing "- Buy 1, Get 1", on 24 distinct aria-labels. The
+    # runbook also records a spring-hill variant titled "3-4' BOGO", so this
+    # is deliberately NOT an FGT-only predicate and is applied on both paths.
+    #
+    # It does NOT count plants. "1 Plant(s)" is a single plant and Spring Hill
+    # writes it on every variant it sells; the N>=2 counting stays where it
+    # already lives, in _is_quantity_label and the JSON path's own guard.
+    _BUNDLE_RE = re.compile(
+        r"\bbogo\b"
+        r"|\bb\dg\d\b"
+        r"|\bbuy\s+\w+\s*,?\s*get\s+\w+"
+        r"|\b\d+\s+for\s+\$?\d",
+        re.IGNORECASE,
+    )
+
+    @classmethod
+    def _is_bundle_offer(cls, text: str) -> bool:
+        """True if this offer's price covers more than one plant.
+
+        Withhold, never adjust. A "Buy 1, Get 1" price is not two times a
+        single-plant price -- the single-plant price is simply not on the
+        page, and halving the bundle would invent one. A missing cell is an
+        omission; a fabricated cell is a false comparison.
+        """
+        return bool(cls._BUNDLE_RE.search(text or ""))
+
     @staticmethod
     def _is_quantity_label(name: str) -> bool:
         """True for buttons that pick a QUANTITY, not a size.
@@ -1229,6 +1266,11 @@ class ShopifyScraper:
             if source is None:
                 continue
             for label in re.findall(r'aria-label="([^"]+)"', source):
+                # Before any pattern runs: the bundle marker trails the price,
+                # so every pattern below discards it when it captures `name`.
+                # This has to be read off the WHOLE label or not at all.
+                if self._is_bundle_offer(label):
+                    continue
                 for pattern in self._ARIA_LABEL_PATTERNS:
                     m = pattern.match(label.strip())
                     if not m:

@@ -18,6 +18,7 @@ on those pages (recorded independently in fgt_ground_truth.json at the repo root
 
 import logging
 
+import pytest
 import responses
 
 from tests.conftest import load_fixture
@@ -111,17 +112,26 @@ def test_jumbo_height_variant_does_not_overwrite_plain_height(no_sleep):
 
 @responses.activate
 def test_all_thuja_heights_pair_correctly(no_sleep):
+    """2-3ft is ABSENT, and that is the point.
+
+    This page's 2-3 feet button reads
+        "2-3 feet - Price $57.95 - Buy 1, Get 1"
+    so $57.95 buys TWO arborvitae. It used to be published in the 2-3ft column
+    beside other nurseries' single trees, which made Fast Growing Trees look
+    half price on a size where it is not. The single-tree price is not on the
+    page, so the tier is withheld rather than guessed at.
+    """
     result = _scrape("thuja-green-giant", load_fixture("fgt", "thuja-green-giant-page.html"))
 
     assert {t: v["price"] for t, v in result["sizes"].items()} == {
         "1-2ft": 19.95,
-        "2-3ft": 57.95,
         "3-4ft": 70.95,
         "4-5ft": 123.95,
         "5-6ft": 218.95,
         "6-7ft": 372.95,
         "6-7ft-jumbo": 503.95,
     }
+    assert "2-3ft" not in result["sizes"]
 
 
 @responses.activate
@@ -134,6 +144,17 @@ def test_bigger_size_is_not_assumed_to_cost_more(no_sleep):
     cheapest->most expensive". This page breaks that assumption, and the result
     was a three-way rotation: 4-5ft got $175.95, 5-6ft got $182.95, 6-7ft got
     $224.95. Sorting must never decide which price belongs to which size.
+
+    THE NON-MONOTONICITY IS NOW EXPLAINED, and it was never evidence of a
+    mapping bug. Both of the prices that made this page look "backwards" are
+    two-for-one offers:
+        "4-5 feet - Price $182.95 - Buy 1, Get 1"
+        "5-6 feet - Price $224.95 - Buy 1, Get 1"
+    Withhold those and what is left -- 3-4ft $84.95, 6-7ft $175.95 -- rises
+    with size like every other page. A review once reported "20 of 195
+    adjacent height pairs have a taller tree priced at or below the shorter
+    one" as proof the site served rotated size/price pairs. It is not
+    rotation. MONOTONICITY IS AN INVALID TEST ON A PAGE CARRYING BUNDLES.
     """
     result = _scrape(
         "coral-bark-japanese-maple",
@@ -142,11 +163,13 @@ def test_bigger_size_is_not_assumed_to_cost_more(no_sleep):
 
     assert {t: v["price"] for t, v in result["sizes"].items()} == {
         "3-4ft": 84.95,
-        "4-5ft": 182.95,
-        "5-6ft": 224.95,
         "6-7ft": 175.95,
     }
     assert result["sizes"]["6-7ft"]["was_price"] == 276.95
+    # The bundle tiers are gone, not repriced. Halving $182.95 would invent a
+    # single-tree price the retailer never published.
+    assert "4-5ft" not in result["sizes"]
+    assert "5-6ft" not in result["sizes"]
 
 
 def test_normalize_size_keeps_jumbo_distinct():
@@ -175,17 +198,71 @@ def test_parses_every_aria_label_format_fgt_uses():
     html = (
         '<h2>Select size</h2>'
         '<button aria-label="1 gallon - Price $45.95">1 gallon</button>'
-        '<button aria-label="2-3 feet - Price $57.95 - Buy 1, Get 1">2-3 feet</button>'
         '<button aria-label="1 quart - Original price $35.95, sale price $30.95 - 14% OFF">q</button>'
         '<button aria-label="7 gallon - Original price $1,318.00, sale price $638.40 - 52% OFF">7g</button>'
         '</section>'
     )
     assert scraper._extract_aria_size_offers(html) == [
         ("1 gallon", 45.95, None),
-        ("2-3 feet", 57.95, None),
         ("1 quart", 30.95, 35.95),
         ("7 gallon", 638.40, 1318.00),
     ]
+
+
+def test_a_bundle_marker_withholds_the_size_whatever_the_price_format():
+    """The marker trails the PRICE, so it survives none of the name captures.
+
+    This test used to assert the opposite -- it carried
+    "2-3 feet - Price $57.95 - Buy 1, Get 1" in a list of formats the scraper
+    must parse, and asserted ("2-3 feet", 57.95, None) came back. That pinned
+    the defect as correct behaviour, which is why the bundle prices reached
+    the live site.
+
+    Checked on all three aria formats, because the bundle suffix can ride on
+    any of them, and on the neighbouring single-plant button to prove the
+    filter takes the bundle rather than the whole section.
+    """
+    scraper = ShopifyScraper("fast-growing-trees", BASE)
+    html = (
+        '<h2>Select size</h2>'
+        '<button aria-label="1 gallon - Price $45.95">keep me</button>'
+        '<button aria-label="2-3 feet - Price $57.95 - Buy 1, Get 1">bundle</button>'
+        '<button aria-label="3-4 feet - Original price $99.95, sale price $79.95 - Buy 1, Get 1">bundle</button>'
+        '<button aria-label="4-5 feet - Sale price: 39.99 - List price: $49.99 - BOGO">bundle</button>'
+        '</section>'
+    )
+    assert scraper._extract_aria_size_offers(html) == [("1 gallon", 45.95, None)]
+
+
+@pytest.mark.parametrize(
+    "text,is_bundle",
+    [
+        # Real FGT vocabulary, verified 2026-08-14 over 66 cached pages:
+        # a trailing "- Buy 1, Get 1" is the only form FGT writes.
+        ("1-2 feet - Price $94.95 - Buy 1, Get 1", True),
+        ("1-2 feet Multi-stem - Price $282.95 - Buy 1, Get 1", True),
+        # Recorded on spring-hill, which is why this is not an FGT-only guard.
+        ("3-4' BOGO", True),
+        ("BOGO / 2 Plant(s)", True),
+        ("Buy One Get One Free", True),
+        ("B1G1", True),
+        ("2 for 1", True),
+        ("3 for $30", True),
+        # Single plants. "1 Plant(s)" is on EVERY spring-hill variant it sells,
+        # so treating a plant count as a bundle marker would empty a retailer.
+        ("1 gallon - Price $45.95", False),
+        ("1-2 feet - Price $94.95", False),
+        ("1 GALLON / 1 Plant(s) | Ships in Fall", False),
+        ("PREMIUM / 1 Plant(s) | Ships in Spring", False),
+        ('2.5" POT / 1 Plant(s) | Ships in Spring', False),
+        ("6-7 feet Jumbo - Original price $766.95, sale price $503.95 - 34% OFF", False),
+        ("1 quart - Original price $35.95, sale price $30.95 - 14% OFF", False),
+        ("4-5 feet Single-stem", False),
+        ("Forget Me Not", False),
+    ],
+)
+def test_is_bundle_offer(text, is_bundle):
+    assert ShopifyScraper._is_bundle_offer(text) is is_bundle
 
 
 def test_legacy_aria_format_still_parsed():
