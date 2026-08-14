@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-13T23:33:24.643665+00:00",
+  "timestamp": "2026-08-14T13:04:54.336230+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -324,10 +324,7 @@
       "products_priced": 74,
       "products_error": 1,
       "prices_collected": 322,
-      "anomalies": [
-        "ANOMALY: nellie-stevens-holly at planting-tree tier=quart: $13.95 -> $21.95 (57% change)",
-        "ANOMALY: chicago-hardy-fig at planting-tree tier=quart: $19.95 -> $40.95 (105% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
           "1gal": 32.95,
@@ -944,11 +941,11 @@
       "retailer_id": "fast-growing-trees",
       "status": "completed",
       "products_expected": 68,
-      "products_found": 64,
+      "products_found": 63,
       "products_no_sizes": 11,
-      "products_priced": 53,
-      "products_error": 4,
-      "prices_collected": 154,
+      "products_priced": 52,
+      "products_error": 5,
+      "prices_collected": 136,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -958,8 +955,7 @@
           "quart": 24.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
-          "1gal": 32.95,
-          "3gal": 114.95
+          "1gal": 32.95
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 56.95
@@ -1007,7 +1003,6 @@
         },
         "green-giant-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
-          "2-3ft": 57.95,
           "3-4ft": 70.95,
           "4-5ft": 123.95,
           "5-6ft": 218.95,
@@ -1032,18 +1027,8 @@
           "5gal": 85.95,
           "7gal": 163.95
         },
-        "bloodgood-japanese-maple:fast-growing-trees": {
-          "1-2ft": 94.95,
-          "2-3ft": 116.95,
-          "3-4ft": 143.95,
-          "4-5ft": 176.95,
-          "5-6ft": 226.95,
-          "6-7ft": 266.95
-        },
         "coral-bark-japanese-maple:fast-growing-trees": {
           "3-4ft": 84.95,
-          "4-5ft": 182.95,
-          "5-6ft": 224.95,
           "6-7ft": 175.95
         },
         "crimson-queen-japanese-maple:fast-growing-trees": {
@@ -1084,16 +1069,12 @@
         },
         "kousa-dogwood:fast-growing-trees": {
           "3-4ft": 92.95,
-          "4-5ft": 169.95,
           "5-6ft": 182.95,
           "6-7ft": 239.95
         },
         "eastern-redbud:fast-growing-trees": {
-          "2-3ft": 92.95,
           "3-4ft": 79.95,
-          "4-5ft": 159.95,
-          "5-6ft": 120.95,
-          "6-7ft": 216.95
+          "5-6ft": 120.95
         },
         "forest-pansy-redbud:fast-growing-trees": {
           "1-2ft": 56.95,
@@ -1101,8 +1082,6 @@
           "6-7ft": 217.95
         },
         "crape-myrtle:fast-growing-trees": {
-          "1-2ft-multistem": 282.95,
-          "4-5ft-multistem": 653.95,
           "5-6ft-multistem": 160.95,
           "6-7ft-multistem": 193.95
         },
@@ -1149,7 +1128,6 @@
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
           "4-5ft": 81.95,
-          "5-6ft": 152.95,
           "6-7ft": 111.95
         },
         "heritage-river-birch:fast-growing-trees": {
@@ -1161,7 +1139,6 @@
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 79.95,
           "4-5ft": 97.95,
-          "5-6ft": 180.95,
           "6-7ft": 169.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
@@ -1305,47 +1282,17 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 7,
-      "products_error": 1,
-      "prices_collected": 12,
+      "products_found": 0,
+      "products_error": 8,
+      "prices_collected": 0,
       "anomalies": [],
-      "price_records": {
-        "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "semi-dwarf-ez-start": 64.99
-        },
-        "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 75.99
-        },
-        "bartlett-pear-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "ultra-supreme": 229.99,
-          "semi-dwarf-ez-start": 64.99,
-          "supreme-ez-start": 75.99,
-          "standard-ez-start": 64.99
-        },
-        "double-knock-out-rose:stark-bros": {
-          "default": 15.99
-        },
-        "duke-blueberry:stark-bros": {
-          "default": 25.99
-        },
-        "patriot-blueberry:stark-bros": {
-          "default": 27.99
-        },
-        "pink-lemonade-blueberry:stark-bros": {
-          "default": 25.99
-        }
-      },
-      "health": "healthy"
+      "price_records": {},
+      "health": "degraded"
     }
   ],
-  "total_prices_collected": 719,
-  "total_anomalies": 2,
-  "anomalies": [
-    "ANOMALY: nellie-stevens-holly at planting-tree tier=quart: $13.95 -> $21.95 (57% change)",
-    "ANOMALY: chicago-hardy-fig at planting-tree tier=quart: $19.95 -> $40.95 (105% change)"
-  ],
+  "total_prices_collected": 689,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2248,8 +2195,7 @@
       "quart": 24.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
-      "1gal": 32.95,
-      "3gal": 114.95
+      "1gal": 32.95
     },
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 56.95
@@ -2297,7 +2243,6 @@
     },
     "green-giant-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
-      "2-3ft": 57.95,
       "3-4ft": 70.95,
       "4-5ft": 123.95,
       "5-6ft": 218.95,
@@ -2322,18 +2267,8 @@
       "5gal": 85.95,
       "7gal": 163.95
     },
-    "bloodgood-japanese-maple:fast-growing-trees": {
-      "1-2ft": 94.95,
-      "2-3ft": 116.95,
-      "3-4ft": 143.95,
-      "4-5ft": 176.95,
-      "5-6ft": 226.95,
-      "6-7ft": 266.95
-    },
     "coral-bark-japanese-maple:fast-growing-trees": {
       "3-4ft": 84.95,
-      "4-5ft": 182.95,
-      "5-6ft": 224.95,
       "6-7ft": 175.95
     },
     "crimson-queen-japanese-maple:fast-growing-trees": {
@@ -2374,16 +2309,12 @@
     },
     "kousa-dogwood:fast-growing-trees": {
       "3-4ft": 92.95,
-      "4-5ft": 169.95,
       "5-6ft": 182.95,
       "6-7ft": 239.95
     },
     "eastern-redbud:fast-growing-trees": {
-      "2-3ft": 92.95,
       "3-4ft": 79.95,
-      "4-5ft": 159.95,
-      "5-6ft": 120.95,
-      "6-7ft": 216.95
+      "5-6ft": 120.95
     },
     "forest-pansy-redbud:fast-growing-trees": {
       "1-2ft": 56.95,
@@ -2391,8 +2322,6 @@
       "6-7ft": 217.95
     },
     "crape-myrtle:fast-growing-trees": {
-      "1-2ft-multistem": 282.95,
-      "4-5ft-multistem": 653.95,
       "5-6ft-multistem": 160.95,
       "6-7ft-multistem": 193.95
     },
@@ -2439,7 +2368,6 @@
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
       "4-5ft": 81.95,
-      "5-6ft": 152.95,
       "6-7ft": 111.95
     },
     "heritage-river-birch:fast-growing-trees": {
@@ -2451,7 +2379,6 @@
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 79.95,
       "4-5ft": 97.95,
-      "5-6ft": 180.95,
       "6-7ft": 169.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
@@ -2559,36 +2486,11 @@
     },
     "double-knock-out-rose:great-garden-plants": {
       "quart": 23.99
-    },
-    "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "semi-dwarf-ez-start": 64.99
-    },
-    "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 75.99
-    },
-    "bartlett-pear-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "ultra-supreme": 229.99,
-      "semi-dwarf-ez-start": 64.99,
-      "supreme-ez-start": 75.99,
-      "standard-ez-start": 64.99
-    },
-    "double-knock-out-rose:stark-bros": {
-      "default": 15.99
-    },
-    "duke-blueberry:stark-bros": {
-      "default": 25.99
-    },
-    "patriot-blueberry:stark-bros": {
-      "default": 27.99
-    },
-    "pink-lemonade-blueberry:stark-bros": {
-      "default": 25.99
     }
   },
   "degraded_retailers": [
-    "fast-growing-trees"
+    "fast-growing-trees",
+    "stark-bros"
   ],
   "pipeline_status": "degraded"
 }
