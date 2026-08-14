@@ -25,6 +25,9 @@ from tests.conftest import load_fixture
 from scrapers.shopify import ShopifyScraper
 
 BASE = "https://www.fgt.com"
+# A JSON-path retailer. FGT blocks the JSON endpoints, so the bundle filter on
+# that path can only be exercised against one of the other six.
+SH = "https://www.springhillnursery.com"
 
 
 def _register(handle, html):
@@ -263,6 +266,42 @@ def test_a_bundle_marker_withholds_the_size_whatever_the_price_format():
 )
 def test_is_bundle_offer(text, is_bundle):
     assert ShopifyScraper._is_bundle_offer(text) is is_bundle
+
+
+@responses.activate
+def test_json_path_withholds_bundle_variants_too(no_sleep):
+    """The OTHER six retailers go through the JSON path, and it had the same hole.
+
+    This test exists because a mutation run caught its absence. Reverting the
+    JSON path to its old `'bogo' in variant_title.lower()` check left the whole
+    suite green -- every assertion about bundles lived on the aria path, which
+    only Fast Growing Trees uses. The predicate was shared; the coverage was
+    not.
+
+    "1 Plant(s)" is the control: Spring Hill writes it on every variant it
+    sells, so if a plant COUNT were ever mistaken for a bundle marker this
+    retailer would go dark. It must survive.
+    """
+    payload = {"product": {
+        "id": 1, "title": "T", "handle": "h",
+        "variants": [
+            {"id": 1, "title": "1 GALLON / 1 Plant(s)", "price": "29.99", "compare_at_price": None},
+            {"id": 2, "title": "2 GALLON / 1 Plant(s)", "price": "39.99", "compare_at_price": None},
+            {"id": 3, "title": "3-4' BOGO", "price": "119.99", "compare_at_price": None},
+            {"id": 4, "title": "5-6 FT - Buy 1, Get 1", "price": "199.99", "compare_at_price": None},
+            {"id": 5, "title": "12-18 IN Buy One Get One Free", "price": "49.99", "compare_at_price": None},
+        ],
+    }}
+    responses.add(responses.GET, f"{SH}/products/h.json", json=payload, status=200)
+    responses.add(responses.GET, f"{SH}/products/h.js", json={"variants": []}, status=200)
+    result = ShopifyScraper("spring-hill", SH).scrape_product("h")
+
+    prices = {t: v["price"] for t, v in result["sizes"].items()}
+    # Both single-plant variants survive; all three bundles are withheld.
+    assert sorted(prices.values()) == [29.99, 39.99]
+    assert 119.99 not in prices.values()
+    assert 199.99 not in prices.values()
+    assert 49.99 not in prices.values()
 
 
 def test_legacy_aria_format_still_parsed():
