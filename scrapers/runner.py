@@ -566,6 +566,14 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
             # Travels with the row so a reviewer can find it later; the run
             # also reports the count, and the warnings are already logged.
             price_entry["price_anomaly"] = anomaly_warnings
+        if result.get("all_offers_bundled"):
+            # Why this row is empty. Without it the history holds two empty
+            # rows of identical shape — "every size sold out" and "every size
+            # is a two-for-one" — and no reader can tell them apart, which is
+            # the same indistinguishability this row exists to fix. Optional
+            # key, same precedent as price_anomaly; build.py ignores keys it
+            # does not know.
+            price_entry["all_offers_bundled"] = True
         append_price(plant_id, price_entry)
 
         # Record for manifest

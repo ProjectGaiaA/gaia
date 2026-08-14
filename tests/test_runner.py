@@ -408,3 +408,49 @@ def test_scrape_retailer_computes_products_priced_from_results(tmp_data_dir, mon
     )
     _, _, rate = runner_mod.retailer_hit_rate(entry)
     assert rate < 0.8, "3 of 5 unreadable must degrade the retailer"
+
+
+def test_bundle_only_rows_reach_the_history_labelled(tmp_data_dir, monkeypatch):
+    """The empty row a fully-bundled page produces must be WRITTEN, and must
+    carry why it is empty.
+
+    Written, because build.py takes the newest row per (plant, retailer): a row
+    is the only thing that can withdraw a previously published price. Labelled,
+    because the history otherwise holds two empty rows of identical shape —
+    "every size sold out" and "every size is a two-for-one" — and no reader can
+    tell them apart, which is the confusion this row exists to end.
+    """
+    from scrapers import runner as runner_mod
+
+    class _BundleScraper:
+        def __init__(self, retailer_id, url):
+            pass
+
+        def scrape_products(self, handles, plant_ids=None):
+            return [{
+                "retailer_name": "R", "timestamp": "2026-08-14T16:00:00+00:00",
+                "url": "https://example.com/p", "sizes": {}, "in_stock": None,
+                "no_sizes_readable": True, "all_offers_bundled": True,
+            } for _ in handles]
+
+    handles = {"bloodgood-japanese-maple": "bloodgood-japanese-maple"}
+    monkeypatch.setattr(runner_mod, "ShopifyScraper", _BundleScraper)
+    monkeypatch.setattr(runner_mod, "PRICES_DIR", tmp_data_dir / "prices")
+    monkeypatch.setattr(runner_mod, "get_handles_for_retailer",
+                        lambda rid, pids: handles)
+
+    entry = runner_mod.scrape_retailer(
+        {"id": "r", "name": "R", "url": "https://e.com", "scraper_type": "shopify"},
+        list(handles), {"prices": {}},
+    )
+    assert entry["products_priced"] == 0, "an all-bundle row is not a price read"
+
+    path = tmp_data_dir / "prices" / "bloodgood-japanese-maple.jsonl"
+    rows = [
+        json.loads(ln)
+        for ln in path.read_text(encoding="utf-8").splitlines() if ln.strip()
+    ]
+    assert len(rows) == 1, "no row was appended; the stale price would survive"
+    assert rows[0]["sizes"] == {}
+    assert rows[0]["in_stock"] is None
+    assert rows[0]["all_offers_bundled"] is True

@@ -792,7 +792,12 @@ class ShopifyScraper:
         # the size name and its price in the SAME string, so there is no guessing
         # about which price belongs to which size. Schema.org Offers are a fallback
         # ONLY when no aria-labels are found.
-        aria_offers = self._extract_aria_size_offers(text)
+        # `bundle_offers` collects the offers that parsed cleanly and were then
+        # withheld for buying more than one plant. It is the only thing that
+        # tells "we read this page and deliberately published nothing" apart
+        # from "we could not read this page"; see the guard further down.
+        bundle_offers: list[tuple[str, float, float | None]] = []
+        aria_offers = self._extract_aria_size_offers(text, withheld_bundles=bundle_offers)
 
         # Use aria-labels if we got ANY valid size-named results
         if aria_offers:
@@ -973,6 +978,60 @@ class ShopifyScraper:
                     # fresh timestamp. This flag lets runner.py keep counting
                     # the fact separately from a successful price read.
                     "no_sizes_readable": True,
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                }
+            # The OTHER legitimate page state that looks exactly like drift:
+            # every size read cleanly and every one of them was a bundle, so
+            # every one was deliberately withheld. Returning None here — which
+            # is what this did — appends no row at all, and build.py's
+            # get_latest_prices takes the NEWEST row per (plant, retailer). The
+            # newest row was then the last one written before the bundle filter
+            # existed, so the site kept publishing six Buy-1-Get-1 prices for
+            # bloodgood-japanese-maple as the price of one tree, two of them
+            # carrying the green best-price badge. Silence does not withdraw a
+            # price; only a row does.
+            #
+            # This branch is gated on offers that MATCHED an aria pattern and
+            # yielded a name and a numeric price. That is proof the format did
+            # not drift — which is precisely what the guard below is for — so
+            # it cannot be reached by the failure mode it is being told apart
+            # from (R5). Under real drift `bundle_offers` is empty and the
+            # ERROR still fires.
+            if bundle_offers:
+                logger.warning(
+                    f"  {self.retailer_id}/{handle}: all {len(bundle_offers)} readable "
+                    f"sizes are bundle offers ("
+                    f"{', '.join(n for n, _, _ in bundle_offers)}) — every price on "
+                    f"the page buys more than one plant. Publishing an EMPTY row so "
+                    f"any previously published single-plant price is withdrawn. "
+                    f"Halving a bundle would invent a price the retailer never listed."
+                )
+                title_match = re.search(r"<title>([^<]+)</title>", text)
+                title = (
+                    title_match.group(1).split("|")[0].strip()
+                    if title_match else handle.replace("-", " ").title()
+                )
+                return {
+                    "retailer_id": self.retailer_id,
+                    "retailer_name": self.retailer_id.replace("-", " ").title(),
+                    "handle": handle,
+                    "title": title,
+                    "url": url,
+                    "sizes": {},
+                    # NOT False: "Sold Out" would be a false claim, the plant is
+                    # on sale as a pair. NOT True either: that renders "In Stock"
+                    # beside a row of dashes and reads as a fetch failure. We
+                    # have no single-plant offer to make a stock claim about.
+                    "in_stock": None,
+                    # Publishing this fact must not silence the health signal
+                    # (R6). The row yielded zero prices; runner.py subtracts
+                    # these from products_priced, so a retailer that put its
+                    # whole catalogue on BOGO cannot report a healthy hit rate
+                    # while the site shows not one of its prices.
+                    "no_sizes_readable": True,
+                    # Provenance: why this row is empty. runner.py ignores keys
+                    # it does not know, same as size_collisions.
+                    "all_offers_bundled": True,
                     "timestamp": datetime.now(timezone.utc).isoformat(),
                 }
             logger.error(
@@ -1253,24 +1312,38 @@ class ShopifyScraper:
         end = text.find("</section>", m.end())
         return text[m.end():end if end != -1 else len(text)]
 
-    def _extract_aria_size_offers(self, text: str) -> list[tuple[str, float, float | None]]:
+    def _extract_aria_size_offers(
+        self,
+        text: str,
+        withheld_bundles: list[tuple[str, float, float | None]] | None = None,
+    ) -> list[tuple[str, float, float | None]]:
         """Size buttons as (label, price, was_price), read from aria-labels.
 
         This is the FGT primary path. Each aria-label pairs a size name with its
         own price inside one string, e.g. "1 gallon - Price $45.95", so the size
         and the price cannot drift apart. Nothing here is positional.
+
+        `withheld_bundles`, if given, is REPLACED with the offers that parsed
+        cleanly and were then withheld only because `_is_bundle_offer` matched.
+        It is the caller's evidence that the parser still works: an empty
+        return value plus a NON-empty withheld list means "read fine,
+        deliberately published nothing", which must clear the retailer's cells;
+        an empty return value plus an EMPTY withheld list means "could not read
+        this page", which must publish nothing and alarm. Those two states were
+        indistinguishable, and silence let a stale bundle price stand.
+
+        An out-parameter rather than a widened return type: six existing tests
+        assert `_extract_aria_size_offers(html) == [...]` and none of them is
+        about bundles.
         """
         scope = self._size_selector_scope(text)
         found: list[tuple[str, float, float | None]] = []
+        withheld: list[tuple[str, float, float | None]] | None = None
         for source in (scope, text):
             if source is None:
                 continue
+            pass_withheld: list[tuple[str, float, float | None]] = []
             for label in re.findall(r'aria-label="([^"]+)"', source):
-                # Before any pattern runs: the bundle marker trails the price,
-                # so every pattern below discards it when it captures `name`.
-                # This has to be read off the WHOLE label or not at all.
-                if self._is_bundle_offer(label):
-                    continue
                 for pattern in self._ARIA_LABEL_PATTERNS:
                     m = pattern.match(label.strip())
                     if not m:
@@ -1280,12 +1353,38 @@ class ShopifyScraper:
                     was = self._to_price(m.groupdict().get("was") or "")
                     if price is None or not name or self._is_quantity_label(name):
                         break
+                    # The bundle marker trails the PRICE, so every pattern
+                    # above has already discarded it by the time it captured
+                    # `name`. It has to be read off the WHOLE label or not at
+                    # all — hence `label`, not `name`.
+                    #
+                    # This test used to sit BEFORE the pattern loop. Moving it
+                    # after a successful match changes nothing about what is
+                    # returned (a bundle label is still never added to `found`,
+                    # and one that matches no pattern, or fails the price /
+                    # name / quantity checks, is still discarded on exactly the
+                    # same branch). What it buys is the record below: a parsed
+                    # name and price prove the aria format has NOT drifted.
+                    if self._is_bundle_offer(label):
+                        pass_withheld.append((name, price, was))
+                        break
                     found.append((name, price, was))
                     break
+            # Keep the withheld list belonging to the pass that decided the
+            # outcome: the one that produced sizes, or — when none does — the
+            # FIRST pass, which is the scoped one whenever a size selector
+            # exists. Letting a later pass overwrite an empty result would let
+            # a "Buy 1, Get 1" promo button sitting OUTSIDE the size selector
+            # vouch for a size selector that had actually drifted, and the
+            # empty-row branch would then publish instead of alarming.
+            if withheld is None or found:
+                withheld = pass_withheld
             if found:
                 # The scoped pass found real sizes; never fall through to the
                 # whole document, which would pull in quantity/pack buttons.
                 break
+        if withheld_bundles is not None:
+            withheld_bundles[:] = withheld or []
         return found
 
     def _availability_by_price(self, text: str) -> dict[float, bool | None]:
