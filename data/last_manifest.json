@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-14T23:11:38.056288+00:00",
+  "timestamp": "2026-08-15T12:37:48.582853+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -803,11 +803,11 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 37,
+      "products_found": 38,
       "products_no_sizes": 6,
-      "products_priced": 31,
-      "products_error": 3,
-      "prices_collected": 59,
+      "products_priced": 32,
+      "products_error": 2,
+      "prices_collected": 60,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -865,6 +865,9 @@
           "default": 62.99
         },
         "pink-knock-out-rose:spring-hill": {
+          "default": 39.99
+        },
+        "sunny-knock-out-rose:spring-hill": {
           "default": 39.99
         },
         "duke-blueberry:spring-hill": {
@@ -932,7 +935,7 @@
           "premium-bareroot": 24.99
         }
       },
-      "health": "degraded"
+      "health": "healthy"
     },
     {
       "retailer_id": "fast-growing-trees",
@@ -943,7 +946,9 @@
       "products_priced": 53,
       "products_error": 4,
       "prices_collected": 138,
-      "anomalies": [],
+      "anomalies": [
+        "ANOMALY: pampas-grass at fast-growing-trees tier=3gal: $50.95 -> $79.95 (57% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 33.95
@@ -1111,7 +1116,7 @@
           "3gal": 40.95
         },
         "pampas-grass:fast-growing-trees": {
-          "3gal": 50.95
+          "3gal": 79.95
         },
         "astilbe:fast-growing-trees": {
           "default": 31.95
@@ -1318,9 +1323,11 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 702,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 703,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: pampas-grass at fast-growing-trees tier=3gal: $50.95 -> $79.95 (57% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2149,6 +2156,9 @@
     "pink-knock-out-rose:spring-hill": {
       "default": 39.99
     },
+    "sunny-knock-out-rose:spring-hill": {
+      "default": 39.99
+    },
     "duke-blueberry:spring-hill": {
       "default": 15.49
     },
@@ -2379,7 +2389,7 @@
       "3gal": 40.95
     },
     "pampas-grass:fast-growing-trees": {
-      "3gal": 50.95
+      "3gal": 79.95
     },
     "astilbe:fast-growing-trees": {
       "default": 31.95
@@ -2544,7 +2554,6 @@
     }
   },
   "degraded_retailers": [
-    "spring-hill",
     "fast-growing-trees"
   ],
   "pipeline_status": "degraded"
