@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-15T12:37:48.582853+00:00",
+  "timestamp": "2026-08-15T23:06:54.054112+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -946,9 +946,7 @@
       "products_priced": 53,
       "products_error": 4,
       "prices_collected": 138,
-      "anomalies": [
-        "ANOMALY: pampas-grass at fast-growing-trees tier=3gal: $50.95 -> $79.95 (57% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 33.95
@@ -1324,10 +1322,8 @@
     }
   ],
   "total_prices_collected": 703,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: pampas-grass at fast-growing-trees tier=3gal: $50.95 -> $79.95 (57% change)"
-  ],
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,

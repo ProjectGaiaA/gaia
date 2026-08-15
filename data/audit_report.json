@@ -50,7 +50,7 @@
     "F_stock_consistency": {
       "counts": {
         "latest_rows": 277,
-        "mobile_price_links": 274,
+        "mobile_price_links": 272,
         "pages": 102,
         "retailer_variant_availability": {
           "fast-growing-trees": {
@@ -66,8 +66,8 @@
             "True": 73
           },
           "planting-tree": {
-            "False": 167,
-            "True": 155
+            "False": 169,
+            "True": 153
           },
           "proven-winners-direct": {
             "False": 9,
@@ -83,7 +83,7 @@
         },
         "retailers_all_unknown_stock": [],
         "schema_instock_pages": 87,
-        "sold_out_price_cells": 291,
+        "sold_out_price_cells": 293,
         "sold_out_rows": 97,
         "table_rows": 276
       },
@@ -97,11 +97,11 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-08-13T12:37:48.581158+00:00",
+    "cutoff": "2026-08-13T23:06:54.052470+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-08-15T12:37:48.581158+00:00",
+    "newest_row": "2026-08-15T23:06:54.052470+00:00",
     "pairs_fresh": 277,
     "pairs_stale": 5,
     "pairs_total": 282,
@@ -139,34 +139,34 @@
     "stale_at_reporting_retailers": 5,
     "stalest": [
       {
-        "hours": 3084.8,
+        "hours": 3095.2,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 2972.0,
+        "hours": 2982.5,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 2541.6,
+        "hours": 2552.1,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1125.1,
+        "hours": 1135.6,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 934.6,
+        "hours": 945.1,
         "plant": "bing-cherry-tree",
         "retailer": "stark-bros"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-08-15T12:41:25.097625+00:00",
+  "generated": "2026-08-15T23:10:34.516200+00:00",
   "notices": [
     "5 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below"
   ],
