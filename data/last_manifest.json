@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-17T12:44:14.495522+00:00",
+  "timestamp": "2026-08-17T23:13:40.638783+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -942,8 +942,8 @@
       "status": "completed",
       "products_expected": 68,
       "products_found": 64,
-      "products_no_sizes": 10,
-      "products_priced": 54,
+      "products_no_sizes": 9,
+      "products_priced": 55,
       "products_error": 4,
       "prices_collected": 152,
       "anomalies": [],
@@ -966,7 +966,7 @@
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
           "2-3ft": 86.95,
-          "3-4ft": 69.95,
+          "3-4ft": 100.95,
           "4-5ft": 129.95,
           "5-6ft": 153.95,
           "6-7ft": 183.95
@@ -983,8 +983,8 @@
           "6-7ft": 170.95
         },
         "bing-cherry-tree:fast-growing-trees": {
-          "1-2ft": 49.95,
-          "2-3ft": 59.95,
+          "1-2ft": 53.95,
+          "2-3ft": 65.95,
           "3-4ft": 107.95,
           "4-5ft": 136.95,
           "5-6ft": 168.95,
@@ -1024,8 +1024,7 @@
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
           "3gal": 81.95,
-          "5gal": 128.95,
-          "7gal": 217.95
+          "5gal": 128.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
           "quart": 15.95,
@@ -1099,12 +1098,14 @@
         "forest-pansy-redbud:fast-growing-trees": {
           "1-2ft": 56.95,
           "4-5ft": 152.95,
+          "5-6ft": 181.95,
           "6-7ft": 217.95
         },
         "crape-myrtle:fast-growing-trees": {
           "1-2ft-multistem": 64.95,
           "4-5ft-multistem": 149.95,
-          "5-6ft-multistem": 160.95
+          "5-6ft-multistem": 160.95,
+          "6-7ft-multistem": 193.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
           "1gal": 23.95,
@@ -1145,8 +1146,10 @@
         "catmint-walkers-low:fast-growing-trees": {
           "quart": 13.95
         },
+        "russian-sage:fast-growing-trees": {
+          "1gal": 28.95
+        },
         "october-glory-maple:fast-growing-trees": {
-          "3-4ft": 60.95,
           "4-5ft": 81.95,
           "6-7ft": 111.95
         },
@@ -1158,7 +1161,6 @@
         },
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 79.95,
-          "4-5ft": 97.95,
           "6-7ft": 169.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
@@ -1209,7 +1211,7 @@
           "3-4ft": 112.95
         }
       },
-      "health": "degraded"
+      "health": "healthy"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1258,8 +1260,8 @@
           "quart": 15.74
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 27.99,
-          "quart": 14.69
+          "1gal": 29.99,
+          "quart": 15.74
         }
       },
       "health": "healthy"
@@ -2252,7 +2254,7 @@
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
       "2-3ft": 86.95,
-      "3-4ft": 69.95,
+      "3-4ft": 100.95,
       "4-5ft": 129.95,
       "5-6ft": 153.95,
       "6-7ft": 183.95
@@ -2269,8 +2271,8 @@
       "6-7ft": 170.95
     },
     "bing-cherry-tree:fast-growing-trees": {
-      "1-2ft": 49.95,
-      "2-3ft": 59.95,
+      "1-2ft": 53.95,
+      "2-3ft": 65.95,
       "3-4ft": 107.95,
       "4-5ft": 136.95,
       "5-6ft": 168.95,
@@ -2310,8 +2312,7 @@
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
       "3gal": 81.95,
-      "5gal": 128.95,
-      "7gal": 217.95
+      "5gal": 128.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
       "quart": 15.95,
@@ -2385,12 +2386,14 @@
     "forest-pansy-redbud:fast-growing-trees": {
       "1-2ft": 56.95,
       "4-5ft": 152.95,
+      "5-6ft": 181.95,
       "6-7ft": 217.95
     },
     "crape-myrtle:fast-growing-trees": {
       "1-2ft-multistem": 64.95,
       "4-5ft-multistem": 149.95,
-      "5-6ft-multistem": 160.95
+      "5-6ft-multistem": 160.95,
+      "6-7ft-multistem": 193.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
       "1gal": 23.95,
@@ -2431,8 +2434,10 @@
     "catmint-walkers-low:fast-growing-trees": {
       "quart": 13.95
     },
+    "russian-sage:fast-growing-trees": {
+      "1gal": 28.95
+    },
     "october-glory-maple:fast-growing-trees": {
-      "3-4ft": 60.95,
       "4-5ft": 81.95,
       "6-7ft": 111.95
     },
@@ -2444,7 +2449,6 @@
     },
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 79.95,
-      "4-5ft": 97.95,
       "6-7ft": 169.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
@@ -2530,8 +2534,8 @@
       "quart": 15.74
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 27.99,
-      "quart": 14.69
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "limelight-hydrangea:great-garden-plants": {
       "quart": 21.99,
@@ -2579,8 +2583,6 @@
       "default": 25.99
     }
   },
-  "degraded_retailers": [
-    "fast-growing-trees"
-  ],
-  "pipeline_status": "degraded"
+  "degraded_retailers": [],
+  "pipeline_status": "healthy"
 }
