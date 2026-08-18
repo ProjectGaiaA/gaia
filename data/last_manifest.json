@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-18T12:43:14.831555+00:00",
+  "timestamp": "2026-08-18T23:10:12.654766+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -942,10 +942,10 @@
       "status": "completed",
       "products_expected": 68,
       "products_found": 64,
-      "products_no_sizes": 10,
-      "products_priced": 54,
+      "products_no_sizes": 8,
+      "products_priced": 56,
       "products_error": 4,
-      "prices_collected": 150,
+      "prices_collected": 153,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -957,6 +957,12 @@
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 32.95,
           "3gal": 90.95
+        },
+        "bloomstruck-hydrangea:fast-growing-trees": {
+          "2gal": 55.95
+        },
+        "summer-crush-hydrangea:fast-growing-trees": {
+          "2gal": 54.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
           "quart": 35.95
@@ -1003,6 +1009,7 @@
           "3-4ft": 76.95,
           "4-5ft": 146.95,
           "5-6ft": 246.95,
+          "6-7ft": 272.95,
           "6-7ft-jumbo": 602.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
@@ -1102,7 +1109,6 @@
           "6-7ft": 217.95
         },
         "crape-myrtle:fast-growing-trees": {
-          "1-2ft-multistem": 64.95,
           "4-5ft-multistem": 149.95,
           "5-6ft-multistem": 160.95
         },
@@ -1143,7 +1149,8 @@
           "1gal": 26.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "quart": 13.95
+          "quart": 13.95,
+          "1gal": 26.95
         },
         "october-glory-maple:fast-growing-trees": {
           "4-5ft": 81.95,
@@ -1207,7 +1214,7 @@
           "3-4ft": 112.95
         }
       },
-      "health": "degraded"
+      "health": "healthy"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1221,19 +1228,19 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
-          "1gal": 29.99,
+          "1gal": 39.99,
           "quart": 15.74
         },
         "little-lime-hydrangea:proven-winners-direct": {
           "1gal": 39.99,
-          "quart": 16.79
+          "quart": 20.99
         },
         "incrediball-hydrangea:proven-winners-direct": {
-          "1gal": 29.99,
+          "1gal": 39.99,
           "quart": 15.74
         },
         "fire-light-hydrangea:proven-winners-direct": {
-          "1gal": 29.99,
+          "1gal": 39.99,
           "quart": 15.74
         },
         "astilbe:proven-winners-direct": {
@@ -1300,9 +1307,9 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 7,
-      "products_error": 1,
-      "prices_collected": 11,
+      "products_found": 6,
+      "products_error": 2,
+      "prices_collected": 10,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1324,17 +1331,14 @@
         "duke-blueberry:stark-bros": {
           "default": 25.99
         },
-        "patriot-blueberry:stark-bros": {
-          "default": 27.99
-        },
         "pink-lemonade-blueberry:stark-bros": {
           "default": 25.99
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     }
   ],
-  "total_prices_collected": 714,
+  "total_prices_collected": 716,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2242,6 +2246,12 @@
       "1gal": 32.95,
       "3gal": 90.95
     },
+    "bloomstruck-hydrangea:fast-growing-trees": {
+      "2gal": 55.95
+    },
+    "summer-crush-hydrangea:fast-growing-trees": {
+      "2gal": 54.95
+    },
     "little-lime-hydrangea:fast-growing-trees": {
       "quart": 35.95
     },
@@ -2287,6 +2297,7 @@
       "3-4ft": 76.95,
       "4-5ft": 146.95,
       "5-6ft": 246.95,
+      "6-7ft": 272.95,
       "6-7ft-jumbo": 602.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
@@ -2386,7 +2397,6 @@
       "6-7ft": 217.95
     },
     "crape-myrtle:fast-growing-trees": {
-      "1-2ft-multistem": 64.95,
       "4-5ft-multistem": 149.95,
       "5-6ft-multistem": 160.95
     },
@@ -2427,7 +2437,8 @@
       "1gal": 26.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "quart": 13.95
+      "quart": 13.95,
+      "1gal": 26.95
     },
     "october-glory-maple:fast-growing-trees": {
       "4-5ft": 81.95,
@@ -2491,19 +2502,19 @@
       "3-4ft": 112.95
     },
     "limelight-hydrangea:proven-winners-direct": {
-      "1gal": 29.99,
+      "1gal": 39.99,
       "quart": 15.74
     },
     "little-lime-hydrangea:proven-winners-direct": {
       "1gal": 39.99,
-      "quart": 16.79
+      "quart": 20.99
     },
     "incrediball-hydrangea:proven-winners-direct": {
-      "1gal": 29.99,
+      "1gal": 39.99,
       "quart": 15.74
     },
     "fire-light-hydrangea:proven-winners-direct": {
-      "1gal": 29.99,
+      "1gal": 39.99,
       "quart": 15.74
     },
     "astilbe:proven-winners-direct": {
@@ -2568,15 +2579,12 @@
     "duke-blueberry:stark-bros": {
       "default": 25.99
     },
-    "patriot-blueberry:stark-bros": {
-      "default": 27.99
-    },
     "pink-lemonade-blueberry:stark-bros": {
       "default": 25.99
     }
   },
   "degraded_retailers": [
-    "fast-growing-trees"
+    "stark-bros"
   ],
   "pipeline_status": "degraded"
 }
