@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-17T23:13:40.638783+00:00",
+  "timestamp": "2026-08-18T12:43:14.831555+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -942,10 +942,10 @@
       "status": "completed",
       "products_expected": 68,
       "products_found": 64,
-      "products_no_sizes": 9,
-      "products_priced": 55,
+      "products_no_sizes": 10,
+      "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 152,
+      "prices_collected": 150,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1104,8 +1104,7 @@
         "crape-myrtle:fast-growing-trees": {
           "1-2ft-multistem": 64.95,
           "4-5ft-multistem": 149.95,
-          "5-6ft-multistem": 160.95,
-          "6-7ft-multistem": 193.95
+          "5-6ft-multistem": 160.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
           "1gal": 23.95,
@@ -1145,9 +1144,6 @@
         },
         "catmint-walkers-low:fast-growing-trees": {
           "quart": 13.95
-        },
-        "russian-sage:fast-growing-trees": {
-          "1gal": 28.95
         },
         "october-glory-maple:fast-growing-trees": {
           "4-5ft": 81.95,
@@ -1211,7 +1207,7 @@
           "3-4ft": 112.95
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1310,15 +1306,15 @@
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "semi-dwarf-ez-start": 64.99
+          "dwarf-ez-start": 63.99,
+          "semi-dwarf-ez-start": 54.99
         },
         "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 75.99
+          "semi-dwarf-ez-start": 67.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
-          "semi-dwarf-ez-start": 64.99,
+          "semi-dwarf-ez-start": 57.99,
           "supreme-ez-start": 75.99,
           "standard-ez-start": 64.99
         },
@@ -1338,7 +1334,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 716,
+  "total_prices_collected": 714,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2392,8 +2388,7 @@
     "crape-myrtle:fast-growing-trees": {
       "1-2ft-multistem": 64.95,
       "4-5ft-multistem": 149.95,
-      "5-6ft-multistem": 160.95,
-      "6-7ft-multistem": 193.95
+      "5-6ft-multistem": 160.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
       "1gal": 23.95,
@@ -2433,9 +2428,6 @@
     },
     "catmint-walkers-low:fast-growing-trees": {
       "quart": 13.95
-    },
-    "russian-sage:fast-growing-trees": {
-      "1gal": 28.95
     },
     "october-glory-maple:fast-growing-trees": {
       "4-5ft": 81.95,
@@ -2558,15 +2550,15 @@
       "quart": 23.99
     },
     "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "semi-dwarf-ez-start": 64.99
+      "dwarf-ez-start": 63.99,
+      "semi-dwarf-ez-start": 54.99
     },
     "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 75.99
+      "semi-dwarf-ez-start": 67.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
-      "semi-dwarf-ez-start": 64.99,
+      "semi-dwarf-ez-start": 57.99,
       "supreme-ez-start": 75.99,
       "standard-ez-start": 64.99
     },
@@ -2583,6 +2575,8 @@
       "default": 25.99
     }
   },
-  "degraded_retailers": [],
-  "pipeline_status": "healthy"
+  "degraded_retailers": [
+    "fast-growing-trees"
+  ],
+  "pipeline_status": "degraded"
 }

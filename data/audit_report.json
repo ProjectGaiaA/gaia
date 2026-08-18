@@ -39,7 +39,7 @@
       "what": "a price that moved to a different size label since the previous run"
     },
     "E_cross_page_agreement": {
-      "denominator": 521,
+      "denominator": 519,
       "denominator_floor": 280,
       "denominator_unit": "cross-page price quotes",
       "known_findings": 0,
@@ -50,12 +50,12 @@
     "F_stock_consistency": {
       "counts": {
         "latest_rows": 277,
-        "mobile_price_links": 273,
+        "mobile_price_links": 270,
         "pages": 102,
         "retailer_variant_availability": {
           "fast-growing-trees": {
             "None": 2,
-            "True": 148
+            "True": 146
           },
           "great-garden-plants": {
             "False": 2,
@@ -82,7 +82,7 @@
           }
         },
         "retailers_all_unknown_stock": [],
-        "schema_instock_pages": 87,
+        "schema_instock_pages": 86,
         "sold_out_price_cells": 294,
         "sold_out_rows": 96,
         "table_rows": 276
@@ -97,11 +97,11 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-08-15T23:13:40.637332+00:00",
+    "cutoff": "2026-08-16T12:43:14.829859+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-08-17T23:13:40.637332+00:00",
+    "newest_row": "2026-08-18T12:43:14.829859+00:00",
     "pairs_fresh": 277,
     "pairs_stale": 5,
     "pairs_total": 282,
@@ -139,34 +139,34 @@
     "stale_at_reporting_retailers": 5,
     "stalest": [
       {
-        "hours": 3143.4,
+        "hours": 3156.8,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 3030.6,
+        "hours": 3044.1,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 2600.2,
+        "hours": 2613.7,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1183.7,
+        "hours": 1197.2,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 993.2,
+        "hours": 1006.7,
         "plant": "bing-cherry-tree",
         "retailer": "stark-bros"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-08-17T23:17:49.127568+00:00",
+  "generated": "2026-08-18T12:47:15.111425+00:00",
   "notices": [
     "5 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below"
   ],
