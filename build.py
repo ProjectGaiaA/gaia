@@ -283,24 +283,81 @@ def normalize_size_tier(tier: str) -> str:
 # DIFFERENT PRODUCT at the same nominal size (the "-jumbo" precedent). Composed
 # rather than enumerated because the base set is open: every height, quart and
 # gallon tier can carry "-multistem".
+#
+# TWO consumers, not one. get_size_label() below reads this to build a label,
+# and _tier_rank() inside build_price_table() reads it to decide desktop
+# COLUMN ORDER — a qualified tier sorts next to the base it qualifies instead
+# of alphabetically at the far right. Adding an entry here therefore moves a
+# column as well as renaming it. The four entries added for A-24 move exactly
+# one live tier: `standard-ez-start` goes from sorts-last (rank 46) to
+# sorts-beside-`standard` (rank 34). Verified to change no published page —
+# bartlett-pear-tree is the only plant carrying it and holds no tier ranked
+# between the two — but anyone touching this tuple must check both readers.
 _TIER_SUFFIX_LABELS = (
     ("-multistem", "Multi-Stem"),
     ("-bareroot", "Bare Root"),
+    ("-treeform", "Tree Form"),
+    # "-ez-start" must be tried before "-jumbo"/"-potted" would ever apply to
+    # the same key; it is the rootstock grade that varies, not the grade word.
+    # `standard-ez-start` used to fall through to .title() and shipped
+    # "Standard Ez Start" (A-24).
+    ("-ez-start", "EZ Start"),
+    ("-jumbo", "Jumbo"),
+    ("-potted", "Potted"),
 )
 
 
 def _dimension_label(base: str) -> str | None:
     """Human label for a dimension-shaped tier id, or None if it is not one.
 
-    `12-18in` -> 12-18",  `3inch` -> 3",  `2-5inch` -> 2.5"
-    ('.' is carried as '-' in tier ids; PWD's "0.65 Gallon" is `0-65-gallon`.)
+    A tier id carries "." as "-", so a decimal size and a range are the same
+    shape and only the trailing unit tells them apart. Every branch below is
+    anchored on that unit.
+
+    `12-18in`   -> 12-18"        (inch span, Spring Hill FIELD grades)
+    `3inch`     -> 3"            (single inch)
+    `2-5inch`   -> 2.5"          (decimal inch: "." carried as "-")
+    `6-inch`    -> 6"            (FGT/PlantingTree spell it out)
+    `2-4ft`     -> 2-4 ft        (height span; A-24 shipped "2 4Ft")
+    `2-5-pot`   -> 2.5" Pot      (Spring Hill '2.5" POT')
+    `0-65-gallon` -> 0.65 Gallon (PWD's "0.65 Gallon"; A-24 shipped "0 65 Gallon")
     """
     span = re.fullmatch(r'(\d+)-(\d+)in', base)
     if span:
         return f'{span.group(1)}-{span.group(2)}"'
-    single = re.fullmatch(r'(\d+(?:-\d+)?)inch', base)
-    if single:
-        return f'{single.group(1).replace("-", ".")}"'
+    # "-?inch" so `6-inch` and `6inch` are both dimensions. They remain
+    # DISTINCT tier ids — collapsing them is A-11/A-29's job, not this
+    # function's — but neither may render as "6 Inch".
+    #
+    # The scraper's Step-9 fallback slugifies any variant title it does not
+    # recognise, so a DECIMAL ('2.5 Inch' -> `2-5-inch`) and a RANGE
+    # ('12-18 Inch' -> `12-18-inch`) reach this function in the same shape.
+    # Only the digit count separates them, and getting it wrong is not a
+    # cosmetic slip: rendering `12-18-inch` as 12.18" publishes a size no
+    # retailer ever quoted. Single digit either side reads as the decimal
+    # (Spring Hill's 'DORMANT 2.5" POT' is already the live tier `2-5inch`);
+    # anything wider reads as the span; anything else is not a dimension at
+    # all and returns None rather than guess.
+    inches = re.fullmatch(r'(\d+)(?:-(\d+))?-?inch', base)
+    if inches:
+        lo, hi = inches.group(1), inches.group(2)
+        if hi is None:
+            return f'{lo}"'
+        if len(lo) == 1 and len(hi) == 1:
+            return f'{lo}.{hi}"'
+        return f'{lo}-{hi}"'
+    feet = re.fullmatch(r'(\d+)-(\d+)ft', base)
+    if feet:
+        return f'{feet.group(1)}-{feet.group(2)} ft'
+    # A decimal pot or container size. Whole-number forms ("3-pot",
+    # "1-gallon") are already aliased to canonical ids before they reach
+    # here, so these two patterns only ever see the decimal spellings.
+    pot = re.fullmatch(r'(\d+)-(\d+)-pot', base)
+    if pot:
+        return f'{pot.group(1)}.{pot.group(2)}" Pot'
+    gallon = re.fullmatch(r'(\d+)-(\d+)-gallon', base)
+    if gallon:
+        return f'{gallon.group(1)}.{gallon.group(2)} Gallon'
     return None
 
 
