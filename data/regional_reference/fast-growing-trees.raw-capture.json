@@ -1,0 +1,3148 @@
+{
+ "endpoint": "https://fast-growing-trees-com.myshopify.com/api/ucp/mcp",
+ "captured_at": "2026-08-20T20:15:02Z",
+ "targets": {
+  "stella-cherry-tree": "stella-cherry-tree",
+  "eastern-redbud": "easternredbud",
+  "sunshine-blue-blueberry": "sunshine-blue-blueberry-bush-ca",
+  "sunshine-blue-blueberry-bush-national": "sunshine-blue-blueberry-bush",
+  "bing-cherry-tree": "bingcherry",
+  "fuji-apple-tree": "low-chill-fuji-apple-tree",
+  "honeycrisp-apple-tree": "honeycrisp-apple-tree",
+  "meyer-lemon-tree": "meyer-lemon-tree",
+  "pink-lemonade-blueberry": "pink-lemonade-blueberry",
+  "santa-rosa-plum": "santarosaplum"
+ },
+ "call_cap": 40,
+ "products": {
+  "stella-cherry-tree": {
+   "matched_by": "handle",
+   "product": {
+    "id": "gid://shopify/Product/1532757966900",
+    "title": "Stella Cherry Tree",
+    "url": "https://checkout.trees.com/products/stella-cherry-tree",
+    "handle": "stella-cherry-tree",
+    "price_range": {
+     "min": {
+      "amount": 5395,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 19895,
+      "currency": "USD"
+     }
+    },
+    "list_price_range": {
+     "min": {
+      "amount": 6195,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 19895,
+      "currency": "USD"
+     }
+    },
+    "variants": [
+     {
+      "id": "gid://shopify/ProductVariant/42705728372798",
+      "sku": "31050",
+      "title": "1 Quart",
+      "price": {
+       "amount": 5895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 6195,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1 Quart"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/40141826228286",
+      "sku": "17528",
+      "title": "1-2 ft.",
+      "price": {
+       "amount": 5395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 6295,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1-2 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940818870324",
+      "sku": "11371",
+      "title": "2-3 ft.",
+      "price": {
+       "amount": 8695,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 8695,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2-3 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940819001396",
+      "sku": "11372",
+      "title": "3-4 ft.",
+      "price": {
+       "amount": 10695,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10695,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3-4 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940818903092",
+      "sku": "11373",
+      "title": "4-5 ft.",
+      "price": {
+       "amount": 13095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 13095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "4-5 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940818935860",
+      "sku": "11374",
+      "title": "5-6 ft.",
+      "price": {
+       "amount": 16095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 16095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5-6 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940818968628",
+      "sku": "11375",
+      "title": "6-7 ft.",
+      "price": {
+       "amount": 19895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 19895,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "6-7 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128886394942",
+      "sku": "12340",
+      "title": "1 Quart (CA)",
+      "price": {
+       "amount": 5895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 6195,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1 Quart (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128886427710",
+      "sku": "12341",
+      "title": "2-3 ft. (CA)",
+      "price": {
+       "amount": 7895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 8295,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2-3 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128886460478",
+      "sku": "30918",
+      "title": "3-4 ft. (CA)",
+      "price": {
+       "amount": 9695,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10195,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3-4 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128886493246",
+      "sku": "30919",
+      "title": "4-5 ft. (CA)",
+      "price": {
+       "amount": 11895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 12495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "4-5 ft. (CA)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128886526014",
+      "sku": "30938",
+      "title": "5-6 ft. (CA)",
+      "price": {
+       "amount": 14695,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 15495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5-6 ft. (CA)"
+       }
+      ],
+      "_from_topup": true
+     }
+    ],
+    "options": [
+     {
+      "name": "Size",
+      "values": [
+       {
+        "label": "1 Quart"
+       },
+       {
+        "label": "1-2 ft."
+       },
+       {
+        "label": "2-3 ft."
+       },
+       {
+        "label": "3-4 ft."
+       },
+       {
+        "label": "4-5 ft."
+       },
+       {
+        "label": "5-6 ft."
+       },
+       {
+        "label": "6-7 ft."
+       },
+       {
+        "label": "1 Quart (CA)"
+       },
+       {
+        "label": "2-3 ft. (CA)"
+       },
+       {
+        "label": "3-4 ft. (CA)"
+       },
+       {
+        "label": "4-5 ft. (CA)"
+       },
+       {
+        "label": "5-6 ft. (CA)"
+       }
+      ]
+     }
+    ],
+    "categories": [
+     {
+      "value": "gid://shopify/TaxonomyCategory/na",
+      "taxonomy": "shopify"
+     }
+    ],
+    "tags": [
+     "CHE-STE"
+    ]
+   },
+   "truncated_on_capture": true
+  },
+  "eastern-redbud": {
+   "matched_by": "handle",
+   "product": {
+    "id": "gid://shopify/Product/1532736667700",
+    "title": "Eastern Redbud Tree",
+    "url": "https://checkout.trees.com/products/easternredbud",
+    "handle": "easternredbud",
+    "price_range": {
+     "min": {
+      "amount": 6995,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 53395,
+      "currency": "USD"
+     }
+    },
+    "list_price_range": {
+     "min": {
+      "amount": 8495,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 53395,
+      "currency": "USD"
+     }
+    },
+    "variants": [
+     {
+      "id": "gid://shopify/ProductVariant/42706816073790",
+      "sku": "31060",
+      "title": "5 Gallon",
+      "price": {
+       "amount": 13695,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 13695,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "5 Gallon"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940754087988",
+      "sku": "11183",
+      "title": "1-2 ft.",
+      "price": {
+       "amount": 8495,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 8495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "1-2 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940754055220",
+      "sku": "11184",
+      "title": "2-3 ft.",
+      "price": {
+       "amount": 6995,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 9295,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "2-3 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940754120756",
+      "sku": "11185",
+      "title": "3-4 ft.",
+      "price": {
+       "amount": 7995,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 11095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "3-4 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940754153524",
+      "sku": "10056",
+      "title": "4-5 ft.",
+      "price": {
+       "amount": 9495,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 15995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "4-5 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940754186292",
+      "sku": "10057",
+      "title": "5-6 ft.",
+      "price": {
+       "amount": 12095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 15895,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "5-6 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940754219060",
+      "sku": "11186",
+      "title": "6-7 ft.",
+      "price": {
+       "amount": 20595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 21695,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "6-7 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/41004111659070",
+      "sku": "19962",
+      "title": "5-6 ft. Jumbo",
+      "price": {
+       "amount": 53395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 53395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "5-6 ft. Jumbo"
+       }
+      ]
+     }
+    ],
+    "options": [
+     {
+      "name": "Height",
+      "values": [
+       {
+        "label": "5 Gallon"
+       },
+       {
+        "label": "1-2 ft."
+       },
+       {
+        "label": "2-3 ft."
+       },
+       {
+        "label": "3-4 ft."
+       },
+       {
+        "label": "4-5 ft."
+       },
+       {
+        "label": "5-6 ft."
+       },
+       {
+        "label": "6-7 ft."
+       },
+       {
+        "label": "5-6 ft. Jumbo"
+       }
+      ]
+     }
+    ],
+    "categories": [
+     {
+      "value": "gid://shopify/TaxonomyCategory/na",
+      "taxonomy": "shopify"
+     }
+    ],
+    "tags": [
+     "bestsellers-resort",
+     "RED-EAS"
+    ]
+   }
+  },
+  "sunshine-blue-blueberry-bush-national": {
+   "matched_by": "handle",
+   "product": {
+    "id": "gid://shopify/Product/7079574700094",
+    "title": "Sunshine Blue Blueberry Bush",
+    "url": "https://checkout.trees.com/products/sunshine-blue-blueberry-bush",
+    "handle": "sunshine-blue-blueberry-bush",
+    "price_range": {
+     "min": {
+      "amount": 3095,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 10295,
+      "currency": "USD"
+     }
+    },
+    "list_price_range": {
+     "min": {
+      "amount": 3295,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 10295,
+      "currency": "USD"
+     }
+    },
+    "variants": [
+     {
+      "id": "gid://shopify/ProductVariant/42456655626302",
+      "sku": "30673",
+      "title": "1 Gallon",
+      "price": {
+       "amount": 3395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 3395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1 Gallon"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/41872522903614",
+      "sku": "21235",
+      "title": "3 Gallon",
+      "price": {
+       "amount": 10295,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10295,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3 Gallon"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128892817470",
+      "sku": "30049",
+      "title": "1 Gallon (OR)",
+      "price": {
+       "amount": 3095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 3295,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1 Gallon (OR)"
+       }
+      ]
+     }
+    ],
+    "options": [
+     {
+      "name": "Size",
+      "values": [
+       {
+        "label": "1 Gallon"
+       },
+       {
+        "label": "3 Gallon"
+       },
+       {
+        "label": "1 Gallon (OR)"
+       }
+      ]
+     }
+    ],
+    "categories": [
+     {
+      "value": "gid://shopify/TaxonomyCategory/na",
+      "taxonomy": "shopify"
+     }
+    ],
+    "tags": [
+     "BLU-SUN"
+    ]
+   }
+  },
+  "bing-cherry-tree": {
+   "matched_by": "handle",
+   "product": {
+    "id": "gid://shopify/Product/1532745613364",
+    "title": "Bing Cherry Tree",
+    "url": "https://checkout.trees.com/products/bingcherry",
+    "handle": "bingcherry",
+    "price_range": {
+     "min": {
+      "amount": 4995,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 20795,
+      "currency": "USD"
+     }
+    },
+    "list_price_range": {
+     "min": {
+      "amount": 7095,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 20795,
+      "currency": "USD"
+     }
+    },
+    "variants": [
+     {
+      "id": "gid://shopify/ProductVariant/40141823115326",
+      "sku": "17531",
+      "title": "1-2 ft.",
+      "price": {
+       "amount": 5395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 7095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1-2 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940782759988",
+      "sku": "11353",
+      "title": "2-3 ft.",
+      "price": {
+       "amount": 6595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 8995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2-3 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940782792756",
+      "sku": "11354",
+      "title": "3-4 ft.",
+      "price": {
+       "amount": 10795,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3-4 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940782825524",
+      "sku": "11355",
+      "title": "4-5 ft.",
+      "price": {
+       "amount": 13695,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 13695,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "4-5 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940782858292",
+      "sku": "11356",
+      "title": "5-6 ft.",
+      "price": {
+       "amount": 16895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 16895,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5-6 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940782891060",
+      "sku": "11357",
+      "title": "6-7 ft.",
+      "price": {
+       "amount": 20795,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 20795,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "6-7 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128893177918",
+      "sku": "12233",
+      "title": "2-3 ft. (CA)",
+      "price": {
+       "amount": 5995,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 8995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2-3 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128893210686",
+      "sku": "12426",
+      "title": "1-2 ft. (CA)",
+      "price": {
+       "amount": 4995,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 7095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1-2 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128893243454",
+      "sku": "30772",
+      "title": "5-6 ft. (CA)",
+      "price": {
+       "amount": 15395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 16695,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5-6 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128893276222",
+      "sku": "30888",
+      "title": "3-4 ft. (CA)",
+      "price": {
+       "amount": 9795,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3-4 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128893308990",
+      "sku": "30889",
+      "title": "4-5 ft. (CA)",
+      "price": {
+       "amount": 12495,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 13495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "4-5 ft. (CA)"
+       }
+      ],
+      "_from_topup": true
+     }
+    ],
+    "options": [
+     {
+      "name": "Size",
+      "values": [
+       {
+        "label": "1-2 ft."
+       },
+       {
+        "label": "2-3 ft."
+       },
+       {
+        "label": "3-4 ft."
+       },
+       {
+        "label": "4-5 ft."
+       },
+       {
+        "label": "5-6 ft."
+       },
+       {
+        "label": "6-7 ft."
+       },
+       {
+        "label": "2-3 ft. (CA)"
+       },
+       {
+        "label": "1-2 ft. (CA)"
+       },
+       {
+        "label": "5-6 ft. (CA)"
+       },
+       {
+        "label": "3-4 ft. (CA)"
+       },
+       {
+        "label": "4-5 ft. (CA)"
+       }
+      ]
+     }
+    ],
+    "categories": [
+     {
+      "value": "gid://shopify/TaxonomyCategory/na",
+      "taxonomy": "shopify"
+     }
+    ],
+    "tags": [
+     "bestsellers-resort",
+     "CHE-BIN"
+    ]
+   },
+   "truncated_on_capture": true
+  },
+  "fuji-apple-tree": {
+   "matched_by": "handle",
+   "product": {
+    "id": "gid://shopify/Product/1532741845044",
+    "title": "Fuji Apple Tree",
+    "url": "https://checkout.trees.com/products/low-chill-fuji-apple-tree",
+    "handle": "low-chill-fuji-apple-tree",
+    "price_range": {
+     "min": {
+      "amount": 7595,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 17095,
+      "currency": "USD"
+     }
+    },
+    "list_price_range": {
+     "min": {
+      "amount": 7595,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 17095,
+      "currency": "USD"
+     }
+    },
+    "variants": [
+     {
+      "id": "gid://shopify/ProductVariant/13940770930740",
+      "sku": "10767",
+      "title": "1-2 ft.",
+      "price": {
+       "amount": 9195,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 9195,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1-2 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940770963508",
+      "sku": "10300",
+      "title": "2-3 ft.",
+      "price": {
+       "amount": 8395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 8395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2-3 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940770996276",
+      "sku": "10301",
+      "title": "3-4 ft.",
+      "price": {
+       "amount": 8695,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 9595,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3-4 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940771029044",
+      "sku": "10124",
+      "title": "4-5 ft.",
+      "price": {
+       "amount": 11395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 11395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "4-5 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940771061812",
+      "sku": "10125",
+      "title": "5-6 ft.",
+      "price": {
+       "amount": 10995,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 12495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5-6 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940771094580",
+      "sku": "10302",
+      "title": "6-7 ft.",
+      "price": {
+       "amount": 17095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 17095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "6-7 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128884691006",
+      "sku": "12227",
+      "title": "2-3 ft. (CA)",
+      "price": {
+       "amount": 7595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 7595,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2-3 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128884723774",
+      "sku": "16610",
+      "title": "1-2 ft. (CA)",
+      "price": {
+       "amount": 8395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 8395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1-2 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128884756542",
+      "sku": "30776",
+      "title": "5-6 ft. (CA)",
+      "price": {
+       "amount": 9995,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 12495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5-6 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128884789310",
+      "sku": "30901",
+      "title": "3-4 ft. (CA)",
+      "price": {
+       "amount": 7995,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 9195,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3-4 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128884822078",
+      "sku": "30902",
+      "title": "4-5 ft. (CA)",
+      "price": {
+       "amount": 10395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10895,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "4-5 ft. (CA)"
+       }
+      ],
+      "_from_topup": true
+     }
+    ],
+    "options": [
+     {
+      "name": "Size",
+      "values": [
+       {
+        "label": "1-2 ft."
+       },
+       {
+        "label": "2-3 ft."
+       },
+       {
+        "label": "3-4 ft."
+       },
+       {
+        "label": "4-5 ft."
+       },
+       {
+        "label": "5-6 ft."
+       },
+       {
+        "label": "6-7 ft."
+       },
+       {
+        "label": "2-3 ft. (CA)"
+       },
+       {
+        "label": "1-2 ft. (CA)"
+       },
+       {
+        "label": "5-6 ft. (CA)"
+       },
+       {
+        "label": "3-4 ft. (CA)"
+       },
+       {
+        "label": "4-5 ft. (CA)"
+       }
+      ]
+     }
+    ],
+    "categories": [
+     {
+      "value": "gid://shopify/TaxonomyCategory/na",
+      "taxonomy": "shopify"
+     }
+    ],
+    "tags": [
+     "APP-FUJ",
+     "bestsellers-resort"
+    ]
+   },
+   "truncated_on_capture": true
+  },
+  "honeycrisp-apple-tree": {
+   "matched_by": "handle",
+   "product": {
+    "id": "gid://shopify/Product/1532755017780",
+    "title": "Honeycrisp\u2122 Apple Tree",
+    "url": "https://checkout.trees.com/products/honeycrisp-apple-tree",
+    "handle": "honeycrisp-apple-tree",
+    "price_range": {
+     "min": {
+      "amount": 6995,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 18395,
+      "currency": "USD"
+     }
+    },
+    "list_price_range": {
+     "min": {
+      "amount": 7595,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 18395,
+      "currency": "USD"
+     }
+    },
+    "variants": [
+     {
+      "id": "gid://shopify/ProductVariant/42705693278270",
+      "sku": "31035",
+      "title": "1-2 ft.",
+      "price": {
+       "amount": 7595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 7595,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1-2 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940810907700",
+      "sku": "10004",
+      "title": "2-3 ft.",
+      "price": {
+       "amount": 8695,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 8695,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2-3 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940811038772",
+      "sku": "10005",
+      "title": "3-4 ft.",
+      "price": {
+       "amount": 10095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3-4 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940811071540",
+      "sku": "10064",
+      "title": "4-5 ft.",
+      "price": {
+       "amount": 12995,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 12995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "4-5 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940811104308",
+      "sku": "10006",
+      "title": "5-6 ft.",
+      "price": {
+       "amount": 15395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 15395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5-6 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940811137076",
+      "sku": "10065",
+      "title": "6-7 ft.",
+      "price": {
+       "amount": 18395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 18395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "6-7 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128885116990",
+      "sku": "12229",
+      "title": "2-3 ft. (CA)",
+      "price": {
+       "amount": 7895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 8495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2-3 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128885149758",
+      "sku": "12428",
+      "title": "1-2 ft. (CA)",
+      "price": {
+       "amount": 7595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 7595,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1-2 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128885182526",
+      "sku": "30777",
+      "title": "5-6 ft. (CA)",
+      "price": {
+       "amount": 13995,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 14695,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5-6 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128885215294",
+      "sku": "30909",
+      "title": "3-4 ft. (CA)",
+      "price": {
+       "amount": 6995,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3-4 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128885248062",
+      "sku": "30910",
+      "title": "4-5 ft. (CA)",
+      "price": {
+       "amount": 11795,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 12395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "4-5 ft. (CA)"
+       }
+      ],
+      "_from_topup": true
+     }
+    ],
+    "options": [
+     {
+      "name": "Size",
+      "values": [
+       {
+        "label": "1-2 ft."
+       },
+       {
+        "label": "2-3 ft."
+       },
+       {
+        "label": "3-4 ft."
+       },
+       {
+        "label": "4-5 ft."
+       },
+       {
+        "label": "5-6 ft."
+       },
+       {
+        "label": "6-7 ft."
+       },
+       {
+        "label": "2-3 ft. (CA)"
+       },
+       {
+        "label": "1-2 ft. (CA)"
+       },
+       {
+        "label": "5-6 ft. (CA)"
+       },
+       {
+        "label": "3-4 ft. (CA)"
+       },
+       {
+        "label": "4-5 ft. (CA)"
+       }
+      ]
+     }
+    ],
+    "categories": [
+     {
+      "value": "gid://shopify/TaxonomyCategory/na",
+      "taxonomy": "shopify"
+     }
+    ],
+    "tags": [
+     "APP-HON",
+     "bestsellers-resort"
+    ]
+   },
+   "truncated_on_capture": true
+  },
+  "meyer-lemon-tree": {
+   "matched_by": "handle",
+   "product": {
+    "id": "gid://shopify/Product/1532750659636",
+    "title": "Meyer Lemon Tree",
+    "url": "https://checkout.trees.com/products/meyer-lemon-tree",
+    "handle": "meyer-lemon-tree",
+    "price_range": {
+     "min": {
+      "amount": 6595,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 107895,
+      "currency": "USD"
+     }
+    },
+    "list_price_range": {
+     "min": {
+      "amount": 10495,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 107895,
+      "currency": "USD"
+     }
+    },
+    "variants": [
+     {
+      "id": "gid://shopify/ProductVariant/13940798521396",
+      "sku": "10032",
+      "title": "1-2 ft. Tree",
+      "price": {
+       "amount": 6595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "1-2 ft. Tree"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940798718004",
+      "sku": "10102",
+      "title": "2-3 ft. Tree",
+      "price": {
+       "amount": 9895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 14495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "2-3 ft. Tree"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940798750772",
+      "sku": "10104",
+      "title": "3-4 ft. Tree",
+      "price": {
+       "amount": 13595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 19995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "3-4 ft. Tree"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940798783540",
+      "sku": "10033",
+      "title": "4-5 ft. Tree",
+      "price": {
+       "amount": 19295,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 27595,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "4-5 ft. Tree"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940798816308",
+      "sku": "10034",
+      "title": "5-6 ft. Tree",
+      "price": {
+       "amount": 25895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 37995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "5-6 ft. Tree"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/29179382628404",
+      "sku": "10035",
+      "title": "6-7 ft. Tree",
+      "price": {
+       "amount": 46095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 46095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "6-7 ft. Tree"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/41156809359422",
+      "sku": "20156",
+      "title": "3-4 ft. Jumbo",
+      "price": {
+       "amount": 107895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 107895,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "3-4 ft. Jumbo"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/41496441421886",
+      "sku": "20573",
+      "title": "4-5 ft. Jumbo",
+      "price": {
+       "amount": 37095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 54595,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "4-5 ft. Jumbo"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/41805878919230",
+      "sku": "21326",
+      "title": "5-6 ft. Jumbo",
+      "price": {
+       "amount": 39095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 57495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "5-6 ft. Jumbo"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449654251582",
+      "sku": "20176",
+      "title": "1-2 ft. (FL)",
+      "price": {
+       "amount": 7195,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "1-2 ft. (FL)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449654906942",
+      "sku": "17471",
+      "title": "2-3 ft. (FL)",
+      "price": {
+       "amount": 9895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 14495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "2-3 ft. (FL)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449656840254",
+      "sku": "14487",
+      "title": "3-4 ft. (FL)",
+      "price": {
+       "amount": 13595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 19995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "3-4 ft. (FL)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449658019902",
+      "sku": "17472",
+      "title": "4-5 ft. (FL)",
+      "price": {
+       "amount": 18695,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 27595,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "4-5 ft. (FL)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449658839102",
+      "sku": "14488",
+      "title": "5-6 ft. (FL)",
+      "price": {
+       "amount": 25895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 37995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "5-6 ft. (FL)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449659297854",
+      "sku": "12238",
+      "title": "1-2 ft. (CA)",
+      "price": {
+       "amount": 7195,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "1-2 ft. (CA)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449659330622",
+      "sku": "12551",
+      "title": "2-3 ft. (CA)",
+      "price": {
+       "amount": 9895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 14495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "2-3 ft. (CA)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449659363390",
+      "sku": "20239",
+      "title": "3-4 ft. (CA)",
+      "price": {
+       "amount": 13595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 19995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "3-4 ft. (CA)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449660936254",
+      "sku": "12329",
+      "title": "2-3 ft. (TX)",
+      "price": {
+       "amount": 9895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 14495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "2-3 ft. (TX)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449712414782",
+      "sku": "13449",
+      "title": "1-2 ft. (GA)",
+      "price": {
+       "amount": 7195,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "1-2 ft. (GA)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449732206654",
+      "sku": "14468",
+      "title": "2-3 ft. (GA)",
+      "price": {
+       "amount": 9895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 14495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "2-3 ft. (GA)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449759993918",
+      "sku": "16638",
+      "title": "3-4 ft. (GA)",
+      "price": {
+       "amount": 13595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 19995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "3-4 ft. (GA)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449781162046",
+      "sku": "21007",
+      "title": "4-5 ft. (GA)",
+      "price": {
+       "amount": 30095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 30095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "4-5 ft. (GA)"
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42449787256894",
+      "sku": "21008",
+      "title": "5-6 ft. (GA)",
+      "price": {
+       "amount": 41395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 41395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Height",
+        "label": "5-6 ft. (GA)"
+       }
+      ],
+      "_from_topup": true
+     }
+    ],
+    "options": [
+     {
+      "name": "Height",
+      "values": [
+       {
+        "label": "1-2 ft. Tree"
+       },
+       {
+        "label": "2-3 ft. Tree"
+       },
+       {
+        "label": "3-4 ft. Tree"
+       },
+       {
+        "label": "4-5 ft. Tree"
+       },
+       {
+        "label": "5-6 ft. Tree"
+       },
+       {
+        "label": "6-7 ft. Tree"
+       },
+       {
+        "label": "3-4 ft. Jumbo"
+       },
+       {
+        "label": "4-5 ft. Jumbo"
+       },
+       {
+        "label": "5-6 ft. Jumbo"
+       },
+       {
+        "label": "1-2 ft. (FL)"
+       },
+       {
+        "label": "2-3 ft. (FL)"
+       },
+       {
+        "label": "3-4 ft. (FL)"
+       },
+       {
+        "label": "4-5 ft. (FL)"
+       },
+       {
+        "label": "5-6 ft. (FL)"
+       },
+       {
+        "label": "1-2 ft. (CA)"
+       },
+       {
+        "label": "2-3 ft. (CA)"
+       },
+       {
+        "label": "3-4 ft. (CA)"
+       },
+       {
+        "label": "2-3 ft. (TX)"
+       },
+       {
+        "label": "1-2 ft. (GA)"
+       },
+       {
+        "label": "2-3 ft. (GA)"
+       },
+       {
+        "label": "3-4 ft. (GA)"
+       },
+       {
+        "label": "4-5 ft. (GA)"
+       },
+       {
+        "label": "5-6 ft. (GA)"
+       }
+      ]
+     }
+    ],
+    "categories": [
+     {
+      "value": "gid://shopify/TaxonomyCategory/na",
+      "taxonomy": "shopify"
+     }
+    ],
+    "tags": [
+     "bestsellers-resort",
+     "LEM-MEY"
+    ]
+   },
+   "truncated_on_capture": true
+  },
+  "pink-lemonade-blueberry": {
+   "matched_by": "handle",
+   "product": {
+    "id": "gid://shopify/Product/1532756262964",
+    "title": "Pink Lemonade Blueberry Bush",
+    "url": "https://checkout.trees.com/products/pink-lemonade-blueberry",
+    "handle": "pink-lemonade-blueberry",
+    "price_range": {
+     "min": {
+      "amount": 3095,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 21395,
+      "currency": "USD"
+     }
+    },
+    "list_price_range": {
+     "min": {
+      "amount": 3395,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 21395,
+      "currency": "USD"
+     }
+    },
+    "variants": [
+     {
+      "id": "gid://shopify/ProductVariant/41625944719422",
+      "sku": "20987",
+      "title": "4 inch",
+      "price": {
+       "amount": 3395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 3395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "4 inch"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940814282804",
+      "sku": "13151",
+      "title": "1 Quart",
+      "price": {
+       "amount": 3095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 3595,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1 Quart"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/39635899580478",
+      "sku": "13152",
+      "title": "2 Quart",
+      "price": {
+       "amount": 4795,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 4795,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2 Quart"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/39783115784254",
+      "sku": "13797",
+      "title": "3 Quart",
+      "price": {
+       "amount": 7595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 7595,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3 Quart"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940814315572",
+      "sku": "13153",
+      "title": "1 Gallon",
+      "price": {
+       "amount": 4595,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 4595,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1 Gallon"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940814381108",
+      "sku": "13154",
+      "title": "2 Gallon",
+      "price": {
+       "amount": 4895,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 4895,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2 Gallon"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940814413876",
+      "sku": "13155",
+      "title": "3 Gallon",
+      "price": {
+       "amount": 5795,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 5895,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3 Gallon"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/39623228751934",
+      "sku": "13156",
+      "title": "2 Pack (2 Gallon)",
+      "price": {
+       "amount": 21395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 21395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2 Pack (2 Gallon)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42247669579838",
+      "sku": "30382",
+      "title": "5 Gallon",
+      "price": {
+       "amount": 10095,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5 Gallon"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/40021117272126",
+      "sku": "16755",
+      "title": "7 Gallon",
+      "price": {
+       "amount": 11795,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 11795,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "7 Gallon"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940814348340",
+      "sku": "14699",
+      "title": "1-2 ft.",
+      "price": {
+       "amount": 9795,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 9795,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1-2 ft."
+       }
+      ],
+      "_from_topup": true
+     },
+     {
+      "id": "gid://shopify/ProductVariant/42620918267966",
+      "sku": "12563",
+      "title": "2 Gallon (CA)",
+      "price": {
+       "amount": 4495,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 4895,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2 Gallon (CA)"
+       }
+      ],
+      "_from_topup": true
+     }
+    ],
+    "options": [
+     {
+      "name": "Size",
+      "values": [
+       {
+        "label": "4 inch"
+       },
+       {
+        "label": "1 Quart"
+       },
+       {
+        "label": "2 Quart"
+       },
+       {
+        "label": "3 Quart"
+       },
+       {
+        "label": "1 Gallon"
+       },
+       {
+        "label": "2 Gallon"
+       },
+       {
+        "label": "3 Gallon"
+       },
+       {
+        "label": "2 Pack (2 Gallon)"
+       },
+       {
+        "label": "5 Gallon"
+       },
+       {
+        "label": "7 Gallon"
+       },
+       {
+        "label": "1-2 ft."
+       },
+       {
+        "label": "2 Gallon (CA)"
+       }
+      ]
+     }
+    ],
+    "categories": [
+     {
+      "value": "gid://shopify/TaxonomyCategory/na",
+      "taxonomy": "shopify"
+     }
+    ],
+    "tags": [
+     "bestsellers-resort",
+     "BLU-PIN"
+    ]
+   },
+   "truncated_on_capture": true
+  },
+  "santa-rosa-plum": {
+   "matched_by": "display_name",
+   "product": {
+    "id": "gid://shopify/Product/1532745482292",
+    "title": "Santa Rosa Plum Tree",
+    "url": "https://checkout.trees.com/products/santarosaplum",
+    "handle": "santarosaplum",
+    "price_range": {
+     "min": {
+      "amount": 5795,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 15395,
+      "currency": "USD"
+     }
+    },
+    "list_price_range": {
+     "min": {
+      "amount": 6095,
+      "currency": "USD"
+     },
+     "max": {
+      "amount": 15395,
+      "currency": "USD"
+     }
+    },
+    "variants": [
+     {
+      "id": "gid://shopify/ProductVariant/42706803490878",
+      "sku": "31065",
+      "title": "1-2 ft.",
+      "price": {
+       "amount": 7195,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 7195,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1-2 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940782399540",
+      "sku": "10325",
+      "title": "2-3 ft.",
+      "price": {
+       "amount": 6395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 6395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2-3 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940782432308",
+      "sku": "10326",
+      "title": "3-4 ft.",
+      "price": {
+       "amount": 10395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 10395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3-4 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940782465076",
+      "sku": "10327",
+      "title": "4-5 ft.",
+      "price": {
+       "amount": 8695,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 9795,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "4-5 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940782497844",
+      "sku": "10328",
+      "title": "5-6 ft.",
+      "price": {
+       "amount": 12495,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 12495,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5-6 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/13940782530612",
+      "sku": "10329",
+      "title": "6-7 ft.",
+      "price": {
+       "amount": 15395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 15395,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": true
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "6-7 ft."
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128885542974",
+      "sku": "12266",
+      "title": "1-2 ft. (CA)",
+      "price": {
+       "amount": 7195,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 7195,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "1-2 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128885575742",
+      "sku": "12267",
+      "title": "2-3 ft. (CA)",
+      "price": {
+       "amount": 5795,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 6095,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "2-3 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128885608510",
+      "sku": "12419",
+      "title": "5-6 ft. (CA)",
+      "price": {
+       "amount": 11395,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 11995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "5-6 ft. (CA)"
+       }
+      ]
+     },
+     {
+      "id": "gid://shopify/ProductVariant/43128885641278",
+      "sku": "17239",
+      "title": "3-4 ft. (CA)",
+      "price": {
+       "amount": 9495,
+       "currency": "USD"
+      },
+      "list_price": {
+       "amount": 9995,
+       "currency": "USD"
+      },
+      "availability": {
+       "available": false
+      },
+      "options": [
+       {
+        "name": "Size",
+        "label": "3-4 ft. (CA)"
+       }
+      ]
+     }
+    ],
+    "options": [
+     {
+      "name": "Size",
+      "values": [
+       {
+        "label": "1-2 ft."
+       },
+       {
+        "label": "2-3 ft."
+       },
+       {
+        "label": "3-4 ft."
+       },
+       {
+        "label": "4-5 ft."
+       },
+       {
+        "label": "5-6 ft."
+       },
+       {
+        "label": "6-7 ft."
+       },
+       {
+        "label": "1-2 ft. (CA)"
+       },
+       {
+        "label": "2-3 ft. (CA)"
+       },
+       {
+        "label": "5-6 ft. (CA)"
+       },
+       {
+        "label": "3-4 ft. (CA)"
+       }
+      ]
+     }
+    ],
+    "categories": [
+     {
+      "value": "gid://shopify/TaxonomyCategory/na",
+      "taxonomy": "shopify"
+     }
+    ],
+    "tags": [
+     "PLU-SAN"
+    ]
+   }
+  }
+ },
+ "misses": [
+  {
+   "key": "sunshine-blue-blueberry",
+   "handle": "sunshine-blue-blueberry-bush-ca",
+   "returned": [
+    "sunshine-blue-blueberry-bush",
+    "legacy-blueberry-bush",
+    "brightwell-blueberry-bush",
+    "pink-lemonade-blueberry",
+    "premier-blueberry-bush"
+   ],
+   "retry_returned": [
+    "sunshine-blue-blueberry-bush",
+    "jewel-blueberry-bush",
+    "legacy-blueberry-bush",
+    "top-hat-blueberry-bush",
+    "sugar-snap-highbush-blueberry-bush",
+    "emerald-blueberry-bush",
+    "premier-blueberry-bush",
+    "aurora-blueberry",
+    "brightwell-blueberry-bush",
+    "blueberry-pie-butterfly-bush"
+   ]
+  }
+ ],
+ "topups": [
+  {
+   "key": "stella-cherry-tree",
+   "option": "Size",
+   "label": "4-5 ft. (CA)",
+   "n_returned": 1
+  },
+  {
+   "key": "bing-cherry-tree",
+   "option": "Size",
+   "label": "4-5 ft. (CA)",
+   "n_returned": 1
+  },
+  {
+   "key": "fuji-apple-tree",
+   "option": "Size",
+   "label": "4-5 ft. (CA)",
+   "n_returned": 1
+  },
+  {
+   "key": "honeycrisp-apple-tree",
+   "option": "Size",
+   "label": "4-5 ft. (CA)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "2-3 ft. (FL)",
+   "n_returned": 1
+  },
+  {
+   "key": "pink-lemonade-blueberry",
+   "option": "Size",
+   "label": "1-2 ft.",
+   "n_returned": 1
+  },
+  {
+   "key": "stella-cherry-tree",
+   "option": "Size",
+   "label": "5-6 ft. (CA)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "3-4 ft. (FL)",
+   "n_returned": 1
+  },
+  {
+   "key": "pink-lemonade-blueberry",
+   "option": "Size",
+   "label": "2 Gallon (CA)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "4-5 ft. (FL)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "5-6 ft. (FL)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "1-2 ft. (CA)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "2-3 ft. (CA)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "3-4 ft. (CA)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "2-3 ft. (TX)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "1-2 ft. (GA)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "2-3 ft. (GA)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "3-4 ft. (GA)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "4-5 ft. (GA)",
+   "n_returned": 1
+  },
+  {
+   "key": "meyer-lemon-tree",
+   "option": "Height",
+   "label": "5-6 ft. (GA)",
+   "n_returned": 1
+  }
+ ],
+ "aborted": null,
+ "api_calls": 32
+}

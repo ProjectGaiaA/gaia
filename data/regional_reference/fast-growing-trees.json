@@ -1,0 +1,731 @@
+{
+ "schema": "gaia.regional_reference.v1",
+ "retailer_id": "fast-growing-trees",
+ "provenance": {
+  "what": "Per-tier national and region-restricted variant prices for fast-growing-trees, derived from the retailer's own UCP catalog API. This is the INDEPENDENT oracle for scripts/audit_regional_render.py: it is fetched from a different endpoint than the storefront scrape it judges, so the thing under test does not produce its own baseline (nightly_audits.py RULE ZERO).",
+  "scope": "TARGETED re-capture: only the region-twinned plants the D2' audit needs, plus the two repointed handles. It is NOT a full 68-plant sweep -- plants outside this set are absent and the audit reports them as not-checked, never as clean.",
+  "raw_capture": "fast-growing-trees.raw-capture.json",
+  "raw_capture_sha256": "35d62d78c61be3f7ecd1636afa637a1e56b50c2f24d07fcd27fd455729efa1c7",
+  "source": "UCP catalog API (search_catalog + get_product top-up)",
+  "endpoint": "https://fast-growing-trees-com.myshopify.com/api/ucp/mcp",
+  "captured_at": "2026-08-20T20:15:02Z",
+  "api_calls": 32,
+  "capture_aborted": null,
+  "handles_from": "wt-regional data/handle_maps.json (post-repoint: eastern-redbud -> easternredbud, stella-cherry-tree -> stella-cherry-tree; sunshine-blue-blueberry still on its -ca handle)",
+  "tier_join": "tier key == ShopifyScraper._normalize_size(variant title). The region parenthetical does not survive normalisation, so '5-6 ft. (CA)' and '5-6 feet' both land on '5-6ft' -- which is exactly the join the audit needs. A tier claimed by two variants on the same side is stored as null: an ambiguous reference is not a reference.",
+  "extra_products": "Products captured as EVIDENCE, not as audit input. They are held outside `plants` because no plant id points at them today; moving one in is a repoint decision, not a capture detail."
+ },
+ "plants": {
+  "stella-cherry-tree": {
+   "fgt_handle": "stella-cherry-tree",
+   "product_gid": "gid://shopify/Product/1532757966900",
+   "truncated": false,
+   "national": {
+    "quart": {
+     "title": "1 Quart",
+     "price_cents": 5895,
+     "list_price_cents": 6195,
+     "available": false
+    },
+    "1-2ft": {
+     "title": "1-2 ft.",
+     "price_cents": 5395,
+     "list_price_cents": 6295,
+     "available": true
+    },
+    "2-3ft": {
+     "title": "2-3 ft.",
+     "price_cents": 8695,
+     "list_price_cents": 8695,
+     "available": true
+    },
+    "3-4ft": {
+     "title": "3-4 ft.",
+     "price_cents": 10695,
+     "list_price_cents": 10695,
+     "available": true
+    },
+    "4-5ft": {
+     "title": "4-5 ft.",
+     "price_cents": 13095,
+     "list_price_cents": 13095,
+     "available": true
+    },
+    "5-6ft": {
+     "title": "5-6 ft.",
+     "price_cents": 16095,
+     "list_price_cents": 16095,
+     "available": true
+    },
+    "6-7ft": {
+     "title": "6-7 ft.",
+     "price_cents": 19895,
+     "list_price_cents": 19895,
+     "available": false
+    }
+   },
+   "regional": {
+    "CA": {
+     "quart": {
+      "title": "1 Quart (CA)",
+      "price_cents": 5895,
+      "list_price_cents": 6195,
+      "available": false
+     },
+     "2-3ft": {
+      "title": "2-3 ft. (CA)",
+      "price_cents": 7895,
+      "list_price_cents": 8295,
+      "available": false
+     },
+     "3-4ft": {
+      "title": "3-4 ft. (CA)",
+      "price_cents": 9695,
+      "list_price_cents": 10195,
+      "available": false
+     },
+     "4-5ft": {
+      "title": "4-5 ft. (CA)",
+      "price_cents": 11895,
+      "list_price_cents": 12495,
+      "available": false
+     },
+     "5-6ft": {
+      "title": "5-6 ft. (CA)",
+      "price_cents": 14695,
+      "list_price_cents": 15495,
+      "available": true
+     }
+    }
+   }
+  },
+  "eastern-redbud": {
+   "fgt_handle": "easternredbud",
+   "product_gid": "gid://shopify/Product/1532736667700",
+   "truncated": false,
+   "national": {
+    "5gal": {
+     "title": "5 Gallon",
+     "price_cents": 13695,
+     "list_price_cents": 13695,
+     "available": false
+    },
+    "1-2ft": {
+     "title": "1-2 ft.",
+     "price_cents": 8495,
+     "list_price_cents": 8495,
+     "available": false
+    },
+    "2-3ft": {
+     "title": "2-3 ft.",
+     "price_cents": 6995,
+     "list_price_cents": 9295,
+     "available": true
+    },
+    "3-4ft": {
+     "title": "3-4 ft.",
+     "price_cents": 7995,
+     "list_price_cents": 11095,
+     "available": true
+    },
+    "4-5ft": {
+     "title": "4-5 ft.",
+     "price_cents": 9495,
+     "list_price_cents": 15995,
+     "available": true
+    },
+    "5-6ft": {
+     "title": "5-6 ft.",
+     "price_cents": 12095,
+     "list_price_cents": 15895,
+     "available": true
+    },
+    "6-7ft": {
+     "title": "6-7 ft.",
+     "price_cents": 20595,
+     "list_price_cents": 21695,
+     "available": true
+    },
+    "5-6ft-jumbo": {
+     "title": "5-6 ft. Jumbo",
+     "price_cents": 53395,
+     "list_price_cents": 53395,
+     "available": false
+    }
+   },
+   "regional": {}
+  },
+  "sunshine-blue-blueberry": {
+   "fgt_handle": "sunshine-blue-blueberry-bush-ca",
+   "product_gid": null,
+   "truncated": false,
+   "national": {},
+   "regional": {}
+  },
+  "bing-cherry-tree": {
+   "fgt_handle": "bingcherry",
+   "product_gid": "gid://shopify/Product/1532745613364",
+   "truncated": false,
+   "national": {
+    "1-2ft": {
+     "title": "1-2 ft.",
+     "price_cents": 5395,
+     "list_price_cents": 7095,
+     "available": true
+    },
+    "2-3ft": {
+     "title": "2-3 ft.",
+     "price_cents": 6595,
+     "list_price_cents": 8995,
+     "available": true
+    },
+    "3-4ft": {
+     "title": "3-4 ft.",
+     "price_cents": 10795,
+     "list_price_cents": 10995,
+     "available": true
+    },
+    "4-5ft": {
+     "title": "4-5 ft.",
+     "price_cents": 13695,
+     "list_price_cents": 13695,
+     "available": true
+    },
+    "5-6ft": {
+     "title": "5-6 ft.",
+     "price_cents": 16895,
+     "list_price_cents": 16895,
+     "available": true
+    },
+    "6-7ft": {
+     "title": "6-7 ft.",
+     "price_cents": 20795,
+     "list_price_cents": 20795,
+     "available": true
+    }
+   },
+   "regional": {
+    "CA": {
+     "2-3ft": {
+      "title": "2-3 ft. (CA)",
+      "price_cents": 5995,
+      "list_price_cents": 8995,
+      "available": false
+     },
+     "1-2ft": {
+      "title": "1-2 ft. (CA)",
+      "price_cents": 4995,
+      "list_price_cents": 7095,
+      "available": false
+     },
+     "5-6ft": {
+      "title": "5-6 ft. (CA)",
+      "price_cents": 15395,
+      "list_price_cents": 16695,
+      "available": true
+     },
+     "3-4ft": {
+      "title": "3-4 ft. (CA)",
+      "price_cents": 9795,
+      "list_price_cents": 10995,
+      "available": false
+     },
+     "4-5ft": {
+      "title": "4-5 ft. (CA)",
+      "price_cents": 12495,
+      "list_price_cents": 13495,
+      "available": false
+     }
+    }
+   }
+  },
+  "fuji-apple-tree": {
+   "fgt_handle": "low-chill-fuji-apple-tree",
+   "product_gid": "gid://shopify/Product/1532741845044",
+   "truncated": false,
+   "national": {
+    "1-2ft": {
+     "title": "1-2 ft.",
+     "price_cents": 9195,
+     "list_price_cents": 9195,
+     "available": false
+    },
+    "2-3ft": {
+     "title": "2-3 ft.",
+     "price_cents": 8395,
+     "list_price_cents": 8395,
+     "available": false
+    },
+    "3-4ft": {
+     "title": "3-4 ft.",
+     "price_cents": 8695,
+     "list_price_cents": 9595,
+     "available": true
+    },
+    "4-5ft": {
+     "title": "4-5 ft.",
+     "price_cents": 11395,
+     "list_price_cents": 11395,
+     "available": true
+    },
+    "5-6ft": {
+     "title": "5-6 ft.",
+     "price_cents": 10995,
+     "list_price_cents": 12495,
+     "available": true
+    },
+    "6-7ft": {
+     "title": "6-7 ft.",
+     "price_cents": 17095,
+     "list_price_cents": 17095,
+     "available": true
+    }
+   },
+   "regional": {
+    "CA": {
+     "2-3ft": {
+      "title": "2-3 ft. (CA)",
+      "price_cents": 7595,
+      "list_price_cents": 7595,
+      "available": false
+     },
+     "1-2ft": {
+      "title": "1-2 ft. (CA)",
+      "price_cents": 8395,
+      "list_price_cents": 8395,
+      "available": false
+     },
+     "5-6ft": {
+      "title": "5-6 ft. (CA)",
+      "price_cents": 9995,
+      "list_price_cents": 12495,
+      "available": true
+     },
+     "3-4ft": {
+      "title": "3-4 ft. (CA)",
+      "price_cents": 7995,
+      "list_price_cents": 9195,
+      "available": false
+     },
+     "4-5ft": {
+      "title": "4-5 ft. (CA)",
+      "price_cents": 10395,
+      "list_price_cents": 10895,
+      "available": false
+     }
+    }
+   }
+  },
+  "honeycrisp-apple-tree": {
+   "fgt_handle": "honeycrisp-apple-tree",
+   "product_gid": "gid://shopify/Product/1532755017780",
+   "truncated": false,
+   "national": {
+    "1-2ft": {
+     "title": "1-2 ft.",
+     "price_cents": 7595,
+     "list_price_cents": 7595,
+     "available": false
+    },
+    "2-3ft": {
+     "title": "2-3 ft.",
+     "price_cents": 8695,
+     "list_price_cents": 8695,
+     "available": true
+    },
+    "3-4ft": {
+     "title": "3-4 ft.",
+     "price_cents": 10095,
+     "list_price_cents": 10095,
+     "available": true
+    },
+    "4-5ft": {
+     "title": "4-5 ft.",
+     "price_cents": 12995,
+     "list_price_cents": 12995,
+     "available": true
+    },
+    "5-6ft": {
+     "title": "5-6 ft.",
+     "price_cents": 15395,
+     "list_price_cents": 15395,
+     "available": true
+    },
+    "6-7ft": {
+     "title": "6-7 ft.",
+     "price_cents": 18395,
+     "list_price_cents": 18395,
+     "available": true
+    }
+   },
+   "regional": {
+    "CA": {
+     "2-3ft": {
+      "title": "2-3 ft. (CA)",
+      "price_cents": 7895,
+      "list_price_cents": 8495,
+      "available": false
+     },
+     "1-2ft": {
+      "title": "1-2 ft. (CA)",
+      "price_cents": 7595,
+      "list_price_cents": 7595,
+      "available": false
+     },
+     "5-6ft": {
+      "title": "5-6 ft. (CA)",
+      "price_cents": 13995,
+      "list_price_cents": 14695,
+      "available": true
+     },
+     "3-4ft": {
+      "title": "3-4 ft. (CA)",
+      "price_cents": 6995,
+      "list_price_cents": 10095,
+      "available": false
+     },
+     "4-5ft": {
+      "title": "4-5 ft. (CA)",
+      "price_cents": 11795,
+      "list_price_cents": 12395,
+      "available": true
+     }
+    }
+   }
+  },
+  "meyer-lemon-tree": {
+   "fgt_handle": "meyer-lemon-tree",
+   "product_gid": "gid://shopify/Product/1532750659636",
+   "truncated": false,
+   "national": {
+    "1-2ft": {
+     "title": "1-2 ft. Tree",
+     "price_cents": 6595,
+     "list_price_cents": 10495,
+     "available": true
+    },
+    "2-3ft": {
+     "title": "2-3 ft. Tree",
+     "price_cents": 9895,
+     "list_price_cents": 14495,
+     "available": true
+    },
+    "3-4ft": {
+     "title": "3-4 ft. Tree",
+     "price_cents": 13595,
+     "list_price_cents": 19995,
+     "available": true
+    },
+    "4-5ft": {
+     "title": "4-5 ft. Tree",
+     "price_cents": 19295,
+     "list_price_cents": 27595,
+     "available": false
+    },
+    "5-6ft": {
+     "title": "5-6 ft. Tree",
+     "price_cents": 25895,
+     "list_price_cents": 37995,
+     "available": false
+    },
+    "6-7ft": {
+     "title": "6-7 ft. Tree",
+     "price_cents": 46095,
+     "list_price_cents": 46095,
+     "available": false
+    },
+    "3-4ft-jumbo": {
+     "title": "3-4 ft. Jumbo",
+     "price_cents": 107895,
+     "list_price_cents": 107895,
+     "available": false
+    },
+    "4-5ft-jumbo": {
+     "title": "4-5 ft. Jumbo",
+     "price_cents": 37095,
+     "list_price_cents": 54595,
+     "available": false
+    },
+    "5-6ft-jumbo": {
+     "title": "5-6 ft. Jumbo",
+     "price_cents": 39095,
+     "list_price_cents": 57495,
+     "available": false
+    }
+   },
+   "regional": {
+    "FL": {
+     "1-2ft": {
+      "title": "1-2 ft. (FL)",
+      "price_cents": 7195,
+      "list_price_cents": 10495,
+      "available": false
+     },
+     "2-3ft": {
+      "title": "2-3 ft. (FL)",
+      "price_cents": 9895,
+      "list_price_cents": 14495,
+      "available": false
+     },
+     "3-4ft": {
+      "title": "3-4 ft. (FL)",
+      "price_cents": 13595,
+      "list_price_cents": 19995,
+      "available": false
+     },
+     "4-5ft": {
+      "title": "4-5 ft. (FL)",
+      "price_cents": 18695,
+      "list_price_cents": 27595,
+      "available": false
+     },
+     "5-6ft": {
+      "title": "5-6 ft. (FL)",
+      "price_cents": 25895,
+      "list_price_cents": 37995,
+      "available": false
+     }
+    },
+    "CA": {
+     "1-2ft": {
+      "title": "1-2 ft. (CA)",
+      "price_cents": 7195,
+      "list_price_cents": 10495,
+      "available": true
+     },
+     "2-3ft": {
+      "title": "2-3 ft. (CA)",
+      "price_cents": 9895,
+      "list_price_cents": 14495,
+      "available": true
+     },
+     "3-4ft": {
+      "title": "3-4 ft. (CA)",
+      "price_cents": 13595,
+      "list_price_cents": 19995,
+      "available": false
+     }
+    },
+    "TX": {
+     "2-3ft": {
+      "title": "2-3 ft. (TX)",
+      "price_cents": 9895,
+      "list_price_cents": 14495,
+      "available": true
+     }
+    },
+    "GA": {
+     "1-2ft": {
+      "title": "1-2 ft. (GA)",
+      "price_cents": 7195,
+      "list_price_cents": 10495,
+      "available": true
+     },
+     "2-3ft": {
+      "title": "2-3 ft. (GA)",
+      "price_cents": 9895,
+      "list_price_cents": 14495,
+      "available": true
+     },
+     "3-4ft": {
+      "title": "3-4 ft. (GA)",
+      "price_cents": 13595,
+      "list_price_cents": 19995,
+      "available": true
+     },
+     "4-5ft": {
+      "title": "4-5 ft. (GA)",
+      "price_cents": 30095,
+      "list_price_cents": 30095,
+      "available": false
+     },
+     "5-6ft": {
+      "title": "5-6 ft. (GA)",
+      "price_cents": 41395,
+      "list_price_cents": 41395,
+      "available": false
+     }
+    }
+   }
+  },
+  "pink-lemonade-blueberry": {
+   "fgt_handle": "pink-lemonade-blueberry",
+   "product_gid": "gid://shopify/Product/1532756262964",
+   "truncated": false,
+   "national": {
+    "4inch": {
+     "title": "4 inch",
+     "price_cents": 3395,
+     "list_price_cents": 3395,
+     "available": true
+    },
+    "quart": {
+     "title": "1 Quart",
+     "price_cents": 3095,
+     "list_price_cents": 3595,
+     "available": true
+    },
+    "2quart": {
+     "title": "2 Quart",
+     "price_cents": 4795,
+     "list_price_cents": 4795,
+     "available": false
+    },
+    "3quart": {
+     "title": "3 Quart",
+     "price_cents": 7595,
+     "list_price_cents": 7595,
+     "available": false
+    },
+    "1gal": {
+     "title": "1 Gallon",
+     "price_cents": 4595,
+     "list_price_cents": 4595,
+     "available": false
+    },
+    "2gal": {
+     "title": "2 Gallon",
+     "price_cents": 4895,
+     "list_price_cents": 4895,
+     "available": false
+    },
+    "3gal": {
+     "title": "3 Gallon",
+     "price_cents": 5795,
+     "list_price_cents": 5895,
+     "available": false
+    },
+    "5gal": {
+     "title": "5 Gallon",
+     "price_cents": 10095,
+     "list_price_cents": 10095,
+     "available": false
+    },
+    "7gal": {
+     "title": "7 Gallon",
+     "price_cents": 11795,
+     "list_price_cents": 11795,
+     "available": false
+    },
+    "1-2ft": {
+     "title": "1-2 ft.",
+     "price_cents": 9795,
+     "list_price_cents": 9795,
+     "available": false
+    }
+   },
+   "regional": {
+    "CA": {
+     "2gal": {
+      "title": "2 Gallon (CA)",
+      "price_cents": 4495,
+      "list_price_cents": 4895,
+      "available": true
+     }
+    }
+   }
+  },
+  "santa-rosa-plum": {
+   "fgt_handle": "santarosaplum",
+   "product_gid": "gid://shopify/Product/1532745482292",
+   "truncated": false,
+   "national": {
+    "1-2ft": {
+     "title": "1-2 ft.",
+     "price_cents": 7195,
+     "list_price_cents": 7195,
+     "available": false
+    },
+    "2-3ft": {
+     "title": "2-3 ft.",
+     "price_cents": 6395,
+     "list_price_cents": 6395,
+     "available": true
+    },
+    "3-4ft": {
+     "title": "3-4 ft.",
+     "price_cents": 10395,
+     "list_price_cents": 10395,
+     "available": true
+    },
+    "4-5ft": {
+     "title": "4-5 ft.",
+     "price_cents": 8695,
+     "list_price_cents": 9795,
+     "available": true
+    },
+    "5-6ft": {
+     "title": "5-6 ft.",
+     "price_cents": 12495,
+     "list_price_cents": 12495,
+     "available": true
+    },
+    "6-7ft": {
+     "title": "6-7 ft.",
+     "price_cents": 15395,
+     "list_price_cents": 15395,
+     "available": true
+    }
+   },
+   "regional": {
+    "CA": {
+     "1-2ft": {
+      "title": "1-2 ft. (CA)",
+      "price_cents": 7195,
+      "list_price_cents": 7195,
+      "available": false
+     },
+     "2-3ft": {
+      "title": "2-3 ft. (CA)",
+      "price_cents": 5795,
+      "list_price_cents": 6095,
+      "available": false
+     },
+     "5-6ft": {
+      "title": "5-6 ft. (CA)",
+      "price_cents": 11395,
+      "list_price_cents": 11995,
+      "available": false
+     },
+     "3-4ft": {
+      "title": "3-4 ft. (CA)",
+      "price_cents": 9495,
+      "list_price_cents": 9995,
+      "available": false
+     }
+    }
+   }
+  }
+ },
+ "extra_products": {
+  "sunshine-blue-blueberry-bush-national": {
+   "fgt_handle": "sunshine-blue-blueberry-bush",
+   "product_gid": "gid://shopify/Product/7079574700094",
+   "truncated": false,
+   "national": {
+    "1gal": {
+     "title": "1 Gallon",
+     "price_cents": 3395,
+     "list_price_cents": 3395,
+     "available": false
+    },
+    "3gal": {
+     "title": "3 Gallon",
+     "price_cents": 10295,
+     "list_price_cents": 10295,
+     "available": false
+    }
+   },
+   "regional": {
+    "OR": {
+     "1gal": {
+      "title": "1 Gallon (OR)",
+      "price_cents": 3095,
+      "list_price_cents": 3295,
+      "available": true
+     }
+    }
+   }
+  }
+ }
+}
