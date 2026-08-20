@@ -140,9 +140,18 @@ def test_a_new_tier_actually_renders_in_the_product_table(tmp_path):
 
     for header in ("Quart", "2 Quart"):
         assert f"<th>{header}</th>" in html, header
-    # The qualified tiers follow the shipped "6-7ft-Jumbo" header convention.
-    assert "4-5ft-Multistem" in html
-    assert "12-18in-Bare Root" in html
+    # P8: these two used to read "4-5ft-Multistem" and "12-18in-Bare Root" —
+    # output of the ad-hoc replace chain that used to live in product.html.
+    # The template now renders get_size_label() for every column, so the
+    # header is the same string the mobile card and the pinned vocabulary in
+    # test_size_label_vocabulary.py already used. The strings below are copied
+    # from that hand-written table, not recomputed here.
+    assert "<th>4-5 ft Multi-Stem</th>" in html
+    assert '<th>12-18" Bare Root</th>' in html
+    # The inch mark must survive into the mobile data-label as an ESCAPED
+    # quote — raw, it would close the attribute and destroy the cell.
+    assert 'data-label="12-18&#34; Bare Root"' in html
+    assert 'data-label="12-18" Bare Root"' not in html
     # ...and no column is headed with a bare, untranslated tier id.
     assert "<th>2quart</th>" not in html
     # Both quart prices reach the page, each under its own column.

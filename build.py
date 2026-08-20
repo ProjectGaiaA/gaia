@@ -1157,9 +1157,54 @@ def build_price_table(plant, latest_prices, retailers_by_id, promos_by_retailer=
     best_deal = all_deals[0] if all_deals else None
     runner_up_deals = all_deals[1:3] if len(all_deals) > 1 else []
 
+    # Desktop column headers and the `data-label` on every price cell used to
+    # be formatted by an ad-hoc replace chain inside product.html:
+    # `|replace('gal',' Gal')|replace('quart','Quart')
+    #  |replace('bareroot','Bare Root')|title|...`. That was a SECOND label
+    # vocabulary, and it disagreed with get_size_label() on 50 of the 58 live
+    # tier ids — the template shipped "0-65- Gallon", "Semi-Dwarf-Ez-Start"
+    # and "4inch" beside the mobile card's "0.65 Gallon", "Semi-Dwarf EZ
+    # Start" and '4" Pot' for the same size, on the same page. One producer
+    # now: this dict. Values are RAW text; product.html escapes at the one
+    # place it must (the `data-label` attribute, where a label like '12-18"'
+    # would otherwise terminate the quoted value early).
+    tier_labels = {t: get_size_label(t) for t in active_tiers_sorted}
+
+    # The template renders `tier_labels[tier]` while looping over
+    # `active_size_tiers`. Jinja's DEFAULT Undefined — which build_site()
+    # uses, it passes no `undefined=` argument — turns a missing dict KEY
+    # into the empty string SILENTLY: the column ships as `<th></th>` and the
+    # cell as `data-label=""`. That is strictly worse than the chain this
+    # change deleted, which at least degraded to printing the tier id.
+    #
+    # StrictUndefined is not the alternative: product.html's very next line
+    # tests `retailer_prices.sizes[tier]` for falsiness on tiers a given
+    # retailer does not stock, and StrictUndefined raises on that instead.
+    #
+    # So the invariant is enforced here, where it is cheap and loud. The
+    # comprehension above cannot break it on its own; an edit to that one
+    # line can, and such an edit survived a 13-mutant review pass.
+    missing = [t for t in active_tiers_sorted if t not in tier_labels]
+    if missing:
+        raise ValueError(
+            f"tier_labels is missing {len(missing)} of "
+            f"{len(active_tiers_sorted)} active size tiers for "
+            f"{plant.get('id', '?')}: {missing}. Every tier the product "
+            f"template iterates must carry a label, or the page publishes a "
+            f"blank column header."
+        )
+    blank = sorted(t for t, lab in tier_labels.items() if not str(lab).strip())
+    if blank:
+        raise ValueError(
+            f"tier_labels holds a blank label for {blank} on "
+            f"{plant.get('id', '?')}; a blank header is the exact failure "
+            f"this guard exists to stop."
+        )
+
     return {
         "prices": prices,
         "active_size_tiers": active_tiers_sorted,
+        "tier_labels": tier_labels,
         "lowest_price": lowest,
         "highest_price": highest,
         "savings_pct": savings_pct,

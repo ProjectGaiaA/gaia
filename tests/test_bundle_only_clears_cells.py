@@ -385,6 +385,8 @@ def test_the_rendered_page_shows_dashes_not_dollars():
         env.get_template("product.html").render(
             plant=_PLANT, page_title="t", prices=t["prices"],
             active_size_tiers=t["active_size_tiers"],
+            # P8: product.html reads its column labels from here.
+            tier_labels=t["tier_labels"],
             mobile_tiers=t["mobile_tiers"], any_in_stock=t["any_in_stock"],
             lowest_price=t["lowest_price"], highest_price=t["highest_price"],
             savings_pct=t["savings_pct"],

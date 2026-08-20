@@ -302,6 +302,8 @@ class TestRenderedHtml:
                 page_title="t",
                 prices=table["prices"],
                 active_size_tiers=table["active_size_tiers"],
+                # P8: product.html reads its column labels from here.
+                tier_labels=table["tier_labels"],
                 mobile_tiers=table["mobile_tiers"],
                 any_in_stock=table["any_in_stock"],
                 lowest_price=table["lowest_price"],

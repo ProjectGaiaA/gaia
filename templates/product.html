@@ -142,7 +142,14 @@
                             <tr>
                                 <th>Retailer</th>
                                 {% for tier in active_size_tiers %}
-                                <th>{{ tier|replace('gal', ' Gal')|replace('quart', 'Quart')|replace('bareroot', 'Bare Root')|title|replace('2quart', '2 Quart')|replace('3quart', '3 Quart') }}</th>
+                                {#- tier_labels is built in build.py from get_size_label() —
+                                   the ONE label producer. Do NOT reintroduce a replace()
+                                   chain here: the one that used to sit on this line was a
+                                   second vocabulary and disagreed with the mobile cards on
+                                   50 of the 58 live tier ids, on the same page. Unescaped
+                                   on purpose, matching {{ mt.label }} above; element text
+                                   may carry the inch mark verbatim. #}
+                                <th>{{ tier_labels[tier] }}</th>
                                 {% endfor %}
                                 <th>In Stock</th>
                                 <th>Shipping</th>
@@ -161,7 +168,22 @@
                                     {% if not retailer_prices.has_affiliate %}<span class="no-affiliate" title="We don't earn a commission from this retailer">*</span>{% endif %}
                                 </td>
                                 {% for tier in active_size_tiers %}
-                                <td class="price-cell" data-label="{{ tier|replace('gal',' Gal')|replace('quart','Quart')|replace('bareroot','Bare Root')|title|replace('2quart', '2 Quart')|replace('3quart', '3 Quart') }}">
+                                {#- Same one producer as the <th> above, so a size's
+                                   header and its cell label can never disagree.
+                                   `|e` is REQUIRED here and is not label logic: the env
+                                   runs autoescape=False, and a label like 12-18" carries
+                                   the inch mark, which would terminate this quoted
+                                   attribute value early and corrupt the tag. Escaping
+                                   keeps the attribute well-formed.
+                                   No CSS reads this attribute — there is no
+                                   attr(data-label) rule anywhere in style.css, and this
+                                   whole table is display:none under 600px. Its only
+                                   runtime consumer is the script at the bottom of this
+                                   file, which WRITES data-label onto cells that lack
+                                   one. Keep the attribute anyway: it is the sole record
+                                   of which size a cell belongs to once the row is read
+                                   out of table context. #}
+                                <td class="price-cell" data-label="{{ tier_labels[tier]|e }}">
                                     {% if retailer_prices.sizes[tier] and not retailer_prices.sizes[tier].is_buyable %}
                                     {# Not orderable — this size is sold out, or the
                                        whole retailer is. Show the price so the
