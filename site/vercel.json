@@ -53,5 +53,11 @@
       "destination": "/bot.html"
     }
   ],
-  "redirects": []
+  "redirects": [
+    {
+      "source": "/plants/encore-azalea.html",
+      "destination": "/category/azaleas-rhododendrons.html",
+      "permanent": true
+    }
+  ]
 }

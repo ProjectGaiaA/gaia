@@ -52,7 +52,7 @@ Pricing ranges from $20-$50 for a 1-gallon plant. Encore Azaleas are the most ex
 
 Hardy in zones 6-9. Some Encore varieties push into zone 10 for mild winter areas.
 
-→ [Compare Encore Azalea prices](/plants/encore-azalea)
+→ Compare Encore Azalea prices by variety: [Autumn Royalty](/plants/autumn-royalty-encore-azalea), [Autumn Twist](/plants/autumn-twist-encore-azalea), [Autumn Angel](/plants/autumn-angel-encore-azalea)
 
 ## P.J.M. Rhododendron
 

@@ -4158,6 +4158,7 @@
   },
   {
     "id": "encore-azalea",
+    "active": false,
     "common_name": "Encore Azalea",
     "botanical_name": "Rhododendron (Encore series)",
     "aliases": [
