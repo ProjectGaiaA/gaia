@@ -293,27 +293,132 @@ jobs:
       # a build input that some step wrote AFTER the first build — exactly the
       # defect that shipped the expired code FAST20 to 63 pages.
       #
-      # `git add` first, then compare worktree against the INDEX. site/ is a
-      # committed build artifact, so it differs from HEAD on every cycle that
-      # moved a price; staging makes the index hold the first build's output so
-      # the diff isolates first-build-vs-rebuild and nothing else. Comparing
-      # against HEAD here would fire on every normal run. The commit step below
-      # re-adds site/, so staging early changes nothing about what publishes.
+      # `git add` first, then compare the index tree BEFORE the rebuild against
+      # the index tree AFTER it. site/ is a committed build artifact, so it
+      # differs from HEAD on every cycle that moved a price; staging makes the
+      # first tree hold the first build's output so the comparison isolates
+      # first-build-vs-rebuild and nothing else. Comparing against HEAD here
+      # would fire on every normal run. The commit step below re-adds site/, so
+      # staging early changes nothing about what publishes.
       #
-      # ALARMING, not blocking. The rebuild has already corrected site/ in the
-      # working tree, so the commit below publishes the right HTML; this only
-      # flags that a step is out of order and needs moving.
+      # Two staged trees, NOT `git diff -- site/` against the index: `git diff`
+      # never reports untracked paths, so the worktree-vs-index form was blind
+      # to a rebuild that ADDS a page (a new plant, category or guide) — the
+      # single most likely shape of "a build input changed after the build".
+      # Proven on this repo: `git add -A site/` then `echo x >
+      # site/plants/__probe.html` and `git diff --quiet -- site/` still
+      # reported a no-op. `git add -A` picks additions and deletions up, and
+      # comparing the two tree objects sees all three kinds of change.
+      #
+      # ALARMING, never BLOCKING — and now enforced twice, because the previous
+      # version enforced it zero times. Divergence itself was safe (the `git
+      # diff --quiet` sat in an `if`, so `-e` did not fire), but a non-zero
+      # `git add` or a crashing rebuild would fail the step, skip the commit
+      # below, and throw away a whole ~88-minute cycle of scraped prices. That
+      # is the exact hazard the commit step's own comment warns about,
+      # reintroduced one step upstream. So: the body swallows every exit code
+      # and ends `exit 0`, and continue-on-error catches anything Actions
+      # raises outside the body.
+      #
+      # `if: always()` on the COMMIT step is not the fix and must not be added:
+      # the data sanity gate, the build and the link check all sit between the
+      # checkout and the commit and are meant to BLOCK.
+      # tests/test_audit_step_is_not_a_gate.py pins that choice.
       - name: Verify the build is reproducible
+        continue-on-error: true
         run: |
+          set +e
           git add -A site/
+          add_rc=$?
+          before=$(git write-tree)
+          tree_rc=$?
           python -X utf8 build.py
-          if git diff --quiet -- site/; then
+          build_rc=$?
+          if [ "$add_rc" -ne 0 ] || [ "$tree_rc" -ne 0 ] || [ "$build_rc" -ne 0 ]; then
+            # A crashed rebuild can leave site/ half-written, and the commit
+            # step below would publish that. The index holds the first build —
+            # the one "Build site" produced and "Verify internal links" passed
+            # — so restore the worktree from it and drop whatever the failed
+            # rebuild created. Files from the FIRST build are staged, therefore
+            # not untracked, therefore untouched by `git clean`.
+            #
+            # GATED ON `add_rc`, because that sentence is only true when the
+            # `git add` above SUCCEEDED. When `git add` is what failed, the
+            # index still holds HEAD, so `git checkout -- site/` would revert
+            # the worktree to the PREVIOUS cycle's build while this cycle's
+            # data/ commits anyway — publishing last cycle's HTML beside this
+            # cycle's prices, under an annotation claiming a restore. Proven
+            # against a real remote: site/index.html and site/plants/rose.html
+            # arrived at the previous cycle's content while
+            # data/prices/rose.jsonl carried the new price. Doing nothing is
+            # strictly better than reverting a whole cycle of HTML.
+            #
+            # What the worktree holds once we decline to restore depends on WHY
+            # we got here, and the annotation has to say which. If the rebuild
+            # never ran or exited clean, the first build is intact. If the
+            # rebuild CRASHED, it has already overwritten part of the first
+            # build, so what publishes is half-written. An earlier version of
+            # this comment asserted the first build survives unconditionally;
+            # it does not, and the annotation must not repeat that claim.
+            restore_rc=0
+            clean_rc=0
+            restored="no"
+            if [ "$add_rc" -eq 0 ]; then
+              git checkout -- site/
+              restore_rc=$?
+              git clean -fdq site/
+              clean_rc=$?
+              # BOTH exit codes, not just the checkout's. Each was discarded at
+              # some point, and each discard produced an annotation asserting a
+              # success that had not happened. A failed checkout published
+              # half-written HTML and a clobbered, hand-maintained
+              # site/bot.html. A failed clean is the same class one line down:
+              # `git checkout` restores TRACKED files and cannot remove a file
+              # the crashed rebuild CREATED — only `git clean` can — so when the
+              # clean fails, every such file is still sitting in site/, where
+              # the commit step's own `git add -A site/` sweeps it to the live
+              # site. That is a PARTIAL restore however well the checkout went.
+              # Report what actually happened instead of asserting.
+              if [ "$restore_rc" -ne 0 ]; then
+                restored="FAILED"
+              elif [ "$clean_rc" -ne 0 ]; then
+                restored="PARTIAL"
+              else
+                restored="yes"
+              fi
+            fi
+            echo "REBUILD_CHECK_FAILED=1" >> "$GITHUB_ENV"
+            if [ "$restored" = "yes" ]; then
+              site_state="The first build WAS restored from the index and still publishes."
+            elif [ "$restored" = "PARTIAL" ]; then
+              site_state="git checkout restored site/ from the index, but git clean FAILED (rc=$clean_rc) — the tracked files were restored, and anything the crashed rebuild ADDED is still in site/ and publishes with them."
+            elif [ "$restored" = "FAILED" ]; then
+              site_state="git checkout FAILED (rc=$restore_rc) — site/ was NOT restored and may be half-written; whatever is in the worktree is what publishes."
+            elif [ "$build_rc" -ne 0 ]; then
+              site_state="git add failed before the first build could be staged — site/ could NOT be restored from the index, so no restore was attempted. The rebuild ALSO failed, so it may have overwritten part of the first build: the worktree may be half-written, and whatever is in it is what publishes."
+            else
+              site_state="git add failed before the first build could be staged — site/ could NOT be restored from the index, so no restore was attempted; the worktree was left as-is."
+            fi
+            echo "::error::The reproducibility check could not run (git add=$add_rc, write-tree=$tree_rc, rebuild=$build_rc). $site_state The check told us nothing this cycle."
+            exit 0
+          fi
+          git add -A site/
+          add2_rc=$?
+          after=$(git write-tree)
+          tree2_rc=$?
+          if [ "$add2_rc" -ne 0 ] || [ "$tree2_rc" -ne 0 ]; then
+            echo "REBUILD_CHECK_FAILED=1" >> "$GITHUB_ENV"
+            echo "::error::The reproducibility check could not stage the rebuild (git add=$add2_rc, write-tree=$tree2_rc). Publishing continues; the check told us nothing this cycle."
+            exit 0
+          fi
+          if [ "$before" = "$after" ]; then
             echo "Rebuild is a no-op — committed site/ matches its sources."
           else
             echo "REBUILD_DIVERGED=1" >> "$GITHUB_ENV"
             echo "::error::Rebuilding site/ changed it — a step after 'Build site' wrote a build input. Files:"
-            git diff --name-only -- site/
+            git diff --name-only "$before" "$after" -- site/
           fi
+          exit 0
 
       - name: Commit updated price data
         id: commit
@@ -392,6 +497,12 @@ jobs:
           if [ "${REBUILD_DIVERGED:-0}" = "1" ]; then
             echo "::error::A rebuild changed site/ — some step now writes a build input after 'Build site'. Move it earlier. The corrected build was published."
             PROBLEMS="$PROBLEMS rebuild"
+          fi
+          # A check that could not run is not a check that passed. Say so out
+          # loud rather than letting a silent no-result read as "reproducible".
+          if [ "${REBUILD_CHECK_FAILED:-0}" = "1" ]; then
+            echo "::error::The reproducibility check itself failed to run — this cycle has NO answer on whether the build reproduces. Prices still published."
+            PROBLEMS="$PROBLEMS rebuild-check"
           fi
           # Say plainly whether data actually shipped, instead of assuming.
           if [ "$COMMITTED" = "success" ]; then
