@@ -247,6 +247,71 @@ def _offer_payable_price(offer: dict) -> str | None:
     return str(payable[0]["price"])
 
 
+# A Shopify variant id is a long run of ASCII digits.
+#
+# TWO independent conditions, and BOTH are load-bearing.
+#
+# ASCII-ONLY: `str.isdigit()` is not the same test -- it is True for '٣'
+# (Arabic-Indic three) and for '²', and int() accepts the first while
+# raising on the second, so a page carrying either would mint a variant id out
+# of non-Latin digits or crash the scraper. `\d` would not help; Python's re
+# is Unicode-aware by default. Hence an explicit [0-9] class.
+#
+# MAGNITUDE: digits alone are NOT enough, because a variant id and a merchant
+# sku are different id spaces that both look numeric. `_scrape_product_html`
+# is the generic `.json`-404 fallback for EVERY Shopify retailer -- not an
+# FGT-only path -- and the other stores put a SHORT merchant sku in the Offer
+# where FGT puts the variant id. Without a floor this minted
+# `?variant=15449` on a flat-price, merchant-sku page: a parameter that
+# selects nothing, published as if it were a working deep link.
+#
+# The floor is measured, not guessed. All 150,961 historical variant ids
+# across the five retailers that store them are 11-14 digits
+# (11:7713, 12:2136, 13:15119, 14:125993), and all 601 non-empty FGT Offer
+# sku bases are 14 -- so 11 rejects nothing this pipeline has ever seen,
+# while the merchant skus it must reject are 5 digits. The module's own
+# variant_names patterns use `\d{10,}`; 11 is the measured floor and the
+# extra digit is deliberate slack, not a conflict.
+_VARIANT_ID_MIN_DIGITS = 11
+_VARIANT_ID_RE = re.compile(r"[0-9]{%d,}" % _VARIANT_ID_MIN_DIGITS)
+
+
+def _variant_id_from_sku(sku_raw) -> int | None:
+    """The Shopify variant id in a schema.org Offer sku, or None if it isn't one.
+
+    FGT's storefront emits the VARIANT ID as the Offer sku -- measured, not
+    assumed: on the cached page the Offer whose payable price is 323.95 has
+    sku "13940768374836", and
+    /products/leylandcypress?variant=13940768374836 preselects 6-7 ft at
+    $323.95 rather than FGT's default 1-2 ft. That the SELECTED size was the
+    requested one, not the default, is what proves the parameter survived and
+    drove selection -- so it holds for the `leyland-cypress` spelling too,
+    which merely redirects here. `leylandcypress` is the real handle: it is
+    the page's own canonical link and og:url, and what handle_maps.json
+    stores.
+
+    Across the 66 cached FGT pages 601 of 644 Offers carry a 14-digit sku
+    base and the other 43 carry an EMPTY sku, so "" must be rejected rather
+    than silently become 0.
+
+    This is the STOREFRONT's notion of sku, not the merchant's. FGT's catalog
+    API reports a separate short `sku` ("15449") alongside its `variant_id`
+    (40508853223486) and the two must not be confused -- which is exactly what
+    _VARIANT_ID_MIN_DIGITS enforces, because this function is reached for
+    every Shopify retailer and most of them publish the merchant sku here.
+    Nothing in this function reads that API; it parses the sku the product
+    page itself publishes.
+
+    Pack SKUs carry a "-10PACK" suffix, hence the split. Returning None -- not
+    0, not "" -- is what lets callers store NOTHING for an unusable sku. An
+    absent key renders the bare product URL, which always works.
+    """
+    base = str(sku_raw or "").split("-")[0]
+    if not _VARIANT_ID_RE.fullmatch(base):
+        return None
+    return int(base)
+
+
 def _record_size(
     sizes: dict,
     quarantined: set,
@@ -867,6 +932,10 @@ class ShopifyScraper:
             # price. The size buttons carry no stock state, and the old code simply
             # hardcoded available=True for every size it found.
             avail_by_price = self._availability_by_price(text)
+            # Same join, same page, same ambiguity rule -- see
+            # _variant_ids_by_price. This is the ONLY path FGT reaches, so it
+            # is the only place a `?variant=` deep link for FGT can come from.
+            vid_by_price = self._variant_ids_by_price(text)
             sizes = {}
             quarantined_tiers: set[str] = set()
             collisions: list = []
@@ -889,14 +958,22 @@ class ShopifyScraper:
                 # under a tier the big pot also claims". _normalize_size now
                 # tells those two apart; what still lands here is a clash no
                 # tier rule can resolve, and it is withheld, not guessed.
+                entry = {
+                    "price": sale_price,
+                    "was_price": list_price if list_price and list_price > sale_price else None,
+                    "available": available,
+                    "raw_size": size_name,
+                }
+                # Key present ONLY when the page identified exactly one
+                # variant at this price. Absent means "render the bare
+                # product URL", which is what all 16,897 historical FGT rows
+                # already do and what build.py/product.html already handle --
+                # so this key is additive and nothing downstream changes.
+                variant_id = vid_by_price.get(round(sale_price, 2))
+                if variant_id is not None:
+                    entry["variant_id"] = variant_id
                 _record_size(
-                    sizes, quarantined_tiers, tier,
-                    {
-                        "price": sale_price,
-                        "was_price": list_price if list_price and list_price > sale_price else None,
-                        "available": available,
-                        "raw_size": size_name,
-                    },
+                    sizes, quarantined_tiers, tier, entry,
                     retailer_id=self.retailer_id, handle=handle, collisions=collisions,
                 )
             # Known-in-stock wins. Otherwise an UNKNOWN size must block a
@@ -1161,6 +1238,14 @@ class ShopifyScraper:
                         "available": in_stock,
                         "raw_size": size_name,
                     }
+                    # The id and the price come out of the SAME Offer tuple,
+                    # so the deep link always points at the variant whose
+                    # price this cell publishes. Only the LABEL is positional
+                    # here, and a mislabelled row is a pre-existing hazard of
+                    # this path, not one the id introduces.
+                    variant_id = _variant_id_from_sku(sku)
+                    if variant_id is not None:
+                        sizes[tier]["variant_id"] = variant_id
 
                 if sizes:
                     title_match = re.search(r'<title>([^<]+)</title>', text)
@@ -1243,6 +1328,13 @@ class ShopifyScraper:
                 "available": in_stock,
                 "raw_size": size_name,
             }
+            # `sku` is the pack-suffix-stripped base computed above, and it is
+            # the Shopify variant id. Same-Offer guarantee as path B: price and
+            # id are read from one tuple, so they cannot disagree. Packs never
+            # reach here -- the loop `continue`s on them well before this.
+            variant_id = _variant_id_from_sku(sku)
+            if variant_id is not None:
+                sizes[tier]["variant_id"] = variant_id
 
         if not sizes:
             return None
@@ -1584,6 +1676,62 @@ class ShopifyScraper:
         return {
             price: (next(iter(vals)) if len(vals) == 1 else None)
             for price, vals in buckets.items()
+        }
+
+    def _variant_ids_by_price(self, text: str) -> dict[float, int]:
+        """Per-price Shopify variant id from the page's schema.org Offers.
+
+        WHY BY PRICE. The aria path is the only path FGT actually takes --
+        measured: 64 of 64 readable cached FGT pages return from it, and
+        neither positional path below runs even once. Its offers come from
+        `_extract_aria_size_offers`, which reads a size NAME and its PRICE out
+        of one aria-label and never sees a sku. So the id has to be joined on
+        from the page's structured data, and price is the join key that
+        `_availability_by_price` already uses successfully for stock.
+
+        AMBIGUITY WITHHOLDS, exactly as it does for availability. A price
+        claimed by two different variants cannot identify either one, so it
+        maps to nothing and the cell renders the bare product URL. That is not
+        hypothetical: ajuga-chocolate-chip has a retired 3.5-inch pot and a
+        live 1-quart both payable at $35.95. Guessing between them would deep
+        link to a variant the shopper cannot buy while showing the price of one
+        they can.
+
+        Pack SKUs are skipped before the price is even read, so a bundle's
+        per-unit price can never contribute an id to a single-plant cell.
+
+        Same source order as _availability_by_price -- a real JSON parse
+        first, `_SCHEMA_OFFER_RE` only as a fallback -- because the regex
+        requires a flat "price" key that FGT does not emit and matched 0 of
+        644 Offers across the 66 cached pages.
+        """
+        offers = _offers_from_ld_json(text)
+        if not offers:
+            offers = [
+                {"sku": sku, "price": price_str, "availability": availability}
+                for sku, price_str, availability in _SCHEMA_OFFER_RE.findall(text)
+            ]
+
+        buckets: dict[float, set[int]] = {}
+        for offer in offers:
+            sku_raw = str(offer.get("sku") or "")
+            if "pack" in sku_raw.lower():
+                continue  # multi-plant bundle, not a single-plant variant
+            variant_id = _variant_id_from_sku(sku_raw)
+            if variant_id is None:
+                continue  # no readable id -- contribute nothing, never a 0
+            price_str = _offer_payable_price(offer)
+            if price_str is None:
+                continue  # cannot tell what it costs, so cannot key it
+            price = self._to_price(price_str)
+            if price is None:
+                continue
+            buckets.setdefault(round(price, 2), set()).add(variant_id)
+        # Exactly one variant at this price, or no entry at all.
+        return {
+            price: next(iter(vals))
+            for price, vals in buckets.items()
+            if len(vals) == 1
         }
 
     def _normalize_size(self, variant_title: str) -> str:
