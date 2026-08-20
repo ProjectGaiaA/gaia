@@ -19,6 +19,7 @@ Usage:
     results = scraper.scrape_products(["limelight-hydrangea-shrub", "knockout-rose-bush"])
 """
 
+import html
 import json
 import logging
 import random
@@ -519,6 +520,13 @@ class ShopifyScraper:
         sizes = {}
         quarantined_tiers: set[str] = set()
         collisions: list = []
+        # Same role as `bundle_offers` on the aria path: the variants that
+        # parsed to a real price and were then withheld only because they buy
+        # more than one plant. It is the evidence that separates "read fine,
+        # deliberately published nothing" from "could not read this page".
+        # Without it an all-bundle product on this path is indistinguishable
+        # from a product with no variants at all.
+        bundle_variants: list[str] = []
 
         for variant in variants:
             variant_title = variant.get("title", "").strip()
@@ -538,14 +546,35 @@ class ShopifyScraper:
             if price <= 0:
                 continue
 
-            # Skip multi-plant packs and bundles
-            # Matches: "3 Plant(s)", "10 Plant(s)", "10-Pack", "4-Pack", "BOGO / 2 Plant(s)"
-            if re.search(r'(?:[2-9]|1\d)[\s-]*(?:plant|pack)', variant_title, re.IGNORECASE):
-                continue
+            # BUNDLE FIRST, PACK SECOND — the order is load-bearing, and
+            # tests/test_json_path_bundle_precedes_pack_filter.py pins it.
+            # The pack filter's own comment cites "BOGO / 2 Plant(s)", a title
+            # that satisfies BOTH predicates. While the pack filter ran first,
+            # such a variant `continue`d before ever reaching
+            # `bundle_variants`, so a product whose whole catalogue is
+            # BOGO-on-a-pack returned sizes {} with no_sizes_readable ABSENT —
+            # and runner.py's `products_priced = products_found -
+            # products_no_sizes` scored it as a successful price read. That is
+            # precisely the guarantee the bundle signal below exists to make.
+            #
+            # Reordering is output-neutral: a variant matching both predicates
+            # is skipped either way, so `sizes` is byte-identical in every
+            # case. The only difference is that the bundle is now RECORDED as
+            # the reason it was withheld.
+            #
             # Was a bare `'bogo' in variant_title`, which missed every
             # spelled-out form. Shared with the aria path so the two cannot
             # drift apart again.
+            #
+            # Recorded, not just skipped. This `continue` is reached only
+            # AFTER the price parsed to a positive number, so an entry here
+            # proves the variant was readable and was withheld on purpose.
             if self._is_bundle_offer(variant_title):
+                bundle_variants.append(variant_title)
+                continue
+            # Skip multi-plant packs and bundles
+            # Matches: "3 Plant(s)", "10 Plant(s)", "10-Pack", "4-Pack", "BOGO / 2 Plant(s)"
+            if re.search(r'(?:[2-9]|1\d)[\s-]*(?:plant|pack)', variant_title, re.IGNORECASE):
                 continue
             if 'single' in variant_title.lower() and 'pack' in variant_title.lower():
                 continue
@@ -642,6 +671,39 @@ class ShopifyScraper:
         # is a different fact and already has its own handling.
         if not sizes and collisions:
             result["no_sizes_readable"] = True
+        # The SAME hole, one door along, and it stayed open when 7aca354f
+        # closed the aria one. That commit's guarantee — "a retailer that put
+        # its catalogue on BOGO must not score a healthy hit rate while the
+        # site shows none of its prices" (R6) — held for exactly one of seven
+        # retailers, because only fast-growing-trees reaches the aria path.
+        # The other six come through here, and an all-bundle product returned
+        # sizes {} with no_sizes_readable ABSENT, so runner.py's
+        # `products_priced = products_found - products_no_sizes` counted it as
+        # a successful price read. Six retailers could empty their entire
+        # column and still report a 100% hit rate.
+        #
+        # Gated on `bundle_variants`, which is only appended to after a
+        # variant's price parsed to a positive number — so this cannot be
+        # reached by the failure mode it is being told apart from, exactly as
+        # on the aria path. A genuinely priceless product (no variants, all
+        # zero-price, all filtered as multi-plant packs) is still untouched:
+        # different fact, different handling.
+        if not sizes and bundle_variants:
+            logger.warning(
+                f"  {self.retailer_id}/{handle}: all {len(bundle_variants)} "
+                f"readable variants are bundle offers "
+                f"({', '.join(bundle_variants)}) — every price on the page "
+                f"buys more than one plant. Publishing an EMPTY row so any "
+                f"previously published single-plant price is withdrawn. "
+                f"Halving a bundle would invent a price the retailer never "
+                f"listed."
+            )
+            result["no_sizes_readable"] = True
+            # Provenance, same key and same reason as the aria path: without
+            # it the history holds two empty rows of identical shape — "every
+            # size sold out" and "every size is a two-for-one" — and no reader
+            # can tell them apart.
+            result["all_offers_bundled"] = True
         return result
 
     def _scrape_product_html(self, handle: str) -> dict | None:
@@ -1250,13 +1312,99 @@ class ShopifyScraper:
     # It does NOT count plants. "1 Plant(s)" is a single plant and Spring Hill
     # writes it on every variant it sells; the N>=2 counting stays where it
     # already lives, in _is_quantity_label and the JSON path's own guard.
+    #
+    # THE DIRECTION OF FAILURE IS THE WHOLE POINT. Every other guard in this
+    # file fails closed: an unreadable page publishes nothing. This one failed
+    # OPEN — a marker it did not recognise meant the two-plant price sailed
+    # through and was published as the price of one plant, silently, with no
+    # alarm and no failing test. So the predicate is deliberately wider than
+    # the one form FGT writes today, and the corpus below is the control that
+    # keeps "wider" from becoming "wrong".
+    #
+    # Two things were missing:
+    #
+    # 1. It ran against RAW, UN-DECODED HTML. The cached corpus proves
+    #    entities survive into label text — one page carries
+    #    "Today&amp;#x27;s announcements", which is DOUBLE-encoded. A theme
+    #    that emits "Buy&nbsp;1,&nbsp;Get&nbsp;1" would have walked straight
+    #    past `\bbuy\s+`. _normalize_offer_text now decodes first.
+    #
+    # 2. The forms were too narrow. Measured over the 35 realistic phrasings
+    #    in tests/test_bundle_predicate_fails_closed.py: 17/35 matched
+    #    before, 35/35 after, so 18 were missed — including "BOGO50"
+    #    (\bbogo\b cannot match; there is no boundary between "o" and "5"),
+    #    "2-for-1" and "Buy1Get1" (both required literal whitespace), and any
+    #    en-dash in place of the comma. False positives over the 16
+    #    single-plant strings in the same file went 2 -> 0: the old
+    #    `get\s+\w+` also withheld "buy 2, get free shipping".
+    #
+    # False-positive control, re-run on every change (see
+    # tests/test_bundle_predicate_fails_closed.py): all 211 distinct
+    # (retailer, raw_size) values in data/prices/*.jsonl, and all 535
+    # plants.json names/botanicals/aliases, must produce ZERO matches. That
+    # corpus is what pins the ragged edges — `for(?![a-z])` rather than a
+    # substring, so "4-5 FT TREE FORM" and "Forsythia" stay out; and the
+    # buy/get form must land on a QUANTITY, so "buy 2, get free shipping"
+    # (a shipping promo, not a bundle) is not withheld.
     _BUNDLE_RE = re.compile(
-        r"\bbogo\b"
-        r"|\bb\dg\d\b"
-        r"|\bbuy\s+\w+\s*,?\s*get\s+\w+"
-        r"|\b\d+\s+for\s+\$?\d",
+        # BOGO and anything glued to it: "BOGO50", "BOGO-50", "BOGO Free".
+        # No trailing \b — that is exactly what made "BOGO50" invisible.
+        r"\bbogo"
+        # "B1G1", "B2G1", "B1 G1", "B1-G1".
+        r"|\bb\s?\d\s?[-/]?\s?g\s?\d"
+        # "Buy 1, Get 1" and every separator a theme might use instead of the
+        # comma: none at all ("Buy1Get1"), an en/em dash, an ampersand, a
+        # non-breaking space. Must land on a quantity after "get".
+        r"|\bbuy\W{0,3}(?:\d+(?:st|nd|rd|th)?|one|two|three|any)"
+        r"\W{0,4}get\W{0,3}(?:\d+|one\b|two\b|another\b|a\b)"
+        # "2 for 1", "2-for-1", "2for1", "3 for $20", "two for one".
+        r"|\b(?:\d+|one|two|three|four)\s*-?\s*for(?![a-z])\s*-?\s*\$?\s*"
+        r"(?:\d|one\b|two\b)"
+        # "2 for the price of 1"
+        r"|\bfor\s+the\s+price\s+of\b"
+        # "3/$20"
+        r"|\b\d+\s*/\s*\$\s*\d",
         re.IGNORECASE,
     )
+
+    # Spacing and dash characters a theme can substitute without changing what
+    # the offer says. Folded to plain space / plain hyphen before matching.
+    # nbsp, en/em/thin/hair/figure spaces, ideographic space -> plain space.
+    _SPACEY = re.compile("[\\u00a0\\u2000-\\u200a\\u202f\\u205f\\u3000\\t\\r\\n]+")
+    # hyphen/figure/en/em dash, horizontal bar, minus sign, hyphen bullet,
+    # fullwidth hyphen -> plain '-'.
+    _DASHY = re.compile("[\\u2010-\\u2015\\u2212\\u2043\\uff0d]")
+    # zero-width space / non-joiner / joiner / BOM -> deleted outright. These
+    # are invisible, so "Buy​ 1, Get 1" reads identically to a human and
+    # would otherwise split the match.
+    _INVISIBLE = re.compile("[\\u200b\\u200c\\u200d\\ufeff]")
+
+    @classmethod
+    def _normalize_offer_text(cls, text: str) -> str:
+        """Decode entities and fold the punctuation retailers vary.
+
+        The predicate below reads offer text straight out of the HTML, so it
+        sees whatever the theme emitted. Decode first, then fold, so that
+        "Buy&nbsp;1,&nbsp;Get&nbsp;1", "Buy 1 – Get 1" and "Buy 1, Get 1" are
+        one string as far as matching is concerned.
+
+        Unescaped in a bounded loop, not once: the cached corpus contains
+        "Today&amp;#x27;s announcements", which needs two passes to become an
+        apostrophe. Bounded at 3 so a pathological "&amp;amp;amp;..." cannot
+        spin. Decoding can only turn entities into characters, so it cannot
+        invent a marker that was not written.
+        """
+        s = text or ""
+        for _ in range(3):
+            if "&" not in s:
+                break
+            decoded = html.unescape(s)
+            if decoded == s:
+                break
+            s = decoded
+        s = cls._INVISIBLE.sub("", s)
+        s = cls._SPACEY.sub(" ", s)
+        return cls._DASHY.sub("-", s)
 
     @classmethod
     def _is_bundle_offer(cls, text: str) -> bool:
@@ -1267,7 +1415,7 @@ class ShopifyScraper:
         page, and halving the bundle would invent one. A missing cell is an
         omission; a fabricated cell is a false comparison.
         """
-        return bool(cls._BUNDLE_RE.search(text or ""))
+        return bool(cls._BUNDLE_RE.search(cls._normalize_offer_text(text)))
 
     @staticmethod
     def _is_quantity_label(name: str) -> bool:
