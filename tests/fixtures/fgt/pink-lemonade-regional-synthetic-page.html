@@ -1,0 +1,27 @@
+<!-- SYNTHETIC. NOT A CAPTURED PAGE. Same construction rules and the same
+     verbatim <button> wrapper as honeycrisp-regional-synthetic-page.html.
+
+     THE BLIND SPOT, MADE CONCRETE. This is the regional render of
+     pink-lemonade-blueberry that FGT served on the 2026-08-20 12:28 run,
+     read off the committed row in data/prices/pink-lemonade-blueberry.jsonl:
+     ONE tier, "2 Gallon", at $44.95 was $48.95.
+
+     $44.95/$48.95 is the "2 Gallon (CA)" variant in
+     data/regional_reference/fast-growing-trees.json, and it is the ONLY CA
+     variant this product has. The national "2 Gallon" is $48.95 and is out
+     of stock. So the site published a California-only price under a bare
+     "2 Gallon" label, and withdrew the two national tiers (4 inch $33.95,
+     1 quart $30.95) it had published ten hours earlier.
+
+     The scrape-time vocabulary predicate CANNOT see this and is not
+     expected to: the storefront strips the "(CA)" parenthetical, and what
+     is left -- "2 Gallon" -- is character-for-character the national
+     label. Only a price comparison against the catalog can tell them
+     apart, which is what scripts/audit_regional_render.py is for.
+-->
+<html><head><title>Pink Lemonade Blueberry - Fast Growing Trees</title></head><body>
+<div class="product-page">
+<section><h2 class="mb-3 text-lg font-bold">Select size</h2><div class="flex flex-wrap items-end gap-3"><button class="focus:ring-system-focus items-center justify-center rounded-lg p-4 disable-mobile-highlight focus:ring-offset-2 disabled:cursor-not-allowed text-button-tertiary disabled:text-button-tertiary-disabled hover:text-button-tertiary focus:outline-solid text-base px-5 py-4 font-bold min-w-[96px] outline-solid bg-transparent active:bg-transparent hover:bg-transparent focus:bg-transparent focus:outline-2 focus:outline-primary focus:ring-0 focus: focus:outline-offset-0 relative flex h-14 flex-col outline-1 outline-quaternary" type="button" aria-label="2 Gallon - Original price $48.95, sale price $44.95 - 8% OFF" aria-pressed="true">2 Gallon</button></div></section>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Pink Lemonade Blueberry", "offers": [{"@type": "Offer", "sku": "39760919527471", "availability": "https://schema.org/InStock", "priceSpecification": [{"@type": "UnitPriceSpecification", "price": "44.95", "priceCurrency": "USD"}, {"@type": "UnitPriceSpecification", "price": "48.95", "priceCurrency": "USD", "priceType": "https://schema.org/StrikethroughPrice"}]}]}</script>
+<script>self.__next_f.push([1,"\"isRegionKnown\",false,\"regionGroup\",\"product\""])</script>
+</div></body></html>

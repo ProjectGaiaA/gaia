@@ -1,0 +1,31 @@
+<!-- SYNTHETIC. NOT A CAPTURED PAGE.
+
+     Every cached FGT page in this repo came from ONE national-mode run on
+     2026-08-11, so no regional render exists to trim a fixture from. This
+     file is assembled from two real sources and nothing else:
+
+       MARKUP    the <section>, the <button> element and every class on it
+                 are copied verbatim from honeycrisp-national-page.html,
+                 which IS a real capture. Only the aria-label string, the
+                 visible text node and aria-pressed differ.
+       CONTENT   the labels, prices and was_prices are the ones
+                 fast-growing-trees actually served on the 2026-08-20
+                 12:25 run, read off the committed row in
+                 data/prices/honeycrisp-apple-tree.jsonl, and they match
+                 the "4-5 ft. (CA)" / "5-6 ft. (CA)" variants in
+                 data/regional_reference/fast-growing-trees.json to the
+                 cent (11795/12395 and 13995/14695).
+
+     So the SHAPE is measured and the WRAPPER is real; what is synthetic is
+     the act of putting them in one file. Treat any test that depends on
+     markup NOT present in honeycrisp-national-page.html as unsupported.
+
+     Note the national render of this same product offers SIX tiers
+     (1-2 .. 6-7 feet); the regional one offers the two that ship to CA.
+-->
+<html><head><title>Honeycrisp Apple Tree - Fast Growing Trees</title></head><body>
+<div class="product-page">
+<section><h2 class="mb-3 text-lg font-bold">Select size</h2><div class="flex flex-wrap items-end gap-3"><button class="focus:ring-system-focus items-center justify-center rounded-lg p-4 disable-mobile-highlight focus:ring-offset-2 disabled:cursor-not-allowed text-button-tertiary disabled:text-button-tertiary-disabled hover:text-button-tertiary focus:outline-solid text-base px-5 py-4 font-bold min-w-[96px] outline-solid bg-transparent active:bg-transparent hover:bg-transparent focus:bg-transparent focus:outline-2 focus:outline-primary focus:ring-0 focus: focus:outline-offset-0 relative flex h-14 flex-col outline-1 outline-quaternary" type="button" aria-label="4-5 ft. - Original price $123.95, sale price $117.95 - 5% OFF" aria-pressed="true">4-5 ft.</button><button class="focus:ring-system-focus items-center justify-center rounded-lg p-4 disable-mobile-highlight focus:ring-offset-2 disabled:cursor-not-allowed text-button-tertiary disabled:text-button-tertiary-disabled hover:text-button-tertiary focus:outline-solid text-base px-5 py-4 font-bold min-w-[96px] outline-solid bg-transparent active:bg-transparent hover:bg-transparent focus:bg-transparent focus:outline-2 focus:outline-primary focus:ring-0 focus: focus:outline-offset-0 relative flex h-14 flex-col outline-1 outline-quaternary" type="button" aria-label="5-6 ft. - Original price $146.95, sale price $139.95 - 5% OFF" aria-pressed="false">5-6 ft.</button></div></section>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "Honeycrisp Apple Tree", "offers": [{"@type": "Offer", "sku": "13940811071540", "availability": "https://schema.org/InStock", "priceSpecification": [{"@type": "UnitPriceSpecification", "price": "117.95", "priceCurrency": "USD"}, {"@type": "UnitPriceSpecification", "price": "123.95", "priceCurrency": "USD", "priceType": "https://schema.org/StrikethroughPrice"}]}, {"@type": "Offer", "sku": "13940811104308", "availability": "https://schema.org/InStock", "priceSpecification": [{"@type": "UnitPriceSpecification", "price": "139.95", "priceCurrency": "USD"}, {"@type": "UnitPriceSpecification", "price": "146.95", "priceCurrency": "USD", "priceType": "https://schema.org/StrikethroughPrice"}]}]}</script>
+<script>self.__next_f.push([1,"\"isRegionKnown\",false,\"regionGroup\",\"product\""])</script>
+</div></body></html>

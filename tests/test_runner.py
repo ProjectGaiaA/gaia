@@ -454,3 +454,150 @@ def test_bundle_only_rows_reach_the_history_labelled(tmp_data_dir, monkeypatch):
     assert rows[0]["sizes"] == {}
     assert rows[0]["in_stock"] is None
     assert rows[0]["all_offers_bundled"] is True
+
+
+def _regional_run(tmp_data_dir, monkeypatch, results, handles):
+    """Drive the REAL scrape_retailer() over stubbed scraper results."""
+    from scrapers import runner as runner_mod
+
+    class _Stub:
+        def __init__(self, retailer_id, url):
+            pass
+
+        def scrape_products(self, hs, plant_ids=None):
+            return results
+
+    monkeypatch.setattr(runner_mod, "ShopifyScraper", _Stub)
+    monkeypatch.setattr(runner_mod, "PRICES_DIR", tmp_data_dir / "prices")
+    monkeypatch.setattr(runner_mod, "get_handles_for_retailer",
+                        lambda rid, pids: handles)
+    return runner_mod.scrape_retailer(
+        {"id": "fast-growing-trees", "name": "FGT",
+         "url": "https://e.com", "scraper_type": "shopify"},
+        list(handles), {"prices": {}},
+    )
+
+
+def _row(**over):
+    base = {
+        "retailer_name": "FGT", "timestamp": "2026-08-20T12:25:00+00:00",
+        "url": "https://example.com/p", "sizes": {}, "in_stock": None,
+    }
+    base.update(over)
+    return base
+
+
+def test_regional_render_key_survives_the_price_entry_whitelist(
+    tmp_data_dir, monkeypatch,
+):
+    """The row written to data/prices must say WHY it is empty.
+
+    scrape_retailer builds `price_entry` as an EXPLICIT WHITELIST — it copies
+    named keys off the scraper's result and drops everything else. A key the
+    scraper sets and that block does not name never reaches the corpus, so the
+    provenance would be lost between the scraper and the history and
+    scripts/audit_regional_render.py would have nothing to replay.
+
+    Three causes now produce `sizes: {}` — sold out, all-bundled, and
+    regional. Without this key the first and third are indistinguishable in
+    the history.
+    """
+    handles = {"honeycrisp-apple-tree": "honeycrisp-apple-tree"}
+    entry = _regional_run(
+        tmp_data_dir, monkeypatch,
+        [_row(no_sizes_readable=True, regional_render=True)], handles,
+    )
+
+    path = tmp_data_dir / "prices" / "honeycrisp-apple-tree.jsonl"
+    rows = [
+        json.loads(ln)
+        for ln in path.read_text(encoding="utf-8").splitlines() if ln.strip()
+    ]
+    assert len(rows) == 1, "no row appended; the stale regional price survives"
+    assert rows[0]["sizes"] == {}
+    assert rows[0]["in_stock"] is None
+    assert rows[0]["regional_render"] is True
+    assert rows[0].get("all_offers_bundled") is None, (
+        "a regional row must not borrow the bundle cause"
+    )
+    assert entry["products_priced"] == 0, "a regional row is not a price read"
+
+
+def test_manifest_counts_regional_renders_separately(tmp_data_dir, monkeypatch):
+    """products_regional names the CAUSE of a degraded run.
+
+    It is a BREAKDOWN of products_no_sizes, not a replacement: a regional row
+    is one kind of no-sizes row, so it stays inside that count and stays
+    subtracted from products_priced. Without the breakdown a flip run and a
+    broken parser produce byte-identical manifests.
+    """
+    handles = {f"p{i}": f"h{i}" for i in range(5)}
+    results = [
+        _row(sizes={"1gal": {"price": 10.0}}),                     # priced
+        _row(sizes={"2gal": {"price": 20.0}}),                     # priced
+        _row(no_sizes_readable=True),                              # sold out
+        _row(no_sizes_readable=True, regional_render=True),        # regional
+        _row(no_sizes_readable=True, regional_render=True),        # regional
+    ]
+    entry = _regional_run(tmp_data_dir, monkeypatch, results, handles)
+
+    assert entry["products_found"] == 5
+    assert entry["products_no_sizes"] == 3
+    assert entry["products_regional"] == 2
+    assert entry["products_priced"] == 2, (
+        "regional rows must be subtracted from the health input, not exempted"
+    )
+
+
+def test_regional_withhold_is_allowed_to_degrade_the_retailer(
+    tmp_data_dir, monkeypatch,
+):
+    """THE HEALTH DECISION, PINNED. No floor adjustment, no exemption.
+
+    On a flip run the retailer genuinely gave us nothing publishable as a
+    national price, so a hit rate that still says "healthy" is exactly the lie
+    products_priced was introduced to stop telling. The ONLY thing added is
+    the count that names the cause.
+
+    Sized to the measured 2026-08-20 flip: FGT expected 68, priced 56
+    (0.82, healthy). Withholding the 5 regional products gives 51/68 = 0.75,
+    which is below the 0.8 floor — degraded, and correctly so.
+    """
+    from scrapers import runner as runner_mod
+
+    handles = {f"p{i}": f"h{i}" for i in range(68)}
+    results = (
+        [_row(sizes={"1gal": {"price": 10.0}}) for _ in range(51)]
+        + [_row(no_sizes_readable=True, regional_render=True) for _ in range(5)]
+        + [_row(no_sizes_readable=True) for _ in range(8)]
+        + [{"error": "not found"} for _ in range(4)]
+    )
+    entry = _regional_run(tmp_data_dir, monkeypatch, results, handles)
+
+    assert entry["products_priced"] == 51
+    assert entry["products_regional"] == 5
+    _, _, rate = runner_mod.retailer_hit_rate(entry)
+    assert rate < 0.8, (
+        f"a flip run must be allowed to degrade the retailer; got {rate:.4f}"
+    )
+    # And the count is what lets a reader tell this apart from a parser break.
+    assert entry["products_regional"] > 0
+
+
+def test_manifest_merge_carries_the_regional_count(tmp_data_dir, monkeypatch):
+    """The count has to survive into data/last_manifest.json, not just the
+    return value — CI merges per-retailer runs through merge_manifest()."""
+    from scrapers import runner as runner_mod
+
+    handles = {"honeycrisp-apple-tree": "honeycrisp-apple-tree"}
+    entry = _regional_run(
+        tmp_data_dir, monkeypatch,
+        [_row(no_sizes_readable=True, regional_render=True)], handles,
+    )
+    merged = runner_mod.merge_manifest({"retailers": [], "prices": {}}, [entry])
+    fgt = [
+        e for e in merged["retailers"]
+        if e["retailer_id"] == "fast-growing-trees"
+    ]
+    assert len(fgt) == 1
+    assert fgt[0]["products_regional"] == 1

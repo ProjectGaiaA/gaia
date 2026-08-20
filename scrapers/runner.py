@@ -502,6 +502,7 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
     products_found = 0
     products_error = 0
     products_no_sizes = 0
+    products_regional = 0
     prices_collected = 0
     anomalies = []
     price_records = {}
@@ -523,6 +524,13 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
         # products_found=68, prices_collected=0, pipeline_status "healthy".
         if result.get("no_sizes_readable"):
             products_no_sizes += 1
+        # Counted SEPARATELY from products_no_sizes, not instead of it. A
+        # regional row is one KIND of no-sizes row, so it is already inside
+        # that count and already subtracted from products_priced; this is the
+        # breakdown that names the cause. Without it a flip run and a
+        # scraper breakage produce the same manifest.
+        if result.get("regional_render"):
+            products_regional += 1
         sizes = result.get("sizes", {})
         prices_collected += len(sizes)
 
@@ -574,6 +582,19 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
             # key, same precedent as price_anomaly; build.py ignores keys it
             # does not know.
             price_entry["all_offers_bundled"] = True
+        if result.get("regional_render"):
+            # Why THIS empty row is empty. Same precedent and same reason as
+            # all_offers_bundled directly above: three different facts now
+            # produce a row with `sizes: {}`, and a reader looking at history
+            # cannot tell "sold out" from "all bundles" from "one state's
+            # catalogue" without a key that says so.
+            #
+            # This copy is REQUIRED, not decorative. The dict above is an
+            # explicit whitelist -- a key the scraper sets and this block does
+            # not name never reaches data/prices/*.jsonl, so the provenance
+            # would be lost between the scraper and the corpus and
+            # scripts/audit_regional_render.py would have nothing to replay.
+            price_entry["regional_render"] = True
         append_price(plant_id, price_entry)
 
         # Record for manifest
@@ -593,7 +614,8 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
         logger.error(
             f"  {retailer_id}: Only {products_priced}/{expected} products yielded "
             f"prices ({products_priced/expected*100:.0f}%; {products_no_sizes} published "
-            f"with no readable sizes). Possible scraper breakage!"
+            f"with no readable sizes, of which {products_regional} were regional "
+            f"renders). Possible scraper breakage!"
         )
 
     return {
@@ -604,6 +626,22 @@ def scrape_retailer(retailer: dict, plant_ids: list[str], prev_manifest: dict, d
         # products_priced is the honest health input: a published sold-out row
         # proves the page was reachable, not that its sizes are still readable.
         "products_no_sizes": products_no_sizes,
+        # HOW A REGIONAL RENDER MOVES THE HEALTH NUMBERS, AND WHY IT IS LEFT
+        # ALONE. A withheld regional product is inside products_no_sizes, so
+        # it is subtracted from products_priced and it DOES pull the hit rate
+        # down. On the measured 2026-08-20 flip run that is 5 products at FGT:
+        # products_priced 56/68 = 0.82 becomes 51/68 = 0.75, which is below
+        # the 0.8 floor in retailer_hit_rate(), so FGT reports "degraded".
+        #
+        # That is the TRUE answer and it is deliberately not softened. On a
+        # flip run the retailer really did give us nothing we can publish as a
+        # national price, and a hit rate that says otherwise is the same lie
+        # this field was introduced to stop telling. There is no floor
+        # adjustment, no exemption, and no separate denominator: the ONLY
+        # thing added is this count, so a reader looking at a degraded FGT can
+        # tell "the retailer served one state's catalogue" apart from "our
+        # parser broke" without opening the logs.
+        "products_regional": products_regional,
         "products_priced": products_priced,
         "products_error": products_error,
         "prices_collected": prices_collected,

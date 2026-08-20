@@ -276,6 +276,143 @@ _VARIANT_ID_MIN_DIGITS = 11
 _VARIANT_ID_RE = re.compile(r"[0-9]{%d,}" % _VARIANT_ID_MIN_DIGITS)
 
 
+# --------------------------------------------------------------------------
+# FGT regional render
+# --------------------------------------------------------------------------
+#
+# WHAT THE FAILURE LOOKS LIKE. On some runs fast-growing-trees.com serves a
+# product page built for ONE state instead of the national catalogue. The page
+# is a normal 200 on the normal URL with no redirect, and it renders only the
+# variants that ship to that state, at that state's prices. Measured on the
+# 2026-08-20 12:2x run against the retailer's own UCP catalog API (the
+# reference committed at data/regional_reference/fast-growing-trees.json):
+#
+#   bing-cherry-tree   published 5-6ft $153.95 / was $166.95
+#                      catalog "5-6 ft. (CA)" = 15395 / 16695   <- what we got
+#                      catalog "5-6 ft."      = 16895 / 16895   <- national
+#
+# so the site published a California price, under a national label, as the
+# cheapest 5-6 ft Bing cherry on the internet. Four more plants did the same
+# thing on the same run. This is the exact class of defect this module already
+# refuses elsewhere: a price that is real but is not the price of the thing we
+# say it is.
+#
+# WHAT WE DETECT IT WITH, AND WHY IT IS A PROXY. The storefront strips the
+# "(CA)" / "(FL)" parenthetical the catalog carries, so the region is NOT
+# readable from the rendered label. What IS readable is the height vocabulary:
+# every FGT regional render measured writes "N-M ft.", and the national render
+# writes "N-M feet".
+#
+#   Measured over all 16,897 committed FGT rows (data/prices/*.jsonl):
+#     77 of 22,144 height cells use "ft."; 22,067 use "feet".
+#     Those 77 cells sit in 44 rows across 5 plants, and ALL 44 render a
+#     STRICTLY SMALLER tier set than the LARGEST NATIONAL TIER SET SEEN FOR
+#     THAT PLANT TO DATE -- which is the regional signature, since only
+#     in-region variants render. 0 of the other 16,853 FGT rows use "ft.".
+#
+#     THE BASELINE IS THE HIGH-WATER MARK, NOT THE PREVIOUS ROW, and the
+#     difference is not pedantic. Against the NEAREST non-"ft." row the same
+#     claim measures 32/44, not 44/44: meyer-lemon-tree spent June and July
+#     alternating between a 2-tier national row and a 2-tier regional row, so
+#     11 comparisons are EQUAL and one is LARGER (a 2-tier regional row whose
+#     predecessor had shrunk to a single tier). Once a plant's national
+#     catalogue has been seen at 3 tiers, every later regional row is strictly
+#     inside it; comparing against whatever happened to be scraped last is
+#     comparing against another possibly-degraded row.
+#
+# BE HONEST ABOUT WHAT THIS IS. "ft." is NOT semantically "regional". It is
+# FGT's canonical CATALOG spelling: 47 of the 58 non-region-restricted
+# variants in the committed reference are titled "N-M ft." (the superseded
+# 68-plant capture of the same day said 139 of 287 -- same fact, wider
+# sample). The correlation we rely on is
+# a property of the current STOREFRONT THEME, which renders the canonical
+# title verbatim on the regional path and rewrites it to "feet" on the
+# national path. If that theme ever stops rewriting, this predicate withholds
+# the entire FGT catalogue. That failure is loud, not silent -- every row
+# lands in products_regional and the retailer drops below the health floor --
+# but it is the reason scripts/audit_regional_render.py exists: the audit
+# checks the DURABLE signal (agreement with the region twin's price in the
+# catalog capture), and it is what should be believed when the two disagree.
+#
+# WHY THE RETAILER GATE IS LOAD-BEARING, NOT COSMETIC. "N-M ft." is
+# planting-tree's ORDINARY, everyday size vocabulary: 4,789 cells across 1,065
+# committed planting-tree rows match this pattern, every one of them a normal
+# national listing. Every one of those rows is a product an ungated predicate
+# would withhold for a claim nobody has measured at that retailer. The
+# vocabulary claim was measured at FGT and ONLY at FGT, so the predicate is
+# applied at FGT and only at FGT.
+_REGIONAL_RENDER_RETAILERS = frozenset({"fast-growing-trees"})
+
+# "ft." with the period. Deliberately NOT matching "feet": `\bft\.` cannot
+# match inside "feet" (there is no word boundary between the "f" and "eet"
+# that would let "ft" line up), and the period is required so a bare "ft"
+# suffix cannot trip it. `\b` also keeps it out of "Soft." and "Loft.".
+_REGIONAL_SIZE_VOCAB_RE = re.compile(r"\bft\.")
+
+# The storefront ships its region state as a token in the RSC/Flight stream.
+# Escaping depth varies with how deeply the payload is nested, hence \W{0,6}
+# rather than a literal `\\",`.
+#
+# RECORDED, NEVER ACTED ON. See _log_regional_instrumentation.
+_IS_REGION_KNOWN_RE = re.compile(r"isRegionKnown\W{0,6}(true|false)")
+
+
+def _has_regional_size_vocabulary(labels) -> bool:
+    """True if any parsed size label uses the regional height vocabulary."""
+    return any(_REGIONAL_SIZE_VOCAB_RE.search(label or "") for label in labels)
+
+
+def _log_regional_instrumentation(retailer_id, handle, requested_url, resp, text):
+    """Record what the response said about redirects and region. LOGGING ONLY.
+
+    Three facts per row, none of which changes what is published:
+
+      handle_redirect   resp.url differs from the URL we asked for, and/or
+                        resp.history is non-empty. This is the only way to
+                        assert the canonical-URL claim in
+                        tests/test_link_correctness.py, because a handle's
+                        redirect target cannot be read from data at rest --
+                        it needs a fetch. Logged, never enforced: the scraper
+                        already follows the redirect and reads the page it
+                        lands on, and turning a redirect into a withhold
+                        would drop two handles that redirect harmlessly today
+                        (eastern-redbud -> easternredbud,
+                        stella-cherry-tree -> stella-cherry-tree).
+
+      isRegionKnown     the storefront's own region token, verbatim.
+
+    WHY isRegionKnown IS NOT A WITHHOLD SIGNAL, AND MUST NOT BECOME ONE
+    WITHOUT NEW MEASUREMENT. All 64 cached FGT pages that carry the token
+    carry `false`, and every one of them is a NATIONAL render. Nobody has
+    ever captured the token in the failure state, so its value on a regional
+    render is UNKNOWN -- `true` is a guess, and gating on a guess would
+    either withhold everything or nothing. Absence is not evidence either:
+    the only 2 of 66 cached pages missing the token are
+    hameln-dwarf-fountain-grass and sunny-knock-out-rose, whose handles have
+    rotted to /collections/ pages. Absent therefore means handle rot, which
+    is a different defect with a different fix, not region drift.
+    """
+    if retailer_id not in _REGIONAL_RENDER_RETAILERS:
+        return
+    final_url = getattr(resp, "url", None)
+    history = getattr(resp, "history", None) or []
+    if final_url and final_url != requested_url:
+        logger.info(
+            f"  {retailer_id}/{handle}: handle_redirect requested={requested_url} "
+            f"final={final_url} hops={len(history)}"
+        )
+    elif history:
+        logger.info(
+            f"  {retailer_id}/{handle}: handle_redirect hops={len(history)} "
+            f"with no change to the final URL"
+        )
+    token = _IS_REGION_KNOWN_RE.search(text or "")
+    logger.info(
+        f"  {retailer_id}/{handle}: isRegionKnown="
+        f"{token.group(1) if token else 'absent'}"
+    )
+
+
 def _variant_id_from_sku(sku_raw) -> int | None:
     """The Shopify variant id in a schema.org Offer sku, or None if it isn't one.
 
@@ -792,6 +929,7 @@ class ShopifyScraper:
             return None
 
         text = resp.text
+        _log_regional_instrumentation(self.retailer_id, handle, url, resp, text)
 
         # Extract variant ID → size name mapping from inline JS.
         # Multiple patterns because Shopify stores vary structure across themes.
@@ -928,6 +1066,104 @@ class ShopifyScraper:
 
         # Use aria-labels if we got ANY valid size-named results
         if aria_offers:
+            # A regional render: the page parsed fine, but the variants on it
+            # are one state's catalogue at that state's prices, and nothing in
+            # the rendered label says so. See _REGIONAL_RENDER_RETAILERS above
+            # for the measurement and for why this is gated to FGT.
+            #
+            # WITHHOLD THE WHOLE PRODUCT, not the offending cells. The render
+            # is regional in its entirety -- the tier SET is the in-region set,
+            # so the cells that look normal are just as regional as the ones
+            # that do not. Publishing the readable subset would republish the
+            # same defect with a smaller blast radius.
+            #
+            # An EMPTY ROW, not `return None`. Silence appends nothing, and
+            # build.py's get_latest_prices takes the newest row per
+            # (plant, retailer) -- so returning None leaves the PREVIOUS
+            # regional row standing as the newest, which is the very price
+            # this branch exists to withdraw. An empty row is the established
+            # withdraw mechanism in this module (see all_offers_bundled).
+            #
+            # ###############################################################
+            # THIS IS THE ONLY PLACE THE WITHHOLD FIRES. THAT IS A KNOWN GAP.
+            # ###############################################################
+            #
+            # `all_offers_bundled` is emitted from TWO parsers -- here and in
+            # _parse_product, the JSON path -- because a bundle can arrive
+            # down either. `regional_render` is emitted from ONE. Three ways
+            # for a product to publish sizes exist and only this one is
+            # guarded:
+            #
+            #   1. _parse_product (the /products/{handle}.json path).
+            #      UNGUARDED. FGT reaches this module's HTML fallback only
+            #      because its .json endpoint 404s today. If FGT ever
+            #      re-enables it -- a config flip on their side, not a code
+            #      change on ours -- every FGT product silently routes
+            #      through _parse_product and the withhold stops firing with
+            #      no error, no alarm and no failing test.
+            #   2. the positional size<->price fallback lower in THIS method.
+            #      UNGUARDED. Reached when aria_offers is empty, i.e. when the
+            #      aria format has drifted. A regional page that also drifted
+            #      would publish through it.
+            #   3. this branch. Guarded.
+            #
+            # NOT FIXED HERE ON PURPOSE. The vocabulary claim was measured on
+            # storefront aria labels and nowhere else; the JSON path carries
+            # variant TITLES, which the committed reference shows are
+            # "N-M ft." for 47 of its 58 NATIONAL variants. Copying this
+            # predicate there would
+            # withhold most of the FGT catalogue the moment it started being
+            # used. Extending the withhold to path 1 needs its own measurement
+            # against variant titles -- most likely the "(CA)"/"(FL)"
+            # parenthetical, which the JSON path DOES carry and the storefront
+            # strips.
+            #
+            # tests/test_shopify_regional_render.py pins this to exactly one
+            # emission site, so adding a second one fails until somebody
+            # updates this comment.
+            if (
+                self.retailer_id in _REGIONAL_RENDER_RETAILERS
+                and _has_regional_size_vocabulary(n for n, _, _ in aria_offers)
+            ):
+                logger.warning(
+                    f"  {self.retailer_id}/{handle}: size labels use the regional "
+                    f"vocabulary ("
+                    f"{', '.join(n for n, _, _ in aria_offers)}) — this page is a "
+                    f"single-state render, so its prices are that state's prices "
+                    f"and its tier list is that state's tier list. Publishing an "
+                    f"EMPTY row so any previously published national price is "
+                    f"withdrawn rather than quietly replaced by a regional one."
+                )
+                title_match = re.search(r"<title>([^<]+)</title>", text)
+                title = (
+                    title_match.group(1).split("|")[0].strip()
+                    if title_match else handle.replace("-", " ").title()
+                )
+                return {
+                    "retailer_id": self.retailer_id,
+                    "retailer_name": self.retailer_id.replace("-", " ").title(),
+                    "handle": handle,
+                    "title": title,
+                    "url": url,
+                    "sizes": {},
+                    # NOT False -- "Sold Out" would be a false claim; the plant
+                    # is on sale, just not at a price we can attribute to the
+                    # national catalogue. NOT True either: that renders
+                    # "In Stock" beside a row of dashes. Same rule as
+                    # all_offers_bundled.
+                    "in_stock": None,
+                    # Zero prices read, so this must not count as a healthy
+                    # read. runner.py subtracts these from products_priced.
+                    "no_sizes_readable": True,
+                    # Provenance: WHY this row is empty. Without it the history
+                    # holds three empty rows of identical shape -- sold out,
+                    # all-bundled, and regional -- and no reader can tell them
+                    # apart. runner.py must whitelist this key explicitly;
+                    # keys it does not name are dropped.
+                    "regional_render": True,
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                }
+
             # Availability comes from the page's own schema.org Offers, matched by
             # price. The size buttons carry no stock state, and the old code simply
             # hardcoded available=True for every size it found.

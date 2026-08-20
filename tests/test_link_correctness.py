@@ -216,9 +216,12 @@ def test_no_new_unreviewed_region_suffixed_fgt_handle_appears(handle_maps):
     an unreviewed one.
     """
     reviewed = {
-        # (plant_id, handle). The three `-ca` entries are an open defect
-        # awaiting a measured repoint; see UCP_API_RUNBOOK.md section 12.
-        # `-or` is a status-quo pin, not a defect claim either way.
+        # (plant_id, handle). Two of the three `-ca` entries that were open
+        # here have since been repointed at their redirect targets — see
+        # test_repointed_ca_mirrors_now_use_the_national_handle below. They
+        # are kept in this set because it is a SUBSET check: an entry that no
+        # longer exists cannot fail it, and removing it would only make this
+        # test weaker if the handle ever came back.
         ("stella-cherry-tree", "stella-cherry-tree-ca"),
         ("eastern-redbud", "eastern-redbud-tree-form-ca"),
         ("sunshine-blue-blueberry", "sunshine-blue-blueberry-bush-ca"),
@@ -237,6 +240,69 @@ def test_no_new_unreviewed_region_suffixed_fgt_handle_appears(handle_maps):
         "may be a region-restricted mirror publishing a price a general "
         "visitor cannot buy at. Check it against the national twin and record "
         f"the result before it ships. Found: {sorted(unreviewed)}"
+    )
+
+
+def test_repointed_ca_mirrors_now_use_the_national_handle(handle_maps):
+    """Two of the three `-ca` mirrors are repointed. Both are DATA NO-OPS.
+
+    Not a judgement call — the redirect target is written on each cached page
+    in this repo's audit corpus, in the page's own `rel="canonical"`:
+
+        eastern-redbud__fgt.html      -> /products/easternredbud
+        stella-cherry-tree__fgt.html  -> /products/stella-cherry-tree
+
+    Those pages were fetched at the `-ca` URLs and served content that names
+    the NATIONAL handle as canonical, i.e. FGT already 302s one to the other.
+    We were therefore already scraping the national page; the only thing the
+    `-ca` handle changed was the URL we published on the site and re-requested
+    every run. Repointing removes a pointless redirect hop and a link that
+    reads as California-only to a visitor. It changes no price, and
+    tests/test_build_fixtures.py plus an empty `git status site/` after a
+    rebuild are what prove that.
+
+    THE THIRD ONE IS DELIBERATELY NOT TOUCHED. See
+    test_sunshine_blue_repoint_is_held_pending_a_measured_price:
+    sunshine-blue-blueberry-bush-ca's own canonical is ITSELF, so it is a real
+    standalone page, not a mirror, and repointing it would change the only
+    live price on that plant's page.
+    """
+    fgt = handle_maps["fast-growing-trees"]
+    assert fgt["eastern-redbud"] == "easternredbud"
+    assert fgt["stella-cherry-tree"] == "stella-cherry-tree"
+
+
+def test_sunshine_blue_is_the_only_ca_handle_left(handle_maps):
+    """A strict pin, not a subset check. Changing it either way is deliberate.
+
+    `test_no_new_unreviewed_region_suffixed_fgt_handle_appears` above is a
+    SUBSET check, so it cannot notice a `-ca` handle being repointed and it
+    cannot notice the last one being dropped. This is the exact-equality
+    counterpart, scoped to `-ca`:
+
+      * ADD a `-ca` handle and this fails — a California mirror publishes a
+        price a general visitor cannot buy at, and the two we just repointed
+        are proof the mistake is easy to make.
+      * REMOVE the sunshine-blue hold and this fails too, which is the point.
+        The hold is documented, is protecting the only live price on that
+        plant's page, and lists three things that must be MEASURED before it
+        moves. Deleting it must require editing this test on purpose, not
+        just editing a JSON file.
+    """
+    fgt = handle_maps["fast-growing-trees"]
+    ca_handles = {
+        (plant_id, handle)
+        for plant_id, handle in fgt.items()
+        if handle.endswith("-ca")
+    }
+    assert ca_handles == {
+        ("sunshine-blue-blueberry", "sunshine-blue-blueberry-bush-ca"),
+    }, (
+        "The set of FGT `-ca` handles changed. If you ADDED one, check it "
+        "against its national twin first. If you REMOVED the sunshine-blue "
+        "hold, read "
+        "test_sunshine_blue_repoint_is_held_pending_a_measured_price and "
+        f"measure the three items it lists. Found: {sorted(ca_handles)}"
     )
 
 
