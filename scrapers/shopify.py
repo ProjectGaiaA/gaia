@@ -917,7 +917,19 @@ class ShopifyScraper:
             # it the history holds two empty rows of identical shape — "every
             # size sold out" and "every size is a two-for-one" — and no reader
             # can tell them apart.
-            result["all_offers_bundled"] = True
+            #
+            # NOT when a collision also emptied this row. The key is a claim
+            # about EVERY offer on the page, and a quarantined tier is a
+            # single-plant offer that WAS read and was then withheld for an
+            # unrelated reason — two variants wanting the same tier. Writing
+            # "all offers bundled" over that row puts a reason into the
+            # permanent history that is false: the page did list a
+            # single-plant price, and this row is not evidence the retailer
+            # went all-bundle. The health flag above is untouched and still
+            # fires either way (the collisions gate sets it too), so this
+            # narrows the stated REASON only, never the accounting.
+            if not collisions:
+                result["all_offers_bundled"] = True
         return result
 
     def _scrape_product_html(self, handle: str) -> dict | None:

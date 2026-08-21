@@ -201,3 +201,39 @@ def test_a_zero_price_bundle_does_not_vouch_for_a_readable_page(no_sleep):
     ])
     assert result["sizes"] == {}
     assert "all_offers_bundled" not in result
+
+
+@responses.activate
+def test_a_collision_alongside_a_bundle_is_not_labelled_all_bundled(no_sleep):
+    """Both routes to an empty row at once: one tier lost to a collision, the
+    rest withheld as bundles.
+
+    The health flag must still fire — not one price published, so the row must
+    not score as a successful read. But "every offer buys more than one plant"
+    is FALSE here: a single-plant offer existed, was read cleanly, and was
+    withheld because two variants wanted the same tier. Labelling this row
+    all-bundled writes a wrong explanation into the permanent price history,
+    where the whole point of the key is to tell "every size sold out" apart
+    from "every size is a two-for-one".
+    """
+    result = _scrape("h", [
+        _variant(1, "1 Gallon", "29.99"),   # collides with...
+        _variant(2, "1 Gallon", "34.99"),   # ...this — tier quarantined
+        _variant(3, "3-4' BOGO", "119.99"),  # and the rest is a bundle
+    ])
+    assert result["sizes"] == {}
+    assert result["size_collisions"] == 1
+    assert result.get("no_sizes_readable") is True, (
+        "a row that published nothing scored as a successful price read")
+    assert "all_offers_bundled" not in result, (
+        "a tier lost to a collision was reported as a multi-plant offer")
+
+
+@responses.activate
+def test_a_bundle_only_row_still_carries_the_reason(no_sleep):
+    """The control on the test above: with no collision, the provenance key
+    must still be written. A guard that never fires is not a guard."""
+    result = _scrape("h", ALL_BUNDLE)
+    assert result["sizes"] == {}
+    assert result["size_collisions"] == 0
+    assert result.get("all_offers_bundled") is True
