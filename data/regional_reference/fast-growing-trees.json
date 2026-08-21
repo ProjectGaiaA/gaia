@@ -5,7 +5,7 @@
   "what": "Per-tier national and region-restricted variant prices for fast-growing-trees, derived from the retailer's own UCP catalog API. This is the INDEPENDENT oracle for scripts/audit_regional_render.py: it is fetched from a different endpoint than the storefront scrape it judges, so the thing under test does not produce its own baseline (nightly_audits.py RULE ZERO).",
   "scope": "TARGETED re-capture: only the region-twinned plants the D2' audit needs, plus the two repointed handles. It is NOT a full 68-plant sweep -- plants outside this set are absent and the audit reports them as not-checked, never as clean.",
   "raw_capture": "fast-growing-trees.raw-capture.json",
-  "raw_capture_sha256": "35d62d78c61be3f7ecd1636afa637a1e56b50c2f24d07fcd27fd455729efa1c7",
+  "raw_capture_sha256": "0de018b3b88a941931fa50c1bf55f15aaee5bf4081b4e04994c8e57853f6d446",
   "source": "UCP catalog API (search_catalog + get_product top-up)",
   "endpoint": "https://fast-growing-trees-com.myshopify.com/api/ucp/mcp",
   "captured_at": "2026-08-20T20:15:02Z",

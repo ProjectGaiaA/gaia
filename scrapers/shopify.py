@@ -335,12 +335,24 @@ _VARIANT_ID_RE = re.compile(r"[0-9]{%d,}" % _VARIANT_ID_MIN_DIGITS)
 # catalog capture), and it is what should be believed when the two disagree.
 #
 # WHY THE RETAILER GATE IS LOAD-BEARING, NOT COSMETIC. "N-M ft." is
-# planting-tree's ORDINARY, everyday size vocabulary: 4,789 cells across 1,065
-# committed planting-tree rows match this pattern, every one of them a normal
-# national listing. Every one of those rows is a product an ungated predicate
-# would withhold for a claim nobody has measured at that retailer. The
-# vocabulary claim was measured at FGT and ONLY at FGT, so the predicate is
-# applied at FGT and only at FGT.
+# planting-tree's ORDINARY, everyday size vocabulary: as of commit 41651154,
+# 4,807 cells across 1,069 of the 19,688 committed planting-tree rows match
+# this pattern, every one of them a normal national listing. Every one of
+# those rows is a product an ungated predicate would withhold for a claim
+# nobody has measured at that retailer. The vocabulary claim was measured at
+# FGT and ONLY at FGT, so the predicate is applied at FGT and only at FGT.
+#
+# THOSE NUMBERS ARE A DATED CENSUS, NOT A LIVE FACT. The bot appends to
+# data/prices/ twice a day, so they drift upward on their own -- they read
+# 4,789 / 1,065 / 19,615 one day earlier. Nothing recomputes them from the
+# live corpus, and nothing should: the test that used to do so went red on an
+# ordinary scrape run, which is the failure that produced this note. The
+# authoritative frozen copy, with the commit it was taken at, lives in
+# tests/fixtures/regional_audit/MANIFEST.json. Treat a discrepancy here as
+# staleness in the prose, never as a defect in the gate -- what is actually
+# protected is the PREDICATE'S BEHAVIOUR against a frozen corpus, in
+# tests/test_audit_regional_render.py::
+#     test_the_ungated_predicate_would_fire_on_a_thousand_planting_tree_rows
 _REGIONAL_RENDER_RETAILERS = frozenset({"fast-growing-trees"})
 
 # "ft." with the period. Deliberately NOT matching "feet": `\bft\.` cannot

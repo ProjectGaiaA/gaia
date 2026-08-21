@@ -1,0 +1,39 @@
+{
+  "as_of_commit": "41651154ab9357fcd54939461cb384eb182334ee",
+  "reference_captured_at": "2026-08-20T20:15:02Z",
+  "reference_raw_capture_sha256_normalized": "0de018b3b88a941931fa50c1bf55f15aaee5bf4081b4e04994c8e57853f6d446",
+  "fgt_corpus": {
+    "plants": [
+      "bing-cherry-tree",
+      "eastern-redbud",
+      "fuji-apple-tree",
+      "honeycrisp-apple-tree",
+      "meyer-lemon-tree",
+      "pink-lemonade-blueberry",
+      "santa-rosa-plum",
+      "stella-cherry-tree",
+      "sunshine-blue-blueberry"
+    ],
+    "rows": 2378,
+    "scope": "every fast-growing-trees row in data/prices/<plant>.jsonl for the plants the reference covers",
+    "reduction": "each size cell keeps only price, was_price, raw_size, available; all other row keys dropped",
+    "scoping_guard": "verified at build time that no FGT row OUTSIDE these plants carries a regional size-vocabulary hit, so the union census is unchanged by the scoping"
+  },
+  "planting_tree_size_labels": {
+    "plants": 75,
+    "rows": 19688,
+    "distinct_label_tuples": 78,
+    "matching_rows": 1069,
+    "matching_cells": 4807,
+    "matching_plants": [
+      "hass-avocado",
+      "heritage-river-birch",
+      "money-tree",
+      "stella-cherry-tree"
+    ],
+    "scope": "every planting-tree row in data/prices/, reduced to its ordered raw_size label tuple with a multiplicity count",
+    "reduction": "78 distinct label tuples stand in for all 19688 rows; _has_regional_size_vocabulary reads only these labels, so the counts are exact",
+    "authoritative_for": "the dated census quoted in the _REGIONAL_RENDER_RETAILERS comment in scrapers/shopify.py. That comment drifts as the bot appends; these figures are frozen at as_of_commit and are the ones to believe."
+  },
+  "regenerate": "python tests/fixtures/regional_audit/build_snapshot.py (run from the repo root; reads live data/, rewrites this directory)"
+}

@@ -6,13 +6,36 @@ data/regional_reference/fast-growing-trees.json. That makes it the independent
 oracle (nightly_audits.py RULE ZERO) and the thing to believe when the two
 disagree — which they measurably do, in both directions.
 
-The replay at the bottom of this file is the calibration (R9): every number
-in the module docstrings is reproduced here from the committed corpus, so a
-change that quietly moves one turns this suite red.
+WHERE THE NUMBERS COME FROM, AND WHY NOT FROM data/prices/
+----------------------------------------------------------
+The replay at the bottom of this file is the calibration (R9): every number in
+the module docstrings is reproduced here, so a change that quietly moves one
+turns this suite red.
+
+It is reproduced against a FROZEN SNAPSHOT at tests/fixtures/regional_audit/,
+not against data/prices/. That is not a convenience; it is the difference
+between a test and a tripwire. The bot appends to data/prices/ twice a day, so
+any expectation that is a census of the live corpus is stale within hours —
+and it fails in CI, on the production scrape run, for a reason that is not a
+defect. scrape.yml already says this out loud: "Tests are fixture-based: they
+validate CODE, not this run's data."
+
+So the rule in this file is:
+
+  * A number that describes a CORPUS is pinned against the frozen snapshot,
+    which carries its as-of commit in MANIFEST.json. Refreshing it is a
+    deliberate act with a diff.
+  * A claim about the audit's BEHAVIOUR is written as an invariant — a
+    property that holds for any corpus state — and exercised over a synthetic
+    corpus built in the test, so it never depends on what tonight's scrape
+    happened to find.
+  * A number that describes the live tip is not asserted here at all. The
+    audit prints it; that is where it belongs.
 """
 
 import hashlib
 import json
+import shutil
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -32,6 +55,13 @@ from scripts.audit_regional_render import (
 REPO = Path(__file__).parent.parent
 DATA_DIR = REPO / "data"
 REFERENCE = DATA_DIR / "regional_reference" / "fast-growing-trees.json"
+
+# The frozen corpus snapshot. Same on-disk shape as data/ (a prices/ directory
+# of .jsonl), so run() drives it through exactly the same loader.
+FIXTURES = REPO / "tests" / "fixtures" / "regional_audit"
+FIXTURE_CORPUS = FIXTURES / "corpus"
+FIXTURE_MANIFEST = FIXTURES / "MANIFEST.json"
+PLANTING_TREE_LABELS = FIXTURES / "planting_tree_size_labels.json"
 
 # The capture's own instant, READ OFF THE REFERENCE rather than typed in.
 # Every test that wants the price clauses ENABLED ages the reference against a
@@ -64,6 +94,71 @@ def _cell(price, was=None):
     return {"price": price, "was_price": was, "available": True}
 
 
+# The honeycrisp CA catalogue, exactly. test_clause_1 and test_clause_2 prove
+# from the reference that this shape fires; the invariant tests below reuse it
+# whenever they need a corpus that is GUARANTEED to produce a finding, instead
+# of hoping the live tip still has one.
+CA_FLIP_SIZES = {"4-5ft": _cell(117.95, 123.95), "5-6ft": _cell(139.95, 146.95)}
+
+# The real national catalogue for the same plant, all six tiers — guaranteed
+# clean for the same reason.
+NATIONAL_SIZES = {
+    "1-2ft": _cell(75.95), "2-3ft": _cell(86.95),
+    "3-4ft": _cell(100.95), "4-5ft": _cell(129.95),
+    "5-6ft": _cell(153.95), "6-7ft": _cell(183.95),
+}
+
+
+def _corpus(tmp_path, rows_by_plant):
+    """Write a synthetic corpus and return its data-dir path."""
+    prices = tmp_path / "prices"
+    prices.mkdir(exist_ok=True)
+    for plant, rows in rows_by_plant.items():
+        (prices / f"{plant}.jsonl").write_text(
+            "".join(json.dumps(r) + "\n" for r in rows), encoding="utf-8",
+        )
+    return tmp_path
+
+
+def _normalized_sha256(path):
+    """sha256 of a file's content with line endings normalised to LF.
+
+    THE HASH MUST NOT DEPEND ON WHO CHECKED THE FILE OUT. core.autocrlf is
+    true on Windows and .gitattributes covers only *.jsonl, so this .json
+    lands CRLF in a Windows worktree and LF in a Linux one. Hashing the raw
+    bytes therefore pins a hash that is true on exactly one platform — which
+    is how the pin came to be a Windows-only value that failed every Linux CI
+    run. Normalising first pins the CONTENT, which is what provenance is
+    actually about, and makes the value equal to the git blob's own sha256.
+    """
+    return hashlib.sha256(
+        Path(path).read_bytes().replace(b"\r\n", b"\n")
+    ).hexdigest()
+
+
+# --- the frozen snapshot itself --------------------------------------------
+
+
+def test_the_frozen_snapshot_records_the_commit_it_was_taken_at():
+    """A pinned census is only reviewable if you can say what it is a census
+    OF. The manifest carries the commit, the reference it was cut against, and
+    the reduction rule, so every number below can be re-derived."""
+    m = json.loads(FIXTURE_MANIFEST.read_text(encoding="utf-8"))
+    assert len(m["as_of_commit"]) == 40
+    assert m["reference_captured_at"] == (
+        load_reference(REFERENCE)["provenance"]["captured_at"]
+    ), (
+        "the snapshot was cut against a different capture than the one "
+        "committed. Re-run the regenerate command in MANIFEST.json."
+    )
+    assert m["reference_raw_capture_sha256_normalized"] == _normalized_sha256(
+        REFERENCE.parent / load_reference(REFERENCE)["provenance"]["raw_capture"]
+    )
+    assert FIXTURE_CORPUS.is_dir() and any(
+        (FIXTURE_CORPUS / "prices").glob("*.jsonl")
+    )
+
+
 # --- the reference artifact itself -----------------------------------------
 
 
@@ -88,15 +183,40 @@ def test_raw_capture_is_committed_and_matches_its_pinned_hash(reference):
     nothing to hash. The raw capture is now committed beside the reference,
     which turns the pin into a real integrity check: edit either file and this
     fails.
+
+    The pin is over LF-NORMALISED content (see _normalized_sha256). The
+    previous pin was over the raw worktree bytes, which made it a Windows-only
+    value: it passed locally and failed every Linux CI run, because git had
+    normalised the blob on checkout. A provenance check that depends on the
+    checking machine's line-ending config is not a provenance check.
     """
     raw_path = REFERENCE.parent / reference["provenance"]["raw_capture"]
     assert raw_path.exists(), f"the pinned raw capture is missing: {raw_path}"
-    digest = hashlib.sha256(raw_path.read_bytes()).hexdigest()
+    digest = _normalized_sha256(raw_path)
     assert digest == reference["provenance"]["raw_capture_sha256"], (
         "the committed raw capture does not match the sha256 the reference "
         "pins it to. One of the two has been edited; neither can be trusted "
         f"until that is resolved. file={digest} "
         f"pinned={reference['provenance']['raw_capture_sha256']}"
+    )
+
+
+def test_the_pinned_hash_is_the_one_a_linux_checkout_measures(reference):
+    """THE CROSS-PLATFORM PROPERTY, ASSERTED RATHER THAN HOPED FOR.
+
+    The whole failure was that Windows and Linux measured different bytes for
+    the same committed file. Normalising fixes it, but "we normalised" is not
+    evidence — so this pins the consequence: the file's normalised hash equals
+    the hash of the LF-only content git actually stores, which is what a Linux
+    runner reads back on checkout. If anyone reverts to hashing raw bytes,
+    this fails on Windows immediately rather than in CI a day later.
+    """
+    raw_path = REFERENCE.parent / reference["provenance"]["raw_capture"]
+    stored = raw_path.read_bytes().replace(b"\r\n", b"\n")
+    assert b"\r\n" not in stored
+    assert hashlib.sha256(stored).hexdigest() == _normalized_sha256(raw_path)
+    assert reference["provenance"]["raw_capture_sha256"] == _normalized_sha256(
+        raw_path
     )
 
 
@@ -110,21 +230,29 @@ def test_reference_is_the_expected_capture(reference):
     describe whatever they were given.
 
     So exactly one test pins the identity of the file we actually reviewed —
-    its capture instant, its raw-capture hash, and two prices read off the
+    its capture instant, its raw-capture hash, and the prices read off the
     retailer's catalog by hand. Re-capturing REQUIRES editing this test, on
     purpose, which is the point.
     """
     prov = reference["provenance"]
     assert prov["captured_at"] == "2026-08-20T20:15:02Z"
     assert prov["raw_capture_sha256"] == (
-        "35d62d78c61be3f7ecd1636afa637a1e56b50c2f24d07fcd27fd455729efa1c7"
+        "0de018b3b88a941931fa50c1bf55f15aaee5bf4081b4e04994c8e57853f6d446"
     )
     assert len(reference["plants"]) == 9
-    # Hand-read from the capture: stella's CA 5-6 ft against its national twin.
-    # This pair is what the audit's newest finding turns on.
+    # Hand-read from the capture: the CA 5-6 ft against its national twin, for
+    # the two plants whose spread the audit's newest findings turn on. These
+    # pairs used to be asserted indirectly, by reading them back out of
+    # whatever the live tip happened to be publishing; they belong here, on
+    # the artifact they were read from, where a re-capture is what moves them.
     stella = reference["plants"]["stella-cherry-tree"]
     assert stella["regional"]["CA"]["5-6ft"]["price_cents"] == 14695
     assert stella["national"]["5-6ft"]["price_cents"] == 16095
+    bing = reference["plants"]["bing-cherry-tree"]
+    assert bing["regional"]["CA"]["5-6ft"]["price_cents"] == 15395
+    assert bing["national"]["5-6ft"]["price_cents"] == 16895
+    blueberry = reference["plants"]["pink-lemonade-blueberry"]
+    assert blueberry["regional"]["CA"]["2gal"]["price_cents"] == 4495
 
 
 def test_reference_names_no_region_of_its_own(reference):
@@ -175,7 +303,7 @@ def test_extra_products_are_evidence_and_never_audit_input(reference):
     assert not (set(extra) & set(reference["plants"])), (
         "an evidence product leaked into the audited plant set"
     )
-    _, report = run(DATA_DIR, REFERENCE, now=FRESH)
+    _, report = run(FIXTURE_CORPUS, REFERENCE, now=FRESH)
     assert report["reference_total_plants"] == len(reference["plants"]), (
         "extra_products must not inflate the audit's denominator"
     )
@@ -306,14 +434,24 @@ def test_age_is_measured_from_the_capture(reference):
     assert reference_age_days(reference, now=STALE) > MAX_REFERENCE_AGE_DAYS
 
 
-def test_fresh_reference_enables_the_price_clauses():
-    code, report = run(DATA_DIR, REFERENCE, now=FRESH)
+def test_fresh_reference_enables_the_price_clauses(tmp_path):
+    """The clauses turn ON inside the window, and the run really does check
+    rows rather than skipping them all.
+
+    Driven over a synthetic corpus holding one honest national row: `checked`
+    is then 1 BY CONSTRUCTION. Read off data/prices/ it was a coin flip on
+    whether tonight's scrape happened to leave a non-empty FGT row at the tip
+    — which is a property of the retailer's stock, not of this code.
+    """
+    data = _corpus(tmp_path, {"honeycrisp-apple-tree": [_row(NATIONAL_SIZES)]})
+    code, report = run(data, REFERENCE, now=FRESH)
     assert report["price_clauses_enabled"] is True
     assert report["reference_stale"] is False
-    assert report["checked"] > 0
+    assert report["checked"] == 1
+    assert code == EXIT_OK
 
 
-def test_stale_reference_disables_the_price_clauses_and_still_alarms():
+def test_stale_reference_disables_the_price_clauses_and_still_alarms(tmp_path):
     """COULD-NOT-VERIFY MUST NOT READ AS CLEAN.
 
     Past the window the price comparison is no longer evidence — FGT reprices
@@ -321,8 +459,17 @@ def test_stale_reference_disables_the_price_clauses_and_still_alarms():
     ALARM, not OK, for the same reason nightly_audits.py R10 alarms on a
     collapsed denominator: an audit that goes green because it stopped looking
     also stops anybody else looking.
+
+    Driven over a corpus that WOULD otherwise fire, so "checked == 0" is the
+    gate doing its job and not an empty corpus flattering it.
     """
-    code, report = run(DATA_DIR, REFERENCE, now=STALE)
+    data = _corpus(tmp_path, {"honeycrisp-apple-tree": [_row(CA_FLIP_SIZES)]})
+    assert run(data, REFERENCE, now=FRESH)[1]["fired"] == 1, (
+        "the fixture corpus must fire when fresh, or the stale case proves "
+        "nothing"
+    )
+
+    code, report = run(data, REFERENCE, now=STALE)
 
     assert report["price_clauses_enabled"] is False
     assert report["checked"] == 0
@@ -331,12 +478,13 @@ def test_stale_reference_disables_the_price_clauses_and_still_alarms():
     assert any("reference stale, not checked" in a for a in report["alarms"])
 
 
-def test_stale_gate_boundary_is_the_documented_window():
+def test_stale_gate_boundary_is_the_documented_window(tmp_path):
     """One hour inside the window checks; one day outside does not."""
+    data = _corpus(tmp_path, {"honeycrisp-apple-tree": [_row(NATIONAL_SIZES)]})
     inside = CAPTURE_AT + timedelta(days=MAX_REFERENCE_AGE_DAYS, hours=-1)
     outside = CAPTURE_AT + timedelta(days=MAX_REFERENCE_AGE_DAYS, hours=1)
-    assert run(DATA_DIR, REFERENCE, now=inside)[1]["price_clauses_enabled"] is True
-    assert run(DATA_DIR, REFERENCE, now=outside)[1]["price_clauses_enabled"] is False
+    assert run(data, REFERENCE, now=inside)[1]["price_clauses_enabled"] is True
+    assert run(data, REFERENCE, now=outside)[1]["price_clauses_enabled"] is False
 
 
 def test_a_reference_with_no_usable_date_is_stale_not_fresh(tmp_path, reference):
@@ -346,7 +494,7 @@ def test_a_reference_with_no_usable_date_is_stale_not_fresh(tmp_path, reference)
     path = tmp_path / "ref.json"
     path.write_text(json.dumps(broken), encoding="utf-8")
 
-    code, report = run(DATA_DIR, path, now=FRESH)
+    code, report = run(FIXTURE_CORPUS, path, now=FRESH)
     assert report["reference_stale"] is True
     assert code == EXIT_ALARM
 
@@ -358,18 +506,8 @@ def test_a_national_corpus_exits_ok(tmp_path):
     red is indistinguishable from one that is simply broken. This drives the
     same audit over a corpus holding one honest national row.
     """
-    prices = tmp_path / "prices"
-    prices.mkdir()
-    (prices / "honeycrisp-apple-tree.jsonl").write_text(
-        json.dumps(_row({
-            # the real national catalogue, all six tiers
-            "1-2ft": _cell(75.95), "2-3ft": _cell(86.95),
-            "3-4ft": _cell(100.95), "4-5ft": _cell(129.95),
-            "5-6ft": _cell(153.95), "6-7ft": _cell(183.95),
-        })) + "\n",
-        encoding="utf-8",
-    )
-    code, report = run(tmp_path, REFERENCE, now=FRESH)
+    data = _corpus(tmp_path, {"honeycrisp-apple-tree": [_row(NATIONAL_SIZES)]})
+    code, report = run(data, REFERENCE, now=FRESH)
     assert report["checked"] == 1
     assert report["fired"] == 0
     assert report["alarms"] == []
@@ -385,16 +523,99 @@ def test_a_reference_that_can_answer_for_nobody_alarms(tmp_path, reference):
     path = tmp_path / "ref.json"
     path.write_text(json.dumps(empty), encoding="utf-8")
 
-    code, report = run(DATA_DIR, path, now=FRESH)
+    code, report = run(FIXTURE_CORPUS, path, now=FRESH)
     assert report["reference_answerable_plants"] == 0
     assert code == EXIT_ALARM
     assert any("denominator collapsed" in a for a in report["alarms"])
 
 
-# --- calibration against the committed corpus (R9) --------------------------
+# --- invariants: true of ANY corpus state ----------------------------------
 
 
-def test_replay_over_the_whole_corpus_reproduces_the_documented_numbers():
+def test_finding_strength_is_decided_by_the_row_capture_gap(tmp_path):
+    """`confirmed` vs `lead` is a statement about the ROW's distance from the
+    capture, not about which mode the audit was run in.
+
+    This used to be asserted as "the newest rows in data/prices/ are all
+    inside the window" — which is a fact about how recently the bot ran, and
+    went false the moment tonight's scrape shifted the tip. The property the
+    code actually implements is pinned instead, from both sides of the
+    boundary, over rows built to sit there.
+    """
+    inside = (CAPTURE_AT - timedelta(days=1)).isoformat()
+    outside = (CAPTURE_AT - timedelta(days=MAX_REFERENCE_AGE_DAYS + 5)).isoformat()
+    data = _corpus(tmp_path, {"honeycrisp-apple-tree": [
+        _row(CA_FLIP_SIZES, ts=outside),
+        _row(CA_FLIP_SIZES, ts=inside),
+    ]})
+
+    _, report = run(data, REFERENCE, now=FRESH, latest_only=False)
+    assert report["fired"] == 2
+    strength = {f["timestamp"]: f["strength"] for f in report["findings"]}
+    assert strength[inside] == "confirmed"
+    assert strength[outside] == "lead"
+    assert report["fired_confirmed"] + report["fired_lead"] == report["fired"]
+
+
+def test_the_mode_ci_runs_reports_no_leads_when_the_tip_is_fresh(tmp_path):
+    """The operational claim that used to be a census of data/prices/.
+
+    CI runs latest_only, so it compares the newest row per plant. When that
+    row is inside the window every finding is `confirmed` and none is a
+    `lead`. Built here rather than found, so it states the rule instead of
+    reporting last night's luck — note the STALE row underneath, which would
+    have produced a lead had the mode picked it up.
+    """
+    data = _corpus(tmp_path, {"honeycrisp-apple-tree": [
+        _row(CA_FLIP_SIZES, ts=(CAPTURE_AT - timedelta(days=90)).isoformat()),
+        _row(CA_FLIP_SIZES, ts=(CAPTURE_AT - timedelta(hours=8)).isoformat()),
+    ]})
+    _, report = run(data, REFERENCE, now=FRESH, latest_only=True)
+    assert report["fired"] == 1
+    assert report["fired_lead"] == 0
+    assert report["fired_confirmed"] == report["fired"] == 1
+
+
+@pytest.mark.parametrize("corpus", ["fixture", "live"])
+def test_every_finding_is_internally_consistent(corpus, reference):
+    """WHAT A FINDING CLAIMS, CHECKED AGAINST WHAT IT SHOWS — for whatever the
+    corpus happens to hold, including nothing.
+
+    A finding says "we published region R's price". That is only true if, at
+    every tier it reports, the published price EQUALS R's twin price, and at
+    some tier R's price DIFFERS from the national one. Both are re-derived
+    here from the reference rather than taken from the finding's own summary.
+
+    This replaces the old test that pinned the six specific prices sitting at
+    the live tip. Those numbers described one night's data and were obsolete
+    within a day; the property they were standing in for holds forever, and
+    holds vacuously when the tip is clean — which is the correct behaviour
+    for a run that legitimately fires nothing.
+    """
+    data = FIXTURE_CORPUS if corpus == "fixture" else DATA_DIR
+    _, report = run(data, REFERENCE, now=FRESH, latest_only=False)
+
+    for f in report["findings"]:
+        ref = reference["plants"][f["plant"]]
+        twins = ref["regional"][f["region"]]
+        national = ref["national"]
+
+        assert f["published_cents"] == f["region_cents"], f
+        for tier, cents in f["published_cents"].items():
+            assert twins[tier]["price_cents"] == cents, (f["plant"], tier)
+        assert f["contrast_tiers"], f
+        for tier in f["contrast_tiers"]:
+            assert national[tier]["price_cents"] != twins[tier]["price_cents"], (
+                f["plant"], tier,
+            )
+        assert set(f["contrast_tiers"]) <= set(f["published_cents"])
+        assert f["strength"] in ("confirmed", "lead")
+
+
+# --- calibration against the frozen snapshot (R9) ---------------------------
+
+
+def test_replay_over_the_frozen_corpus_reproduces_the_documented_numbers():
     """58 firings across 6 plants, 0 false positives.
 
     Was 55 across 5. The 2026-08-20T20:15 re-capture resolved
@@ -406,8 +627,13 @@ def test_replay_over_the_whole_corpus_reproduces_the_documented_numbers():
     unobserved: clause 3 requires a tier where the published price differs
     from the NATIONAL price, so a fired row provably did not publish the
     national price. What the replay establishes is the count and the shape.
+
+    Against the SNAPSHOT, whose as-of commit is in MANIFEST.json. `clean`
+    especially is a moving target on the live corpus — it counts every FGT row
+    the audit checked and cleared, so it grows by a handful twice a day, and
+    it is the number that turned CI red on the 2026-08-20_23:22 run.
     """
-    code, report = run(DATA_DIR, REFERENCE, now=FRESH, latest_only=False)
+    code, report = run(FIXTURE_CORPUS, REFERENCE, now=FRESH, latest_only=False)
 
     assert report["fired"] == 58, report["fired"]
     assert {f["plant"] for f in report["findings"]} == {
@@ -423,7 +649,7 @@ def test_replay_over_the_whole_corpus_reproduces_the_documented_numbers():
     assert {f["region"] for f in report["findings"]} == {"CA"}
     # Clause 3 held for every one of them.
     assert all(f["contrast_tiers"] for f in report["findings"])
-    assert report["clean"] == 1700, report["clean"]
+    assert report["clean"] == 1707, report["clean"]
     assert code == EXIT_ALARM
 
 
@@ -435,7 +661,7 @@ def test_replay_marks_old_rows_as_leads_not_verdicts():
     13 confirmed / 45 lead against the 2026-08-20T20:15 capture (was 11/44
     against the earlier one; stella adds 2 confirmed and 1 lead).
     """
-    _, report = run(DATA_DIR, REFERENCE, now=FRESH, latest_only=False)
+    _, report = run(FIXTURE_CORPUS, REFERENCE, now=FRESH, latest_only=False)
     assert report["fired_confirmed"] == 13, report["fired_confirmed"]
     assert report["fired_lead"] == 45, report["fired_lead"]
     assert report["fired_confirmed"] + report["fired_lead"] == report["fired"]
@@ -443,25 +669,17 @@ def test_replay_marks_old_rows_as_leads_not_verdicts():
         assert f["strength"] in ("confirmed", "lead")
 
 
-def test_latest_rows_are_all_within_the_window_so_ci_never_reports_leads():
-    """The mode CI actually runs compares hours-old rows, so every finding it
-    produces is `confirmed`. If this ever fails, the corpus went stale."""
-    _, report = run(DATA_DIR, REFERENCE, now=FRESH, latest_only=True)
-    assert report["fired_lead"] == 0
-    assert report["fired_confirmed"] == report["fired"] == 6
-
-
 def test_the_audit_catches_what_the_vocabulary_predicate_cannot():
     """THE REASON BOTH EXIST. Neither is a superset of the other.
 
     27 pink-lemonade-blueberry rows are a gallon-only CA flip, invisible to
-    any label rule. 16 fuji-apple-tree rows are regional renders FGT served in
+    any label rule. 19 fuji-apple-tree rows are regional renders FGT served in
     JUNE spelled "5-6 feet" — proof the "ft." vocabulary is not a property of
     regional renders in general, only of the ones observed since August.
     """
     from scrapers.shopify import _has_regional_size_vocabulary
 
-    _, report = run(DATA_DIR, REFERENCE, now=FRESH, latest_only=False)
+    _, report = run(FIXTURE_CORPUS, REFERENCE, now=FRESH, latest_only=False)
     counts = {}
     for f in report["findings"]:
         counts[f["plant"]] = counts.get(f["plant"], 0) + 1
@@ -472,127 +690,6 @@ def test_the_audit_catches_what_the_vocabulary_predicate_cannot():
     assert not _has_regional_size_vocabulary(["2 Gallon"])
     assert not _has_regional_size_vocabulary(["5-6 feet"])
 
-
-def test_the_current_corpus_still_holds_six_regional_rows_at_the_tip():
-    """The live defect, pinned. These are the newest committed rows: the site
-    built from this corpus is publishing six California prices right now.
-
-    SIX, not five. stella-cherry-tree was invisible to the first capture and
-    is the one the vocabulary predicate was carrying alone; now both detectors
-    see it.
-
-    When the withhold ships and a run happens, these become empty rows and
-    this test must be updated to match — deliberately, with the new numbers.
-    """
-    code, report = run(DATA_DIR, REFERENCE, now=FRESH, latest_only=True)
-    assert code == EXIT_ALARM
-    assert report["fired"] == 6
-    published = {f["plant"]: f["published_cents"] for f in report["findings"]}
-    assert published["bing-cherry-tree"] == {"5-6ft": 15395}
-    assert published["pink-lemonade-blueberry"] == {"2gal": 4495}
-    assert published["stella-cherry-tree"] == {"5-6ft": 14695}
-    nat = {f["plant"]: f["national_cents"] for f in report["findings"]}
-    assert nat["bing-cherry-tree"] == {"5-6ft": 16895}, (
-        "the national 5-6 ft Bing cherry is $168.95; we published $153.95"
-    )
-    assert nat["stella-cherry-tree"] == {"5-6ft": 16095}, (
-        "the national 5-6 ft Stella cherry is $160.95; we published $146.95"
-    )
-
-
-# --- the audit must never be mistaken for a clean bill of health -----------
-
-
-def _expected_scope(reference):
-    """(answerable, total) computed from the reference, not typed in."""
-    plants = reference["plants"]
-    answerable = {
-        p for p, v in plants.items()
-        if (v.get("national") or {}) and (v.get("regional") or {})
-    }
-    return len(answerable), len(plants)
-
-
-def test_report_carries_its_own_coverage_denominator(reference):
-    """Both numbers, so neither can be quoted alone.
-
-    DERIVED, not hardcoded: the counts move whenever the reference is
-    re-captured, and a suite that goes red for that reason trains people to
-    edit expectations without reading them. The literal identity of the
-    current file is pinned once, in test_reference_is_the_expected_capture.
-    """
-    answerable, total = _expected_scope(reference)
-    _, report = run(DATA_DIR, REFERENCE, now=FRESH)
-
-    assert report["reference_total_plants"] == total
-    assert report["reference_answerable_plants"] == answerable
-    assert len(report["answerable_plant_ids"]) == answerable
-    # Every answerable plant really does have both sides in the capture.
-    for pid in report["answerable_plant_ids"]:
-        ref = reference["plants"][pid]
-        assert ref["national"] and ref["regional"], pid
-    # And the unanswerable ones are unanswerable for a stated reason, not by
-    # accident: at this capture, eastern-redbud has national tiers but no
-    # region-restricted variant at all (nothing to compare against), and
-    # sunshine-blue-blueberry resolves to no variants because it is held on
-    # its `-ca` mirror handle.
-    unanswerable = set(reference["plants"]) - set(report["answerable_plant_ids"])
-    for pid in unanswerable:
-        ref = reference["plants"][pid]
-        assert not (ref.get("national") and ref.get("regional")), pid
-
-
-def test_a_clean_run_still_prints_the_scope_and_refuses_the_word_clean(
-    tmp_path, capsys,
-):
-    """THE MISREADING THIS GUARDS AGAINST.
-
-    A reader who skims to the last line and sees "no regional prices found"
-    would take it as "FGT is fine". It is not: the audit can speak for 6 of
-    68 plants. So the scope banner is printed alongside the verdict, and the
-    verdict line says in words that it is not a clean bill of health.
-    """
-    prices = tmp_path / "prices"
-    prices.mkdir()
-    (prices / "honeycrisp-apple-tree.jsonl").write_text(
-        json.dumps(_row({
-            "1-2ft": _cell(75.95), "2-3ft": _cell(86.95),
-            "3-4ft": _cell(100.95), "4-5ft": _cell(129.95),
-            "5-6ft": _cell(153.95), "6-7ft": _cell(183.95),
-        })) + "\n",
-        encoding="utf-8",
-    )
-    code = main([
-        "--data-dir", str(tmp_path), "--reference", str(REFERENCE),
-        "--now", FRESH.isoformat(),
-    ])
-    out = capsys.readouterr().out
-    answerable, total = _expected_scope(load_reference(REFERENCE))
-
-    assert code == EXIT_OK
-    assert f"{answerable} of {total}" in out, (
-        "the coverage denominator must be on screen"
-    )
-    assert "NOT a clean bill of health" in out
-    assert "NOT checked and NOT cleared" in out
-    # printed at both ends, not just once above the numbers
-    assert out.count("SCOPE:") == 2, out
-
-
-def test_an_alarming_run_also_prints_the_scope(capsys):
-    """The alarm path must size its own findings too: six findings out of
-    seven checkable plants is a very different statement from six out of 68.
-    """
-    code = main([
-        "--data-dir", str(DATA_DIR), "--reference", str(REFERENCE),
-        "--now", FRESH.isoformat(),
-    ])
-    out = capsys.readouterr().out
-    answerable, total = _expected_scope(load_reference(REFERENCE))
-
-    assert code == EXIT_ALARM
-    assert "SCOPE:" in out
-    assert f"{answerable} of {total}" in out
 
 def test_union_of_both_detectors_is_87_rows():
     """THE ONLY GROUND TRUTH THAT EXISTS. Pinned so it cannot drift in prose.
@@ -611,16 +708,18 @@ def test_union_of_both_detectors_is_87_rows():
     render that neither catches is by construction missing from it, so 50.6%
     is an upper bound on recall, not a measurement of it. Any figure claiming
     to be the true total is unsourced.
-    """
-    import glob
-    import os
 
+    Counted over the snapshot, which holds every FGT row for the nine plants
+    the reference covers. The snapshot builder asserts that no FGT row OUTSIDE
+    those nine carries a vocabulary hit, so scoping it this way leaves all
+    four counts unchanged — see MANIFEST.json.
+    """
     from scrapers.shopify import _has_regional_size_vocabulary
 
     ref = load_reference(REFERENCE)["plants"]
     vocab, d2 = set(), set()
-    for path in sorted(glob.glob(os.path.join(DATA_DIR, "prices", "*.jsonl"))):
-        plant = os.path.basename(path)[:-6]
+    for path in sorted((FIXTURE_CORPUS / "prices").glob("*.jsonl")):
+        plant = path.name[:-6]
         with open(path, encoding="utf-8") as fh:
             for i, line in enumerate(fh):
                 line = line.strip()
@@ -649,41 +748,58 @@ def test_union_of_both_detectors_is_87_rows():
     assert {p for p, _ in vocab - d2} == {"meyer-lemon-tree"}
 
 
-def test_the_ungated_predicate_would_hit_1065_planting_tree_rows():
-    """The false positive the retailer gate prevents, as a live measurement.
+def test_the_ungated_predicate_would_fire_on_a_thousand_planting_tree_rows():
+    """The false positive the retailer gate prevents, as a measurement.
 
-    Pinned here rather than only in a comment so the figure quoted in
-    scrapers/shopify.py cannot rot away from the corpus.
+    This is the reason _REGIONAL_RENDER_RETAILERS exists: without the retailer
+    gate the "ft." rule would withhold four planting-tree products outright,
+    on more than a thousand rows, none of which is a regional render.
+
+    WHAT THIS DOES AND DOES NOT PROTECT. It pins the PREDICATE'S BEHAVIOUR
+    against a frozen corpus: given this exact body of real planting-tree
+    labels, `_has_regional_size_vocabulary` fires on exactly these rows. Break
+    the regex or turn the `any` into an `all` and the counts move, which is
+    how M1 and M3 die here.
+
+    It does NOT keep the figures quoted in scrapers/shopify.py honest against
+    the live corpus, and an earlier version of this docstring wrongly claimed
+    it did. Freezing the census is what removed that coupling — say so rather
+    than imply a protection that no longer exists. Nothing can restore it
+    without re-introducing the defect: those figures are a census of
+    data/prices/, the bot appends to data/prices/ twice a day, and a test that
+    recomputed them goes red on an ordinary scrape run. That is exactly what
+    happened — 1,065 -> 1,069 on the 2026-08-20_23:22 run, on healthy data.
+
+    So the comment in scrapers/shopify.py is labelled there as a DATED census
+    carrying its as-of commit, and the authoritative frozen numbers live in
+    MANIFEST.json beside this fixture. If the two ever disagree, the manifest
+    is right and the prose is stale; neither is a defect in the gate.
+
+    Measured over a frozen LABEL CENSUS: every planting-tree row reduced to
+    its ordered raw_size tuple, deduplicated with a multiplicity count (78
+    distinct tuples standing in for 19,688 rows). The predicate reads nothing
+    but those labels, so the counts are exact.
     """
-    import glob
-    import os
-
     from scrapers.shopify import _has_regional_size_vocabulary
 
+    census = json.loads(PLANTING_TREE_LABELS.read_text(encoding="utf-8"))
     rows = hits = 0
     plants = set()
-    for path in sorted(glob.glob(os.path.join(DATA_DIR, "prices", "*.jsonl"))):
-        with open(path, encoding="utf-8") as fh:
-            for line in fh:
-                line = line.strip()
-                if not line:
-                    continue
-                row = json.loads(line)
-                if row.get("retailer_id") != "planting-tree":
-                    continue
-                rows += 1
-                labels = [
-                    (c or {}).get("raw_size") or ""
-                    for c in (row.get("sizes") or {}).values()
-                    if isinstance(c, dict)
-                ]
-                if _has_regional_size_vocabulary(labels):
-                    hits += 1
-                    plants.add(os.path.basename(path)[:-6])
+    for plant, entries in census.items():
+        for labels, count in entries:
+            rows += count
+            if _has_regional_size_vocabulary(labels):
+                hits += count
+                plants.add(plant)
 
-    assert hits == 1065, hits
-    assert rows == 19615, rows
+    assert hits == 1069, hits
+    assert rows == 19688, rows
     assert len(plants) == 4, sorted(plants)
+    assert hits / rows > 0.05, (
+        "the gate is only worth having while the ungated rule would misfire "
+        "at scale; if this collapses, re-derive the argument"
+    )
+
 
 def test_the_national_ft_statistic_quoted_in_the_scraper_is_real(reference):
     """47 of 58. The number scrapers/shopify.py uses to argue the proxy is a
@@ -712,3 +828,173 @@ def test_the_national_ft_statistic_quoted_in_the_scraper_is_real(reference):
         "spelling; if that stops holding, revisit the proxy"
     )
 
+
+# --- the failure mode this restructure exists to prevent --------------------
+
+
+def test_a_scrape_append_cannot_move_a_pinned_number(tmp_path):
+    """THE REGRESSION TEST FOR THE 2026-08-20_23:22 CI FAILURE ITSELF.
+
+    Six tests in this file went red on a production scrape run because their
+    expected values were censuses of data/prices/, which the bot appends to
+    twice a day. Nothing was wrong with the pipeline; the tests were wrong
+    about what they were allowed to depend on.
+
+    This proves both halves of the fix at once. Three rows of exactly the kind
+    tonight's run added — a planting-tree "ft." row, an FGT national row, and
+    an FGT regional-shaped row — are appended to a COPY of the snapshot.
+
+      * The audit SEES them. The copy's counts move by exactly the expected
+        amounts, so the append is real and would have moved a live census.
+      * The pinned numbers DO NOT move, because they are read off the frozen
+        snapshot, which no scrape can reach.
+
+    If anyone re-points a pinned assertion at data/prices/, the second half of
+    this test still passes — but the first half is the standing demonstration
+    of why they must not.
+    """
+    from scrapers.shopify import _has_regional_size_vocabulary
+
+    before_code, before = run(
+        FIXTURE_CORPUS, REFERENCE, now=FRESH, latest_only=False,
+    )
+
+    copy = tmp_path / "data"
+    shutil.copytree(FIXTURE_CORPUS, copy)
+    ts = (CAPTURE_AT - timedelta(hours=2)).isoformat()
+
+    # 1. a planting-tree row carrying the "ft." vocabulary — the retailer the
+    #    gate exists to exclude, and the source of the 1065 -> 1069 drift.
+    pt_row = {
+        "retailer_id": "planting-tree", "timestamp": ts,
+        "sizes": {"5-6ft": {"price": 129.99, "raw_size": "5-6 ft."}},
+    }
+    assert _has_regional_size_vocabulary(["5-6 ft."]), "the appended row must hit"
+    with open(copy / "prices" / "honeycrisp-apple-tree.jsonl", "a",
+              encoding="utf-8") as fh:
+        fh.write(json.dumps(pt_row) + "\n")
+        # 2. an honest FGT national row — one more `clean`.
+        fh.write(json.dumps(_row(NATIONAL_SIZES, ts=ts)) + "\n")
+        # 3. an FGT regional-shaped row — one more `fired`, confirmed.
+        fh.write(json.dumps(_row(CA_FLIP_SIZES, ts=ts)) + "\n")
+
+    after_code, after = run(copy, REFERENCE, now=FRESH, latest_only=False)
+
+    # The append is real: a census over the copy moves, and moves precisely.
+    assert after["fired"] == before["fired"] + 1
+    assert after["clean"] == before["clean"] + 1
+    assert after["fired_confirmed"] == before["fired_confirmed"] + 1
+    assert after["fired_lead"] == before["fired_lead"]
+    # The planting-tree row is another retailer's and never reaches the audit.
+    assert after["rows_considered"] == before["rows_considered"] + 2
+    assert after_code == before_code == EXIT_ALARM
+
+    # And the snapshot the pinned numbers are read from did not budge.
+    again_code, again = run(
+        FIXTURE_CORPUS, REFERENCE, now=FRESH, latest_only=False,
+    )
+    assert (again["fired"], again["clean"]) == (58, 1707)
+    assert (again["fired_confirmed"], again["fired_lead"]) == (13, 45)
+    assert again_code == EXIT_ALARM
+
+
+# --- the audit must never be mistaken for a clean bill of health -----------
+
+
+def _expected_scope(reference):
+    """(answerable, total) computed from the reference, not typed in."""
+    plants = reference["plants"]
+    answerable = {
+        p for p, v in plants.items()
+        if (v.get("national") or {}) and (v.get("regional") or {})
+    }
+    return len(answerable), len(plants)
+
+
+def test_report_carries_its_own_coverage_denominator(reference):
+    """Both numbers, so neither can be quoted alone.
+
+    DERIVED, not hardcoded: the counts move whenever the reference is
+    re-captured, and a suite that goes red for that reason trains people to
+    edit expectations without reading them. The literal identity of the
+    current file is pinned once, in test_reference_is_the_expected_capture.
+    """
+    answerable, total = _expected_scope(reference)
+    _, report = run(FIXTURE_CORPUS, REFERENCE, now=FRESH)
+
+    assert report["reference_total_plants"] == total
+    assert report["reference_answerable_plants"] == answerable
+    assert len(report["answerable_plant_ids"]) == answerable
+    # Every answerable plant really does have both sides in the capture.
+    for pid in report["answerable_plant_ids"]:
+        ref = reference["plants"][pid]
+        assert ref["national"] and ref["regional"], pid
+    # And the unanswerable ones are unanswerable for a stated reason, not by
+    # accident: at this capture, eastern-redbud has national tiers but no
+    # region-restricted variant at all (nothing to compare against), and
+    # sunshine-blue-blueberry resolves to no variants because it is held on
+    # its `-ca` mirror handle.
+    unanswerable = set(reference["plants"]) - set(report["answerable_plant_ids"])
+    for pid in unanswerable:
+        ref = reference["plants"][pid]
+        assert not (ref.get("national") and ref.get("regional")), pid
+
+
+def test_a_clean_run_still_prints_the_scope_and_refuses_the_word_clean(
+    tmp_path, capsys,
+):
+    """THE MISREADING THIS GUARDS AGAINST.
+
+    A reader who skims to the last line and sees "no regional prices found"
+    would take it as "FGT is fine". It is not: the audit can speak for 7 of
+    the 9 plants this targeted capture holds — and FGT is scraped across 66,
+    so it is silent about 59 of them. So the scope banner is printed alongside
+    the verdict, and the verdict line says in words that it is not a clean
+    bill of health.
+
+    The counts are read off the reference by _expected_scope rather than typed
+    into the assertions, so a re-capture moves them without touching this
+    test; the numbers in this docstring are illustrative of the current
+    capture only.
+    """
+    data = _corpus(tmp_path, {"honeycrisp-apple-tree": [_row(NATIONAL_SIZES)]})
+    code = main([
+        "--data-dir", str(data), "--reference", str(REFERENCE),
+        "--now", FRESH.isoformat(),
+    ])
+    out = capsys.readouterr().out
+    answerable, total = _expected_scope(load_reference(REFERENCE))
+
+    assert code == EXIT_OK
+    assert f"{answerable} of {total}" in out, (
+        "the coverage denominator must be on screen"
+    )
+    assert "NOT a clean bill of health" in out
+    assert "NOT checked and NOT cleared" in out
+    # printed at both ends, not just once above the numbers
+    assert out.count("SCOPE:") == 2, out
+
+
+def test_an_alarming_run_also_prints_the_scope(tmp_path, capsys):
+    """The alarm path must size its own findings too: one finding out of the
+    7 checkable plants is a very different statement from one out of the 66
+    FGT plants that actually get scraped.
+
+    Driven over a corpus BUILT to fire. Read off data/prices/ this test was
+    really asserting "the live tip is still broken", so shipping the withhold
+    — the fix — turned it red: tonight's run cleared the flip and the audit
+    correctly, legitimately, alarmed about nothing. A test of the alarm
+    PRINTER must not depend on the retailer currently misbehaving.
+    """
+    data = _corpus(tmp_path, {"honeycrisp-apple-tree": [_row(CA_FLIP_SIZES)]})
+    code = main([
+        "--data-dir", str(data), "--reference", str(REFERENCE),
+        "--now", FRESH.isoformat(),
+    ])
+    out = capsys.readouterr().out
+    answerable, total = _expected_scope(load_reference(REFERENCE))
+
+    assert code == EXIT_ALARM
+    assert "SCOPE:" in out
+    assert f"{answerable} of {total}" in out
+    assert "FIRED[confirmed] honeycrisp-apple-tree [CA]" in out, out

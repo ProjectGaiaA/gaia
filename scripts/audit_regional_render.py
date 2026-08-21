@@ -86,8 +86,11 @@ MAX_REFERENCE_AGE_DAYS = 7
 # because a constant would be a guess: only the plants the capture holds BOTH
 # national and region-restricted variants for are answerable at all, and that
 # count moves every time the capture is refreshed. At the 2026-08-20 capture
-# it is 6 of 68 plants — a hand-picked "20" would have turned every clean run
-# red for a reason that has nothing to do with the data.
+# it is 7 of the 9 plants the capture holds — a hand-picked "20" would have
+# turned every clean run red for a reason that has nothing to do with the
+# data. (The 9 is the size of a TARGETED capture, not of the catalogue: FGT
+# is scraped across 66 plants, so the audit's reach against the retailer is
+# 7 of 66, not 7 of 9. See _print_scope.)
 #
 # So the audit reports its own coverage and alarms only when the denominator
 # has actually collapsed: nothing was checked, or the reference cannot answer
@@ -398,10 +401,18 @@ def _print_scope(report):
     """The audit's REACH, printed as a banner rather than a stat line.
 
     This check can only speak for plants whose capture holds BOTH a national
-    and a region-restricted variant — 6 of 68 at the 2026-08-20 capture. A
-    reader who sees "no regional prices found" and takes it as "FGT is clean"
-    has misread the result by an order of magnitude, so the scope is printed
-    next to the verdict at both ends of the output, not buried above it.
+    and a region-restricted variant — 7 of the 9 plants in the 2026-08-20
+    capture. A reader who sees "no regional prices found" and takes it as "FGT
+    is clean" has misread the result by an order of magnitude, so the scope is
+    printed next to the verdict at both ends of the output, not buried above
+    it.
+
+    READ THE DENOMINATOR CAREFULLY: it is the CAPTURE's plant count, not the
+    retailer's. This capture is a targeted 9-plant one, so the banner prints
+    "7 of 9 (78%)" — which sizes the audit against what was captured, not
+    against what is scraped. FGT is scraped across 66 plants, so the audit is
+    silent about 59 of them. The banner deliberately names the answerable
+    plants so the reader can see how short the list is.
     """
     n = report["reference_answerable_plants"]
     total = report["reference_total_plants"]
@@ -479,7 +490,8 @@ def main(argv=None):
         return EXIT_ALARM
     # NOT "clean". The scope banner is repeated here on purpose: this line is
     # the one a reader skims to, and on its own it would overstate the result
-    # by 62 plants.
+    # by the 2 captured plants the reference cannot answer for — and, more
+    # importantly, by the 57 scraped FGT plants this capture never covered.
     print(
         f"\nNo regional prices found in the {report['checked']} row(s) this "
         f"audit could check — which is "
