@@ -28,10 +28,17 @@ name: Pipeline Heartbeat
 # TWO INDEPENDENT ALERT PATHS, because the email path has plausibly never
 # fired in this repo's history (see the SMTP notes below):
 #   1. a failed job + an ::error:: annotation. Needs NO secrets and no
-#      configuration. GitHub emails the repo owner on workflow failure.
-#   2. SMTP mail through the same action weekly-recovery-email.yml uses.
-#      Best-effort: it is checked for configuration first and never allowed
-#      to swallow the alarm.
+#      configuration. GitHub emails the account that owns the workflow when a
+#      scheduled run fails — "Path B" in ALERTS_RUNBOOK.md, which is what
+#      routes that mail to the ops mailbox.
+#   2. SMTP mail through the same action weekly-recovery-email.yml uses —
+#      "Path A". Best-effort: it is checked for configuration first and never
+#      allowed to swallow the alarm.
+#
+# Both paths deliver to projectgaiaa@proton.me. scrape.yml carries the same
+# pair for a cycle that RAN and went wrong; this file covers the case
+# scrape.yml structurally cannot — a scrape that never runs at all. Setup for
+# both is one-time work only the repo owner can do: ALERTS_RUNBOOK.md.
 
 on:
   schedule:
@@ -184,6 +191,13 @@ jobs:
       # it gets counted as coverage.
       - name: Check whether SMTP is configured
         id: smtp
+        # continue-on-error, even though the body below is safe under `-e`
+        # (a `[ -z ]` that is the FIRST command of an `&&` list is exempt, and
+        # the list's own non-zero status does not fire `-e`). Belt to that
+        # reasoning's braces: this step runs on HEALTHY heartbeats too, so
+        # anything it does wrong turns a green run red and manufactures a
+        # PIPELINE DOWN alarm out of a mail-configuration check.
+        continue-on-error: true
         env:
           # Deliberately HB_-prefixed. Naming these SERVER/PORT/USERNAME/
           # PASSWORD collides with variables the runner may already export —
@@ -203,7 +217,7 @@ jobs:
           [ -z "${HB_SMTP_PASSWORD:-}" ] && MISSING="$MISSING SMTP_PASSWORD"
           if [ -n "$MISSING" ]; then
             echo "configured=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::SMTP is NOT configured (missing:$MISSING). Heartbeat alerts will arrive only as a failed workflow run. Set these repository secrets to enable email."
+            echo "::warning::SMTP is NOT configured (missing repository secrets:$MISSING). Heartbeat alerts will arrive only as a failed workflow run and whatever GitHub notifies natively. ALERTS_RUNBOOK.md has the exact one-time steps to enable email to projectgaiaa@proton.me."
           else
             echo "configured=true" >> "$GITHUB_OUTPUT"
             echo "SMTP secrets are present. Presence is not proof they work — only a delivered message is."
@@ -219,11 +233,14 @@ jobs:
           Age at time of check              : ${{ steps.check.outputs.age_hours }} hours
           Alert window                      : 30 hours
 
+          This heartbeat run:
+            ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
           The scrape is scheduled twice a day (11:00 and 21:30 UTC). Crossing
           30 hours means at least two consecutive runs produced no data.
 
           What to look at, in order:
-            1. https://github.com/${{ github.repository }}/actions/workflows/scrape.yml
+            1. ${{ github.server_url }}/${{ github.repository }}/actions/workflows/scrape.yml
                — did the runs fail, or did they never start?
             2. If they failed: open the newest run and read the "Raise alarms"
                step, which names what went wrong.
@@ -253,9 +270,19 @@ jobs:
           server_port: ${{ secrets.SMTP_PORT }}
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
-          subject: "PlantPriceTracker — pipeline has stopped publishing"
-          to: brandon.william.hall@gmail.com
-          from: ${{ secrets.SMTP_FROM || 'PlantPriceTracker <noreply@plantpricetracker.com>' }}
+          subject: "[PlantPriceTracker] PIPELINE DOWN — no price data for ${{ steps.check.outputs.age_hours }}h"
+          # The ops mailbox, overridable with an optional ALERT_EMAIL_TO secret
+          # so the destination can change without editing a workflow. This
+          # replaced a hardcoded personal gmail address; scrape.yml's alert
+          # uses the identical pair.
+          to: ${{ secrets.ALERT_EMAIL_TO || 'projectgaiaa@proton.me' }}
+          # Falls back to SMTP_USERNAME, NOT to a made-up noreply@ address.
+          # noreply@plantpricetracker.com is not a mailbox this project can
+          # authenticate as, and Proton — like most providers — rejects a From
+          # the authenticated account is not authorised to send as. The old
+          # default would have failed every send with a 550 while all four
+          # secrets looked correctly set.
+          from: ${{ secrets.SMTP_FROM || secrets.SMTP_USERNAME }}
           body: file://heartbeat_alert.txt
 
       # The secret-free alert path, and the single place the job turns red.

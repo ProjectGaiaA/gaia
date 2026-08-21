@@ -516,3 +516,161 @@ jobs:
             exit 1
           fi
           echo "All healthy: 7/7 scrapers, data clean, tests green, audits quiet, published."
+
+      # ====================================================================
+      # ALERT PATH (open item B-2). Everything below this line is
+      # NOTIFICATION ONLY and must never change what the run concludes.
+      #
+      # The problem it closes: until now the ONLY signal that a cycle went
+      # wrong was the workflow's red/green dot on a page nobody opens. Every
+      # ::error:: annotation above is written to a run page that has to be
+      # visited to be read.
+      #
+      # THREE PROPERTIES, each enforced by a test in
+      # tests/test_failure_alert_email.py rather than asserted in this comment:
+      #
+      #   1. These steps sit AFTER `Raise alarms`, which is the last step that
+      #      can turn the run red, and after `Commit updated price data`. They
+      #      are not in the blocking path: nothing here can stop a publish.
+      #   2. Every one of them carries `continue-on-error: true`. A dead SMTP
+      #      host, an expired token, a rate limit or a typo'd secret must not
+      #      redden an otherwise-green cycle. A mail outage that manufactures
+      #      a false alarm twice a day is worse than no mail at all — it
+      #      trains the operator to ignore the mailbox.
+      #   3. Missing secrets are a ::warning::, never a failure. An
+      #      unconfigured mail path is a normal state for this repo (see the
+      #      SMTP note in heartbeat.yml: the secrets have plausibly never been
+      #      exercised), and it must be reported out loud on EVERY run rather
+      #      than discovered on the night something breaks.
+      #
+      # PATH A (this) needs one-time secrets from the owner. PATH B (GitHub's
+      # own workflow-failure notification email) needs no secrets and is the
+      # fallback that is live today. Both are written up in ALERTS_RUNBOOK.md.
+      # ====================================================================
+
+      # `if: always()` on purpose, not `if: failure()`. This is the nag: a
+      # green run that reports "SMTP is NOT configured" is how the owner learns
+      # the mail path is dead BEFORE the night it is needed. Checked the same
+      # way heartbeat.yml checks it, including the ALERT_-prefixed names — the
+      # unprefixed forms collide with variables the runner already exports
+      # (USERNAME in particular), which once made an unset secret test as
+      # "configured" and reported a working mail path that did not exist.
+      - name: Check whether alert email is configured
+        id: smtp
+        if: always()
+        continue-on-error: true
+        env:
+          ALERT_SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          ALERT_SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          ALERT_SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          ALERT_SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          set +e
+          MISSING=""
+          [ -z "${ALERT_SMTP_SERVER:-}" ]   && MISSING="$MISSING SMTP_SERVER"
+          [ -z "${ALERT_SMTP_PORT:-}" ]     && MISSING="$MISSING SMTP_PORT"
+          [ -z "${ALERT_SMTP_USERNAME:-}" ] && MISSING="$MISSING SMTP_USERNAME"
+          [ -z "${ALERT_SMTP_PASSWORD:-}" ] && MISSING="$MISSING SMTP_PASSWORD"
+          if [ -n "$MISSING" ]; then
+            echo "configured=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Failure-alert email is NOT configured (missing repository secrets:$MISSING). Failures will be signalled only by the red workflow run and by GitHub's own notification email. See ALERTS_RUNBOOK.md to enable it."
+          else
+            echo "configured=true" >> "$GITHUB_OUTPUT"
+            echo "SMTP secrets are present. Presence is not proof they work — only a delivered message is."
+          fi
+          exit 0
+
+      # Composed by a script, not a heredoc, so the body is something pytest
+      # can exercise offline. The SMTP hop cannot be proven without a live
+      # server; the body can, so it is.
+      - name: Compose failure alert
+        id: alert
+        if: failure()
+        continue-on-error: true
+        env:
+          ALERT_COMMIT_OUTCOME: ${{ steps.commit.outcome }}
+          ALERT_SCRAPER_OUTCOMES: >-
+            nature-hills=${{ steps.nature_hills.outcome }},
+            planting-tree=${{ steps.planting_tree.outcome }},
+            spring-hill=${{ steps.spring_hill.outcome }},
+            fast-growing-trees=${{ steps.fast_growing_trees.outcome }},
+            proven-winners-direct=${{ steps.proven_winners.outcome }},
+            great-garden-plants=${{ steps.great_garden_plants.outcome }},
+            stark-bros=${{ steps.stark_bros.outcome }}
+        run: |
+          set +e
+          python -X utf8 scripts/compose_failure_alert.py
+          rc=$?
+          if [ "$rc" != "0" ] || [ ! -s alert_body.txt ]; then
+            # Never let a broken composer swallow the alert. A short body that
+            # carries the run URL is still worth sending.
+            echo "::warning::compose_failure_alert.py did not produce a body (rc=$rc); falling back to a minimal one."
+            {
+              echo "The daily scrape for plantpricetracker.com finished RED."
+              echo ""
+              echo "Run: ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+              echo ""
+              echo "The alert composer itself failed (rc=$rc), so this message"
+              echo "carries no detail. Open the run and read the 'Raise alarms'"
+              echo "step, which names every problem in an ::error:: annotation."
+            } > alert_body.txt
+            echo "subject=[PlantPriceTracker] Daily Scrape FAILED (alert detail unavailable)" >> "$GITHUB_OUTPUT"
+          fi
+          exit 0
+
+      # The one untestable step. `to:` defaults to the ops mailbox and can be
+      # redirected with an optional ALERT_EMAIL_TO secret without touching this
+      # file. `from:` falls back to SMTP_USERNAME rather than a made-up
+      # noreply@ address: Proton (and most providers) reject a From the
+      # authenticated account is not authorised to send as, which would fail
+      # every send with a confusing 550 while the secrets all looked correct.
+      - name: Send failure alert email
+        id: mail
+        if: failure() && steps.smtp.outputs.configured == 'true'
+        continue-on-error: true
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: ${{ steps.alert.outputs.subject || '[PlantPriceTracker] Daily Scrape FAILED' }}
+          to: ${{ secrets.ALERT_EMAIL_TO || 'projectgaiaa@proton.me' }}
+          from: ${{ secrets.SMTP_FROM || secrets.SMTP_USERNAME }}
+          body: file://alert_body.txt
+
+      # Says in the run log which alert paths actually carried this failure,
+      # so "I got no email" can be diagnosed from the run page alone. Echo
+      # only — it never exits non-zero, because the run is already red and
+      # this step must not be able to change that in either direction.
+      - name: Report how this failure was signalled
+        if: failure()
+        continue-on-error: true
+        run: |
+          set +e
+          echo "Signal paths for this failed run:"
+          echo "  * red workflow run + ::error:: annotations — always present"
+          echo "  * GitHub's own notification email (Path B, no secrets) — sent"
+          echo "    by GitHub to the addresses configured on the account that"
+          echo "    owns this workflow; see ALERTS_RUNBOOK.md"
+          case "${{ steps.smtp.outputs.configured }}" in
+            true)
+              case "${{ steps.mail.outcome }}" in
+                success) echo "  * SMTP alert (Path A) — ACCEPTED by the server. Acceptance is not delivery; check the mailbox." ;;
+                *)       echo "::warning::  * SMTP alert (Path A) — DID NOT SEND (send step: ${{ steps.mail.outcome }}). Check the SMTP secrets. This failure is still visible as a red run." ;;
+              esac
+              ;;
+            false)
+              echo "::warning::  * SMTP alert (Path A) — UNAVAILABLE, secrets are not set. This failure exists only as a red run and whatever GitHub notifies natively."
+              ;;
+            *)
+              # The configuration check is continue-on-error, so it can fail
+              # and leave this output unset. "Unset" is NOT the same fact as
+              # "secrets are missing", and reporting the second when the first
+              # is true sends the operator to the secrets page over what may be
+              # a broken check. Same rule as REBUILD_CHECK_FAILED above: a
+              # check that could not run is not a check that answered.
+              echo "::warning::  * SMTP alert (Path A) — UNKNOWN. The configuration check did not report a verdict (it is continue-on-error and may itself have failed), so no mail was attempted and this run cannot say why. Read the 'Check whether alert email is configured' step above."
+              ;;
+          esac
+          exit 0
