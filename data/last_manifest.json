@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-08-21T23:11:40.827107+00:00",
+  "timestamp": "2026-08-22T12:38:49.256352+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
+      "products_found": 77,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 78,
-      "products_error": 0,
-      "prices_collected": 144,
+      "products_priced": 77,
+      "products_error": 1,
+      "prices_collected": 142,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -149,10 +149,6 @@
         },
         "hosta-sum-and-substance:nature-hills": {
           "1gal": 29.67
-        },
-        "echinacea-powwow-wild-berry:nature-hills": {
-          "quart": 17.99,
-          "1gal": 34.99
         },
         "lavender-phenomenal:nature-hills": {
           "quart": 16.99,
@@ -940,11 +936,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 13,
-      "products_regional": 5,
-      "products_priced": 50,
+      "products_no_sizes": 7,
+      "products_regional": 0,
+      "products_priced": 56,
       "products_error": 4,
-      "prices_collected": 131,
+      "prices_collected": 159,
       "anomalies": [],
       "price_records": {
         "nikko-blue-hydrangea:fast-growing-trees": {
@@ -966,6 +962,39 @@
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 56.95
+        },
+        "honeycrisp-apple-tree:fast-growing-trees": {
+          "2-3ft": 86.95,
+          "3-4ft": 100.95,
+          "4-5ft": 129.95,
+          "5-6ft": 153.95,
+          "6-7ft": 183.95
+        },
+        "meyer-lemon-tree:fast-growing-trees": {
+          "1-2ft": 65.95,
+          "2-3ft": 98.95,
+          "3-4ft": 135.95
+        },
+        "fuji-apple-tree:fast-growing-trees": {
+          "3-4ft": 86.95,
+          "4-5ft": 113.95,
+          "5-6ft": 109.95,
+          "6-7ft": 170.95
+        },
+        "bing-cherry-tree:fast-growing-trees": {
+          "1-2ft": 53.95,
+          "2-3ft": 65.95,
+          "3-4ft": 107.95,
+          "4-5ft": 136.95,
+          "5-6ft": 168.95,
+          "6-7ft": 207.95
+        },
+        "stella-cherry-tree:fast-growing-trees": {
+          "1-2ft": 53.95,
+          "2-3ft": 86.95,
+          "3-4ft": 106.95,
+          "4-5ft": 130.95,
+          "5-6ft": 160.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 21.95,
@@ -999,7 +1028,6 @@
         },
         "nellie-stevens-holly:fast-growing-trees": {
           "quart": 15.95,
-          "1gal": 25.95,
           "5gal": 85.95,
           "7gal": 163.95
         },
@@ -1047,7 +1075,8 @@
           "1gal": 51.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "4inch": 33.95,
+          "quart": 30.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "2gal": 90.95
@@ -1170,6 +1199,13 @@
           "1gal": 33.95,
           "3gal": 57.95
         },
+        "santa-rosa-plum:fast-growing-trees": {
+          "2-3ft": 63.95,
+          "3-4ft": 103.95,
+          "4-5ft": 86.95,
+          "5-6ft": 124.95,
+          "6-7ft": 153.95
+        },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "6-inch": 52.95,
           "3gal": 75.95,
@@ -1179,7 +1215,7 @@
           "3-4ft": 112.95
         }
       },
-      "health": "degraded"
+      "health": "healthy"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1309,7 +1345,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 693,
+  "total_prices_collected": 719,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1449,10 +1485,6 @@
     },
     "hosta-sum-and-substance:nature-hills": {
       "1gal": 29.67
-    },
-    "echinacea-powwow-wild-berry:nature-hills": {
-      "quart": 17.99,
-      "1gal": 34.99
     },
     "lavender-phenomenal:nature-hills": {
       "quart": 16.99,
@@ -2222,6 +2254,39 @@
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 56.95
     },
+    "honeycrisp-apple-tree:fast-growing-trees": {
+      "2-3ft": 86.95,
+      "3-4ft": 100.95,
+      "4-5ft": 129.95,
+      "5-6ft": 153.95,
+      "6-7ft": 183.95
+    },
+    "meyer-lemon-tree:fast-growing-trees": {
+      "1-2ft": 65.95,
+      "2-3ft": 98.95,
+      "3-4ft": 135.95
+    },
+    "fuji-apple-tree:fast-growing-trees": {
+      "3-4ft": 86.95,
+      "4-5ft": 113.95,
+      "5-6ft": 109.95,
+      "6-7ft": 170.95
+    },
+    "bing-cherry-tree:fast-growing-trees": {
+      "1-2ft": 53.95,
+      "2-3ft": 65.95,
+      "3-4ft": 107.95,
+      "4-5ft": 136.95,
+      "5-6ft": 168.95,
+      "6-7ft": 207.95
+    },
+    "stella-cherry-tree:fast-growing-trees": {
+      "1-2ft": 53.95,
+      "2-3ft": 86.95,
+      "3-4ft": 106.95,
+      "4-5ft": 130.95,
+      "5-6ft": 160.95
+    },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 21.95,
       "2-3ft": 43.95,
@@ -2254,7 +2319,6 @@
     },
     "nellie-stevens-holly:fast-growing-trees": {
       "quart": 15.95,
-      "1gal": 25.95,
       "5gal": 85.95,
       "7gal": 163.95
     },
@@ -2302,7 +2366,8 @@
       "1gal": 51.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "4inch": 33.95,
+      "quart": 30.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "2gal": 90.95
@@ -2425,6 +2490,13 @@
       "1gal": 33.95,
       "3gal": 57.95
     },
+    "santa-rosa-plum:fast-growing-trees": {
+      "2-3ft": 63.95,
+      "3-4ft": 103.95,
+      "4-5ft": 86.95,
+      "5-6ft": 124.95,
+      "6-7ft": 153.95
+    },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "6-inch": 52.95,
       "3gal": 75.95,
@@ -2519,8 +2591,6 @@
       "default": 25.99
     }
   },
-  "degraded_retailers": [
-    "fast-growing-trees"
-  ],
-  "pipeline_status": "degraded"
+  "degraded_retailers": [],
+  "pipeline_status": "healthy"
 }
