@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-08-22T12:38:49.256352+00:00",
+  "timestamp": "2026-08-22T23:08:46.688628+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 77,
+      "products_found": 78,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 77,
-      "products_error": 1,
-      "prices_collected": 142,
+      "products_priced": 78,
+      "products_error": 0,
+      "prices_collected": 144,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -149,6 +149,10 @@
         },
         "hosta-sum-and-substance:nature-hills": {
           "1gal": 29.67
+        },
+        "echinacea-powwow-wild-berry:nature-hills": {
+          "quart": 17.99,
+          "1gal": 34.99
         },
         "lavender-phenomenal:nature-hills": {
           "quart": 16.99,
@@ -1312,7 +1316,7 @@
       "products_expected": 8,
       "products_found": 7,
       "products_error": 1,
-      "prices_collected": 12,
+      "prices_collected": 11,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1327,7 +1331,6 @@
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
-          "ultra-supreme": 229.99,
           "semi-dwarf-ez-start": 57.99,
           "supreme-ez-start": 75.99,
           "standard-ez-start": 64.99
@@ -1345,7 +1348,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 719,
+  "total_prices_collected": 720,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1485,6 +1488,10 @@
     },
     "hosta-sum-and-substance:nature-hills": {
       "1gal": 29.67
+    },
+    "echinacea-powwow-wild-berry:nature-hills": {
+      "quart": 17.99,
+      "1gal": 34.99
     },
     "lavender-phenomenal:nature-hills": {
       "quart": 16.99,
@@ -2576,7 +2583,6 @@
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
-      "ultra-supreme": 229.99,
       "semi-dwarf-ez-start": 57.99,
       "supreme-ez-start": 75.99,
       "standard-ez-start": 64.99
