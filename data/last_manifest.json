@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-23T12:38:21.608262+00:00",
+  "timestamp": "2026-08-23T23:07:15.232679+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -944,7 +944,7 @@
       "products_regional": 0,
       "products_priced": 56,
       "products_error": 4,
-      "prices_collected": 158,
+      "prices_collected": 157,
       "anomalies": [],
       "price_records": {
         "nikko-blue-hydrangea:fast-growing-trees": {
@@ -1031,7 +1031,6 @@
         },
         "nellie-stevens-holly:fast-growing-trees": {
           "quart": 15.95,
-          "5gal": 85.95,
           "7gal": 163.95
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
@@ -1347,7 +1346,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 719,
+  "total_prices_collected": 718,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2324,7 +2323,6 @@
     },
     "nellie-stevens-holly:fast-growing-trees": {
       "quart": 15.95,
-      "5gal": 85.95,
       "7gal": 163.95
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
