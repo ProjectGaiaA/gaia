@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-22T23:08:46.688628+00:00",
+  "timestamp": "2026-08-23T12:38:21.608262+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -944,7 +944,7 @@
       "products_regional": 0,
       "products_priced": 56,
       "products_error": 4,
-      "prices_collected": 159,
+      "prices_collected": 158,
       "anomalies": [],
       "price_records": {
         "nikko-blue-hydrangea:fast-growing-trees": {
@@ -1001,7 +1001,6 @@
           "5-6ft": 160.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
-          "1-2ft": 21.95,
           "2-3ft": 43.95,
           "3-4ft": 76.95,
           "4-5ft": 146.95,
@@ -1348,7 +1347,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 720,
+  "total_prices_collected": 719,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2295,7 +2294,6 @@
       "5-6ft": 160.95
     },
     "emerald-green-arborvitae:fast-growing-trees": {
-      "1-2ft": 21.95,
       "2-3ft": 43.95,
       "3-4ft": 76.95,
       "4-5ft": 146.95,
