@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-25T23:15:10.497190+00:00",
+  "timestamp": "2026-08-26T12:44:52.902959+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -937,11 +937,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 7,
-      "products_regional": 0,
-      "products_priced": 56,
+      "products_no_sizes": 8,
+      "products_regional": 1,
+      "products_priced": 55,
       "products_error": 4,
-      "prices_collected": 159,
+      "prices_collected": 156,
       "anomalies": [],
       "price_records": {
         "nikko-blue-hydrangea:fast-growing-trees": {
@@ -969,11 +969,6 @@
           "4-5ft": 129.95,
           "5-6ft": 153.95,
           "6-7ft": 183.95
-        },
-        "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 65.95,
-          "2-3ft": 98.95,
-          "3-4ft": 135.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "3-4ft": 86.95,
@@ -1317,17 +1312,17 @@
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 63.99,
+          "dwarf-ez-start": 74.99,
           "dwarf": 39.99,
-          "semi-dwarf-ez-start": 54.99,
+          "semi-dwarf-ez-start": 64.99,
           "supreme": 49.99
         },
         "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 67.99
+          "semi-dwarf-ez-start": 75.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
-          "semi-dwarf-ez-start": 57.99,
+          "semi-dwarf-ez-start": 64.99,
           "supreme-ez-start": 75.99,
           "supreme": 39.99,
           "standard-ez-start": 64.99
@@ -1345,7 +1340,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 721,
+  "total_prices_collected": 718,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2261,11 +2256,6 @@
       "5-6ft": 153.95,
       "6-7ft": 183.95
     },
-    "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 65.95,
-      "2-3ft": 98.95,
-      "3-4ft": 135.95
-    },
     "fuji-apple-tree:fast-growing-trees": {
       "3-4ft": 86.95,
       "4-5ft": 113.95,
@@ -2566,17 +2556,17 @@
       "quart": 23.99
     },
     "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 63.99,
+      "dwarf-ez-start": 74.99,
       "dwarf": 39.99,
-      "semi-dwarf-ez-start": 54.99,
+      "semi-dwarf-ez-start": 64.99,
       "supreme": 49.99
     },
     "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 67.99
+      "semi-dwarf-ez-start": 75.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
-      "semi-dwarf-ez-start": 57.99,
+      "semi-dwarf-ez-start": 64.99,
       "supreme-ez-start": 75.99,
       "supreme": 39.99,
       "standard-ez-start": 64.99
