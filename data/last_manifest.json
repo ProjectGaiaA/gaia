@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-27T22:17:48.394931+00:00",
+  "timestamp": "2026-08-28T06:55:06.703163+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -937,11 +937,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 4,
+      "products_no_sizes": 5,
       "products_regional": 0,
-      "products_priced": 59,
+      "products_priced": 58,
       "products_error": 4,
-      "prices_collected": 163,
+      "prices_collected": 162,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1068,9 +1068,6 @@
           "2gal": 40.95,
           "3gal": 56.95,
           "7gal": 104.95
-        },
-        "white-knock-out-rose:fast-growing-trees": {
-          "3gal": 65.95
         },
         "coral-knock-out-rose:fast-growing-trees": {
           "3gal": 61.95
@@ -1337,7 +1334,7 @@
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
           "semi-dwarf-ez-start": 64.99,
-          "supreme-ez-start": 75.99,
+          "supreme-ez-start": 56.99,
           "supreme": 39.99,
           "standard-ez-start": 64.99
         },
@@ -1354,7 +1351,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 724,
+  "total_prices_collected": 723,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2369,9 +2366,6 @@
       "3gal": 56.95,
       "7gal": 104.95
     },
-    "white-knock-out-rose:fast-growing-trees": {
-      "3gal": 65.95
-    },
     "coral-knock-out-rose:fast-growing-trees": {
       "3gal": 61.95
     },
@@ -2595,7 +2589,7 @@
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
       "semi-dwarf-ez-start": 64.99,
-      "supreme-ez-start": 75.99,
+      "supreme-ez-start": 56.99,
       "supreme": 39.99,
       "standard-ez-start": 64.99
     },
