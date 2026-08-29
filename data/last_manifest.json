@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-29T04:36:54.985086+00:00",
+  "timestamp": "2026-08-29T16:51:05.279026+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -945,7 +945,7 @@
       "products_regional": 0,
       "products_priced": 57,
       "products_error": 4,
-      "prices_collected": 161,
+      "prices_collected": 160,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1180,7 +1180,6 @@
         },
         "rose-of-sharon:fast-growing-trees": {
           "3-4ft": 54.95,
-          "4-5ft": 59.95,
           "5-6ft": 103.95,
           "6-7ft": 208.95
         },
@@ -1321,7 +1320,7 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 12,
+      "prices_collected": 11,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1335,8 +1334,7 @@
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
           "semi-dwarf-ez-start": 64.99,
-          "supreme-ez-start": 56.99,
-          "supreme": 39.99,
+          "supreme-ez-start": 75.99,
           "standard-ez-start": 64.99
         },
         "double-knock-out-rose:stark-bros": {
@@ -1352,7 +1350,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 724,
+  "total_prices_collected": 722,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2478,7 +2476,6 @@
     },
     "rose-of-sharon:fast-growing-trees": {
       "3-4ft": 54.95,
-      "4-5ft": 59.95,
       "5-6ft": 103.95,
       "6-7ft": 208.95
     },
@@ -2591,8 +2588,7 @@
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
       "semi-dwarf-ez-start": 64.99,
-      "supreme-ez-start": 56.99,
-      "supreme": 39.99,
+      "supreme-ez-start": 75.99,
       "standard-ez-start": 64.99
     },
     "double-knock-out-rose:stark-bros": {
