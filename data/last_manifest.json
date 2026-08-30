@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-29T16:51:05.279026+00:00",
+  "timestamp": "2026-08-30T00:53:57.379188+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -945,7 +945,7 @@
       "products_regional": 0,
       "products_priced": 57,
       "products_error": 4,
-      "prices_collected": 160,
+      "prices_collected": 159,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1179,7 +1179,6 @@
           "4-5ft": 99.95
         },
         "rose-of-sharon:fast-growing-trees": {
-          "3-4ft": 54.95,
           "5-6ft": 103.95,
           "6-7ft": 208.95
         },
@@ -1350,7 +1349,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 722,
+  "total_prices_collected": 721,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2475,7 +2474,6 @@
       "4-5ft": 99.95
     },
     "rose-of-sharon:fast-growing-trees": {
-      "3-4ft": 54.95,
       "5-6ft": 103.95,
       "6-7ft": 208.95
     },
