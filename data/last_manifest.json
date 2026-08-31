@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-08-30T16:29:58.330646+00:00",
+  "timestamp": "2026-08-31T01:06:04.493939+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -941,11 +941,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 6,
+      "products_no_sizes": 7,
       "products_regional": 0,
-      "products_priced": 57,
+      "products_priced": 56,
       "products_error": 4,
-      "prices_collected": 159,
+      "prices_collected": 158,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1136,9 +1136,6 @@
         "purple-fountain-grass:fast-growing-trees": {
           "1gal": 26.95,
           "3gal": 40.95
-        },
-        "pampas-grass:fast-growing-trees": {
-          "3gal": 79.95
         },
         "astilbe:fast-growing-trees": {
           "default": 31.95
@@ -1349,7 +1346,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 721,
+  "total_prices_collected": 720,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2431,9 +2428,6 @@
     "purple-fountain-grass:fast-growing-trees": {
       "1gal": 26.95,
       "3gal": 40.95
-    },
-    "pampas-grass:fast-growing-trees": {
-      "3gal": 79.95
     },
     "astilbe:fast-growing-trees": {
       "default": 31.95
