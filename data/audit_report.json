@@ -12,7 +12,7 @@
       "what": "same plant+size at 3+ nurseries, >=2.5x off the median of the others"
     },
     "B_two_nursery_pairs": {
-      "denominator": 151,
+      "denominator": 152,
       "denominator_floor": 70,
       "denominator_unit": "two-nursery tiers",
       "known_findings": 1,
@@ -21,7 +21,7 @@
       "what": "same plant+size at exactly 2 nurseries, >=2.5x apart"
     },
     "C_within_retailer_inversion": {
-      "denominator": 183,
+      "denominator": 184,
       "denominator_floor": 90,
       "denominator_unit": "adjacent container pairs",
       "known_findings": 9,
@@ -50,12 +50,12 @@
     "F_stock_consistency": {
       "counts": {
         "latest_rows": 274,
-        "mobile_price_links": 274,
+        "mobile_price_links": 275,
         "pages": 101,
         "retailer_variant_availability": {
           "fast-growing-trees": {
             "None": 2,
-            "True": 153
+            "True": 155
           },
           "great-garden-plants": {
             "False": 4,
@@ -97,11 +97,11 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-08-29T01:06:04.492269+00:00",
+    "cutoff": "2026-08-29T19:11:51.111959+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-08-31T01:06:04.492269+00:00",
+    "newest_row": "2026-08-31T19:11:51.111959+00:00",
     "pairs_fresh": 274,
     "pairs_stale": 8,
     "pairs_total": 282,
@@ -139,49 +139,49 @@
     "stale_at_reporting_retailers": 8,
     "stalest": [
       {
-        "hours": 3457.2,
+        "hours": 3475.3,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 3344.4,
+        "hours": 3362.5,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 2914.1,
+        "hours": 2932.2,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1497.6,
+        "hours": 1515.7,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 300.4,
+        "hours": 318.5,
         "plant": "patriot-blueberry",
         "retailer": "stark-bros"
       },
       {
-        "hours": 253.1,
+        "hours": 271.2,
         "plant": "encore-azalea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 252.6,
+        "hours": 270.7,
         "plant": "encore-azalea",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 170.0,
+        "hours": 188.1,
         "plant": "bing-cherry-tree",
         "retailer": "stark-bros"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-08-31T01:10:35.280316+00:00",
+  "generated": "2026-08-31T19:15:53.399619+00:00",
   "notices": [
     "8 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below"
   ],

@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-08-31T01:06:04.493939+00:00",
+  "timestamp": "2026-08-31T19:11:51.113496+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
+      "products_found": 77,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 78,
-      "products_error": 0,
-      "prices_collected": 144,
+      "products_priced": 77,
+      "products_error": 1,
+      "prices_collected": 142,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -149,10 +149,6 @@
         },
         "hosta-sum-and-substance:nature-hills": {
           "1gal": 29.67
-        },
-        "echinacea-powwow-wild-berry:nature-hills": {
-          "quart": 17.99,
-          "1gal": 34.99
         },
         "lavender-phenomenal:nature-hills": {
           "quart": 16.99,
@@ -320,12 +316,12 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 74,
-      "products_found": 73,
+      "products_found": 71,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 73,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_priced": 71,
+      "products_error": 3,
+      "prices_collected": 309,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -561,11 +557,6 @@
         "stella-de-oro-daylily:planting-tree": {
           "1gal": 21.95
         },
-        "lavender-phenomenal:planting-tree": {
-          "quart": 24.95,
-          "1gal": 31.95,
-          "2gal": 70.95
-        },
         "green-mountain-boxwood:planting-tree": {
           "1gal": 22.95,
           "2gal": 99.95,
@@ -587,15 +578,6 @@
           "4-5ft": 134.95,
           "5-6ft": 149.95,
           "6-7ft": 604.95
-        },
-        "hass-avocado:planting-tree": {
-          "1gal": 97.95,
-          "1-2ft": 99.95,
-          "2-3ft": 114.95,
-          "3-4ft": 154.95,
-          "4-5ft": 284.95,
-          "5-6ft": 239.95,
-          "6-7ft": 224.95
         },
         "money-tree:planting-tree": {
           "6inch": 56.95,
@@ -945,7 +927,7 @@
       "products_regional": 0,
       "products_priced": 56,
       "products_error": 4,
-      "prices_collected": 158,
+      "prices_collected": 160,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1038,6 +1020,7 @@
           "quart": 15.95,
           "1gal": 25.95,
           "3gal": 48.95,
+          "5gal": 85.95,
           "7gal": 163.95
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
@@ -1107,6 +1090,7 @@
         },
         "crape-myrtle:fast-growing-trees": {
           "1-2ft-multistem": 64.95,
+          "2-3ft-multistem": 94.95,
           "3-4ft-multistem": 80.95,
           "4-5ft-multistem": 149.95,
           "5-6ft-multistem": 160.95,
@@ -1346,7 +1330,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 720,
+  "total_prices_collected": 710,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1486,10 +1470,6 @@
     },
     "hosta-sum-and-substance:nature-hills": {
       "1gal": 29.67
-    },
-    "echinacea-powwow-wild-berry:nature-hills": {
-      "quart": 17.99,
-      "1gal": 34.99
     },
     "lavender-phenomenal:nature-hills": {
       "quart": 16.99,
@@ -1883,11 +1863,6 @@
     "stella-de-oro-daylily:planting-tree": {
       "1gal": 21.95
     },
-    "lavender-phenomenal:planting-tree": {
-      "quart": 24.95,
-      "1gal": 31.95,
-      "2gal": 70.95
-    },
     "green-mountain-boxwood:planting-tree": {
       "1gal": 22.95,
       "2gal": 99.95,
@@ -1909,15 +1884,6 @@
       "4-5ft": 134.95,
       "5-6ft": 149.95,
       "6-7ft": 604.95
-    },
-    "hass-avocado:planting-tree": {
-      "1gal": 97.95,
-      "1-2ft": 99.95,
-      "2-3ft": 114.95,
-      "3-4ft": 154.95,
-      "4-5ft": 284.95,
-      "5-6ft": 239.95,
-      "6-7ft": 224.95
     },
     "money-tree:planting-tree": {
       "6inch": 56.95,
@@ -2330,6 +2296,7 @@
       "quart": 15.95,
       "1gal": 25.95,
       "3gal": 48.95,
+      "5gal": 85.95,
       "7gal": 163.95
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
@@ -2399,6 +2366,7 @@
     },
     "crape-myrtle:fast-growing-trees": {
       "1-2ft-multistem": 64.95,
+      "2-3ft-multistem": 94.95,
       "3-4ft-multistem": 80.95,
       "4-5ft-multistem": 149.95,
       "5-6ft-multistem": 160.95,
