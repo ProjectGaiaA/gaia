@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-01T02:06:40.174391+00:00",
+  "timestamp": "2026-09-01T16:45:17.861593+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -11,7 +11,15 @@
       "products_priced": 78,
       "products_error": 0,
       "prices_collected": 144,
-      "anomalies": [],
+      "anomalies": [
+        "ANOMALY: honeycrisp-apple-tree at nature-hills tier=2gal: $53.99 -> $89.99 (67% change)",
+        "ANOMALY: honeycrisp-apple-tree at nature-hills tier=5gal: $85.52 -> $142.53 (67% change)",
+        "ANOMALY: fuji-apple-tree at nature-hills tier=3gal: $83.36 -> $128.25 (54% change)",
+        "ANOMALY: emerald-green-arborvitae at nature-hills tier=3gal: $45.29 -> $90.58 (100% change)",
+        "ANOMALY: coral-bark-japanese-maple at nature-hills tier=1gal: $52.42 -> $87.36 (67% change)",
+        "ANOMALY: autumn-blaze-maple at nature-hills tier=3gal: $59.50 -> $119.00 (100% change)",
+        "ANOMALY: dwarf-alberta-spruce at nature-hills tier=3gal: $70.99 -> $109.22 (54% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -54,35 +62,35 @@
           "3gal": 85.75
         },
         "honeycrisp-apple-tree:nature-hills": {
-          "2gal": 53.99,
-          "5gal": 85.52
+          "2gal": 89.99,
+          "5gal": 142.53
         },
         "fuji-apple-tree:nature-hills": {
-          "3gal": 83.36
+          "3gal": 128.25
         },
         "emerald-green-arborvitae:nature-hills": {
           "quart": 17.32,
           "1gal": 34.18,
-          "3gal": 45.29,
-          "2gal": 41.86
+          "3gal": 90.58,
+          "2gal": 52.33
         },
         "green-giant-arborvitae:nature-hills": {
           "quart": 17.32,
           "1gal": 31.2,
-          "3gal": 63.41
+          "3gal": 90.58
         },
         "bloodgood-japanese-maple:nature-hills": {
           "3gal": 156.61
         },
         "coral-bark-japanese-maple:nature-hills": {
-          "1gal": 52.42,
-          "2gal": 89.76
+          "1gal": 87.36,
+          "2gal": 105.6
         },
         "emperor-japanese-maple:nature-hills": {
           "5gal": 228.11
         },
         "tamukeyama-japanese-maple:nature-hills": {
-          "3gal": 103.87
+          "3gal": 138.49
         },
         "double-knock-out-rose:nature-hills": {
           "quart": 24.99,
@@ -125,13 +133,13 @@
         "eastern-redbud:nature-hills": {
           "1gal": 49.92,
           "2gal": 69.48,
-          "3gal": 88.11
+          "3gal": 97.9
         },
         "forest-pansy-redbud:nature-hills": {
-          "3gal": 84.97
+          "3gal": 99.96
         },
         "yoshino-cherry:nature-hills": {
-          "3gal": 93.08
+          "3gal": 109.5
         },
         "pjm-rhododendron:nature-hills": {
           "3gal": 92.24
@@ -210,7 +218,7 @@
           "3gal": 92.91
         },
         "autumn-blaze-maple:nature-hills": {
-          "3gal": 59.5
+          "3gal": 119.0
         },
         "big-blue-liriope:nature-hills": {
           "quart": 20.5
@@ -281,10 +289,10 @@
           "3gal-multistem": 89.42
         },
         "red-sunset-maple:nature-hills": {
-          "3gal": 66.09
+          "3gal": 94.41
         },
         "sweetbay-magnolia:nature-hills": {
-          "3gal": 65.85
+          "3gal": 94.07
         },
         "rose-of-sharon:nature-hills": {
           "1gal": 44.9
@@ -297,9 +305,9 @@
           "quart": 29.99
         },
         "dwarf-alberta-spruce:nature-hills": {
-          "1gal": 35.47,
+          "1gal": 47.29,
           "2gal": 83.58,
-          "3gal": 70.99
+          "3gal": 109.22
         },
         "autumn-royalty-encore-azalea:nature-hills": {
           "1gal": 52.71
@@ -800,12 +808,12 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 37,
+      "products_found": 38,
       "products_no_sizes": 7,
       "products_regional": 0,
-      "products_priced": 30,
-      "products_error": 3,
-      "prices_collected": 55,
+      "products_priced": 31,
+      "products_error": 2,
+      "prices_collected": 60,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -841,6 +849,13 @@
           "24-36in": 59.99,
           "36-48in": 79.99,
           "48-54in": 129.99
+        },
+        "green-giant-arborvitae:spring-hill": {
+          "12-18in-bareroot": 17.49,
+          "24-36in": 59.99,
+          "36-48in": 79.99,
+          "3gal": 79.99,
+          "12-18in": 19.99
         },
         "bloodgood-japanese-maple:spring-hill": {
           "3gal": 129.99,
@@ -935,7 +950,7 @@
       "products_regional": 0,
       "products_priced": 55,
       "products_error": 4,
-      "prices_collected": 160,
+      "prices_collected": 159,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -989,6 +1004,7 @@
           "6-7ft": 207.95
         },
         "stella-cherry-tree:fast-growing-trees": {
+          "1-2ft": 53.95,
           "2-3ft": 86.95,
           "3-4ft": 106.95,
           "4-5ft": 130.95,
@@ -1145,15 +1161,13 @@
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
           "4-5ft": 81.95,
-          "5-6ft": 83.95,
-          "6-7ft": 111.95
+          "5-6ft": 83.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
           "3-4ft-multistem": 82.95,
           "4-5ft-multistem": 98.95,
-          "5-6ft-multistem": 115.95,
-          "6-7ft": 143.95
+          "5-6ft-multistem": 115.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 79.95,
@@ -1224,43 +1238,43 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "little-lime-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "incrediball-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "fire-light-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "astilbe:proven-winners-direct": {
-          "1gal": 37.99,
-          "quart": 20.99
+          "1gal": 28.49,
+          "quart": 15.74
         },
         "heuchera-coral-bells:proven-winners-direct": {
           "0-65-gallon": 24.74,
           "quart": 15.74
         },
         "bee-balm:proven-winners-direct": {
-          "0-65-gallon": 32.99
+          "0-65-gallon": 24.74
         },
         "russian-sage:proven-winners-direct": {
           "0-65-gallon": 24.74,
           "quart": 15.74
         },
         "rose-of-sharon:proven-winners-direct": {
-          "1gal": 31.99,
-          "quart": 16.79
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         }
       },
       "health": "healthy"
@@ -1336,9 +1350,17 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 716,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 720,
+  "total_anomalies": 7,
+  "anomalies": [
+    "ANOMALY: honeycrisp-apple-tree at nature-hills tier=2gal: $53.99 -> $89.99 (67% change)",
+    "ANOMALY: honeycrisp-apple-tree at nature-hills tier=5gal: $85.52 -> $142.53 (67% change)",
+    "ANOMALY: fuji-apple-tree at nature-hills tier=3gal: $83.36 -> $128.25 (54% change)",
+    "ANOMALY: emerald-green-arborvitae at nature-hills tier=3gal: $45.29 -> $90.58 (100% change)",
+    "ANOMALY: coral-bark-japanese-maple at nature-hills tier=1gal: $52.42 -> $87.36 (67% change)",
+    "ANOMALY: autumn-blaze-maple at nature-hills tier=3gal: $59.50 -> $119.00 (100% change)",
+    "ANOMALY: dwarf-alberta-spruce at nature-hills tier=3gal: $70.99 -> $109.22 (54% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1381,35 +1403,35 @@
       "3gal": 85.75
     },
     "honeycrisp-apple-tree:nature-hills": {
-      "2gal": 53.99,
-      "5gal": 85.52
+      "2gal": 89.99,
+      "5gal": 142.53
     },
     "fuji-apple-tree:nature-hills": {
-      "3gal": 83.36
+      "3gal": 128.25
     },
     "emerald-green-arborvitae:nature-hills": {
       "quart": 17.32,
       "1gal": 34.18,
-      "3gal": 45.29,
-      "2gal": 41.86
+      "3gal": 90.58,
+      "2gal": 52.33
     },
     "green-giant-arborvitae:nature-hills": {
       "quart": 17.32,
       "1gal": 31.2,
-      "3gal": 63.41
+      "3gal": 90.58
     },
     "bloodgood-japanese-maple:nature-hills": {
       "3gal": 156.61
     },
     "coral-bark-japanese-maple:nature-hills": {
-      "1gal": 52.42,
-      "2gal": 89.76
+      "1gal": 87.36,
+      "2gal": 105.6
     },
     "emperor-japanese-maple:nature-hills": {
       "5gal": 228.11
     },
     "tamukeyama-japanese-maple:nature-hills": {
-      "3gal": 103.87
+      "3gal": 138.49
     },
     "double-knock-out-rose:nature-hills": {
       "quart": 24.99,
@@ -1452,13 +1474,13 @@
     "eastern-redbud:nature-hills": {
       "1gal": 49.92,
       "2gal": 69.48,
-      "3gal": 88.11
+      "3gal": 97.9
     },
     "forest-pansy-redbud:nature-hills": {
-      "3gal": 84.97
+      "3gal": 99.96
     },
     "yoshino-cherry:nature-hills": {
-      "3gal": 93.08
+      "3gal": 109.5
     },
     "pjm-rhododendron:nature-hills": {
       "3gal": 92.24
@@ -1537,7 +1559,7 @@
       "3gal": 92.91
     },
     "autumn-blaze-maple:nature-hills": {
-      "3gal": 59.5
+      "3gal": 119.0
     },
     "big-blue-liriope:nature-hills": {
       "quart": 20.5
@@ -1608,10 +1630,10 @@
       "3gal-multistem": 89.42
     },
     "red-sunset-maple:nature-hills": {
-      "3gal": 66.09
+      "3gal": 94.41
     },
     "sweetbay-magnolia:nature-hills": {
-      "3gal": 65.85
+      "3gal": 94.07
     },
     "rose-of-sharon:nature-hills": {
       "1gal": 44.9
@@ -1624,9 +1646,9 @@
       "quart": 29.99
     },
     "dwarf-alberta-spruce:nature-hills": {
-      "1gal": 35.47,
+      "1gal": 47.29,
       "2gal": 83.58,
-      "3gal": 70.99
+      "3gal": 109.22
     },
     "autumn-royalty-encore-azalea:nature-hills": {
       "1gal": 52.71
@@ -2139,6 +2161,13 @@
       "36-48in": 79.99,
       "48-54in": 129.99
     },
+    "green-giant-arborvitae:spring-hill": {
+      "12-18in-bareroot": 17.49,
+      "24-36in": 59.99,
+      "36-48in": 79.99,
+      "3gal": 79.99,
+      "12-18in": 19.99
+    },
     "bloodgood-japanese-maple:spring-hill": {
       "3gal": 129.99,
       "2-4ft": 109.99
@@ -2271,6 +2300,7 @@
       "6-7ft": 207.95
     },
     "stella-cherry-tree:fast-growing-trees": {
+      "1-2ft": 53.95,
       "2-3ft": 86.95,
       "3-4ft": 106.95,
       "4-5ft": 130.95,
@@ -2427,15 +2457,13 @@
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
       "4-5ft": 81.95,
-      "5-6ft": 83.95,
-      "6-7ft": 111.95
+      "5-6ft": 83.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
       "3-4ft-multistem": 82.95,
       "4-5ft-multistem": 98.95,
-      "5-6ft-multistem": 115.95,
-      "6-7ft": 143.95
+      "5-6ft-multistem": 115.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 79.95,
@@ -2491,43 +2519,43 @@
       "3-4ft": 112.95
     },
     "limelight-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "little-lime-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "incrediball-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "fire-light-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "astilbe:proven-winners-direct": {
-      "1gal": 37.99,
-      "quart": 20.99
+      "1gal": 28.49,
+      "quart": 15.74
     },
     "heuchera-coral-bells:proven-winners-direct": {
       "0-65-gallon": 24.74,
       "quart": 15.74
     },
     "bee-balm:proven-winners-direct": {
-      "0-65-gallon": 32.99
+      "0-65-gallon": 24.74
     },
     "russian-sage:proven-winners-direct": {
       "0-65-gallon": 24.74,
       "quart": 15.74
     },
     "rose-of-sharon:proven-winners-direct": {
-      "1gal": 31.99,
-      "quart": 16.79
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "limelight-hydrangea:great-garden-plants": {
       "quart": 21.99,
