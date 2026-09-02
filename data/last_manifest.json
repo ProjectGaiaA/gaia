@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-01T16:45:17.861593+00:00",
+  "timestamp": "2026-09-02T00:52:24.670460+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -11,15 +11,7 @@
       "products_priced": 78,
       "products_error": 0,
       "prices_collected": 144,
-      "anomalies": [
-        "ANOMALY: honeycrisp-apple-tree at nature-hills tier=2gal: $53.99 -> $89.99 (67% change)",
-        "ANOMALY: honeycrisp-apple-tree at nature-hills tier=5gal: $85.52 -> $142.53 (67% change)",
-        "ANOMALY: fuji-apple-tree at nature-hills tier=3gal: $83.36 -> $128.25 (54% change)",
-        "ANOMALY: emerald-green-arborvitae at nature-hills tier=3gal: $45.29 -> $90.58 (100% change)",
-        "ANOMALY: coral-bark-japanese-maple at nature-hills tier=1gal: $52.42 -> $87.36 (67% change)",
-        "ANOMALY: autumn-blaze-maple at nature-hills tier=3gal: $59.50 -> $119.00 (100% change)",
-        "ANOMALY: dwarf-alberta-spruce at nature-hills tier=3gal: $70.99 -> $109.22 (54% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -950,7 +942,7 @@
       "products_regional": 0,
       "products_priced": 55,
       "products_error": 4,
-      "prices_collected": 159,
+      "prices_collected": 162,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1153,7 +1145,8 @@
           "default": 26.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "quart": 13.95
+          "quart": 13.95,
+          "1gal": 26.95
         },
         "russian-sage:fast-growing-trees": {
           "1gal": 28.95
@@ -1185,6 +1178,8 @@
           "6-7ft": 208.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
+          "1gal": 39.95,
+          "2gal": 56.95,
           "3gal": 81.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
@@ -1350,17 +1345,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 720,
-  "total_anomalies": 7,
-  "anomalies": [
-    "ANOMALY: honeycrisp-apple-tree at nature-hills tier=2gal: $53.99 -> $89.99 (67% change)",
-    "ANOMALY: honeycrisp-apple-tree at nature-hills tier=5gal: $85.52 -> $142.53 (67% change)",
-    "ANOMALY: fuji-apple-tree at nature-hills tier=3gal: $83.36 -> $128.25 (54% change)",
-    "ANOMALY: emerald-green-arborvitae at nature-hills tier=3gal: $45.29 -> $90.58 (100% change)",
-    "ANOMALY: coral-bark-japanese-maple at nature-hills tier=1gal: $52.42 -> $87.36 (67% change)",
-    "ANOMALY: autumn-blaze-maple at nature-hills tier=3gal: $59.50 -> $119.00 (100% change)",
-    "ANOMALY: dwarf-alberta-spruce at nature-hills tier=3gal: $70.99 -> $109.22 (54% change)"
-  ],
+  "total_prices_collected": 723,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2449,7 +2436,8 @@
       "default": 26.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "quart": 13.95
+      "quart": 13.95,
+      "1gal": 26.95
     },
     "russian-sage:fast-growing-trees": {
       "1gal": 28.95
@@ -2481,6 +2469,8 @@
       "6-7ft": 208.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
+      "1gal": 39.95,
+      "2gal": 56.95,
       "3gal": 81.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
