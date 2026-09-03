@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-02T16:15:24.808673+00:00",
+  "timestamp": "2026-09-03T00:54:00.499824+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -942,11 +942,10 @@
       "products_regional": 0,
       "products_priced": 56,
       "products_error": 4,
-      "prices_collected": 167,
+      "prices_collected": 164,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 33.95,
           "3gal": 63.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
@@ -1043,7 +1042,6 @@
           "7gal": 163.95
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
-          "1-2ft": 53.95,
           "2-3ft": 75.95,
           "3-4ft": 98.95,
           "4-5ft": 126.95,
@@ -1137,8 +1135,8 @@
           "1gal": 26.95,
           "3gal": 40.95
         },
-        "blue-fescue-elijah-blue:fast-growing-trees": {
-          "1gal": 48.95
+        "pampas-grass:fast-growing-trees": {
+          "3gal": 79.95
         },
         "astilbe:fast-growing-trees": {
           "default": 31.95
@@ -1192,8 +1190,7 @@
           "3gal": 43.95
         },
         "dwarf-alberta-spruce:fast-growing-trees": {
-          "1-2ft": 35.95,
-          "2-3ft": 53.95
+          "1-2ft": 35.95
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 48.95,
@@ -1352,7 +1349,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 728,
+  "total_prices_collected": 725,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2244,7 +2241,6 @@
       "2-4ft": 134.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 33.95,
       "3gal": 63.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
@@ -2341,7 +2337,6 @@
       "7gal": 163.95
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
-      "1-2ft": 53.95,
       "2-3ft": 75.95,
       "3-4ft": 98.95,
       "4-5ft": 126.95,
@@ -2435,8 +2430,8 @@
       "1gal": 26.95,
       "3gal": 40.95
     },
-    "blue-fescue-elijah-blue:fast-growing-trees": {
-      "1gal": 48.95
+    "pampas-grass:fast-growing-trees": {
+      "3gal": 79.95
     },
     "astilbe:fast-growing-trees": {
       "default": 31.95
@@ -2490,8 +2485,7 @@
       "3gal": 43.95
     },
     "dwarf-alberta-spruce:fast-growing-trees": {
-      "1-2ft": 35.95,
-      "2-3ft": 53.95
+      "1-2ft": 35.95
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 48.95,
