@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-03T00:54:00.499824+00:00",
+  "timestamp": "2026-09-03T16:12:17.856123+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -805,12 +805,11 @@
       "products_regional": 0,
       "products_priced": 31,
       "products_error": 2,
-      "prices_collected": 60,
+      "prices_collected": 58,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
-          "jumbo-bareroot": 69.99,
-          "4-5ft": 129.99,
+          "4-5ft": 116.99,
           "1gal": 25.99
         },
         "nikko-blue-hydrangea:spring-hill": {
@@ -818,7 +817,7 @@
           "1gal": 39.99
         },
         "summer-crush-hydrangea:spring-hill": {
-          "1gal": 79.99,
+          "1gal": 63.99,
           "4inch": 29.99,
           "jumbo-bareroot": 79.99
         },
@@ -851,7 +850,7 @@
         },
         "bloodgood-japanese-maple:spring-hill": {
           "3gal": 129.99,
-          "2-4ft": 109.99
+          "2-4ft": 93.49
         },
         "crimson-queen-japanese-maple:spring-hill": {
           "default": 49.99
@@ -886,7 +885,7 @@
         },
         "yoshino-cherry:spring-hill": {
           "2-4ft": 129.99,
-          "5-6ft": 179.99,
+          "5-6ft": 143.99,
           "5gal": 179.99
         },
         "gibraltar-azalea:spring-hill": {
@@ -897,11 +896,10 @@
           "2-5inch-bareroot": 14.99
         },
         "big-blue-liriope:spring-hill": {
-          "premium-bareroot": 13.99,
+          "premium-bareroot": 11.19,
           "1gal": 29.99
         },
         "pink-muhly-grass:spring-hill": {
-          "premium-bareroot": 24.99,
           "3inch-bareroot": 16.99
         },
         "blue-fescue-elijah-blue:spring-hill": {
@@ -925,7 +923,7 @@
         "russian-sage:spring-hill": {
           "bareroot": 24.99,
           "jumbo-bareroot": 39.99,
-          "premium-bareroot": 24.99
+          "premium-bareroot": 18.74
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99
@@ -938,11 +936,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 7,
+      "products_no_sizes": 8,
       "products_regional": 0,
-      "products_priced": 56,
+      "products_priced": 55,
       "products_error": 4,
-      "prices_collected": 164,
+      "prices_collected": 162,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1099,7 +1097,6 @@
         },
         "forest-pansy-redbud:fast-growing-trees": {
           "1-2ft": 56.95,
-          "5-6ft": 181.95,
           "6-7ft": 217.95
         },
         "crape-myrtle:fast-growing-trees": {
@@ -1111,8 +1108,7 @@
           "6-7ft-multistem": 193.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
-          "1gal": 23.95,
-          "3gal": 46.95
+          "1gal": 23.95
         },
         "vinca-minor:fast-growing-trees": {
           "1gal": 37.95
@@ -1134,9 +1130,6 @@
         "purple-fountain-grass:fast-growing-trees": {
           "1gal": 26.95,
           "3gal": 40.95
-        },
-        "pampas-grass:fast-growing-trees": {
-          "3gal": 79.95
         },
         "astilbe:fast-growing-trees": {
           "default": 31.95
@@ -1163,7 +1156,8 @@
           "2-3ft-multistem": 66.95,
           "3-4ft-multistem": 82.95,
           "4-5ft-multistem": 98.95,
-          "5-6ft-multistem": 115.95
+          "5-6ft-multistem": 115.95,
+          "6-7ft": 143.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 79.95,
@@ -1323,17 +1317,17 @@
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
+          "dwarf-ez-start": 55.99,
           "dwarf": 39.99,
-          "semi-dwarf-ez-start": 64.99
+          "semi-dwarf-ez-start": 54.99
         },
         "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 75.99
+          "semi-dwarf-ez-start": 64.99
         },
         "bartlett-pear-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "semi-dwarf-ez-start": 64.99,
-          "supreme-ez-start": 75.99,
+          "dwarf-ez-start": 66.99,
+          "semi-dwarf-ez-start": 54.99,
+          "supreme-ez-start": 67.99,
           "standard-ez-start": 64.99
         },
         "double-knock-out-rose:stark-bros": {
@@ -1349,7 +1343,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 725,
+  "total_prices_collected": 721,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2119,8 +2113,7 @@
       "4-5ft": 144.95
     },
     "limelight-hydrangea:spring-hill": {
-      "jumbo-bareroot": 69.99,
-      "4-5ft": 129.99,
+      "4-5ft": 116.99,
       "1gal": 25.99
     },
     "nikko-blue-hydrangea:spring-hill": {
@@ -2128,7 +2121,7 @@
       "1gal": 39.99
     },
     "summer-crush-hydrangea:spring-hill": {
-      "1gal": 79.99,
+      "1gal": 63.99,
       "4inch": 29.99,
       "jumbo-bareroot": 79.99
     },
@@ -2161,7 +2154,7 @@
     },
     "bloodgood-japanese-maple:spring-hill": {
       "3gal": 129.99,
-      "2-4ft": 109.99
+      "2-4ft": 93.49
     },
     "crimson-queen-japanese-maple:spring-hill": {
       "default": 49.99
@@ -2196,7 +2189,7 @@
     },
     "yoshino-cherry:spring-hill": {
       "2-4ft": 129.99,
-      "5-6ft": 179.99,
+      "5-6ft": 143.99,
       "5gal": 179.99
     },
     "gibraltar-azalea:spring-hill": {
@@ -2207,11 +2200,10 @@
       "2-5inch-bareroot": 14.99
     },
     "big-blue-liriope:spring-hill": {
-      "premium-bareroot": 13.99,
+      "premium-bareroot": 11.19,
       "1gal": 29.99
     },
     "pink-muhly-grass:spring-hill": {
-      "premium-bareroot": 24.99,
       "3inch-bareroot": 16.99
     },
     "blue-fescue-elijah-blue:spring-hill": {
@@ -2235,7 +2227,7 @@
     "russian-sage:spring-hill": {
       "bareroot": 24.99,
       "jumbo-bareroot": 39.99,
-      "premium-bareroot": 24.99
+      "premium-bareroot": 18.74
     },
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99
@@ -2394,7 +2386,6 @@
     },
     "forest-pansy-redbud:fast-growing-trees": {
       "1-2ft": 56.95,
-      "5-6ft": 181.95,
       "6-7ft": 217.95
     },
     "crape-myrtle:fast-growing-trees": {
@@ -2406,8 +2397,7 @@
       "6-7ft-multistem": 193.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
-      "1gal": 23.95,
-      "3gal": 46.95
+      "1gal": 23.95
     },
     "vinca-minor:fast-growing-trees": {
       "1gal": 37.95
@@ -2429,9 +2419,6 @@
     "purple-fountain-grass:fast-growing-trees": {
       "1gal": 26.95,
       "3gal": 40.95
-    },
-    "pampas-grass:fast-growing-trees": {
-      "3gal": 79.95
     },
     "astilbe:fast-growing-trees": {
       "default": 31.95
@@ -2458,7 +2445,8 @@
       "2-3ft-multistem": 66.95,
       "3-4ft-multistem": 82.95,
       "4-5ft-multistem": 98.95,
-      "5-6ft-multistem": 115.95
+      "5-6ft-multistem": 115.95,
+      "6-7ft": 143.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 79.95,
@@ -2576,17 +2564,17 @@
       "quart": 23.99
     },
     "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
+      "dwarf-ez-start": 55.99,
       "dwarf": 39.99,
-      "semi-dwarf-ez-start": 64.99
+      "semi-dwarf-ez-start": 54.99
     },
     "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 75.99
+      "semi-dwarf-ez-start": 64.99
     },
     "bartlett-pear-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "semi-dwarf-ez-start": 64.99,
-      "supreme-ez-start": 75.99,
+      "dwarf-ez-start": 66.99,
+      "semi-dwarf-ez-start": 54.99,
+      "supreme-ez-start": 67.99,
       "standard-ez-start": 64.99
     },
     "double-knock-out-rose:stark-bros": {
