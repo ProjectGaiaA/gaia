@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-04T00:48:54.779415+00:00",
+  "timestamp": "2026-09-04T16:02:35.435638+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -939,15 +939,14 @@
       "products_regional": 0,
       "products_priced": 55,
       "products_error": 4,
-      "prices_collected": 161,
+      "prices_collected": 159,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "3gal": 63.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
-          "quart": 24.95,
-          "3gal": 46.95
+          "quart": 24.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 32.95,
@@ -987,7 +986,7 @@
           "6-7ft": 170.95
         },
         "bing-cherry-tree:fast-growing-trees": {
-          "1-2ft": 53.95,
+          "1-2ft": 49.95,
           "2-3ft": 65.95,
           "3-4ft": 107.95,
           "4-5ft": 136.95,
@@ -1033,7 +1032,6 @@
           "7gal": 217.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
-          "quart": 15.95,
           "1gal": 25.95,
           "3gal": 48.95,
           "5gal": 85.95,
@@ -1206,7 +1204,7 @@
           "6-7ft": 153.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
-          "6-inch": 52.95,
+          "6-inch": 42.95,
           "3gal": 75.95,
           "5gal": 121.95,
           "1-2ft": 45.95,
@@ -1309,15 +1307,18 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 6,
-      "products_error": 2,
-      "prices_collected": 11,
+      "products_found": 7,
+      "products_error": 1,
+      "prices_collected": 12,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 55.99,
           "dwarf": 39.99,
           "semi-dwarf-ez-start": 54.99
+        },
+        "bing-cherry-tree:stark-bros": {
+          "standard-ez-start": 75.99
         },
         "elberta-peach-tree:stark-bros": {
           "semi-dwarf-ez-start": 64.99
@@ -1338,10 +1339,10 @@
           "default": 25.99
         }
       },
-      "health": "degraded"
+      "health": "healthy"
     }
   ],
-  "total_prices_collected": 719,
+  "total_prices_collected": 718,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2233,8 +2234,7 @@
       "3gal": 63.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
-      "quart": 24.95,
-      "3gal": 46.95
+      "quart": 24.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 32.95,
@@ -2274,7 +2274,7 @@
       "6-7ft": 170.95
     },
     "bing-cherry-tree:fast-growing-trees": {
-      "1-2ft": 53.95,
+      "1-2ft": 49.95,
       "2-3ft": 65.95,
       "3-4ft": 107.95,
       "4-5ft": 136.95,
@@ -2320,7 +2320,6 @@
       "7gal": 217.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
-      "quart": 15.95,
       "1gal": 25.95,
       "3gal": 48.95,
       "5gal": 85.95,
@@ -2493,7 +2492,7 @@
       "6-7ft": 153.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
-      "6-inch": 52.95,
+      "6-inch": 42.95,
       "3gal": 75.95,
       "5gal": 121.95,
       "1-2ft": 45.95,
@@ -2564,6 +2563,9 @@
       "dwarf": 39.99,
       "semi-dwarf-ez-start": 54.99
     },
+    "bing-cherry-tree:stark-bros": {
+      "standard-ez-start": 75.99
+    },
     "elberta-peach-tree:stark-bros": {
       "semi-dwarf-ez-start": 64.99
     },
@@ -2584,8 +2586,7 @@
     }
   },
   "degraded_retailers": [
-    "spring-hill",
-    "stark-bros"
+    "spring-hill"
   ],
   "pipeline_status": "degraded"
 }
