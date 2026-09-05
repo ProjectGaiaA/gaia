@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-04T16:02:35.435638+00:00",
+  "timestamp": "2026-09-05T00:34:30.323521+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -939,18 +939,17 @@
       "products_regional": 0,
       "products_priced": 55,
       "products_error": 4,
-      "prices_collected": 159,
+      "prices_collected": 161,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
+          "quart": 33.95,
           "3gal": 63.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 24.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
-          "1gal": 32.95,
-          "3gal": 90.95,
           "7gal": 165.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
@@ -1047,6 +1046,7 @@
         "coral-bark-japanese-maple:fast-growing-trees": {
           "3-4ft": 84.95,
           "4-5ft": 98.95,
+          "5-6ft": 120.95,
           "6-7ft": 175.95
         },
         "crimson-queen-japanese-maple:fast-growing-trees": {
@@ -1105,7 +1105,8 @@
           "6-7ft-multistem": 193.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
-          "1gal": 23.95
+          "1gal": 23.95,
+          "3gal": 46.95
         },
         "vinca-minor:fast-growing-trees": {
           "1gal": 37.95
@@ -1145,6 +1146,7 @@
           "1gal": 28.95
         },
         "october-glory-maple:fast-growing-trees": {
+          "3-4ft": 60.95,
           "4-5ft": 81.95,
           "5-6ft": 83.95
         },
@@ -1309,7 +1311,7 @@
       "products_expected": 8,
       "products_found": 7,
       "products_error": 1,
-      "prices_collected": 12,
+      "prices_collected": 15,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1325,9 +1327,12 @@
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 66.99,
+          "dwarf": 49.99,
+          "supreme": 59.99,
           "semi-dwarf-ez-start": 54.99,
           "supreme-ez-start": 67.99,
-          "standard-ez-start": 64.99
+          "standard-ez-start": 64.99,
+          "standard": 49.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
@@ -1342,7 +1347,7 @@
       "health": "healthy"
     }
   ],
-  "total_prices_collected": 718,
+  "total_prices_collected": 723,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2231,14 +2236,13 @@
       "2-4ft": 134.99
     },
     "limelight-hydrangea:fast-growing-trees": {
+      "quart": 33.95,
       "3gal": 63.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 24.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
-      "1gal": 32.95,
-      "3gal": 90.95,
       "7gal": 165.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
@@ -2335,6 +2339,7 @@
     "coral-bark-japanese-maple:fast-growing-trees": {
       "3-4ft": 84.95,
       "4-5ft": 98.95,
+      "5-6ft": 120.95,
       "6-7ft": 175.95
     },
     "crimson-queen-japanese-maple:fast-growing-trees": {
@@ -2393,7 +2398,8 @@
       "6-7ft-multistem": 193.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
-      "1gal": 23.95
+      "1gal": 23.95,
+      "3gal": 46.95
     },
     "vinca-minor:fast-growing-trees": {
       "1gal": 37.95
@@ -2433,6 +2439,7 @@
       "1gal": 28.95
     },
     "october-glory-maple:fast-growing-trees": {
+      "3-4ft": 60.95,
       "4-5ft": 81.95,
       "5-6ft": 83.95
     },
@@ -2571,9 +2578,12 @@
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 66.99,
+      "dwarf": 49.99,
+      "supreme": 59.99,
       "semi-dwarf-ez-start": 54.99,
       "supreme-ez-start": 67.99,
-      "standard-ez-start": 64.99
+      "standard-ez-start": 64.99,
+      "standard": 49.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
