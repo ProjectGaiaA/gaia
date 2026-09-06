@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-05T15:00:50.577268+00:00",
+  "timestamp": "2026-09-06T00:30:10.771587+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -1307,18 +1307,15 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 7,
-      "products_error": 1,
-      "prices_collected": 15,
+      "products_found": 6,
+      "products_error": 2,
+      "prices_collected": 14,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 55.99,
           "dwarf": 39.99,
           "semi-dwarf-ez-start": 54.99
-        },
-        "bing-cherry-tree:stark-bros": {
-          "standard-ez-start": 75.99
         },
         "elberta-peach-tree:stark-bros": {
           "semi-dwarf-ez-start": 64.99
@@ -1342,10 +1339,10 @@
           "default": 25.99
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     }
   ],
-  "total_prices_collected": 721,
+  "total_prices_collected": 720,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2566,9 +2563,6 @@
       "dwarf": 39.99,
       "semi-dwarf-ez-start": 54.99
     },
-    "bing-cherry-tree:stark-bros": {
-      "standard-ez-start": 75.99
-    },
     "elberta-peach-tree:stark-bros": {
       "semi-dwarf-ez-start": 64.99
     },
@@ -2592,7 +2586,8 @@
     }
   },
   "degraded_retailers": [
-    "spring-hill"
+    "spring-hill",
+    "stark-bros"
   ],
   "pipeline_status": "degraded"
 }
