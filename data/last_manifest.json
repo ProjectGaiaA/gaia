@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-07T00:19:25.298778+00:00",
+  "timestamp": "2026-09-07T17:37:16.082677+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -319,12 +319,12 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 74,
-      "products_found": 71,
+      "products_found": 73,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 71,
-      "products_error": 3,
-      "prices_collected": 312,
+      "products_priced": 73,
+      "products_error": 1,
+      "prices_collected": 319,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -682,6 +682,17 @@
         "sedum-angelina:planting-tree": {
           "1gal": 36.95
         },
+        "blue-rug-juniper:planting-tree": {
+          "1gal": 20.95,
+          "2gal": 53.95,
+          "3gal": 42.95
+        },
+        "pink-muhly-grass:planting-tree": {
+          "1gal": 25.95,
+          "2gal": 71.95,
+          "3gal": 48.95,
+          "5gal": 99.95
+        },
         "pampas-grass:planting-tree": {
           "1gal": 56.95,
           "2gal": 72.95,
@@ -928,7 +939,7 @@
       "products_regional": 0,
       "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 157,
+      "prices_collected": 155,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1015,7 +1026,6 @@
         "nellie-stevens-holly:fast-growing-trees": {
           "1gal": 25.95,
           "3gal": 48.95,
-          "5gal": 85.95,
           "7gal": 163.95
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
@@ -1042,8 +1052,7 @@
           "4-5ft": 94.95
         },
         "tamukeyama-japanese-maple:fast-growing-trees": {
-          "2-3ft": 55.95,
-          "3-4ft": 74.95
+          "2-3ft": 55.95
         },
         "double-knock-out-rose:fast-growing-trees": {
           "1gal": 25.95,
@@ -1210,8 +1219,8 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
-          "1gal": 29.99,
-          "quart": 15.74
+          "1gal": 25.99,
+          "quart": 13.64
         },
         "little-lime-hydrangea:proven-winners-direct": {
           "1gal": 29.99,
@@ -1292,7 +1301,7 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 14,
+      "prices_collected": 15,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1308,6 +1317,7 @@
           "dwarf": 49.99,
           "supreme": 59.99,
           "semi-dwarf-ez-start": 54.99,
+          "semi-dwarf": 39.99,
           "supreme-ez-start": 67.99,
           "standard-ez-start": 64.99,
           "standard": 49.99
@@ -1325,7 +1335,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 711,
+  "total_prices_collected": 717,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1983,6 +1993,17 @@
     "sedum-angelina:planting-tree": {
       "1gal": 36.95
     },
+    "blue-rug-juniper:planting-tree": {
+      "1gal": 20.95,
+      "2gal": 53.95,
+      "3gal": 42.95
+    },
+    "pink-muhly-grass:planting-tree": {
+      "1gal": 25.95,
+      "2gal": 71.95,
+      "3gal": 48.95,
+      "5gal": 99.95
+    },
     "pampas-grass:planting-tree": {
       "1gal": 56.95,
       "2gal": 72.95,
@@ -2286,7 +2307,6 @@
     "nellie-stevens-holly:fast-growing-trees": {
       "1gal": 25.95,
       "3gal": 48.95,
-      "5gal": 85.95,
       "7gal": 163.95
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
@@ -2313,8 +2333,7 @@
       "4-5ft": 94.95
     },
     "tamukeyama-japanese-maple:fast-growing-trees": {
-      "2-3ft": 55.95,
-      "3-4ft": 74.95
+      "2-3ft": 55.95
     },
     "double-knock-out-rose:fast-growing-trees": {
       "1gal": 25.95,
@@ -2466,8 +2485,8 @@
       "3-4ft": 112.95
     },
     "limelight-hydrangea:proven-winners-direct": {
-      "1gal": 29.99,
-      "quart": 15.74
+      "1gal": 25.99,
+      "quart": 13.64
     },
     "little-lime-hydrangea:proven-winners-direct": {
       "1gal": 29.99,
@@ -2537,6 +2556,7 @@
       "dwarf": 49.99,
       "supreme": 59.99,
       "semi-dwarf-ez-start": 54.99,
+      "semi-dwarf": 39.99,
       "supreme-ez-start": 67.99,
       "standard-ez-start": 64.99,
       "standard": 49.99
