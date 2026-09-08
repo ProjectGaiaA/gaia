@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-07T17:37:16.082677+00:00",
+  "timestamp": "2026-09-08T01:00:27.396290+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -939,7 +939,7 @@
       "products_regional": 0,
       "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 155,
+      "prices_collected": 153,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -994,7 +994,6 @@
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 21.95,
-          "2-3ft": 43.95,
           "3-4ft": 76.95,
           "4-5ft": 146.95,
           "5-6ft": 246.95,
@@ -1176,8 +1175,7 @@
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 48.95,
-          "3gal": 63.95,
-          "7gal": 120.95
+          "3gal": 63.95
         },
         "autumn-twist-encore-azalea:fast-growing-trees": {
           "1gal": 33.95,
@@ -1335,7 +1333,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 717,
+  "total_prices_collected": 715,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2275,7 +2273,6 @@
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 21.95,
-      "2-3ft": 43.95,
       "3-4ft": 76.95,
       "4-5ft": 146.95,
       "5-6ft": 246.95,
@@ -2457,8 +2454,7 @@
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 48.95,
-      "3gal": 63.95,
-      "7gal": 120.95
+      "3gal": 63.95
     },
     "autumn-twist-encore-azalea:fast-growing-trees": {
       "1gal": 33.95,
