@@ -1,20 +1,17 @@
 {
-  "timestamp": "2026-09-09T16:23:26.642558+00:00",
+  "timestamp": "2026-09-10T00:50:19.298690+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
+      "products_found": 76,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 78,
-      "products_error": 0,
-      "prices_collected": 144,
-      "anomalies": [
-        "ANOMALY: lavender-phenomenal at nature-hills tier=1gal: $18.30 -> $36.60 (100% change)",
-        "ANOMALY: autumn-blaze-maple at nature-hills tier=3gal: $59.50 -> $119.00 (100% change)"
-      ],
+      "products_priced": 76,
+      "products_error": 2,
+      "prices_collected": 142,
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -108,16 +105,10 @@
         "white-knock-out-rose:nature-hills": {
           "3gal": 72.09
         },
-        "coral-knock-out-rose:nature-hills": {
-          "3gal": 72.09
-        },
         "duke-blueberry:nature-hills": {
           "1gal": 39.96,
           "2gal": 78.09,
           "3gal": 90.41
-        },
-        "bluecrop-blueberry:nature-hills": {
-          "1gal": 40.67
         },
         "patriot-blueberry:nature-hills": {
           "1gal": 40.63
@@ -323,12 +314,12 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 74,
-      "products_found": 73,
+      "products_found": 72,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 73,
-      "products_error": 1,
-      "prices_collected": 319,
+      "products_priced": 72,
+      "products_error": 2,
+      "prices_collected": 318,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -367,9 +358,6 @@
         },
         "pinky-winky-hydrangea:planting-tree": {
           "3-4ft": 199.95
-        },
-        "fire-light-hydrangea:planting-tree": {
-          "3gal": 70.95
         },
         "honeycrisp-apple-tree:planting-tree": {
           "2-3ft": 75.95,
@@ -946,7 +934,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 155,
+      "prices_collected": 154,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1005,7 +993,6 @@
           "2-3ft": 43.95,
           "3-4ft": 76.95,
           "4-5ft": 146.95,
-          "5-6ft": 246.95,
           "6-7ft-jumbo": 602.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
@@ -1065,8 +1052,7 @@
         "double-knock-out-rose:fast-growing-trees": {
           "1gal": 25.95,
           "2gal": 40.95,
-          "3gal": 56.95,
-          "7gal": 104.95
+          "3gal": 56.95
         },
         "duke-blueberry:fast-growing-trees": {
           "1gal": 51.95
@@ -1166,7 +1152,8 @@
         "sweetbay-magnolia:fast-growing-trees": {
           "2-3ft": 59.95,
           "3-4ft": 76.95,
-          "4-5ft": 99.95
+          "4-5ft": 99.95,
+          "5-6ft": 129.95
         },
         "rose-of-sharon:fast-growing-trees": {
           "6-7ft": 208.95
@@ -1308,18 +1295,15 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 7,
-      "products_error": 1,
-      "prices_collected": 16,
+      "products_found": 6,
+      "products_error": 2,
+      "prices_collected": 15,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
           "dwarf": 39.99,
           "semi-dwarf-ez-start": 64.99
-        },
-        "bing-cherry-tree:stark-bros": {
-          "standard-ez-start": 75.99
         },
         "elberta-peach-tree:stark-bros": {
           "semi-dwarf-ez-start": 75.99
@@ -1344,15 +1328,12 @@
           "default": 25.99
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     }
   ],
-  "total_prices_collected": 722,
-  "total_anomalies": 2,
-  "anomalies": [
-    "ANOMALY: lavender-phenomenal at nature-hills tier=1gal: $18.30 -> $36.60 (100% change)",
-    "ANOMALY: autumn-blaze-maple at nature-hills tier=3gal: $59.50 -> $119.00 (100% change)"
-  ],
+  "total_prices_collected": 717,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -1446,16 +1427,10 @@
     "white-knock-out-rose:nature-hills": {
       "3gal": 72.09
     },
-    "coral-knock-out-rose:nature-hills": {
-      "3gal": 72.09
-    },
     "duke-blueberry:nature-hills": {
       "1gal": 39.96,
       "2gal": 78.09,
       "3gal": 90.41
-    },
-    "bluecrop-blueberry:nature-hills": {
-      "1gal": 40.67
     },
     "patriot-blueberry:nature-hills": {
       "1gal": 40.63
@@ -1690,9 +1665,6 @@
     },
     "pinky-winky-hydrangea:planting-tree": {
       "3-4ft": 199.95
-    },
-    "fire-light-hydrangea:planting-tree": {
-      "3gal": 70.95
     },
     "honeycrisp-apple-tree:planting-tree": {
       "2-3ft": 75.95,
@@ -2298,7 +2270,6 @@
       "2-3ft": 43.95,
       "3-4ft": 76.95,
       "4-5ft": 146.95,
-      "5-6ft": 246.95,
       "6-7ft-jumbo": 602.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
@@ -2358,8 +2329,7 @@
     "double-knock-out-rose:fast-growing-trees": {
       "1gal": 25.95,
       "2gal": 40.95,
-      "3gal": 56.95,
-      "7gal": 104.95
+      "3gal": 56.95
     },
     "duke-blueberry:fast-growing-trees": {
       "1gal": 51.95
@@ -2459,7 +2429,8 @@
     "sweetbay-magnolia:fast-growing-trees": {
       "2-3ft": 59.95,
       "3-4ft": 76.95,
-      "4-5ft": 99.95
+      "4-5ft": 99.95,
+      "5-6ft": 129.95
     },
     "rose-of-sharon:fast-growing-trees": {
       "6-7ft": 208.95
@@ -2569,9 +2540,6 @@
       "dwarf": 39.99,
       "semi-dwarf-ez-start": 64.99
     },
-    "bing-cherry-tree:stark-bros": {
-      "standard-ez-start": 75.99
-    },
     "elberta-peach-tree:stark-bros": {
       "semi-dwarf-ez-start": 75.99
     },
@@ -2596,7 +2564,8 @@
     }
   },
   "degraded_retailers": [
-    "spring-hill"
+    "spring-hill",
+    "stark-bros"
   ],
   "pipeline_status": "degraded"
 }
