@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-10T16:07:17.252665+00:00",
+  "timestamp": "2026-09-11T00:46:20.429187+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -936,9 +936,9 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 9,
+      "products_no_sizes": 8,
       "products_regional": 0,
-      "products_priced": 54,
+      "products_priced": 55,
       "products_error": 4,
       "prices_collected": 157,
       "anomalies": [],
@@ -947,11 +947,12 @@
           "3gal": 63.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
-          "quart": 24.95,
-          "3gal": 46.95
+          "quart": 24.95
+        },
+        "endless-summer-hydrangea:fast-growing-trees": {
+          "3gal": 90.95
         },
         "summer-crush-hydrangea:fast-growing-trees": {
-          "1gal": 40.95,
           "2gal": 54.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
@@ -1022,7 +1023,6 @@
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
           "2gal": 51.95,
-          "3gal": 81.95,
           "5gal": 128.95,
           "7gal": 217.95
         },
@@ -1109,10 +1109,12 @@
           "1gal": 24.95
         },
         "ajuga-chocolate-chip:fast-growing-trees": {
-          "quart": 35.95
+          "quart": 35.95,
+          "1gal": 43.95
         },
         "blue-rug-juniper:fast-growing-trees": {
           "1gal": 29.95,
+          "2gal": 119.95,
           "3gal": 51.95
         },
         "pink-muhly-grass:fast-growing-trees": {
@@ -1140,7 +1142,7 @@
           "1gal": 26.95
         },
         "russian-sage:fast-growing-trees": {
-          "1gal": 28.95
+          "3gal": 40.95
         },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
@@ -2233,11 +2235,12 @@
       "3gal": 63.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
-      "quart": 24.95,
-      "3gal": 46.95
+      "quart": 24.95
+    },
+    "endless-summer-hydrangea:fast-growing-trees": {
+      "3gal": 90.95
     },
     "summer-crush-hydrangea:fast-growing-trees": {
-      "1gal": 40.95,
       "2gal": 54.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
@@ -2308,7 +2311,6 @@
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
       "2gal": 51.95,
-      "3gal": 81.95,
       "5gal": 128.95,
       "7gal": 217.95
     },
@@ -2395,10 +2397,12 @@
       "1gal": 24.95
     },
     "ajuga-chocolate-chip:fast-growing-trees": {
-      "quart": 35.95
+      "quart": 35.95,
+      "1gal": 43.95
     },
     "blue-rug-juniper:fast-growing-trees": {
       "1gal": 29.95,
+      "2gal": 119.95,
       "3gal": 51.95
     },
     "pink-muhly-grass:fast-growing-trees": {
@@ -2426,7 +2430,7 @@
       "1gal": 26.95
     },
     "russian-sage:fast-growing-trees": {
-      "1gal": 28.95
+      "3gal": 40.95
     },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
