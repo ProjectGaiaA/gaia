@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-11T16:11:41.260998+00:00",
+  "timestamp": "2026-09-12T00:50:01.677695+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -936,11 +936,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 9,
+      "products_no_sizes": 8,
       "products_regional": 0,
-      "products_priced": 54,
+      "products_priced": 55,
       "products_error": 4,
-      "prices_collected": 156,
+      "prices_collected": 155,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1111,6 +1111,9 @@
           "quart": 35.95,
           "1gal": 43.95
         },
+        "sedum-angelina:fast-growing-trees": {
+          "1gal": 32.95
+        },
         "blue-rug-juniper:fast-growing-trees": {
           "1gal": 29.95,
           "2gal": 119.95,
@@ -1138,7 +1141,7 @@
           "1gal": 26.95
         },
         "russian-sage:fast-growing-trees": {
-          "1gal": 28.95,
+          "2gal": 32.95,
           "3gal": 40.95
         },
         "october-glory-maple:fast-growing-trees": {
@@ -1160,8 +1163,7 @@
         "sweetbay-magnolia:fast-growing-trees": {
           "2-3ft": 59.95,
           "3-4ft": 76.95,
-          "4-5ft": 99.95,
-          "5-6ft": 129.95
+          "4-5ft": 99.95
         },
         "rose-of-sharon:fast-growing-trees": {
           "6-7ft": 208.95
@@ -1184,8 +1186,7 @@
           "3gal": 63.95
         },
         "autumn-twist-encore-azalea:fast-growing-trees": {
-          "1gal": 33.95,
-          "3gal": 57.95
+          "1gal": 33.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
           "1gal": 33.95,
@@ -1303,18 +1304,15 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 6,
-      "products_error": 2,
-      "prices_collected": 15,
+      "products_found": 5,
+      "products_error": 3,
+      "prices_collected": 14,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
           "dwarf": 39.99,
           "semi-dwarf-ez-start": 64.99
-        },
-        "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 75.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
@@ -1339,7 +1337,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 721,
+  "total_prices_collected": 719,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2396,6 +2394,9 @@
       "quart": 35.95,
       "1gal": 43.95
     },
+    "sedum-angelina:fast-growing-trees": {
+      "1gal": 32.95
+    },
     "blue-rug-juniper:fast-growing-trees": {
       "1gal": 29.95,
       "2gal": 119.95,
@@ -2423,7 +2424,7 @@
       "1gal": 26.95
     },
     "russian-sage:fast-growing-trees": {
-      "1gal": 28.95,
+      "2gal": 32.95,
       "3gal": 40.95
     },
     "october-glory-maple:fast-growing-trees": {
@@ -2445,8 +2446,7 @@
     "sweetbay-magnolia:fast-growing-trees": {
       "2-3ft": 59.95,
       "3-4ft": 76.95,
-      "4-5ft": 99.95,
-      "5-6ft": 129.95
+      "4-5ft": 99.95
     },
     "rose-of-sharon:fast-growing-trees": {
       "6-7ft": 208.95
@@ -2469,8 +2469,7 @@
       "3gal": 63.95
     },
     "autumn-twist-encore-azalea:fast-growing-trees": {
-      "1gal": 33.95,
-      "3gal": 57.95
+      "1gal": 33.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
       "1gal": 33.95,
@@ -2555,9 +2554,6 @@
       "dwarf-ez-start": 74.99,
       "dwarf": 39.99,
       "semi-dwarf-ez-start": 64.99
-    },
-    "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 75.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
