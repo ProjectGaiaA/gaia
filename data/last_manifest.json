@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-12T00:50:01.677695+00:00",
+  "timestamp": "2026-09-12T15:11:58.884446+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -940,7 +940,7 @@
       "products_regional": 0,
       "products_priced": 55,
       "products_error": 4,
-      "prices_collected": 155,
+      "prices_collected": 154,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1137,8 +1137,7 @@
           "default": 26.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "quart": 13.95,
-          "1gal": 26.95
+          "quart": 13.95
         },
         "russian-sage:fast-growing-trees": {
           "2gal": 32.95,
@@ -1337,7 +1336,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 719,
+  "total_prices_collected": 718,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2420,8 +2419,7 @@
       "default": 26.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "quart": 13.95,
-      "1gal": 26.95
+      "quart": 13.95
     },
     "russian-sage:fast-growing-trees": {
       "2gal": 32.95,
