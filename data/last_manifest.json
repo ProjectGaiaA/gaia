@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-13T00:32:57.600558+00:00",
+  "timestamp": "2026-09-13T16:08:50.039326+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -940,7 +940,7 @@
       "products_regional": 0,
       "products_priced": 55,
       "products_error": 4,
-      "prices_collected": 154,
+      "prices_collected": 152,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -966,8 +966,7 @@
           "2-3ft": 86.95,
           "3-4ft": 74.95,
           "4-5ft": 129.95,
-          "5-6ft": 153.95,
-          "6-7ft": 124.95
+          "5-6ft": 153.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
           "1-2ft": 65.95,
@@ -1023,8 +1022,7 @@
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
           "2gal": 51.95,
-          "5gal": 128.95,
-          "7gal": 217.95
+          "5gal": 128.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
           "1gal": 25.95,
@@ -1303,18 +1301,15 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 6,
-      "products_error": 2,
-      "prices_collected": 15,
+      "products_found": 5,
+      "products_error": 3,
+      "prices_collected": 14,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
           "dwarf": 39.99,
           "semi-dwarf-ez-start": 64.99
-        },
-        "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 75.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
@@ -1339,7 +1334,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 719,
+  "total_prices_collected": 716,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2251,8 +2246,7 @@
       "2-3ft": 86.95,
       "3-4ft": 74.95,
       "4-5ft": 129.95,
-      "5-6ft": 153.95,
-      "6-7ft": 124.95
+      "5-6ft": 153.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
       "1-2ft": 65.95,
@@ -2308,8 +2302,7 @@
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
       "2gal": 51.95,
-      "5gal": 128.95,
-      "7gal": 217.95
+      "5gal": 128.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
       "1gal": 25.95,
@@ -2555,9 +2548,6 @@
       "dwarf-ez-start": 74.99,
       "dwarf": 39.99,
       "semi-dwarf-ez-start": 64.99
-    },
-    "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 75.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
