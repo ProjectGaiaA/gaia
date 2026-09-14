@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-14T00:42:26.588608+00:00",
+  "timestamp": "2026-09-14T18:06:49.799580+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -936,11 +936,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 9,
+      "products_no_sizes": 10,
       "products_regional": 0,
-      "products_priced": 54,
+      "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 149,
+      "prices_collected": 151,
       "anomalies": [],
       "price_records": {
         "nikko-blue-hydrangea:fast-growing-trees": {
@@ -989,14 +989,14 @@
           "1-2ft": 53.95,
           "2-3ft": 64.95,
           "3-4ft": 106.95,
-          "4-5ft": 130.95,
-          "5-6ft": 160.95
+          "4-5ft": 130.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 21.95,
           "2-3ft": 43.95,
           "3-4ft": 76.95,
           "4-5ft": 146.95,
+          "5-6ft": 246.95,
           "6-7ft-jumbo": 602.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
@@ -1024,9 +1024,12 @@
         "nellie-stevens-holly:fast-growing-trees": {
           "1gal": 25.95,
           "3gal": 48.95,
+          "5gal": 85.95,
           "7gal": 163.95
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
+          "1-2ft": 53.95,
+          "2-3ft": 75.95,
           "3-4ft": 98.95,
           "4-5ft": 126.95,
           "5-6ft": 147.95,
@@ -1133,10 +1136,6 @@
         "catmint-walkers-low:fast-growing-trees": {
           "quart": 13.95
         },
-        "russian-sage:fast-growing-trees": {
-          "2gal": 32.95,
-          "3gal": 40.95
-        },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
           "4-5ft": 81.95,
@@ -1151,6 +1150,7 @@
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 79.95,
           "4-5ft": 97.95,
+          "5-6ft": 120.95,
           "6-7ft": 169.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
@@ -1201,7 +1201,7 @@
           "3-4ft": 112.95
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1329,7 +1329,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 713,
+  "total_prices_collected": 715,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2264,14 +2264,14 @@
       "1-2ft": 53.95,
       "2-3ft": 64.95,
       "3-4ft": 106.95,
-      "4-5ft": 130.95,
-      "5-6ft": 160.95
+      "4-5ft": 130.95
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 21.95,
       "2-3ft": 43.95,
       "3-4ft": 76.95,
       "4-5ft": 146.95,
+      "5-6ft": 246.95,
       "6-7ft-jumbo": 602.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
@@ -2299,9 +2299,12 @@
     "nellie-stevens-holly:fast-growing-trees": {
       "1gal": 25.95,
       "3gal": 48.95,
+      "5gal": 85.95,
       "7gal": 163.95
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
+      "1-2ft": 53.95,
+      "2-3ft": 75.95,
       "3-4ft": 98.95,
       "4-5ft": 126.95,
       "5-6ft": 147.95,
@@ -2408,10 +2411,6 @@
     "catmint-walkers-low:fast-growing-trees": {
       "quart": 13.95
     },
-    "russian-sage:fast-growing-trees": {
-      "2gal": 32.95,
-      "3gal": 40.95
-    },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
       "4-5ft": 81.95,
@@ -2426,6 +2425,7 @@
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 79.95,
       "4-5ft": 97.95,
+      "5-6ft": 120.95,
       "6-7ft": 169.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
@@ -2561,6 +2561,7 @@
   },
   "degraded_retailers": [
     "spring-hill",
+    "fast-growing-trees",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
