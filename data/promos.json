@@ -2,7 +2,7 @@
   "spring-hill": {
     "retailer_id": "spring-hill",
     "retailer_name": "Spring Hill Nurseries",
-    "timestamp": "2026-09-15T01:24:48.749257+00:00",
+    "timestamp": "2026-09-15T16:49:02.661111+00:00",
     "codes": [],
     "banners": [
       "Flash Sale"
@@ -11,53 +11,51 @@
   "nature-hills": {
     "retailer_id": "nature-hills",
     "retailer_name": "Nature Hills Nursery",
-    "timestamp": "2026-09-15T01:24:48.749257+00:00",
+    "timestamp": "2026-09-15T16:49:02.661111+00:00",
     "codes": [],
     "banners": []
   },
   "planting-tree": {
     "retailer_id": "planting-tree",
     "retailer_name": "PlantingTree",
-    "timestamp": "2026-09-15T01:24:48.749257+00:00",
+    "timestamp": "2026-09-15T16:49:02.661111+00:00",
     "codes": [],
     "banners": []
   },
   "fast-growing-trees": {
     "retailer_id": "fast-growing-trees",
     "retailer_name": "Fast Growing Trees",
-    "timestamp": "2026-09-15T01:24:48.749257+00:00",
-    "codes": [
-      "HURRY20"
-    ],
+    "timestamp": "2026-09-15T16:49:02.661111+00:00",
+    "codes": [],
     "banners": [
-      "Free shipping on orders over $99",
-      "FLASH SALE"
+      "Free shipping on orders over $99"
     ]
   },
   "proven-winners-direct": {
     "retailer_id": "proven-winners-direct",
     "retailer_name": "Proven Winners Direct",
-    "timestamp": "2026-09-15T01:24:48.749257+00:00",
+    "timestamp": "2026-09-15T16:49:02.661111+00:00",
     "codes": [
       "COMBO25"
     ],
     "banners": [
-      "free shipping on orders over $175"
+      "free shipping on orders over $175",
+      "Buy 3, Get 1 Free"
     ]
   },
   "stark-bros": {
     "retailer_id": "stark-bros",
     "retailer_name": "Stark Bros",
-    "timestamp": "2026-09-15T01:24:48.749257+00:00",
+    "timestamp": "2026-09-15T16:49:02.661111+00:00",
     "codes": [],
     "banners": []
   },
   "great-garden-plants": {
     "retailer_id": "great-garden-plants",
     "retailer_name": "Great Garden Plants",
-    "timestamp": "2026-09-15T01:24:48.749257+00:00",
+    "timestamp": "2026-09-15T16:49:02.661111+00:00",
     "codes": [
-      "WINNER20"
+      "BESTPLANTS"
     ],
     "banners": []
   }

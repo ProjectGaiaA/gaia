@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-15T01:23:10.683239+00:00",
+  "timestamp": "2026-09-15T16:47:31.601294+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -936,12 +936,14 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 9,
+      "products_no_sizes": 10,
       "products_regional": 0,
-      "products_priced": 54,
+      "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 150,
-      "anomalies": [],
+      "prices_collected": 147,
+      "anomalies": [
+        "ANOMALY: fuji-apple-tree at fast-growing-trees tier=6-7ft: $99.95 -> $170.95 (71% change)"
+      ],
       "price_records": {
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 24.95
@@ -964,7 +966,7 @@
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
           "2-3ft": 86.95,
-          "3-4ft": 74.95,
+          "3-4ft": 100.95,
           "4-5ft": 129.95,
           "5-6ft": 153.95
         },
@@ -976,21 +978,20 @@
         },
         "fuji-apple-tree:fast-growing-trees": {
           "3-4ft": 86.95,
-          "4-5ft": 102.95,
+          "4-5ft": 113.95,
           "5-6ft": 109.95,
-          "6-7ft": 99.95
+          "6-7ft": 170.95
         },
         "bing-cherry-tree:fast-growing-trees": {
           "1-2ft": 49.95,
           "2-3ft": 65.95,
-          "3-4ft": 84.95,
+          "3-4ft": 107.95,
           "4-5ft": 136.95,
-          "5-6ft": 168.95,
-          "6-7ft": 159.95
+          "6-7ft": 207.95
         },
         "stella-cherry-tree:fast-growing-trees": {
           "1-2ft": 53.95,
-          "2-3ft": 64.95,
+          "2-3ft": 86.95,
           "3-4ft": 106.95,
           "4-5ft": 130.95
         },
@@ -1085,9 +1086,6 @@
           "5-6ft": 120.95,
           "6-7ft": 205.95
         },
-        "forest-pansy-redbud:fast-growing-trees": {
-          "6-7ft": 217.95
-        },
         "crape-myrtle:fast-growing-trees": {
           "1-2ft-multistem": 64.95,
           "2-3ft-multistem": 94.95,
@@ -1172,8 +1170,7 @@
           "3gal": 43.95
         },
         "dwarf-alberta-spruce:fast-growing-trees": {
-          "1-2ft": 35.95,
-          "2-3ft": 53.95
+          "1-2ft": 35.95
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 48.95,
@@ -1188,10 +1185,10 @@
         },
         "santa-rosa-plum:fast-growing-trees": {
           "2-3ft": 63.95,
-          "3-4ft": 84.95,
+          "3-4ft": 103.95,
           "4-5ft": 86.95,
           "5-6ft": 124.95,
-          "6-7ft": 114.95
+          "6-7ft": 153.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "6-inch": 42.95,
@@ -1202,7 +1199,7 @@
           "3-4ft": 112.95
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1217,27 +1214,27 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 31.99,
+          "quart": 16.79
         },
         "little-lime-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 31.99,
+          "quart": 16.79
         },
         "incrediball-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 31.99,
+          "quart": 16.79
         },
         "fire-light-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 31.99,
+          "quart": 16.79
         },
         "astilbe:proven-winners-direct": {
           "1gal": 37.99,
           "quart": 20.99
         },
         "heuchera-coral-bells:proven-winners-direct": {
-          "0-65-gallon": 32.99,
+          "0-65-gallon": 26.39,
           "quart": 20.99
         },
         "bee-balm:proven-winners-direct": {
@@ -1330,9 +1327,11 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 714,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 711,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: fuji-apple-tree at fast-growing-trees tier=6-7ft: $99.95 -> $170.95 (71% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2240,7 +2239,7 @@
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
       "2-3ft": 86.95,
-      "3-4ft": 74.95,
+      "3-4ft": 100.95,
       "4-5ft": 129.95,
       "5-6ft": 153.95
     },
@@ -2252,21 +2251,20 @@
     },
     "fuji-apple-tree:fast-growing-trees": {
       "3-4ft": 86.95,
-      "4-5ft": 102.95,
+      "4-5ft": 113.95,
       "5-6ft": 109.95,
-      "6-7ft": 99.95
+      "6-7ft": 170.95
     },
     "bing-cherry-tree:fast-growing-trees": {
       "1-2ft": 49.95,
       "2-3ft": 65.95,
-      "3-4ft": 84.95,
+      "3-4ft": 107.95,
       "4-5ft": 136.95,
-      "5-6ft": 168.95,
-      "6-7ft": 159.95
+      "6-7ft": 207.95
     },
     "stella-cherry-tree:fast-growing-trees": {
       "1-2ft": 53.95,
-      "2-3ft": 64.95,
+      "2-3ft": 86.95,
       "3-4ft": 106.95,
       "4-5ft": 130.95
     },
@@ -2361,9 +2359,6 @@
       "5-6ft": 120.95,
       "6-7ft": 205.95
     },
-    "forest-pansy-redbud:fast-growing-trees": {
-      "6-7ft": 217.95
-    },
     "crape-myrtle:fast-growing-trees": {
       "1-2ft-multistem": 64.95,
       "2-3ft-multistem": 94.95,
@@ -2448,8 +2443,7 @@
       "3gal": 43.95
     },
     "dwarf-alberta-spruce:fast-growing-trees": {
-      "1-2ft": 35.95,
-      "2-3ft": 53.95
+      "1-2ft": 35.95
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 48.95,
@@ -2464,10 +2458,10 @@
     },
     "santa-rosa-plum:fast-growing-trees": {
       "2-3ft": 63.95,
-      "3-4ft": 84.95,
+      "3-4ft": 103.95,
       "4-5ft": 86.95,
       "5-6ft": 124.95,
-      "6-7ft": 114.95
+      "6-7ft": 153.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "6-inch": 42.95,
@@ -2478,27 +2472,27 @@
       "3-4ft": 112.95
     },
     "limelight-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 31.99,
+      "quart": 16.79
     },
     "little-lime-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 31.99,
+      "quart": 16.79
     },
     "incrediball-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 31.99,
+      "quart": 16.79
     },
     "fire-light-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 31.99,
+      "quart": 16.79
     },
     "astilbe:proven-winners-direct": {
       "1gal": 37.99,
       "quart": 20.99
     },
     "heuchera-coral-bells:proven-winners-direct": {
-      "0-65-gallon": 32.99,
+      "0-65-gallon": 26.39,
       "quart": 20.99
     },
     "bee-balm:proven-winners-direct": {
@@ -2563,6 +2557,7 @@
   },
   "degraded_retailers": [
     "spring-hill",
+    "fast-growing-trees",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
