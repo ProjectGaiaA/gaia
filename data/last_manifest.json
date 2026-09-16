@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-15T16:47:31.601294+00:00",
+  "timestamp": "2026-09-16T00:59:07.674128+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -940,10 +940,8 @@
       "products_regional": 0,
       "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 147,
-      "anomalies": [
-        "ANOMALY: fuji-apple-tree at fast-growing-trees tier=6-7ft: $99.95 -> $170.95 (71% change)"
-      ],
+      "prices_collected": 146,
+      "anomalies": [],
       "price_records": {
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 24.95
@@ -1017,8 +1015,7 @@
           "2-3ft": 43.95,
           "3-4ft": 82.95,
           "4-5ft": 142.95,
-          "5-6ft": 216.95,
-          "6-7ft": 323.95
+          "5-6ft": 216.95
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
@@ -1088,11 +1085,11 @@
         },
         "crape-myrtle:fast-growing-trees": {
           "1-2ft-multistem": 64.95,
-          "2-3ft-multistem": 94.95,
-          "3-4ft-multistem": 80.95,
-          "4-5ft-multistem": 149.95,
-          "5-6ft-multistem": 160.95,
-          "6-7ft-multistem": 193.95
+          "2-3ft-multistem": 84.95,
+          "3-4ft-multistem": 99.95,
+          "4-5ft-multistem": 134.95,
+          "5-6ft-multistem": 169.95,
+          "6-7ft-multistem": 199.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
           "1gal": 23.95,
@@ -1294,44 +1291,17 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 5,
-      "products_error": 3,
-      "prices_collected": 14,
+      "products_found": 0,
+      "products_error": 8,
+      "prices_collected": 0,
       "anomalies": [],
-      "price_records": {
-        "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "dwarf": 39.99,
-          "semi-dwarf-ez-start": 64.99
-        },
-        "bartlett-pear-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "dwarf": 49.99,
-          "supreme": 59.99,
-          "semi-dwarf-ez-start": 64.99,
-          "semi-dwarf": 39.99,
-          "supreme-ez-start": 75.99,
-          "standard-ez-start": 64.99,
-          "standard": 49.99
-        },
-        "double-knock-out-rose:stark-bros": {
-          "default": 15.99
-        },
-        "duke-blueberry:stark-bros": {
-          "default": 25.99
-        },
-        "pink-lemonade-blueberry:stark-bros": {
-          "default": 25.99
-        }
-      },
+      "price_records": {},
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 711,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: fuji-apple-tree at fast-growing-trees tier=6-7ft: $99.95 -> $170.95 (71% change)"
-  ],
+  "total_prices_collected": 696,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2290,8 +2260,7 @@
       "2-3ft": 43.95,
       "3-4ft": 82.95,
       "4-5ft": 142.95,
-      "5-6ft": 216.95,
-      "6-7ft": 323.95
+      "5-6ft": 216.95
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
@@ -2361,11 +2330,11 @@
     },
     "crape-myrtle:fast-growing-trees": {
       "1-2ft-multistem": 64.95,
-      "2-3ft-multistem": 94.95,
-      "3-4ft-multistem": 80.95,
-      "4-5ft-multistem": 149.95,
-      "5-6ft-multistem": 160.95,
-      "6-7ft-multistem": 193.95
+      "2-3ft-multistem": 84.95,
+      "3-4ft-multistem": 99.95,
+      "4-5ft-multistem": 134.95,
+      "5-6ft-multistem": 169.95,
+      "6-7ft-multistem": 199.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
       "1gal": 23.95,
@@ -2529,30 +2498,6 @@
     },
     "double-knock-out-rose:great-garden-plants": {
       "quart": 23.99
-    },
-    "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "dwarf": 39.99,
-      "semi-dwarf-ez-start": 64.99
-    },
-    "bartlett-pear-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "dwarf": 49.99,
-      "supreme": 59.99,
-      "semi-dwarf-ez-start": 64.99,
-      "semi-dwarf": 39.99,
-      "supreme-ez-start": 75.99,
-      "standard-ez-start": 64.99,
-      "standard": 49.99
-    },
-    "double-knock-out-rose:stark-bros": {
-      "default": 15.99
-    },
-    "duke-blueberry:stark-bros": {
-      "default": 25.99
-    },
-    "pink-lemonade-blueberry:stark-bros": {
-      "default": 25.99
     }
   },
   "degraded_retailers": [
