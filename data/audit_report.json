@@ -12,7 +12,7 @@
       "what": "same plant+size at 3+ nurseries, >=2.5x off the median of the others"
     },
     "B_two_nursery_pairs": {
-      "denominator": 140,
+      "denominator": 141,
       "denominator_floor": 70,
       "denominator_unit": "two-nursery tiers",
       "known_findings": 1,
@@ -21,7 +21,7 @@
       "what": "same plant+size at exactly 2 nurseries, >=2.5x apart"
     },
     "C_within_retailer_inversion": {
-      "denominator": 183,
+      "denominator": 184,
       "denominator_floor": 90,
       "denominator_unit": "adjacent container pairs",
       "known_findings": 8,
@@ -52,7 +52,7 @@
       "what": "a price that moved to a different size label since the previous run"
     },
     "E_cross_page_agreement": {
-      "denominator": 498,
+      "denominator": 502,
       "denominator_floor": 280,
       "denominator_unit": "cross-page price quotes",
       "known_findings": 0,
@@ -63,12 +63,12 @@
     "F_stock_consistency": {
       "counts": {
         "latest_rows": 272,
-        "mobile_price_links": 261,
+        "mobile_price_links": 262,
         "pages": 101,
         "retailer_variant_availability": {
           "fast-growing-trees": {
             "None": 2,
-            "True": 141
+            "True": 142
           },
           "great-garden-plants": {
             "False": 3,
@@ -79,8 +79,8 @@
             "True": 73
           },
           "planting-tree": {
-            "False": 176,
-            "True": 142
+            "False": 174,
+            "True": 144
           },
           "proven-winners-direct": {
             "False": 9,
@@ -95,9 +95,9 @@
           }
         },
         "retailers_all_unknown_stock": [],
-        "schema_instock_pages": 85,
-        "sold_out_price_cells": 303,
-        "sold_out_rows": 97,
+        "schema_instock_pages": 86,
+        "sold_out_price_cells": 301,
+        "sold_out_rows": 96,
         "table_rows": 275
       },
       "denominator": 275,
@@ -110,11 +110,11 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-09-14T16:40:19.025798+00:00",
+    "cutoff": "2026-09-15T01:06:44.756157+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-09-16T16:40:19.025798+00:00",
+    "newest_row": "2026-09-17T01:06:44.756157+00:00",
     "pairs_fresh": 272,
     "pairs_stale": 10,
     "pairs_total": 282,
@@ -152,59 +152,59 @@
     "stale_at_reporting_retailers": 10,
     "stalest": [
       {
-        "hours": 3856.8,
+        "hours": 3865.2,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 3744.0,
+        "hours": 3752.4,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 3313.7,
+        "hours": 3322.1,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1897.2,
+        "hours": 1905.6,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 700.0,
+        "hours": 708.4,
         "plant": "patriot-blueberry",
         "retailer": "stark-bros"
       },
       {
-        "hours": 652.7,
+        "hours": 661.1,
         "plant": "encore-azalea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 652.2,
+        "hours": 660.6,
         "plant": "encore-azalea",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 169.2,
+        "hours": 177.6,
         "plant": "fire-light-hydrangea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 168.3,
+        "hours": 176.7,
         "plant": "bing-cherry-tree",
         "retailer": "stark-bros"
       },
       {
-        "hours": 88.1,
+        "hours": 96.6,
         "plant": "elberta-peach-tree",
         "retailer": "stark-bros"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-09-16T16:44:26.044952+00:00",
+  "generated": "2026-09-17T01:11:29.358565+00:00",
   "notices": [
     "10 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below",
     "C_within_retailer_inversion: 3 new lead(s) for the weekly digest"

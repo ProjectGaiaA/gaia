@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-09-16T16:40:19.027492+00:00",
+  "timestamp": "2026-09-17T01:06:44.757760+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 78,
+      "products_found": 77,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 78,
-      "products_error": 0,
-      "prices_collected": 144,
+      "products_priced": 77,
+      "products_error": 1,
+      "prices_collected": 141,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -38,11 +38,6 @@
           "1gal": 42.93,
           "2gal": 69.63,
           "3gal": 68.6
-        },
-        "incrediball-hydrangea:nature-hills": {
-          "quart": 26.49,
-          "1gal": 48.29,
-          "3gal": 84.58
         },
         "pinky-winky-hydrangea:nature-hills": {
           "quart": 26.29,
@@ -936,11 +931,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 9,
+      "products_no_sizes": 10,
       "products_regional": 0,
-      "products_priced": 54,
+      "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 146,
+      "prices_collected": 147,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -954,9 +949,6 @@
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
           "1gal": 41.95
-        },
-        "summer-crush-hydrangea:fast-growing-trees": {
-          "2gal": 54.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
           "quart": 35.95,
@@ -999,6 +991,7 @@
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 21.95,
           "2-3ft": 43.95,
+          "3-4ft": 76.95,
           "4-5ft": 146.95,
           "5-6ft": 246.95,
           "6-7ft-jumbo": 602.95
@@ -1022,6 +1015,7 @@
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
           "2gal": 51.95,
+          "3gal": 81.95,
           "5gal": 128.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
@@ -1093,8 +1087,7 @@
           "6-7ft-multistem": 199.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
-          "1gal": 23.95,
-          "3gal": 46.95
+          "1gal": 23.95
         },
         "vinca-minor:fast-growing-trees": {
           "1gal": 37.95
@@ -1132,7 +1125,8 @@
           "default": 26.95
         },
         "catmint-walkers-low:fast-growing-trees": {
-          "quart": 13.95
+          "quart": 13.95,
+          "1gal": 26.95
         },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
@@ -1198,7 +1192,7 @@
           "3-4ft": 112.95
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1326,7 +1320,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 710,
+  "total_prices_collected": 708,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1355,11 +1349,6 @@
       "1gal": 42.93,
       "2gal": 69.63,
       "3gal": 68.6
-    },
-    "incrediball-hydrangea:nature-hills": {
-      "quart": 26.49,
-      "1gal": 48.29,
-      "3gal": 84.58
     },
     "pinky-winky-hydrangea:nature-hills": {
       "quart": 26.29,
@@ -2227,9 +2216,6 @@
     "bloomstruck-hydrangea:fast-growing-trees": {
       "1gal": 41.95
     },
-    "summer-crush-hydrangea:fast-growing-trees": {
-      "2gal": 54.95
-    },
     "little-lime-hydrangea:fast-growing-trees": {
       "quart": 35.95,
       "3gal": 73.95
@@ -2271,6 +2257,7 @@
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 21.95,
       "2-3ft": 43.95,
+      "3-4ft": 76.95,
       "4-5ft": 146.95,
       "5-6ft": 246.95,
       "6-7ft-jumbo": 602.95
@@ -2294,6 +2281,7 @@
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
       "2gal": 51.95,
+      "3gal": 81.95,
       "5gal": 128.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
@@ -2365,8 +2353,7 @@
       "6-7ft-multistem": 199.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
-      "1gal": 23.95,
-      "3gal": 46.95
+      "1gal": 23.95
     },
     "vinca-minor:fast-growing-trees": {
       "1gal": 37.95
@@ -2404,7 +2391,8 @@
       "default": 26.95
     },
     "catmint-walkers-low:fast-growing-trees": {
-      "quart": 13.95
+      "quart": 13.95,
+      "1gal": 26.95
     },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
@@ -2555,6 +2543,7 @@
   },
   "degraded_retailers": [
     "spring-hill",
+    "fast-growing-trees",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
