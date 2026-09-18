@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-18T00:59:50.391753+00:00",
+  "timestamp": "2026-09-18T16:06:42.995290+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -940,7 +940,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 148,
+      "prices_collected": 147,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -988,8 +988,7 @@
           "1-2ft": 49.95,
           "2-3ft": 65.95,
           "3-4ft": 107.95,
-          "4-5ft": 136.95,
-          "6-7ft": 207.95
+          "4-5ft": 136.95
         },
         "stella-cherry-tree:fast-growing-trees": {
           "1-2ft": 53.95,
@@ -1024,7 +1023,6 @@
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
           "2gal": 51.95,
-          "3gal": 81.95,
           "5gal": 128.95
         },
         "nellie-stevens-holly:fast-growing-trees": {
@@ -1137,7 +1135,8 @@
         },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
-          "4-5ft": 81.95
+          "4-5ft": 81.95,
+          "6-7ft": 111.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
@@ -1330,7 +1329,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 712,
+  "total_prices_collected": 711,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2264,8 +2263,7 @@
       "1-2ft": 49.95,
       "2-3ft": 65.95,
       "3-4ft": 107.95,
-      "4-5ft": 136.95,
-      "6-7ft": 207.95
+      "4-5ft": 136.95
     },
     "stella-cherry-tree:fast-growing-trees": {
       "1-2ft": 53.95,
@@ -2300,7 +2298,6 @@
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
       "2gal": 51.95,
-      "3gal": 81.95,
       "5gal": 128.95
     },
     "nellie-stevens-holly:fast-growing-trees": {
@@ -2413,7 +2410,8 @@
     },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
-      "4-5ft": 81.95
+      "4-5ft": 81.95,
+      "6-7ft": 111.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
