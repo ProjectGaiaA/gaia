@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-18T16:06:42.995290+00:00",
+  "timestamp": "2026-09-19T00:50:19.111466+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -802,11 +802,10 @@
       "products_regional": 0,
       "products_priced": 31,
       "products_error": 2,
-      "prices_collected": 61,
+      "prices_collected": 60,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
-          "premium-bareroot": 24.99,
           "jumbo-bareroot": 69.99,
           "4-5ft": 129.99,
           "1gal": 25.99
@@ -936,11 +935,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 9,
+      "products_no_sizes": 11,
       "products_regional": 0,
-      "products_priced": 54,
+      "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 147,
+      "prices_collected": 146,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1127,15 +1126,10 @@
         "happy-returns-daylily:fast-growing-trees": {
           "default": 26.95
         },
-        "catmint-walkers-low:fast-growing-trees": {
-          "quart": 13.95
-        },
-        "russian-sage:fast-growing-trees": {
-          "1gal": 28.95
-        },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
           "4-5ft": 81.95,
+          "5-6ft": 83.95,
           "6-7ft": 111.95
         },
         "heritage-river-birch:fast-growing-trees": {
@@ -1199,7 +1193,7 @@
           "3-4ft": 112.95
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1296,12 +1290,13 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 14,
+      "prices_collected": 15,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 63.99,
-          "dwarf": 39.99
+          "dwarf": 39.99,
+          "semi-dwarf-ez-start": 57.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 66.99,
@@ -1329,7 +1324,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 711,
+  "total_prices_collected": 710,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2096,7 +2091,6 @@
       "4-5ft": 144.95
     },
     "limelight-hydrangea:spring-hill": {
-      "premium-bareroot": 24.99,
       "jumbo-bareroot": 69.99,
       "4-5ft": 129.99,
       "1gal": 25.99
@@ -2402,15 +2396,10 @@
     "happy-returns-daylily:fast-growing-trees": {
       "default": 26.95
     },
-    "catmint-walkers-low:fast-growing-trees": {
-      "quart": 13.95
-    },
-    "russian-sage:fast-growing-trees": {
-      "1gal": 28.95
-    },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
       "4-5ft": 81.95,
+      "5-6ft": 83.95,
       "6-7ft": 111.95
     },
     "heritage-river-birch:fast-growing-trees": {
@@ -2534,7 +2523,8 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 63.99,
-      "dwarf": 39.99
+      "dwarf": 39.99,
+      "semi-dwarf-ez-start": 57.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 66.99,
@@ -2561,6 +2551,7 @@
   },
   "degraded_retailers": [
     "spring-hill",
+    "fast-growing-trees",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
