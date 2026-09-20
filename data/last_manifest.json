@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-19T15:30:01.814319+00:00",
+  "timestamp": "2026-09-20T00:45:35.308066+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -939,7 +939,7 @@
       "products_regional": 0,
       "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 146,
+      "prices_collected": 141,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1032,8 +1032,6 @@
         "bloodgood-japanese-maple:fast-growing-trees": {
           "1-2ft": 53.95,
           "2-3ft": 75.95,
-          "3-4ft": 98.95,
-          "4-5ft": 126.95,
           "5-6ft": 147.95
         },
         "coral-bark-japanese-maple:fast-growing-trees": {
@@ -1129,8 +1127,7 @@
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
           "4-5ft": 81.95,
-          "5-6ft": 83.95,
-          "6-7ft": 111.95
+          "5-6ft": 83.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
@@ -1154,8 +1151,6 @@
           "6-7ft": 208.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
-          "quart": 18.95,
-          "1gal": 39.95,
           "2gal": 56.95,
           "3gal": 81.95
         },
@@ -1324,7 +1319,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 710,
+  "total_prices_collected": 705,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2302,8 +2297,6 @@
     "bloodgood-japanese-maple:fast-growing-trees": {
       "1-2ft": 53.95,
       "2-3ft": 75.95,
-      "3-4ft": 98.95,
-      "4-5ft": 126.95,
       "5-6ft": 147.95
     },
     "coral-bark-japanese-maple:fast-growing-trees": {
@@ -2399,8 +2392,7 @@
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
       "4-5ft": 81.95,
-      "5-6ft": 83.95,
-      "6-7ft": 111.95
+      "5-6ft": 83.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
@@ -2424,8 +2416,6 @@
       "6-7ft": 208.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
-      "quart": 18.95,
-      "1gal": 39.95,
       "2gal": 56.95,
       "3gal": 81.95
     },
