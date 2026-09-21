@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-21T00:44:58.958392+00:00",
+  "timestamp": "2026-09-21T18:07:58.831278+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -922,7 +922,7 @@
         "russian-sage:spring-hill": {
           "bareroot": 24.99,
           "jumbo-bareroot": 39.99,
-          "premium-bareroot": 24.99
+          "premium-bareroot": 19.99
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99
@@ -935,11 +935,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 11,
+      "products_no_sizes": 13,
       "products_regional": 0,
-      "products_priced": 52,
+      "products_priced": 50,
       "products_error": 4,
-      "prices_collected": 139,
+      "prices_collected": 138,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -986,7 +986,8 @@
         "bing-cherry-tree:fast-growing-trees": {
           "1-2ft": 49.95,
           "3-4ft": 107.95,
-          "4-5ft": 136.95
+          "4-5ft": 136.95,
+          "5-6ft": 168.95
         },
         "stella-cherry-tree:fast-growing-trees": {
           "1-2ft": 53.95,
@@ -1012,7 +1013,6 @@
           "6-7ft-jumbo": 503.95
         },
         "leyland-cypress:fast-growing-trees": {
-          "1-2ft": 23.95,
           "2-3ft": 43.95,
           "3-4ft": 82.95,
           "4-5ft": 142.95,
@@ -1060,6 +1060,7 @@
           "1gal": 51.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
+          "4inch": 33.95,
           "quart": 30.95,
           "1gal": 45.95,
           "3gal": 57.95
@@ -1087,9 +1088,6 @@
           "4-5ft-multistem": 134.95,
           "5-6ft-multistem": 169.95,
           "6-7ft-multistem": 199.95
-        },
-        "delaware-valley-white-azalea:fast-growing-trees": {
-          "1gal": 23.95
         },
         "vinca-minor:fast-growing-trees": {
           "1gal": 37.95
@@ -1123,17 +1121,13 @@
         "happy-returns-daylily:fast-growing-trees": {
           "default": 26.95
         },
-        "russian-sage:fast-growing-trees": {
-          "1gal": 28.95
-        },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
           "4-5ft": 81.95,
-          "5-6ft": 83.95
+          "5-6ft": 83.95,
+          "6-7ft": 111.95
         },
         "heritage-river-birch:fast-growing-trees": {
-          "2-3ft-multistem": 66.95,
-          "3-4ft-multistem": 82.95,
           "4-5ft-multistem": 98.95,
           "5-6ft-multistem": 115.95,
           "6-7ft": 143.95
@@ -1152,6 +1146,7 @@
           "6-7ft": 208.95
         },
         "wine-and-roses-weigela:fast-growing-trees": {
+          "quart": 18.95,
           "2gal": 56.95,
           "3gal": 81.95
         },
@@ -1221,8 +1216,8 @@
           "quart": 20.99
         },
         "heuchera-coral-bells:proven-winners-direct": {
-          "0-65-gallon": 32.99,
-          "quart": 20.99
+          "0-65-gallon": 21.44,
+          "quart": 13.64
         },
         "bee-balm:proven-winners-direct": {
           "0-65-gallon": 32.99
@@ -1283,7 +1278,7 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 15,
+      "prices_collected": 14,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1296,7 +1291,6 @@
           "dwarf": 49.99,
           "supreme": 59.99,
           "semi-dwarf-ez-start": 57.99,
-          "semi-dwarf": 39.99,
           "supreme-ez-start": 67.99,
           "standard-ez-start": 64.99,
           "standard": 49.99
@@ -1317,7 +1311,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 703,
+  "total_prices_collected": 701,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2200,7 +2194,7 @@
     "russian-sage:spring-hill": {
       "bareroot": 24.99,
       "jumbo-bareroot": 39.99,
-      "premium-bareroot": 24.99
+      "premium-bareroot": 19.99
     },
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99
@@ -2249,7 +2243,8 @@
     "bing-cherry-tree:fast-growing-trees": {
       "1-2ft": 49.95,
       "3-4ft": 107.95,
-      "4-5ft": 136.95
+      "4-5ft": 136.95,
+      "5-6ft": 168.95
     },
     "stella-cherry-tree:fast-growing-trees": {
       "1-2ft": 53.95,
@@ -2275,7 +2270,6 @@
       "6-7ft-jumbo": 503.95
     },
     "leyland-cypress:fast-growing-trees": {
-      "1-2ft": 23.95,
       "2-3ft": 43.95,
       "3-4ft": 82.95,
       "4-5ft": 142.95,
@@ -2323,6 +2317,7 @@
       "1gal": 51.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
+      "4inch": 33.95,
       "quart": 30.95,
       "1gal": 45.95,
       "3gal": 57.95
@@ -2350,9 +2345,6 @@
       "4-5ft-multistem": 134.95,
       "5-6ft-multistem": 169.95,
       "6-7ft-multistem": 199.95
-    },
-    "delaware-valley-white-azalea:fast-growing-trees": {
-      "1gal": 23.95
     },
     "vinca-minor:fast-growing-trees": {
       "1gal": 37.95
@@ -2386,17 +2378,13 @@
     "happy-returns-daylily:fast-growing-trees": {
       "default": 26.95
     },
-    "russian-sage:fast-growing-trees": {
-      "1gal": 28.95
-    },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
       "4-5ft": 81.95,
-      "5-6ft": 83.95
+      "5-6ft": 83.95,
+      "6-7ft": 111.95
     },
     "heritage-river-birch:fast-growing-trees": {
-      "2-3ft-multistem": 66.95,
-      "3-4ft-multistem": 82.95,
       "4-5ft-multistem": 98.95,
       "5-6ft-multistem": 115.95,
       "6-7ft": 143.95
@@ -2415,6 +2403,7 @@
       "6-7ft": 208.95
     },
     "wine-and-roses-weigela:fast-growing-trees": {
+      "quart": 18.95,
       "2gal": 56.95,
       "3gal": 81.95
     },
@@ -2469,8 +2458,8 @@
       "quart": 20.99
     },
     "heuchera-coral-bells:proven-winners-direct": {
-      "0-65-gallon": 32.99,
-      "quart": 20.99
+      "0-65-gallon": 21.44,
+      "quart": 13.64
     },
     "bee-balm:proven-winners-direct": {
       "0-65-gallon": 32.99
@@ -2517,7 +2506,6 @@
       "dwarf": 49.99,
       "supreme": 59.99,
       "semi-dwarf-ez-start": 57.99,
-      "semi-dwarf": 39.99,
       "supreme-ez-start": 67.99,
       "standard-ez-start": 64.99,
       "standard": 49.99
