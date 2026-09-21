@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-20T15:48:11.656534+00:00",
+  "timestamp": "2026-09-21T00:44:58.958392+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -939,7 +939,7 @@
       "products_regional": 0,
       "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 140,
+      "prices_collected": 139,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -985,7 +985,6 @@
         },
         "bing-cherry-tree:fast-growing-trees": {
           "1-2ft": 49.95,
-          "2-3ft": 65.95,
           "3-4ft": 107.95,
           "4-5ft": 136.95
         },
@@ -1124,6 +1123,9 @@
         "happy-returns-daylily:fast-growing-trees": {
           "default": 26.95
         },
+        "russian-sage:fast-growing-trees": {
+          "1gal": 28.95
+        },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
           "4-5ft": 81.95,
@@ -1163,9 +1165,6 @@
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 48.95,
           "3gal": 63.95
-        },
-        "autumn-twist-encore-azalea:fast-growing-trees": {
-          "1gal": 33.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
           "1gal": 33.95,
@@ -1318,7 +1317,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 704,
+  "total_prices_collected": 703,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2249,7 +2248,6 @@
     },
     "bing-cherry-tree:fast-growing-trees": {
       "1-2ft": 49.95,
-      "2-3ft": 65.95,
       "3-4ft": 107.95,
       "4-5ft": 136.95
     },
@@ -2388,6 +2386,9 @@
     "happy-returns-daylily:fast-growing-trees": {
       "default": 26.95
     },
+    "russian-sage:fast-growing-trees": {
+      "1gal": 28.95
+    },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
       "4-5ft": 81.95,
@@ -2427,9 +2428,6 @@
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 48.95,
       "3gal": 63.95
-    },
-    "autumn-twist-encore-azalea:fast-growing-trees": {
-      "1gal": 33.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
       "1gal": 33.95,
