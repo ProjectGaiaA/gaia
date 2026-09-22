@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-22T01:36:35.958430+00:00",
+  "timestamp": "2026-09-22T16:46:03.173692+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -10,7 +10,7 @@
       "products_regional": 0,
       "products_priced": 78,
       "products_error": 0,
-      "prices_collected": 144,
+      "prices_collected": 143,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -171,8 +171,7 @@
         },
         "green-mountain-boxwood:nature-hills": {
           "quart": 21.99,
-          "1gal": 31.96,
-          "3gal": 152.51
+          "1gal": 31.96
         },
         "chicago-hardy-fig:nature-hills": {
           "3gal": 102.99
@@ -935,15 +934,16 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 11,
+      "products_no_sizes": 12,
       "products_regional": 0,
-      "products_priced": 52,
+      "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 139,
+      "prices_collected": 141,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 33.95
+          "quart": 33.95,
+          "3gal": 63.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 24.95
@@ -956,7 +956,8 @@
         },
         "summer-crush-hydrangea:fast-growing-trees": {
           "1gal": 40.95,
-          "2gal": 54.95
+          "2gal": 54.95,
+          "3gal": 74.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
           "quart": 35.95,
@@ -997,7 +998,9 @@
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 21.95,
+          "2-3ft": 43.95,
           "3-4ft": 76.95,
+          "4-5ft": 146.95,
           "5-6ft": 246.95,
           "6-7ft-jumbo": 602.95
         },
@@ -1024,12 +1027,12 @@
         "nellie-stevens-holly:fast-growing-trees": {
           "1gal": 25.95,
           "3gal": 48.95,
+          "5gal": 85.95,
           "7gal": 163.95
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
           "1-2ft": 53.95,
-          "2-3ft": 75.95,
-          "5-6ft": 147.95
+          "2-3ft": 75.95
         },
         "coral-bark-japanese-maple:fast-growing-trees": {
           "3-4ft": 99.95,
@@ -1053,6 +1056,9 @@
           "1gal": 25.95,
           "2gal": 40.95,
           "3gal": 56.95
+        },
+        "coral-knock-out-rose:fast-growing-trees": {
+          "3gal": 61.95
         },
         "duke-blueberry:fast-growing-trees": {
           "1gal": 51.95
@@ -1087,9 +1093,6 @@
           "5-6ft-multistem": 169.95,
           "6-7ft-multistem": 199.95
         },
-        "delaware-valley-white-azalea:fast-growing-trees": {
-          "1gal": 23.95
-        },
         "vinca-minor:fast-growing-trees": {
           "1gal": 37.95
         },
@@ -1122,19 +1125,14 @@
         "happy-returns-daylily:fast-growing-trees": {
           "default": 26.95
         },
-        "russian-sage:fast-growing-trees": {
-          "1gal": 28.95
-        },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
           "4-5ft": 81.95,
-          "5-6ft": 83.95,
-          "6-7ft": 111.95
+          "5-6ft": 83.95
         },
         "heritage-river-birch:fast-growing-trees": {
-          "4-5ft-multistem": 98.95,
-          "5-6ft-multistem": 115.95,
-          "6-7ft": 143.95
+          "2-3ft-multistem": 66.95,
+          "4-5ft-multistem": 98.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 79.95,
@@ -1168,6 +1166,7 @@
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
           "1gal": 33.95,
+          "3gal": 57.95,
           "7gal": 152.95
         },
         "santa-rosa-plum:fast-growing-trees": {
@@ -1201,20 +1200,20 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "little-lime-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "incrediball-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "fire-light-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "astilbe:proven-winners-direct": {
           "1gal": 37.99,
@@ -1236,8 +1235,8 @@
           "quart": 20.99
         },
         "wine-and-roses-weigela:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 29.99,
+          "quart": 15.74
         }
       },
       "health": "healthy"
@@ -1316,7 +1315,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 702,
+  "total_prices_collected": 703,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1478,8 +1477,7 @@
     },
     "green-mountain-boxwood:nature-hills": {
       "quart": 21.99,
-      "1gal": 31.96,
-      "3gal": 152.51
+      "1gal": 31.96
     },
     "chicago-hardy-fig:nature-hills": {
       "3gal": 102.99
@@ -2205,7 +2203,8 @@
       "2-4ft": 134.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 33.95
+      "quart": 33.95,
+      "3gal": 63.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 24.95
@@ -2218,7 +2217,8 @@
     },
     "summer-crush-hydrangea:fast-growing-trees": {
       "1gal": 40.95,
-      "2gal": 54.95
+      "2gal": 54.95,
+      "3gal": 74.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
       "quart": 35.95,
@@ -2259,7 +2259,9 @@
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 21.95,
+      "2-3ft": 43.95,
       "3-4ft": 76.95,
+      "4-5ft": 146.95,
       "5-6ft": 246.95,
       "6-7ft-jumbo": 602.95
     },
@@ -2286,12 +2288,12 @@
     "nellie-stevens-holly:fast-growing-trees": {
       "1gal": 25.95,
       "3gal": 48.95,
+      "5gal": 85.95,
       "7gal": 163.95
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
       "1-2ft": 53.95,
-      "2-3ft": 75.95,
-      "5-6ft": 147.95
+      "2-3ft": 75.95
     },
     "coral-bark-japanese-maple:fast-growing-trees": {
       "3-4ft": 99.95,
@@ -2315,6 +2317,9 @@
       "1gal": 25.95,
       "2gal": 40.95,
       "3gal": 56.95
+    },
+    "coral-knock-out-rose:fast-growing-trees": {
+      "3gal": 61.95
     },
     "duke-blueberry:fast-growing-trees": {
       "1gal": 51.95
@@ -2349,9 +2354,6 @@
       "5-6ft-multistem": 169.95,
       "6-7ft-multistem": 199.95
     },
-    "delaware-valley-white-azalea:fast-growing-trees": {
-      "1gal": 23.95
-    },
     "vinca-minor:fast-growing-trees": {
       "1gal": 37.95
     },
@@ -2384,19 +2386,14 @@
     "happy-returns-daylily:fast-growing-trees": {
       "default": 26.95
     },
-    "russian-sage:fast-growing-trees": {
-      "1gal": 28.95
-    },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
       "4-5ft": 81.95,
-      "5-6ft": 83.95,
-      "6-7ft": 111.95
+      "5-6ft": 83.95
     },
     "heritage-river-birch:fast-growing-trees": {
-      "4-5ft-multistem": 98.95,
-      "5-6ft-multistem": 115.95,
-      "6-7ft": 143.95
+      "2-3ft-multistem": 66.95,
+      "4-5ft-multistem": 98.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 79.95,
@@ -2430,6 +2427,7 @@
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
       "1gal": 33.95,
+      "3gal": 57.95,
       "7gal": 152.95
     },
     "santa-rosa-plum:fast-growing-trees": {
@@ -2448,20 +2446,20 @@
       "3-4ft": 112.95
     },
     "limelight-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "little-lime-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "incrediball-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "fire-light-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "astilbe:proven-winners-direct": {
       "1gal": 37.99,
@@ -2483,8 +2481,8 @@
       "quart": 20.99
     },
     "wine-and-roses-weigela:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "limelight-hydrangea:great-garden-plants": {
       "quart": 21.99,
