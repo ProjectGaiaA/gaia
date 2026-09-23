@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-22T16:46:03.173692+00:00",
+  "timestamp": "2026-09-23T01:05:40.056206+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -938,12 +938,11 @@
       "products_regional": 0,
       "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 141,
+      "prices_collected": 139,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
-          "quart": 33.95,
-          "3gal": 63.95
+          "quart": 33.95
         },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 24.95
@@ -1109,8 +1108,7 @@
           "3gal": 51.95
         },
         "pink-muhly-grass:fast-growing-trees": {
-          "1gal": 22.95,
-          "3gal": 37.95
+          "1gal": 22.95
         },
         "purple-fountain-grass:fast-growing-trees": {
           "1gal": 26.95,
@@ -1142,8 +1140,7 @@
         },
         "sweetbay-magnolia:fast-growing-trees": {
           "2-3ft": 59.95,
-          "3-4ft": 76.95,
-          "4-5ft": 99.95
+          "3-4ft": 76.95
         },
         "rose-of-sharon:fast-growing-trees": {
           "6-7ft": 208.95
@@ -1162,7 +1159,8 @@
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 48.95,
-          "3gal": 63.95
+          "3gal": 63.95,
+          "7gal": 120.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
           "1gal": 33.95,
@@ -1315,7 +1313,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 703,
+  "total_prices_collected": 701,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2203,8 +2201,7 @@
       "2-4ft": 134.99
     },
     "limelight-hydrangea:fast-growing-trees": {
-      "quart": 33.95,
-      "3gal": 63.95
+      "quart": 33.95
     },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 24.95
@@ -2370,8 +2367,7 @@
       "3gal": 51.95
     },
     "pink-muhly-grass:fast-growing-trees": {
-      "1gal": 22.95,
-      "3gal": 37.95
+      "1gal": 22.95
     },
     "purple-fountain-grass:fast-growing-trees": {
       "1gal": 26.95,
@@ -2403,8 +2399,7 @@
     },
     "sweetbay-magnolia:fast-growing-trees": {
       "2-3ft": 59.95,
-      "3-4ft": 76.95,
-      "4-5ft": 99.95
+      "3-4ft": 76.95
     },
     "rose-of-sharon:fast-growing-trees": {
       "6-7ft": 208.95
@@ -2423,7 +2418,8 @@
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 48.95,
-      "3gal": 63.95
+      "3gal": 63.95,
+      "7gal": 120.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
       "1gal": 33.95,
