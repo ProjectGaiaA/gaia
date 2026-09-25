@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-24T17:04:14.201679+00:00",
+  "timestamp": "2026-09-25T01:23:35.811090+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -796,12 +796,12 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 38,
+      "products_found": 37,
       "products_no_sizes": 7,
       "products_regional": 0,
-      "products_priced": 31,
-      "products_error": 2,
-      "prices_collected": 60,
+      "products_priced": 30,
+      "products_error": 3,
+      "prices_collected": 50,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -825,18 +825,6 @@
         },
         "bartlett-pear-tree:spring-hill": {
           "default": 29.99
-        },
-        "emerald-green-arborvitae:spring-hill": {
-          "12-18in-bareroot": 19.99,
-          "18-24in-bareroot": 39.99,
-          "24-36in-bareroot": 59.99,
-          "36-48in-bareroot": 79.99,
-          "48-54in-bareroot": 90.99,
-          "12-18in": 19.99,
-          "18-24in": 39.99,
-          "24-36in": 59.99,
-          "36-48in": 79.99,
-          "48-54in": 129.99
         },
         "green-giant-arborvitae:spring-hill": {
           "12-18in-bareroot": 17.49,
@@ -938,7 +926,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 146,
+      "prices_collected": 148,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1034,12 +1022,16 @@
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
           "1-2ft": 53.95,
-          "2-3ft": 75.95
+          "2-3ft": 75.95,
+          "3-4ft": 98.95,
+          "4-5ft": 126.95,
+          "5-6ft": 147.95
         },
         "coral-bark-japanese-maple:fast-growing-trees": {
           "3-4ft": 99.95,
           "4-5ft": 124.95,
-          "5-6ft": 159.95
+          "5-6ft": 159.95,
+          "6-7ft": 199.95
         },
         "crimson-queen-japanese-maple:fast-growing-trees": {
           "1-2ft": 61.95,
@@ -1047,6 +1039,7 @@
         },
         "emperor-japanese-maple:fast-growing-trees": {
           "1-2ft": 48.95,
+          "2-3ft": 61.95,
           "3-4ft": 77.95,
           "4-5ft": 94.95
         },
@@ -1080,23 +1073,23 @@
         "kousa-dogwood:fast-growing-trees": {
           "3-4ft": 92.95,
           "4-5ft": 89.95,
-          "5-6ft": 182.95,
-          "6-7ft": 239.95
+          "5-6ft": 182.95
         },
         "eastern-redbud:fast-growing-trees": {
           "2-3ft": 69.95,
           "3-4ft": 79.95,
           "4-5ft": 94.95,
-          "5-6ft": 120.95,
-          "6-7ft": 205.95
+          "5-6ft": 120.95
         },
         "crape-myrtle:fast-growing-trees": {
           "1-2ft-multistem": 64.95,
           "2-3ft-multistem": 84.95,
           "3-4ft-multistem": 99.95,
           "4-5ft-multistem": 134.95,
-          "5-6ft-multistem": 169.95,
-          "6-7ft-multistem": 199.95
+          "5-6ft-multistem": 169.95
+        },
+        "delaware-valley-white-azalea:fast-growing-trees": {
+          "3gal": 46.95
         },
         "vinca-minor:fast-growing-trees": {
           "1gal": 37.95
@@ -1132,9 +1125,6 @@
         "catmint-walkers-low:fast-growing-trees": {
           "quart": 13.95
         },
-        "russian-sage:fast-growing-trees": {
-          "1gal": 28.95
-        },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 60.95,
           "4-5ft": 81.95,
@@ -1142,8 +1132,7 @@
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
-          "4-5ft-multistem": 98.95,
-          "6-7ft": 143.95
+          "4-5ft-multistem": 98.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 79.95,
@@ -1154,7 +1143,8 @@
         "sweetbay-magnolia:fast-growing-trees": {
           "2-3ft": 59.95,
           "3-4ft": 76.95,
-          "4-5ft": 99.95
+          "4-5ft": 99.95,
+          "5-6ft": 129.95
         },
         "rose-of-sharon:fast-growing-trees": {
           "6-7ft": 208.95
@@ -1326,7 +1316,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 708,
+  "total_prices_collected": 700,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2113,18 +2103,6 @@
     "bartlett-pear-tree:spring-hill": {
       "default": 29.99
     },
-    "emerald-green-arborvitae:spring-hill": {
-      "12-18in-bareroot": 19.99,
-      "18-24in-bareroot": 39.99,
-      "24-36in-bareroot": 59.99,
-      "36-48in-bareroot": 79.99,
-      "48-54in-bareroot": 90.99,
-      "12-18in": 19.99,
-      "18-24in": 39.99,
-      "24-36in": 59.99,
-      "36-48in": 79.99,
-      "48-54in": 129.99
-    },
     "green-giant-arborvitae:spring-hill": {
       "12-18in-bareroot": 17.49,
       "24-36in": 59.99,
@@ -2306,12 +2284,16 @@
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
       "1-2ft": 53.95,
-      "2-3ft": 75.95
+      "2-3ft": 75.95,
+      "3-4ft": 98.95,
+      "4-5ft": 126.95,
+      "5-6ft": 147.95
     },
     "coral-bark-japanese-maple:fast-growing-trees": {
       "3-4ft": 99.95,
       "4-5ft": 124.95,
-      "5-6ft": 159.95
+      "5-6ft": 159.95,
+      "6-7ft": 199.95
     },
     "crimson-queen-japanese-maple:fast-growing-trees": {
       "1-2ft": 61.95,
@@ -2319,6 +2301,7 @@
     },
     "emperor-japanese-maple:fast-growing-trees": {
       "1-2ft": 48.95,
+      "2-3ft": 61.95,
       "3-4ft": 77.95,
       "4-5ft": 94.95
     },
@@ -2352,23 +2335,23 @@
     "kousa-dogwood:fast-growing-trees": {
       "3-4ft": 92.95,
       "4-5ft": 89.95,
-      "5-6ft": 182.95,
-      "6-7ft": 239.95
+      "5-6ft": 182.95
     },
     "eastern-redbud:fast-growing-trees": {
       "2-3ft": 69.95,
       "3-4ft": 79.95,
       "4-5ft": 94.95,
-      "5-6ft": 120.95,
-      "6-7ft": 205.95
+      "5-6ft": 120.95
     },
     "crape-myrtle:fast-growing-trees": {
       "1-2ft-multistem": 64.95,
       "2-3ft-multistem": 84.95,
       "3-4ft-multistem": 99.95,
       "4-5ft-multistem": 134.95,
-      "5-6ft-multistem": 169.95,
-      "6-7ft-multistem": 199.95
+      "5-6ft-multistem": 169.95
+    },
+    "delaware-valley-white-azalea:fast-growing-trees": {
+      "3gal": 46.95
     },
     "vinca-minor:fast-growing-trees": {
       "1gal": 37.95
@@ -2404,9 +2387,6 @@
     "catmint-walkers-low:fast-growing-trees": {
       "quart": 13.95
     },
-    "russian-sage:fast-growing-trees": {
-      "1gal": 28.95
-    },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 60.95,
       "4-5ft": 81.95,
@@ -2414,8 +2394,7 @@
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
-      "4-5ft-multistem": 98.95,
-      "6-7ft": 143.95
+      "4-5ft-multistem": 98.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 79.95,
@@ -2426,7 +2405,8 @@
     "sweetbay-magnolia:fast-growing-trees": {
       "2-3ft": 59.95,
       "3-4ft": 76.95,
-      "4-5ft": 99.95
+      "4-5ft": 99.95,
+      "5-6ft": 129.95
     },
     "rose-of-sharon:fast-growing-trees": {
       "6-7ft": 208.95
