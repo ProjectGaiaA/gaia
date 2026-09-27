@@ -79,8 +79,8 @@
             "True": 80
           },
           "planting-tree": {
-            "False": 175,
-            "True": 143
+            "False": 176,
+            "True": 142
           },
           "proven-winners-direct": {
             "False": 9,
@@ -96,7 +96,7 @@
         },
         "retailers_all_unknown_stock": [],
         "schema_instock_pages": 91,
-        "sold_out_price_cells": 293,
+        "sold_out_price_cells": 294,
         "sold_out_rows": 91,
         "table_rows": 275
       },
@@ -110,11 +110,11 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-09-25T01:08:01.504448+00:00",
+    "cutoff": "2026-09-25T16:53:54.276394+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-09-27T01:08:01.504448+00:00",
+    "newest_row": "2026-09-27T16:53:54.276394+00:00",
     "pairs_fresh": 273,
     "pairs_stale": 9,
     "pairs_total": 282,
@@ -152,54 +152,54 @@
     "stale_at_reporting_retailers": 9,
     "stalest": [
       {
-        "hours": 4105.3,
+        "hours": 4121.0,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 3992.5,
+        "hours": 4008.2,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 3562.1,
+        "hours": 3577.9,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 2145.6,
+        "hours": 2161.4,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 901.2,
+        "hours": 916.9,
         "plant": "encore-azalea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 900.6,
+        "hours": 916.4,
         "plant": "encore-azalea",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 417.7,
+        "hours": 433.4,
         "plant": "fire-light-hydrangea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 416.8,
+        "hours": 432.5,
         "plant": "bing-cherry-tree",
         "retailer": "stark-bros"
       },
       {
-        "hours": 336.6,
+        "hours": 352.4,
         "plant": "elberta-peach-tree",
         "retailer": "stark-bros"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-09-27T01:12:19.405236+00:00",
+  "generated": "2026-09-27T16:58:11.666953+00:00",
   "notices": [
     "9 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below",
     "C_within_retailer_inversion: 3 new lead(s) for the weekly digest"
