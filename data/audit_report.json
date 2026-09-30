@@ -3,7 +3,7 @@
   "audit": "nightly_offline",
   "audits": {
     "A_cross_retailer": {
-      "denominator": 85,
+      "denominator": 82,
       "denominator_floor": 45,
       "denominator_unit": "priced rows at tiers with 3+ nurseries",
       "known_findings": 1,
@@ -12,7 +12,7 @@
       "what": "same plant+size at 3+ nurseries, >=2.5x off the median of the others"
     },
     "B_two_nursery_pairs": {
-      "denominator": 135,
+      "denominator": 141,
       "denominator_floor": 70,
       "denominator_unit": "two-nursery tiers",
       "known_findings": 0,
@@ -21,7 +21,7 @@
       "what": "same plant+size at exactly 2 nurseries, >=2.5x apart"
     },
     "C_within_retailer_inversion": {
-      "denominator": 181,
+      "denominator": 184,
       "denominator_floor": 90,
       "denominator_unit": "adjacent container pairs",
       "known_findings": 8,
@@ -29,9 +29,13 @@
         {
           "detail": "blue-rug-juniper at fast-growing-trees: 3gal $54.95 is cheaper than 2gal $121.95",
           "id": "C|blue-rug-juniper|fast-growing-trees|2gal|3gal"
+        },
+        {
+          "detail": "pink-lemonade-blueberry at fast-growing-trees: quart $30.95 is cheaper than 4inch $34.95",
+          "id": "C|pink-lemonade-blueberry|fast-growing-trees|4inch|quart"
         }
       ],
-      "total_findings": 9,
+      "total_findings": 10,
       "what": "larger container >10% cheaper than the next smaller one"
     },
     "D_snapshot_value_diff": {
@@ -55,12 +59,12 @@
     "F_stock_consistency": {
       "counts": {
         "latest_rows": 273,
-        "mobile_price_links": 271,
+        "mobile_price_links": 272,
         "pages": 101,
         "retailer_variant_availability": {
           "fast-growing-trees": {
             "None": 1,
-            "True": 138
+            "True": 144
           },
           "great-garden-plants": {
             "False": 3,
@@ -71,8 +75,8 @@
             "True": 82
           },
           "planting-tree": {
-            "False": 183,
-            "True": 135
+            "False": 184,
+            "True": 134
           },
           "proven-winners-direct": {
             "False": 10,
@@ -88,8 +92,8 @@
         },
         "retailers_all_unknown_stock": [],
         "schema_instock_pages": 91,
-        "sold_out_price_cells": 300,
-        "sold_out_rows": 89,
+        "sold_out_price_cells": 301,
+        "sold_out_rows": 87,
         "table_rows": 275
       },
       "denominator": 275,
@@ -102,11 +106,11 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-09-28T02:01:48.893831+00:00",
+    "cutoff": "2026-09-28T18:01:50.326252+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-09-30T02:01:48.893831+00:00",
+    "newest_row": "2026-09-30T18:01:50.326252+00:00",
     "pairs_fresh": 273,
     "pairs_stale": 9,
     "pairs_total": 282,
@@ -144,57 +148,57 @@
     "stale_at_reporting_retailers": 9,
     "stalest": [
       {
-        "hours": 4178.2,
+        "hours": 4194.2,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 4065.4,
+        "hours": 4081.4,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 3635.0,
+        "hours": 3651.0,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 2218.5,
+        "hours": 2234.5,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 974.1,
+        "hours": 990.1,
         "plant": "encore-azalea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 973.5,
+        "hours": 989.5,
         "plant": "encore-azalea",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 490.6,
+        "hours": 506.6,
         "plant": "fire-light-hydrangea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 489.7,
+        "hours": 505.7,
         "plant": "bing-cherry-tree",
         "retailer": "stark-bros"
       },
       {
-        "hours": 409.5,
+        "hours": 425.5,
         "plant": "elberta-peach-tree",
         "retailer": "stark-bros"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-09-30T02:06:29.849110+00:00",
+  "generated": "2026-09-30T18:05:54.776091+00:00",
   "notices": [
     "9 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below",
-    "C_within_retailer_inversion: 1 new lead(s) for the weekly digest"
+    "C_within_retailer_inversion: 2 new lead(s) for the weekly digest"
   ],
   "thresholds": {
     "A_ratio": 2.5,
