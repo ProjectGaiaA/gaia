@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-29T18:05:11.915638+00:00",
+  "timestamp": "2026-09-30T02:01:48.895449+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -11,12 +11,7 @@
       "products_priced": 78,
       "products_error": 0,
       "prices_collected": 143,
-      "anomalies": [
-        "ANOMALY: pjm-rhododendron at nature-hills tier=3gal: $59.96 -> $92.24 (54% change)",
-        "ANOMALY: nova-zembla-rhododendron at nature-hills tier=3gal: $48.62 -> $97.24 (100% change)",
-        "ANOMALY: green-mountain-boxwood at nature-hills tier=1gal: $31.96 -> $53.26 (67% change)",
-        "ANOMALY: miss-kim-lilac at nature-hills tier=3gal: $52.67 -> $81.03 (54% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99,
@@ -939,9 +934,9 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 8,
+      "products_no_sizes": 10,
       "products_regional": 0,
-      "products_priced": 55,
+      "products_priced": 53,
       "products_error": 4,
       "prices_collected": 142,
       "anomalies": [],
@@ -1005,6 +1000,7 @@
           "3-4ft": 82.95,
           "4-5ft": 152.95,
           "5-6ft": 254.95,
+          "6-7ft": 281.95,
           "6-7ft-jumbo": 602.95
         },
         "green-giant-arborvitae:fast-growing-trees": {
@@ -1096,6 +1092,7 @@
           "6-7ft": 205.95
         },
         "crape-myrtle:fast-growing-trees": {
+          "1-2ft-multistem": 64.95,
           "2-3ft-multistem": 84.95,
           "3-4ft-multistem": 105.95,
           "4-5ft-multistem": 140.95,
@@ -1108,14 +1105,8 @@
         "vinca-minor:fast-growing-trees": {
           "1gal": 37.95
         },
-        "big-blue-liriope:fast-growing-trees": {
-          "1gal": 24.95
-        },
         "ajuga-chocolate-chip:fast-growing-trees": {
           "quart": 35.95
-        },
-        "sedum-angelina:fast-growing-trees": {
-          "1gal": 32.95
         },
         "blue-rug-juniper:fast-growing-trees": {
           "1gal": 29.95,
@@ -1199,7 +1190,7 @@
           "3-4ft": 119.95
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1329,13 +1320,8 @@
     }
   ],
   "total_prices_collected": 703,
-  "total_anomalies": 4,
-  "anomalies": [
-    "ANOMALY: pjm-rhododendron at nature-hills tier=3gal: $59.96 -> $92.24 (54% change)",
-    "ANOMALY: nova-zembla-rhododendron at nature-hills tier=3gal: $48.62 -> $97.24 (100% change)",
-    "ANOMALY: green-mountain-boxwood at nature-hills tier=1gal: $31.96 -> $53.26 (67% change)",
-    "ANOMALY: miss-kim-lilac at nature-hills tier=3gal: $52.67 -> $81.03 (54% change)"
-  ],
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2279,6 +2265,7 @@
       "3-4ft": 82.95,
       "4-5ft": 152.95,
       "5-6ft": 254.95,
+      "6-7ft": 281.95,
       "6-7ft-jumbo": 602.95
     },
     "green-giant-arborvitae:fast-growing-trees": {
@@ -2370,6 +2357,7 @@
       "6-7ft": 205.95
     },
     "crape-myrtle:fast-growing-trees": {
+      "1-2ft-multistem": 64.95,
       "2-3ft-multistem": 84.95,
       "3-4ft-multistem": 105.95,
       "4-5ft-multistem": 140.95,
@@ -2382,14 +2370,8 @@
     "vinca-minor:fast-growing-trees": {
       "1gal": 37.95
     },
-    "big-blue-liriope:fast-growing-trees": {
-      "1gal": 24.95
-    },
     "ajuga-chocolate-chip:fast-growing-trees": {
       "quart": 35.95
-    },
-    "sedum-angelina:fast-growing-trees": {
-      "1gal": 32.95
     },
     "blue-rug-juniper:fast-growing-trees": {
       "1gal": 29.95,
@@ -2559,6 +2541,7 @@
   },
   "degraded_retailers": [
     "spring-hill",
+    "fast-growing-trees",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
