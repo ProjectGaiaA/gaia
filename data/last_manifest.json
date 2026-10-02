@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-02T02:23:08.650150+00:00",
+  "timestamp": "2026-10-02T17:50:59.337581+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -319,12 +319,12 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 74,
-      "products_found": 72,
+      "products_found": 71,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 72,
-      "products_error": 2,
-      "prices_collected": 318,
+      "products_priced": 71,
+      "products_error": 3,
+      "prices_collected": 315,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -497,11 +497,6 @@
           "1gal": 30.95,
           "2gal": 44.95,
           "3gal": 67.95
-        },
-        "sunny-knock-out-rose:planting-tree": {
-          "1gal": 44.95,
-          "2gal": 55.95,
-          "3gal": 99.95
         },
         "coral-knock-out-rose:planting-tree": {
           "1gal": 70.95,
@@ -932,11 +927,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 8,
+      "products_no_sizes": 9,
       "products_regional": 0,
-      "products_priced": 55,
+      "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 149,
+      "prices_collected": 148,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1106,9 +1101,6 @@
         "delaware-valley-white-azalea:fast-growing-trees": {
           "3gal": 49.95
         },
-        "vinca-minor:fast-growing-trees": {
-          "1gal": 37.95
-        },
         "ajuga-chocolate-chip:fast-growing-trees": {
           "quart": 35.95
         },
@@ -1147,7 +1139,6 @@
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
-          "4-5ft-multistem": 103.95,
           "5-6ft-multistem": 119.95,
           "6-7ft": 148.95
         },
@@ -1178,6 +1169,7 @@
           "7gal": 125.95
         },
         "autumn-twist-encore-azalea:fast-growing-trees": {
+          "1gal": 34.95,
           "3gal": 60.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
@@ -1296,12 +1288,11 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 14,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 74.99,
-          "dwarf": 39.99,
+          "dwarf-ez-start": 55.99,
           "semi-dwarf-ez-start": 64.99
         },
         "bartlett-pear-tree:stark-bros": {
@@ -1329,7 +1320,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 709,
+  "total_prices_collected": 704,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1802,11 +1793,6 @@
       "1gal": 30.95,
       "2gal": 44.95,
       "3gal": 67.95
-    },
-    "sunny-knock-out-rose:planting-tree": {
-      "1gal": 44.95,
-      "2gal": 55.95,
-      "3gal": 99.95
     },
     "coral-knock-out-rose:planting-tree": {
       "1gal": 70.95,
@@ -2381,9 +2367,6 @@
     "delaware-valley-white-azalea:fast-growing-trees": {
       "3gal": 49.95
     },
-    "vinca-minor:fast-growing-trees": {
-      "1gal": 37.95
-    },
     "ajuga-chocolate-chip:fast-growing-trees": {
       "quart": 35.95
     },
@@ -2422,7 +2405,6 @@
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
-      "4-5ft-multistem": 103.95,
       "5-6ft-multistem": 119.95,
       "6-7ft": 148.95
     },
@@ -2453,6 +2435,7 @@
       "7gal": 125.95
     },
     "autumn-twist-encore-azalea:fast-growing-trees": {
+      "1gal": 34.95,
       "3gal": 60.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
@@ -2533,8 +2516,7 @@
       "quart": 19.99
     },
     "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 74.99,
-      "dwarf": 39.99,
+      "dwarf-ez-start": 55.99,
       "semi-dwarf-ez-start": 64.99
     },
     "bartlett-pear-tree:stark-bros": {
