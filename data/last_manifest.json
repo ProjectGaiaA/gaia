@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-01T18:37:44.446677+00:00",
+  "timestamp": "2026-10-02T02:23:08.650150+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -114,7 +114,7 @@
           "3gal": 90.41
         },
         "bluecrop-blueberry:nature-hills": {
-          "1gal": 40.67
+          "1gal": 28.47
         },
         "patriot-blueberry:nature-hills": {
           "1gal": 40.63
@@ -181,7 +181,7 @@
         },
         "karl-foerster-grass:nature-hills": {
           "quart": 19.99,
-          "1gal": 33.17,
+          "1gal": 23.22,
           "2gal": 51.67,
           "3gal": 60.67
         },
@@ -936,7 +936,7 @@
       "products_regional": 0,
       "products_priced": 55,
       "products_error": 4,
-      "prices_collected": 150,
+      "prices_collected": 149,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1118,8 +1118,7 @@
           "3gal": 54.95
         },
         "pink-muhly-grass:fast-growing-trees": {
-          "1gal": 22.95,
-          "3gal": 40.95
+          "1gal": 22.95
         },
         "purple-fountain-grass:fast-growing-trees": {
           "1gal": 26.95,
@@ -1297,11 +1296,12 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 13,
+      "prices_collected": 14,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
+          "dwarf": 39.99,
           "semi-dwarf-ez-start": 64.99
         },
         "bartlett-pear-tree:stark-bros": {
@@ -1434,7 +1434,7 @@
       "3gal": 90.41
     },
     "bluecrop-blueberry:nature-hills": {
-      "1gal": 40.67
+      "1gal": 28.47
     },
     "patriot-blueberry:nature-hills": {
       "1gal": 40.63
@@ -1501,7 +1501,7 @@
     },
     "karl-foerster-grass:nature-hills": {
       "quart": 19.99,
-      "1gal": 33.17,
+      "1gal": 23.22,
       "2gal": 51.67,
       "3gal": 60.67
     },
@@ -2393,8 +2393,7 @@
       "3gal": 54.95
     },
     "pink-muhly-grass:fast-growing-trees": {
-      "1gal": 22.95,
-      "3gal": 40.95
+      "1gal": 22.95
     },
     "purple-fountain-grass:fast-growing-trees": {
       "1gal": 26.95,
@@ -2535,6 +2534,7 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
+      "dwarf": 39.99,
       "semi-dwarf-ez-start": 64.99
     },
     "bartlett-pear-tree:stark-bros": {
