@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-02T17:50:59.337581+00:00",
+  "timestamp": "2026-10-03T01:59:07.857227+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -931,7 +931,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 148,
+      "prices_collected": 149,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -958,6 +958,7 @@
           "quart": 56.95
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
+          "2-3ft": 86.95,
           "3-4ft": 106.95,
           "4-5ft": 134.95,
           "5-6ft": 160.95
@@ -1007,9 +1008,9 @@
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 23.95,
           "2-3ft": 43.95,
-          "3-4ft": 87.95,
           "4-5ft": 147.95,
-          "5-6ft": 223.95
+          "5-6ft": 223.95,
+          "6-7ft": 323.95
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
@@ -1320,7 +1321,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 704,
+  "total_prices_collected": 705,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2224,6 +2225,7 @@
       "quart": 56.95
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
+      "2-3ft": 86.95,
       "3-4ft": 106.95,
       "4-5ft": 134.95,
       "5-6ft": 160.95
@@ -2273,9 +2275,9 @@
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 23.95,
       "2-3ft": 43.95,
-      "3-4ft": 87.95,
       "4-5ft": 147.95,
-      "5-6ft": 223.95
+      "5-6ft": 223.95,
+      "6-7ft": 323.95
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
