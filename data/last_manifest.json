@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-03T01:59:07.857227+00:00",
+  "timestamp": "2026-10-03T16:23:17.547616+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -931,7 +931,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 149,
+      "prices_collected": 147,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1006,7 +1006,6 @@
           "6-7ft-jumbo": 503.95
         },
         "leyland-cypress:fast-growing-trees": {
-          "1-2ft": 23.95,
           "2-3ft": 43.95,
           "4-5ft": 147.95,
           "5-6ft": 223.95,
@@ -1170,8 +1169,7 @@
           "7gal": 125.95
         },
         "autumn-twist-encore-azalea:fast-growing-trees": {
-          "1gal": 34.95,
-          "3gal": 60.95
+          "1gal": 34.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
           "1gal": 33.95,
@@ -1293,7 +1291,7 @@
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 55.99,
+          "dwarf-ez-start": 74.99,
           "semi-dwarf-ez-start": 64.99
         },
         "bartlett-pear-tree:stark-bros": {
@@ -1321,7 +1319,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 705,
+  "total_prices_collected": 703,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2273,7 +2271,6 @@
       "6-7ft-jumbo": 503.95
     },
     "leyland-cypress:fast-growing-trees": {
-      "1-2ft": 23.95,
       "2-3ft": 43.95,
       "4-5ft": 147.95,
       "5-6ft": 223.95,
@@ -2437,8 +2434,7 @@
       "7gal": 125.95
     },
     "autumn-twist-encore-azalea:fast-growing-trees": {
-      "1gal": 34.95,
-      "3gal": 60.95
+      "1gal": 34.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
       "1gal": 33.95,
@@ -2518,7 +2514,7 @@
       "quart": 19.99
     },
     "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 55.99,
+      "dwarf-ez-start": 74.99,
       "semi-dwarf-ez-start": 64.99
     },
     "bartlett-pear-tree:stark-bros": {
