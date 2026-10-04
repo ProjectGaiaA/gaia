@@ -3,7 +3,7 @@
   "audit": "nightly_offline",
   "audits": {
     "A_cross_retailer": {
-      "denominator": 79,
+      "denominator": 76,
       "denominator_floor": 45,
       "denominator_unit": "priced rows at tiers with 3+ nurseries",
       "known_findings": 1,
@@ -12,7 +12,7 @@
       "what": "same plant+size at 3+ nurseries, >=2.5x off the median of the others"
     },
     "B_two_nursery_pairs": {
-      "denominator": 143,
+      "denominator": 121,
       "denominator_floor": 70,
       "denominator_unit": "two-nursery tiers",
       "known_findings": 0,
@@ -21,7 +21,7 @@
       "what": "same plant+size at exactly 2 nurseries, >=2.5x apart"
     },
     "C_within_retailer_inversion": {
-      "denominator": 183,
+      "denominator": 178,
       "denominator_floor": 90,
       "denominator_unit": "adjacent container pairs",
       "known_findings": 8,
@@ -29,17 +29,13 @@
         {
           "detail": "blue-rug-juniper at fast-growing-trees: 3gal $54.95 is cheaper than 2gal $121.95",
           "id": "C|blue-rug-juniper|fast-growing-trees|2gal|3gal"
-        },
-        {
-          "detail": "pink-lemonade-blueberry at fast-growing-trees: quart $30.95 is cheaper than 4inch $34.95",
-          "id": "C|pink-lemonade-blueberry|fast-growing-trees|4inch|quart"
         }
       ],
-      "total_findings": 10,
+      "total_findings": 9,
       "what": "larger container >10% cheaper than the next smaller one"
     },
     "D_snapshot_value_diff": {
-      "denominator": 234,
+      "denominator": 227,
       "denominator_floor": 120,
       "denominator_unit": "plant-retailer rows with a previous run to compare",
       "known_findings": 0,
@@ -48,7 +44,7 @@
       "what": "a price that moved to a different size label since the previous run"
     },
     "E_cross_page_agreement": {
-      "denominator": 535,
+      "denominator": 531,
       "denominator_floor": 280,
       "denominator_unit": "cross-page price quotes",
       "known_findings": 0,
@@ -58,13 +54,13 @@
     },
     "F_stock_consistency": {
       "counts": {
-        "latest_rows": 273,
-        "mobile_price_links": 277,
+        "latest_rows": 272,
+        "mobile_price_links": 268,
         "pages": 101,
         "retailer_variant_availability": {
           "fast-growing-trees": {
             "None": 1,
-            "True": 140
+            "True": 112
           },
           "great-garden-plants": {
             "False": 3,
@@ -75,8 +71,8 @@
             "True": 88
           },
           "planting-tree": {
-            "False": 181,
-            "True": 137
+            "False": 180,
+            "True": 135
           },
           "proven-winners-direct": {
             "False": 9,
@@ -91,9 +87,9 @@
           }
         },
         "retailers_all_unknown_stock": [],
-        "schema_instock_pages": 91,
-        "sold_out_price_cells": 289,
-        "sold_out_rows": 79,
+        "schema_instock_pages": 90,
+        "sold_out_price_cells": 291,
+        "sold_out_rows": 80,
         "table_rows": 275
       },
       "denominator": 275,
@@ -106,13 +102,13 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-10-02T01:23:23.325252+00:00",
+    "cutoff": "2026-10-02T16:58:38.638162+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-10-04T01:23:23.325252+00:00",
-    "pairs_fresh": 273,
-    "pairs_stale": 9,
+    "newest_row": "2026-10-04T16:58:38.638162+00:00",
+    "pairs_fresh": 272,
+    "pairs_stale": 10,
     "pairs_total": 282,
     "per_retailer": {
       "fast-growing-trees": {
@@ -128,8 +124,8 @@
         "stale": 0
       },
       "planting-tree": {
-        "fresh": 72,
-        "stale": 3
+        "fresh": 71,
+        "stale": 4
       },
       "proven-winners-direct": {
         "fresh": 10,
@@ -145,60 +141,65 @@
       }
     },
     "retailers_with_no_fresh_row": [],
-    "stale_at_reporting_retailers": 9,
+    "stale_at_reporting_retailers": 10,
     "stalest": [
       {
-        "hours": 4273.5,
+        "hours": 4289.1,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 4160.7,
+        "hours": 4176.3,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 3730.4,
+        "hours": 3746.0,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 2313.9,
+        "hours": 2329.5,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 1069.4,
+        "hours": 1085.0,
         "plant": "encore-azalea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1068.9,
+        "hours": 1084.5,
         "plant": "encore-azalea",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 585.9,
+        "hours": 601.5,
         "plant": "fire-light-hydrangea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 585.0,
+        "hours": 600.6,
         "plant": "bing-cherry-tree",
         "retailer": "stark-bros"
       },
       {
-        "hours": 504.9,
+        "hours": 520.4,
         "plant": "elberta-peach-tree",
         "retailer": "stark-bros"
+      },
+      {
+        "hours": 63.4,
+        "plant": "sunny-knock-out-rose",
+        "retailer": "planting-tree"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-10-04T01:27:40.071080+00:00",
+  "generated": "2026-10-04T17:02:34.810749+00:00",
   "notices": [
-    "9 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below",
-    "C_within_retailer_inversion: 2 new lead(s) for the weekly digest"
+    "10 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below",
+    "C_within_retailer_inversion: 1 new lead(s) for the weekly digest"
   ],
   "thresholds": {
     "A_ratio": 2.5,
