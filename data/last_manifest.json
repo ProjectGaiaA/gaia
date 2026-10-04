@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-03T16:23:17.547616+00:00",
+  "timestamp": "2026-10-04T01:23:23.326604+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -927,11 +927,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 9,
+      "products_no_sizes": 10,
       "products_regional": 0,
-      "products_priced": 54,
+      "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 147,
+      "prices_collected": 144,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -958,7 +958,6 @@
           "quart": 56.95
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
-          "2-3ft": 86.95,
           "3-4ft": 106.95,
           "4-5ft": 134.95,
           "5-6ft": 160.95
@@ -1092,7 +1091,6 @@
         },
         "crape-myrtle:fast-growing-trees": {
           "1-2ft-multistem": 64.95,
-          "2-3ft-multistem": 84.95,
           "3-4ft-multistem": 105.95,
           "4-5ft-multistem": 140.95,
           "5-6ft-multistem": 176.95,
@@ -1168,9 +1166,6 @@
           "3gal": 66.95,
           "7gal": 125.95
         },
-        "autumn-twist-encore-azalea:fast-growing-trees": {
-          "1gal": 34.95
-        },
         "autumn-angel-encore-azalea:fast-growing-trees": {
           "1gal": 33.95,
           "3gal": 60.95
@@ -1190,7 +1185,7 @@
           "3-4ft": 119.95
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1319,7 +1314,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 703,
+  "total_prices_collected": 700,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2223,7 +2218,6 @@
       "quart": 56.95
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
-      "2-3ft": 86.95,
       "3-4ft": 106.95,
       "4-5ft": 134.95,
       "5-6ft": 160.95
@@ -2357,7 +2351,6 @@
     },
     "crape-myrtle:fast-growing-trees": {
       "1-2ft-multistem": 64.95,
-      "2-3ft-multistem": 84.95,
       "3-4ft-multistem": 105.95,
       "4-5ft-multistem": 140.95,
       "5-6ft-multistem": 176.95,
@@ -2432,9 +2425,6 @@
       "1gal": 48.95,
       "3gal": 66.95,
       "7gal": 125.95
-    },
-    "autumn-twist-encore-azalea:fast-growing-trees": {
-      "1gal": 34.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
       "1gal": 33.95,
@@ -2541,6 +2531,7 @@
   },
   "degraded_retailers": [
     "spring-hill",
+    "fast-growing-trees",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
