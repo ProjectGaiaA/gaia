@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-05T01:26:23.614740+00:00",
+  "timestamp": "2026-10-05T20:52:14.034764+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -914,7 +914,7 @@
         "russian-sage:spring-hill": {
           "bareroot": 24.99,
           "jumbo-bareroot": 39.99,
-          "premium-bareroot": 18.74
+          "premium-bareroot": 19.99
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99
@@ -927,9 +927,9 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 10,
+      "products_no_sizes": 11,
       "products_regional": 0,
-      "products_priced": 53,
+      "products_priced": 52,
       "products_error": 4,
       "prices_collected": 141,
       "anomalies": [],
@@ -976,6 +976,7 @@
         },
         "bing-cherry-tree:fast-growing-trees": {
           "1-2ft": 50.95,
+          "2-3ft": 65.95,
           "3-4ft": 111.95,
           "4-5ft": 143.95,
           "5-6ft": 175.95
@@ -999,7 +1000,6 @@
           "1-2ft": 19.95,
           "2-3ft": 37.95,
           "3-4ft": 74.95,
-          "4-5ft": 130.95,
           "5-6ft": 225.95,
           "6-7ft": 382.95,
           "6-7ft-jumbo": 503.95
@@ -1106,7 +1106,8 @@
           "3gal": 54.95
         },
         "pink-muhly-grass:fast-growing-trees": {
-          "1gal": 22.95
+          "1gal": 22.95,
+          "3gal": 40.95
         },
         "purple-fountain-grass:fast-growing-trees": {
           "1gal": 26.95,
@@ -1123,9 +1124,6 @@
         },
         "happy-returns-daylily:fast-growing-trees": {
           "default": 27.95
-        },
-        "catmint-walkers-low:fast-growing-trees": {
-          "quart": 13.95
         },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 63.95,
@@ -1197,8 +1195,8 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
-          "1gal": 25.99,
-          "quart": 13.64
+          "1gal": 29.99,
+          "quart": 15.99
         },
         "little-lime-hydrangea:proven-winners-direct": {
           "1gal": 29.99,
@@ -2186,7 +2184,7 @@
     "russian-sage:spring-hill": {
       "bareroot": 24.99,
       "jumbo-bareroot": 39.99,
-      "premium-bareroot": 18.74
+      "premium-bareroot": 19.99
     },
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99
@@ -2233,6 +2231,7 @@
     },
     "bing-cherry-tree:fast-growing-trees": {
       "1-2ft": 50.95,
+      "2-3ft": 65.95,
       "3-4ft": 111.95,
       "4-5ft": 143.95,
       "5-6ft": 175.95
@@ -2256,7 +2255,6 @@
       "1-2ft": 19.95,
       "2-3ft": 37.95,
       "3-4ft": 74.95,
-      "4-5ft": 130.95,
       "5-6ft": 225.95,
       "6-7ft": 382.95,
       "6-7ft-jumbo": 503.95
@@ -2363,7 +2361,8 @@
       "3gal": 54.95
     },
     "pink-muhly-grass:fast-growing-trees": {
-      "1gal": 22.95
+      "1gal": 22.95,
+      "3gal": 40.95
     },
     "purple-fountain-grass:fast-growing-trees": {
       "1gal": 26.95,
@@ -2380,9 +2379,6 @@
     },
     "happy-returns-daylily:fast-growing-trees": {
       "default": 27.95
-    },
-    "catmint-walkers-low:fast-growing-trees": {
-      "quart": 13.95
     },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 63.95,
@@ -2439,8 +2435,8 @@
       "3-4ft": 119.95
     },
     "limelight-hydrangea:proven-winners-direct": {
-      "1gal": 25.99,
-      "quart": 13.64
+      "1gal": 29.99,
+      "quart": 15.99
     },
     "little-lime-hydrangea:proven-winners-direct": {
       "1gal": 29.99,
