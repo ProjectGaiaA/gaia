@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-05T20:52:14.034764+00:00",
+  "timestamp": "2026-10-06T03:12:56.602676+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -931,7 +931,7 @@
       "products_regional": 0,
       "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 141,
+      "prices_collected": 137,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -984,8 +984,7 @@
         "stella-cherry-tree:fast-growing-trees": {
           "1-2ft": 54.95,
           "2-3ft": 87.95,
-          "3-4ft": 112.95,
-          "4-5ft": 136.95
+          "3-4ft": 112.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 21.95,
@@ -1088,7 +1087,6 @@
           "6-7ft": 217.95
         },
         "crape-myrtle:fast-growing-trees": {
-          "1-2ft-multistem": 64.95,
           "3-4ft-multistem": 105.95,
           "4-5ft-multistem": 140.95,
           "5-6ft-multistem": 176.95,
@@ -1128,12 +1126,10 @@
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 63.95,
           "4-5ft": 85.95,
-          "5-6ft": 87.95,
           "6-7ft": 116.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
-          "5-6ft-multistem": 119.95,
           "6-7ft": 148.95
         },
         "red-sunset-maple:fast-growing-trees": {
@@ -1309,7 +1305,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 697,
+  "total_prices_collected": 693,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2239,8 +2235,7 @@
     "stella-cherry-tree:fast-growing-trees": {
       "1-2ft": 54.95,
       "2-3ft": 87.95,
-      "3-4ft": 112.95,
-      "4-5ft": 136.95
+      "3-4ft": 112.95
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 21.95,
@@ -2343,7 +2338,6 @@
       "6-7ft": 217.95
     },
     "crape-myrtle:fast-growing-trees": {
-      "1-2ft-multistem": 64.95,
       "3-4ft-multistem": 105.95,
       "4-5ft-multistem": 140.95,
       "5-6ft-multistem": 176.95,
@@ -2383,12 +2377,10 @@
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 63.95,
       "4-5ft": 85.95,
-      "5-6ft": 87.95,
       "6-7ft": 116.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
-      "5-6ft-multistem": 119.95,
       "6-7ft": 148.95
     },
     "red-sunset-maple:fast-growing-trees": {
