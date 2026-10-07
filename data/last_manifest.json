@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-06T18:22:32.380324+00:00",
+  "timestamp": "2026-10-07T02:17:08.126984+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -933,7 +933,7 @@
       "products_regional": 0,
       "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 138,
+      "prices_collected": 136,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1009,10 +1009,8 @@
         },
         "leyland-cypress:fast-growing-trees": {
           "2-3ft": 43.95,
-          "3-4ft": 87.95,
           "4-5ft": 147.95,
-          "5-6ft": 223.95,
-          "6-7ft": 323.95
+          "5-6ft": 223.95
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
@@ -1306,7 +1304,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 696,
+  "total_prices_collected": 694,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2261,10 +2259,8 @@
     },
     "leyland-cypress:fast-growing-trees": {
       "2-3ft": 43.95,
-      "3-4ft": 87.95,
       "4-5ft": 147.95,
-      "5-6ft": 223.95,
-      "6-7ft": 323.95
+      "5-6ft": 223.95
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
