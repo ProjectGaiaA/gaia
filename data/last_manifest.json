@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-10T02:27:57.592241+00:00",
+  "timestamp": "2026-10-10T17:26:31.195690+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -925,11 +925,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 14,
-      "products_regional": 4,
-      "products_priced": 49,
+      "products_no_sizes": 9,
+      "products_regional": 0,
+      "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 118,
+      "prices_collected": 139,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -955,6 +955,35 @@
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 56.95
+        },
+        "honeycrisp-apple-tree:fast-growing-trees": {
+          "3-4ft": 106.95,
+          "4-5ft": 134.95,
+          "5-6ft": 160.95
+        },
+        "meyer-lemon-tree:fast-growing-trees": {
+          "1-2ft": 65.95,
+          "2-3ft": 98.95,
+          "3-4ft": 141.95,
+          "4-5ft": 199.95
+        },
+        "fuji-apple-tree:fast-growing-trees": {
+          "3-4ft": 92.95,
+          "4-5ft": 118.95,
+          "5-6ft": 114.95,
+          "6-7ft": 178.95
+        },
+        "bing-cherry-tree:fast-growing-trees": {
+          "1-2ft": 50.95,
+          "2-3ft": 65.95,
+          "3-4ft": 111.95,
+          "4-5ft": 143.95,
+          "5-6ft": 175.95
+        },
+        "stella-cherry-tree:fast-growing-trees": {
+          "1-2ft": 54.95,
+          "2-3ft": 87.95,
+          "4-5ft": 136.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 20.95,
@@ -1029,7 +1058,10 @@
           "1gal": 51.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "4inch": 34.95,
+          "quart": 30.95,
+          "1gal": 45.95,
+          "3gal": 59.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "2gal": 90.95
@@ -1106,8 +1138,7 @@
         },
         "red-sunset-maple:fast-growing-trees": {
           "4-5ft": 100.95,
-          "5-6ft": 125.95,
-          "6-7ft": 176.95
+          "5-6ft": 125.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
           "2-3ft": 59.95,
@@ -1149,7 +1180,7 @@
           "3-4ft": 119.95
         }
       },
-      "health": "degraded"
+      "health": "healthy"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1278,7 +1309,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 674,
+  "total_prices_collected": 695,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2180,6 +2211,35 @@
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 56.95
     },
+    "honeycrisp-apple-tree:fast-growing-trees": {
+      "3-4ft": 106.95,
+      "4-5ft": 134.95,
+      "5-6ft": 160.95
+    },
+    "meyer-lemon-tree:fast-growing-trees": {
+      "1-2ft": 65.95,
+      "2-3ft": 98.95,
+      "3-4ft": 141.95,
+      "4-5ft": 199.95
+    },
+    "fuji-apple-tree:fast-growing-trees": {
+      "3-4ft": 92.95,
+      "4-5ft": 118.95,
+      "5-6ft": 114.95,
+      "6-7ft": 178.95
+    },
+    "bing-cherry-tree:fast-growing-trees": {
+      "1-2ft": 50.95,
+      "2-3ft": 65.95,
+      "3-4ft": 111.95,
+      "4-5ft": 143.95,
+      "5-6ft": 175.95
+    },
+    "stella-cherry-tree:fast-growing-trees": {
+      "1-2ft": 54.95,
+      "2-3ft": 87.95,
+      "4-5ft": 136.95
+    },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 20.95,
       "2-3ft": 43.95,
@@ -2253,7 +2313,10 @@
       "1gal": 51.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "4inch": 34.95,
+      "quart": 30.95,
+      "1gal": 45.95,
+      "3gal": 59.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "2gal": 90.95
@@ -2330,8 +2393,7 @@
     },
     "red-sunset-maple:fast-growing-trees": {
       "4-5ft": 100.95,
-      "5-6ft": 125.95,
-      "6-7ft": 176.95
+      "5-6ft": 125.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
       "2-3ft": 59.95,
@@ -2459,7 +2521,6 @@
   },
   "degraded_retailers": [
     "spring-hill",
-    "fast-growing-trees",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
