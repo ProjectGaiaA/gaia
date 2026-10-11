@@ -1,16 +1,16 @@
 {
-  "timestamp": "2026-10-11T01:44:37.961481+00:00",
+  "timestamp": "2026-10-11T17:49:56.747966+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
       "status": "completed",
       "products_expected": 78,
-      "products_found": 77,
+      "products_found": 76,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 77,
-      "products_error": 1,
-      "prices_collected": 143,
+      "products_priced": 76,
+      "products_error": 2,
+      "prices_collected": 142,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
@@ -297,9 +297,6 @@
           "1gal": 47.29,
           "2gal": 83.58,
           "3gal": 109.22
-        },
-        "autumn-royalty-encore-azalea:nature-hills": {
-          "1gal": 52.71
         },
         "autumn-twist-encore-azalea:nature-hills": {
           "1gal": 56.39
@@ -925,11 +922,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 10,
-      "products_regional": 0,
-      "products_priced": 53,
+      "products_no_sizes": 15,
+      "products_regional": 4,
+      "products_priced": 48,
       "products_error": 4,
-      "prices_collected": 136,
+      "prices_collected": 112,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -955,35 +952,6 @@
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 56.95
-        },
-        "honeycrisp-apple-tree:fast-growing-trees": {
-          "3-4ft": 106.95,
-          "4-5ft": 134.95,
-          "5-6ft": 160.95
-        },
-        "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 65.95,
-          "2-3ft": 98.95,
-          "3-4ft": 141.95,
-          "4-5ft": 199.95
-        },
-        "fuji-apple-tree:fast-growing-trees": {
-          "3-4ft": 92.95,
-          "4-5ft": 118.95,
-          "5-6ft": 114.95,
-          "6-7ft": 178.95
-        },
-        "bing-cherry-tree:fast-growing-trees": {
-          "1-2ft": 50.95,
-          "2-3ft": 65.95,
-          "3-4ft": 111.95,
-          "4-5ft": 143.95,
-          "5-6ft": 175.95
-        },
-        "stella-cherry-tree:fast-growing-trees": {
-          "1-2ft": 54.95,
-          "2-3ft": 87.95,
-          "4-5ft": 136.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 20.95,
@@ -1057,10 +1025,7 @@
           "1gal": 51.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 34.95,
-          "quart": 30.95,
-          "1gal": 45.95,
-          "3gal": 59.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "2gal": 90.95
@@ -1086,7 +1051,6 @@
         "crape-myrtle:fast-growing-trees": {
           "1-2ft-multistem": 64.95,
           "3-4ft-multistem": 105.95,
-          "4-5ft-multistem": 140.95,
           "5-6ft-multistem": 176.95,
           "6-7ft-multistem": 199.95
         },
@@ -1138,7 +1102,6 @@
         "sweetbay-magnolia:fast-growing-trees": {
           "2-3ft": 59.95,
           "3-4ft": 79.95,
-          "4-5ft": 104.95,
           "5-6ft": 135.95
         },
         "rose-of-sharon:fast-growing-trees": {
@@ -1304,7 +1267,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 692,
+  "total_prices_collected": 667,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1592,9 +1555,6 @@
       "1gal": 47.29,
       "2gal": 83.58,
       "3gal": 109.22
-    },
-    "autumn-royalty-encore-azalea:nature-hills": {
-      "1gal": 52.71
     },
     "autumn-twist-encore-azalea:nature-hills": {
       "1gal": 56.39
@@ -2206,35 +2166,6 @@
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 56.95
     },
-    "honeycrisp-apple-tree:fast-growing-trees": {
-      "3-4ft": 106.95,
-      "4-5ft": 134.95,
-      "5-6ft": 160.95
-    },
-    "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 65.95,
-      "2-3ft": 98.95,
-      "3-4ft": 141.95,
-      "4-5ft": 199.95
-    },
-    "fuji-apple-tree:fast-growing-trees": {
-      "3-4ft": 92.95,
-      "4-5ft": 118.95,
-      "5-6ft": 114.95,
-      "6-7ft": 178.95
-    },
-    "bing-cherry-tree:fast-growing-trees": {
-      "1-2ft": 50.95,
-      "2-3ft": 65.95,
-      "3-4ft": 111.95,
-      "4-5ft": 143.95,
-      "5-6ft": 175.95
-    },
-    "stella-cherry-tree:fast-growing-trees": {
-      "1-2ft": 54.95,
-      "2-3ft": 87.95,
-      "4-5ft": 136.95
-    },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 20.95,
       "2-3ft": 43.95,
@@ -2307,10 +2238,7 @@
       "1gal": 51.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 34.95,
-      "quart": 30.95,
-      "1gal": 45.95,
-      "3gal": 59.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "2gal": 90.95
@@ -2336,7 +2264,6 @@
     "crape-myrtle:fast-growing-trees": {
       "1-2ft-multistem": 64.95,
       "3-4ft-multistem": 105.95,
-      "4-5ft-multistem": 140.95,
       "5-6ft-multistem": 176.95,
       "6-7ft-multistem": 199.95
     },
@@ -2388,7 +2315,6 @@
     "sweetbay-magnolia:fast-growing-trees": {
       "2-3ft": 59.95,
       "3-4ft": 79.95,
-      "4-5ft": 104.95,
       "5-6ft": 135.95
     },
     "rose-of-sharon:fast-growing-trees": {
