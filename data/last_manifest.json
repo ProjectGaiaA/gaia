@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-10T17:26:31.195690+00:00",
+  "timestamp": "2026-10-11T01:44:37.961481+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -925,11 +925,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 9,
+      "products_no_sizes": 10,
       "products_regional": 0,
-      "products_priced": 54,
+      "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 139,
+      "prices_collected": 136,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1044,8 +1044,7 @@
           "3-4ft": 81.95
         },
         "tamukeyama-japanese-maple:fast-growing-trees": {
-          "2-3ft": 55.95,
-          "3-4ft": 78.95
+          "2-3ft": 55.95
         },
         "double-knock-out-rose:fast-growing-trees": {
           "1gal": 25.95,
@@ -1079,7 +1078,6 @@
           "2-3ft": 69.95,
           "3-4ft": 84.95,
           "4-5ft": 98.95,
-          "5-6ft": 125.95,
           "6-7ft": 205.95
         },
         "forest-pansy-redbud:fast-growing-trees": {
@@ -1094,9 +1092,6 @@
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
           "3gal": 49.95
-        },
-        "ajuga-chocolate-chip:fast-growing-trees": {
-          "quart": 35.95
         },
         "blue-rug-juniper:fast-growing-trees": {
           "1gal": 29.95,
@@ -1180,7 +1175,7 @@
           "3-4ft": 119.95
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "proven-winners-direct",
@@ -1309,7 +1304,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 695,
+  "total_prices_collected": 692,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2299,8 +2294,7 @@
       "3-4ft": 81.95
     },
     "tamukeyama-japanese-maple:fast-growing-trees": {
-      "2-3ft": 55.95,
-      "3-4ft": 78.95
+      "2-3ft": 55.95
     },
     "double-knock-out-rose:fast-growing-trees": {
       "1gal": 25.95,
@@ -2334,7 +2328,6 @@
       "2-3ft": 69.95,
       "3-4ft": 84.95,
       "4-5ft": 98.95,
-      "5-6ft": 125.95,
       "6-7ft": 205.95
     },
     "forest-pansy-redbud:fast-growing-trees": {
@@ -2349,9 +2342,6 @@
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
       "3gal": 49.95
-    },
-    "ajuga-chocolate-chip:fast-growing-trees": {
-      "quart": 35.95
     },
     "blue-rug-juniper:fast-growing-trees": {
       "1gal": 29.95,
@@ -2521,6 +2511,7 @@
   },
   "degraded_retailers": [
     "spring-hill",
+    "fast-growing-trees",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
