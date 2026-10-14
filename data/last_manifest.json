@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-13T19:16:20.864746+00:00",
+  "timestamp": "2026-10-14T01:49:27.937911+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -928,11 +928,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 12,
-      "products_regional": 0,
-      "products_priced": 51,
+      "products_no_sizes": 15,
+      "products_regional": 4,
+      "products_priced": 48,
       "products_error": 4,
-      "prices_collected": 127,
+      "prices_collected": 110,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -953,39 +953,10 @@
           "1gal": 40.95
         },
         "little-lime-hydrangea:fast-growing-trees": {
-          "quart": 35.95,
-          "3gal": 75.95
+          "quart": 35.95
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 56.95
-        },
-        "honeycrisp-apple-tree:fast-growing-trees": {
-          "3-4ft": 106.95,
-          "4-5ft": 134.95,
-          "5-6ft": 160.95
-        },
-        "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 65.95,
-          "2-3ft": 98.95,
-          "3-4ft": 141.95,
-          "4-5ft": 199.95
-        },
-        "fuji-apple-tree:fast-growing-trees": {
-          "3-4ft": 92.95,
-          "4-5ft": 118.95,
-          "5-6ft": 114.95,
-          "6-7ft": 178.95
-        },
-        "bing-cherry-tree:fast-growing-trees": {
-          "1-2ft": 49.95,
-          "2-3ft": 65.95,
-          "3-4ft": 111.95,
-          "4-5ft": 143.95,
-          "5-6ft": 175.95
-        },
-        "stella-cherry-tree:fast-growing-trees": {
-          "1-2ft": 54.95,
-          "2-3ft": 87.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 21.95,
@@ -1007,6 +978,7 @@
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 23.95,
+          "2-3ft": 43.95,
           "3-4ft": 87.95,
           "4-5ft": 147.95,
           "5-6ft": 223.95
@@ -1119,6 +1091,9 @@
         "happy-returns-daylily:fast-growing-trees": {
           "default": 27.95
         },
+        "russian-sage:fast-growing-trees": {
+          "1gal": 28.95
+        },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 63.95,
           "4-5ft": 85.95
@@ -1141,9 +1116,11 @@
         "rose-of-sharon:fast-growing-trees": {
           "6-7ft": 211.95
         },
+        "wine-and-roses-weigela:fast-growing-trees": {
+          "1gal": 39.95
+        },
         "gardenia-frost-proof:fast-growing-trees": {
-          "1gal": 23.95,
-          "3gal": 45.95
+          "1gal": 23.95
         },
         "dwarf-alberta-spruce:fast-growing-trees": {
           "1-2ft": 35.95
@@ -1177,10 +1154,7 @@
       "products_priced": 10,
       "products_error": 1,
       "prices_collected": 19,
-      "anomalies": [
-        "ANOMALY: fire-light-hydrangea at proven-winners-direct tier=1gal: $25.99 -> $39.99 (54% change)",
-        "ANOMALY: fire-light-hydrangea at proven-winners-direct tier=quart: $13.64 -> $20.99 (54% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
           "1gal": 39.99,
@@ -1297,12 +1271,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 686,
-  "total_anomalies": 2,
-  "anomalies": [
-    "ANOMALY: fire-light-hydrangea at proven-winners-direct tier=1gal: $25.99 -> $39.99 (54% change)",
-    "ANOMALY: fire-light-hydrangea at proven-winners-direct tier=quart: $13.64 -> $20.99 (54% change)"
-  ],
+  "total_prices_collected": 669,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99,
@@ -2199,39 +2170,10 @@
       "1gal": 40.95
     },
     "little-lime-hydrangea:fast-growing-trees": {
-      "quart": 35.95,
-      "3gal": 75.95
+      "quart": 35.95
     },
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 56.95
-    },
-    "honeycrisp-apple-tree:fast-growing-trees": {
-      "3-4ft": 106.95,
-      "4-5ft": 134.95,
-      "5-6ft": 160.95
-    },
-    "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 65.95,
-      "2-3ft": 98.95,
-      "3-4ft": 141.95,
-      "4-5ft": 199.95
-    },
-    "fuji-apple-tree:fast-growing-trees": {
-      "3-4ft": 92.95,
-      "4-5ft": 118.95,
-      "5-6ft": 114.95,
-      "6-7ft": 178.95
-    },
-    "bing-cherry-tree:fast-growing-trees": {
-      "1-2ft": 49.95,
-      "2-3ft": 65.95,
-      "3-4ft": 111.95,
-      "4-5ft": 143.95,
-      "5-6ft": 175.95
-    },
-    "stella-cherry-tree:fast-growing-trees": {
-      "1-2ft": 54.95,
-      "2-3ft": 87.95
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 21.95,
@@ -2253,6 +2195,7 @@
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 23.95,
+      "2-3ft": 43.95,
       "3-4ft": 87.95,
       "4-5ft": 147.95,
       "5-6ft": 223.95
@@ -2365,6 +2308,9 @@
     "happy-returns-daylily:fast-growing-trees": {
       "default": 27.95
     },
+    "russian-sage:fast-growing-trees": {
+      "1gal": 28.95
+    },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 63.95,
       "4-5ft": 85.95
@@ -2387,9 +2333,11 @@
     "rose-of-sharon:fast-growing-trees": {
       "6-7ft": 211.95
     },
+    "wine-and-roses-weigela:fast-growing-trees": {
+      "1gal": 39.95
+    },
     "gardenia-frost-proof:fast-growing-trees": {
-      "1gal": 23.95,
-      "3gal": 45.95
+      "1gal": 23.95
     },
     "dwarf-alberta-spruce:fast-growing-trees": {
       "1-2ft": 35.95
