@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-16T01:07:45.192976+00:00",
+  "timestamp": "2026-10-16T16:31:28.768931+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -14,8 +14,7 @@
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
-          "quart": 26.99,
-          "1gal": 43.57
+          "quart": 26.99
         },
         "endless-summer-hydrangea:nature-hills": {
           "1gal": 43.74,
@@ -24,6 +23,7 @@
         },
         "bloomstruck-hydrangea:nature-hills": {
           "quart": 23.49,
+          "1gal": 44.99,
           "2gal": 67.27,
           "3gal": 75.01
         },
@@ -793,11 +793,11 @@
       "status": "completed",
       "products_expected": 40,
       "products_found": 38,
-      "products_no_sizes": 7,
+      "products_no_sizes": 6,
       "products_regional": 0,
-      "products_priced": 31,
+      "products_priced": 32,
       "products_error": 2,
-      "prices_collected": 58,
+      "prices_collected": 59,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -919,9 +919,12 @@
         },
         "october-glory-maple:spring-hill": {
           "2-4ft": 134.99
+        },
+        "rose-of-sharon:spring-hill": {
+          "premium-bareroot": 24.99
         }
       },
-      "health": "degraded"
+      "health": "healthy"
     },
     {
       "retailer_id": "fast-growing-trees",
@@ -932,7 +935,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 132,
+      "prices_collected": 129,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -958,7 +961,7 @@
           "quart": 56.95
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
-          "3-4ft": 106.95,
+          "3-4ft": 85.95,
           "4-5ft": 134.95,
           "5-6ft": 160.95
         },
@@ -986,7 +989,7 @@
           "2-3ft": 87.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
-          "1-2ft": 21.95,
+          "1-2ft": 20.95,
           "2-3ft": 43.95,
           "3-4ft": 82.95,
           "4-5ft": 152.95,
@@ -997,7 +1000,7 @@
         "green-giant-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
           "2-3ft": 37.95,
-          "3-4ft": 74.95,
+          "3-4ft": 69.95,
           "4-5ft": 130.95,
           "5-6ft": 225.95,
           "6-7ft": 382.95,
@@ -1005,11 +1008,9 @@
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 23.95,
-          "2-3ft": 43.95,
           "3-4ft": 87.95,
           "4-5ft": 147.95,
-          "5-6ft": 223.95,
-          "6-7ft": 323.95
+          "5-6ft": 223.95
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
@@ -1051,7 +1052,7 @@
         "double-knock-out-rose:fast-growing-trees": {
           "1gal": 25.95,
           "2gal": 40.95,
-          "3gal": 58.95
+          "3gal": 55.95
         },
         "coral-knock-out-rose:fast-growing-trees": {
           "3gal": 63.95
@@ -1086,7 +1087,6 @@
           "6-7ft": 217.95
         },
         "crape-myrtle:fast-growing-trees": {
-          "1-2ft-multistem": 64.95,
           "5-6ft-multistem": 176.95,
           "6-7ft-multistem": 199.95
         },
@@ -1102,7 +1102,7 @@
           "3gal": 54.95
         },
         "pink-muhly-grass:fast-growing-trees": {
-          "1gal": 22.95,
+          "1gal": 21.95,
           "3gal": 40.95
         },
         "purple-fountain-grass:fast-growing-trees": {
@@ -1127,7 +1127,7 @@
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 63.95,
           "4-5ft": 85.95,
-          "6-7ft": 116.95
+          "5-6ft": 87.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
@@ -1161,7 +1161,7 @@
           "3gal": 66.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
-          "1gal": 33.95,
+          "1gal": 31.95,
           "3gal": 60.95
         },
         "santa-rosa-plum:fast-growing-trees": {
@@ -1203,8 +1203,8 @@
           "quart": 20.99
         },
         "fire-light-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 25.99,
+          "quart": 13.64
         },
         "astilbe:proven-winners-direct": {
           "1gal": 37.99,
@@ -1306,13 +1306,12 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 692,
+  "total_prices_collected": 690,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
-      "quart": 26.99,
-      "1gal": 43.57
+      "quart": 26.99
     },
     "endless-summer-hydrangea:nature-hills": {
       "1gal": 43.74,
@@ -1321,6 +1320,7 @@
     },
     "bloomstruck-hydrangea:nature-hills": {
       "quart": 23.49,
+      "1gal": 44.99,
       "2gal": 67.27,
       "3gal": 75.01
     },
@@ -2187,6 +2187,9 @@
     "october-glory-maple:spring-hill": {
       "2-4ft": 134.99
     },
+    "rose-of-sharon:spring-hill": {
+      "premium-bareroot": 24.99
+    },
     "limelight-hydrangea:fast-growing-trees": {
       "quart": 33.95
     },
@@ -2210,7 +2213,7 @@
       "quart": 56.95
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
-      "3-4ft": 106.95,
+      "3-4ft": 85.95,
       "4-5ft": 134.95,
       "5-6ft": 160.95
     },
@@ -2238,7 +2241,7 @@
       "2-3ft": 87.95
     },
     "emerald-green-arborvitae:fast-growing-trees": {
-      "1-2ft": 21.95,
+      "1-2ft": 20.95,
       "2-3ft": 43.95,
       "3-4ft": 82.95,
       "4-5ft": 152.95,
@@ -2249,7 +2252,7 @@
     "green-giant-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
       "2-3ft": 37.95,
-      "3-4ft": 74.95,
+      "3-4ft": 69.95,
       "4-5ft": 130.95,
       "5-6ft": 225.95,
       "6-7ft": 382.95,
@@ -2257,11 +2260,9 @@
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 23.95,
-      "2-3ft": 43.95,
       "3-4ft": 87.95,
       "4-5ft": 147.95,
-      "5-6ft": 223.95,
-      "6-7ft": 323.95
+      "5-6ft": 223.95
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
@@ -2303,7 +2304,7 @@
     "double-knock-out-rose:fast-growing-trees": {
       "1gal": 25.95,
       "2gal": 40.95,
-      "3gal": 58.95
+      "3gal": 55.95
     },
     "coral-knock-out-rose:fast-growing-trees": {
       "3gal": 63.95
@@ -2338,7 +2339,6 @@
       "6-7ft": 217.95
     },
     "crape-myrtle:fast-growing-trees": {
-      "1-2ft-multistem": 64.95,
       "5-6ft-multistem": 176.95,
       "6-7ft-multistem": 199.95
     },
@@ -2354,7 +2354,7 @@
       "3gal": 54.95
     },
     "pink-muhly-grass:fast-growing-trees": {
-      "1gal": 22.95,
+      "1gal": 21.95,
       "3gal": 40.95
     },
     "purple-fountain-grass:fast-growing-trees": {
@@ -2379,7 +2379,7 @@
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 63.95,
       "4-5ft": 85.95,
-      "6-7ft": 116.95
+      "5-6ft": 87.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
@@ -2413,7 +2413,7 @@
       "3gal": 66.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
-      "1gal": 33.95,
+      "1gal": 31.95,
       "3gal": 60.95
     },
     "santa-rosa-plum:fast-growing-trees": {
@@ -2440,8 +2440,8 @@
       "quart": 20.99
     },
     "fire-light-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 25.99,
+      "quart": 13.64
     },
     "astilbe:proven-winners-direct": {
       "1gal": 37.99,
@@ -2514,7 +2514,6 @@
     }
   },
   "degraded_retailers": [
-    "spring-hill",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
