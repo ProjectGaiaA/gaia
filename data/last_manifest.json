@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-15T16:48:31.340028+00:00",
+  "timestamp": "2026-10-16T01:07:45.192976+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -932,7 +932,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 131,
+      "prices_collected": 132,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1126,7 +1126,8 @@
         },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 63.95,
-          "4-5ft": 85.95
+          "4-5ft": 85.95,
+          "6-7ft": 116.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
@@ -1272,11 +1273,12 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 13,
+      "prices_collected": 14,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 55.99,
+          "dwarf": 39.99,
           "semi-dwarf-ez-start": 64.99
         },
         "bartlett-pear-tree:stark-bros": {
@@ -1304,7 +1306,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 690,
+  "total_prices_collected": 692,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2376,7 +2378,8 @@
     },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 63.95,
-      "4-5ft": 85.95
+      "4-5ft": 85.95,
+      "6-7ft": 116.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
@@ -2485,6 +2488,7 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 55.99,
+      "dwarf": 39.99,
       "semi-dwarf-ez-start": 64.99
     },
     "bartlett-pear-tree:stark-bros": {
