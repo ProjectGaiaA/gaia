@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-16T16:31:28.768931+00:00",
+  "timestamp": "2026-10-17T01:08:48.551647+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -935,7 +935,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 129,
+      "prices_collected": 132,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1087,6 +1087,7 @@
           "6-7ft": 217.95
         },
         "crape-myrtle:fast-growing-trees": {
+          "4-5ft-multistem": 140.95,
           "5-6ft-multistem": 176.95,
           "6-7ft-multistem": 199.95
         },
@@ -1132,6 +1133,7 @@
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
           "4-5ft-multistem": 103.95,
+          "5-6ft-multistem": 119.95,
           "6-7ft": 148.95
         },
         "red-sunset-maple:fast-growing-trees": {
@@ -1141,6 +1143,7 @@
         },
         "sweetbay-magnolia:fast-growing-trees": {
           "2-3ft": 59.95,
+          "3-4ft": 79.95,
           "5-6ft": 135.95
         },
         "rose-of-sharon:fast-growing-trees": {
@@ -1306,7 +1309,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 690,
+  "total_prices_collected": 693,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2339,6 +2342,7 @@
       "6-7ft": 217.95
     },
     "crape-myrtle:fast-growing-trees": {
+      "4-5ft-multistem": 140.95,
       "5-6ft-multistem": 176.95,
       "6-7ft-multistem": 199.95
     },
@@ -2384,6 +2388,7 @@
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
       "4-5ft-multistem": 103.95,
+      "5-6ft-multistem": 119.95,
       "6-7ft": 148.95
     },
     "red-sunset-maple:fast-growing-trees": {
@@ -2393,6 +2398,7 @@
     },
     "sweetbay-magnolia:fast-growing-trees": {
       "2-3ft": 59.95,
+      "3-4ft": 79.95,
       "5-6ft": 135.95
     },
     "rose-of-sharon:fast-growing-trees": {
