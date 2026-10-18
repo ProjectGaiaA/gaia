@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-18T00:41:10.214486+00:00",
+  "timestamp": "2026-10-18T15:38:59.437957+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -935,7 +935,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 127,
+      "prices_collected": 126,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1010,7 +1010,7 @@
           "1-2ft": 23.95,
           "3-4ft": 87.95,
           "4-5ft": 147.95,
-          "5-6ft": 223.95
+          "5-6ft": 179.95
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
@@ -1046,8 +1046,7 @@
           "3-4ft": 81.95
         },
         "tamukeyama-japanese-maple:fast-growing-trees": {
-          "2-3ft": 55.95,
-          "3-4ft": 78.95
+          "2-3ft": 55.95
         },
         "double-knock-out-rose:fast-growing-trees": {
           "1gal": 25.95,
@@ -1078,7 +1077,7 @@
         },
         "eastern-redbud:fast-growing-trees": {
           "2-3ft": 69.95,
-          "3-4ft": 84.95,
+          "3-4ft": 82.95,
           "4-5ft": 98.95,
           "6-7ft": 205.95
         },
@@ -1304,7 +1303,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 688,
+  "total_prices_collected": 687,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2260,7 +2259,7 @@
       "1-2ft": 23.95,
       "3-4ft": 87.95,
       "4-5ft": 147.95,
-      "5-6ft": 223.95
+      "5-6ft": 179.95
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
@@ -2296,8 +2295,7 @@
       "3-4ft": 81.95
     },
     "tamukeyama-japanese-maple:fast-growing-trees": {
-      "2-3ft": 55.95,
-      "3-4ft": 78.95
+      "2-3ft": 55.95
     },
     "double-knock-out-rose:fast-growing-trees": {
       "1gal": 25.95,
@@ -2328,7 +2326,7 @@
     },
     "eastern-redbud:fast-growing-trees": {
       "2-3ft": 69.95,
-      "3-4ft": 84.95,
+      "3-4ft": 82.95,
       "4-5ft": 98.95,
       "6-7ft": 205.95
     },
