@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-17T15:25:32.555826+00:00",
+  "timestamp": "2026-10-18T00:41:10.214486+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -935,7 +935,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 130,
+      "prices_collected": 127,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1073,7 +1073,6 @@
           "4-5ft": 154.95
         },
         "kousa-dogwood:fast-growing-trees": {
-          "3-4ft": 97.95,
           "4-5ft": 93.95,
           "5-6ft": 189.95
         },
@@ -1125,13 +1124,11 @@
         },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 63.95,
-          "4-5ft": 85.95,
-          "5-6ft": 87.95
+          "4-5ft": 85.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
           "4-5ft-multistem": 103.95,
-          "5-6ft-multistem": 119.95,
           "6-7ft": 148.95
         },
         "red-sunset-maple:fast-growing-trees": {
@@ -1189,10 +1186,7 @@
       "products_priced": 10,
       "products_error": 1,
       "prices_collected": 19,
-      "anomalies": [
-        "ANOMALY: fire-light-hydrangea at proven-winners-direct tier=1gal: $25.99 -> $39.99 (54% change)",
-        "ANOMALY: fire-light-hydrangea at proven-winners-direct tier=quart: $13.64 -> $20.99 (54% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:proven-winners-direct": {
           "1gal": 39.99,
@@ -1310,12 +1304,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 691,
-  "total_anomalies": 2,
-  "anomalies": [
-    "ANOMALY: fire-light-hydrangea at proven-winners-direct tier=1gal: $25.99 -> $39.99 (54% change)",
-    "ANOMALY: fire-light-hydrangea at proven-winners-direct tier=quart: $13.64 -> $20.99 (54% change)"
-  ],
+  "total_prices_collected": 688,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99
@@ -2332,7 +2323,6 @@
       "4-5ft": 154.95
     },
     "kousa-dogwood:fast-growing-trees": {
-      "3-4ft": 97.95,
       "4-5ft": 93.95,
       "5-6ft": 189.95
     },
@@ -2384,13 +2374,11 @@
     },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 63.95,
-      "4-5ft": 85.95,
-      "5-6ft": 87.95
+      "4-5ft": 85.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
       "4-5ft-multistem": 103.95,
-      "5-6ft-multistem": 119.95,
       "6-7ft": 148.95
     },
     "red-sunset-maple:fast-growing-trees": {
