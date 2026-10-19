@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-19T00:53:15.736936+00:00",
+  "timestamp": "2026-10-19T18:41:17.023142+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -935,7 +935,7 @@
       "products_regional": 0,
       "products_priced": 54,
       "products_error": 4,
-      "prices_collected": 126,
+      "prices_collected": 124,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1014,7 +1014,6 @@
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
-          "2gal": 51.95,
           "3gal": 82.95,
           "5gal": 133.95,
           "7gal": 223.95
@@ -1030,11 +1029,12 @@
           "2-3ft": 75.95,
           "3-4ft": 103.95,
           "4-5ft": 132.95,
-          "5-6ft": 152.95
+          "5-6ft": 152.95,
+          "6-7ft": 183.95
         },
         "coral-bark-japanese-maple:fast-growing-trees": {
           "3-4ft": 104.95,
-          "4-5ft": 130.95,
+          "4-5ft": 118.95,
           "5-6ft": 164.95,
           "6-7ft": 201.95
         },
@@ -1085,8 +1085,7 @@
           "6-7ft": 217.95
         },
         "crape-myrtle:fast-growing-trees": {
-          "5-6ft-multistem": 176.95,
-          "6-7ft-multistem": 199.95
+          "5-6ft-multistem": 176.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
           "3gal": 49.95
@@ -1122,8 +1121,7 @@
           "1gal": 28.95
         },
         "october-glory-maple:fast-growing-trees": {
-          "3-4ft": 63.95,
-          "4-5ft": 85.95
+          "3-4ft": 63.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
@@ -1268,15 +1266,18 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 6,
-      "products_error": 2,
-      "prices_collected": 14,
+      "products_found": 7,
+      "products_error": 1,
+      "prices_collected": 15,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 55.99,
           "dwarf": 39.99,
           "semi-dwarf-ez-start": 64.99
+        },
+        "elberta-peach-tree:stark-bros": {
+          "semi-dwarf-ez-start": 75.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 63.99,
@@ -1300,10 +1301,10 @@
           "default": 25.99
         }
       },
-      "health": "degraded"
+      "health": "healthy"
     }
   ],
-  "total_prices_collected": 687,
+  "total_prices_collected": 686,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2263,7 +2264,6 @@
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
-      "2gal": 51.95,
       "3gal": 82.95,
       "5gal": 133.95,
       "7gal": 223.95
@@ -2279,11 +2279,12 @@
       "2-3ft": 75.95,
       "3-4ft": 103.95,
       "4-5ft": 132.95,
-      "5-6ft": 152.95
+      "5-6ft": 152.95,
+      "6-7ft": 183.95
     },
     "coral-bark-japanese-maple:fast-growing-trees": {
       "3-4ft": 104.95,
-      "4-5ft": 130.95,
+      "4-5ft": 118.95,
       "5-6ft": 164.95,
       "6-7ft": 201.95
     },
@@ -2334,8 +2335,7 @@
       "6-7ft": 217.95
     },
     "crape-myrtle:fast-growing-trees": {
-      "5-6ft-multistem": 176.95,
-      "6-7ft-multistem": 199.95
+      "5-6ft-multistem": 176.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
       "3gal": 49.95
@@ -2371,8 +2371,7 @@
       "1gal": 28.95
     },
     "october-glory-maple:fast-growing-trees": {
-      "3-4ft": 63.95,
-      "4-5ft": 85.95
+      "3-4ft": 63.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
@@ -2485,6 +2484,9 @@
       "dwarf": 39.99,
       "semi-dwarf-ez-start": 64.99
     },
+    "elberta-peach-tree:stark-bros": {
+      "semi-dwarf-ez-start": 75.99
+    },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 63.99,
       "dwarf": 49.99,
@@ -2507,8 +2509,6 @@
       "default": 25.99
     }
   },
-  "degraded_retailers": [
-    "stark-bros"
-  ],
-  "pipeline_status": "degraded"
+  "degraded_retailers": [],
+  "pipeline_status": "healthy"
 }
