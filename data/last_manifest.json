@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-20T01:55:38.008379+00:00",
+  "timestamp": "2026-10-20T16:53:54.045712+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -931,11 +931,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 10,
+      "products_no_sizes": 11,
       "products_regional": 0,
-      "products_priced": 53,
+      "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 122,
+      "prices_collected": 121,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -945,7 +945,6 @@
           "quart": 24.95
         },
         "endless-summer-hydrangea:fast-growing-trees": {
-          "1gal": 32.95,
           "2gal": 54.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
@@ -961,7 +960,7 @@
           "quart": 56.95
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
-          "3-4ft": 99.95,
+          "3-4ft": 106.95,
           "4-5ft": 134.95,
           "5-6ft": 160.95
         },
@@ -989,7 +988,7 @@
           "2-3ft": 87.95
         },
         "emerald-green-arborvitae:fast-growing-trees": {
-          "1-2ft": 20.95,
+          "1-2ft": 21.95,
           "2-3ft": 43.95,
           "3-4ft": 82.95,
           "4-5ft": 152.95,
@@ -1000,16 +999,17 @@
         "green-giant-arborvitae:fast-growing-trees": {
           "1-2ft": 19.95,
           "2-3ft": 37.95,
-          "3-4ft": 69.95,
+          "3-4ft": 74.95,
           "4-5ft": 130.95,
           "5-6ft": 225.95,
+          "6-7ft": 382.95,
           "6-7ft-jumbo": 503.95
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 23.95,
           "3-4ft": 87.95,
           "4-5ft": 147.95,
-          "5-6ft": 179.95
+          "5-6ft": 223.95
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
@@ -1033,7 +1033,7 @@
         },
         "coral-bark-japanese-maple:fast-growing-trees": {
           "3-4ft": 104.95,
-          "4-5ft": 118.95,
+          "4-5ft": 130.95,
           "5-6ft": 164.95,
           "6-7ft": 201.95
         },
@@ -1050,7 +1050,7 @@
         "double-knock-out-rose:fast-growing-trees": {
           "1gal": 25.95,
           "2gal": 40.95,
-          "3gal": 55.95
+          "3gal": 58.95
         },
         "coral-knock-out-rose:fast-growing-trees": {
           "3gal": 63.95
@@ -1071,13 +1071,13 @@
           "4-5ft": 154.95
         },
         "kousa-dogwood:fast-growing-trees": {
+          "3-4ft": 97.95,
           "4-5ft": 93.95,
           "5-6ft": 189.95
         },
         "eastern-redbud:fast-growing-trees": {
           "2-3ft": 69.95,
-          "3-4ft": 82.95,
-          "4-5ft": 98.95,
+          "3-4ft": 84.95,
           "6-7ft": 205.95
         },
         "forest-pansy-redbud:fast-growing-trees": {
@@ -1097,7 +1097,7 @@
           "3gal": 54.95
         },
         "pink-muhly-grass:fast-growing-trees": {
-          "1gal": 21.95,
+          "1gal": 22.95,
           "3gal": 40.95
         },
         "purple-fountain-grass:fast-growing-trees": {
@@ -1116,9 +1116,6 @@
         "happy-returns-daylily:fast-growing-trees": {
           "default": 27.95
         },
-        "russian-sage:fast-growing-trees": {
-          "1gal": 28.95
-        },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
           "4-5ft-multistem": 103.95,
@@ -1126,7 +1123,7 @@
         },
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 82.95,
-          "4-5ft": 96.95,
+          "4-5ft": 100.95,
           "5-6ft": 125.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
@@ -1152,7 +1149,7 @@
           "3gal": 66.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
-          "1gal": 31.95,
+          "1gal": 33.95,
           "3gal": 60.95
         },
         "santa-rosa-plum:fast-growing-trees": {
@@ -1297,7 +1294,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 683,
+  "total_prices_collected": 682,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2188,7 +2185,6 @@
       "quart": 24.95
     },
     "endless-summer-hydrangea:fast-growing-trees": {
-      "1gal": 32.95,
       "2gal": 54.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
@@ -2204,7 +2200,7 @@
       "quart": 56.95
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
-      "3-4ft": 99.95,
+      "3-4ft": 106.95,
       "4-5ft": 134.95,
       "5-6ft": 160.95
     },
@@ -2232,7 +2228,7 @@
       "2-3ft": 87.95
     },
     "emerald-green-arborvitae:fast-growing-trees": {
-      "1-2ft": 20.95,
+      "1-2ft": 21.95,
       "2-3ft": 43.95,
       "3-4ft": 82.95,
       "4-5ft": 152.95,
@@ -2243,16 +2239,17 @@
     "green-giant-arborvitae:fast-growing-trees": {
       "1-2ft": 19.95,
       "2-3ft": 37.95,
-      "3-4ft": 69.95,
+      "3-4ft": 74.95,
       "4-5ft": 130.95,
       "5-6ft": 225.95,
+      "6-7ft": 382.95,
       "6-7ft-jumbo": 503.95
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 23.95,
       "3-4ft": 87.95,
       "4-5ft": 147.95,
-      "5-6ft": 179.95
+      "5-6ft": 223.95
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
@@ -2276,7 +2273,7 @@
     },
     "coral-bark-japanese-maple:fast-growing-trees": {
       "3-4ft": 104.95,
-      "4-5ft": 118.95,
+      "4-5ft": 130.95,
       "5-6ft": 164.95,
       "6-7ft": 201.95
     },
@@ -2293,7 +2290,7 @@
     "double-knock-out-rose:fast-growing-trees": {
       "1gal": 25.95,
       "2gal": 40.95,
-      "3gal": 55.95
+      "3gal": 58.95
     },
     "coral-knock-out-rose:fast-growing-trees": {
       "3gal": 63.95
@@ -2314,13 +2311,13 @@
       "4-5ft": 154.95
     },
     "kousa-dogwood:fast-growing-trees": {
+      "3-4ft": 97.95,
       "4-5ft": 93.95,
       "5-6ft": 189.95
     },
     "eastern-redbud:fast-growing-trees": {
       "2-3ft": 69.95,
-      "3-4ft": 82.95,
-      "4-5ft": 98.95,
+      "3-4ft": 84.95,
       "6-7ft": 205.95
     },
     "forest-pansy-redbud:fast-growing-trees": {
@@ -2340,7 +2337,7 @@
       "3gal": 54.95
     },
     "pink-muhly-grass:fast-growing-trees": {
-      "1gal": 21.95,
+      "1gal": 22.95,
       "3gal": 40.95
     },
     "purple-fountain-grass:fast-growing-trees": {
@@ -2359,9 +2356,6 @@
     "happy-returns-daylily:fast-growing-trees": {
       "default": 27.95
     },
-    "russian-sage:fast-growing-trees": {
-      "1gal": 28.95
-    },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
       "4-5ft-multistem": 103.95,
@@ -2369,7 +2363,7 @@
     },
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 82.95,
-      "4-5ft": 96.95,
+      "4-5ft": 100.95,
       "5-6ft": 125.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
@@ -2395,7 +2389,7 @@
       "3gal": 66.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
-      "1gal": 31.95,
+      "1gal": 33.95,
       "3gal": 60.95
     },
     "santa-rosa-plum:fast-growing-trees": {
