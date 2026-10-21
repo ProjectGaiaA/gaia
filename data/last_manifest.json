@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-20T16:53:54.045712+00:00",
+  "timestamp": "2026-10-21T01:24:48.744235+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -320,12 +320,12 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 74,
-      "products_found": 71,
+      "products_found": 68,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 71,
-      "products_error": 3,
-      "prices_collected": 315,
+      "products_priced": 68,
+      "products_error": 6,
+      "prices_collected": 298,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -761,29 +761,6 @@
           "2gal": 45.95,
           "3gal": 79.95,
           "7gal": 119.95
-        },
-        "nandina-heavenly-bamboo:planting-tree": {
-          "1gal": 38.95,
-          "2gal": 69.95,
-          "3gal": 46.95
-        },
-        "santa-rosa-plum:planting-tree": {
-          "3-4ft": 114.95,
-          "4-5ft": 119.95,
-          "5-6ft": 134.95,
-          "6-7ft": 164.95
-        },
-        "dwarf-cavendish-banana:planting-tree": {
-          "starter-plug": 16.99,
-          "6-inch": 47.95,
-          "quart": 20.95,
-          "1gal": 55.95,
-          "2gal": 79.95,
-          "3gal": 84.95,
-          "1-2ft": 53.95,
-          "2-3ft": 73.95,
-          "3-4ft": 114.95,
-          "4-5ft": 144.95
         }
       },
       "health": "healthy"
@@ -792,22 +769,14 @@
       "retailer_id": "spring-hill",
       "status": "completed",
       "products_expected": 40,
-      "products_found": 38,
+      "products_found": 36,
       "products_no_sizes": 6,
       "products_regional": 0,
-      "products_priced": 32,
-      "products_error": 2,
-      "prices_collected": 59,
+      "products_priced": 30,
+      "products_error": 4,
+      "prices_collected": 55,
       "anomalies": [],
       "price_records": {
-        "limelight-hydrangea:spring-hill": {
-          "4-5ft": 116.99,
-          "1gal": 25.99
-        },
-        "nikko-blue-hydrangea:spring-hill": {
-          "premium-bareroot": 9.99,
-          "1gal": 39.99
-        },
         "summer-crush-hydrangea:spring-hill": {
           "1gal": 63.99,
           "4inch": 29.99,
@@ -924,16 +893,16 @@
           "premium-bareroot": 24.99
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "fast-growing-trees",
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 11,
+      "products_no_sizes": 12,
       "products_regional": 0,
-      "products_priced": 52,
+      "products_priced": 51,
       "products_error": 4,
       "prices_collected": 121,
       "anomalies": [],
@@ -1013,6 +982,7 @@
         },
         "skip-laurel:fast-growing-trees": {
           "1gal": 32.95,
+          "2gal": 51.95,
           "3gal": 82.95,
           "5gal": 133.95,
           "7gal": 223.95
@@ -1141,9 +1111,6 @@
           "1gal": 23.95,
           "3gal": 45.95
         },
-        "dwarf-alberta-spruce:fast-growing-trees": {
-          "1-2ft": 35.95
-        },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 48.95,
           "3gal": 66.95
@@ -1259,42 +1226,15 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 6,
-      "products_error": 2,
-      "prices_collected": 14,
+      "products_found": 0,
+      "products_error": 8,
+      "prices_collected": 0,
       "anomalies": [],
-      "price_records": {
-        "honeycrisp-apple-tree:stark-bros": {
-          "dwarf-ez-start": 55.99,
-          "dwarf": 39.99,
-          "semi-dwarf-ez-start": 64.99
-        },
-        "bartlett-pear-tree:stark-bros": {
-          "dwarf-ez-start": 63.99,
-          "dwarf": 49.99,
-          "supreme": 59.99,
-          "semi-dwarf-ez-start": 54.99,
-          "supreme-ez-start": 64.99,
-          "standard-ez-start": 64.99,
-          "standard": 49.99
-        },
-        "double-knock-out-rose:stark-bros": {
-          "default": 15.99
-        },
-        "duke-blueberry:stark-bros": {
-          "default": 25.99
-        },
-        "patriot-blueberry:stark-bros": {
-          "default": 18.99
-        },
-        "pink-lemonade-blueberry:stark-bros": {
-          "default": 25.99
-        }
-      },
+      "price_records": {},
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 682,
+  "total_prices_collected": 647,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2032,37 +1972,6 @@
       "3gal": 79.95,
       "7gal": 119.95
     },
-    "nandina-heavenly-bamboo:planting-tree": {
-      "1gal": 38.95,
-      "2gal": 69.95,
-      "3gal": 46.95
-    },
-    "santa-rosa-plum:planting-tree": {
-      "3-4ft": 114.95,
-      "4-5ft": 119.95,
-      "5-6ft": 134.95,
-      "6-7ft": 164.95
-    },
-    "dwarf-cavendish-banana:planting-tree": {
-      "starter-plug": 16.99,
-      "6-inch": 47.95,
-      "quart": 20.95,
-      "1gal": 55.95,
-      "2gal": 79.95,
-      "3gal": 84.95,
-      "1-2ft": 53.95,
-      "2-3ft": 73.95,
-      "3-4ft": 114.95,
-      "4-5ft": 144.95
-    },
-    "limelight-hydrangea:spring-hill": {
-      "4-5ft": 116.99,
-      "1gal": 25.99
-    },
-    "nikko-blue-hydrangea:spring-hill": {
-      "premium-bareroot": 9.99,
-      "1gal": 39.99
-    },
     "summer-crush-hydrangea:spring-hill": {
       "1gal": 63.99,
       "4inch": 29.99,
@@ -2253,6 +2162,7 @@
     },
     "skip-laurel:fast-growing-trees": {
       "1gal": 32.95,
+      "2gal": 51.95,
       "3gal": 82.95,
       "5gal": 133.95,
       "7gal": 223.95
@@ -2381,9 +2291,6 @@
       "1gal": 23.95,
       "3gal": 45.95
     },
-    "dwarf-alberta-spruce:fast-growing-trees": {
-      "1-2ft": 35.95
-    },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 48.95,
       "3gal": 66.95
@@ -2461,35 +2368,10 @@
     },
     "double-knock-out-rose:great-garden-plants": {
       "quart": 19.99
-    },
-    "honeycrisp-apple-tree:stark-bros": {
-      "dwarf-ez-start": 55.99,
-      "dwarf": 39.99,
-      "semi-dwarf-ez-start": 64.99
-    },
-    "bartlett-pear-tree:stark-bros": {
-      "dwarf-ez-start": 63.99,
-      "dwarf": 49.99,
-      "supreme": 59.99,
-      "semi-dwarf-ez-start": 54.99,
-      "supreme-ez-start": 64.99,
-      "standard-ez-start": 64.99,
-      "standard": 49.99
-    },
-    "double-knock-out-rose:stark-bros": {
-      "default": 15.99
-    },
-    "duke-blueberry:stark-bros": {
-      "default": 25.99
-    },
-    "patriot-blueberry:stark-bros": {
-      "default": 18.99
-    },
-    "pink-lemonade-blueberry:stark-bros": {
-      "default": 25.99
     }
   },
   "degraded_retailers": [
+    "spring-hill",
     "fast-growing-trees",
     "stark-bros"
   ],
