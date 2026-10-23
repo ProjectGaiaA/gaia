@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-23T01:27:50.950447+00:00",
+  "timestamp": "2026-10-23T17:01:24.071738+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -938,9 +938,6 @@
       "prices_collected": 122,
       "anomalies": [],
       "price_records": {
-        "limelight-hydrangea:fast-growing-trees": {
-          "quart": 33.95
-        },
         "nikko-blue-hydrangea:fast-growing-trees": {
           "quart": 24.95
         },
@@ -1076,7 +1073,7 @@
         "eastern-redbud:fast-growing-trees": {
           "2-3ft": 69.95,
           "3-4ft": 84.95,
-          "6-7ft": 205.95
+          "6-7ft": 179.95
         },
         "forest-pansy-redbud:fast-growing-trees": {
           "6-7ft": 217.95
@@ -1095,12 +1092,15 @@
           "3gal": 54.95
         },
         "pink-muhly-grass:fast-growing-trees": {
-          "1gal": 22.95,
+          "1gal": 21.95,
           "3gal": 40.95
         },
         "purple-fountain-grass:fast-growing-trees": {
           "1gal": 26.95,
           "3gal": 42.95
+        },
+        "blue-fescue-elijah-blue:fast-growing-trees": {
+          "1gal": 48.95
         },
         "pampas-grass:fast-growing-trees": {
           "3gal": 50.95
@@ -1116,7 +1116,7 @@
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
-          "5-6ft-multistem": 119.95,
+          "3-4ft-multistem": 83.95,
           "6-7ft": 148.95
         },
         "red-sunset-maple:fast-growing-trees": {
@@ -1188,16 +1188,16 @@
           "quart": 20.99
         },
         "fire-light-hydrangea:proven-winners-direct": {
-          "1gal": 39.99,
-          "quart": 20.99
+          "1gal": 27.99,
+          "quart": 14.69
         },
         "astilbe:proven-winners-direct": {
           "1gal": 37.99,
           "quart": 20.99
         },
         "heuchera-coral-bells:proven-winners-direct": {
-          "0-65-gallon": 32.99,
-          "quart": 20.99
+          "0-65-gallon": 23.09,
+          "quart": 14.69
         },
         "bee-balm:proven-winners-direct": {
           "0-65-gallon": 32.99
@@ -1258,7 +1258,7 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 12,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1267,6 +1267,7 @@
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 63.99,
+          "dwarf": 49.99,
           "supreme": 59.99,
           "semi-dwarf-ez-start": 54.99,
           "supreme-ez-start": 64.99,
@@ -1289,7 +1290,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 681,
+  "total_prices_collected": 682,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2173,9 +2174,6 @@
     "rose-of-sharon:spring-hill": {
       "premium-bareroot": 24.99
     },
-    "limelight-hydrangea:fast-growing-trees": {
-      "quart": 33.95
-    },
     "nikko-blue-hydrangea:fast-growing-trees": {
       "quart": 24.95
     },
@@ -2311,7 +2309,7 @@
     "eastern-redbud:fast-growing-trees": {
       "2-3ft": 69.95,
       "3-4ft": 84.95,
-      "6-7ft": 205.95
+      "6-7ft": 179.95
     },
     "forest-pansy-redbud:fast-growing-trees": {
       "6-7ft": 217.95
@@ -2330,12 +2328,15 @@
       "3gal": 54.95
     },
     "pink-muhly-grass:fast-growing-trees": {
-      "1gal": 22.95,
+      "1gal": 21.95,
       "3gal": 40.95
     },
     "purple-fountain-grass:fast-growing-trees": {
       "1gal": 26.95,
       "3gal": 42.95
+    },
+    "blue-fescue-elijah-blue:fast-growing-trees": {
+      "1gal": 48.95
     },
     "pampas-grass:fast-growing-trees": {
       "3gal": 50.95
@@ -2351,7 +2352,7 @@
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
-      "5-6ft-multistem": 119.95,
+      "3-4ft-multistem": 83.95,
       "6-7ft": 148.95
     },
     "red-sunset-maple:fast-growing-trees": {
@@ -2408,16 +2409,16 @@
       "quart": 20.99
     },
     "fire-light-hydrangea:proven-winners-direct": {
-      "1gal": 39.99,
-      "quart": 20.99
+      "1gal": 27.99,
+      "quart": 14.69
     },
     "astilbe:proven-winners-direct": {
       "1gal": 37.99,
       "quart": 20.99
     },
     "heuchera-coral-bells:proven-winners-direct": {
-      "0-65-gallon": 32.99,
-      "quart": 20.99
+      "0-65-gallon": 23.09,
+      "quart": 14.69
     },
     "bee-balm:proven-winners-direct": {
       "0-65-gallon": 32.99
@@ -2460,6 +2461,7 @@
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 63.99,
+      "dwarf": 49.99,
       "supreme": 59.99,
       "semi-dwarf-ez-start": 54.99,
       "supreme-ez-start": 64.99,
