@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-24T01:19:00.931643+00:00",
+  "timestamp": "2026-10-24T15:34:47.389794+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -931,11 +931,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 18,
-      "products_regional": 4,
-      "products_priced": 45,
+      "products_no_sizes": 12,
+      "products_regional": 0,
+      "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 101,
+      "prices_collected": 123,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -961,9 +961,38 @@
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 56.95
         },
+        "honeycrisp-apple-tree:fast-growing-trees": {
+          "3-4ft": 106.95,
+          "4-5ft": 134.95,
+          "5-6ft": 160.95
+        },
+        "meyer-lemon-tree:fast-growing-trees": {
+          "1-2ft": 65.95,
+          "2-3ft": 98.95,
+          "3-4ft": 141.95,
+          "4-5ft": 199.95
+        },
+        "fuji-apple-tree:fast-growing-trees": {
+          "3-4ft": 92.95,
+          "4-5ft": 118.95,
+          "5-6ft": 114.95,
+          "6-7ft": 178.95
+        },
+        "bing-cherry-tree:fast-growing-trees": {
+          "1-2ft": 49.95,
+          "2-3ft": 65.95,
+          "3-4ft": 111.95,
+          "4-5ft": 143.95,
+          "5-6ft": 175.95
+        },
+        "stella-cherry-tree:fast-growing-trees": {
+          "1-2ft": 54.95,
+          "2-3ft": 87.95
+        },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 21.95,
           "2-3ft": 43.95,
+          "3-4ft": 82.95,
           "4-5ft": 152.95,
           "5-6ft": 254.95,
           "6-7ft": 281.95
@@ -1029,7 +1058,10 @@
           "1gal": 51.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "4inch": 34.95,
+          "quart": 30.95,
+          "1gal": 45.95,
+          "3gal": 59.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "2gal": 90.95
@@ -1118,8 +1150,10 @@
           "3gal": 60.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
-          "1gal": 33.95,
           "3gal": 60.95
+        },
+        "santa-rosa-plum:fast-growing-trees": {
+          "4-5ft": 90.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "6-inch": 42.95,
@@ -1259,7 +1293,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 661,
+  "total_prices_collected": 683,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2166,9 +2200,38 @@
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 56.95
     },
+    "honeycrisp-apple-tree:fast-growing-trees": {
+      "3-4ft": 106.95,
+      "4-5ft": 134.95,
+      "5-6ft": 160.95
+    },
+    "meyer-lemon-tree:fast-growing-trees": {
+      "1-2ft": 65.95,
+      "2-3ft": 98.95,
+      "3-4ft": 141.95,
+      "4-5ft": 199.95
+    },
+    "fuji-apple-tree:fast-growing-trees": {
+      "3-4ft": 92.95,
+      "4-5ft": 118.95,
+      "5-6ft": 114.95,
+      "6-7ft": 178.95
+    },
+    "bing-cherry-tree:fast-growing-trees": {
+      "1-2ft": 49.95,
+      "2-3ft": 65.95,
+      "3-4ft": 111.95,
+      "4-5ft": 143.95,
+      "5-6ft": 175.95
+    },
+    "stella-cherry-tree:fast-growing-trees": {
+      "1-2ft": 54.95,
+      "2-3ft": 87.95
+    },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 21.95,
       "2-3ft": 43.95,
+      "3-4ft": 82.95,
       "4-5ft": 152.95,
       "5-6ft": 254.95,
       "6-7ft": 281.95
@@ -2234,7 +2297,10 @@
       "1gal": 51.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "4inch": 34.95,
+      "quart": 30.95,
+      "1gal": 45.95,
+      "3gal": 59.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "2gal": 90.95
@@ -2323,8 +2389,10 @@
       "3gal": 60.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
-      "1gal": 33.95,
       "3gal": 60.95
+    },
+    "santa-rosa-plum:fast-growing-trees": {
+      "4-5ft": 90.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "6-inch": 42.95,
