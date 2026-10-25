@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-24T15:34:47.389794+00:00",
+  "timestamp": "2026-10-25T00:55:16.310069+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -935,7 +935,7 @@
       "products_regional": 0,
       "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 123,
+      "prices_collected": 120,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1010,7 +1010,6 @@
           "1-2ft": 23.95,
           "2-3ft": 43.95,
           "3-4ft": 87.95,
-          "4-5ft": 147.95,
           "5-6ft": 223.95
         },
         "skip-laurel:fast-growing-trees": {
@@ -1076,7 +1075,6 @@
           "6-7ft": 239.95
         },
         "eastern-redbud:fast-growing-trees": {
-          "2-3ft": 69.95,
           "3-4ft": 84.95,
           "6-7ft": 179.95
         },
@@ -1126,8 +1124,7 @@
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 82.95,
           "4-5ft": 100.95,
-          "5-6ft": 125.95,
-          "6-7ft": 176.95
+          "5-6ft": 125.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
           "2-3ft": 59.95,
@@ -1293,7 +1290,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 683,
+  "total_prices_collected": 680,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2249,7 +2246,6 @@
       "1-2ft": 23.95,
       "2-3ft": 43.95,
       "3-4ft": 87.95,
-      "4-5ft": 147.95,
       "5-6ft": 223.95
     },
     "skip-laurel:fast-growing-trees": {
@@ -2315,7 +2311,6 @@
       "6-7ft": 239.95
     },
     "eastern-redbud:fast-growing-trees": {
-      "2-3ft": 69.95,
       "3-4ft": 84.95,
       "6-7ft": 179.95
     },
@@ -2365,8 +2360,7 @@
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 82.95,
       "4-5ft": 100.95,
-      "5-6ft": 125.95,
-      "6-7ft": 176.95
+      "5-6ft": 125.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
       "2-3ft": 59.95,
