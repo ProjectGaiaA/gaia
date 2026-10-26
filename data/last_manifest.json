@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-25T16:05:33.394033+00:00",
+  "timestamp": "2026-10-26T00:50:20.022019+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -935,7 +935,7 @@
       "products_regional": 0,
       "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 120,
+      "prices_collected": 118,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -946,7 +946,6 @@
         },
         "endless-summer-hydrangea:fast-growing-trees": {
           "1gal": 32.95,
-          "2gal": 54.95,
           "3gal": 93.95
         },
         "bloomstruck-hydrangea:fast-growing-trees": {
@@ -1070,7 +1069,6 @@
         },
         "kousa-dogwood:fast-growing-trees": {
           "3-4ft": 97.95,
-          "4-5ft": 93.95,
           "5-6ft": 189.95,
           "6-7ft": 239.95
         },
@@ -1258,7 +1256,7 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 13,
+      "prices_collected": 12,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1271,8 +1269,7 @@
           "supreme": 59.99,
           "semi-dwarf-ez-start": 54.99,
           "supreme-ez-start": 64.99,
-          "standard-ez-start": 64.99,
-          "standard": 49.99
+          "standard-ez-start": 64.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
@@ -1290,7 +1287,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 680,
+  "total_prices_collected": 677,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2182,7 +2179,6 @@
     },
     "endless-summer-hydrangea:fast-growing-trees": {
       "1gal": 32.95,
-      "2gal": 54.95,
       "3gal": 93.95
     },
     "bloomstruck-hydrangea:fast-growing-trees": {
@@ -2306,7 +2302,6 @@
     },
     "kousa-dogwood:fast-growing-trees": {
       "3-4ft": 97.95,
-      "4-5ft": 93.95,
       "5-6ft": 189.95,
       "6-7ft": 239.95
     },
@@ -2465,8 +2460,7 @@
       "supreme": 59.99,
       "semi-dwarf-ez-start": 54.99,
       "supreme-ez-start": 64.99,
-      "standard-ez-start": 64.99,
-      "standard": 49.99
+      "standard-ez-start": 64.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
