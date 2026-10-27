@@ -12,7 +12,7 @@
       "what": "same plant+size at 3+ nurseries, >=2.5x off the median of the others"
     },
     "B_two_nursery_pairs": {
-      "denominator": 128,
+      "denominator": 130,
       "denominator_floor": 70,
       "denominator_unit": "two-nursery tiers",
       "known_findings": 0,
@@ -21,7 +21,7 @@
       "what": "same plant+size at exactly 2 nurseries, >=2.5x apart"
     },
     "C_within_retailer_inversion": {
-      "denominator": 182,
+      "denominator": 181,
       "denominator_floor": 90,
       "denominator_unit": "adjacent container pairs",
       "known_findings": 8,
@@ -59,20 +59,20 @@
     "F_stock_consistency": {
       "counts": {
         "latest_rows": 271,
-        "mobile_price_links": 265,
+        "mobile_price_links": 264,
         "pages": 101,
         "retailer_variant_availability": {
           "fast-growing-trees": {
             "None": 2,
-            "True": 111
+            "True": 113
           },
           "great-garden-plants": {
-            "False": 4,
-            "True": 4
+            "False": 5,
+            "True": 3
           },
           "nature-hills": {
-            "False": 41,
-            "True": 105
+            "False": 40,
+            "True": 106
           },
           "planting-tree": {
             "False": 197,
@@ -93,7 +93,7 @@
         "retailers_all_unknown_stock": [],
         "schema_instock_pages": 95,
         "sold_out_price_cells": 293,
-        "sold_out_rows": 83,
+        "sold_out_rows": 82,
         "table_rows": 273
       },
       "denominator": 273,
@@ -106,11 +106,11 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-10-24T18:30:17.732694+00:00",
+    "cutoff": "2026-10-25T02:05:08.379061+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-10-26T18:30:17.732694+00:00",
+    "newest_row": "2026-10-27T02:05:08.379061+00:00",
     "pairs_fresh": 271,
     "pairs_stale": 11,
     "pairs_total": 282,
@@ -148,64 +148,64 @@
     "stale_at_reporting_retailers": 11,
     "stalest": [
       {
-        "hours": 4818.6,
+        "hours": 4826.2,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 4705.8,
+        "hours": 4713.4,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 4275.5,
+        "hours": 4283.1,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 2859.0,
+        "hours": 2866.6,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 1614.5,
+        "hours": 1622.1,
         "plant": "encore-azalea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1614.0,
+        "hours": 1621.6,
         "plant": "encore-azalea",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 1131.0,
+        "hours": 1138.6,
         "plant": "fire-light-hydrangea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1130.1,
+        "hours": 1137.7,
         "plant": "bing-cherry-tree",
         "retailer": "stark-bros"
       },
       {
-        "hours": 592.9,
+        "hours": 600.5,
         "plant": "sunny-knock-out-rose",
         "retailer": "planting-tree"
       },
       {
-        "hours": 473.2,
+        "hours": 480.8,
         "plant": "sweetbay-magnolia",
         "retailer": "nature-hills"
       },
       {
-        "hours": 167.8,
+        "hours": 175.4,
         "plant": "elberta-peach-tree",
         "retailer": "stark-bros"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-10-26T18:34:45.129156+00:00",
+  "generated": "2026-10-27T02:09:09.044573+00:00",
   "notices": [
     "11 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below",
     "C_within_retailer_inversion: 2 new lead(s) for the weekly digest"
