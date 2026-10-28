@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-27T17:30:17.645179+00:00",
+  "timestamp": "2026-10-28T02:01:46.918680+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -11,9 +11,7 @@
       "products_priced": 77,
       "products_error": 1,
       "prices_collected": 146,
-      "anomalies": [
-        "ANOMALY: autumn-blaze-maple at nature-hills tier=3gal: $59.50 -> $119.00 (100% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99
@@ -937,7 +935,7 @@
       "products_regional": 0,
       "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 125,
+      "prices_collected": 127,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -957,8 +955,10 @@
           "quart": 56.95
         },
         "honeycrisp-apple-tree:fast-growing-trees": {
+          "2-3ft": 86.95,
           "3-4ft": 106.95,
           "4-5ft": 134.95,
+          "5-6ft": 160.95,
           "6-7ft": 190.95
         },
         "meyer-lemon-tree:fast-growing-trees": {
@@ -1270,8 +1270,7 @@
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
-          "dwarf": 39.99,
-          "semi-dwarf-ez-start": 64.99
+          "dwarf": 39.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
@@ -1279,7 +1278,8 @@
           "supreme": 59.99,
           "semi-dwarf-ez-start": 64.99,
           "supreme-ez-start": 75.99,
-          "standard-ez-start": 64.99
+          "standard-ez-start": 64.99,
+          "standard": 49.99
         },
         "double-knock-out-rose:stark-bros": {
           "default": 15.99
@@ -1297,11 +1297,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 685,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: autumn-blaze-maple at nature-hills tier=3gal: $59.50 -> $119.00 (100% change)"
-  ],
+  "total_prices_collected": 687,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99
@@ -2200,8 +2198,10 @@
       "quart": 56.95
     },
     "honeycrisp-apple-tree:fast-growing-trees": {
+      "2-3ft": 86.95,
       "3-4ft": 106.95,
       "4-5ft": 134.95,
+      "5-6ft": 160.95,
       "6-7ft": 190.95
     },
     "meyer-lemon-tree:fast-growing-trees": {
@@ -2471,8 +2471,7 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
-      "dwarf": 39.99,
-      "semi-dwarf-ez-start": 64.99
+      "dwarf": 39.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
@@ -2480,7 +2479,8 @@
       "supreme": 59.99,
       "semi-dwarf-ez-start": 64.99,
       "supreme-ez-start": 75.99,
-      "standard-ez-start": 64.99
+      "standard-ez-start": 64.99,
+      "standard": 49.99
     },
     "double-knock-out-rose:stark-bros": {
       "default": 15.99
