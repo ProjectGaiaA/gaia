@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-30T18:18:31.613573+00:00",
+  "timestamp": "2026-10-31T02:18:45.913927+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -931,11 +931,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 10,
+      "products_no_sizes": 12,
       "products_regional": 0,
-      "products_priced": 53,
+      "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 132,
+      "prices_collected": 133,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1051,9 +1051,6 @@
           "2gal": 40.95,
           "3gal": 58.95
         },
-        "coral-knock-out-rose:fast-growing-trees": {
-          "3gal": 63.95
-        },
         "duke-blueberry:fast-growing-trees": {
           "1gal": 51.95
         },
@@ -1070,6 +1067,7 @@
           "4-5ft": 154.95
         },
         "kousa-dogwood:fast-growing-trees": {
+          "2-3ft": 87.95,
           "3-4ft": 97.95,
           "5-6ft": 189.95,
           "6-7ft": 239.95
@@ -1125,13 +1123,15 @@
           "default": 27.95
         },
         "october-glory-maple:fast-growing-trees": {
-          "3-4ft": 63.95,
           "5-6ft": 87.95,
           "6-7ft": 116.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
-          "3-4ft-multistem": 83.95
+          "3-4ft-multistem": 83.95,
+          "4-5ft-multistem": 103.95,
+          "5-6ft-multistem": 119.95,
+          "6-7ft": 148.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 82.95,
@@ -1147,9 +1147,6 @@
         },
         "rose-of-sharon:fast-growing-trees": {
           "6-7ft": 211.95
-        },
-        "wine-and-roses-weigela:fast-growing-trees": {
-          "1gal": 39.95
         },
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 23.95,
@@ -1274,7 +1271,7 @@
       "products_expected": 8,
       "products_found": 7,
       "products_error": 1,
-      "prices_collected": 15,
+      "prices_collected": 14,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1288,7 +1285,6 @@
           "dwarf-ez-start": 74.99,
           "dwarf": 49.99,
           "supreme": 59.99,
-          "ultra-supreme": 229.99,
           "semi-dwarf-ez-start": 64.99,
           "supreme-ez-start": 75.99,
           "standard-ez-start": 64.99,
@@ -2307,9 +2303,6 @@
       "2gal": 40.95,
       "3gal": 58.95
     },
-    "coral-knock-out-rose:fast-growing-trees": {
-      "3gal": 63.95
-    },
     "duke-blueberry:fast-growing-trees": {
       "1gal": 51.95
     },
@@ -2326,6 +2319,7 @@
       "4-5ft": 154.95
     },
     "kousa-dogwood:fast-growing-trees": {
+      "2-3ft": 87.95,
       "3-4ft": 97.95,
       "5-6ft": 189.95,
       "6-7ft": 239.95
@@ -2381,13 +2375,15 @@
       "default": 27.95
     },
     "october-glory-maple:fast-growing-trees": {
-      "3-4ft": 63.95,
       "5-6ft": 87.95,
       "6-7ft": 116.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
-      "3-4ft-multistem": 83.95
+      "3-4ft-multistem": 83.95,
+      "4-5ft-multistem": 103.95,
+      "5-6ft-multistem": 119.95,
+      "6-7ft": 148.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 82.95,
@@ -2403,9 +2399,6 @@
     },
     "rose-of-sharon:fast-growing-trees": {
       "6-7ft": 211.95
-    },
-    "wine-and-roses-weigela:fast-growing-trees": {
-      "1gal": 39.95
     },
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 23.95,
@@ -2502,7 +2495,6 @@
       "dwarf-ez-start": 74.99,
       "dwarf": 49.99,
       "supreme": 59.99,
-      "ultra-supreme": 229.99,
       "semi-dwarf-ez-start": 64.99,
       "supreme-ez-start": 75.99,
       "standard-ez-start": 64.99,
