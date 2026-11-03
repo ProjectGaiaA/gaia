@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-03T04:25:27.007335+00:00",
+  "timestamp": "2026-11-03T19:33:10.608146+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -19,18 +19,18 @@
         "endless-summer-hydrangea:nature-hills": {
           "1gal": 43.74,
           "2gal": 65.1,
-          "3gal": 61.61
+          "3gal": 77.01
         },
         "bloomstruck-hydrangea:nature-hills": {
           "quart": 23.49,
           "1gal": 44.99,
           "2gal": 67.27,
-          "3gal": 60.01
+          "3gal": 75.01
         },
         "summer-crush-hydrangea:nature-hills": {
           "quart": 19.99,
           "1gal": 43.55,
-          "2gal": 53.06,
+          "2gal": 66.33,
           "3gal": 76.98
         },
         "little-lime-hydrangea:nature-hills": {
@@ -86,7 +86,7 @@
         },
         "double-knock-out-rose:nature-hills": {
           "quart": 24.99,
-          "1gal": 31.56,
+          "1gal": 37.13,
           "3gal": 49.55,
           "2gal": 54.11
         },
@@ -320,12 +320,12 @@
       "retailer_id": "planting-tree",
       "status": "completed",
       "products_expected": 74,
-      "products_found": 71,
+      "products_found": 70,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 71,
-      "products_error": 3,
-      "prices_collected": 315,
+      "products_priced": 70,
+      "products_error": 4,
+      "prices_collected": 312,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:planting-tree": {
@@ -762,11 +762,6 @@
           "3gal": 79.95,
           "7gal": 119.95
         },
-        "nandina-heavenly-bamboo:planting-tree": {
-          "1gal": 38.95,
-          "2gal": 69.95,
-          "3gal": 46.95
-        },
         "santa-rosa-plum:planting-tree": {
           "3-4ft": 114.95,
           "4-5ft": 119.95,
@@ -986,6 +981,7 @@
         },
         "emerald-green-arborvitae:fast-growing-trees": {
           "1-2ft": 21.95,
+          "2-3ft": 43.95,
           "3-4ft": 82.95,
           "4-5ft": 152.95,
           "5-6ft": 254.95,
@@ -1025,7 +1021,6 @@
           "1-2ft": 53.95,
           "2-3ft": 75.95,
           "3-4ft": 103.95,
-          "4-5ft": 132.95,
           "5-6ft": 152.95,
           "6-7ft": 183.95
         },
@@ -1193,8 +1188,8 @@
           "quart": 15.74
         },
         "incrediball-hydrangea:proven-winners-direct": {
-          "1gal": 25.99,
-          "quart": 13.64
+          "1gal": 29.99,
+          "quart": 15.74
         },
         "fire-light-hydrangea:proven-winners-direct": {
           "1gal": 29.99,
@@ -1267,13 +1262,12 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 14,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
-          "dwarf": 39.99,
-          "semi-dwarf-ez-start": 64.99
+          "dwarf": 39.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
@@ -1300,7 +1294,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 690,
+  "total_prices_collected": 686,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1310,18 +1304,18 @@
     "endless-summer-hydrangea:nature-hills": {
       "1gal": 43.74,
       "2gal": 65.1,
-      "3gal": 61.61
+      "3gal": 77.01
     },
     "bloomstruck-hydrangea:nature-hills": {
       "quart": 23.49,
       "1gal": 44.99,
       "2gal": 67.27,
-      "3gal": 60.01
+      "3gal": 75.01
     },
     "summer-crush-hydrangea:nature-hills": {
       "quart": 19.99,
       "1gal": 43.55,
-      "2gal": 53.06,
+      "2gal": 66.33,
       "3gal": 76.98
     },
     "little-lime-hydrangea:nature-hills": {
@@ -1377,7 +1371,7 @@
     },
     "double-knock-out-rose:nature-hills": {
       "quart": 24.99,
-      "1gal": 31.56,
+      "1gal": 37.13,
       "3gal": 49.55,
       "2gal": 54.11
     },
@@ -2038,11 +2032,6 @@
       "3gal": 79.95,
       "7gal": 119.95
     },
-    "nandina-heavenly-bamboo:planting-tree": {
-      "1gal": 38.95,
-      "2gal": 69.95,
-      "3gal": 46.95
-    },
     "santa-rosa-plum:planting-tree": {
       "3-4ft": 114.95,
       "4-5ft": 119.95,
@@ -2232,6 +2221,7 @@
     },
     "emerald-green-arborvitae:fast-growing-trees": {
       "1-2ft": 21.95,
+      "2-3ft": 43.95,
       "3-4ft": 82.95,
       "4-5ft": 152.95,
       "5-6ft": 254.95,
@@ -2271,7 +2261,6 @@
       "1-2ft": 53.95,
       "2-3ft": 75.95,
       "3-4ft": 103.95,
-      "4-5ft": 132.95,
       "5-6ft": 152.95,
       "6-7ft": 183.95
     },
@@ -2424,8 +2413,8 @@
       "quart": 15.74
     },
     "incrediball-hydrangea:proven-winners-direct": {
-      "1gal": 25.99,
-      "quart": 13.64
+      "1gal": 29.99,
+      "quart": 15.74
     },
     "fire-light-hydrangea:proven-winners-direct": {
       "1gal": 29.99,
@@ -2476,8 +2465,7 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
-      "dwarf": 39.99,
-      "semi-dwarf-ez-start": 64.99
+      "dwarf": 39.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
