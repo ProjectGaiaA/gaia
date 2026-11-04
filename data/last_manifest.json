@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-04T02:56:34.470880+00:00",
+  "timestamp": "2026-11-04T19:45:24.980391+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -926,11 +926,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 12,
+      "products_no_sizes": 11,
       "products_regional": 0,
-      "products_priced": 51,
+      "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 131,
+      "prices_collected": 134,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1062,6 +1062,7 @@
         "kousa-dogwood:fast-growing-trees": {
           "2-3ft": 87.95,
           "3-4ft": 97.95,
+          "4-5ft": 93.95,
           "5-6ft": 189.95,
           "6-7ft": 239.95
         },
@@ -1144,6 +1145,10 @@
         "gardenia-frost-proof:fast-growing-trees": {
           "1gal": 23.95,
           "3gal": 45.95
+        },
+        "dwarf-alberta-spruce:fast-growing-trees": {
+          "1-2ft": 35.95,
+          "2-3ft": 53.95
         },
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 48.95,
@@ -1296,7 +1301,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 688,
+  "total_prices_collected": 691,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2304,6 +2309,7 @@
     "kousa-dogwood:fast-growing-trees": {
       "2-3ft": 87.95,
       "3-4ft": 97.95,
+      "4-5ft": 93.95,
       "5-6ft": 189.95,
       "6-7ft": 239.95
     },
@@ -2386,6 +2392,10 @@
     "gardenia-frost-proof:fast-growing-trees": {
       "1gal": 23.95,
       "3gal": 45.95
+    },
+    "dwarf-alberta-spruce:fast-growing-trees": {
+      "1-2ft": 35.95,
+      "2-3ft": 53.95
     },
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 48.95,
