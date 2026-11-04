@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-03T19:33:10.608146+00:00",
+  "timestamp": "2026-11-04T02:56:34.470880+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -930,7 +930,7 @@
       "products_regional": 0,
       "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 129,
+      "prices_collected": 131,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1093,6 +1093,7 @@
           "3gal": 54.95
         },
         "pink-muhly-grass:fast-growing-trees": {
+          "1gal": 22.95,
           "3gal": 40.95
         },
         "purple-fountain-grass:fast-growing-trees": {
@@ -1126,6 +1127,7 @@
           "6-7ft": 148.95
         },
         "red-sunset-maple:fast-growing-trees": {
+          "3-4ft": 82.95,
           "4-5ft": 100.95,
           "5-6ft": 125.95,
           "6-7ft": 176.95
@@ -1294,7 +1296,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 686,
+  "total_prices_collected": 688,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2333,6 +2335,7 @@
       "3gal": 54.95
     },
     "pink-muhly-grass:fast-growing-trees": {
+      "1gal": 22.95,
       "3gal": 40.95
     },
     "purple-fountain-grass:fast-growing-trees": {
@@ -2366,6 +2369,7 @@
       "6-7ft": 148.95
     },
     "red-sunset-maple:fast-growing-trees": {
+      "3-4ft": 82.95,
       "4-5ft": 100.95,
       "5-6ft": 125.95,
       "6-7ft": 176.95
