@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-05T03:02:13.030309+00:00",
+  "timestamp": "2026-11-05T19:51:41.687559+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -926,11 +926,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 11,
-      "products_regional": 0,
-      "products_priced": 52,
+      "products_no_sizes": 12,
+      "products_regional": 1,
+      "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 134,
+      "prices_collected": 128,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -944,8 +944,8 @@
           "2gal": 54.95,
           "3gal": 93.95
         },
-        "summer-crush-hydrangea:fast-growing-trees": {
-          "1gal": 40.95
+        "little-lime-hydrangea:fast-growing-trees": {
+          "quart": 35.95
         },
         "incrediball-hydrangea:fast-growing-trees": {
           "quart": 56.95
@@ -956,12 +956,6 @@
           "4-5ft": 134.95,
           "5-6ft": 160.95,
           "6-7ft": 190.95
-        },
-        "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 52.95,
-          "2-3ft": 98.95,
-          "3-4ft": 141.95,
-          "4-5ft": 199.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "4-5ft": 118.95,
@@ -999,7 +993,6 @@
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 23.95,
-          "2-3ft": 43.95,
           "3-4ft": 87.95,
           "4-5ft": 147.95,
           "5-6ft": 223.95
@@ -1124,8 +1117,7 @@
           "2-3ft-multistem": 66.95,
           "3-4ft-multistem": 83.95,
           "4-5ft-multistem": 103.95,
-          "5-6ft-multistem": 119.95,
-          "6-7ft": 148.95
+          "5-6ft-multistem": 119.95
         },
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 82.95,
@@ -1232,36 +1224,32 @@
       "retailer_id": "great-garden-plants",
       "status": "completed",
       "products_expected": 7,
-      "products_found": 6,
+      "products_found": 5,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 6,
-      "products_error": 1,
-      "prices_collected": 8,
+      "products_priced": 5,
+      "products_error": 2,
+      "prices_collected": 6,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:great-garden-plants": {
-          "quart": 21.99,
+          "quart": 23.99,
           "1gal": 44.99
         },
         "little-lime-hydrangea:great-garden-plants": {
           "quart": 23.99
         },
-        "incrediball-hydrangea:great-garden-plants": {
-          "quart": 21.99,
-          "1gal": 44.99
-        },
         "fire-light-hydrangea:great-garden-plants": {
-          "quart": 19.99
+          "quart": 23.99
         },
         "emerald-green-arborvitae:great-garden-plants": {
           "1gal": 29.99
         },
         "double-knock-out-rose:great-garden-plants": {
-          "quart": 19.99
+          "quart": 23.99
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     },
     {
       "retailer_id": "stark-bros",
@@ -1301,7 +1289,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 691,
+  "total_prices_collected": 683,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2191,8 +2179,8 @@
       "2gal": 54.95,
       "3gal": 93.95
     },
-    "summer-crush-hydrangea:fast-growing-trees": {
-      "1gal": 40.95
+    "little-lime-hydrangea:fast-growing-trees": {
+      "quart": 35.95
     },
     "incrediball-hydrangea:fast-growing-trees": {
       "quart": 56.95
@@ -2203,12 +2191,6 @@
       "4-5ft": 134.95,
       "5-6ft": 160.95,
       "6-7ft": 190.95
-    },
-    "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 52.95,
-      "2-3ft": 98.95,
-      "3-4ft": 141.95,
-      "4-5ft": 199.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "4-5ft": 118.95,
@@ -2246,7 +2228,6 @@
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 23.95,
-      "2-3ft": 43.95,
       "3-4ft": 87.95,
       "4-5ft": 147.95,
       "5-6ft": 223.95
@@ -2371,8 +2352,7 @@
       "2-3ft-multistem": 66.95,
       "3-4ft-multistem": 83.95,
       "4-5ft-multistem": 103.95,
-      "5-6ft-multistem": 119.95,
-      "6-7ft": 148.95
+      "5-6ft-multistem": 119.95
     },
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 82.95,
@@ -2458,24 +2438,20 @@
       "quart": 15.74
     },
     "limelight-hydrangea:great-garden-plants": {
-      "quart": 21.99,
+      "quart": 23.99,
       "1gal": 44.99
     },
     "little-lime-hydrangea:great-garden-plants": {
       "quart": 23.99
     },
-    "incrediball-hydrangea:great-garden-plants": {
-      "quart": 21.99,
-      "1gal": 44.99
-    },
     "fire-light-hydrangea:great-garden-plants": {
-      "quart": 19.99
+      "quart": 23.99
     },
     "emerald-green-arborvitae:great-garden-plants": {
       "1gal": 29.99
     },
     "double-knock-out-rose:great-garden-plants": {
-      "quart": 19.99
+      "quart": 23.99
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
@@ -2505,6 +2481,7 @@
   },
   "degraded_retailers": [
     "fast-growing-trees",
+    "great-garden-plants",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
