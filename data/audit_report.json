@@ -35,7 +35,7 @@
       "what": "larger container >10% cheaper than the next smaller one"
     },
     "D_snapshot_value_diff": {
-      "denominator": 231,
+      "denominator": 233,
       "denominator_floor": 120,
       "denominator_unit": "plant-retailer rows with a previous run to compare",
       "known_findings": 0,
@@ -54,8 +54,8 @@
     },
     "F_stock_consistency": {
       "counts": {
-        "latest_rows": 270,
-        "mobile_price_links": 281,
+        "latest_rows": 271,
+        "mobile_price_links": 283,
         "pages": 101,
         "retailer_variant_availability": {
           "fast-growing-trees": {
@@ -82,12 +82,12 @@
             "True": 5
           },
           "stark-bros": {
-            "True": 13
+            "True": 15
           }
         },
         "retailers_all_unknown_stock": [],
         "schema_instock_pages": 95,
-        "sold_out_price_cells": 278,
+        "sold_out_price_cells": 277,
         "sold_out_rows": 74,
         "table_rows": 271
       },
@@ -101,13 +101,13 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-11-05T02:25:23.141107+00:00",
+    "cutoff": "2026-11-05T18:07:47.702462+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-11-07T02:25:23.141107+00:00",
-    "pairs_fresh": 270,
-    "pairs_stale": 12,
+    "newest_row": "2026-11-07T18:07:47.702462+00:00",
+    "pairs_fresh": 271,
+    "pairs_stale": 11,
     "pairs_total": 282,
     "per_retailer": {
       "fast-growing-trees": {
@@ -135,79 +135,74 @@
         "stale": 0
       },
       "stark-bros": {
-        "fresh": 6,
-        "stale": 2
+        "fresh": 7,
+        "stale": 1
       }
     },
     "retailers_with_no_fresh_row": [],
-    "stale_at_reporting_retailers": 12,
+    "stale_at_reporting_retailers": 11,
     "stalest": [
       {
-        "hours": 5090.5,
+        "hours": 5106.3,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 4977.8,
+        "hours": 4993.5,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 4547.4,
+        "hours": 4563.1,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 3130.9,
+        "hours": 3146.6,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 1886.4,
+        "hours": 1902.2,
         "plant": "encore-azalea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1885.9,
+        "hours": 1901.6,
         "plant": "encore-azalea",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 1402.9,
+        "hours": 1418.7,
         "plant": "fire-light-hydrangea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1402.0,
+        "hours": 1417.8,
         "plant": "bing-cherry-tree",
         "retailer": "stark-bros"
       },
       {
-        "hours": 864.8,
+        "hours": 880.5,
         "plant": "sunny-knock-out-rose",
         "retailer": "planting-tree"
       },
       {
-        "hours": 745.1,
+        "hours": 760.8,
         "plant": "sweetbay-magnolia",
         "retailer": "nature-hills"
       },
       {
-        "hours": 144.8,
-        "plant": "elberta-peach-tree",
-        "retailer": "stark-bros"
-      },
-      {
-        "hours": 94.6,
+        "hours": 110.3,
         "plant": "nandina-heavenly-bamboo",
         "retailer": "planting-tree"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-11-07T02:29:15.666596+00:00",
+  "generated": "2026-11-07T18:12:22.640334+00:00",
   "notices": [
-    "12 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below",
+    "11 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below",
     "C_within_retailer_inversion: 1 new lead(s) for the weekly digest"
   ],
   "thresholds": {
