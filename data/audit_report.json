@@ -12,7 +12,7 @@
       "what": "same plant+size at 3+ nurseries, >=2.5x off the median of the others"
     },
     "B_two_nursery_pairs": {
-      "denominator": 133,
+      "denominator": 132,
       "denominator_floor": 70,
       "denominator_unit": "two-nursery tiers",
       "known_findings": 0,
@@ -44,7 +44,7 @@
       "what": "a price that moved to a different size label since the previous run"
     },
     "E_cross_page_agreement": {
-      "denominator": 553,
+      "denominator": 549,
       "denominator_floor": 280,
       "denominator_unit": "cross-page price quotes",
       "known_findings": 0,
@@ -55,12 +55,12 @@
     "F_stock_consistency": {
       "counts": {
         "latest_rows": 271,
-        "mobile_price_links": 279,
+        "mobile_price_links": 274,
         "pages": 101,
         "retailer_variant_availability": {
           "fast-growing-trees": {
             "None": 2,
-            "True": 127
+            "True": 122
           },
           "great-garden-plants": {
             "True": 8
@@ -70,8 +70,8 @@
             "True": 106
           },
           "planting-tree": {
-            "False": 190,
-            "True": 122
+            "False": 191,
+            "True": 121
           },
           "proven-winners-direct": {
             "False": 7,
@@ -86,8 +86,8 @@
           }
         },
         "retailers_all_unknown_stock": [],
-        "schema_instock_pages": 95,
-        "sold_out_price_cells": 279,
+        "schema_instock_pages": 94,
+        "sold_out_price_cells": 280,
         "sold_out_rows": 74,
         "table_rows": 271
       },
@@ -101,11 +101,11 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-11-06T18:16:01.024579+00:00",
+    "cutoff": "2026-11-07T02:30:30.831916+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-11-08T18:16:01.024579+00:00",
+    "newest_row": "2026-11-09T02:30:30.831916+00:00",
     "pairs_fresh": 271,
     "pairs_stale": 11,
     "pairs_total": 282,
@@ -143,64 +143,64 @@
     "stale_at_reporting_retailers": 11,
     "stalest": [
       {
-        "hours": 5130.4,
+        "hours": 5138.6,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 5017.6,
+        "hours": 5025.8,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 4587.3,
+        "hours": 4595.5,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 3170.8,
+        "hours": 3179.0,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 1926.3,
+        "hours": 1934.5,
         "plant": "encore-azalea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1925.8,
+        "hours": 1934.0,
         "plant": "encore-azalea",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 1442.8,
+        "hours": 1451.0,
         "plant": "fire-light-hydrangea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1441.9,
+        "hours": 1450.1,
         "plant": "bing-cherry-tree",
         "retailer": "stark-bros"
       },
       {
-        "hours": 904.7,
+        "hours": 912.9,
         "plant": "sunny-knock-out-rose",
         "retailer": "planting-tree"
       },
       {
-        "hours": 785.0,
+        "hours": 793.2,
         "plant": "sweetbay-magnolia",
         "retailer": "nature-hills"
       },
       {
-        "hours": 134.4,
+        "hours": 142.7,
         "plant": "nandina-heavenly-bamboo",
         "retailer": "planting-tree"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-11-08T18:20:36.823932+00:00",
+  "generated": "2026-11-09T02:34:51.626606+00:00",
   "notices": [
     "11 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below",
     "C_within_retailer_inversion: 1 new lead(s) for the weekly digest"

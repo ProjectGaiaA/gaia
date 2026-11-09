@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-08T18:16:01.026263+00:00",
+  "timestamp": "2026-11-09T02:30:30.833670+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -926,11 +926,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 10,
-      "products_regional": 0,
-      "products_priced": 53,
+      "products_no_sizes": 11,
+      "products_regional": 1,
+      "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 132,
+      "prices_collected": 127,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -956,12 +956,6 @@
           "4-5ft": 134.95,
           "5-6ft": 160.95,
           "6-7ft": 190.95
-        },
-        "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 52.95,
-          "2-3ft": 98.95,
-          "3-4ft": 141.95,
-          "4-5ft": 199.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "4-5ft": 118.95,
@@ -1018,7 +1012,6 @@
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
           "1-2ft": 53.95,
-          "2-3ft": 75.95,
           "3-4ft": 103.95,
           "5-6ft": 152.95,
           "6-7ft": 183.95
@@ -1267,17 +1260,14 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 7,
-      "products_error": 1,
-      "prices_collected": 14,
+      "products_found": 6,
+      "products_error": 2,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
           "dwarf": 39.99
-        },
-        "elberta-peach-tree:stark-bros": {
-          "semi-dwarf-ez-start": 75.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
@@ -1301,10 +1291,10 @@
           "default": 25.99
         }
       },
-      "health": "healthy"
+      "health": "degraded"
     }
   ],
-  "total_prices_collected": 690,
+  "total_prices_collected": 684,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2207,12 +2197,6 @@
       "5-6ft": 160.95,
       "6-7ft": 190.95
     },
-    "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 52.95,
-      "2-3ft": 98.95,
-      "3-4ft": 141.95,
-      "4-5ft": 199.95
-    },
     "fuji-apple-tree:fast-growing-trees": {
       "4-5ft": 118.95,
       "5-6ft": 114.95,
@@ -2268,7 +2252,6 @@
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
       "1-2ft": 53.95,
-      "2-3ft": 75.95,
       "3-4ft": 103.95,
       "5-6ft": 152.95,
       "6-7ft": 183.95
@@ -2484,9 +2467,6 @@
       "dwarf-ez-start": 74.99,
       "dwarf": 39.99
     },
-    "elberta-peach-tree:stark-bros": {
-      "semi-dwarf-ez-start": 75.99
-    },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
       "dwarf": 49.99,
@@ -2510,7 +2490,8 @@
     }
   },
   "degraded_retailers": [
-    "fast-growing-trees"
+    "fast-growing-trees",
+    "stark-bros"
   ],
   "pipeline_status": "degraded"
 }
