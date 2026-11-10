@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-09T22:37:35.259670+00:00",
+  "timestamp": "2026-11-10T05:04:42.891208+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -926,11 +926,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 11,
+      "products_no_sizes": 10,
       "products_regional": 0,
-      "products_priced": 52,
+      "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 126,
+      "prices_collected": 129,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1050,7 +1050,9 @@
           "1gal": 51.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "4inch": 24.95,
+          "quart": 24.95,
+          "1gal": 45.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "2gal": 90.95
@@ -1155,6 +1157,9 @@
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
           "3gal": 60.95
+        },
+        "santa-rosa-plum:fast-growing-trees": {
+          "4-5ft": 90.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "6-inch": 40.95,
@@ -1293,7 +1298,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 683,
+  "total_prices_collected": 686,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2289,7 +2294,9 @@
       "1gal": 51.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "4inch": 24.95,
+      "quart": 24.95,
+      "1gal": 45.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "2gal": 90.95
@@ -2394,6 +2401,9 @@
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
       "3gal": 60.95
+    },
+    "santa-rosa-plum:fast-growing-trees": {
+      "4-5ft": 90.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "6-inch": 40.95,
