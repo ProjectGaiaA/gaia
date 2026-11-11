@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-10T19:47:50.394763+00:00",
+  "timestamp": "2026-11-11T02:46:42.942393+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -926,11 +926,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 11,
+      "products_no_sizes": 12,
       "products_regional": 0,
-      "products_priced": 52,
+      "products_priced": 51,
       "products_error": 4,
-      "prices_collected": 130,
+      "prices_collected": 129,
       "anomalies": [],
       "price_records": {
         "nikko-blue-hydrangea:fast-growing-trees": {
@@ -1025,7 +1025,8 @@
           "6-7ft": 201.95
         },
         "crimson-queen-japanese-maple:fast-growing-trees": {
-          "1-2ft": 61.95
+          "1-2ft": 61.95,
+          "2-3ft": 75.95
         },
         "emperor-japanese-maple:fast-growing-trees": {
           "1-2ft": 48.95,
@@ -1127,7 +1128,6 @@
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 82.95,
           "4-5ft": 100.95,
-          "5-6ft": 125.95,
           "6-7ft": 176.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
@@ -1152,9 +1152,6 @@
           "3gal": 66.95
         },
         "autumn-twist-encore-azalea:fast-growing-trees": {
-          "3gal": 60.95
-        },
-        "autumn-angel-encore-azalea:fast-growing-trees": {
           "3gal": 60.95
         },
         "santa-rosa-plum:fast-growing-trees": {
@@ -1265,7 +1262,7 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 12,
+      "prices_collected": 13,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
@@ -1274,6 +1271,7 @@
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
+          "dwarf": 49.99,
           "supreme": 59.99,
           "semi-dwarf-ez-start": 64.99,
           "supreme-ez-start": 75.99,
@@ -2267,7 +2265,8 @@
       "6-7ft": 201.95
     },
     "crimson-queen-japanese-maple:fast-growing-trees": {
-      "1-2ft": 61.95
+      "1-2ft": 61.95,
+      "2-3ft": 75.95
     },
     "emperor-japanese-maple:fast-growing-trees": {
       "1-2ft": 48.95,
@@ -2369,7 +2368,6 @@
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 82.95,
       "4-5ft": 100.95,
-      "5-6ft": 125.95,
       "6-7ft": 176.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
@@ -2394,9 +2392,6 @@
       "3gal": 66.95
     },
     "autumn-twist-encore-azalea:fast-growing-trees": {
-      "3gal": 60.95
-    },
-    "autumn-angel-encore-azalea:fast-growing-trees": {
       "3gal": 60.95
     },
     "santa-rosa-plum:fast-growing-trees": {
@@ -2474,6 +2469,7 @@
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
+      "dwarf": 49.99,
       "supreme": 59.99,
       "semi-dwarf-ez-start": 64.99,
       "supreme-ez-start": 75.99,
