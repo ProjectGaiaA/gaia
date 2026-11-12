@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-11T19:38:24.101335+00:00",
+  "timestamp": "2026-11-12T03:47:18.087389+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -11,9 +11,7 @@
       "products_priced": 77,
       "products_error": 1,
       "prices_collected": 146,
-      "anomalies": [
-        "ANOMALY: miss-kim-lilac at nature-hills tier=3gal: $81.03 -> $32.41 (60% change)"
-      ],
+      "anomalies": [],
       "price_records": {
         "limelight-hydrangea:nature-hills": {
           "quart": 26.99
@@ -932,7 +930,7 @@
       "products_regional": 0,
       "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 131,
+      "prices_collected": 133,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -966,6 +964,7 @@
           "4-5ft": 199.95
         },
         "fuji-apple-tree:fast-growing-trees": {
+          "3-4ft": 92.95,
           "4-5ft": 118.95,
           "5-6ft": 114.95,
           "6-7ft": 178.95
@@ -1055,7 +1054,8 @@
         "pink-lemonade-blueberry:fast-growing-trees": {
           "4inch": 24.95,
           "quart": 24.95,
-          "1gal": 45.95
+          "1gal": 45.95,
+          "3gal": 59.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
           "2gal": 90.95
@@ -1300,11 +1300,9 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 688,
-  "total_anomalies": 1,
-  "anomalies": [
-    "ANOMALY: miss-kim-lilac at nature-hills tier=3gal: $81.03 -> $32.41 (60% change)"
-  ],
+  "total_prices_collected": 690,
+  "total_anomalies": 0,
+  "anomalies": [],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99
@@ -2212,6 +2210,7 @@
       "4-5ft": 199.95
     },
     "fuji-apple-tree:fast-growing-trees": {
+      "3-4ft": 92.95,
       "4-5ft": 118.95,
       "5-6ft": 114.95,
       "6-7ft": 178.95
@@ -2301,7 +2300,8 @@
     "pink-lemonade-blueberry:fast-growing-trees": {
       "4inch": 24.95,
       "quart": 24.95,
-      "1gal": 45.95
+      "1gal": 45.95,
+      "3gal": 59.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
       "2gal": 90.95
