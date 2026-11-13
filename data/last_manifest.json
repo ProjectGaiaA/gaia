@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-12T20:03:30.244912+00:00",
+  "timestamp": "2026-11-13T03:25:30.089666+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -926,12 +926,14 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 12,
+      "products_no_sizes": 11,
       "products_regional": 0,
-      "products_priced": 51,
+      "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 135,
-      "anomalies": [],
+      "prices_collected": 136,
+      "anomalies": [
+        "ANOMALY: blue-rug-juniper at fast-growing-trees tier=2gal: $121.95 -> $49.95 (59% change)"
+      ],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
           "quart": 33.95
@@ -1098,8 +1100,8 @@
           "1gal": 45.95
         },
         "blue-rug-juniper:fast-growing-trees": {
-          "2gal": 121.95,
-          "3gal": 54.95
+          "2gal": 49.95,
+          "3gal": 59.95
         },
         "pink-muhly-grass:fast-growing-trees": {
           "1gal": 22.95,
@@ -1159,6 +1161,9 @@
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 48.95,
           "3gal": 66.95
+        },
+        "autumn-angel-encore-azalea:fast-growing-trees": {
+          "1gal": 33.95
         },
         "santa-rosa-plum:fast-growing-trees": {
           "4-5ft": 90.95
@@ -1300,9 +1305,11 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 692,
-  "total_anomalies": 0,
-  "anomalies": [],
+  "total_prices_collected": 693,
+  "total_anomalies": 1,
+  "anomalies": [
+    "ANOMALY: blue-rug-juniper at fast-growing-trees tier=2gal: $121.95 -> $49.95 (59% change)"
+  ],
   "prices": {
     "limelight-hydrangea:nature-hills": {
       "quart": 26.99
@@ -2344,8 +2351,8 @@
       "1gal": 45.95
     },
     "blue-rug-juniper:fast-growing-trees": {
-      "2gal": 121.95,
-      "3gal": 54.95
+      "2gal": 49.95,
+      "3gal": 59.95
     },
     "pink-muhly-grass:fast-growing-trees": {
       "1gal": 22.95,
@@ -2405,6 +2412,9 @@
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 48.95,
       "3gal": 66.95
+    },
+    "autumn-angel-encore-azalea:fast-growing-trees": {
+      "1gal": 33.95
     },
     "santa-rosa-plum:fast-growing-trees": {
       "4-5ft": 90.95
