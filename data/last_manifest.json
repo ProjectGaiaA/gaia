@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-13T19:45:19.594672+00:00",
+  "timestamp": "2026-11-14T02:54:55.968737+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -926,11 +926,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 11,
+      "products_no_sizes": 10,
       "products_regional": 0,
-      "products_priced": 52,
+      "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 137,
+      "prices_collected": 141,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1041,7 +1041,8 @@
           "4-5ft": 99.95
         },
         "tamukeyama-japanese-maple:fast-growing-trees": {
-          "2-3ft": 55.95
+          "2-3ft": 55.95,
+          "3-4ft": 78.95
         },
         "double-knock-out-rose:fast-growing-trees": {
           "1gal": 25.95,
@@ -1103,6 +1104,7 @@
           "3gal": 59.95
         },
         "pink-muhly-grass:fast-growing-trees": {
+          "1gal": 22.95,
           "3gal": 40.95
         },
         "purple-fountain-grass:fast-growing-trees": {
@@ -1126,7 +1128,8 @@
         },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 63.95,
-          "5-6ft": 87.95
+          "5-6ft": 87.95,
+          "6-7ft": 116.95
         },
         "heritage-river-birch:fast-growing-trees": {
           "2-3ft-multistem": 66.95,
@@ -1160,6 +1163,9 @@
         "autumn-royalty-encore-azalea:fast-growing-trees": {
           "1gal": 34.95,
           "3gal": 66.95
+        },
+        "autumn-twist-encore-azalea:fast-growing-trees": {
+          "3gal": 60.95
         },
         "autumn-angel-encore-azalea:fast-growing-trees": {
           "1gal": 33.95
@@ -1235,36 +1241,15 @@
       "retailer_id": "great-garden-plants",
       "status": "completed",
       "products_expected": 7,
-      "products_found": 6,
+      "products_found": 0,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 6,
-      "products_error": 1,
-      "prices_collected": 8,
+      "products_priced": 0,
+      "products_error": 7,
+      "prices_collected": 0,
       "anomalies": [],
-      "price_records": {
-        "limelight-hydrangea:great-garden-plants": {
-          "quart": 23.99,
-          "1gal": 44.99
-        },
-        "little-lime-hydrangea:great-garden-plants": {
-          "quart": 23.99
-        },
-        "incrediball-hydrangea:great-garden-plants": {
-          "quart": 23.99,
-          "1gal": 44.99
-        },
-        "fire-light-hydrangea:great-garden-plants": {
-          "quart": 23.99
-        },
-        "emerald-green-arborvitae:great-garden-plants": {
-          "1gal": 29.99
-        },
-        "double-knock-out-rose:great-garden-plants": {
-          "quart": 23.99
-        }
-      },
-      "health": "healthy"
+      "price_records": {},
+      "health": "degraded"
     },
     {
       "retailer_id": "stark-bros",
@@ -1304,7 +1289,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 694,
+  "total_prices_collected": 690,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2291,7 +2276,8 @@
       "4-5ft": 99.95
     },
     "tamukeyama-japanese-maple:fast-growing-trees": {
-      "2-3ft": 55.95
+      "2-3ft": 55.95,
+      "3-4ft": 78.95
     },
     "double-knock-out-rose:fast-growing-trees": {
       "1gal": 25.95,
@@ -2353,6 +2339,7 @@
       "3gal": 59.95
     },
     "pink-muhly-grass:fast-growing-trees": {
+      "1gal": 22.95,
       "3gal": 40.95
     },
     "purple-fountain-grass:fast-growing-trees": {
@@ -2376,7 +2363,8 @@
     },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 63.95,
-      "5-6ft": 87.95
+      "5-6ft": 87.95,
+      "6-7ft": 116.95
     },
     "heritage-river-birch:fast-growing-trees": {
       "2-3ft-multistem": 66.95,
@@ -2410,6 +2398,9 @@
     "autumn-royalty-encore-azalea:fast-growing-trees": {
       "1gal": 34.95,
       "3gal": 66.95
+    },
+    "autumn-twist-encore-azalea:fast-growing-trees": {
+      "3gal": 60.95
     },
     "autumn-angel-encore-azalea:fast-growing-trees": {
       "1gal": 33.95
@@ -2463,26 +2454,6 @@
       "1gal": 29.99,
       "quart": 15.99
     },
-    "limelight-hydrangea:great-garden-plants": {
-      "quart": 23.99,
-      "1gal": 44.99
-    },
-    "little-lime-hydrangea:great-garden-plants": {
-      "quart": 23.99
-    },
-    "incrediball-hydrangea:great-garden-plants": {
-      "quart": 23.99,
-      "1gal": 44.99
-    },
-    "fire-light-hydrangea:great-garden-plants": {
-      "quart": 23.99
-    },
-    "emerald-green-arborvitae:great-garden-plants": {
-      "1gal": 29.99
-    },
-    "double-knock-out-rose:great-garden-plants": {
-      "quart": 23.99
-    },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 59.99,
       "dwarf": 39.99
@@ -2511,6 +2482,7 @@
   },
   "degraded_retailers": [
     "fast-growing-trees",
+    "great-garden-plants",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
