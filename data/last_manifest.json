@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-14T02:54:55.968737+00:00",
+  "timestamp": "2026-11-14T18:09:19.792225+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -930,7 +930,7 @@
       "products_regional": 0,
       "products_priced": 53,
       "products_error": 4,
-      "prices_collected": 141,
+      "prices_collected": 140,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1085,8 +1085,7 @@
           "6-7ft": 217.95
         },
         "crape-myrtle:fast-growing-trees": {
-          "3-4ft-multistem": 105.95,
-          "5-6ft-multistem": 176.95
+          "3-4ft-multistem": 105.95
         },
         "delaware-valley-white-azalea:fast-growing-trees": {
           "1gal": 23.95,
@@ -1241,15 +1240,36 @@
       "retailer_id": "great-garden-plants",
       "status": "completed",
       "products_expected": 7,
-      "products_found": 0,
+      "products_found": 6,
       "products_no_sizes": 0,
       "products_regional": 0,
-      "products_priced": 0,
-      "products_error": 7,
-      "prices_collected": 0,
+      "products_priced": 6,
+      "products_error": 1,
+      "prices_collected": 8,
       "anomalies": [],
-      "price_records": {},
-      "health": "degraded"
+      "price_records": {
+        "limelight-hydrangea:great-garden-plants": {
+          "quart": 23.99,
+          "1gal": 44.99
+        },
+        "little-lime-hydrangea:great-garden-plants": {
+          "quart": 23.99
+        },
+        "incrediball-hydrangea:great-garden-plants": {
+          "quart": 23.99,
+          "1gal": 44.99
+        },
+        "fire-light-hydrangea:great-garden-plants": {
+          "quart": 23.99
+        },
+        "emerald-green-arborvitae:great-garden-plants": {
+          "1gal": 29.99
+        },
+        "double-knock-out-rose:great-garden-plants": {
+          "quart": 23.99
+        }
+      },
+      "health": "healthy"
     },
     {
       "retailer_id": "stark-bros",
@@ -1289,7 +1309,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 690,
+  "total_prices_collected": 697,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2320,8 +2340,7 @@
       "6-7ft": 217.95
     },
     "crape-myrtle:fast-growing-trees": {
-      "3-4ft-multistem": 105.95,
-      "5-6ft-multistem": 176.95
+      "3-4ft-multistem": 105.95
     },
     "delaware-valley-white-azalea:fast-growing-trees": {
       "1gal": 23.95,
@@ -2454,6 +2473,26 @@
       "1gal": 29.99,
       "quart": 15.99
     },
+    "limelight-hydrangea:great-garden-plants": {
+      "quart": 23.99,
+      "1gal": 44.99
+    },
+    "little-lime-hydrangea:great-garden-plants": {
+      "quart": 23.99
+    },
+    "incrediball-hydrangea:great-garden-plants": {
+      "quart": 23.99,
+      "1gal": 44.99
+    },
+    "fire-light-hydrangea:great-garden-plants": {
+      "quart": 23.99
+    },
+    "emerald-green-arborvitae:great-garden-plants": {
+      "1gal": 29.99
+    },
+    "double-knock-out-rose:great-garden-plants": {
+      "quart": 23.99
+    },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 59.99,
       "dwarf": 39.99
@@ -2482,7 +2521,6 @@
   },
   "degraded_retailers": [
     "fast-growing-trees",
-    "great-garden-plants",
     "stark-bros"
   ],
   "pipeline_status": "degraded"
