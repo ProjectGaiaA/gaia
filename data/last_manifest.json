@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-14T18:09:19.792225+00:00",
+  "timestamp": "2026-11-15T02:33:20.452946+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -926,11 +926,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 10,
-      "products_regional": 0,
-      "products_priced": 53,
+      "products_no_sizes": 11,
+      "products_regional": 1,
+      "products_priced": 52,
       "products_error": 4,
-      "prices_collected": 140,
+      "prices_collected": 136,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -956,12 +956,6 @@
           "4-5ft": 134.95,
           "5-6ft": 160.95,
           "6-7ft": 190.95
-        },
-        "meyer-lemon-tree:fast-growing-trees": {
-          "1-2ft": 52.95,
-          "2-3ft": 98.95,
-          "3-4ft": 141.95,
-          "4-5ft": 199.95
         },
         "fuji-apple-tree:fast-growing-trees": {
           "3-4ft": 92.95,
@@ -1309,7 +1303,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 697,
+  "total_prices_collected": 693,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2211,12 +2205,6 @@
       "4-5ft": 134.95,
       "5-6ft": 160.95,
       "6-7ft": 190.95
-    },
-    "meyer-lemon-tree:fast-growing-trees": {
-      "1-2ft": 52.95,
-      "2-3ft": 98.95,
-      "3-4ft": 141.95,
-      "4-5ft": 199.95
     },
     "fuji-apple-tree:fast-growing-trees": {
       "3-4ft": 92.95,
