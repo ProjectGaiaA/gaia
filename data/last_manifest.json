@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-19T04:06:34.034043+00:00",
+  "timestamp": "2026-11-19T20:41:39.862910+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -793,7 +793,7 @@
       "products_regional": 0,
       "products_priced": 32,
       "products_error": 2,
-      "prices_collected": 60,
+      "prices_collected": 59,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:spring-hill": {
@@ -888,7 +888,6 @@
           "1gal": 29.99
         },
         "pink-muhly-grass:spring-hill": {
-          "jumbo-bareroot": 39.99,
           "3inch-bareroot": 16.99
         },
         "blue-fescue-elijah-blue:spring-hill": {
@@ -928,11 +927,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 5,
+      "products_no_sizes": 4,
       "products_regional": 0,
-      "products_priced": 58,
+      "products_priced": 59,
       "products_error": 4,
-      "prices_collected": 149,
+      "prices_collected": 152,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1021,6 +1020,7 @@
           "7gal": 169.95
         },
         "bloodgood-japanese-maple:fast-growing-trees": {
+          "1-2ft": 53.95,
           "2-3ft": 75.95,
           "3-4ft": 103.95,
           "4-5ft": 132.95,
@@ -1189,6 +1189,10 @@
         "autumn-twist-encore-azalea:fast-growing-trees": {
           "3gal": 60.95
         },
+        "autumn-angel-encore-azalea:fast-growing-trees": {
+          "1gal": 33.95,
+          "3gal": 60.95
+        },
         "santa-rosa-plum:fast-growing-trees": {
           "4-5ft": 90.95
         },
@@ -1332,7 +1336,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 710,
+  "total_prices_collected": 712,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2181,7 +2185,6 @@
       "1gal": 29.99
     },
     "pink-muhly-grass:spring-hill": {
-      "jumbo-bareroot": 39.99,
       "3inch-bareroot": 16.99
     },
     "blue-fescue-elijah-blue:spring-hill": {
@@ -2299,6 +2302,7 @@
       "7gal": 169.95
     },
     "bloodgood-japanese-maple:fast-growing-trees": {
+      "1-2ft": 53.95,
       "2-3ft": 75.95,
       "3-4ft": 103.95,
       "4-5ft": 132.95,
@@ -2465,6 +2469,10 @@
       "3gal": 66.95
     },
     "autumn-twist-encore-azalea:fast-growing-trees": {
+      "3gal": 60.95
+    },
+    "autumn-angel-encore-azalea:fast-growing-trees": {
+      "1gal": 33.95,
       "3gal": 60.95
     },
     "santa-rosa-plum:fast-growing-trees": {
