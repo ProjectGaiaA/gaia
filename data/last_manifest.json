@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-21T04:03:22.121336+00:00",
+  "timestamp": "2026-11-21T19:13:29.332650+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -927,11 +927,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 6,
+      "products_no_sizes": 5,
       "products_regional": 0,
-      "products_priced": 57,
+      "products_priced": 58,
       "products_error": 4,
-      "prices_collected": 146,
+      "prices_collected": 147,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1139,6 +1139,9 @@
         "happy-returns-daylily:fast-growing-trees": {
           "default": 27.95
         },
+        "catmint-walkers-low:fast-growing-trees": {
+          "1gal": 26.95
+        },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 63.95,
           "5-6ft": 87.95,
@@ -1325,7 +1328,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 705,
+  "total_prices_collected": 706,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2409,6 +2412,9 @@
     },
     "happy-returns-daylily:fast-growing-trees": {
       "default": 27.95
+    },
+    "catmint-walkers-low:fast-growing-trees": {
+      "1gal": 26.95
     },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 63.95,
