@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-23T03:16:25.285900+00:00",
+  "timestamp": "2026-11-23T23:46:10.134745+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -198,7 +198,7 @@
           "3gal": 82.58
         },
         "forsythia-lynwood-gold:nature-hills": {
-          "3gal": 61.46
+          "3gal": 50.61
         },
         "miss-kim-lilac:nature-hills": {
           "1gal": 27.6,
@@ -927,11 +927,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 5,
+      "products_no_sizes": 4,
       "products_regional": 0,
-      "products_priced": 58,
+      "products_priced": 59,
       "products_error": 4,
-      "prices_collected": 145,
+      "prices_collected": 150,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1000,7 +1000,6 @@
           "6-7ft-jumbo": 549.95
         },
         "leyland-cypress:fast-growing-trees": {
-          "1-2ft": 23.95,
           "4-5ft": 147.95,
           "5-6ft": 223.95
         },
@@ -1057,10 +1056,13 @@
           "1gal": 51.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "2gal": 44.95
+          "4inch": 24.95,
+          "quart": 24.95,
+          "1gal": 45.95,
+          "3gal": 59.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
-          "default": 34.95
+          "1gal": 34.95
         },
         "dogwood-tree:fast-growing-trees": {
           "4-5ft": 154.95
@@ -1085,6 +1087,7 @@
         },
         "crape-myrtle:fast-growing-trees": {
           "3-4ft-multistem": 105.95,
+          "4-5ft-multistem": 140.95,
           "5-6ft-multistem": 176.95
         },
         "pjm-rhododendron:fast-growing-trees": {
@@ -1154,6 +1157,7 @@
         "red-sunset-maple:fast-growing-trees": {
           "3-4ft": 82.95,
           "4-5ft": 100.95,
+          "5-6ft": 125.95,
           "6-7ft": 176.95
         },
         "sweetbay-magnolia:fast-growing-trees": {
@@ -1186,6 +1190,9 @@
         "autumn-angel-encore-azalea:fast-growing-trees": {
           "1gal": 33.95,
           "3gal": 60.95
+        },
+        "santa-rosa-plum:fast-growing-trees": {
+          "4-5ft": 90.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "6-inch": 40.95,
@@ -1293,12 +1300,13 @@
       "products_expected": 8,
       "products_found": 6,
       "products_error": 2,
-      "prices_collected": 14,
+      "prices_collected": 15,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 59.99,
-          "dwarf": 39.99
+          "dwarf": 39.99,
+          "semi-dwarf-ez-start": 64.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
@@ -1326,7 +1334,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 704,
+  "total_prices_collected": 710,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -1515,7 +1523,7 @@
       "3gal": 82.58
     },
     "forsythia-lynwood-gold:nature-hills": {
-      "3gal": 61.46
+      "3gal": 50.61
     },
     "miss-kim-lilac:nature-hills": {
       "1gal": 27.6,
@@ -2272,7 +2280,6 @@
       "6-7ft-jumbo": 549.95
     },
     "leyland-cypress:fast-growing-trees": {
-      "1-2ft": 23.95,
       "4-5ft": 147.95,
       "5-6ft": 223.95
     },
@@ -2329,10 +2336,13 @@
       "1gal": 51.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "2gal": 44.95
+      "4inch": 24.95,
+      "quart": 24.95,
+      "1gal": 45.95,
+      "3gal": 59.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
-      "default": 34.95
+      "1gal": 34.95
     },
     "dogwood-tree:fast-growing-trees": {
       "4-5ft": 154.95
@@ -2357,6 +2367,7 @@
     },
     "crape-myrtle:fast-growing-trees": {
       "3-4ft-multistem": 105.95,
+      "4-5ft-multistem": 140.95,
       "5-6ft-multistem": 176.95
     },
     "pjm-rhododendron:fast-growing-trees": {
@@ -2426,6 +2437,7 @@
     "red-sunset-maple:fast-growing-trees": {
       "3-4ft": 82.95,
       "4-5ft": 100.95,
+      "5-6ft": 125.95,
       "6-7ft": 176.95
     },
     "sweetbay-magnolia:fast-growing-trees": {
@@ -2458,6 +2470,9 @@
     "autumn-angel-encore-azalea:fast-growing-trees": {
       "1gal": 33.95,
       "3gal": 60.95
+    },
+    "santa-rosa-plum:fast-growing-trees": {
+      "4-5ft": 90.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "6-inch": 40.95,
@@ -2528,7 +2543,8 @@
     },
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 59.99,
-      "dwarf": 39.99
+      "dwarf": 39.99,
+      "semi-dwarf-ez-start": 64.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
