@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-22T19:33:50.765782+00:00",
+  "timestamp": "2026-11-23T03:16:25.285900+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -927,11 +927,11 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 4,
+      "products_no_sizes": 5,
       "products_regional": 0,
-      "products_priced": 59,
+      "products_priced": 58,
       "products_error": 4,
-      "prices_collected": 150,
+      "prices_collected": 145,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1001,7 +1001,6 @@
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 23.95,
-          "3-4ft": 87.95,
           "4-5ft": 147.95,
           "5-6ft": 223.95
         },
@@ -1058,13 +1057,10 @@
           "1gal": 51.95
         },
         "pink-lemonade-blueberry:fast-growing-trees": {
-          "4inch": 24.95,
-          "quart": 24.95,
-          "1gal": 45.95,
-          "3gal": 59.95
+          "2gal": 44.95
         },
         "sunshine-blue-blueberry:fast-growing-trees": {
-          "1gal": 34.95
+          "default": 34.95
         },
         "dogwood-tree:fast-growing-trees": {
           "4-5ft": 154.95
@@ -1190,9 +1186,6 @@
         "autumn-angel-encore-azalea:fast-growing-trees": {
           "1gal": 33.95,
           "3gal": 60.95
-        },
-        "santa-rosa-plum:fast-growing-trees": {
-          "4-5ft": 90.95
         },
         "dwarf-cavendish-banana:fast-growing-trees": {
           "6-inch": 40.95,
@@ -1333,7 +1326,7 @@
       "health": "degraded"
     }
   ],
-  "total_prices_collected": 709,
+  "total_prices_collected": 704,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2280,7 +2273,6 @@
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 23.95,
-      "3-4ft": 87.95,
       "4-5ft": 147.95,
       "5-6ft": 223.95
     },
@@ -2337,13 +2329,10 @@
       "1gal": 51.95
     },
     "pink-lemonade-blueberry:fast-growing-trees": {
-      "4inch": 24.95,
-      "quart": 24.95,
-      "1gal": 45.95,
-      "3gal": 59.95
+      "2gal": 44.95
     },
     "sunshine-blue-blueberry:fast-growing-trees": {
-      "1gal": 34.95
+      "default": 34.95
     },
     "dogwood-tree:fast-growing-trees": {
       "4-5ft": 154.95
@@ -2469,9 +2458,6 @@
     "autumn-angel-encore-azalea:fast-growing-trees": {
       "1gal": 33.95,
       "3gal": 60.95
-    },
-    "santa-rosa-plum:fast-growing-trees": {
-      "4-5ft": 90.95
     },
     "dwarf-cavendish-banana:fast-growing-trees": {
       "6-inch": 40.95,
