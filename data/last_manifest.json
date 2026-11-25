@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-25T05:53:17.308428+00:00",
+  "timestamp": "2026-11-25T21:42:16.989339+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -931,7 +931,7 @@
       "products_regional": 0,
       "products_priced": 58,
       "products_error": 4,
-      "prices_collected": 152,
+      "prices_collected": 153,
       "anomalies": [],
       "price_records": {
         "limelight-hydrangea:fast-growing-trees": {
@@ -1002,6 +1002,7 @@
         },
         "leyland-cypress:fast-growing-trees": {
           "1-2ft": 23.95,
+          "2-3ft": 43.95,
           "3-4ft": 87.95,
           "4-5ft": 147.95,
           "5-6ft": 223.95
@@ -1287,15 +1288,26 @@
       "retailer_id": "stark-bros",
       "status": "completed",
       "products_expected": 8,
-      "products_found": 6,
-      "products_error": 2,
-      "prices_collected": 15,
+      "products_found": 8,
+      "products_error": 0,
+      "prices_collected": 22,
       "anomalies": [],
       "price_records": {
         "honeycrisp-apple-tree:stark-bros": {
           "dwarf-ez-start": 59.99,
           "dwarf": 39.99,
-          "semi-dwarf-ez-start": 64.99
+          "supreme": 49.99,
+          "semi-dwarf-ez-start": 64.99,
+          "semi-dwarf": 49.99
+        },
+        "bing-cherry-tree:stark-bros": {
+          "semi-dwarf": 59.99,
+          "supreme": 69.99
+        },
+        "elberta-peach-tree:stark-bros": {
+          "semi-dwarf-ez-start": 75.99,
+          "semi-dwarf": 49.99,
+          "supreme": 69.99
         },
         "bartlett-pear-tree:stark-bros": {
           "dwarf-ez-start": 74.99,
@@ -1314,16 +1326,16 @@
           "default": 25.99
         },
         "patriot-blueberry:stark-bros": {
-          "default": 21.99
+          "default": 27.99
         },
         "pink-lemonade-blueberry:stark-bros": {
-          "default": 18.99
+          "default": 37.99
         }
       },
-      "health": "degraded"
+      "health": "healthy"
     }
   ],
-  "total_prices_collected": 705,
+  "total_prices_collected": 713,
   "total_anomalies": 0,
   "anomalies": [],
   "prices": {
@@ -2271,6 +2283,7 @@
     },
     "leyland-cypress:fast-growing-trees": {
       "1-2ft": 23.95,
+      "2-3ft": 43.95,
       "3-4ft": 87.95,
       "4-5ft": 147.95,
       "5-6ft": 223.95
@@ -2522,7 +2535,18 @@
     "honeycrisp-apple-tree:stark-bros": {
       "dwarf-ez-start": 59.99,
       "dwarf": 39.99,
-      "semi-dwarf-ez-start": 64.99
+      "supreme": 49.99,
+      "semi-dwarf-ez-start": 64.99,
+      "semi-dwarf": 49.99
+    },
+    "bing-cherry-tree:stark-bros": {
+      "semi-dwarf": 59.99,
+      "supreme": 69.99
+    },
+    "elberta-peach-tree:stark-bros": {
+      "semi-dwarf-ez-start": 75.99,
+      "semi-dwarf": 49.99,
+      "supreme": 69.99
     },
     "bartlett-pear-tree:stark-bros": {
       "dwarf-ez-start": 74.99,
@@ -2541,15 +2565,14 @@
       "default": 25.99
     },
     "patriot-blueberry:stark-bros": {
-      "default": 21.99
+      "default": 27.99
     },
     "pink-lemonade-blueberry:stark-bros": {
-      "default": 18.99
+      "default": 37.99
     }
   },
   "degraded_retailers": [
-    "proven-winners-direct",
-    "stark-bros"
+    "proven-winners-direct"
   ],
   "pipeline_status": "degraded"
 }
