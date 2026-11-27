@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-27T05:05:28.849452+00:00",
+  "timestamp": "2026-11-27T21:09:02.934644+00:00",
   "retailers": [
     {
       "retailer_id": "nature-hills",
@@ -927,9 +927,9 @@
       "status": "completed",
       "products_expected": 67,
       "products_found": 63,
-      "products_no_sizes": 5,
+      "products_no_sizes": 4,
       "products_regional": 0,
-      "products_priced": 58,
+      "products_priced": 59,
       "products_error": 4,
       "prices_collected": 153,
       "anomalies": [],
@@ -1144,9 +1144,11 @@
         "happy-returns-daylily:fast-growing-trees": {
           "default": 27.95
         },
+        "catmint-walkers-low:fast-growing-trees": {
+          "1gal": 26.95
+        },
         "october-glory-maple:fast-growing-trees": {
           "3-4ft": 63.95,
-          "5-6ft": 87.95,
           "6-7ft": 116.95
         },
         "heritage-river-birch:fast-growing-trees": {
@@ -2425,9 +2427,11 @@
     "happy-returns-daylily:fast-growing-trees": {
       "default": 27.95
     },
+    "catmint-walkers-low:fast-growing-trees": {
+      "1gal": 26.95
+    },
     "october-glory-maple:fast-growing-trees": {
       "3-4ft": 63.95,
-      "5-6ft": 87.95,
       "6-7ft": 116.95
     },
     "heritage-river-birch:fast-growing-trees": {
