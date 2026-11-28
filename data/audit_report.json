@@ -70,7 +70,7 @@
       "what": "larger container >10% cheaper than the next smaller one"
     },
     "D_snapshot_value_diff": {
-      "denominator": 233,
+      "denominator": 234,
       "denominator_floor": 120,
       "denominator_unit": "plant-retailer rows with a previous run to compare",
       "known_findings": 0,
@@ -137,11 +137,11 @@
     }
   },
   "freshness": {
-    "cutoff": "2026-11-25T21:09:02.933183+00:00",
+    "cutoff": "2026-11-26T04:48:31.391627+00:00",
     "fresh_window_hours": 48,
     "future_retailers": [],
     "future_rows": [],
-    "newest_row": "2026-11-27T21:09:02.933183+00:00",
+    "newest_row": "2026-11-28T04:48:31.391627+00:00",
     "pairs_fresh": 272,
     "pairs_stale": 10,
     "pairs_total": 282,
@@ -179,59 +179,59 @@
     "stale_at_reporting_retailers": 10,
     "stalest": [
       {
-        "hours": 5589.3,
+        "hours": 5596.9,
         "plant": "sunny-knock-out-rose",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 5476.5,
+        "hours": 5484.1,
         "plant": "hameln-dwarf-fountain-grass",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 5046.1,
+        "hours": 5053.8,
         "plant": "miscanthus-morning-light",
         "retailer": "planting-tree"
       },
       {
-        "hours": 3629.7,
+        "hours": 3637.3,
         "plant": "bleeding-heart",
         "retailer": "proven-winners-direct"
       },
       {
-        "hours": 2385.2,
+        "hours": 2392.8,
         "plant": "encore-azalea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 2384.6,
+        "hours": 2392.3,
         "plant": "encore-azalea",
         "retailer": "fast-growing-trees"
       },
       {
-        "hours": 1901.7,
+        "hours": 1909.3,
         "plant": "fire-light-hydrangea",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1363.6,
+        "hours": 1371.2,
         "plant": "sunny-knock-out-rose",
         "retailer": "planting-tree"
       },
       {
-        "hours": 1243.9,
+        "hours": 1251.5,
         "plant": "sweetbay-magnolia",
         "retailer": "nature-hills"
       },
       {
-        "hours": 593.3,
+        "hours": 601.0,
         "plant": "nandina-heavenly-bamboo",
         "retailer": "planting-tree"
       }
     ],
     "undated_rows": 0
   },
-  "generated": "2026-11-27T21:13:28.462369+00:00",
+  "generated": "2026-11-28T04:52:50.921248+00:00",
   "notices": [
     "10 of 282 plant-retailer pairs are stale (>48h) at retailers that are otherwise reporting \u2014 probably discontinued products; they are excluded from every denominator below",
     "B_two_nursery_pairs: 2 new lead(s) for the weekly digest"
